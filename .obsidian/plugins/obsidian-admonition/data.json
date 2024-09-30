@@ -28,7 +28,7 @@
     },
     "prop": {
       "type": "prop",
-      "color": "164, 218, 171",
+      "color": "163, 204, 168",
       "icon": {
         "name": "angle-double-right",
         "type": "font-awesome"

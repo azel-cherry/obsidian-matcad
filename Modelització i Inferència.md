@@ -2,13 +2,13 @@
 ## Introducció
 
 ```ad-def
-title: Població
+title: *Població*
 
 Una ==població== és una *v.a.* $X$.
 ```
 
 ```ad-def
-title: Mostra aleatòria
+title: *Mostra aleatòria*
 
 Una ==mostra aleatòria== de mida $n$ de $X$ és un conjunt de $n$ *v.a.*s $X_1,X_2,...,X_n$ tals que:
 + $X_1,...,X_n$ són *v.a.*s independents.
@@ -33,40 +33,45 @@ Una mostra d'una població finita sense reemplaçament NO forma una mostra aleat
 
 Habitualment es treballa amb mostres amb $n$ molt petita en comparació a la mida de la població. En aquests casos, tot i que el mostreig es faci sense reposició, es treballarà com si les variables fossin independents.
 
+```ad-not
+title: Recordatori: *Equivalència normal*
+
+Sigui $X$ una variable aleatòria, són equivalents
+$$X\sim N(\mu,\sigma^{2}) \,\,\,\,\text{i}\,\,\,\, \frac{X-\mu}{\sigma}\sim N(0,1)\,.$$
+```
+
 ---
-## Estadístics més usuals
+## Estadístics usuals
 
 ```ad-def
-title: Estadístic
+title: *Estadístic*
 
 Donada una mostra aleatòria $X_1,...,X_n$ de $X$, un ==estadístic== és una funció d'aquestes variables i possibles constants.
 ```
 
-```ad-ex
-title: Exemples
 
-==**Mitjana** mostral==: $$\boldsymbol{\overline{X}} = \frac{1}{n}\sum\limits_{i=1}^{n} X_i$$
++ ==**Mitjana** mostral==: $$\boldsymbol{\overline{X}} = \frac{1}{n}\sum\limits_{i=1}^{n} X_i$$
 
-==**Variància** mostral (corregida)==: $$\boldsymbol{S^2} = \frac{1}{n-1} \sum\limits_{i=1}^n (X_i-\overline{X})^2$$
++ ==**Variància** mostral (corregida)==: $$\boldsymbol{S^2} = \frac{1}{n-1} \sum\limits_{i=1}^n (X_i-\overline{X})^2$$
 
-==**Variància** mostral (sense corregir)==: $$\boldsymbol{S'^2} = \frac{1}{n}\sum\limits_{i=1}^n(X_i-\overline{X})^2$$
++ ==**Variància** mostral (sense corregir)==: $$\boldsymbol{S'^2} = \frac{1}{n}\sum\limits_{i=1}^n(X_i-\overline{X})^2$$
 
-En rar cas de conèixer la mitjana poblacional $\mu$ de $X$, tenim la ==**quasivariància** mostral==:
++ ==**Quasivariància** mostral==. Es fa servir en rar cas de conèixer la mitjana poblacional $\mu$ de $X$:
 $$\boldsymbol{\widetilde{S}^2} = \frac{1}{n}\sum\limits_{i=1}^n (X_i-\mu)^2$$
-```
 
 ```ad-def
-title: Estimador
+title: *Estimador*
 
 Un ==estimador== és un **estadístic** que es fa servir per a **estimar** un determinat paràmetre.
 
 Si un estadístic s'usa per a estimar el paràmetre $X$, es denotarà $\widehat{X}$, i una estimació concreta serà $\widehat{x}$.
 ```
 
+---
 #### Distribucions mostrals d'estadístics usuals
 
 ```ad-def
-title: Distribució mostral d'un estadístic
+title: *Distribució mostral d'un estadístic*
 
 Donat un estadístic funció de la mostra $X_1,...,X_n$ variable aleatòria, la seva **distribució** o **llei** s'anomena ==distribució mostral de l'estadístic==.
 ```
@@ -75,35 +80,29 @@ Donat un estadístic funció de la mostra $X_1,...,X_n$ variable aleatòria, la 
 title: Propietats de la mitjana mostral ($\boldsymbol{\overline{X}}$)
 
 Tenim les següents propietats:
-$$ \mu_{\overline{X}} = \text{E}(\overline{X}) = \mu $$
-$$ \sigma^{2_{\overline{X}}} = \text{Var}(\overline{X}) = \frac{\sigma^2}{n} $$
-I, per tant:
-$$ \sigma_{\overline{X}} = \frac{\sigma}{\sqrt(n)} $$
++ $\mu_{\overline{X}} = \text{E}(\overline{X}) = \mu$
++ $\displaystyle \sigma^{2}_{\overline{X}} = \text{Var}(\overline{X}) = \frac{\sigma^2}{n}$
 
 ```ad-prop
 title: Casos particulars
 
-+ Població **dicotòmica ($\boldsymbol{X \sim B(p)}$)**: $\sigma_{n\,\overline{X}} = \sqrt{n\,p\,(1-p)}$.
++ Població **dicotòmica ($\boldsymbol{X \sim B(p)}$)**: $\sigma_{n\,\overline{X}} = \sqrt{n\,p\,(1-p)}$
 
-+ Població **normal ($\boldsymbol{X\sim N(\mu,\sigma^2)}$)**: $\displaystyle\overline{X}\sim N\left(\mu,\frac{\sigma^2}{n}\right)$,
-	o equivalentment $\displaystyle\frac{\overline{X}-\mu}{\frac{\sigma}{\sqrt{n}}} \sim N(0,1)$
++ Població **normal ($\boldsymbol{X\sim N(\mu,\sigma^2)}$)**: $\displaystyle\overline{X}\sim N\left(\mu,\frac{\sigma^2}{n}\right)$
 ```
 ````
 
 ````ad-prop
 title: Propietats de les variàncies mostrals ($\boldsymbol{S^2}$, $\boldsymbol{S'^2}$, $\boldsymbol{\widetilde{S}^2}$)
 
-```ad-prop
-title: Esperança
-$$\begin{align*}
-\text{E}(S^2) &= \sigma^2 \\
-\text{E}(S'^2) &= \frac{n-1}{n}\sigma^2 \\
-\text{E}(\widetilde{S}^2) &= \sigma^2
-\end{align*} $$
-```
+**Esperançes**:
++ $\text{E}(S^2) = \sigma^2$
++ $\text{E}(S'^2) = \frac{n-1}{n}\sigma^2$
++ $\text{E}(\widetilde{S}^2) = \sigma^2$
+
+Cas particular - **població normal**:
 
 ```ad-prop
-title: Població normal
 
 Si $X\sim N(\mu,\sigma^2)$, aleshores
 $$\frac{n\widetilde{S}^2}{\sigma^2} = \frac{1}{\sigma^2}\sum\limits_{i=1}^n(X_i-\mu)^2 \sim \chi_n^2$$
@@ -113,7 +112,7 @@ on $\chi_n^2$ denota la **distribució khi-quadrat** de grau $n$.
 ```ad-teor
 title: Teorema de Fisher
 
-Sigui $X_1,...,X_n$ una mostra aleatòria d'una variable aleatòria $X\sim N(\mu,sigma^2)$, aleshores:
+Sigui $X_1,...,X_n$ una mostra aleatòria d'una variable aleatòria $X\sim N(\mu,\sigma^2)$, aleshores:
 + $\overline{X}$ i $S^2$ son independents
 + $\displaystyle\frac{(n-1)S^2}{\sigma^2} = \frac{1}{\sigma^2} \sum\limits_{i=1}^n(X_i-\overline{X})^2 \sim \chi^2_{n-1}$
 ```
@@ -121,7 +120,7 @@ Sigui $X_1,...,X_n$ una mostra aleatòria d'una variable aleatòria $X\sim N(\mu
 ```ad-prop
 Sigui $X \sim N(\mu,\sigma^2)$, aleshores:
 $$
-\frac{\overline{X}-\mu}{\frac{\sqrt{S}}{\sqrt{n}}} \sim t_{n-1}
+\frac{\overline{X}-\mu}{\frac{\sqrt{S^{2}}}{\sqrt{n}}} \sim t_{n-1}
 $$
 on $t_{n-1}$ denota la **distribució $\boldsymbol t$ de Student** amb paràmetre $n-1$.
 ```
@@ -129,7 +128,7 @@ on $t_{n-1}$ denota la **distribució $\boldsymbol t$ de Student** amb paràmetr
 ````
 
 `````ad-not
-title: Distribució $\boldsymbol\chi^2$
+title: Nota: *Distribució $\boldsymbol\chi^2$*
 
 ````ad-def
 Sigui $Z_1,...,Z_\nu$ variables aleatòries independents i idènticament distribuïdes amb llei $N(0,1)$.
@@ -190,7 +189,7 @@ $$ Y = \chi^2_{\nu_{1}+\dots+\nu_{n}}. $$
 `````
 
 ````ad-not
-title: Distribució $\boldsymbol t$ de Student
+title: Nota: *Distribució $\boldsymbol t$ de Student*
 
 ```ad-def
 Siguin $Z\sim N(0,1)\,$ i $\,Y\sim\chi^2_{\nu}$ v.a.s independents, aleshores la llei de la v.a.
@@ -222,60 +221,69 @@ En resum, per una mostra de mida $n$ amb $X\sim N(\mu,\sigma^2)$:
 
 ```mehrmaid
 graph LR;
-	A1("Volem estimar $\mu\,$")
-	A("Coneixem $\sigma$?")
+	A("Volem estimar $\mu\,$")
 	B("$\displaystyle\frac{\overline{X}-\mu}{\frac{\sigma}{\sqrt{n}}} \sim N(0,1)$")
-	C("$\displaystyle\frac{\overline{X}-\mu}{\frac{S}{\sqrt{n}}} \sim t_{n-1}$")
+	C("$\displaystyle\frac{\overline{X}-\mu}{\frac{\sqrt{S^2}}{\sqrt{n}}} \sim t_{n-1}$")
 
-	A1 --> A
-	A -- sí --> B
-	A -- no --> C
-```
-
-```mehrmaid
-graph LR;
-	A1("Volem estimar $\sigma\,$")
-	A("Coneixem $\mu$?")
-	B("$\displaystyle\frac{nS^2}{\sigma^2} = \frac{1}{\sigma^2}\sum_{i=1}^n(X_i - \mu)^2 \sim \chi^2_n$")
-	C("Teorema de Fisher:
-	$\displaystyle\frac{(n-1)S^2}{\sigma^2} = \frac{1}{\sigma^2}\sum_{i=1}^n(X_i -\overline{X})^2 \sim \chi^2_{n-1}$")
-
-	A1 --> A
-	A -- sí --> B
-	A -- no --> C
-```
-
----
-##  Distribucions mostrals asimptòtiques
-
-#### Mitjana mostral
-
-Tenim una mostra de mida $n$ de $X$ amb distribució qualsevol, amb $\text{E}(X)=\mu$ i $\text{Var}(X)=\sigma^{2}$.
-
-```mehrmaid
-graph LR;
-	A("$n$ qualsevol")
-	B("$\mu_{\overline{X}_n} = \mu$")
-	C("$\displaystyle\sigma_{\overline{X}_n} = \frac{\sigma}{\sqrt{n}}$")
-
-	A --> B
-	A --> C
-```
-
-```mehrmaid
-graph LR;
-	A1("Volem estimar $\mu\,$")
-	A("$n\geq30$")
-	B("$\displaystyle\frac{\overline{X}_n-\mu}{\frac{\sigma}{\sqrt{n}}} \approx N(0,1)$")
-	C("$\displaystyle\frac{\overline{X}_n-\mu}{\frac{S_n}{\sqrt{n}}} \approx N(0,1)$")
-
-	A1 --> A
 	A -- "$\sigma$ coneguda" --> B
 	A -- "$\sigma$ desconeguda" --> C
 ```
 
-#### Proporció mostral
+```mehrmaid
+graph LR;
+	A("Volem estimar $\sigma\,$")
+	B("$\displaystyle\frac{nS^2}{\sigma^2} = \frac{1}{\sigma^2}\sum_{i=1}^n(X_i - \mu)^2 \sim \chi^2_n$")
+	C("Teorema de Fisher:
+	$\displaystyle\frac{(n-1)S^2}{\sigma^2} = \frac{1}{\sigma^2}\sum_{i=1}^n(X_i -\overline{X})^2 \sim \chi^2_{n-1}$")
 
-![[IMG_0351.jpeg]]
+	A -- "$\mu$ coneguda" --> B
+	A -- "$\mu$ desconeguda" --> C
+```
 
-![[IMG_0352.jpeg]]
+---
+####  Distribucions mostrals asimptòtiques
+
+###### Mitjana mostral
+
+Per una mostra de mida $n$ de $\boldsymbol{X}$ amb distribució qualsevol, on:
++ $\text{E}(x)=\mu$
++ $\text{Var}(X)=\sigma^{2}$
+
+````mehrmaid
+graph TB;
+	A1("Volem estimar $\mu\,$")
+	D("$\mu_{\overline{X}_n}=\mu$
+	$\displaystyle\sigma_{\overline{X}_n}=\frac{\sigma^2}{n}$")
+	A("distribució asimptòtica $\,$")
+	B("$\displaystyle\frac{\overline{X}_n-\mu}{\frac{\sigma}{\sqrt{n}}} \approx N(0,1)$")
+	C("$\displaystyle\frac{\overline{X}_n-\mu}{\frac{S_n}{\sqrt{n}}} \approx N(0,1)$")
+	
+	A1 -- "qualsevol $n$" --> D
+	A1 -- "$n\geq30$" --> A
+	A -- "$\sigma$ coneguda" --> B
+	A -- "$\sigma$ desconeguda" --> C
+````
+
+###### Proporció mostral
+
+Cas específic de la mitjana mostral amb $\boldsymbol{X\sim B(p)}$, on:
++ $\text{E}(x)=\mu=p$
++ $\text{Var}(X)=\sigma^{2}=p\,(p-1)$
++ $\hat{p}_{n}=\overline{X}_{n}$
+
+```mehrmaid
+graph TB;
+	A("Volem estimar $p\,$")
+	B("$\displaystyle n\,\hat{p}_n = \sum_{i=1}^nX_i\sim B(n,p)$")
+	C("Teorema de DeMoivre-Laplace:
+	$\displaystyle n\,\hat{p}_n = \sum_{i=1}^nX_i \approx N(n\,p,n\,p\,(1-p))$")
+	D("Teorema de Poisson:
+	$\displaystyle n\,\hat{p}_n = \sum_{i=1}^nX_i \approx Pois(\lambda)$
+	amb $\lambda=n\,p$")
+	F("distribució asimptòtitca $\,$")
+	
+	A -- "$n$ qualsevol" --> B
+	A -- "$n$ gran" --> F:::hidden
+	F -- "$np(1-p)\geq18$" --> C
+	F -- "$n\geq10$, $p<0.05\,$" --> D
+```
