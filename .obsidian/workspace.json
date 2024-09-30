@@ -6,6 +6,7 @@
       {
         "id": "20834146f1e35577",
         "type": "tabs",
+        "dimension": 47.85522788203753,
         "children": [
           {
             "id": "ba5562d9c3edabd7",
@@ -25,6 +26,7 @@
       {
         "id": "28ec385b48fd28a5",
         "type": "tabs",
+        "dimension": 52.14477211796247,
         "children": [
           {
             "id": "f4d029d8db5ce82c",
@@ -89,7 +91,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "455ff89e6c635379",
@@ -178,7 +181,7 @@
       "obsidian-excalidraw-plugin:Create new drawing": false
     }
   },
-  "active": "7adf4f8aaad18f58",
+  "active": "f4d029d8db5ce82c",
   "lastOpenFiles": [
     "IMG_0352.jpeg",
     "Modelització i Inferència.md"

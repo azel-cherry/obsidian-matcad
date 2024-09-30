@@ -237,7 +237,7 @@ graph LR;
 	A1("Volem estimar $\sigma\,$")
 	A("Coneixem $\mu$?")
 	B("$\displaystyle\frac{nS^2}{\sigma^2} = \frac{1}{\sigma^2}\sum_{i=1}^n(X_i - \mu)^2 \sim \chi^2_n$")
-	C("$$")
+	C("$\displaystyle\frac{(n-1)S^2}{\sigma^2} = \frac{1}{\sigma^2}\sum_{i=1}^n(X_i -\overline{X})^2 \sim \chi^2_{n-1}$")
 
 	A1 --> A
 	A -- sí --> B
