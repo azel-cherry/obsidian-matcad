@@ -250,14 +250,26 @@ graph LR;
 
 #### Mitjana mostral
 
-Tenim una mostra de mida $n$ de $X$ amb distribució qualsevol.
+Tenim una mostra de mida $n$ de $X$ amb distribució qualsevol, amb $\text{E}(X)=\mu$ i $\text{Var}(X)=\sigma^{2}$.
 
 ```mehrmaid
 graph LR;
 	A("$n$ qualsevol")
-	B("$\displaystyle\frac{nS^2}{\sigma^2} = \frac{1}{\sigma^2}\sum_{i=1}^n(X_i - \mu)^2 \sim \chi^2_n$")
+	B("$\mu_{\overline{X}_n} = \mu$")
+	C("$\displaystyle\sigma_{\overline{X}_n} = \frac{\sigma}{\sqrt{n}}$")
 
 	A --> B
+	A --> C
+```
+
+```mehrmaid
+graph LR;
+	A("$n\geq30$")
+	B("$\mu_{\overline{X}_n} = \mu$")
+	C("$\displaystyle\sigma_{\overline{X}_n} = \frac{\sigma}{\sqrt{n}}$")
+
+	A --> B
+	A --> C
 ```
 
 ![[IMG_0350.jpeg]]
