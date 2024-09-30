@@ -222,8 +222,26 @@ En resum, per una mostra de mida $n$ amb $X\sim N(\mu,\sigma^2)$:
 
 ```mehrmaid
 graph LR;
-	A["σ coneguda?"] -- sí --> B["X̅ = N ( μ , σ²/n )"]
-	A["σ coneguda?"] -- no --> C["X̅ = N ( μ , σ²/n )"]
+	A1("Volem estimar $\mu\,$")
+	A("Coneixem $\sigma$?")
+	B("$\displaystyle\frac{\overline{X}-\mu}{\frac{\sigma}{\sqrt{n}}} \sim N(0,1)$")
+	C("$\displaystyle\frac{\overline{X}-\mu}{\frac{S}{\sqrt{n}}} \sim t_{n-1}$")
+
+	A1 --> A
+	A -- sí --> B
+	A -- no --> C
+```
+
+```mehrmaid
+graph LR;
+	A1("Volem estimar $\sigma\,$")
+	A("Coneixem $\mu$?")
+	B("$\displaystyle\frac{nS^2}{\sigma^2} = \frac{1}{\sigma^2}\sum_{i=1}^n(X_i - \mu)^2 \sim \chi^2_n$")
+	C("$$")
+
+	A1 --> A
+	A -- sí --> B
+	A -- no --> C
 ```
 
 ![[IMG_0349.jpeg]]
