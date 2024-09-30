@@ -4,22 +4,6 @@
     "type": "split",
     "children": [
       {
-        "id": "20834146f1e35577",
-        "type": "tabs",
-        "children": [
-          {
-            "id": "ba5562d9c3edabd7",
-            "type": "leaf",
-            "state": {
-              "type": "css-editor-view",
-              "state": {
-                "filename": "pet.css"
-              }
-            }
-          }
-        ]
-      },
-      {
         "id": "0be7434c869404ee",
         "type": "tabs",
         "children": [
@@ -27,11 +11,10 @@
             "id": "98d53b4a0aecdb67",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "diff-view",
               "state": {
-                "file": "Modelització i Inferència.md",
-                "mode": "source",
-                "source": true
+                "file": ".obsidian/workspace.json",
+                "staged": false
               }
             }
           }
@@ -154,8 +137,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 339.5,
-    "collapsed": true
+    "width": 339.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -170,10 +152,10 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "ba5562d9c3edabd7",
+  "active": "98d53b4a0aecdb67",
   "lastOpenFiles": [
-    "Equacions Diferencials Ordinàries.md",
     "Modelització i Inferència.md",
+    "Equacions Diferencials Ordinàries.md",
     "IMG_0352.jpeg"
   ]
 }
