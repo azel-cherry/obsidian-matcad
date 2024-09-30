@@ -1,0 +1,102 @@
+{
+  "userAdmonitions": {
+    "def": {
+      "type": "def",
+      "color": "133, 173, 133",
+      "icon": {
+        "name": "bookmark",
+        "type": "font-awesome"
+      },
+      "command": false,
+      "title": "Definició",
+      "injectColor": true,
+      "noTitle": false,
+      "copy": false
+    },
+    "teor": {
+      "type": "teor",
+      "color": "177, 221, 139",
+      "icon": {
+        "name": "book",
+        "type": "font-awesome"
+      },
+      "command": false,
+      "title": "Teorema",
+      "injectColor": true,
+      "noTitle": false,
+      "copy": false
+    },
+    "prop": {
+      "type": "prop",
+      "color": "150, 216, 173",
+      "icon": {
+        "name": "angle-double-right",
+        "type": "font-awesome"
+      },
+      "command": false,
+      "title": "Proposició",
+      "injectColor": true,
+      "noTitle": false,
+      "copy": false
+    },
+    "coro": {
+      "type": "coro",
+      "color": "255, 181, 175",
+      "icon": {
+        "name": "adjust",
+        "type": "font-awesome"
+      },
+      "command": false,
+      "title": "Corol·lari",
+      "injectColor": true,
+      "noTitle": false
+    },
+    "ex": {
+      "type": "ex",
+      "color": "177, 201, 182",
+      "icon": {
+        "name": "border-all",
+        "type": "font-awesome"
+      },
+      "command": false,
+      "title": "Exemple",
+      "injectColor": true,
+      "noTitle": false,
+      "copy": false
+    },
+    "not": {
+      "type": "not",
+      "color": "194, 209, 152",
+      "icon": {
+        "name": "pencil-alt",
+        "type": "font-awesome"
+      },
+      "command": false,
+      "title": "Nota",
+      "injectColor": true,
+      "noTitle": false,
+      "copy": false
+    }
+  },
+  "syntaxHighlight": true,
+  "copyButton": false,
+  "version": "10.3.2",
+  "autoCollapse": true,
+  "defaultCollapseType": "closed",
+  "injectColor": true,
+  "parseTitles": true,
+  "dropShadow": true,
+  "hideEmpty": false,
+  "open": {
+    "admonitions": true,
+    "icons": true,
+    "other": true,
+    "advanced": true
+  },
+  "icons": [],
+  "useFontAwesome": true,
+  "rpgDownloadedOnce": false,
+  "msDocConverted": false,
+  "useSnippet": false,
+  "snippetPath": "custom-admonitions.f34476"
+}

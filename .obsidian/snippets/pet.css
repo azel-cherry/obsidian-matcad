@@ -1,0 +1,22 @@
+/* @settings
+
+name: Azel
+id: azel
+settings:
+    -  
+        id: hightlight-color
+        title: Hightlight Color
+        type: variable-color
+        format: hsl-split
+        default: '#007AFF'
+*/
+
+.markdown-rendered mark {
+  background-color: rgb(200,230,170);
+}
+
+.highlightr-lowlight .admonition-content mark,
+.highlightr-lowlight .admonition-content span.cm-highlight,
+.highlightr-lowlight .admonition-content > .markdown-preview-view mark {
+    --lowlight-background: transparent;
+}
