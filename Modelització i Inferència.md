@@ -221,7 +221,6 @@ $$
 En resum, per una mostra de mida $n$ amb $X\sim N(\mu,\sigma^2)$:
 
 ```mehrmaid
-theme: "base",
 graph LR;
 	A1("Volem estimar $\mu\,$")
 	A("Coneixem $\sigma$?")
@@ -238,19 +237,28 @@ graph LR;
 	A1("Volem estimar $\sigma\,$")
 	A("Coneixem $\mu$?")
 	B("$\displaystyle\frac{nS^2}{\sigma^2} = \frac{1}{\sigma^2}\sum_{i=1}^n(X_i - \mu)^2 \sim \chi^2_n$")
-	C("$\displaystyle\frac{(n-1)S^2}{\sigma^2} = \frac{1}{\sigma^2}\sum_{i=1}^n(X_i -\overline{X})^2 \sim \chi^2_{n-1}$")
+	C("Teorema de Fisher:
+	$\displaystyle\frac{(n-1)S^2}{\sigma^2} = \frac{1}{\sigma^2}\sum_{i=1}^n(X_i -\overline{X})^2 \sim \chi^2_{n-1}$")
 
 	A1 --> A
 	A -- sí --> B
 	A -- no --> C
 ```
 
-![[IMG_0349.jpeg]]
-
 ---
 ##  Distribucions mostrals asimptòtiques
 
 #### Mitjana mostral
+
+Tenim una mostra de mida $n$ de $X$ amb distribució qualsevol.
+
+```mehrmaid
+graph LR;
+	A("$n$ qualsevol")
+	B("$\displaystyle\frac{nS^2}{\sigma^2} = \frac{1}{\sigma^2}\sum_{i=1}^n(X_i - \mu)^2 \sim \chi^2_n$")
+
+	A --> B
+```
 
 ![[IMG_0350.jpeg]]
 
