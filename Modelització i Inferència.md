@@ -264,15 +264,15 @@ graph LR;
 
 ```mehrmaid
 graph LR;
+	A1("Volem estimar $\mu\,$")
 	A("$n\geq30$")
-	B("$\mu_{\overline{X}_n} = \mu$")
-	C("$\displaystyle\sigma_{\overline{X}_n} = \frac{\sigma}{\sqrt{n}}$")
+	B("$\displaystyle\frac{\overline{X}_n-\mu}{\frac{\sigma}{\sqrt{n}}} \approx N(0,1)$")
+	C("$\displaystyle\frac{\overline{X}_n-\mu}{\frac{S_n}{\sqrt{n}}} \approx N(0,1)$")
 
-	A --> B
-	A --> C
+	A1 --> A
+	A -- "$\sigma$ coneguda" --> B
+	A -- "$\sigma$ desconeguda" --> C
 ```
-
-![[IMG_0350.jpeg]]
 
 #### Proporció mostral
 
