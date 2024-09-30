@@ -222,8 +222,8 @@ En resum, per una mostra de mida $n$ amb $X\sim N(\mu,\sigma^2)$:
 
 ```mermaid
 graph LR;
-	A["σ coneguda?"] -- sí --> B["X̅ = N ( μ , σ² / n )"]
-	A["σ coneguda?"] -- no --> C["X̅ = N ( μ , σ² / n )"]
+	A["σ coneguda?"] -- sí --> B["X̅ = N ( μ , σ²/n )"]
+	A["σ coneguda?"] -- no --> C["X̅ = N ( μ , σ²/n )"]
 ```
 
 ![[IMG_0349.jpeg]]
