@@ -30,7 +30,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Equacions Diferencials Ordinàries.md",
+                "file": "Modelització i Inferència.md",
                 "mode": "preview",
                 "source": true
               }
@@ -87,7 +87,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "455ff89e6c635379",
@@ -173,8 +174,8 @@
   },
   "active": "ba5562d9c3edabd7",
   "lastOpenFiles": [
-    "Equacions Diferencials Ordinàries.md",
     "Modelització i Inferència.md",
+    "Equacions Diferencials Ordinàries.md",
     "IMG_0352.jpeg"
   ]
 }

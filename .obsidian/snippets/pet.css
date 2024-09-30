@@ -3,15 +3,18 @@
 name: Azel
 id: azel
 settings:
-    -  
-        id: hightlight-color
+    - 
+        id: text-highlight-bg-rgb
         title: Hightlight Color
         type: variable-color
-        format: hsl-split
-        default: '#007AFF'
+        opacity: false
+        format: rgb-values
+        default: '#ffd000'
 */
 
-mark,
+
+
+markk,
 .cm-highlight {
     background-color: unset !important;
     background-image: linear-gradient(
