@@ -14,11 +14,11 @@ settings:
 
 
 
-markk,
+mark,
 .cm-highlight {
     background-color: unset !important;
     background-image: linear-gradient(
-        0deg,
+        360deg,
         var(--text-highlight-bg) 40%,
         transparent 40%
     ) !important
