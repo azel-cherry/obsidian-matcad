@@ -1,0 +1,184 @@
+{
+  "main": {
+    "id": "95b63318c651125d",
+    "type": "split",
+    "children": [
+      {
+        "id": "20834146f1e35577",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "ba5562d9c3edabd7",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Modelització i Inferència.md",
+                "mode": "source",
+                "source": true
+              }
+            },
+            "group": "b3242ca0a9e9fba0"
+          }
+        ]
+      },
+      {
+        "id": "28ec385b48fd28a5",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "f4d029d8db5ce82c",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Modelització i Inferència.md",
+                "mode": "preview",
+                "source": false
+              }
+            },
+            "group": "b3242ca0a9e9fba0"
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "a36510bcbec0540b",
+    "type": "split",
+    "children": [
+      {
+        "id": "3aedd0194f02cff8",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "e4a4fe6b287ad477",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "91023601751f6c18",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "932a9f0eef7ec2ae",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "455ff89e6c635379",
+    "type": "split",
+    "children": [
+      {
+        "id": "deb8c19d483a6723",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "bc8b5833c507fbdd",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Modelització i Inferència.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "7adf4f8aaad18f58",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Modelització i Inferència.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "fa432f6458373203",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "d46363634846959d",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Modelització i Inferència.md"
+              }
+            }
+          },
+          {
+            "id": "6decfb820efe0cf2",
+            "type": "leaf",
+            "state": {
+              "type": "git-view",
+              "state": {}
+            }
+          }
+        ],
+        "currentTab": 4
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "obsidian-excalidraw-plugin:Create new drawing": false,
+      "obsidian42-brat:BRAT": false,
+      "obsidian-git:Open Git source control": false
+    }
+  },
+  "active": "ba5562d9c3edabd7",
+  "lastOpenFiles": [
+    "Modelització i Inferència.md"
+  ]
+}
