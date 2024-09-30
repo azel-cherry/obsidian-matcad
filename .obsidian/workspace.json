@@ -11,11 +11,9 @@
             "id": "ba5562d9c3edabd7",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "css-editor-view",
               "state": {
-                "file": "Modelització i Inferència.md",
-                "mode": "source",
-                "source": true
+                "filename": "pet.css"
               }
             },
             "group": "cf9337771e9772d4"
@@ -32,7 +30,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Modelització i Inferència.md",
+                "file": "Equacions Diferencials Ordinàries.md",
                 "mode": "preview",
                 "source": true
               }
@@ -105,7 +103,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Modelització i Inferència.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -122,7 +119,6 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Modelització i Inferència.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -144,9 +140,7 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "Modelització i Inferència.md"
-              }
+              "state": {}
             }
           },
           {
@@ -177,7 +171,7 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "98d53b4a0aecdb67",
+  "active": "ba5562d9c3edabd7",
   "lastOpenFiles": [
     "Equacions Diferencials Ordinàries.md",
     "Modelització i Inferència.md",

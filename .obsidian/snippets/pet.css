@@ -11,12 +11,12 @@ settings:
         default: '#007AFF'
 */
 
-.markdown-rendered mark {
-  background-color: rgb(200,230,170);
-}
-
-.highlightr-lowlight .admonition-content mark,
-.highlightr-lowlight .admonition-content span.cm-highlight,
-.highlightr-lowlight .admonition-content > .markdown-preview-view mark {
-    --lowlight-background: transparent;
+mark,
+.cm-highlight {
+    background-color: unset !important;
+    background-image: linear-gradient(
+        0deg,
+        var(--text-highlight-bg) 40%,
+        transparent 40%
+    ) !important
 }
