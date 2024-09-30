@@ -221,6 +221,7 @@ $$
 En resum, per una mostra de mida $n$ amb $X\sim N(\mu,\sigma^2)$:
 
 ```mehrmaid
+theme: "base",
 graph LR;
 	A1("Volem estimar $\mu\,$")
 	A("Coneixem $\sigma$?")
