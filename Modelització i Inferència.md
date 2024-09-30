@@ -72,6 +72,7 @@ Donat un estadístic funció de la mostra $X_1,...,X_n$ variable aleatòria, la 
 ```
 
 ````ad-prop
+
 title: Propietats de la mitjana mostral ($\boldsymbol{\overline{X}}$)
 
 Tenim les següents propietats:
