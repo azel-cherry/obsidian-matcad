@@ -1,4 +1,3 @@
-
 ## Introducció
 
 ```ad-def
