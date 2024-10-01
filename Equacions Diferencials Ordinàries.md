@@ -73,6 +73,10 @@ A més, es compleix que la solució $y(x;x_o,y_o)$ és una ==funció **contínua
 ```ad-teor
 title: Teorema de Peano
 
+Sigui $f$ una funció contínua i $y'(x) = f(x,y(x))$ una EDO de primer ordre contínua.
+
+Aleshores existèix solució per tot PVI de $y(x)$.
+
 Hi ha ==existència== si $f$ és contínua.
 ```
 
