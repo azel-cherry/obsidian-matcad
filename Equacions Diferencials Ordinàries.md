@@ -1,5 +1,7 @@
 
 ```ad-def
+title: *Equació diferencial oridnària de primer ordre*
+
 Una ==equació diferencial oridnària de primer ordre== per a una funció $y(x)$ és una equació
 $$F(x,y,y')=0.$$
 
@@ -30,7 +32,7 @@ Un cas particular son les ==solucions d'equilibri==, les quals no depenen de la 
 ```
 
 ---
-### Existència, unicitat i continuitat de solucions
+## Existència, unicitat i continuitat de solucions
 
 ```ad-teor
 title: Teorema de Picard-Lindelöf
