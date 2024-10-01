@@ -118,29 +118,31 @@ on $a(x)$ i $b(x)$ son funcions aribitràries.
 ```ad-def
 title: *Equació homogènia associada*
 
-Sigui $y'(x)+a(x)y(x)=b(x)$ una EDO lineal amb $b(x)\equiv 0$.
-
-S'anomena ==equació homogènia associada== a l'equació lineal que ens queda;
-$$y'(x)+a(x)y(x)=0,$$
-que és equació de variables separades.
+Se li diu ==equació homogènia associada== a una EDO lineal amb $b(x)\equiv 0$. És a dir,
+$$y'(x)+a(x)y(x)=0\,,$$
+que és una EDO de variables separades.
 ```
 
 ```ad-def
 title: *Solució general*
 
-De l'equació homogènia associada surt la ==solució general==:
-$$y(x)=Ce^{-\int a(x)dx}$$
+La solució de l'equació homogènia associada es diu ==solució general== i és
+$$y(x)=Ce^{-\int a(x)dx}\,.$$
 ```
 
 ```ad-prop
-Siguin $y_1(x)$ i $y_2(x)$ dues solucions de l'equació lineal no homogènia $y'(x)+a(x)y(x)=b(x)$.
+Siguin $y_1(x)$ i $y_2(x)$ dues solucions de l'equació lineal $y'(x)+a(x)y(x)=b(x)$.
 
 Aleshores $y_1(x)-y_2(x)$ és solució de l'equació homogènia associada $y'(x)+a(x)y(x)=0$.
 ```
 
 ```ad-coro
-Sigui $y(x)$ la solució general de l'equació lineal $y'(x)+a(x)y(x)=b(x)$, $y_p(x)$ una solució particular, i $y_h(x)$ la solució general de $y'(x)+a(x)y(x)=0$. Aleshores:
-$$y(x)=y_h(x)+y_p(x)$$
+Siguin:
++ $y(x)$ la solució general de l'equació lineal $y'(x)+a(x)y(x)=b(x)$,
++ $y_p(x)$ una solució particular, i
++ $y_h(x)$ la solució general de $y'(x)+a(x)y(x)=0$. 
+
+Aleshores $\boxed{\,y(x)=y_h(x)+y_p(x)\,}$ .
 ```
 
 Per trobar $y_p(x)$ farem servir el ==*mètode de variació de les constants*==. 
