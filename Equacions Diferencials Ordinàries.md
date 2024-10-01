@@ -1,34 +1,52 @@
+## Introducció
+
+#### Equacions diferencials ordinàries de primer ordre
+
+Una ==equació diferencial oridnària de primer ordre== (EDO de primer ordre) per a una funció $y(x)$ és una equació
+$$F(x,y,y')=0.$$
 
 ```ad-def
-title: *Equació diferencial oridnària de primer ordre*
-
-Una ==equació diferencial oridnària de primer ordre== per a una funció $y(x)$ és una equació
-$$F(x,y,y')=0.$$
+title: *Forma explícita*
 
 La ==forma explícita== d'una EDO de 1r ordre és
 $$y'(x)=f(x,y(x)).$$
+```
+
+```ad-def
+title: *EDO autònoma*
 
 Una EDO es diu ==autònoma== si $f$ no depèn explícitament de $x$, és a dir, és de la forma
 $$y'=f(y).$$
+```
 
+```ad-def
+title: *Solució (general) d'una EDO*
 
 La ==solució== d'una EDO és una funció $y(x)$ diferenciable definida en un interval $I$ tal que $\forall x\in I$, $y'(x)=f(x,y(x))$. 
 
 En general, les solucions d'una EDO de 1r ordre formen una família uniparamètrica de funcions, depenent d'un paràmetre constant. Aquesta expressió s'anomena ==solució general==.
 ```
 
-```ad-def
+#### Problemes de valor inicial
+
 title: *Problema de valor inicial*
 
 Una EDO de 1r ordre amb una condició inicial s'anomena ==problema de valor inicial== (PVI).
-$$\begin{cases}
-y' =f(x,y) \\
-y(x_0) =y_0
-\end{cases}$$
+$$\begin{cases*}
+y' = f(x,y) \\
+y(x_0) = y_0
+\end{cases*}$$
+
+```ad-def
+title: *Solució particular*
 
 La solució d'un PVI s'anomena ==solució particular==.
+```
 
-Un cas particular son les ==solucions d'equilibri==, les quals no depenen de la variable independent. És una solució de la forma $y(x)=k$.
+```ad-def
+title: *Solució d'equilibri*
+
+Un cas particular  de solucons d'un PVI son les ==solucions d'equilibri==, les quals no depenen de la variable independent. És una solució de la forma $y(x)=k$.
 + $y(x)=k$ és solució d'equilibri de $y'=f(x,y)$ si i només si $f(x,k)=0$ per a tot $x$ per al qual $f(x,y)$ estigui ben definit.
 + Si l'equació és autònoma ($y'=f(y)$), les solucions d'equilibri $y(x)=k$ estan donades pels zeros de $f$ i estan definidesd $\forall x \in \mathbb{R}$.
 ```
