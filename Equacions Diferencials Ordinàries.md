@@ -59,14 +59,14 @@ title: Teorema de Picard-Lindelöf
 
 Sigui $R$ una regió rectangular del pla $xy$ definida per $R = \{ (x,y) \mid a \leq x \leq b, c \leq y \leq d \}$ que conté el punt $(x_0,y_0)$. Suposem que $f$ i $\frac{df}{dx}$ son contínues a $\mathbb{R}$.
 
-Aleshores ==existeix una única== solució $y(x)$ definida a un interval $I_{o}=(x_o-h,x_o+h)$ amb $h>0$ contingut a $[a,b]$ del PVI
+Aleshores ==existeix una **única** solució== $y(x)$ definida a un interval $I_{o}=(x_o-h,x_o+h)$ amb $h>0$ contingut a $[a,b]$ del PVI
 $$\begin{cases}
 y'=f(x,y) \\
 y(x_o)=y_0 \\
 \end{cases}
 $$
 
-A més, sigui $y(x;x_o,y_o)$ la solució, es compleix que $y(x;c_o,y_o)$ és una funció ==contínua== respecte $x_o,y_o$.
+A més, es compleix que la solució $y(x;x_o,y_o)$ és una ==funció **contínua**== respecte $x_o,y_o$.
 
 ```
 
