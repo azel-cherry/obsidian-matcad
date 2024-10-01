@@ -188,3 +188,10 @@ $$\displaystyle u'(x)=\frac{du}{dx}=\frac{f(u(x))-u(x)}{x}.$$
 
 Moltes vegades no és possible aplicar els mètodes anteriors. En aquests casos representarem geomètricament les solucions per obtenir informació sobre les seves propietats.
 
+```ad-ex
+title: Mètode
+
+Considerem l'EDO $y'(x)=f(x,y)$.
+
+Al ser $f$ la derivada de la solució $y$, el pendent de la recta tangent a la gràfica de $y(x)$ a qualsevol punt $x$ vindrà donat per $f(x,y(x))$.
+```
