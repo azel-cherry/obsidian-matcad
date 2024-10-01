@@ -221,8 +221,11 @@ Donada una EDO autònoma $y'=f(y)$ amb $f(y)$ ben definida i contínua, el compo
 ```ad-teor
 Donada una EDO autònoma $y'=f(y)$:
 + Si $y(x)$ és solució, també ho son $y_{c}(x):=y(x+c)$ $\forall c\in \mathbb{R}$.
+
 	+ Si $y(x)$ no és un equilibri, aleshores és estrictament creixent o decreixent.
+
 + Si una solució $y(x)$ és acotada, aleshores tendeix a una solució d'equilibri quan $x\rightarrow\pm\infty$.
 
-+ Si $f(a)=f(b)=0$ , $f(y)>0$ per a $y\in(a,b)$, i $y(x_{0})\in(a,b)$. Aleshores 
++ Si $f(a)=f(b)=0$ , $f(y)>0$ per a $y\in(a,b)$, i $y(x_{0})\in(a,b)$. Aleshores
+$$\lim_{x\to-\infty}y(x)=a \,\,\,\,\text{i}\,\, \lim_{x\to\infty}y(x)=b$$
 ```
