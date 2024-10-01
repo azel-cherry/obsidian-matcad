@@ -29,9 +29,7 @@ En general, les solucions d'una EDO de 1r ordre formen una família uniparamètr
 
 #### Problemes de valor inicial
 
-title: *Problema de valor inicial*
-
-Una EDO de 1r ordre amb una condició inicial s'anomena ==problema de valor inicial== (PVI).
+Una EDO de 1r ordre amb una condició inicial s'anomena ==problema de valor inicial== (PVI), i és de la següent forma:
 $$\begin{cases*}
 y' = f(x,y) \\
 y(x_0) = y_0
@@ -113,14 +111,26 @@ title: Mètode
 
 #### Equacions diferencials lineals
 
-Tinguem la incògnita $y(x)$, una ==equació diferencial lineal== és de la forma
+Tinguem la incògnita $y(x)$, una ==EDO lineal== és de la forma
 $$y'(x)+a(x)y(x)=b(x)$$
 on $a(x)$ i $b(x)$ son funcions aribitràries.
 
-Si $b(x)\equiv 0$, tenim $y'(x)+a(x)y(x)=0$, que s'anomena ==equació homogènia associada== a l'equació lineal. És una equació de variables separades.
+```ad-def
+title: *Equació homogènia associada*
+
+Sigui $y'(x)+a(x)y(x)=b(x)$ una EDO lineal amb $b(x)\equiv 0$.
+
+S'anomena ==equació homogènia associada== a l'equació lineal que ens queda;
+$$y'(x)+a(x)y(x)=0,$$
+que és equació de variables separades.
+```
+
+```ad-def
+title: *Solució general*
 
 De l'equació homogènia associada surt la ==solució general==:
 $$y(x)=Ce^{-\int a(x)dx}$$
+```
 
 ```ad-prop
 Siguin $y_1(x)$ i $y_2(x)$ dues solucions de l'equació lineal no homogènia $y'(x)+a(x)y(x)=b(x)$.
