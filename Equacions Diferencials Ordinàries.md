@@ -208,3 +208,12 @@ Sigui $y'(x)=f(x,y)$ una EDO de primer ordre, i donada $m\in\mathbb{R}$, les cor
 
 ## Equacions diferencials autònomes
 
+Les equacions autònomes
++ són de **variables separades**, i
++ els seus **equilibris** són els **zeros** de la funció $f$.
+
+```ad-def
+title: *Esquema de fase*
+
+Donada una EDO autònoma $y'=f(y)$ amb $f(y)$ ben definida i contínua, el comportament de les solucions de l'equació es pot determinar tan sols amb els pendents al llarg de l'eix de les $y$s, els quals donen lloc a l'==esquema de fase unidimensional== de l'EDO.
+```
