@@ -18,6 +18,8 @@ En general, les solucions d'una EDO de 1r ordre formen una família uniparamètr
 ```
 
 ```ad-def
+title: *Problema de valor inicial*
+
 Una EDO de 1r ordre amb una condició inicial s'anomena ==problema de valor inicial== (PVI).
 $$\begin{cases}
 y' =f(x,y) \\
