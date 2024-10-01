@@ -141,8 +141,12 @@ Sigui $y'(x)+a(x)y(x)=b(x)$ una EDO lineal amb
 Aleshores $\boxed{\,y(x)=y_h(x)+y_p(x)\,}$ .
 ```
 
+```ad-not
+title: Mètode de variació de les constants
+
 Per trobar $y_p(x)$ farem servir el ==*mètode de variació de les constants*==, que consisteix en buscar una solució particular de la forma
 $$y_p(x)=C(x)e^{-\int a(x)dx}.$$
+```
 
 ```ad-ex
 title: Mètode
@@ -153,9 +157,7 @@ Tenim una EDO lineal de la forma $y'(x)+a(x)y(x)=b(x)$.
 2. Resolem l'equació homogènia associada $y'(x)+a(x)y(x)=0$ fent servir que ==$y_{h}(x)=Ce^{-A}$==.
 3. Busquem una solució particular ==$y_p(x)=C(x)e^{-A}$==, i la substituïm a l'EDO inicial. 
 
-+ Trobar la **solució general** de l'**equació homogènia associada** de forma $y_{h}(x)=Ce^{-\int a(x)dx}$.
-+ Buscar una **solució particular** de la forma $y_p(x)=C(x)e^{-\int a(x)dx}$.
-+ $y(x)=y_h(x)+y_p(x)$.
+
 ```
 
 ```ad-ex
