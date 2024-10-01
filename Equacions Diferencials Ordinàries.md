@@ -206,6 +206,7 @@ Sigui $y'(x)=f(x,y)$ una EDO de primer ordre, i donada $m\in\mathbb{R}$, les cor
 És a dir, són corves en què la pendent de la recta tangent a la gràfica de la solució és la mateixa.
 ```
 
+---
 ## Equacions diferencials autònomes
 
 Les equacions autònomes

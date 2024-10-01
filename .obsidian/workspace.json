@@ -11,17 +11,6 @@
             "id": "ba5562d9c3edabd7",
             "type": "leaf",
             "state": {
-              "type": "css-editor-view",
-              "state": {
-                "filename": "pet.css"
-              }
-            },
-            "group": "cf9337771e9772d4"
-          },
-          {
-            "id": "f247e83666159465",
-            "type": "leaf",
-            "state": {
               "type": "markdown",
               "state": {
                 "file": "Equacions Diferencials Ordinàries.md",
@@ -29,29 +18,16 @@
                 "source": true
               }
             },
-            "group": "99047d93730778e9"
+            "group": "cf9337771e9772d4"
           }
         ]
       },
       {
-        "id": "0be7434c869404ee",
+        "id": "c716158a3703df9b",
         "type": "tabs",
         "children": [
           {
-            "id": "98d53b4a0aecdb67",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Modelització i Inferència.md",
-                "mode": "preview",
-                "source": true
-              }
-            },
-            "group": "cf9337771e9772d4"
-          },
-          {
-            "id": "70839c67716618c7",
+            "id": "18401fb29a4821c4",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -61,10 +37,9 @@
                 "source": true
               }
             },
-            "group": "99047d93730778e9"
+            "group": "cf9337771e9772d4"
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -130,6 +105,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "Equacions Diferencials Ordinàries.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -146,6 +122,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "Equacions Diferencials Ordinàries.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -167,7 +144,9 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "Equacions Diferencials Ordinàries.md"
+              }
             }
           },
           {
@@ -199,11 +178,11 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "ba5562d9c3edabd7",
+  "active": "18401fb29a4821c4",
   "lastOpenFiles": [
+    "Shit.md",
     "Modelització i Inferència.md",
     "Equacions Diferencials Ordinàries.md",
-    "Shit.md",
     "IMG_0352.jpeg"
   ]
 }
