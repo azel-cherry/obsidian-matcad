@@ -149,6 +149,8 @@ title: Mètode
 
 Tenim una EDO lineal de la forma $y'(x)+a(x)y(x)=b(x)$.
 
+
+
 + Trobar la **solució general** de l'**equació homogènia associada** de forma $y_{h}(x)=Ce^{-\int a(x)dx}$.
 + Buscar una **solució particular** de la forma $y_p(x)=C(x)e^{-\int a(x)dx}$.
 + $y(x)=y_h(x)+y_p(x)$.
