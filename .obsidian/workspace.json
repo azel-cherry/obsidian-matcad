@@ -31,7 +31,7 @@
                 "source": true
               }
             },
-            "group": "baa8f33b0adbf003"
+            "group": "99047d93730778e9"
           }
         ],
         "currentTab": 1
@@ -54,17 +54,15 @@
             "group": "cf9337771e9772d4"
           },
           {
-            "id": "53c277637849783f",
+            "id": "662996935829c6e4",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "css-editor-view",
               "state": {
-                "file": "Equacions Diferencials Ordinàries.md",
-                "mode": "preview",
-                "source": true
+                "filename": "pet.css"
               }
             },
-            "group": "baa8f33b0adbf003"
+            "group": "99047d93730778e9"
           }
         ],
         "currentTab": 1
@@ -133,7 +131,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Equacions Diferencials Ordinàries.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -150,7 +147,6 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Equacions Diferencials Ordinàries.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -172,9 +168,7 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "Equacions Diferencials Ordinàries.md"
-              }
+              "state": {}
             }
           },
           {
@@ -206,11 +200,11 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "f247e83666159465",
+  "active": "662996935829c6e4",
   "lastOpenFiles": [
-    "Shit.md",
     "Equacions Diferencials Ordinàries.md",
     "Modelització i Inferència.md",
+    "Shit.md",
     "IMG_0352.jpeg"
   ]
 }
