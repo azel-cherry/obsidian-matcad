@@ -132,21 +132,21 @@ Siguin $y_1(x)$ i $y_2(x)$ dues solucions de l'equació lineal $y'(x)+a(x)y(x)=b
 Aleshores $y_1(x)-y_2(x)$ és solució de l'equació homogènia associada $y'(x)+a(x)y(x)=0$.
 ```
 
-```ad-coro
+````ad-coro
 Sigui $y'(x)+a(x)y(x)=b(x)$ una EDO lineal amb
 + $y(x)$ la solució general,
 + $y_p(x)$ una solució particular, i
 + $y_h(x)$ la solució general de la seva equació homogènia associada.
 
 Aleshores $\boxed{\,y(x)=y_h(x)+y_p(x)\,}$ .
-```
 
-```ad-not
+```ad-ex
 title: Mètode de variació de les constants
 
 Per trobar $y_p(x)$ farem servir el ==*mètode de variació de les constants*==, que consisteix en buscar una solució particular de la forma
 $$y_p(x)=C(x)e^{-\int a(x)dx}.$$
 ```
+````
 
 ```ad-ex
 title: Mètode
