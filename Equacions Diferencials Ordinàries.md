@@ -73,15 +73,15 @@ A més, es compleix que la solució $y(x;x_o,y_o)$ és una ==funció **contínua
 ```ad-teor
 title: Teorema de Peano
 
-Sigui $f$ una funció contínua i $y'(x) = f(x,y(x))$ una EDO de primer ordre contínua.
+Sigui $f$ una funció **contínua** i $y'(x) = f(x,y(x))$ una EDO de primer ordre.
 
-Aleshores existèix solució per tot PVI de $y(x)$.
-
-Hi ha ==existència== si $f$ és contínua.
+Aleshores ==**existèix** solució== per tot PVI d'aquesta EDO.
 ```
 
 ```ad-def
-Una funció $f$ és ==de Lipschitz== si per tot $y,z \in (c,d)$ existeix $L>0$ tal que $\mid f(x,y)-f(x,z) \mid < L\mid y-z \mid$.
+title: Funció *de Lipschitz*
+
+Una funció $f$ és ==de Lipschitz== si per tot $y,z \in (c,d)$ existeix $L>0$ tal que $$\mid f(x,y)-f(x,z) \mid < L\mid y-z \mid.$$
 ```
 
 Per assegurar ==unicitat==, és suficient amb que $f$ sigui de Lipschitz respecte la variable $y$.
