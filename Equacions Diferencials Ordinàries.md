@@ -201,5 +201,5 @@ A cada punt del pla $(x,y)$ dibuixarem una fletxa indicant la pendent $f(x,y)$, 
 ```ad-def
 title: *Isocline*
 
-Sigui $y'(x)=f(x,y)$ una EDO de primer ordre, 
+Sigui $y'(x)=f(x,y)$ una EDO de primer ordre, i donat un $m\in\mathbb{R}$les corbes definides per $f(x,y)=m$
 ```
