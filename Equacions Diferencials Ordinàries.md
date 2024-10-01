@@ -157,6 +157,20 @@ Tenim una EDO lineal de la forma $y'(x)+a(x)y(x)=b(x)$.
 2. Resolem l'equació homogènia associada $y'(x)+a(x)y(x)=0$ fent servir que ==$y_{h}(x)=Ce^{-A}$==.
 3. Busquem una solució particular ==$y_p(x)=C(x)e^{-A}$==.
 4. Substituïm $y_p(x)$ a l'EDO inicial. Aïllem i calculem $C(x)$, i la substituïm a $y_p(x)$.
-5. S
+5. Calculem ==$y(x)=y_h(x)+y_p(x)$==, que quedarà en funció $C$.
+6. Apliquem condició inicial per calcular $C$.
+
+Alternativament:
+$$y(x) = \left( \int e^{\int a(x)\,dx}\, b(x)\, dx \right) e^{-\int a(x)dx}$$
+```
+
+#### Equacions homogènies
+
+Una ==EDO homogènia== és una EDO de la forma
+$$y' = y\left( \frac{y}{x} \right).$$
+
+```ad-ex
+title: Mètode
+
 
 ```
