@@ -60,7 +60,7 @@
               "type": "markdown",
               "state": {
                 "file": "Equacions Diferencials Ordinàries.md",
-                "mode": "preview",
+                "mode": "source",
                 "source": false
               }
             },
@@ -206,7 +206,7 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "f247e83666159465",
+  "active": "4c6eb88a874120c8",
   "lastOpenFiles": [
     "Shit.md",
     "Equacions Diferencials Ordinàries.md",

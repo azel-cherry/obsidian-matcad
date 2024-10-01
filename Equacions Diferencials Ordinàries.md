@@ -155,8 +155,8 @@ Tenim una EDO lineal de la forma $y'(x)+a(x)y(x)=b(x)$.
 
 1. Trobem la solució de ==$\int a(x)dx := A$==.
 2. Resolem l'equació homogènia associada $y'(x)+a(x)y(x)=0$ fent servir que ==$y_{h}(x)=Ce^{-A}$==.
-3. Busquem una solució particular ==$y_p(x)=C(x)e^{-A}$==, i la substituïm a l'EDO inicial. 
-4. Aïllem i calculem $C(x)$.
-5. 
+3. Busquem una solució particular ==$y_p(x)=C(x)e^{-A}$==.
+4. Substituïm $y_p(x)$ a l'EDO inicial. Aïllem i calculem $C(x)$, la substituïm a $y_p(x)$.
+5. S
 
 ```
