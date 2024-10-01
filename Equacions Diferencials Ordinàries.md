@@ -222,5 +222,6 @@ Donada una EDO autònoma $y'=f(y)$ amb $f(y)$ ben definida i contínua, el compo
 Donada una EDO autònoma $y'=f(y)$:
 + Si $y(x)$ és solució, també ho son $y_{c}(x):=y(x+c)$ $\forall c\in \mathbb{R}$.
 	+ Si $y(x)$ no és un equilibri, aleshores és estrictament creixent o decreixent.
++ Si una solució $y(x)$ és acotada, aleshores tendeix a una solució d'equilibri quan $x\rightarrow \infty$.
 + 
 ```
