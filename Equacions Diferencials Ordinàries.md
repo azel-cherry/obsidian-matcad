@@ -102,6 +102,15 @@ Si $f$ no és diferenciable, el PVI pot tenir més d'una solució.
 Una ==EDO de variables separades== (o separable) és una equació del tipus 
 $$y'(x) = g(x)h(y).$$
 
+```ad-ex
+title: Mètode
+
++ Reescribim l'equació: $\displaystyle\frac{dy}{dx} = g(x)h(y)$
++ Separem $y$s i $x$s: $\displaystyle\frac{dy}{h(y)} = g(x)dx$
++ Integrem: $\displaystyle \int \frac{1}{h(y)}dy = \int g(x)dx$
+
+```
+
 #### Equacions diferencials lineals
 
 Tinguem la incògnita $y(x)$, una ==equació diferencial lineal== és de la forma
