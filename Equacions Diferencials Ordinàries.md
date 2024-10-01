@@ -95,7 +95,14 @@ Aleshores dues corbes solució de $y'=f(x,y)$ diferents no es poden tallar a $\m
 Si $f$ no és diferenciable, el PVI pot tenir més d'una solució.
 
 ---
-## Equacions diferencials lineals
+## Mètodes analítics de resolució
+
+#### Equacions separables
+
+Una ==EDO de variables separades== (o separable) és una equació del tipus 
+$$y'(x) = g(x)h(y).$$
+
+#### Equacions diferencials lineals
 
 Tinguem la incògnita $y(x)$, una ==equació diferencial lineal== és de la forma
 $$y'(x)+a(x)y(x)=b(x)$$
