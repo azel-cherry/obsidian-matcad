@@ -226,6 +226,7 @@ Donada una EDO autònoma $y'=f(y)$:
 
 + Si una solució $y(x)$ és acotada, aleshores tendeix a una solució d'equilibri quan $x\rightarrow\pm\infty$.
 
-+ Si $f(a)=f(b)=0$ , ~={green}$f(y)>0$=~ | ~={pink}$f(y)<0$=~ per a $y\in(a,b)$, i $y(x_{0})\in(a,b)$. Aleshores
-$$\lim_{x\to-\infty}y(x)=$$a$ | $b$$ \,\,\,\,\text{i}\,\, \lim_{x\to\infty}y(x)=b$$
++ Si $f(a)=f(b)=0$ i $y(x_{0})\in(a,b)$:
+	+ Si $f(y)>0$ per a $y\in(a,b)$, $\displaystyle \lim_{x\to-\infty}y(x)=$ ~={green}$a$=~ i $\displaystyle \lim_{x\to\infty}y(x)=$ ~={green}$b$=~.
+	+ Si $f(y)<0$ per a $y\in(a,b)$ $\displaystyle \lim_{x\to-\infty}y(x)=$ ~={green}$b$=~ i $\displaystyle \lim_{x\to\infty}y(x)=$ ~={green}$a$=~.
 ```
