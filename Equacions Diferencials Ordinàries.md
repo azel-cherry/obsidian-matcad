@@ -197,3 +197,9 @@ Al ser $f$ la derivada de la solució $y$, el pendent de la recta tangent a la g
 
 A cada punt del pla $(x,y)$ dibuixarem una fletxa indicant la pendent $f(x,y)$, obtenint el ==camp direccional== de la solució de l'EDO inicial.
 ```
+
+```ad-def
+title: *Isocline*
+
+
+```
