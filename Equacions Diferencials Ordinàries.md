@@ -20,7 +20,7 @@ $$y'=f(y).$$
 ```
 
 ```ad-def
-title: *Solució (general) d'una EDO*
+title: *Solució general*
 
 La ==solució== d'una EDO és una funció $y(x)$ diferenciable definida en un interval $I$ tal que $\forall x\in I$, $y'(x)=f(x,y(x))$. 
 
@@ -53,7 +53,7 @@ Un cas particular  de solucons d'un PVI son les ==solucions d'equilibri==, les q
 ## Existència, unicitat i continuitat de solucions
 
 ```ad-teor
-title: Teorema de Picard-Lindelöf
+title: Teorema de **Picard-Lindelöf**
 
 Sigui $R$ una regió rectangular del pla $xy$ definida per $R = \{ (x,y) \mid a \leq x \leq b, c \leq y \leq d \}$ que conté el punt $(x_0,y_0)$. Suposem que $f$ i $\frac{df}{dx}$ son contínues a $\mathbb{R}$.
 
@@ -69,7 +69,7 @@ A més, es compleix que la solució $y(x;x_o,y_o)$ és una ==funció **contínua
 ```
 
 ```ad-teor
-title: Teorema de Peano
+title: Teorema de **Peano**
 
 Sigui $f$ una funció **contínua** i $y'(x) = f(x,y(x))$ una EDO de primer ordre.
 
@@ -101,7 +101,7 @@ Una ==EDO de variables separades== (o separable) és una equació del tipus
 $$y'(x) = g(x)h(y).$$
 
 ```ad-ex
-title: Mètode
+title: Mètode per equacions **separables**
 
 + Reescribim l'equació: $\displaystyle\frac{dy}{dx} = g(x)h(y)$
 + Separem $y$s i $x$s: $\displaystyle\frac{dy}{h(y)} = g(x)dx$
@@ -116,7 +116,7 @@ $$y'(x)+a(x)y(x)=b(x)$$
 on $a(x)$ i $b(x)$ son funcions aribitràries.
 
 ```ad-def
-title: *Equació homogènia associada*
+title: Equació *homogènia associada*
 
 Se li diu ==equació homogènia associada== a una EDO lineal amb $b(x)\equiv 0$. És a dir,
 $$y'(x)+a(x)y(x)=0\,,$$
@@ -149,7 +149,7 @@ $$y_p(x)=C(x)e^{-\int a(x)dx}.$$
 ````
 
 ```ad-ex
-title: Mètode
+title: Mètode per equacions **lineals**
 
 Tenim una EDO lineal de la forma $y'(x)+a(x)y(x)=b(x)$.
 
@@ -170,7 +170,7 @@ Una ==EDO homogènia== és una EDO de la forma
 $$y' = y\left( \frac{y}{x} \right).$$
 
 ```ad-ex
-title: Mètode
+title: Mètode per equacions **homogènies**
 
 Tenim una EDO de la forma $\displaystyle y'=y\left(\frac{y}{x}\right)$.
 
@@ -189,7 +189,7 @@ $$\displaystyle u'(x)=\frac{du}{dx}=\frac{f(u(x))-u(x)}{x}.$$
 Moltes vegades no és possible aplicar els mètodes anteriors. En aquests casos representarem geomètricament les solucions per obtenir informació sobre les seves propietats.
 
 ```ad-ex
-title: Mètode
+title: Mètode dels *camps direccionals*
 
 Considerem l'EDO $y'(x)=f(x,y)$.
 
@@ -201,5 +201,10 @@ A cada punt del pla $(x,y)$ dibuixarem una fletxa indicant la pendent $f(x,y)$, 
 ```ad-def
 title: *Isocline*
 
-Sigui $y'(x)=f(x,y)$ una EDO de primer ordre, i donat un $m\in\mathbb{R}$les corbes definides per $f(x,y)=m$
+Sigui $y'(x)=f(x,y)$ una EDO de primer ordre, i donada $m\in\mathbb{R}$, les corbes al pla $(x,y)$ definides per $f(x,y)=m$ es diuen ==isoclines==.
+
+És a dir, són corves en què la pendent de la recta tangent a la gràfica de la solució és la mateixa.
 ```
+
+## Equacions diferencials autònomes
+
