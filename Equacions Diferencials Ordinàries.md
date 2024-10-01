@@ -174,5 +174,17 @@ title: Mètode
 
 Tenim una EDO de la forma $\displaystyle y'=y\left(\frac{y}{x}\right)$.
 
-1. Fem el canvi de variable $u(x)=\frac{y(x)}{x}$, és a dir que $y(x)=x\,u(x)$ i $y'(x)=$
+1. Fem el canvi de variable $\displaystyle u(x)=\frac{y(x)}{x}$, arribant a que
+
+$$\displaystyle u'(x)=\frac{du}{dx}=\frac{f(u(x))-u(x)}{x}.$$
+
+2. Resolem com a equació de variables separades.
 ```
+
+---
+## Mètodes qualitatius de resolució
+
+#### Camps de direccions
+
+Moltes vegades no és possible aplicar els mètodes anteriors. En aquests casos representarem geomètricament les solucions per obtenir informació sobre les seves propietats.
+
