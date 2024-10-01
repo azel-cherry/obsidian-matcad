@@ -172,5 +172,7 @@ $$y' = y\left( \frac{y}{x} \right).$$
 ```ad-ex
 title: Mètode
 
+Tenim una EDO de la forma $\displaystyle y'=y\left(\frac{y}{x}\right)$.
+
 
 ```
