@@ -121,14 +121,11 @@ title: *Equació homogènia associada*
 Se li diu ==equació homogènia associada== a una EDO lineal amb $b(x)\equiv 0$. És a dir,
 $$y'(x)+a(x)y(x)=0\,,$$
 que és una EDO de variables separades.
+
+La solució general de l'equació homogènia associada és
+$$\boxed{\,y(x)=Ce^{-\int a(x)dx}\,}\,.$$
 ```
 
-```ad-def
-title: *Solució general*
-
-La solució de l'equació homogènia associada es diu ==solució general== i és
-$$y(x)=Ce^{-\int a(x)dx}\,.$$
-```
 
 ```ad-prop
 Siguin $y_1(x)$ i $y_2(x)$ dues solucions de l'equació lineal $y'(x)+a(x)y(x)=b(x)$.
