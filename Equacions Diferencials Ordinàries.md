@@ -111,7 +111,7 @@ title: Mètode
 
 #### Equacions diferencials lineals
 
-Tinguem la incògnita $y(x)$, una ==EDO lineal== és de la forma
+Sigui $y(x)$ la incògnita, una ==EDO lineal== és una equació de la forma
 $$y'(x)+a(x)y(x)=b(x)$$
 on $a(x)$ i $b(x)$ son funcions aribitràries.
 
