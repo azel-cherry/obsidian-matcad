@@ -174,5 +174,5 @@ title: Mètode
 
 Tenim una EDO de la forma $\displaystyle y'=y\left(\frac{y}{x}\right)$.
 
-
+1. Fem el canvi de variable $u(x)=\frac{y(x)}{x}$, és a dir que $y(x)=x\,u(x)$ i $y'(x)=$
 ```
