@@ -122,10 +122,9 @@ Se li diu ==equació homogènia associada== a una EDO lineal amb $b(x)\equiv 0$.
 $$y'(x)+a(x)y(x)=0\,,$$
 que és una EDO de variables separades.
 
-La solució general de l'equació homogènia associada és
+La **solució general** de l'equació homogènia associada és
 $$\boxed{\,y(x)=Ce^{-\int a(x)dx}\,}\,.$$
 ```
-
 
 ```ad-prop
 Siguin $y_1(x)$ i $y_2(x)$ dues solucions de l'equació lineal $y'(x)+a(x)y(x)=b(x)$.
@@ -142,9 +141,18 @@ Sigui $y'(x)+a(x)y(x)=b(x)$ una EDO lineal amb
 Aleshores $\boxed{\,y(x)=y_h(x)+y_p(x)\,}$ .
 ```
 
-Per trobar $y_p(x)$ farem servir el ==*mètode de variació de les constants*==. 
-Buscarem una solució particular de la forma
+Per trobar $y_p(x)$ farem servir el ==*mètode de variació de les constants*==, que consisteix en buscar una solució particular de la forma
 $$y_p(x)=C(x)e^{-\int a(x)dx}.$$
+
+```ad-ex
+title: Mètode
+
+Tenim una EDO lineal de la forma $y'(x)+a(x)y(x)=b(x)$.
+
++ Trobar la **solució general** de l'**equació homogènia associada** de forma $y_{h}(x)=Ce^{-\int a(x)dx}$.
++ Buscar una **solució particular** de la forma $y_p(x)=C(x)e^{-\int a(x)dx}$.
++ $y(x)=y_h(x)+y_p(x)$.
+```
 
 ```ad-ex
 **Trobem la solució general de $\boldsymbol{\color{green} y' + 2xy \color{black} = \color{pink} 2xe^{-x^2}}$.**
