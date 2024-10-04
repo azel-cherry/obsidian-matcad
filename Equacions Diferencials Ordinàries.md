@@ -232,7 +232,7 @@ Donada una EDO autònoma $y'=f(y)$:
 	+ Si $f(y)$ ~={green}$<$=~ $0$ per a $y\in(a,b)$ $\displaystyle \lim_{x\to-\infty}y(x)=$ ~={green}$b$=~ i $\displaystyle \lim_{x\to\infty}y(x)=$ ~={green}$a$=~.
 ```
 
-## EDOs d'order superior i sistemes d'EDOs
+## EDOs d'ordre superior i sistemes d'EDOs
 
 Una ==EDO d'ordre $n$== per a una funció $y(x)$ és una equació del tipus
 $$ F(x,y,y',\dots,y^{(n)}) = 0,$$
@@ -242,7 +242,7 @@ $$ y^{(n)} = f(x,y,y',\dots,y^{(n-1)}),$$
 
 i és equivalent a un sistema d'EDOs de primer ordre:
 $$\begin{align}
-\vec{z}' &= f(x, \vec{z}) \\ \\
+\vec{z}' &= f(x, \vec{z}) \\[3pt]
 \vec{z} &= \begin{pmatrix}
 y \\
 \vdots \\
@@ -270,26 +270,16 @@ Sigui $a_{0}(x)\,y + \dots + y^{n} = f(x)$ una EDO lineal, direm que és ==homog
 Una EDO ==lineal de segon ordre== és una EDO de la forma
 $$y''(x) + a(x)y'(x) + b(x)y(x) = f(x).$$
 
-```ad-def
+````ad-def
 title: Equació *homogènia associada de segon ordre*
-```
 
-Homogènia associada:
-
-$$y''(x) + a(x)y'(x) + b(x)y(x) = 0$$
-
-Com en el cas de les lineals de primer ordre, la solució general de (1) és la solució general de la homogènia (2) més una solució particular de la no homogènia (1).
-
-  
-
-Anem a veure com solucionem la homogènia
-
+Sigui $y''(x) + a(x)y'(x) + b(x)y(x) = f(x)$ una EDO lineal de segon ordre, la seva ==equació homogènia associada== és 
+$$y''(x) + a(x)y'(x) + b(x)y(x) = 0.$$
 
 ```ad-prop
-
-Sigui $y_{1}(x)$ i $y_{2}(x)$ dues solucions de (2). Aleshores $Ay_{1}(x) + By_{2}(x)$ és solució de (2) per constants $A$ i $B$ qualsevols.
-
-
+Siguin $y_{1}(x)$ i $y_{2}(x)$ dues solucions de l'equació homogènia associada.
+Aleshores també és solució 
+$$Ay_{1}(x) + By_{2}(x)$$ 
+per constants $A$ i $B$ qualsevols.
 ```
-
-  
+````
