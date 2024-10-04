@@ -4,11 +4,23 @@
     "type": "split",
     "children": [
       {
-        "id": "20834146f1e35577",
+        "id": "0be7434c869404ee",
         "type": "tabs",
         "children": [
           {
-            "id": "ba5562d9c3edabd7",
+            "id": "98d53b4a0aecdb67",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Modelització i Inferència.md",
+                "mode": "preview",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "c543423aaf4a13b0",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -18,26 +30,27 @@
                 "source": true
               }
             },
-            "group": "cf9337771e9772d4"
+            "group": "b9107daea5abe682"
           }
-        ]
+        ],
+        "currentTab": 1
       },
       {
-        "id": "c716158a3703df9b",
+        "id": "5719677c1042aaad",
         "type": "tabs",
         "children": [
           {
-            "id": "18401fb29a4821c4",
+            "id": "2844dbdeb75a4a77",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
                 "file": "Equacions Diferencials Ordinàries.md",
                 "mode": "preview",
-                "source": true
+                "source": false
               }
             },
-            "group": "cf9337771e9772d4"
+            "group": "b9107daea5abe682"
           }
         ]
       }
@@ -89,7 +102,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 200
   },
   "right": {
     "id": "455ff89e6c635379",
@@ -162,7 +175,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200,
+    "width": 339.5,
     "collapsed": true
   },
   "left-ribbon": {
@@ -178,11 +191,12 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "18401fb29a4821c4",
+  "active": "2844dbdeb75a4a77",
   "lastOpenFiles": [
-    "Shit.md",
     "Modelització i Inferència.md",
     "Equacions Diferencials Ordinàries.md",
+    "IMG_0349.jpeg",
+    "Shit.md",
     "IMG_0352.jpeg"
   ]
 }
