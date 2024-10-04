@@ -232,49 +232,28 @@ Donada una EDO autònoma $y'=f(y)$:
 	+ Si $f(y)$ ~={green}$<$=~ $0$ per a $y\in(a,b)$ $\displaystyle \lim_{x\to-\infty}y(x)=$ ~={green}$b$=~ i $\displaystyle \lim_{x\to\infty}y(x)=$ ~={green}$a$=~.
 ```
 
-  
-
-# Sistemes d'EDOs lineals i EDOs d'order superior
-
-  
+## Sistemes d'EDOs lineals i EDOs d'order superior
 
 Una ==edo d'ordre $n$== per a una funció $y(x)$ és una equació del tipus
+$$ F(x,y,y',\dots,y^{(n)}) = 0,$$
 
-$$
+que de forma estàndard s'escriu com a
+$$ y^{(n)} = f(x,y,y',\dots,y^{(n-1)}),$$
 
-F(x, y, y', y'', \dots, y^{(n)}) = 0
-
-$$
-
-Forma estàndard: $$(*) \ y^{(n)} = f(x, y, y', \dots, y^{(n-1)})$$
-
-Una solució de (\*) és una funció real $y(x)$ definida en un interval $I$, $n$ vegades diferenciable i que $\forall x \in I$ satisfà (\*).
-
-  
-
-L'equació (\*) és quivalent a un sistema d'equacions diferencials ordinàries de 1r ordre
-
-$$
-
-\vec{z}' = f(x, \vec{z})
-
-$$
-
-$$
-
-\vec{z} = \begin{pmatrix}
-
+i és equivalent a un sistema d'EDOs de primer ordre:
+$$\begin{align}
+\vec{z}' &= f(x, \vec{z}) \\ \\
+\vec{z} &= \begin{pmatrix}
 z_{1} \\
-
 \vdots \\
-
- z_{n}
-
+z_{n}
 \end{pmatrix}
-
-$$
+\end{align}$$
 
 amb $z_{1} = y$, $z_{2} = y'$, $z_{n} = y^{(n-1)}$
+
+La ==solució== d'una EDO d'ordre $n$ és una funció real $y(x)$ definida en un interval $I$, $n$ vegades diferenciable.
+
 
   
 
