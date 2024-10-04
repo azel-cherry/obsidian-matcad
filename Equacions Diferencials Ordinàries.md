@@ -232,7 +232,7 @@ Donada una EDO autònoma $y'=f(y)$:
 	+ Si $f(y)$ ~={green}$<$=~ $0$ per a $y\in(a,b)$ $\displaystyle \lim_{x\to-\infty}y(x)=$ ~={green}$b$=~ i $\displaystyle \lim_{x\to\infty}y(x)=$ ~={green}$a$=~.
 ```
 
-## Sistemes d'EDOs lineals i EDOs d'order superior
+## EDOs d'order superior i sistemes d'EDOs
 
 Una ==edo d'ordre $n$== per a una funció $y(x)$ és una equació del tipus
 $$ F(x,y,y',\dots,y^{(n)}) = 0,$$
@@ -244,65 +244,26 @@ i és equivalent a un sistema d'EDOs de primer ordre:
 $$\begin{align}
 \vec{z}' &= f(x, \vec{z}) \\ \\
 \vec{z} &= \begin{pmatrix}
-z_{1} \\
+y \\
 \vdots \\
-z_{n}
+y^{n-1}
 \end{pmatrix}
 \end{align}$$
 
-amb $z_{1} = y$, $z_{2} = y'$, $z_{n} = y^{(n-1)}$
-
 La ==solució== d'una EDO d'ordre $n$ és una funció real $y(x)$ definida en un interval $I$, $n$ vegades diferenciable.
 
+```ad-def
+title: EDO lineal d'ordre $\boldsymbol n$
 
-  
-
-```ad-example
-
-$$
-
-y'' = 2y' - y
-
-$$
-
-$$
-
-\begin{rcases}
-
-z_{1} &= y \\
-
-y_{2} &= y'
-
-\end{rcases} \ \
-
-\begin{rcases}
-
-z_{1}' &= z_{2} \\
-
-z_{2}' &= 2z_{2} + z_{1}
-
-\end{rcases}
-
-$$
-
-$$
-
-z_{2}' = y'' = 2y' - y = 2z_{2} + z_{1}
-
-$$
-
+Una ==EDO lineal d'ordre $n$== és una EDO de la forma
+$$ y^{n} + a_{n-1}(x)y^{(n-1)} + \dots + a_{0}(x)y = f(x) .$$
 ```
 
-  
+```ad-def
+title: EDO homogènia d'ordre $\boldsymbol n$
 
-Una equació diferencial ordinària lineal d'ordre $n$ és una edo de la forma
 
-$$
-
-y^{n} + a_{n-1}(x)y^{(n-1)} + \dots + a_{0}(x)y = f(x)
-
-$$
-
+```
 Quan $f(x) = 0$ l'equació es diu ==homogènia==.
 
   
