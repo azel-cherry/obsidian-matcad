@@ -231,3 +231,179 @@ Donada una EDO autònoma $y'=f(y)$:
 	+ Si $f(y)$ ~={green}$>$=~ $0$ per a $y\in(a,b)$, $\displaystyle \lim_{x\to-\infty}y(x)=$ ~={green}$a$=~ i $\displaystyle \lim_{x\to\infty}y(x)=$ ~={green}$b$=~.
 	+ Si $f(y)$ ~={green}$<$=~ $0$ per a $y\in(a,b)$ $\displaystyle \lim_{x\to-\infty}y(x)=$ ~={green}$b$=~ i $\displaystyle \lim_{x\to\infty}y(x)=$ ~={green}$a$=~.
 ```
+
+  
+
+# Sistemes d'EDOs lineals i EDOs d'order superior
+
+  
+
+Una ==edo d'ordre $n$== per a una funció $y(x)$ és una equació del tipus
+
+$$
+
+F(x, y, y', y'', \dots, y^{(n)}) = 0
+
+$$
+
+Forma estàndard: $$(*) \ y^{(n)} = f(x, y, y', \dots, y^{(n-1)})$$
+
+Una solució de (\*) és una funció real $y(x)$ definida en un interval $I$, $n$ vegades diferenciable i que $\forall x \in I$ satisfà (\*).
+
+  
+
+L'equació (\*) és quivalent a un sistema d'equacions diferencials ordinàries de 1r ordre
+
+$$
+
+\vec{z}' = f(x, \vec{z})
+
+$$
+
+$$
+
+\vec{z} = \begin{pmatrix}
+
+z_{1} \\
+
+\vdots \\
+
+ z_{n}
+
+\end{pmatrix}
+
+$$
+
+amb $z_{1} = y$, $z_{2} = y'$, $z_{n} = y^{(n-1)}$
+
+  
+
+```ad-example
+
+$$
+
+y'' = 2y' - y
+
+$$
+
+$$
+
+\begin{rcases}
+
+z_{1} &= y \\
+
+y_{2} &= y'
+
+\end{rcases} \ \
+
+\begin{rcases}
+
+z_{1}' &= z_{2} \\
+
+z_{2}' &= 2z_{2} + z_{1}
+
+\end{rcases}
+
+$$
+
+$$
+
+z_{2}' = y'' = 2y' - y = 2z_{2} + z_{1}
+
+$$
+
+```
+
+  
+
+Una equació diferencial ordinària lineal d'ordre $n$ és una edo de la forma
+
+$$
+
+y^{n} + a_{n-1}(x)y^{(n-1)} + \dots + a_{0}(x)y = f(x)
+
+$$
+
+Quan $f(x) = 0$ l'equació es diu ==homogènia==.
+
+  
+
+## Equacions Lineals de 2n ordre
+
+$$
+
+y''(x) + a(x)y'(x) + b(x)y(x) = f(x) \ (1)
+
+$$
+
+Homogènia associada:
+
+$$
+
+y''(x) + a(x)y'(x) + b(x)y(x) = 0 \ (2)
+
+$$
+
+Com en el cas de les lineals de primer ordre, la solució general de (1) és la solució general de la homogènia (2) més una solució particular de la no homogènia (1).
+
+  
+
+Anem a veure com solucionem la homogènia
+
+  
+
+````ad-lema
+
+Sigui $y_{1}(x)$ i $y_{2}(x)$ dues solucions de (2). Aleshores $Ay_{1}(x) + By_{2}(x)$ és solució de (2) per constants $A$ i $B$ qualsevols.
+
+  
+
+```ad-demo
+
+$$
+
+A[\cancelto{ 0 }{ y_{1}'' + a(x)y_{1} }] + B[\cancelto{ 0 }{ y_{2}'' + a(x)y_{2} + b(x)y_{2} }] = 0
+
+$$
+
+```
+
+````
+
+  
+
+```ad-example
+
+Trovem totes les constants $\lambda$ de manera que $e^{\lambda x} = y(x)$ sigui solució de l'equació $y'' + 3y' + 2y = 0$
+
+$$
+
+\begin{align}
+
+y'(x) &= \lambda e^{\lambda x} \\
+
+y''(x) &= \lambda^{2} e^{\lambda x}
+
+\end{align}
+
+$$
+
+$$
+
+\begin{align}
+
+\lambda^{2}e^{\lambda x} + 3\lambda e^{\lambda x} + 2e^{\lambda x} &= 0 \\
+
+(\lambda^{2} + 3\lambda + 2)e^{\lambda x} &= 0 \\
+
+\iff \\
+
+\lambda^{2} + 3\lambda + 2 &= 0 \\
+
+\lambda = -1, \ \lambda = -2
+
+\end{align}
+
+$$
+
+```
