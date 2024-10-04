@@ -234,7 +234,7 @@ Donada una EDO autònoma $y'=f(y)$:
 
 ## EDOs d'order superior i sistemes d'EDOs
 
-Una ==edo d'ordre $n$== per a una funció $y(x)$ és una equació del tipus
+Una ==EDO d'ordre $n$== per a una funció $y(x)$ és una equació del tipus
 $$ F(x,y,y',\dots,y^{(n)}) = 0,$$
 
 que de forma estàndard s'escriu com a
@@ -253,36 +253,30 @@ y^{n-1}
 La ==solució== d'una EDO d'ordre $n$ és una funció real $y(x)$ definida en un interval $I$, $n$ vegades diferenciable.
 
 ```ad-def
-title: EDO lineal d'ordre $\boldsymbol n$
+title: EDO lineal *d'ordre $\boldsymbol n$*
 
 Una ==EDO lineal d'ordre $n$== és una EDO de la forma
-$$ y^{n} + a_{n-1}(x)y^{(n-1)} + \dots + a_{0}(x)y = f(x) .$$
+$$ a_{0}(x)\,y + a_{1}(x)\,y' \dots + a_{n-1}(x)\,y^{(n-1)} + y^{n} = f(x) .$$
 ```
 
 ```ad-def
-title: EDO homogènia d'ordre $\boldsymbol n$
+title: EDO *homogènia* d'ordre $\boldsymbol n$
 
-
+Sigui $a_{0}(x)\,y + \dots + y^{n} = f(x)$ una EDO lineal, direm que és ==homogènia== quan $f(x)=0$.
 ```
-Quan $f(x) = 0$ l'equació es diu ==homogènia==.
 
-  
+#### EDOs lineals de segon ordre
 
-## Equacions Lineals de 2n ordre
+Una EDO ==lineal de segon ordre== és una EDO de la forma
+$$y''(x) + a(x)y'(x) + b(x)y(x) = f(x).$$
 
-$$
-
-y''(x) + a(x)y'(x) + b(x)y(x) = f(x) \ (1)
-
-$$
+```ad-def
+title: Equació *homogènia associada de segon ordre*
+```
 
 Homogènia associada:
 
-$$
-
-y''(x) + a(x)y'(x) + b(x)y(x) = 0 \ (2)
-
-$$
+$$y''(x) + a(x)y'(x) + b(x)y(x) = 0$$
 
 Com en el cas de les lineals de primer ordre, la solució general de (1) és la solució general de la homogènia (2) més una solució particular de la no homogènia (1).
 
@@ -290,60 +284,12 @@ Com en el cas de les lineals de primer ordre, la solució general de (1) és la 
 
 Anem a veure com solucionem la homogènia
 
-  
 
-````ad-lema
+```ad-prop
 
 Sigui $y_{1}(x)$ i $y_{2}(x)$ dues solucions de (2). Aleshores $Ay_{1}(x) + By_{2}(x)$ és solució de (2) per constants $A$ i $B$ qualsevols.
 
-  
-
-```ad-demo
-
-$$
-
-A[\cancelto{ 0 }{ y_{1}'' + a(x)y_{1} }] + B[\cancelto{ 0 }{ y_{2}'' + a(x)y_{2} + b(x)y_{2} }] = 0
-
-$$
 
 ```
 
-````
-
   
-
-```ad-example
-
-Trovem totes les constants $\lambda$ de manera que $e^{\lambda x} = y(x)$ sigui solució de l'equació $y'' + 3y' + 2y = 0$
-
-$$
-
-\begin{align}
-
-y'(x) &= \lambda e^{\lambda x} \\
-
-y''(x) &= \lambda^{2} e^{\lambda x}
-
-\end{align}
-
-$$
-
-$$
-
-\begin{align}
-
-\lambda^{2}e^{\lambda x} + 3\lambda e^{\lambda x} + 2e^{\lambda x} &= 0 \\
-
-(\lambda^{2} + 3\lambda + 2)e^{\lambda x} &= 0 \\
-
-\iff \\
-
-\lambda^{2} + 3\lambda + 2 &= 0 \\
-
-\lambda = -1, \ \lambda = -2
-
-\end{align}
-
-$$
-
-```
