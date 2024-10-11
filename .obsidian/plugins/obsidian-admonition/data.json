@@ -82,7 +82,7 @@
   "copyButton": false,
   "version": "10.3.2",
   "autoCollapse": true,
-  "defaultCollapseType": "open",
+  "defaultCollapseType": "closed",
   "injectColor": true,
   "parseTitles": true,
   "dropShadow": true,
