@@ -14,7 +14,7 @@
               "type": "markdown",
               "state": {
                 "file": "Equacions Diferencials Ordinàries.md",
-                "mode": "source",
+                "mode": "preview",
                 "source": true
               }
             },
@@ -178,7 +178,7 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "18401fb29a4821c4",
+  "active": "ba5562d9c3edabd7",
   "lastOpenFiles": [
     "Shit.md",
     "Modelització i Inferència.md",
