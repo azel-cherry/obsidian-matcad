@@ -3,20 +3,20 @@
 #### Equacions diferencials ordinàries de primer ordre
 
 Una ==equació diferencial ordinària de primer ordre== (EDO de primer ordre) per a una funció $y(x)$ és una equació
-$$F(x,y,y')=0.$$
+$$ F(x,y,y')=0 .$$
 
 ```ad-def
 title: *Forma explícita*
 
 La ==forma explícita== d'una EDO de 1r ordre és
-$$y'(x)=f(x,y(x)).$$
+$$ y'(x)=f(x,y(x)) .$$
 ```
 
 ```ad-def
 title: *EDO autònoma*
 
 Una EDO es diu ==autònoma== si $f$ no depèn explícitament de $x$, és a dir, és de la forma
-$$y'=f(y).$$
+$$ y'=f(y) .$$
 ```
 
 ```ad-def
@@ -61,8 +61,7 @@ Aleshores ==existeix una **única** solució== $y(x)$ definida a un interval $I_
 $$\begin{cases}
 y'=f(x,y) \\
 y(x_o)=y_0 \\
-\end{cases}
-$$
+\end{cases}$$
 
 A més, es compleix que la solució $y(x;x_o,y_o)$ és una ==funció **contínua**== respecte $x_o,y_o$.
 
@@ -79,7 +78,8 @@ Aleshores ==**existèix** solució== per tot PVI d'aquesta EDO.
 ```ad-def
 title: Funció *de Lipschitz*
 
-Una funció $f$ és ==de Lipschitz== si per tot $y,z \in (c,d)$ existeix $L>0$ tal que $$\mid f(x,y)-f(x,z) \mid < L\mid y-z \mid.$$
+Una funció $f$ és ==de Lipschitz== si per tot $y,z \in (c,d)$ existeix $L>0$ tal que
+$$ \mid f(x,y)-f(x,z) \mid < L\mid y-z \mid .$$
 ```
 
 Per assegurar ==unicitat==, és suficient amb que $f$ sigui de Lipschitz respecte la variable $y$.
@@ -98,7 +98,7 @@ Si $f$ no és diferenciable, el PVI pot tenir més d'una solució.
 #### Equacions separables
 
 Una ==EDO de variables separades== (o separable) és una equació del tipus 
-$$y'(x) = g(x)h(y).$$
+$$ y'(x) = g(x)h(y) .$$
 
 ```ad-ex
 title: Mètode per equacions **separables**
@@ -106,24 +106,23 @@ title: Mètode per equacions **separables**
 + Reescribim l'equació: $\displaystyle\frac{dy}{dx} = g(x)h(y)$
 + Separem $y$s i $x$s: $\displaystyle\frac{dy}{h(y)} = g(x)dx$
 + Integrem: $\displaystyle \int \frac{1}{h(y)}dy = \int g(x)dx$
-
 ```
 
 #### Equacions diferencials lineals
 
 Sigui $y(x)$ la incògnita, una ==EDO lineal== és una equació de la forma
-$$y'(x)+a(x)y(x)=b(x)$$
+$$ y'(x)+a(x)y(x)=b(x) ,$$
 on $a(x)$ i $b(x)$ son funcions aribitràries.
 
 ```ad-def
 title: Equació *homogènia associada*
 
 Se li diu ==equació homogènia associada== a una EDO lineal amb $b(x)\equiv 0$. És a dir,
-$$y'(x)+a(x)y(x)=0\,,$$
+$$ y'(x)+a(x)y(x)=0 \,,$$
 que és una EDO de variables separades.
 
 La **solució general** de l'equació homogènia associada és
-$$\boxed{\,y(x)=Ce^{-\int a(x)dx}\,}\,.$$
+$$\boxed{\, y(x)=Ce^{-\int a(x)dx} \,}\,.$$
 ```
 
 ```ad-prop
@@ -144,7 +143,7 @@ Aleshores $\boxed{\,y(x)=y_h(x)+y_p(x)\,}$ .
 title: Mètode de variació de les constants
 
 Per trobar $y_p(x)$ farem servir el ==*mètode de variació de les constants*==, que consisteix en buscar una solució particular de la forma
-$$y_p(x)=C(x)e^{-\int a(x)dx}.$$
+$$ y_p(x)=C(x)e^{-\int a(x)dx} .$$
 ```
 ````
 
@@ -167,7 +166,7 @@ $$y(x) = \left( \int e^{\int a(x)\,dx}\, b(x)\, dx \right) e^{-\int a(x)dx}$$
 #### Equacions homogènies
 
 Una ==EDO homogènia== és una EDO de la forma
-$$y' = y\left( \frac{y}{x} \right).$$
+$$ y' = y\left( \frac{y}{x} \right) .$$
 
 ```ad-ex
 title: Mètode per equacions **homogènies**
@@ -176,7 +175,7 @@ Tenim una EDO de la forma $\displaystyle y'=y\left(\frac{y}{x}\right)$.
 
 1. Fem el canvi de variable $\displaystyle u(x)=\frac{y(x)}{x}$, arribant a que
 
-$$\displaystyle u'(x)=\frac{du}{dx}=\frac{f(u(x))-u(x)}{x}.$$
+$$\displaystyle u'(x)=\frac{du}{dx}=\frac{f(u(x))-u(x)}{x} .$$
 
 2. Resolem com a equació de variables separades.
 ```
@@ -235,10 +234,10 @@ Donada una EDO autònoma $y'=f(y)$:
 ## EDOs d'ordre superior i sistemes d'EDOs
 
 Una ==EDO d'ordre $n$== per a una funció $y(x)$ és una equació del tipus
-$$ F(x,y,y',\dots,y^{(n)}) = 0,$$
+$$ F(x,y,y',\dots,y^{(n)}) = 0 ,$$
 
 que de forma estàndard s'escriu com a
-$$ y^{(n)} = f(x,y,y',\dots,y^{(n-1)}),$$
+$$ y^{(n)} = f(x,y,y',\dots,y^{(n-1)}) ,$$
 
 i és equivalent a un sistema d'EDOs de primer ordre:
 $$\begin{align}
@@ -268,18 +267,18 @@ Sigui $a_{0}(x)\,y + \dots + y^{n} = f(x)$ una EDO lineal, direm que és ==homog
 #### EDOs lineals de segon ordre
 
 Una EDO ==lineal de segon ordre== és una EDO de la forma
-$$y''(x) + a(x)y'(x) + b(x)y(x) = f(x).$$
+$$ y''(x) + a(x)y'(x) + b(x)y(x) = f(x) .$$
 
 ````ad-def
 title: Equació *homogènia associada de segon ordre*
 
 Sigui $y''(x) + a(x)y'(x) + b(x)y(x) = f(x)$ una EDO lineal de segon ordre, la seva ==equació homogènia associada== és 
-$$y''(x) + a(x)y'(x) + b(x)y(x) = 0.$$
+$$ y''(x) + a(x)y'(x) + b(x)y(x) = 0 .$$
 
 ```ad-prop
 Siguin $y_{1}(x)$ i $y_{2}(x)$ dues solucions de l'equació homogènia associada.
 Aleshores també és solució 
-$$Ay_{1}(x) + By_{2}(x)$$ 
+$$ Ay_{1}(x) + By_{2}(x) $$ 
 per constants $A$ i $B$ qualsevols.
 ```
 ````
