@@ -30,27 +30,27 @@
                 "source": true
               }
             },
-            "group": "b9107daea5abe682"
+            "group": "e5a4c0419e496b28"
           }
         ],
         "currentTab": 1
       },
       {
-        "id": "5719677c1042aaad",
+        "id": "3f08272581edca81",
         "type": "tabs",
         "children": [
           {
-            "id": "2844dbdeb75a4a77",
+            "id": "4c50ea28cb7c7d63",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
                 "file": "Equacions Diferencials Ordinàries.md",
                 "mode": "preview",
-                "source": false
+                "source": true
               }
             },
-            "group": "b9107daea5abe682"
+            "group": "e5a4c0419e496b28"
           }
         ]
       }
@@ -191,7 +191,7 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "c543423aaf4a13b0",
+  "active": "4c50ea28cb7c7d63",
   "lastOpenFiles": [
     "Modelització i Inferència.md",
     "Equacions Diferencials Ordinàries.md",
