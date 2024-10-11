@@ -2,7 +2,7 @@
 
 #### Equacions diferencials ordinàries de primer ordre
 
-Una ==equació diferencial ordinària de primer ordre== (EDO de puto primer ordre) per a una funció $y(x)$ és una equació kkk
+Una ==equació diferencial ordinària de primer ordre== (EDO de puto primer ordre) per a una funció $y(x)$ és una equació
 $$ F(x,y,y')=0 .$$
 
 ```ad-def
