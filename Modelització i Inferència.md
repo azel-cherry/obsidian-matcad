@@ -40,14 +40,12 @@ $$X\sim N(\mu,\sigma^{2}) \,\,\,\,\text{i}\,\,\,\, \frac{X-\mu}{\sigma}\sim N(0,
 ```
 
 ---
-## Estadístics usuals
-
-```ad-def
-title: *Estadístic*
+## Estadístics
 
 Donada una mostra aleatòria $X_1,...,X_n$ de $X$, un ==estadístic== és una funció d'aquestes variables i possibles constants.
-```
 
+```ad-ex
+title: Estadístics importants
 
 + ==**Mitjana** mostral==: $$\boldsymbol{\overline{X}} = \frac{1}{n}\sum\limits_{i=1}^{n} X_i$$
 
@@ -57,6 +55,7 @@ Donada una mostra aleatòria $X_1,...,X_n$ de $X$, un ==estadístic== és una fu
 
 + ==**Quasivariància** mostral==. Es fa servir en rar cas de conèixer la mitjana poblacional $\mu$ de $X$:
 $$\boldsymbol{\widetilde{S}^2} = \frac{1}{n}\sum\limits_{i=1}^n (X_i-\mu)^2$$
+```
 
 ```ad-def
 title: *Estimador*
@@ -69,11 +68,7 @@ Si un estadístic s'usa per a estimar el paràmetre $X$, es denotarà $\widehat{
 ---
 #### Distribucions mostrals d'estadístics usuals
 
-```ad-def
-title: *Distribució mostral d'un estadístic*
-
 Donat un estadístic funció de la mostra $X_1,...,X_n$ variable aleatòria, la seva **distribució** o **llei** s'anomena ==distribució mostral de l'estadístic==.
-```
 
 ````ad-prop
 title: Propietats de la mitjana mostral ($\boldsymbol{\overline{X}}$)
@@ -286,3 +281,57 @@ graph TB;
 	F -- "$np(1-p)\geq18$" --> C
 	F -- "$n\geq10$, $p<0.05\,$" --> D
 ```
+
+---
+## Estadístics d'ordre
+
+Donada una mostra de mida $n$ de $X_{1},\dots,X_{n}$, els ==estadístics d'ordre== son les variables aleatòries:
+
++ Mínim: &emsp;&emsp;&emsp;&emsp;&emsp; $\boldsymbol{X_{(1)}} = \text{min}\{X_{1},\dots,X_{n}\}$
++ Segon més petit: &ensp; $\boldsymbol{X_{(2)}} = \text{min}\{\{X_{1},\dots,X_{n}\}\backslash X_{(1)}\}$
++ $\dots$
++ Màxim: &emsp;&emsp;&emsp;&emsp;&emsp;$\boldsymbol{X_{(n)}} = \text{max}\{X_{1},\dots,X_{n}\}$
+
+```ad-ex
+title: Estadístics d'ordre importants
+
++ ==**Mediana**==: Valor que separa la meitat superior de la meitat inferior d'un conjunt de dades ordenades.
+$$ Q_{2} = \begin{cases}
+X_{\left( \frac{n+1}{2} \right)} &\text{si }n\text{ és senar} \\
+\frac{1}{2}\left( X_{\left( \frac{n}{2} \right)} + X_{\left( \frac{n}{2}+1 \right)} \right) &\text{si }n\text{ és parell} \\
+\end{cases} $$
+
++ ==**Quartils**==: Divideixen les dades en quatre parts iguals.
+$$\begin{align}
+&Q_{1} = X_{\left( \frac{n}{4} \right)} \\
+&Q_{2} \text{ (mediana)} \\
+&Q_{3} = X_{\left( \frac{3n}{4} \right)}
+\end{align}$$
+
++ ==**Rang interquartífic**==: Ens ajuda a entendre la dispersió de les dades centrals.
+$$IQR = Q_{3} - Q_{1}$$
+```
+
+```ad-prop
+title: Distribució del màxim
+
+Sigui $X$ una v.a. amb funció de distribució $F_{X}$, i $X_{1},\dots,X_{n}$ una mostra de mida $n$, aleshores la **funció de distribució** de la v.a. **màxim** és, per tot $t\in\mathbb{R}$:
+$$ F_{X_{(n)}}(t) = (F_{X}(t))^n $$
+```
+
+```ad-prop
+title: Distribució del mínim
+
+Sigui $X$ una v.a. amb funció de distribució $F_{X}$, i $X_{1},\dots,X_{n}$ una mostra de mida $n$, aleshores la **funció de distribució** de la v.a. **mínim** és, per tot $t\in\mathbb{R}$:
+$$ F_{X_{(1)}}(t) = 1-(1-F_{X}(t))^n $$
+```
+
+```ad-prop
+title: Distribució de l'$r$-èssim estadístic d'ordre
+
+Sigui $X$ una v.a. amb funció de distribució $F_{X}$, i $X_{1},\dots,X_{n}$ una mostra de mida $n$, aleshores la **funció de distribució** de la v.a. **$r$-èssim estadístic d'ordre** és, per tot $t\in\mathbb{R}$:
+$$ F_{X_{(r)}}(t) = \sum_{i=r}^n \binom{n}{i} (F_{X}(t))^i \,(1-F_{X}(t))^{n-i} $$
+```
+
+---
+## Intervals de confiança
