@@ -8,52 +8,53 @@
         "type": "tabs",
         "children": [
           {
-            "id": "98d53b4a0aecdb67",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Modelització i Inferència.md",
-                "mode": "source",
-                "source": true
-              }
-            },
-            "group": "055a5e1d7949e675"
-          },
-          {
             "id": "c543423aaf4a13b0",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
                 "file": "Equacions Diferencials Ordinàries.md",
-                "mode": "preview",
+                "mode": "source",
                 "source": true
               }
             },
-            "group": "248bbb2b407fd74e"
+            "group": "eaa264a6e3c949cb"
+          },
+          {
+            "id": "d1dd6d3e666c7c26",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Modelització i Inferència.md",
+                "mode": "source",
+                "source": true
+              }
+            },
+            "group": "2d4791bea2296a6f"
           }
-        ]
+        ],
+        "currentTab": 1
       },
       {
-        "id": "ceb602ad709061ba",
+        "id": "6d524a61fc6f7398",
         "type": "tabs",
         "children": [
           {
-            "id": "d7a3f801f0c5ce9b",
+            "id": "a7e624b3922de5b6",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
                 "file": "Equacions Diferencials Ordinàries.md",
-                "mode": "source",
+                "mode": "preview",
                 "source": true
               }
             },
-            "group": "248bbb2b407fd74e"
+            "group": "eaa264a6e3c949cb"
           },
           {
-            "id": "e08ceb9ea403ac5c",
+            "id": "43ffd94bc17e3e74",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -63,7 +64,7 @@
                 "source": true
               }
             },
-            "group": "055a5e1d7949e675"
+            "group": "2d4791bea2296a6f"
           }
         ],
         "currentTab": 1
@@ -116,7 +117,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 210
+    "width": 200,
+    "collapsed": true
   },
   "right": {
     "id": "455ff89e6c635379",
@@ -205,11 +207,11 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "98d53b4a0aecdb67",
+  "active": "d1dd6d3e666c7c26",
   "lastOpenFiles": [
     "Equacions Diferencials Ordinàries.md",
-    "Modelització i Inferència.md",
     "gcm-diagnose.log",
+    "Modelització i Inferència.md",
     "IMG_0349.jpeg",
     "Shit.md",
     "IMG_0352.jpeg"

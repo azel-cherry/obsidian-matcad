@@ -42,7 +42,7 @@ $$X\sim N(\mu,\sigma^{2}) \,\,\,\,\text{i}\,\,\,\, \frac{X-\mu}{\sigma}\sim N(0,
 ---
 ## Estadístics
 
-Donada una mostra aleatòria $X_1,...,X_n$ de $X$, un ==estadístic== és una funció d'aquestes variables i possibles constants.
+> Donada una mostra aleatòria $X_1,...,X_n$ de $X$, un ==estadístic== és una funció d'aquestes variables i possibles constants.
 
 ```ad-ex
 title: Estadístics importants
@@ -68,7 +68,7 @@ Si un estadístic s'usa per a estimar el paràmetre $X$, es denotarà $\widehat{
 ---
 #### Distribucions mostrals d'estadístics usuals
 
-Donat un estadístic funció de la mostra $X_1,...,X_n$ variable aleatòria, la seva **distribució** o **llei** s'anomena ==distribució mostral de l'estadístic==.
+> Donat un estadístic funció de la mostra $X_1,...,X_n$ variable aleatòria, la seva **distribució** o **llei** s'anomena ==distribució mostral de l'estadístic==.
 
 ````ad-prop
 title: Propietats de la mitjana mostral ($\boldsymbol{\overline{X}}$)
@@ -285,12 +285,12 @@ graph TB;
 ---
 ## Estadístics d'ordre
 
-Donada una mostra de mida $n$ de $X_{1},\dots,X_{n}$, els ==estadístics d'ordre== son les variables aleatòries:
-
-+ Mínim: &emsp;&emsp;&emsp;&emsp;&emsp; $\boldsymbol{X_{(1)}} = \text{min}\{X_{1},\dots,X_{n}\}$
-+ Segon més petit: &ensp; $\boldsymbol{X_{(2)}} = \text{min}\{\{X_{1},\dots,X_{n}\}\backslash X_{(1)}\}$
-+ $\dots$
-+ Màxim: &emsp;&emsp;&emsp;&emsp;&emsp;$\boldsymbol{X_{(n)}} = \text{max}\{X_{1},\dots,X_{n}\}$
+> Donada una mostra de mida $n$ de $X_{1},\dots,X_{n}$, els ==estadístics d'ordre== son les variables aleatòries:
+>
+> + Mínim: &emsp;&emsp;&emsp;&emsp;&emsp; $\boldsymbol{X_{(1)}} = \text{min}\{X_{1},\dots,X_{n}\}$
+> + Segon més petit: &ensp; $\boldsymbol{X_{(2)}} = \text{min}\{\{X_{1},\dots,X_{n}\}\backslash X_{(1)}\}$
+> + $\dots$
+> + Màxim: &emsp;&emsp;&emsp;&emsp;&emsp;$\boldsymbol{X_{(n)}} = \text{max}\{X_{1},\dots,X_{n}\}$
 
 ```ad-ex
 title: Estadístics d'ordre importants
@@ -335,3 +335,10 @@ $$ F_{X_{(r)}}(t) = \sum_{i=r}^n \binom{n}{i} (F_{X}(t))^i \,(1-F_{X}(t))^{n-i} 
 
 ---
 ## Intervals de confiança
+
+Les estimacions puntuals no ens diuen res sobre la **variabilitat** de les dades, ni quina és la nostra **confiança** que aquesta estimació s'acosti al valor real. Per aquest motiu introduïm:
+
+> Sigui $X$ una variable aleatòria i $\theta$  qualsevol paràmetre desconegut de $X$, i fixant un valor $\gamma\in(0,1)$.
+> 
+> Un ==interval de confiança== és una parella de nombres reals $t_{1}<t_{2}$ tals que $\theta\in(t_{1},t_{2})$ amb un ==nivell de confiança== $\gamma$. 
+
