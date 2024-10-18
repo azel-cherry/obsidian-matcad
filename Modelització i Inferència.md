@@ -398,7 +398,7 @@ title: Mitjana $\boldsymbol\mu$
 **Coneixem $\boldsymbol\sigma$:**
 $$ IC_{\gamma}(\mu) = \left[\,\overline{x} - z_{1-\frac{\alpha}{2}} \frac{\sigma}{\sqrt{n}}\,, \,\overline{x} + z_{1-\frac{\alpha}{2}} \frac{\sigma}{\sqrt{n}}\right] $$
 
-```ad-def
+```ad-def ^lqbl5
 title: *Error*
 
 L'==error== de precisió de l'interval de confiança $IC_{\gamma}(\mu)$ és
@@ -509,6 +509,7 @@ $$ IC_{\gamma}(\mu) = \left[\,\overline{x} - z_{1-\frac{\alpha}{2}} \frac{\sigma
 **No coneixem $\boldsymbol\sigma$:**
 $$ IC_{\gamma}(\mu) = \left[\,\overline{x} - z_{1-\frac{\alpha}{2}} \frac{s}{\sqrt{n}}\,, \,\overline{x} + z_{1-\frac{\alpha}{2}} \frac{s}{\sqrt{n}}\right] $$
 
+Quant a l'error i la mida mínima de la població, aquests són anàlegs als del cas de la distribució normal ([[#^05fecc]])
 
 ```
 
