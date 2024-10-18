@@ -395,8 +395,8 @@ $$ P(Z\leq z_{\beta}) = \beta \,.$$
 ````ad-prop
 title: Mitjana $\boldsymbol\mu$
 
-**Coneixem $\boldsymbol\sigma$:**
-$$ IC_{\gamma}(\mu) = \left[\,\overline{x} - z_{1-\frac{\alpha}{2}} \frac{\sigma}{\sqrt{n}}\,, \,\overline{x} + z_{1-\frac{\alpha}{2}} \frac{\sigma}{\sqrt{n}}\right] $$
+> **Coneixem $\boldsymbol\sigma$:**
+$$ IC_{\gamma}(\mu) = \left[\,\overline{x} - z_{1-\frac{\alpha}{2}} \frac{\sigma}{\sqrt{n}}\,,\quad \overline{x} + z_{1-\frac{\alpha}{2}} \frac{\sigma}{\sqrt{n}}\right] $$
 
 ```ad-def ^lqbl5
 title: *Error*
@@ -412,16 +412,14 @@ que satisfà:
 	+ decreixent $\gamma$.
 ```
 
-```ad-ex
+```ad-prop
 title: Mida mínima de la mostra
 
 Fixant un error màxim $\varepsilon$, la mida mínima de la mostra és
 $$ n = \left\lceil \left( \frac{z_{1-\frac{\alpha}{2}}\,\sigma}{\varepsilon} \right)^{2} \right\rceil \,.$$
 ```
 
----
-
-**No coneixem $\boldsymbol\sigma$:**
+> **No coneixem $\boldsymbol\sigma$:**
 $$ IC_{\gamma}(\mu) = \left[\,\overline{x} - t_{n-1,\,1-\frac{\alpha}{2}} \frac{s}{\sqrt{n}}\,, \,\overline{x} + t_{n-1,\,1-\frac{\alpha}{2}} \frac{s}{\sqrt{n}}\right] \,,$$
 on $t$ és la llei de Student, i $s$ és la desviació típica mostral.
 
@@ -442,7 +440,7 @@ que satisfà:
 	+ decreixent $\gamma$.
 ```
 
-```ad-ex
+```ad-prop
 title: Mida mínima de la mostra
 
 Fixant un error màxim $\varepsilon$, la mida mínima de la mostra és
@@ -456,13 +454,11 @@ Aquesta expressió té dos problemes:
 ```
 ````
 
-^05fecc
-
 ````ad-prop
 title: Variància $\sigma^{2}$
 
-**Coneixem $\boldsymbol\mu$:**
-$$ IC_{\gamma}(\sigma^{2}) = \left[ \frac{n\,\tilde{s}^{2}}{\chi^{2}_{n,\,1-\frac{\alpha}{2}}},\, \frac{n\,\tilde{s}^{2}}{\chi^{2}_{n,\,\frac{\alpha}{2}}} \right] \,,$$
+> **Coneixem $\boldsymbol\mu$:**
+$$ IC_{\gamma}(\sigma^{2}) = \left[ \frac{n\,\tilde{s}^{2}}{\chi^{2}_{n,\,1-\frac{\alpha}{2}}},\quad \frac{n\,\tilde{s}^{2}}{\chi^{2}_{n,\,\frac{\alpha}{2}}} \right] \,,$$
 on $\tilde{s}^{2}$ és la quasivariància mostral.
 
 ```ad-ex
@@ -477,11 +473,8 @@ $$\begin{align}
 \end{align}$$
 ```
 
----
-
-**No coneixem $\boldsymbol\mu$:**
-$$ IC_{\gamma}(\sigma^{2}) = \left[ \frac{(n-1)s^{2}}{\chi^{2}_{n-1,\,1-\frac{\alpha}{2}}},\, \frac{(n-1)s^{2}}{\chi^{2}_{n-1,\,\frac{\alpha}{2}}} \right] \,,$$
-
+> **No coneixem $\boldsymbol\mu$:**
+$$ IC_{\gamma}(\sigma^{2}) = \left[ \frac{(n-1)s^{2}}{\chi^{2}_{n-1,\,1-\frac{\alpha}{2}}},\quad \frac{(n-1)s^{2}}{\chi^{2}_{n-1,\,\frac{\alpha}{2}}} \right] \,,$$
 on $s^{2}$ és la variància mostral.
 
 ```ad-ex
@@ -503,22 +496,46 @@ title: Mitjana $\boldsymbol\mu$
 
 Pel TCL sabem que si amb una v.a. de qualsevol distribució  tenim $n$ prou gran ($n\geq30$), aleshores es comporta similarment a una llei normal.
 
-**Coneixem $\boldsymbol\sigma$:**
-$$ IC_{\gamma}(\mu) = \left[\,\overline{x} - z_{1-\frac{\alpha}{2}} \frac{\sigma}{\sqrt{n}}\,, \,\overline{x} + z_{1-\frac{\alpha}{2}} \frac{\sigma}{\sqrt{n}}\right] $$
+> **Coneixem $\boldsymbol\sigma$:**
+$$ IC_{\gamma}(\mu) = \left[\,\overline{x} - z_{1-\frac{\alpha}{2}} \frac{\sigma}{\sqrt{n}}\,,\quad \overline{x} + z_{1-\frac{\alpha}{2}} \frac{\sigma}{\sqrt{n}}\right] $$
 
-**No coneixem $\boldsymbol\sigma$:**
-$$ IC_{\gamma}(\mu) = \left[\,\overline{x} - z_{1-\frac{\alpha}{2}} \frac{s}{\sqrt{n}}\,, \,\overline{x} + z_{1-\frac{\alpha}{2}} \frac{s}{\sqrt{n}}\right] \,,$$
+> **No coneixem $\boldsymbol\sigma$:**
+$$ IC_{\gamma}(\mu) = \left[\,\overline{x} - z_{1-\frac{\alpha}{2}} \frac{s}{\sqrt{n}}\,,\quad \overline{x} + z_{1-\frac{\alpha}{2}} \frac{s}{\sqrt{n}}\right] \,,$$
 on $s$ és la desviació típica mostral.
 
 Quant a l'error i la mida mínima de la població, aquests són anàlegs als del cas de la [[#^05fecc | distribució normal]].
 ```
 
-```ad-prop
+````ad-prop
 title: Proporció $p$
 
-En el cas que $X\sim B(p)$ on $p$ és desconeguda:
-$$ IC_{\gamma}(p) = \left[  \right] $$
+En el cas que $X\sim B(p)$ on $p$ no és coneguda:
+$$ IC_{\gamma}(p) = \left[\, \hat{\hat{p}} - z_{1-\frac{\alpha}{2}} \sqrt{\frac{\hat{\hat{p}}(1-\hat{\hat{p}})}{n}} ,\quad \hat{\hat{p}} + z_{1-\frac{\alpha}{2}} \sqrt{\frac{\hat{\hat{p}}(1-\hat{\hat{p}})}{n}} \,\,\right] \,,$$
+on $\hat{\hat{p}}=\overline{x}$ és la realització de $\hat{p}=\overline{X}$.
+
+Això s'aplica si es compleix que
+$$ n\,\hat{\hat{p}} \,(1-\hat{\hat{p}}) \geq 18 \,.$$
+
+```ad-def
+title: *Error*
+
+L'==error== de precisió de l'interval de confiança $IC_{\gamma}(p)$ és
+$$ z_{1-\frac{\alpha}{2}} \sqrt{\frac{\hat{\hat{p}}\,(1-\hat{\hat{p}})}{n}} \,.$$
 ```
+
+```ad-prop
+title: Mida de la mostra
+
+Per determinar la mida mínima de la mostra per tal que l'error no sobrepassi un cert valor $\varepsilon$, **no podem fer servir $\hat{\hat{p}}$** ja que per determinar aquest valor necessitem primer la mida de la mostra. 
+
+No obstant, podem fer servir que $\displaystyle \hat{\hat{p}}\,(1-\hat{\hat{p}})\leq \frac{1}{4}$, d'on resulta que
+$$ n = \left\lceil \left( \frac{z_{1-\frac{\alpha}{2}}}{2\varepsilon} \right)^{2} \right\rceil \,.$$
+
+D'aquesta manera s'obté una mida mostral usualment **més gran** de la que és realment necessària.
+
+A posteriori de construir l'interval de confiança serà adient comprovar si l'error està dins dels valors desitjats.
+```
+````
 
 ###### Altres distribucions o distribucions desconegudes
 
@@ -530,3 +547,4 @@ $$ P(\,|Y-\text{E}(Y)|>\rho) \leq \frac{\text{Var}(Y)}{\rho^{2}} $$
 ```
 
 La desigualtat de Txebixev ens permet fer afirmacions sobre la probabilitat de **desviacions grans** d'una variable aleatòria respecte de la seva mitjana, a partir de la seva variància.
+
