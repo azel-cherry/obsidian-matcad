@@ -507,14 +507,17 @@ Pel TCL sabem que si amb una v.a. de qualsevol distribució  tenim $n$ prou gran
 $$ IC_{\gamma}(\mu) = \left[\,\overline{x} - z_{1-\frac{\alpha}{2}} \frac{\sigma}{\sqrt{n}}\,, \,\overline{x} + z_{1-\frac{\alpha}{2}} \frac{\sigma}{\sqrt{n}}\right] $$
 
 **No coneixem $\boldsymbol\sigma$:**
-$$ IC_{\gamma}(\mu) = \left[\,\overline{x} - z_{1-\frac{\alpha}{2}} \frac{s}{\sqrt{n}}\,, \,\overline{x} + z_{1-\frac{\alpha}{2}} \frac{s}{\sqrt{n}}\right] $$
+$$ IC_{\gamma}(\mu) = \left[\,\overline{x} - z_{1-\frac{\alpha}{2}} \frac{s}{\sqrt{n}}\,, \,\overline{x} + z_{1-\frac{\alpha}{2}} \frac{s}{\sqrt{n}}\right] \,,$$
+on $s$ és la desviació típica mostral.
 
-Quant a l'error i la mida mínima de la població, aquests són anàlegs als del cas de la distribució normal ([[#^05fecc]])
-
+Quant a l'error i la mida mínima de la població, aquests són anàlegs als del cas de la [[#^05fecc | distribució normal]].
 ```
 
 ```ad-prop
 title: Proporció $p$
+
+En el cas que $X\sim B(p)$ on $p$ és desconeguda:
+$$ IC_{\gamma}(p) = \left[  \right] $$
 ```
 
 ###### Altres distribucions o distribucions desconegudes
