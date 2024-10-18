@@ -3,5 +3,6 @@
     "pet"
   ],
   "theme": "moonstone",
-  "cssTheme": ""
+  "cssTheme": "",
+  "accentColor": "#86ca81"
 }
