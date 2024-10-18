@@ -405,8 +405,7 @@ L'==error== de precisió de l'interval de confiança $IC_{\gamma}(\mu)$ és
 $$ e = z_{1-\frac{\alpha}{2}} \frac{\sigma}{\sqrt{n}} \,,$$
 que satisfà:
 + $P(\,|\overline{X}-\mu|\leq e) = \gamma$
-+ És la semi-amplitud de l'interval de confiança.
-	Com més gran l'error, menys precís l'IC i menys informació ens proporciona.
++ És la semi-amplitud de l'interval de confiança. Com més gran l'error, menys precís l'IC i menys informació ens proporciona.
 + Depèn de la mida mostral, la desviació típica poblacional, i el nivell de confiança. És una funció:
 	+ decreixent de $n$.
 	+ creixent de $\sigma$.
