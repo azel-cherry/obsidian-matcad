@@ -16,9 +16,23 @@
                 "file": "Modelització i Inferència.md",
                 "mode": "source",
                 "source": true
-              }
+              },
+              "icon": "lucide-file",
+              "title": "Modelització i Inferència"
             },
             "group": "73e367c3b9b7d263"
+          },
+          {
+            "id": "baaae6c99abddd72",
+            "type": "leaf",
+            "state": {
+              "type": "release-notes",
+              "state": {
+                "currentVersion": "1.7.4"
+              },
+              "icon": "lucide-file",
+              "title": "Release Notes 1.7.4"
+            }
           },
           {
             "id": "c543423aaf4a13b0",
@@ -29,11 +43,14 @@
                 "file": "Equacions Diferencials Ordinàries.md",
                 "mode": "preview",
                 "source": true
-              }
+              },
+              "icon": "lucide-file",
+              "title": "Equacions Diferencials Ordinàries"
             },
             "group": "248bbb2b407fd74e"
           }
-        ]
+        ],
+        "currentTab": 1
       },
       {
         "id": "ceb602ad709061ba",
@@ -48,7 +65,9 @@
                 "file": "Equacions Diferencials Ordinàries.md",
                 "mode": "source",
                 "source": true
-              }
+              },
+              "icon": "lucide-file",
+              "title": "Equacions Diferencials Ordinàries"
             },
             "group": "248bbb2b407fd74e"
           },
@@ -61,7 +80,9 @@
                 "file": "Modelització i Inferència.md",
                 "mode": "preview",
                 "source": true
-              }
+              },
+              "icon": "lucide-file",
+              "title": "Modelització i Inferència"
             },
             "group": "73e367c3b9b7d263"
           }
@@ -86,7 +107,9 @@
               "type": "file-explorer",
               "state": {
                 "sortOrder": "alphabetical"
-              }
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
             }
           },
           {
@@ -101,7 +124,9 @@
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical"
-              }
+              },
+              "icon": "lucide-search",
+              "title": "Search"
             }
           },
           {
@@ -109,7 +134,9 @@
             "type": "leaf",
             "state": {
               "type": "bookmarks",
-              "state": {}
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
             }
           }
         ]
@@ -140,7 +167,9 @@
                 "searchQuery": "",
                 "backlinkCollapsed": false,
                 "unlinkedCollapsed": true
-              }
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for Modelització i Inferència"
             }
           },
           {
@@ -152,7 +181,9 @@
                 "file": "Modelització i Inferència.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
-              }
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from Modelització i Inferència"
             }
           },
           {
@@ -163,7 +194,9 @@
               "state": {
                 "sortOrder": "frequency",
                 "useHierarchy": true
-              }
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
             }
           },
           {
@@ -173,7 +206,9 @@
               "type": "outline",
               "state": {
                 "file": "Modelització i Inferència.md"
-              }
+              },
+              "icon": "lucide-list",
+              "title": "Outline of Modelització i Inferència"
             }
           },
           {
@@ -181,7 +216,9 @@
             "type": "leaf",
             "state": {
               "type": "git-view",
-              "state": {}
+              "state": {},
+              "icon": "git-pull-request",
+              "title": "Source Control"
             }
           }
         ],
@@ -204,7 +241,7 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "98d53b4a0aecdb67",
+  "active": "baaae6c99abddd72",
   "lastOpenFiles": [
     "Equacions Diferencials Ordinàries.md",
     "Modelització i Inferència.md",
