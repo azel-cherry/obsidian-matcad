@@ -396,7 +396,7 @@ $$ P(Z\leq z_{\beta}) = \beta \,.$$
 title: Mitjana $\boldsymbol\mu$
 
 **Coneixem $\boldsymbol\sigma$:**
-$$ IC_{\gamma}(\mu) = \left[\,\overline{x} + z_{1-\frac{\alpha}{2}} \frac{\sigma}{\sqrt{n}}\,, \,\overline{x} - z_{1-\frac{\alpha}{2}} \frac{\sigma}{\sqrt{n}}\right] $$
+$$ IC_{\gamma}(\mu) = \left[\,\overline{x} - z_{1-\frac{\alpha}{2}} \frac{\sigma}{\sqrt{n}}\,, \,\overline{x} + z_{1-\frac{\alpha}{2}} \frac{\sigma}{\sqrt{n}}\right] $$
 
 ```ad-def
 title: *Error*
@@ -423,7 +423,7 @@ $$ n = \left\lceil \left( \frac{z_{1-\frac{\alpha}{2}}\,\sigma}{\varepsilon} \ri
 ---
 
 **No coneixem $\boldsymbol\sigma$:**
-$$ IC_{\gamma}(\mu) = \left[\,\overline{x} + t_{n-1,\,1-\frac{\alpha}{2}} \frac{s}{\sqrt{n}}\,, \,\overline{x} - t_{n-1,\,1-\frac{\alpha}{2}} \frac{s}{\sqrt{n}}\right] \,,$$
+$$ IC_{\gamma}(\mu) = \left[\,\overline{x} - t_{n-1,\,1-\frac{\alpha}{2}} \frac{s}{\sqrt{n}}\,, \,\overline{x} + t_{n-1,\,1-\frac{\alpha}{2}} \frac{s}{\sqrt{n}}\right] \,,$$
 on $t$ és la llei de Student, i $s$ és la desviació típica mostral.
 
 En aquest cas l'interval sol ser més ampli i per tant menys precís.
@@ -499,6 +499,11 @@ $$\begin{align}
 
 ```ad-prop
 title: Mitjana $\boldsymbol\mu$
+
+Pel TCL sabem que si amb una v.a. amb qualsevol distribució  tenim $n$ prou gran ($n\geq30$)
+
+**Coneixem $\boldsymbol\sigma$:**
+$$ IC_{\gamma}(\mu) = \left[\,\overline{x} - z_{1-\frac{\alpha}{2}} \frac{\sigma}{\sqrt{n}}\,, \,\overline{x} + z_{1-\frac{\alpha}{2}} \frac{\sigma}{\sqrt{n}}\right] $$
 
 
 ```
