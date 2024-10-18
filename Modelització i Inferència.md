@@ -500,7 +500,7 @@ $$\begin{align}
 ```ad-prop
 title: Mitjana $\boldsymbol\mu$
 
-Pel TCL sabem que si amb una v.a. amb qualsevol distribució  tenim $n$ prou gran ($n\geq30$)
+Pel TCL sabem que si amb una v.a. de qualsevol distribució  tenim $n$ prou gran ($n\geq30$), aleshores es pot 
 
 **Coneixem $\boldsymbol\sigma$:**
 $$ IC_{\gamma}(\mu) = \left[\,\overline{x} - z_{1-\frac{\alpha}{2}} \frac{\sigma}{\sqrt{n}}\,, \,\overline{x} + z_{1-\frac{\alpha}{2}} \frac{\sigma}{\sqrt{n}}\right] $$
