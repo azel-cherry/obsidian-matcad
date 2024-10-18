@@ -384,8 +384,7 @@ Un ==pivot== és una v.a. $T$ tal que:
 
 Veurem com s'utilitza aquest mètode per trobar l'interval de confiança de diverses variables aleatòries.
 
-`````ad-prop
-title: Població normal
+###### Població normal
 
 ````ad-def
 title: *Quantila*
@@ -401,6 +400,7 @@ $$ IC_{\gamma}(\mu) = \left[\,\overline{x} + z_{1-\frac{\alpha}{2}} \frac{\sigma
 
 ```ad-def
 title: *Error*
+
 L'==error== de precisió de l'interval de confiança $IC_{\gamma}(\mu)$ és
 $$ e = z_{1-\frac{\alpha}{2}} \frac{\sigma}{\sqrt{n}} \,,$$
 que satisfà:
@@ -415,6 +415,7 @@ que satisfà:
 
 ```ad-ex
 title: Mida mínima de la mostra
+
 Fixant un error màxim $\varepsilon$, la mida mínima de la mostra és
 $$ n = \left\lceil \left( \frac{z_{1-\frac{\alpha}{2}}\,\sigma}{\varepsilon} \right)^{2} \right\rceil \,.$$
 ```
@@ -429,6 +430,7 @@ En aquest cas l'interval sol ser més ampli i per tant menys precís.
 
 ```ad-def
 title: *Error*
+
 L'==error== de precisió de l'interval de confiança $IC_{\gamma}(\mu)$ és
 $$ e = t_{n-1,\,1-\frac{\alpha}{2}} \frac{S}{\sqrt{n}} \,,$$
 que satisfà:
@@ -443,6 +445,7 @@ que satisfà:
 
 ```ad-ex
 title: Mida mínima de la mostra
+
 Fixant un error màxim $\varepsilon$, la mida mínima de la mostra és
 $$ n = \left\lceil \left( \frac{t_{n-1,\,1-\frac{a}{2}}\,S}{\varepsilon} \right)^{2} \right\rceil \,.$$
 
@@ -463,6 +466,7 @@ on $\tilde{s}^{2}$ és la quasivariància mostral.
 
 ```ad-ex
 title: Aproximació de $\boldsymbol\chi^{2}$ amb $\boldsymbol n$ gran
+
 Quan la mida de la mostra és molt gran, el nombre de graus de llibertat de $\chi^{2}$ és gran i no apareix a les taules.
 
 En aquests casos es poden fer servir les aproximacions següents:
@@ -490,22 +494,20 @@ $$\begin{align}
 \end{align}$$
 ```
 ````
-`````
 
-````ad-prop
-title: Distribucions asimptòtiques
+###### Distribucions asimptòtiques
 
 ```ad-prop
 title: Mitjana $\boldsymbol\mu$
+
+
 ```
 
 ```ad-prop
 title: Proporció $p$
 ```
-````
 
-````ad-prop
-title: Altres disitribucions o desconegudes
+###### Altres distribucions o distribucions desconegudes
 
 ```ad-prop
 title: Desigualtat de Txebixev
@@ -515,4 +517,3 @@ $$ P(\,|Y-\text{E}(Y)|>\rho) \leq \frac{\text{Var}(Y)}{\rho^{2}} $$
 ```
 
 La desigualtat de Txebixev ens permet fer afirmacions sobre la probabilitat de **desviacions grans** d'una variable aleatòria respecte de la seva mitjana, a partir de la seva variància.
-````

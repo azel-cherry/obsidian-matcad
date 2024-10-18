@@ -23,18 +23,6 @@
             "group": "73e367c3b9b7d263"
           },
           {
-            "id": "baaae6c99abddd72",
-            "type": "leaf",
-            "state": {
-              "type": "release-notes",
-              "state": {
-                "currentVersion": "1.7.4"
-              },
-              "icon": "lucide-file",
-              "title": "Release Notes 1.7.4"
-            }
-          },
-          {
             "id": "c543423aaf4a13b0",
             "type": "leaf",
             "state": {
@@ -49,8 +37,7 @@
             },
             "group": "248bbb2b407fd74e"
           }
-        ],
-        "currentTab": 1
+        ]
       },
       {
         "id": "ceb602ad709061ba",
@@ -226,7 +213,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 339.5
+    "width": 339.5,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -241,7 +229,7 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "baaae6c99abddd72",
+  "active": "595fb9cece9e51ca",
   "lastOpenFiles": [
     "Equacions Diferencials Ordinàries.md",
     "Modelització i Inferència.md",
