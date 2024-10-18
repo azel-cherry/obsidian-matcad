@@ -457,6 +457,8 @@ Aquesta expressió té dos problemes:
 ```
 ````
 
+^05fecc
+
 ````ad-prop
 title: Variància $\sigma^{2}$
 
@@ -507,6 +509,8 @@ $$ IC_{\gamma}(\mu) = \left[\,\overline{x} - z_{1-\frac{\alpha}{2}} \frac{\sigma
 
 **No coneixem $\boldsymbol\sigma$:**
 $$ IC_{\gamma}(\mu) = \left[\,\overline{x} - z_{1-\frac{\alpha}{2}} \frac{s}{\sqrt{n}}\,, \,\overline{x} + z_{1-\frac{\alpha}{2}} \frac{s}{\sqrt{n}}\right] $$
+
+[[#^05fecc]]
 
 ```
 
