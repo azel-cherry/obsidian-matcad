@@ -212,8 +212,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 339.5,
-    "collapsed": true
+    "width": 339.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -228,7 +227,7 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "c543423aaf4a13b0",
+  "active": "6decfb820efe0cf2",
   "lastOpenFiles": [
     "Equacions Diferencials Ordinàries.md",
     "Modelització i Inferència.md",
