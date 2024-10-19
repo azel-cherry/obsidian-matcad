@@ -1,6 +1,6 @@
 ## Introducció
 
-#### Equacions diferencials ordinàries de primer ordre
+#### Equacions diferencials ordinàries de **primer ordre**
 
 Una ==equació diferencial ordinària de primer ordre== (EDO de puto primer ordre) per a una funció $y(x)$ és una equació
 $$ F(x,y,y')=0 .$$
@@ -50,7 +50,7 @@ Un cas particular  de solucons d'un PVI son les ==solucions d'equilibri==, les q
 ```
 
 ---
-## Existència, unicitat i continuitat de solucions
+## **Existència**, **unicitat** i **continuitat** de solucions
 
 ```ad-teor
 title: Teorema de **Picard-Lindelöf**
@@ -93,9 +93,9 @@ Aleshores dues corbes solució de $y'=f(x,y)$ diferents no es poden tallar a $\m
 Si $f$ no és diferenciable, el PVI pot tenir més d'una solució.
 
 ---
-## Mètodes analítics de resolució
+## Mètodes **analítics** de resolució
 
-#### Equacions separables
+#### Equacions **separables**
 
 Una ==EDO de variables separades== (o separable) és una equació del tipus 
 $$ y'(x) = g(x)h(y) .$$
@@ -108,7 +108,7 @@ title: Mètode per equacions **separables**
 + Integrem: $\displaystyle \int \frac{1}{h(y)}dy = \int g(x)dx$
 ```
 
-#### Equacions diferencials lineals
+#### Equacions diferencials **lineals**
 
 Sigui $y(x)$ la incògnita, una ==EDO lineal== és una equació de la forma
 $$ y'(x)+a(x)y(x)=b(x) ,$$
@@ -163,7 +163,7 @@ Alternativament:
 $$y(x) = \left( \int e^{\int a(x)\,dx}\, b(x)\, dx \right) e^{-\int a(x)dx}$$
 ```
 
-#### Equacions homogènies
+#### Equacions **homogènies**
 
 Una ==EDO homogènia== és una EDO de la forma
 $$ y' = f\left( \frac{y}{x} \right) .$$
@@ -181,7 +181,7 @@ $$\displaystyle u'(x)=\frac{du}{dx}=\frac{f(u(x))-u(x)}{x} .$$
 ```
 
 ---
-## Mètodes qualitatius de resolució
+## Mètodes **qualitatius** de resolució
 
 #### Camps direccionals
 
@@ -206,7 +206,7 @@ Sigui $y'(x)=f(x,y)$ una EDO de primer ordre, i donada $m\in\mathbb{R}$, les cor
 ```
 
 ---
-## Equacions diferencials autònomes
+## Equacions diferencials **autònomes**
 
 Les equacions autònomes
 + són de **variables separades**, i
@@ -231,23 +231,23 @@ Donada una EDO autònoma $y'=f(y)$:
 	+ Si $f(y)$ ~={green}$<$=~ $0$ per a $y\in(a,b)$ $\displaystyle \lim_{x\to-\infty}y(x)=$ ~={green}$b$=~ i $\displaystyle \lim_{x\to\infty}y(x)=$ ~={green}$a$=~.
 ```
 
-## EDOs d'ordre superior i sistemes d'EDOs
+---
+## EDOs d'**ordre superior** i **sistemes** d'EDOs
 
 Una ==EDO d'ordre $n$== per a una funció $y(x)$ és una equació del tipus
-$$ F(x,y,y',\dots,y^{(n)}) = 0 ,$$
+$$ F(x,y,y',\dots,y^{(n)}) = 0 \,,$$
 
 que de forma estàndard s'escriu com a
-$$ y^{(n)} = f(x,y,y',\dots,y^{(n-1)}) ,$$
+$$ y^{(n)} = f(x,y,y',\dots,y^{(n-1)}) \,,$$
 
 i és equivalent a un sistema d'EDOs de primer ordre:
-$$\begin{align}
-\vec{z}' &= f(x, \vec{z}) \\[3pt]
-\vec{z} &= \begin{pmatrix}
+$$ \vec{z}' = f(x, \vec{z}) \,,$$
+$$\text{on}\quad
+\vec{z} = \begin{pmatrix}
 y \\
 \vdots \\
 y^{n-1}
-\end{pmatrix}
-\end{align}$$
+\end{pmatrix} \,.$$
 
 La ==solució== d'una EDO d'ordre $n$ és una funció real $y(x)$ definida en un interval $I$, $n$ vegades diferenciable.
 
@@ -264,7 +264,7 @@ title: EDO *homogènia* d'ordre $\boldsymbol n$
 Sigui $a_{0}(x)\,y + \dots + y^{n} = f(x)$ una EDO lineal, direm que és ==homogènia== quan $f(x)=0$.
 ```
 
-#### EDOs lineals de segon ordre
+#### EDOs de **segon ordre lineals**
 
 Una EDO ==lineal de segon ordre== és una EDO de la forma
 $$ y''(x) + a(x)y'(x) + b(x)y(x) = f(x) .$$
@@ -282,3 +282,64 @@ $$ Ay_{1}(x) + By_{2}(x) $$
 per constants $A$ i $B$ qualsevols.
 ```
 ````
+
+Igual que amb les EDOs de primer ordre, la **solució general** d'una EDO de segon ordre es pot escriure com la suma de la **solució general de la homogènia** associada més una **solució particular**.
+
+```ad-teor
+title: Existència, unicitat i continuitat
+
+Donat el PVI
+$$ \begin{align}
+y'(x) + a(x)y'(x) + b(x)y(x) &= f(x) \\
+y(x_{0}) &= y_{0} \\
+y'(x_{0}) &= y_{0}'
+\end{align} $$
+si les funcions $a(x)$ i $b(x)$ son contínues a un interval $(x_{1},x_{2})$ que conté $x_{0}$, aleshores **existeix** una solució **única** $y(x)$ que és **contínua** en $(x_{1},x_{2})$.
+
+---
+
+D'aquest teorema veiem que el sistema sistema d'equacions lineals
+$$ \begin{align}
+y(x_{0}) &= Ay_{1}(x) + By_{2}(x) = y_{0} \\
+y'(x_{0}) &= Ay_{1}'(x_{0}) + By_{2}'(x_{0}) = y_{0}'
+\end{align} $$
+tindrà una única solució $A, B$ si i només si el determinant de la matriu de coeficients de $A$ i $B$ no és nul·la.
+```
+
+```ad-def
+title: *Determinant Wronksià*
+
+Siguin $y_{1}(x)$ i $y_{2}(x)$ solucions de l'EDO lineal homogènia $y''+a(x)y'(x)+b(x)=0$.
+
+Aleshores el determinant
+$$ W(y_{1},y_{2})(x) = \det \begin{pmatrix}
+y_{1}(x) & y_{2}(x) \\
+y_{1}'(x) & y_{2}'(x)
+\end{pmatrix} = y_{1}(x)y_{2}'(x) - y_{1}'(x)y_{2}(x) $$
+s'anomena el ==Wronksià== de les funcions $y_{1}$ i $y_{2}$.
+```
+
+```ad-teor
+title: Solució general
+
+Siguin $y_{1}$ i $y_{2}$ dues solucions de l'equació $y''(x) + a(x)y'(x) + b(x) = 0$
+amb Wronksià no nul $\forall x$. Aleshores
+$$ \boxed{y(x) = Ay_{1}(x) + By_{2}(x)} $$
+és la solució general de l'equació.
+```
+
+```ad-prop
+Siguin $y_{1}$ i $y_{2}$ dues solucions de l'equació $y''(x) + a(x)y'(x) + b(x) = 0$.
+
+Aleshores $W(y_{1},y_{2})$ és una funció exponencial i és o bé $0$ $\forall x$ o bé diferent de $0$ $\forall x$.
+```
+
+```ad-def
+title: Conjunt fonamental de solucions
+
+Siguin $y_{1}$ i $y_{2}$ dues solucions de l'equació $y''(x) + a(x)y'(x) + b(x) = 0$ que satisfan $W(y_{1},y_{2})\neq 0$ per tot $x$ a un interval on $a(x)$ i $b(x)$ son contínues.
+
+Aleshores $y_{1},y_{2}$ s'anomena ==conjunt fonamental de solucions== de l'equació en aquell interval.
+```
+
+###### EDOs de segon ordre lineals amb **coeficients constants**

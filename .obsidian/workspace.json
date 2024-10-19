@@ -37,7 +37,8 @@
             },
             "group": "5dd7605cc76595c8"
           }
-        ]
+        ],
+        "currentTab": 1
       },
       {
         "id": "9b80bb20343af049",
@@ -66,14 +67,15 @@
               "state": {
                 "file": "Equacions Diferencials Ordinàries.md",
                 "mode": "preview",
-                "source": true
+                "source": false
               },
               "icon": "lucide-file",
               "title": "Equacions Diferencials Ordinàries"
             },
             "group": "5dd7605cc76595c8"
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -229,8 +231,8 @@
   },
   "active": "6decfb820efe0cf2",
   "lastOpenFiles": [
-    "Equacions Diferencials Ordinàries.md",
     "Modelització i Inferència.md",
+    "Equacions Diferencials Ordinàries.md",
     "^lqbl5.md",
     "gcm-diagnose.log",
     "IMG_0349.jpeg",
