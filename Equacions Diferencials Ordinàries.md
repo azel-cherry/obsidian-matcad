@@ -140,7 +140,7 @@ Sigui $y'(x)+a(x)y(x)=b(x)$ una EDO lineal amb
 Aleshores $\boxed{\,y(x)=y_h(x)+y_p(x)\,}$ .
 
 ```ad-ex
-title: Mètode de variació de les constants
+title: Mètode de **variació de les constants**
 
 Per trobar $y_p(x)$ farem servir el ==*mètode de variació de les constants*==, que consisteix en buscar una solució particular de la forma
 $$ y_p(x)=C(x)e^{-\int a(x)dx} .$$
@@ -148,7 +148,7 @@ $$ y_p(x)=C(x)e^{-\int a(x)dx} .$$
 ````
 
 ```ad-ex
-title: Mètode per equacions **lineals**
+title: Mètode per **equacions lineals**
 
 Tenim una EDO lineal de la forma $y'(x)+a(x)y(x)=b(x)$.
 
@@ -166,12 +166,12 @@ $$y(x) = \left( \int e^{\int a(x)\,dx}\, b(x)\, dx \right) e^{-\int a(x)dx}$$
 #### Equacions homogènies
 
 Una ==EDO homogènia== és una EDO de la forma
-$$ y' = y\left( \frac{y}{x} \right) .$$
+$$ y' = f\left( \frac{y}{x} \right) .$$
 
 ```ad-ex
-title: Mètode per equacions **homogènies**
+title: Mètode per **equacions homogènies**
 
-Tenim una EDO de la forma $\displaystyle y'=y\left(\frac{y}{x}\right)$.
+Tenim una EDO de la forma $\displaystyle y'=f\left(\frac{y}{x}\right)$.
 
 1. Fem el canvi de variable $\displaystyle u(x)=\frac{y(x)}{x}$, arribant a que
 

@@ -21,11 +21,26 @@
               "title": "Modelització i Inferència"
             },
             "group": "248bbb2b407fd74e"
+          },
+          {
+            "id": "006b8e0a6112c62e",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Equacions Diferencials Ordinàries.md",
+                "mode": "source",
+                "source": true
+              },
+              "icon": "lucide-file",
+              "title": "Equacions Diferencials Ordinàries"
+            },
+            "group": "5dd7605cc76595c8"
           }
         ]
       },
       {
-        "id": "44790ca0a7185651",
+        "id": "9b80bb20343af049",
         "type": "tabs",
         "children": [
           {
@@ -42,6 +57,21 @@
               "title": "Modelització i Inferència"
             },
             "group": "248bbb2b407fd74e"
+          },
+          {
+            "id": "b784d274345a98ce",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Equacions Diferencials Ordinàries.md",
+                "mode": "preview",
+                "source": true
+              },
+              "icon": "lucide-file",
+              "title": "Equacions Diferencials Ordinàries"
+            },
+            "group": "5dd7605cc76595c8"
           }
         ]
       }
@@ -200,9 +230,9 @@
   },
   "active": "c543423aaf4a13b0",
   "lastOpenFiles": [
-    "^lqbl5.md",
-    "Modelització i Inferència.md",
     "Equacions Diferencials Ordinàries.md",
+    "Modelització i Inferència.md",
+    "^lqbl5.md",
     "gcm-diagnose.log",
     "IMG_0349.jpeg",
     "Shit.md",

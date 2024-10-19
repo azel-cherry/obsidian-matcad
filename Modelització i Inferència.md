@@ -313,21 +313,21 @@ $$IQR = Q_{3} - Q_{1}$$
 ```
 
 ```ad-prop
-title: Distribució del màxim
+title: Distribució del **màxim**
 
 Sigui $X$ una v.a. amb funció de distribució $F_{X}$, i $X_{1},\dots,X_{n}$ una mostra de mida $n$, aleshores la **funció de distribució** de la v.a. **màxim** és, per tot $t\in\mathbb{R}$:
 $$ F_{X_{(n)}}(t) = (F_{X}(t))^n $$
 ```
 
 ```ad-prop
-title: Distribució del mínim
+title: Distribució del **mínim**
 
 Sigui $X$ una v.a. amb funció de distribució $F_{X}$, i $X_{1},\dots,X_{n}$ una mostra de mida $n$, aleshores la **funció de distribució** de la v.a. **mínim** és, per tot $t\in\mathbb{R}$:
 $$ F_{X_{(1)}}(t) = 1-(1-F_{X}(t))^n $$
 ```
 
 ```ad-prop
-title: Distribució de l'$r$-èssim estadístic d'ordre
+title: Distribució de l'**$\boldsymbol r$-èssim estadístic d'ordre**
 
 Sigui $X$ una v.a. amb funció de distribució $F_{X}$, i $X_{1},\dots,X_{n}$ una mostra de mida $n$, aleshores la **funció de distribució** de la v.a. **$r$-èssim estadístic d'ordre** és, per tot $t\in\mathbb{R}$:
 $$ F_{X_{(r)}}(t) = \sum_{i=r}^n \binom{n}{i} (F_{X}(t))^i \,(1-F_{X}(t))^{n-i} $$
@@ -393,7 +393,7 @@ $$ P(Z\leq z_{\beta}) = \beta \,.$$
 ````
 
 ````ad-prop
-title: IC de la mitjana $\boldsymbol\mu$
+title: IC de la **mitjana $\boldsymbol\mu$**
 
 > **Coneixem $\boldsymbol\sigma$:**
 $$ IC_{\gamma}(\mu) = \left[\,\overline{x} - z_{1-\frac{\alpha}{2}} \frac{\sigma}{\sqrt{n}}\,,\quad \overline{x} + z_{1-\frac{\alpha}{2}} \frac{\sigma}{\sqrt{n}}\right] $$
@@ -455,7 +455,7 @@ Aquesta expressió té dos problemes:
 ````
 
 ````ad-prop
-title: IC de la variància $\sigma^{2}$
+title: IC de la **variància $\boldsymbol\sigma^{2}$**
 
 > **Coneixem $\boldsymbol\mu$:**
 $$ IC_{\gamma}(\sigma^{2}) = \left[ \frac{n\,\tilde{s}^{2}}{\chi^{2}_{n,\,1-\frac{\alpha}{2}}},\quad \frac{n\,\tilde{s}^{2}}{\chi^{2}_{n,\,\frac{\alpha}{2}}} \right] \,,$$
@@ -492,7 +492,7 @@ $$\begin{align}
 ###### Distribucions asimptòtiques
 
 ```ad-prop
-title: IC de la mitjana $\boldsymbol\mu$
+title: IC de la **mitjana $\boldsymbol\mu$**
 
 Pel TCL sabem que si amb una v.a. de qualsevol distribució  tenim $n$ prou gran ($n\geq30$), aleshores es comporta similarment a una llei normal.
 
@@ -507,7 +507,7 @@ Quant a l'error i la mida mínima de la població, aquests són anàlegs als del
 ```
 
 ````ad-prop
-title: IC de la proporció $p$
+title: IC de la **proporció $\boldsymbol p$**
 
 En el cas que $X\sim B(p)$ on $p$ no és coneguda:
 $$ IC_{\gamma}(p) = \left[\, \hat{\hat{p}} - z_{1-\frac{\alpha}{2}} \sqrt{\frac{\hat{\hat{p}}(1-\hat{\hat{p}})}{n}} ,\quad \hat{\hat{p}} + z_{1-\frac{\alpha}{2}} \sqrt{\frac{\hat{\hat{p}}(1-\hat{\hat{p}})}{n}} \,\,\right] \,,$$
