@@ -393,7 +393,7 @@ $$ P(Z\leq z_{\beta}) = \beta \,.$$
 ````
 
 ````ad-prop
-title: Mitjana $\boldsymbol\mu$
+title: IC de la mitjana $\boldsymbol\mu$
 
 > **Coneixem $\boldsymbol\sigma$:**
 $$ IC_{\gamma}(\mu) = \left[\,\overline{x} - z_{1-\frac{\alpha}{2}} \frac{\sigma}{\sqrt{n}}\,,\quad \overline{x} + z_{1-\frac{\alpha}{2}} \frac{\sigma}{\sqrt{n}}\right] $$
@@ -455,7 +455,7 @@ Aquesta expressió té dos problemes:
 ````
 
 ````ad-prop
-title: Variància $\sigma^{2}$
+title: IC de la variància $\sigma^{2}$
 
 > **Coneixem $\boldsymbol\mu$:**
 $$ IC_{\gamma}(\sigma^{2}) = \left[ \frac{n\,\tilde{s}^{2}}{\chi^{2}_{n,\,1-\frac{\alpha}{2}}},\quad \frac{n\,\tilde{s}^{2}}{\chi^{2}_{n,\,\frac{\alpha}{2}}} \right] \,,$$
@@ -492,7 +492,7 @@ $$\begin{align}
 ###### Distribucions asimptòtiques
 
 ```ad-prop
-title: Mitjana $\boldsymbol\mu$
+title: IC de la mitjana $\boldsymbol\mu$
 
 Pel TCL sabem que si amb una v.a. de qualsevol distribució  tenim $n$ prou gran ($n\geq30$), aleshores es comporta similarment a una llei normal.
 
@@ -507,7 +507,7 @@ Quant a l'error i la mida mínima de la població, aquests són anàlegs als del
 ```
 
 ````ad-prop
-title: Proporció $p$
+title: IC de la proporció $p$
 
 En el cas que $X\sim B(p)$ on $p$ no és coneguda:
 $$ IC_{\gamma}(p) = \left[\, \hat{\hat{p}} - z_{1-\frac{\alpha}{2}} \sqrt{\frac{\hat{\hat{p}}(1-\hat{\hat{p}})}{n}} ,\quad \hat{\hat{p}} + z_{1-\frac{\alpha}{2}} \sqrt{\frac{\hat{\hat{p}}(1-\hat{\hat{p}})}{n}} \,\,\right] \,,$$
