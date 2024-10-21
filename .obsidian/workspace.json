@@ -117,8 +117,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200,
-    "collapsed": true
+    "width": 200
   },
   "right": {
     "id": "455ff89e6c635379",
@@ -207,7 +206,7 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "d1dd6d3e666c7c26",
+  "active": "43ffd94bc17e3e74",
   "lastOpenFiles": [
     "Equacions Diferencials Ordinàries.md",
     "gcm-diagnose.log",
