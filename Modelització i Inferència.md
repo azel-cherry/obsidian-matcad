@@ -356,7 +356,7 @@ De totes les possibles mostres de mida $n$, un $100\gamma$% donarà un interval 
 Generalment només tindrem una mostra i per tant un interval. En aquest cas tindrem una confiança $\gamma$ que el nostre interval contingui el valor real de $\theta$.
 ```
 
-```ad-ex
+```ad-met
 title: Trobar l'interval de confiança
 
 Sigui $x_{1},\dots,x_{n}$ una realització de la mostra $X_{1},\dots,X_{n}$ amb $x_{i}=X_{i}(\omega)$, $\omega\in\Omega$.
@@ -392,7 +392,7 @@ Una ==quantila== d'ordre $\beta$ ($z_{\beta}$) és el valor d'una distribució n
 $$ P(Z\leq z_{\beta}) = \beta \,.$$
 ````
 
-````ad-prop
+````ad-met
 title: IC de la **mitjana $\boldsymbol\mu$**
 
 > **Coneixem $\boldsymbol\sigma$:**
@@ -412,7 +412,7 @@ que satisfà:
 	+ decreixent $\gamma$.
 ```
 
-```ad-prop
+```ad-met
 title: Mida mínima de la mostra
 
 Fixant un error màxim $\varepsilon$, la mida mínima de la mostra és
@@ -440,7 +440,7 @@ que satisfà:
 	+ decreixent $\gamma$.
 ```
 
-```ad-prop
+```ad-met
 title: Mida mínima de la mostra
 
 Fixant un error màxim $\varepsilon$, la mida mínima de la mostra és
@@ -454,14 +454,14 @@ Aquesta expressió té dos problemes:
 ```
 ````
 
-````ad-prop
+````ad-met
 title: IC de la **variància $\boldsymbol\sigma^{2}$**
 
 > **Coneixem $\boldsymbol\mu$:**
 $$ IC_{\gamma}(\sigma^{2}) = \left[ \frac{n\,\tilde{s}^{2}}{\chi^{2}_{n,\,1-\frac{\alpha}{2}}},\quad \frac{n\,\tilde{s}^{2}}{\chi^{2}_{n,\,\frac{\alpha}{2}}} \right] \,,$$
 on $\tilde{s}^{2}$ és la quasivariància mostral.
 
-```ad-ex
+```ad-met
 title: Aproximació de $\boldsymbol\chi^{2}$ amb $\boldsymbol n$ gran
 
 Quan la mida de la mostra és molt gran, el nombre de graus de llibertat de $\chi^{2}$ és gran i no apareix a les taules.
@@ -477,7 +477,7 @@ $$\begin{align}
 $$ IC_{\gamma}(\sigma^{2}) = \left[ \frac{(n-1)s^{2}}{\chi^{2}_{n-1,\,1-\frac{\alpha}{2}}},\quad \frac{(n-1)s^{2}}{\chi^{2}_{n-1,\,\frac{\alpha}{2}}} \right] \,,$$
 on $s^{2}$ és la variància mostral.
 
-```ad-ex
+```ad-met
 title: Aproximació de $\boldsymbol\chi^{2}$ amb $\boldsymbol n$ gran
 Quan la mida de la mostra és molt gran, el nombre de graus de llibertat de $\chi^{2}$ és gran i no apareix a les taules.
 
@@ -491,7 +491,7 @@ $$\begin{align}
 
 ###### Distribucions asimptòtiques
 
-```ad-prop
+```ad-met
 title: IC de la **mitjana $\boldsymbol\mu$**
 
 Pel TCL sabem que si amb una v.a. de qualsevol distribució  tenim $n$ prou gran ($n\geq30$), aleshores es comporta similarment a una llei normal.
@@ -506,7 +506,7 @@ on $s$ és la desviació típica mostral.
 Quant a l'error i la mida mínima de la població, aquests són anàlegs als del cas de la [[#^05fecc | distribució normal]].
 ```
 
-````ad-prop
+````ad-met
 title: IC de la **proporció $\boldsymbol p$**
 
 En el cas que $X\sim B(p)$ on $p$ no és coneguda:
@@ -523,7 +523,7 @@ L'==error== de precisió de l'interval de confiança $IC_{\gamma}(p)$ és
 $$ z_{1-\frac{\alpha}{2}} \sqrt{\frac{\hat{\hat{p}}\,(1-\hat{\hat{p}})}{n}} \,.$$
 ```
 
-```ad-prop
+```ad-met
 title: Mida de la mostra
 
 Per determinar la mida mínima de la mostra per tal que l'error no sobrepassi un cert valor $\varepsilon$, **no podem fer servir $\hat{\hat{p}}$** ja que per determinar aquest valor necessitem primer la mida de la mostra. 

@@ -100,7 +100,7 @@ Si $f$ no és diferenciable, el PVI pot tenir més d'una solució.
 Una ==EDO de variables separades== (o separable) és una equació del tipus 
 $$ y'(x) = g(x)h(y) .$$
 
-```ad-ex
+```ad-met
 title: Mètode per equacions **separables**
 
 + Reescribim l'equació: $\displaystyle\frac{dy}{dx} = g(x)h(y)$
@@ -131,7 +131,7 @@ Siguin $y_1(x)$ i $y_2(x)$ dues solucions de l'equació lineal $y'(x)+a(x)y(x)=b
 Aleshores $y_1(x)-y_2(x)$ és solució de l'equació homogènia associada $y'(x)+a(x)y(x)=0$.
 ```
 
-````ad-coro
+````ad-prop
 Sigui $y'(x)+a(x)y(x)=b(x)$ una EDO lineal amb
 + $y(x)$ la solució general,
 + $y_p(x)$ una solució particular, i
@@ -139,7 +139,7 @@ Sigui $y'(x)+a(x)y(x)=b(x)$ una EDO lineal amb
 
 Aleshores $\boxed{\,y(x)=y_h(x)+y_p(x)\,}$ .
 
-```ad-ex
+```ad-met
 title: Mètode de **variació de les constants**
 
 Per trobar $y_p(x)$ farem servir el ==*mètode de variació de les constants*==, que consisteix en buscar una solució particular de la forma
@@ -147,7 +147,7 @@ $$ y_p(x)=C(x)e^{-\int a(x)dx} .$$
 ```
 ````
 
-```ad-ex
+```ad-met
 title: Mètode per **equacions lineals**
 
 Tenim una EDO lineal de la forma $y'(x)+a(x)y(x)=b(x)$.
@@ -168,7 +168,7 @@ $$y(x) = \left( \int e^{\int a(x)\,dx}\, b(x)\, dx \right) e^{-\int a(x)dx}$$
 Una ==EDO homogènia== és una EDO de la forma
 $$ y' = f\left( \frac{y}{x} \right) .$$
 
-```ad-ex
+```ad-met
 title: Mètode per **equacions homogènies**
 
 Tenim una EDO de la forma $\displaystyle y'=f\left(\frac{y}{x}\right)$.
@@ -187,7 +187,7 @@ $$\displaystyle u'(x)=\frac{du}{dx}=\frac{f(u(x))-u(x)}{x} .$$
 
 Moltes vegades no és possible aplicar els mètodes anteriors. En aquests casos representarem geomètricament les solucions per obtenir informació sobre les seves propietats.
 
-```ad-ex
+```ad-met
 title: Mètode dels *camps direccionals*
 
 Considerem l'EDO $y'(x)=f(x,y)$.
@@ -309,7 +309,7 @@ tindrà una única solució $A, B$ si i només si el determinant de la matriu de
 ```ad-def
 title: *Determinant Wronksià*
 
-Siguin $y_{1}(x)$ i $y_{2}(x)$ solucions de l'EDO lineal homogènia $y''+a(x)y'(x)+b(x)=0$.
+Siguin $y_{1}(x)$ i $y_{2}(x)$ solucions de l'EDO lineal homogènia $y''+a(x)y'(x)+b(x)y(x)=0$.
 
 Aleshores el determinant
 $$ W(y_{1},y_{2})(x) = \det \begin{pmatrix}
@@ -322,14 +322,14 @@ s'anomena el ==Wronksià== de les funcions $y_{1}$ i $y_{2}$.
 ```ad-teor
 title: Solució general
 
-Siguin $y_{1}$ i $y_{2}$ dues solucions de l'equació $y''(x) + a(x)y'(x) + b(x) = 0$
+Siguin $y_{1}$ i $y_{2}$ dues solucions de l'equació $y''(x) + a(x)y'(x) + b(x)y(x) = 0$
 amb Wronksià no nul $\forall x$. Aleshores
 $$ \boxed{y(x) = Ay_{1}(x) + By_{2}(x)} $$
 és la solució general de l'equació.
 ```
 
 ```ad-prop
-Siguin $y_{1}$ i $y_{2}$ dues solucions de l'equació $y''(x) + a(x)y'(x) + b(x) = 0$.
+Siguin $y_{1}$ i $y_{2}$ dues solucions de l'equació $y''(x) + a(x)y'(x) + b(x)y(x) = 0$.
 
 Aleshores $W(y_{1},y_{2})$ és una funció exponencial i és o bé $0$ $\forall x$ o bé diferent de $0$ $\forall x$.
 ```
@@ -337,9 +337,59 @@ Aleshores $W(y_{1},y_{2})$ és una funció exponencial i és o bé $0$ $\forall 
 ```ad-def
 title: Conjunt fonamental de solucions
 
-Siguin $y_{1}$ i $y_{2}$ dues solucions de l'equació $y''(x) + a(x)y'(x) + b(x) = 0$ que satisfan $W(y_{1},y_{2})\neq 0$ per tot $x$ a un interval on $a(x)$ i $b(x)$ son contínues.
+Siguin $y_{1}$ i $y_{2}$ dues solucions de l'equació $y''(x) + a(x)y'(x) + b(x)y(x) = 0$ que satisfan $W(y_{1},y_{2})\neq 0$ per tot $x$ a un interval on $a(x)$ i $b(x)$ son contínues.
 
 Aleshores $y_{1},y_{2}$ s'anomena ==conjunt fonamental de solucions== de l'equació en aquell interval.
 ```
 
 ###### EDOs de segon ordre lineals amb **coeficients constants**
+
+Una EDO lineal de coeficients constants serà de la forma
+$$ y''(x) + by'(x) + cy = q(x) \,,$$
+on $b$ i $c$ son constants.
+
+````ad-met
+title: Solució de la **homogènia associada**
+
+```ad-def
+title: *Polinomi característic*
+
+Sigui $y''(x)+by'(x)+cy=0$ una EDO lineal homogènia amb coeficiens $b$ i $c$ constants, el polinomi
+$$ \lambda^{2}e^{\lambda x} + b\lambda e^{\lambda x} + c e^{\lambda x} $$
+s'anomena ==polinomi característic== de l'equació.
+```
+
+```ad-met
+title: Mètode
+
+La **solució general** d'una EDO amb coeficients constants dependrà de les **arrels** del seu **polinomi característic**.
+
++ Dos arrels reals diferents $\lambda_{1}$ i $\lambda_{2}$.
+$$ \boxed{y_{h}(x) = C_{1} e^{\lambda_{1}x} + C_{2} e^{\lambda_{2}x}} $$
+
++ Una arrel real doble $\lambda$.
+$$ \boxed{y_{h}(x) = C_{1}e^{\lambda x} + C_{2}xe^{\lambda x}} $$
+
++ Una arrel complexa i la seva conjugada $\lambda=\alpha+\beta i$ i $\lambda=\alpha-\beta i$.
+$$ \boxed{y_{h}(x) = e^{\alpha x} (C_{1}\cos(\beta x) + C_{2}\sin(\beta x))} $$
+```
+````
+
+````ad-met
+title: Solució **particular**
+
+```ad-met
+title: Mètode dels **coeficients indeterminats**
+
+Aquest mètode només funciona si la funció $q(x)$ és una combinació algebraica de
++ exponencials,
++ sinus i cosinus, i
++ polinomis.
+
+Consisteix en:
+
+1. Buscar una solució particular $y_{p}$ de la mateixa forma que $q(x)$ amb coeficients arbitraris.
+	+ Si $y_{p}$ és solució de la homogènia associada, multiplicar-la per $x$ fins que ja no ho sigui.
+2. Substituir $y_{p}$ a l'equació i determinar els valors dels coeficients arbitraris resolent un sistema d'equacions.
+```
+````
