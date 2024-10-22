@@ -16,7 +16,9 @@
                 "file": "Equacions Diferencials Ordinàries.md",
                 "mode": "source",
                 "source": true
-              }
+              },
+              "icon": "lucide-file",
+              "title": "Equacions Diferencials Ordinàries"
             },
             "group": "eaa264a6e3c949cb"
           },
@@ -29,12 +31,13 @@
                 "file": "Modelització i Inferència.md",
                 "mode": "source",
                 "source": true
-              }
+              },
+              "icon": "lucide-file",
+              "title": "Modelització i Inferència"
             },
             "group": "2d4791bea2296a6f"
           }
-        ],
-        "currentTab": 1
+        ]
       },
       {
         "id": "6d524a61fc6f7398",
@@ -49,9 +52,23 @@
                 "file": "Equacions Diferencials Ordinàries.md",
                 "mode": "preview",
                 "source": true
-              }
+              },
+              "icon": "lucide-file",
+              "title": "Equacions Diferencials Ordinàries"
             },
             "group": "eaa264a6e3c949cb"
+          },
+          {
+            "id": "33e4022d35b3eeaf",
+            "type": "leaf",
+            "state": {
+              "type": "release-notes",
+              "state": {
+                "currentVersion": "1.7.4"
+              },
+              "icon": "lucide-file",
+              "title": "Release Notes 1.7.4"
+            }
           },
           {
             "id": "43ffd94bc17e3e74",
@@ -62,7 +79,9 @@
                 "file": "Modelització i Inferència.md",
                 "mode": "preview",
                 "source": true
-              }
+              },
+              "icon": "lucide-file",
+              "title": "Modelització i Inferència"
             },
             "group": "2d4791bea2296a6f"
           }
@@ -87,7 +106,9 @@
               "type": "file-explorer",
               "state": {
                 "sortOrder": "alphabetical"
-              }
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
             }
           },
           {
@@ -102,7 +123,9 @@
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical"
-              }
+              },
+              "icon": "lucide-search",
+              "title": "Search"
             }
           },
           {
@@ -110,7 +133,9 @@
             "type": "leaf",
             "state": {
               "type": "bookmarks",
-              "state": {}
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
             }
           }
         ]
@@ -133,7 +158,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Modelització i Inferència.md",
+                "file": "Equacions Diferencials Ordinàries.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -141,7 +166,9 @@
                 "searchQuery": "",
                 "backlinkCollapsed": false,
                 "unlinkedCollapsed": true
-              }
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for Equacions Diferencials Ordinàries"
             }
           },
           {
@@ -150,10 +177,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Modelització i Inferència.md",
+                "file": "Equacions Diferencials Ordinàries.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
-              }
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from Equacions Diferencials Ordinàries"
             }
           },
           {
@@ -164,7 +193,9 @@
               "state": {
                 "sortOrder": "frequency",
                 "useHierarchy": true
-              }
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
             }
           },
           {
@@ -173,8 +204,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Modelització i Inferència.md"
-              }
+                "file": "Equacions Diferencials Ordinàries.md"
+              },
+              "icon": "lucide-list",
+              "title": "Outline of Equacions Diferencials Ordinàries"
             }
           },
           {
@@ -182,7 +215,9 @@
             "type": "leaf",
             "state": {
               "type": "git-view",
-              "state": {}
+              "state": {},
+              "icon": "git-pull-request",
+              "title": "Source Control"
             }
           }
         ],
@@ -190,8 +225,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 339.5,
-    "collapsed": true
+    "width": 339.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -206,11 +240,11 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "43ffd94bc17e3e74",
+  "active": "33e4022d35b3eeaf",
   "lastOpenFiles": [
+    "Modelització i Inferència.md",
     "Equacions Diferencials Ordinàries.md",
     "gcm-diagnose.log",
-    "Modelització i Inferència.md",
     "IMG_0349.jpeg",
     "Shit.md",
     "IMG_0352.jpeg"
