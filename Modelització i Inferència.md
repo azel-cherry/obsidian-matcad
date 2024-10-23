@@ -40,7 +40,7 @@ $$X\sim N(\mu,\sigma^{2}) \,\,\,\,\text{i}\,\,\,\, \frac{X-\mu}{\sigma}\sim N(0,
 ```
 
 ---
-## Estadístics
+## **Estadístics**
 
 > Donada una mostra aleatòria $X_1,...,X_n$ de $X$, un ==estadístic== és una funció d'aquestes variables i possibles constants.
 
@@ -66,7 +66,7 @@ Si un estadístic s'usa per a estimar el paràmetre $X$, es denotarà $\widehat{
 ```
 
 ---
-#### Distribucions mostrals d'estadístics usuals
+#### **Distribucions mostrals** d'estadístics usuals
 
 > Donat un estadístic funció de la mostra $X_1,...,X_n$ variable aleatòria, la seva **distribució** o **llei** s'anomena ==distribució mostral de l'estadístic==.
 
@@ -100,7 +100,7 @@ Cas particular - **població normal**:
 
 Si $X\sim N(\mu,\sigma^2)$, aleshores
 $$\frac{n\widetilde{S}^2}{\sigma^2} = \frac{1}{\sigma^2}\sum\limits_{i=1}^n(X_i-\mu)^2 \sim \chi_n^2$$
-on $\chi_n^2$ denota la **distribució khi-quadrat** de grau $n$.
+on $\chi_n^2$ denota la [[#^a5d13c | distribució khi-quadrat]] de grau $n$.
 ```
 
 ```ad-teor
@@ -116,13 +116,13 @@ Sigui $X \sim N(\mu,\sigma^2)$, aleshores:
 $$
 \frac{\overline{X}-\mu}{\frac{\sqrt{S^{2}}}{\sqrt{n}}} \sim t_{n-1}
 $$
-on $t_{n-1}$ denota la **distribució $\boldsymbol t$ de Student** amb paràmetre $n-1$.
+on $t_{n-1}$ denota la [[#^2fffc5 | distribució t de Student]] amb paràmetre $n-1$.
 ```
 
 ````
 
 `````ad-not
-title: Nota: *Distribució $\boldsymbol\chi^2$*
+title: Distribució $\boldsymbol{\chi^2}$
 
 ````ad-def
 Sigui $Z_1,...,Z_\nu$ variables aleatòries independents i idènticament distribuïdes amb llei $N(0,1)$.
@@ -134,29 +134,23 @@ $$Y= \sum\limits_{i=1}^\nu Z^2_i. $$
 ````ad-prop
 title: Propietats
 + **Funció de densitat**:
-$$
-f_{Y}(X) = \begin{cases}
+$$ f_{Y}(X) = \begin{cases}
 0 & \text{si } x\leq 0 \\
 \displaystyle\frac{1}{2^{\frac{\nu}{ 2}}\,\Gamma\left(\frac{\nu}{2}\right)} x^{\frac{\nu}{2}-1} e^{-\frac{x}{2}} & \text{si } x>0 \\
-\end{cases}
-$$
+\end{cases} $$
 on $\Gamma$ és la funció gamma d'Euler.
 
 ```ad-not
 title: Funció gamma d'Euler
 
-La ==funció gamma d'Euler== és
-$$
-\Gamma(\alpha) = \int_{0}^{\infty} t^{\alpha-1} e^{-t} dt, 
-$$
-que compleix el següent:
-$$ \begin{align}
-\Gamma(\alpha+1) &= \alpha\Gamma(\alpha) \\
-\Gamma(n+1) &= n! \\
-\Gamma(1)  &= 1 \\
-\Gamma\left(1/2\right) &= \sqrt{\pi }
-\end{align}
-$$
+La ==funció **gamma d'Euler**== és
+$$ \Gamma(\alpha) = \int_{0}^{\infty} t^{\alpha-1} e^{-t} dt \,,$$
+
+que compleix:
++ $\Gamma(\alpha+1) = \alpha\Gamma(\alpha)$
++ $\Gamma(n+1) = n!$
++ $\Gamma(1)  = 1$
++ $\Gamma\left(1/2\right) = \sqrt{\pi }$
 ```
 
 + **Funció de distribució**: Mitjançant taules.
@@ -182,8 +176,10 @@ $$ Y = \chi^2_{\nu_{1}+\dots+\nu_{n}}. $$
 ````
 `````
 
+^a5d13c
+
 ````ad-not
-title: Nota: *Distribució $\boldsymbol t$ de Student*
+title: Distribució **$\boldsymbol t$ de Student**
 
 ```ad-def
 Siguin $Z\sim N(0,1)\,$ i $\,Y\sim\chi^2_{\nu}$ v.a.s independents, aleshores la llei de la v.a.
@@ -211,6 +207,8 @@ $$
 ```
 ````
 
+^2fffc5
+
 En resum, per una mostra de mida $n$ amb $X\sim N(\mu,\sigma^2)$:
 
 ```mehrmaid
@@ -235,7 +233,7 @@ graph LR;
 ```
 
 ---
-####  Distribucions mostrals asimptòtiques
+####  Distribucions mostrals **asimptòtiques**
 
 ###### Mitjana mostral
 
@@ -283,7 +281,7 @@ graph TB;
 ```
 
 ---
-## Estadístics d'ordre
+## Estadístics **d'ordre**
 
 > Donada una mostra de mida $n$ de $X_{1},\dots,X_{n}$, els ==estadístics d'ordre== son les variables aleatòries:
 >
@@ -334,7 +332,7 @@ $$ F_{X_{(r)}}(t) = \sum_{i=r}^n \binom{n}{i} (F_{X}(t))^i \,(1-F_{X}(t))^{n-i} 
 ```
 
 ---
-## Intervals de confiança
+## **Intervals de confiança**
 
 Les estimacions puntuals no ens diuen res sobre la **variabilitat** de les dades, ni quina és la nostra **confiança** que aquesta estimació s'acosti al valor real. Per aquest motiu introduïm:
 
@@ -349,7 +347,7 @@ Tot nivell de confiança $\gamma$ té associat un nivell complementari $\alpha =
 ```
 
 ```ad-not
-title: Interpretació de l'IC
+title: **Interpretació** de l'IC
 
 De totes les possibles mostres de mida $n$, un $100\gamma$% donarà un interval que contindrà el veritable valor de $\theta$. 
 
@@ -368,7 +366,7 @@ on $t_{1}=T_{1}(\omega)$ i $t_{2}=T_{2}(\omega)$.
 En el cas de lleis **contínues** es podrà assolir $\gamma$ **exactament**. Quan siguin **discretes** pot ser que no es pugui; en tot cas hem d'intentar trobar l'**interval més petit** possible.
 ```
 
-#### Mètode del pivot
+#### Mètode del **pivot**
 
 ```ad-def
 title: *Pivot*
@@ -384,7 +382,9 @@ Un ==pivot== és una v.a. $T$ tal que:
 
 Veurem com s'utilitza aquest mètode per trobar l'interval de confiança de diverses variables aleatòries.
 
-###### Població normal
+###### Població **normal**
+
+Considerem $X\sim N(\mu,\sigma)$ de mida $n$.
 
 ````ad-def
 title: *Quantila*
@@ -395,11 +395,11 @@ $$ P(Z\leq z_{\beta}) = \beta \,.$$
 ````ad-met
 title: IC de la **mitjana $\boldsymbol\mu$**
 
-> **Coneixem $\boldsymbol\sigma$:**
+> **Coneixem $\boldsymbol\sigma$ :**
 $$ IC_{\gamma}(\mu) = \left[\,\overline{x} - z_{1-\frac{\alpha}{2}} \frac{\sigma}{\sqrt{n}}\,,\quad \overline{x} + z_{1-\frac{\alpha}{2}} \frac{\sigma}{\sqrt{n}}\right] $$
 
-```ad-def ^lqbl5
-title: *Error*
+```ad-prop
+title: Error
 
 L'==error== de precisió de l'interval de confiança $IC_{\gamma}(\mu)$ és
 $$ e = z_{1-\frac{\alpha}{2}} \frac{\sigma}{\sqrt{n}} \,,$$
@@ -413,20 +413,20 @@ que satisfà:
 ```
 
 ```ad-met
-title: Mida mínima de la mostra
+title: **Mida mínima** de la mostra
 
 Fixant un error màxim $\varepsilon$, la mida mínima de la mostra és
 $$ n = \left\lceil \left( \frac{z_{1-\frac{\alpha}{2}}\,\sigma}{\varepsilon} \right)^{2} \right\rceil \,.$$
 ```
 
-> **No coneixem $\boldsymbol\sigma$:**
+> **No coneixem $\boldsymbol\sigma$ :**
 $$ IC_{\gamma}(\mu) = \left[\,\overline{x} - t_{n-1,\,1-\frac{\alpha}{2}} \frac{s}{\sqrt{n}}\,, \,\overline{x} + t_{n-1,\,1-\frac{\alpha}{2}} \frac{s}{\sqrt{n}}\right] \,,$$
 on $t$ és la llei de Student, i $s$ és la desviació típica mostral.
 
 En aquest cas l'interval sol ser més ampli i per tant menys precís.
 
-```ad-def
-title: *Error*
+```ad-prop
+title: Error
 
 L'==error== de precisió de l'interval de confiança $IC_{\gamma}(\mu)$ és
 $$ e = t_{n-1,\,1-\frac{\alpha}{2}} \frac{S}{\sqrt{n}} \,,$$
@@ -441,7 +441,7 @@ que satisfà:
 ```
 
 ```ad-met
-title: Mida mínima de la mostra
+title: **Mida mínima** de la mostra
 
 Fixant un error màxim $\varepsilon$, la mida mínima de la mostra és
 $$ n = \left\lceil \left( \frac{t_{n-1,\,1-\frac{a}{2}}\,S}{\varepsilon} \right)^{2} \right\rceil \,.$$
@@ -457,12 +457,12 @@ Aquesta expressió té dos problemes:
 ````ad-met
 title: IC de la **variància $\boldsymbol\sigma^{2}$**
 
-> **Coneixem $\boldsymbol\mu$:**
+> **Coneixem $\boldsymbol\mu$ :**
 $$ IC_{\gamma}(\sigma^{2}) = \left[ \frac{n\,\tilde{s}^{2}}{\chi^{2}_{n,\,1-\frac{\alpha}{2}}},\quad \frac{n\,\tilde{s}^{2}}{\chi^{2}_{n,\,\frac{\alpha}{2}}} \right] \,,$$
 on $\tilde{s}^{2}$ és la quasivariància mostral.
 
 ```ad-met
-title: Aproximació de $\boldsymbol\chi^{2}$ amb $\boldsymbol n$ gran
+title: **Aproximació** de $\boldsymbol\chi^{2}$ amb $\boldsymbol n$ gran
 
 Quan la mida de la mostra és molt gran, el nombre de graus de llibertat de $\chi^{2}$ és gran i no apareix a les taules.
 
@@ -473,12 +473,12 @@ $$\begin{align}
 \end{align}$$
 ```
 
-> **No coneixem $\boldsymbol\mu$:**
+> **No coneixem $\boldsymbol\mu$ :**
 $$ IC_{\gamma}(\sigma^{2}) = \left[ \frac{(n-1)s^{2}}{\chi^{2}_{n-1,\,1-\frac{\alpha}{2}}},\quad \frac{(n-1)s^{2}}{\chi^{2}_{n-1,\,\frac{\alpha}{2}}} \right] \,,$$
 on $s^{2}$ és la variància mostral.
 
 ```ad-met
-title: Aproximació de $\boldsymbol\chi^{2}$ amb $\boldsymbol n$ gran
+title: **Aproximació** de $\boldsymbol\chi^{2}$ amb $\boldsymbol n$ gran
 Quan la mida de la mostra és molt gran, el nombre de graus de llibertat de $\chi^{2}$ és gran i no apareix a les taules.
 
 En aquests casos es poden fer servir les aproximacions següents:
@@ -489,42 +489,43 @@ $$\begin{align}
 ```
 ````
 
-###### Distribucions asimptòtiques
+---
+###### Distribucions **asimptòtiques**
 
 ```ad-met
 title: IC de la **mitjana $\boldsymbol\mu$**
 
-Pel TCL sabem que si amb una v.a. de qualsevol distribució  tenim $n$ prou gran ($n\geq30$), aleshores es comporta similarment a una llei normal.
+Pel TCL sabem que si una v.a. de qualsevol distribució té mida $n$ prou gran $\boxed{\boldsymbol{n\geq30}}$, es comportarà similarment a una llei normal. Considerem, doncs, $X\sim N(\mu,\sigma)$.
 
-> **Coneixem $\boldsymbol\sigma$:**
+Aleshores:
+
 $$ IC_{\gamma}(\mu) = \left[\,\overline{x} - z_{1-\frac{\alpha}{2}} \frac{\sigma}{\sqrt{n}}\,,\quad \overline{x} + z_{1-\frac{\alpha}{2}} \frac{\sigma}{\sqrt{n}}\right] $$
 
-> **No coneixem $\boldsymbol\sigma$:**
-$$ IC_{\gamma}(\mu) = \left[\,\overline{x} - z_{1-\frac{\alpha}{2}} \frac{s}{\sqrt{n}}\,,\quad \overline{x} + z_{1-\frac{\alpha}{2}} \frac{s}{\sqrt{n}}\right] \,,$$
-on $s$ és la desviació típica mostral.
+En cas de **no conèixer $\boldsymbol\sigma$**, podem substituir-la per la **desviació típica mostral $\boldsymbol s$**.
 
-Quant a l'error i la mida mínima de la població, aquests són anàlegs als del cas de la [[#^05fecc | distribució normal]].
+Quant a l'**error** i la **mida mínima** de la població, aquests són anàlegs als del cas de la [[#^05fecc | distribució normal]].
 ```
+
+^99cbc9
 
 ````ad-met
 title: IC de la **proporció $\boldsymbol p$**
 
-En el cas que $X\sim B(p)$ on $p$ no és coneguda:
+Considerem $X\sim B(p)$ de mida $n$.
 $$ IC_{\gamma}(p) = \left[\, \hat{\hat{p}} - z_{1-\frac{\alpha}{2}} \sqrt{\frac{\hat{\hat{p}}(1-\hat{\hat{p}})}{n}} ,\quad \hat{\hat{p}} + z_{1-\frac{\alpha}{2}} \sqrt{\frac{\hat{\hat{p}}(1-\hat{\hat{p}})}{n}} \,\,\right] \,,$$
 on $\hat{\hat{p}}=\overline{x}$ és la realització de $\hat{p}=\overline{X}$.
 
-Això s'aplica si es compleix que
-$$ n\,\hat{\hat{p}} \,(1-\hat{\hat{p}}) \geq 18 \,.$$
+Això es compleix quan $\,\boxed{\,\boldsymbol{ n\,\hat{\hat{p}} \,(1-\hat{\hat{p}}) \geq 18 \,}}$ .
 
-```ad-def
-title: *Error*
+```ad-prop
+title: Error
 
 L'==error== de precisió de l'interval de confiança $IC_{\gamma}(p)$ és
 $$ z_{1-\frac{\alpha}{2}} \sqrt{\frac{\hat{\hat{p}}\,(1-\hat{\hat{p}})}{n}} \,.$$
 ```
 
 ```ad-met
-title: Mida de la mostra
+title: **Mida mínima** de la mostra
 
 Per determinar la mida mínima de la mostra per tal que l'error no sobrepassi un cert valor $\varepsilon$, **no podem fer servir $\hat{\hat{p}}$** ja que per determinar aquest valor necessitem primer la mida de la mostra. 
 
@@ -537,7 +538,10 @@ A posteriori de construir l'interval de confiança serà adient comprovar si l'e
 ```
 ````
 
-###### Altres distribucions o distribucions desconegudes
+---
+###### **Altres** distribucions o distribucions **desconegudes**
+
+Quan volem estimar un paràmetre desconegut d'una v.a. $X$ de mida $n$ però aquesta **no és prou gran** per poder aplicar distribucions asimptòtiques, podem trobar un interval (generalment **molt menys precís**) fent servir la desigualtat de Txebixev.
 
 ```ad-prop
 title: Desigualtat de Txebixev
@@ -546,5 +550,139 @@ Sigui $Y$ una v.a., per a tot $\rho>0$ es compleix:
 $$ P(\,|Y-\text{E}(Y)|>\rho) \leq \frac{\text{Var}(Y)}{\rho^{2}} $$
 ```
 
-La desigualtat de Txebixev ens permet fer afirmacions sobre la probabilitat de **desviacions grans** d'una variable aleatòria respecte de la seva mitjana, a partir de la seva variància.
+```ad-met
+title: IC de la **mitjana $\boldsymbol\mu$**
 
+$$ IC_{\gamma}(\mu) = \left[\, \overline{x} - \sqrt{\frac{\sigma^{2}}{n\,\alpha}} ,\quad \overline{x} + \sqrt{\frac{\sigma^{2}}{n\,\alpha}} \,\right] $$
+
+En cas de **no conèixer $\boldsymbol\sigma$**, es pot substituir per una **bona aproximació** $\widehat{\text{Var}(X)}$ o en el pitjor dels casos per la **variància mostral** $\boldsymbol{s^{2}}$.
+```
+
+---
+## **Comparació** de dues poblacions
+
+Els intervals de confiança també es poden fer servir per comparar dues poblacions $X^{(1)}$ i $X^{(2)}$.
+
+#### Mostres **independents**
+
+En aquest cas les mostres de les dues poblacions no tindran cap relació entre elles, és  a dir que els seus **vectors aleatoris** ($X_{1}^{(1)},\dots,X_{n_{1}}^{(2)}$) i ($X_{1}^{(2)},\dots,X_{n_{2}}^{(2)}$) seran **independents**.
+
+###### Poblacions **normals**
+
+Considerem $X^{(1)} \sim N(\mu_{1},\sigma_{1})$ de mida $n_{1}$ i $X^{(2)} \sim N(\mu_{2},\sigma_{2})$ de mida $n_{2}$.
+
+````ad-met
+title: IC de la **diferència** de **mitjanes $\boldsymbol{\mu_{1}-\mu_{2}}$**
+
+**Coneixem $\boldsymbol{\sigma_{1}^{2}}$ i $\boldsymbol{\sigma_{2}^{2}}$ :**
+> $$ IC_{\gamma}(\mu_{1}-\mu_{2}) = \left[ (\overline{x_{1}}-\overline{x_{2}}) \,\mp\, z_{1-\frac{\alpha}{2}} \sqrt{\frac{\sigma_{1}^{2}}{n_{1}} + \frac{\sigma_{2}^{2}}{n_{2}}} \,\right] $$
+
+$\,$
+**No coneixem $\boldsymbol{\sigma^{2}}$ i $\boldsymbol{\sigma_{2}^{2}}$ però podem suposar $\boldsymbol{\sigma_{1}^{2}=\sigma_{2}^{2}}$ :**
+> $$ IC_{\gamma}(\mu_{1}-\mu_{2}) = \left[ (\overline{x_{1}}-\overline{x_{2}}) \,\mp\, t_{n_{1}+n_{2}-2,\,1-\frac{\alpha}{2}}\, s \,\sqrt{\frac{1}{n_{1}} + \frac{1}{n_{2}}} \,\right] $$
+on $\boldsymbol{s=s_{1}=s_{2}}$ és la **desviació típica mostral** de les dues mostres, calculada mitjançant una mitjana ponderada
+$$ S = \frac{(n_{1}-1)\,S_{1}^{2} + (n_{2}-1)\,S_{2}^{2}}{n_{1}+n_{2}-2} \,.$$
+
+$\,$
+**No coneixem $\boldsymbol{\sigma_{1}^{2}}$ i $\boldsymbol{\sigma_{2}^{2}}$ i suposem $\boldsymbol{\sigma_{1}^{2}\neq\sigma_{2}^{2}}$ :**
+> $$ IC_{\gamma}(\mu_{1}-\mu_{2}) = \left[ (\overline{x_{1}}-\overline{x_{2}}) \,\mp\, t_{\nu,\,1-\frac{\alpha}{2}} \sqrt{\frac{s_{1}^{2}}{n_{1}} + \frac{s_{2}^{2}}{n_{2}}} \,\right] $$
+on $\boldsymbol{s_{1}}$ i $\boldsymbol{s_{2}}$ son les **desviacions típiques mostrals** i
+$$\nu = \frac{\left( \frac{S_{1}^{2}}{n_{1}} + \frac{S_{2}^{2}}{n_{2}} \right)^{2}}{\frac{\left( \frac{S_{1}^{2}}{n_{1}} \right)^{2}}{n_{1}-1} + \frac{\left( \frac{S_{2}^{2}}{n_{2}} \right)^{2}}{n_{2}-1} } \,.$$
+
+```ad-not
+Observem que $\nu$ pot ser un nombre no enter i per tant s'ha d'**arrodonir** a l'enter més pròxim.
+```
+````
+
+````ad-met
+title: IC del **quocient** de **variàncies $\boldsymbol{\frac{\sigma_{2}}{\sigma_{1}}}$**
+
+$$ IC_{\gamma}\left( \frac{\sigma_{2}^{2}}{\sigma_{1}^{2}} \right) = \left[ F_{n_{1}-1,\,n_{2}-1,\,\frac{\alpha}{2}} \frac{s_{2}^{2}}{s_{1}^{2}} ,\quad F_{n_{1}-1,\,n_{2}-1,\,1-\frac{\alpha}{2}} \frac{s_{2}^{2}}{s_{1}^{2}} \right] $$
+
+```ad-not
++ Aquest interval **no és simètric** en $\frac{s_{2}^{2}}{s_{1}^{2}}$, però sí que el conté.
++ Si les varibales no tenen distribució normal, no es podrà fer servir aquest interval i s'hauran d'utilitzar mètodes no paramètrics.
+```
+````
+
+`````ad-not
+title: Distribució **$\boldsymbol F$ de Fisher-Snedecor**
+
+````ad-def
+Siguin $X\sim\chi_{n}^{2}$ i $Y\sim\chi_{m}^{2}$ v.a.s independents, aleshores la llei de la variable aleatòria
+$$ F = \frac{\frac{X}{n}}{\frac{Y}{n}} $$
+es diu ==$F$ de Fisher-Snedecor== amb $n$ graus de llibertat al numerador i $m$ al denominador i s'escriu $F\sim F_{n,m}$.
+````
+
+````ad-prop
+title: Propietats
+
++ **Funció de densitat:**
+$$ f_{F}(x) = \begin{cases}
+\displaystyle\frac{\Gamma\left(\frac{n+m}{2}\right)}{\Gamma\left( \frac{n}{2} \right) \Gamma\left( \frac{m}{2} \right)} \left( \frac{n}{m} \right)^{\frac{n}{2}} x^{\frac{n}{2}-1} \left( 1+\frac{n}{m}x \right)^{-\frac{n+m}{2}} \quad&\text{si } x\geq 0 \\[0.5em]
+0 \quad&\text{si } x<0
+\end{cases} $$
+on $\Gamma(\alpha)$ és la [[#^a5d13c | funció gamma d'Euler]].
+
++ **Funció de distribució:** Mitjançant taules.
+````
+`````
+
+###### Distribucions **asimptòtiques**
+
+Considerem $X^{(1)}$ de mida $n_{1}$ i $X^{(2)}$ de mida $n_{2}$ prou grans.
+
+```ad-met
+title: IC de la **diferència** de **mitjanes $\boldsymbol{\mu_{1}-\mu_{2}}$**
+
+Si les variables no són normals però $\boxed{\boldsymbol{n_{i}\geq 30}}$ per $i\in\{1,2\}$, es podrà aplicar el TCL i, considerant $X^{(1)} \sim N(\mu_{1},\sigma_{1})$ i $X^{(2)} \sim N(\mu_{2},\sigma_{2})$, tenim:
+
+**Coneixem $\boldsymbol{\sigma_{1}^{2}}$ i $\boldsymbol{\sigma_{2}^{2}}$ :**
+> $$ IC_{\gamma}(\mu_{1}-\mu_{2}) = \left[ (\overline{x_{1}}-\overline{x_{2}}) \,\mp\, z_{1-\frac{\alpha}{2}} \sqrt{\frac{\sigma_{1}^{2}}{n_{1}} + \frac{\sigma_{2}^{2}}{n_{2}}} \,\right] $$
+que és igual al del cas normal.
+
+$\,$
+**No coneixem $\boldsymbol{\sigma^{2}}$ i $\boldsymbol{\sigma_{2}^{2}}$ però podem suposar $\boldsymbol{\sigma_{1}^{2}=\sigma_{2}^{2}}$ :**
+> $$ IC_{\gamma}(\mu_{1}-\mu_{2}) = \left[ (\overline{x_{1}}-\overline{x_{2}}) \,\mp\, z_{1-\frac{\alpha}{2}}\, s \,\sqrt{\frac{1}{n_{1}} + \frac{1}{n_{2}}} \,\right] $$
+on $\boldsymbol{s=s_{1}=s_{2}}$ és la **desviació típica mostral** de les dues mostres, calculada mitjançant una mitjana ponderada
+$$ S = \frac{(n_{1}-1)\,S_{1}^{2} + (n_{2}-1)\,S_{2}^{2}}{n_{1}+n_{2}-2} \,.$$
+
+$\,$
+**No coneixem $\boldsymbol{\sigma_{1}^{2}}$ i $\boldsymbol{\sigma_{2}^{2}}$ i suposem $\boldsymbol{\sigma_{1}^{2}\neq\sigma_{2}^{2}}$ :**
+> $$ IC_{\gamma}(\mu_{1}-\mu_{2}) = \left[ (\overline{x_{1}}-\overline{x_{2}}) \,\mp\, z_{1-\frac{\alpha}{2}} \sqrt{\frac{s_{1}^{2}}{n_{1}} + \frac{s_{2}^{2}}{n_{2}}} \,\right] $$
+on $\boldsymbol{s_{1}}$ i $\boldsymbol{s_{2}}$ son les **desviacions típiques mostrals**.
+```
+
+```ad-met
+title: IC de la **diferència** de **proporcions $\boldsymbol{p_{1}-p_{2}}$**
+
+Considerem $X^{(1)} \sim B(p_{1})$ de mida $n_{1}$ i $X^{(1)} \sim B(p_{2})$ de mida $n_{2}$.
+
+$$ IC_{\gamma}(p_{1}-p_{2}) = \left[ (\hat{\hat{p_{1}}}-\hat{\hat{p_{2}}}) \,\mp\, z_{1-\frac{\alpha}{2}} \sqrt{\bar{\bar{p}}(1-\bar{\bar{p}})\left( \frac{1}{n_{1}} + \frac{1}{n_{2}} \right)} \right] $$
+on on $\hat{\hat{p_{i}}}=\overline{x^{(i)}}$ és la realització de $\hat{p_{i}}=\overline{X^{(i)}}$ i
+$$\displaystyle \bar{\bar{p}}=\frac{n_{1}\hat{\hat{p_{1}}}+n_{2}\hat{\hat{p_{2}}}}{n_{1}+n_{2}},$$
+
+Això es compleix quan $\,\boxed{\,\boldsymbol{n_{i}\hat{\hat{p_{i}}}\,(1-\hat{\hat{p_{i}}}) \geq 18\,}}$ amb $i \in \{1,2\}\,$.
+```
+
+---
+#### Mostres **aparellades**
+
+Un cas generalment més interessant és prendre mostres de les dues poblacions que estiguin relacionades.
+
+Prenent $(X_{1}^{(1)},\dots,X_{n}^{(1)})$ i $(X_{1}^{(2)},\dots,X_{n}^{(2)})$, es diu que les dues poblacions estan ==aparellades== si existeix una certa dependència entre $X_{i}^{(1)}$ i $X_{i}^{(2)}$ per tot $i\in\{1,\dots,n\}$.
+
+###### Poblacions **normals**
+
+Considerem $X^{(1)}\sim N(\mu_{1},\sigma_{1})$ i $X^{(2)}\sim N(\mu_{2},\sigma_{2})$.
+
+Les diferències $D_{i} = X_{i}^{(1)}-X_{i}^{(2)}$ formen una v.a.
+$$ D \sim N(\mu,\sigma^{2}) $$
+on $\boldsymbol{\mu=\mu_{1}-\mu_{2}}$ i $\sigma^{2}$ és la **variància desconeguda**.
+
+```ad-met
+title: IC de la **diferència** de **mitjanes $\boldsymbol\mu$**
+
+$$ IC_{\gamma}(\mu) = \left[ \overline{d} \,\mp\, t_{n-1,\,1-\frac{\alpha}{2}} \,\frac{s_{D}}{\sqrt{n}} \right] $$
+on $\overline{d}$ és la mitjana mostral i $s_{D}$ la desviació mostral de la realització de $D$.
+```

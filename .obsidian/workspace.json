@@ -37,8 +37,7 @@
             },
             "group": "1fff2f9ebd4a94d4"
           }
-        ],
-        "currentTab": 1
+        ]
       },
       {
         "id": "9b80bb20343af049",
@@ -52,7 +51,7 @@
               "state": {
                 "file": "Modelització i Inferència.md",
                 "mode": "preview",
-                "source": true
+                "source": false
               },
               "icon": "lucide-file",
               "title": "Modelització i Inferència"
@@ -74,8 +73,7 @@
             },
             "group": "1fff2f9ebd4a94d4"
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -229,10 +227,10 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "6decfb820efe0cf2",
+  "active": "d7a3f801f0c5ce9b",
   "lastOpenFiles": [
-    "Modelització i Inferència.md",
     "Equacions Diferencials Ordinàries.md",
+    "Modelització i Inferència.md",
     "^lqbl5.md",
     "gcm-diagnose.log",
     "IMG_0349.jpeg",
