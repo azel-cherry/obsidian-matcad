@@ -313,21 +313,21 @@ $$IQR = Q_{3} - Q_{1}$$
 ```
 
 ```ad-prop
-title: Distribució del màxim
+title: Distribució del **màxim**
 
 Sigui $X$ una v.a. amb funció de distribució $F_{X}$, i $X_{1},\dots,X_{n}$ una mostra de mida $n$, aleshores la **funció de distribució** de la v.a. **màxim** és, per tot $t\in\mathbb{R}$:
 $$ F_{X_{(n)}}(t) = (F_{X}(t))^n $$
 ```
 
 ```ad-prop
-title: Distribució del mínim
+title: Distribució del **mínim**
 
 Sigui $X$ una v.a. amb funció de distribució $F_{X}$, i $X_{1},\dots,X_{n}$ una mostra de mida $n$, aleshores la **funció de distribució** de la v.a. **mínim** és, per tot $t\in\mathbb{R}$:
 $$ F_{X_{(1)}}(t) = 1-(1-F_{X}(t))^n $$
 ```
 
 ```ad-prop
-title: Distribució de l'$r$-èssim estadístic d'ordre
+title: Distribució de l'**$\boldsymbol r$-èssim estadístic d'ordre**
 
 Sigui $X$ una v.a. amb funció de distribució $F_{X}$, i $X_{1},\dots,X_{n}$ una mostra de mida $n$, aleshores la **funció de distribució** de la v.a. **$r$-èssim estadístic d'ordre** és, per tot $t\in\mathbb{R}$:
 $$ F_{X_{(r)}}(t) = \sum_{i=r}^n \binom{n}{i} (F_{X}(t))^i \,(1-F_{X}(t))^{n-i} $$
@@ -340,5 +340,211 @@ Les estimacions puntuals no ens diuen res sobre la **variabilitat** de les dades
 
 > Sigui $X$ una variable aleatòria i $\theta$  qualsevol paràmetre desconegut de $X$, i fixant un valor $\gamma\in(0,1)$.
 > 
-> Un ==interval de confiança== és una parella de nombres reals $t_{1}<t_{2}$ tals que $\theta\in(t_{1},t_{2})$ amb un ==nivell de confiança== $\gamma$. 
+> Un ==interval de confiança== (IC) és una parella de nombres reals $t_{1}<t_{2}$ tals que $\theta\in(t_{1},t_{2})$ amb un ==nivell de confiança== $\gamma$. 
+
+```ad-def
+title: *Risc*
+
+Tot nivell de confiança $\gamma$ té associat un nivell complementari $\alpha = 1-\gamma$ anomenat ==risc==.
+```
+
+```ad-not
+title: Interpretació de l'IC
+
+De totes les possibles mostres de mida $n$, un $100\gamma$% donarà un interval que contindrà el veritable valor de $\theta$. 
+
+Generalment només tindrem una mostra i per tant un interval. En aquest cas tindrem una confiança $\gamma$ que el nostre interval contingui el valor real de $\theta$.
+```
+
+```ad-met
+title: Trobar l'interval de confiança
+
+Sigui $x_{1},\dots,x_{n}$ una realització de la mostra $X_{1},\dots,X_{n}$ amb $x_{i}=X_{i}(\omega)$, $\omega\in\Omega$.
+
+Es tracta de trobar dos estadístics $T_{1}$ i $T_{2}$ tal que
+$$ P(T_{1} \leq \theta \leq T_{2}) \geq \gamma \,,$$
+on $t_{1}=T_{1}(\omega)$ i $t_{2}=T_{2}(\omega)$.
+
+En el cas de lleis **contínues** es podrà assolir $\gamma$ **exactament**. Quan siguin **discretes** pot ser que no es pugui; en tot cas hem d'intentar trobar l'**interval més petit** possible.
+```
+
+#### Mètode del pivot
+
+```ad-def
+title: *Pivot*
+
+Sigui $\theta$ un paràmetre desconegut de la mostra $X_{1},\dots,X_{n}$.
+
+Un ==pivot== és una v.a. $T$ tal que:
++ $T=T(X_{1},\dots,X_{n}\,;\,\theta)$
++ $T$ no depèn de cap altre paràmetre desconegut.
++ La llei de $T$ és coneguda.
++ Es pot aïllar (o pivotar) per tot valor de la mostra.
+```
+
+Veurem com s'utilitza aquest mètode per trobar l'interval de confiança de diverses variables aleatòries.
+
+###### Població normal
+
+````ad-def
+title: *Quantila*
+Una ==quantila== d'ordre $\beta$ ($z_{\beta}$) és el valor d'una distribució normal estàndard que té una probabilitat acumulada de $\beta$, és a dir
+$$ P(Z\leq z_{\beta}) = \beta \,.$$
+````
+
+````ad-met
+title: IC de la **mitjana $\boldsymbol\mu$**
+
+> **Coneixem $\boldsymbol\sigma$:**
+$$ IC_{\gamma}(\mu) = \left[\,\overline{x} - z_{1-\frac{\alpha}{2}} \frac{\sigma}{\sqrt{n}}\,,\quad \overline{x} + z_{1-\frac{\alpha}{2}} \frac{\sigma}{\sqrt{n}}\right] $$
+
+```ad-def ^lqbl5
+title: *Error*
+
+L'==error== de precisió de l'interval de confiança $IC_{\gamma}(\mu)$ és
+$$ e = z_{1-\frac{\alpha}{2}} \frac{\sigma}{\sqrt{n}} \,,$$
+que satisfà:
++ $P(\,|\overline{X}-\mu|\leq e) = \gamma$
++ És la semi-amplitud de l'interval de confiança. Com més gran l'error, menys precís l'IC i menys informació ens proporciona.
++ Depèn de la mida mostral, la desviació típica poblacional, i el nivell de confiança. És una funció:
+	+ decreixent de $n$.
+	+ creixent de $\sigma$.
+	+ decreixent $\gamma$.
+```
+
+```ad-met
+title: Mida mínima de la mostra
+
+Fixant un error màxim $\varepsilon$, la mida mínima de la mostra és
+$$ n = \left\lceil \left( \frac{z_{1-\frac{\alpha}{2}}\,\sigma}{\varepsilon} \right)^{2} \right\rceil \,.$$
+```
+
+> **No coneixem $\boldsymbol\sigma$:**
+$$ IC_{\gamma}(\mu) = \left[\,\overline{x} - t_{n-1,\,1-\frac{\alpha}{2}} \frac{s}{\sqrt{n}}\,, \,\overline{x} + t_{n-1,\,1-\frac{\alpha}{2}} \frac{s}{\sqrt{n}}\right] \,,$$
+on $t$ és la llei de Student, i $s$ és la desviació típica mostral.
+
+En aquest cas l'interval sol ser més ampli i per tant menys precís.
+
+```ad-def
+title: *Error*
+
+L'==error== de precisió de l'interval de confiança $IC_{\gamma}(\mu)$ és
+$$ e = t_{n-1,\,1-\frac{\alpha}{2}} \frac{S}{\sqrt{n}} \,,$$
+que satisfà:
++ $P(\,|\overline{X}-\mu|\leq e) = \gamma$
++ És la semi-amplitud de l'interval de confiança.
+	Com més gran l'error, menys precís l'IC i menys informació ens proporciona.
++ Depèn de la mida mostral, la desviació típica mostral, i el nivell de confiança. És una funció:
+	+ decreixent de $n$.
+	+ creixent de $S$.
+	+ decreixent $\gamma$.
+```
+
+```ad-met
+title: Mida mínima de la mostra
+
+Fixant un error màxim $\varepsilon$, la mida mínima de la mostra és
+$$ n = \left\lceil \left( \frac{t_{n-1,\,1-\frac{a}{2}}\,S}{\varepsilon} \right)^{2} \right\rceil \,.$$
+
+Aquesta expressió té dos problemes:
++ **$\boldsymbol S$ és aleatori.**
+	Si es coneix una afitació $\sigma<\sigma_{0}$, es pot substituir per $S$.
++ **$\boldsymbol t$ depèn de $\boldsymbol n$.**
+	Si esperem que $n$ sigui gran (que sol passar quan volem un error petit), es pot substituir $t_{n-1,\,1-\frac{\alpha}{2}}$ per $z_{1-\frac{\alpha}{2}}$. Si no, s'haurà de resoldre per tempteig mitjançant les taules de $t$ de Student.
+```
+````
+
+````ad-met
+title: IC de la **variància $\boldsymbol\sigma^{2}$**
+
+> **Coneixem $\boldsymbol\mu$:**
+$$ IC_{\gamma}(\sigma^{2}) = \left[ \frac{n\,\tilde{s}^{2}}{\chi^{2}_{n,\,1-\frac{\alpha}{2}}},\quad \frac{n\,\tilde{s}^{2}}{\chi^{2}_{n,\,\frac{\alpha}{2}}} \right] \,,$$
+on $\tilde{s}^{2}$ és la quasivariància mostral.
+
+```ad-met
+title: Aproximació de $\boldsymbol\chi^{2}$ amb $\boldsymbol n$ gran
+
+Quan la mida de la mostra és molt gran, el nombre de graus de llibertat de $\chi^{2}$ és gran i no apareix a les taules.
+
+En aquests casos es poden fer servir les aproximacions següents:
+$$\begin{align}
+\chi^{2}_{n,\,1-\frac{\alpha}{2}} &\approx \frac{(\sqrt{2n-1}+z_{1-\frac{\alpha}{2}})^2}{2} \\[0.7em]
+\chi^{2}_{n,\,\frac{\alpha}{2}} &\approx \frac{(\sqrt{2n-1}-z_{1-\frac{\alpha}{2}})^2}{2}
+\end{align}$$
+```
+
+> **No coneixem $\boldsymbol\mu$:**
+$$ IC_{\gamma}(\sigma^{2}) = \left[ \frac{(n-1)s^{2}}{\chi^{2}_{n-1,\,1-\frac{\alpha}{2}}},\quad \frac{(n-1)s^{2}}{\chi^{2}_{n-1,\,\frac{\alpha}{2}}} \right] \,,$$
+on $s^{2}$ és la variància mostral.
+
+```ad-met
+title: Aproximació de $\boldsymbol\chi^{2}$ amb $\boldsymbol n$ gran
+Quan la mida de la mostra és molt gran, el nombre de graus de llibertat de $\chi^{2}$ és gran i no apareix a les taules.
+
+En aquests casos es poden fer servir les aproximacions següents:
+$$\begin{align}
+\chi^{2}_{n-1,\,1-\frac{\alpha}{2}} &\approx \frac{(\sqrt{2n-3}+z_{1-\frac{\alpha}{2}})^2}{2} \\[0.7em]
+\chi^{2}_{n-1,\,\frac{\alpha}{2}} &\approx \frac{(\sqrt{2n-3}-z_{1-\frac{\alpha}{2}})^2}{2}
+\end{align}$$
+```
+````
+
+###### Distribucions asimptòtiques
+
+```ad-met
+title: IC de la **mitjana $\boldsymbol\mu$**
+
+Pel TCL sabem que si amb una v.a. de qualsevol distribució  tenim $n$ prou gran ($n\geq30$), aleshores es comporta similarment a una llei normal.
+
+> **Coneixem $\boldsymbol\sigma$:**
+$$ IC_{\gamma}(\mu) = \left[\,\overline{x} - z_{1-\frac{\alpha}{2}} \frac{\sigma}{\sqrt{n}}\,,\quad \overline{x} + z_{1-\frac{\alpha}{2}} \frac{\sigma}{\sqrt{n}}\right] $$
+
+> **No coneixem $\boldsymbol\sigma$:**
+$$ IC_{\gamma}(\mu) = \left[\,\overline{x} - z_{1-\frac{\alpha}{2}} \frac{s}{\sqrt{n}}\,,\quad \overline{x} + z_{1-\frac{\alpha}{2}} \frac{s}{\sqrt{n}}\right] \,,$$
+on $s$ és la desviació típica mostral.
+
+Quant a l'error i la mida mínima de la població, aquests són anàlegs als del cas de la [[#^05fecc | distribució normal]].
+```
+
+````ad-met
+title: IC de la **proporció $\boldsymbol p$**
+
+En el cas que $X\sim B(p)$ on $p$ no és coneguda:
+$$ IC_{\gamma}(p) = \left[\, \hat{\hat{p}} - z_{1-\frac{\alpha}{2}} \sqrt{\frac{\hat{\hat{p}}(1-\hat{\hat{p}})}{n}} ,\quad \hat{\hat{p}} + z_{1-\frac{\alpha}{2}} \sqrt{\frac{\hat{\hat{p}}(1-\hat{\hat{p}})}{n}} \,\,\right] \,,$$
+on $\hat{\hat{p}}=\overline{x}$ és la realització de $\hat{p}=\overline{X}$.
+
+Això s'aplica si es compleix que
+$$ n\,\hat{\hat{p}} \,(1-\hat{\hat{p}}) \geq 18 \,.$$
+
+```ad-def
+title: *Error*
+
+L'==error== de precisió de l'interval de confiança $IC_{\gamma}(p)$ és
+$$ z_{1-\frac{\alpha}{2}} \sqrt{\frac{\hat{\hat{p}}\,(1-\hat{\hat{p}})}{n}} \,.$$
+```
+
+```ad-met
+title: Mida de la mostra
+
+Per determinar la mida mínima de la mostra per tal que l'error no sobrepassi un cert valor $\varepsilon$, **no podem fer servir $\hat{\hat{p}}$** ja que per determinar aquest valor necessitem primer la mida de la mostra. 
+
+No obstant, podem fer servir que $\displaystyle \hat{\hat{p}}\,(1-\hat{\hat{p}})\leq \frac{1}{4}$, d'on resulta que
+$$ n = \left\lceil \left( \frac{z_{1-\frac{\alpha}{2}}}{2\varepsilon} \right)^{2} \right\rceil \,.$$
+
+D'aquesta manera s'obté una mida mostral usualment **més gran** de la que és realment necessària.
+
+A posteriori de construir l'interval de confiança serà adient comprovar si l'error està dins dels valors desitjats.
+```
+````
+
+###### Altres distribucions o distribucions desconegudes
+
+```ad-prop
+title: Desigualtat de Txebixev
+
+Sigui $Y$ una v.a., per a tot $\rho>0$ es compleix:
+$$ P(\,|Y-\text{E}(Y)|>\rho) \leq \frac{\text{Var}(Y)}{\rho^{2}} $$
+```
+
+La desigualtat de Txebixev ens permet fer afirmacions sobre la probabilitat de **desviacions grans** d'una variable aleatòria respecte de la seva mitjana, a partir de la seva variància.
 

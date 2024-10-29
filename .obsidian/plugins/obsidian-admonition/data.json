@@ -15,7 +15,7 @@
     },
     "teor": {
       "type": "teor",
-      "color": "177, 221, 139",
+      "color": "166, 206, 131",
       "icon": {
         "name": "book",
         "type": "font-awesome"
@@ -39,21 +39,9 @@
       "noTitle": false,
       "copy": false
     },
-    "coro": {
-      "type": "coro",
-      "color": "255, 181, 175",
-      "icon": {
-        "name": "adjust",
-        "type": "font-awesome"
-      },
-      "command": false,
-      "title": "Corol·lari",
-      "injectColor": true,
-      "noTitle": false
-    },
     "ex": {
       "type": "ex",
-      "color": "177, 201, 182",
+      "color": "254, 204, 200",
       "icon": {
         "name": "border-all",
         "type": "font-awesome"
@@ -64,9 +52,22 @@
       "noTitle": false,
       "copy": false
     },
+    "met": {
+      "type": "met",
+      "color": "177, 201, 182",
+      "icon": {
+        "name": "calculator",
+        "type": "font-awesome"
+      },
+      "command": false,
+      "title": "Mètode",
+      "injectColor": true,
+      "noTitle": false,
+      "copy": false
+    },
     "not": {
       "type": "not",
-      "color": "181, 209, 153",
+      "color": "200, 224, 184",
       "icon": {
         "name": "pencil-alt",
         "type": "font-awesome"
@@ -82,10 +83,10 @@
   "copyButton": false,
   "version": "10.3.2",
   "autoCollapse": true,
-  "defaultCollapseType": "closed",
+  "defaultCollapseType": "open",
   "injectColor": true,
   "parseTitles": true,
-  "dropShadow": true,
+  "dropShadow": false,
   "hideEmpty": false,
   "open": {
     "admonitions": true,
@@ -93,7 +94,10 @@
     "other": true,
     "advanced": true
   },
-  "icons": [],
+  "icons": [
+    "octicons",
+    "rpg"
+  ],
   "useFontAwesome": true,
   "rpgDownloadedOnce": false,
   "msDocConverted": false,
