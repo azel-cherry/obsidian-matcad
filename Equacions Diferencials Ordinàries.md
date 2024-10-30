@@ -393,3 +393,63 @@ Consisteix en:
 2. Substituir $y_{p}$ a l'equació i determinar els valors dels coeficients arbitraris resolent un sistema d'equacions.
 ```
 ````
+
+###### Transformada de **Laplace**
+
+```ad-def
+title: *Transformada de Laplace*
+
+Sigui $f(t)$ una funció definida per a $t\geq0$.
+
+Aleshores es defineix la seva ==transformada de Laplace== com la funció
+
+$$ F(s) = \mathcal{L}[f](s) = \int_{0}^{\infty} e^{-st} f(t)\, dt \,.$$
+```
+
+La transformada de Laplace permet **reduir una EDO lineal** per $f(t)$ a una equació algebraica per la seva transformada.
+
+```ad-prop
+title: Propietats
+
++ La transformada de Laplace és **lineal**.
+$$ \begin{align}
+\mathcal{L}[\alpha f + \beta g](s) =& \int_{0}^{\infty} e^{-st} (\alpha f(t)+\beta g(t))\,dt \\
+=& \,\,\alpha\mathcal{L}[f](s) + \beta\mathcal{L}[g](s)
+\end{align} $$
+
++ La transformada de Laplace per **derivades** de $f$ és:
+$$ \begin{align}
+\mathcal{L}[f'](s) &= -f(0) + s \mathcal{L}[f](s) \\
+\mathcal{L}[f''](s) &= -f'(0) + s \mathcal{L}[f'](s) \\
+\dots
+\end{align} $$
+
++ **Traslació**:
+$$ \mathcal{L}[e^{at}f](s) = F(s-a) $$
+
++ La transformació de Laplace és **injectiva**. Donanda una transformada $F(s)$ es pot obtenir una única funció $f(t)$ tal que $F(s)=\mathcal{L}[f](s)$.
+	+ La **inversa** de Laplace $\mathcal{L}^{-1}$ també és **lineal**.
+
++ Es compleix:
+$$ \begin{align}
+\mathcal{L}[t\,f(t)](s) &= -\frac{d}{ds}\mathcal{L}[f(t)] \\[0.5em]
+\mathcal{L}[t^{2}\,f(t)] &= \frac{d^{2}}{ds^{2}}\mathcal{L}[f(t)] \\
+\dots
+\end{align} $$
+```
+
+```ad-def
+title: Funció *contínua a trossos*
+
+Una funció $f(t)$ es diu ==contínua  a trossos a un interval $I$==$=[a,b]$ si $f$ és contínua per tot $t$ excepte per a un nombre finit de punts de $I$.
+
+Es diu que $f$ és contínua a trossos a $[0,\infty)$ si ho és a tot interval $[0,n]$ amb $n>0$.
+```
+
+```ad-teor
+title: Existència
+
+Sigui $f(t)$ d'ordre exponencial $\alpha>0$ i contínua a trossos a $[0,\infty)$.
+
+Aleshores $\mathcal{L}[f](s)$ existeix per a $s>\alpha$.
+```
