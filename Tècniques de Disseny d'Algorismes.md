@@ -131,13 +131,13 @@ El nombre d'OE calculat no serà mai exacte ja que **depèn del compilador** i d
 Per això l'anàlisi del cost d'un algorisme normalment es fa estudiant el **comportament asimptòtic de *T(n)***. 
 
 ```ad-def
-title: Funció d'ordre $\boldsymbol{O(f)}$
+title: Funcions d'ordre $\boldsymbol{O(f)}$
 
 Definim el conjunt de ==funcions d'ordre== $O(f)$ tal que $g\in O(f)$ si i només si $g$ està **acotada superiorment** per algun múltiple de $f$.
 ```
 
 ```ad-def
-title: Funció d'ordre $\boldsymbol{\Omega(f)}$
+title: Funcions d'ordre $\boldsymbol{\Omega(f)}$
 
 Definim el conjunt de ==funcions d'ordre== $\Omega(f)$ tal que $g\in \Omega(f)$ si i només si $g$ està **acotada inferiorment** per algun múltiple de $f$.
 ```
