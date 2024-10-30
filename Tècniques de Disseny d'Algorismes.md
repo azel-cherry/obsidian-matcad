@@ -175,16 +175,19 @@ title: Elements
 + ~={green}Funció objectiu.=~ Nucli del problema que volem optimitzar.
 ```
 
+```ad-prop
+title: Ordre de complexitat
+
++ En el **pitjor** dels casos, el bucle principal es repeteix tantes vegades com elements en el ==conjunt de candidats==.
++ Cal tenir en compte l'ordre de la ==funció de selecció==.
+```
+
 ---
 ## Algorismes recursius
 
 | Tipus de problema                     | Estratègia                                   |
 | ---                                   | ---                                          |
-| Es pot definir en termes d'ell mateix | Funció recursiva que es crida a ella mateixa |
-
-Per aplicar un algorisme recursiu s'ha de complir:
-+ Existeix un **cas trivial** per parar el procés recursiu.
-+ Es van **reduint el nombre de dades** en cada crida.
+| S'ha de complir:<br> - Existeix un **cas trivial** per parar el procés recursiu<br> - Es van **reduint el nombre de dades** en cada crida | Funció recursiva que es crida a ella mateixa |
 
 ```ad-prop
 title: Comportament
@@ -207,7 +210,54 @@ Segons el nombre de crides que es generen en cada iteració:
 + ~={green}Múltiple.=~ Dues o més crides.
 ```
 
-En comparació al cas iteratiu:
+`````ad-prop
+title: Ordre de complexitat
+
+```cpp fold title:"Exemple: Fibonacci"
+int fib(int n)
+{
+	if (n < 2) return 1;              // 2 OE
+	else return fib(n-1) + fib(n-2);  // 3 OE + T(n-1) + T(n-2)
+}
+```
+
+```ad-met
+title: Expansió de la recurrència
+
+Tenim el següent:
+$$ T(n) = \begin{cases}
+2 &\text{si } n<2 \\
+3+T(n-1)+T(n-2) &\text{si } n\geq2
+\end{cases} $$
+Expandim $T(n)$.
+$$ \begin{align}
+T(n) &= 3 + T(n-1) + T(n-2) = \\
+&= 3+3+2·3+3\,T(n-3)+2\,T(n-4) = \\
+&= \dots = \\
+&= 3\,\text{fib}(n)+2
+\end{align} $$
+on la complexitat de $\text{fib}(n)$ és exponencial, i per tant
+$$ T(n) \in O(\varphi^{n}) \,.$$
+```
+
+```ad-met
+title: Equacions característiques
+
+Tenim $T(n)=T(n-1)+T(n-2)$ amb $T(0)=0$ i $T(1)=1$.
+
+Fem el canvi $x^{2}=T(n)$ i resolem l'equació.
+$$ \begin{gather}
+x^{2}=x+1 \\[0.2em]
+x=\frac{1\pm \sqrt{5}}{2}
+\end{gather} $$
+Aleshores podem assegurar que
+$$ T(n) = C_{1} \left( \frac{1+\sqrt{5}}{2} \right)^{n} + C_{2} \left( \frac{1-\sqrt{5}}{2} \right)^{n} \,,$$
+on $C_{1}$ i $C_{2}$ es poden calcular aplicant les condicions inicials si escau, però en aquest cas ja podem afirmar que
+$$ T(n) \in O(\varphi^{n}) \,.$$
+```
+`````
+
+En comparació al cas **iteratiu**:
 
 | Avantatges | Inconvenients |
 | --- | --- |
@@ -215,3 +265,105 @@ En comparació al cas iteratiu:
 | Fàcil de verificar (inducció matemàtica) | Poden repetir càlculs innecessaris |
 | Possibilitat de backtracking | Els processadors estan pensats per la iteració |
 
+---
+## Algorismes *divide and conquer*
+
+| Tipus de problema                      | Estratègia                                            |
+| ---                                    | ---                                                   |
+| Es pot dividir en problemes més petits | Dividir el problema, solucionar les parts i tornar a combinar-les |
+
+````ad-prop
+title: Comportament
+
++ Dividir problema pare en $n$ problemes més petits, sovint recursivament.
++ Calcular les solucions dels $n$ problemes.
++ Combinar les solucions per formar la solució del problema pare.
+````
+
+````ad-ex
+title: Exemple: *merge sort*
+
+Algorisme per ordenar una llista d'$n$ elements.
+
+```mehrmaid
+graph TB;
+	A("Ordenar `[5,3,7,2]`")
+	B1("Ordenar `[5,3]`")
+	B2("Ordenar `[7,2]`")
+	C1("Ordenar `[5]`")
+	C2("Ordenar `[3]`")
+	C3("Ordenar `[7]`")
+	C4("Ordenar `[2]`")
+	D1("Resultat `[3,5]`")
+	D2("Resultat `[2,7]`")
+	E("Resultat `[2,3,5,7]`")
+	
+	A --> B1
+	A --> B2
+	B1 --> C1
+	B1 --> C2
+	B2 --> C3
+	B2 --> C4
+	C1 --> D1
+	C2 --> D1
+	C3 --> D2
+	C4 --> D2
+	D1 --> E
+	D2 --> E
+```
+
+En aquest cas, $T(n)\in O(n\,\log_{2}(n))$.
+````
+
+```ad-prop
+title: Ordre de complexitat
+
+Donat un algorisme de *divide and conquer*:
++ de mida $n$
++ dividit en $l$ subproblemes
+	+ de mida $\frac{n}{b}$
+	+ resolts en $c\,n^{k}$ operacions,
+
+pel ==teorema mestre==, tenim:
+$$ T(n) \in \begin{cases}
+O(n^k) &\text{si }\, l<b^k \\
+O(n^k\log(n)) &\text{si }\, l=b^{k} \\
+O(n^{\log_{b}(l)}) &\text{si }\, l>b^k
+\end{cases} $$
+```
+
+#### Algorismes *decrease and conquer*
+
+| Tipus de problema                      | Estratègia                                                         |
+| ---                                    | ---                                                                |
+| Es pot dividir en problemes més petits | Dividir el problema i seleccionar la solució del problema original |
+
+A diferència dels algorismes *divide and conquer*, aquests divideixen el problema pare per **buscar la solució en un dels problemes petits**, no per **solucionar-los tots i combinar-los**.
+
+````ad-ex
+title: Exemple: *cerca binària*
+
+Algorisme per trobar un valor en una llista.
+
+```mehrmaid
+graph TB;
+	A("Buscar `7` en `[5,3,7,2]`")
+	B1("Buscar `7` en `[5,3]`")
+	B2("Buscar `7` en `[7,2]`")
+	C1("Buscar `7` en `[5]`")
+	C2("Buscar `7` en `[3]`")
+	C3("Buscar `7` en `[7]`")
+	C4("Buscar `7` en `[2]`")
+	D("Solució")
+
+	A --> B1
+	A --> B2
+	B1 --> C1
+	B1 --> C2
+	B2 --> C3
+	B2 --> C4
+	C3-->D
+```
+
+En el pitjor dels casos, $T(n)\in O(\log_{2}(n))$.
+````
