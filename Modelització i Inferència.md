@@ -353,7 +353,7 @@ title: **Interpretació** de l'IC
 
 De totes les possibles mostres de mida $n$, un $100\gamma$% donarà un interval que contindrà el veritable valor de $\theta$. 
 
-Generalment només tindrem una mostra i per tant un interval. En aquest cas tindrem una confiança $\gamma$ que el nostre interval contingui el valor real de $\theta$.
+Generalment només tindrem una mostra i per tant un interval. En aquest cas tindrem una **confiança** (i no probabilitat) de $\gamma$ que el nostre interval contingui el valor real de $\theta$.
 ```
 
 ```ad-met
@@ -463,7 +463,7 @@ title: IC de la **variància $\boldsymbol\sigma^{2}$**
 
 > **Coneixem $\boldsymbol\mu$ :**
 $$ IC_{\gamma}(\sigma^{2}) = \left[ \frac{n\,\tilde{s}^{2}}{\chi^{2}_{n,\,1-\frac{\alpha}{2}}},\quad \frac{n\,\tilde{s}^{2}}{\chi^{2}_{n,\,\frac{\alpha}{2}}} \right] \,,$$
-on $\tilde{s}^{2}$ és la quasivariància mostral.
+on $\tilde{s}^{2}$ és la [[#^00ad27 | quasivariància mostral]].
 
 ```ad-met
 title: **Aproximació** de $\boldsymbol\chi^{2}$ amb $\boldsymbol n$ gran
