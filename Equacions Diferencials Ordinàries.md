@@ -2,7 +2,7 @@
 
 #### Equacions diferencials ordinàries de **primer ordre**
 
-Una ==equació diferencial ordinària de primer ordre== (EDO de puto primer ordre) per a una funció $y(x)$ és una equació
+Una ==equació diferencial ordinària de primer ordre== (EDO de primer ordre) per a una funció $y(x)$ és una equació
 $$ F(x,y,y')=0 .$$
 
 ```ad-def
@@ -206,6 +206,28 @@ Sigui $y'(x)=f(x,y)$ una EDO de primer ordre, i donada $m\in\mathbb{R}$, les cor
 ```
 
 ---
+## Equacions diferencials **exactes**
+
+Una EDO de primer ordre
+$$ M(t,y) + N(t,y)\,y' = 0 $$
+es diu que és ==exacta== si:
++ $M$ i $N$ son funcions de classe $C^{1}$ en $\mathbb{R}$
++ $N(t,y)\neq 0$ per tot $(t,y)\in \mathbb{R}$
++ Existeix una funció $V(t,y)$ tal que
+$$ \frac{dV}{dt}=M\,, \quad \frac{dV}{dy}=N\,, \quad \forall (t,y)\in \mathbb{R}\,.$$
+
+La funció $V(t,y)$ s'anomena ==funció potencial==.
+
+```ad-def
+title: *Factors integrants*
+
+Sigui $M(t,y) + N(t,y)\,y'=0$ una equació **no exacta**.
+
+Direm que una funció $\mu(t,y)$ és un ==factor integrant== de l'equació si
+$$ \boldsymbol{\mu(t,y)}\,M(t,y) + \boldsymbol{\mu(t,y)}\,N(t,y)\,y' = 0 \,.$$
+```
+
+---
 ## Equacions diferencials **autònomes**
 
 Les equacions autònomes
@@ -355,7 +377,7 @@ title: Solució de la **homogènia associada**
 title: *Polinomi característic*
 
 Sigui $y''(x)+by'(x)+cy=0$ una EDO lineal homogènia amb coeficiens $b$ i $c$ constants, el polinomi
-$$ \lambda^{2}e^{\lambda x} + b\lambda e^{\lambda x} + c e^{\lambda x} $$
+$$ \lambda^{2} + b\lambda + c $$
 s'anomena ==polinomi característic== de l'equació.
 ```
 
@@ -364,13 +386,13 @@ title: Mètode
 
 La **solució general** d'una EDO amb coeficients constants dependrà de les **arrels** del seu **polinomi característic**.
 
-+ Dos arrels reals diferents $\lambda_{1}$ i $\lambda_{2}$.
++ Dos arrels **reals diferents** $\lambda_{1}$ i $\lambda_{2}$ :
 $$ \boxed{y_{h}(x) = C_{1} e^{\lambda_{1}x} + C_{2} e^{\lambda_{2}x}} $$
 
-+ Una arrel real doble $\lambda$.
++ Una arrel **real doble** $\lambda$ :
 $$ \boxed{y_{h}(x) = C_{1}e^{\lambda x} + C_{2}xe^{\lambda x}} $$
 
-+ Una arrel complexa i la seva conjugada $\lambda=\alpha+\beta i$ i $\lambda=\alpha-\beta i$.
++ Dos arrels **complexes** $\lambda=\alpha\pm\beta i$ :
 $$ \boxed{y_{h}(x) = e^{\alpha x} (C_{1}\cos(\beta x) + C_{2}\sin(\beta x))} $$
 ```
 ````

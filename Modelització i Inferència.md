@@ -57,6 +57,8 @@ title: Estadístics importants
 $$\boldsymbol{\widetilde{S}^2} = \frac{1}{n}\sum\limits_{i=1}^n (X_i-\mu)^2$$
 ```
 
+^00ad27
+
 ```ad-def
 title: *Estimador*
 
@@ -421,7 +423,7 @@ $$ n = \left\lceil \left( \frac{z_{1-\frac{\alpha}{2}}\,\sigma}{\varepsilon} \ri
 
 > **No coneixem $\boldsymbol\sigma$ :**
 $$ IC_{\gamma}(\mu) = \left[\,\overline{x} - t_{n-1,\,1-\frac{\alpha}{2}} \frac{s}{\sqrt{n}}\,, \,\overline{x} + t_{n-1,\,1-\frac{\alpha}{2}} \frac{s}{\sqrt{n}}\right] \,,$$
-on $t$ és la llei de Student, i $s$ és la desviació típica mostral.
+on $t$ és la [[#^2fffc5 | llei t de Student]], i $s$ és la [[#^00ad27 | desviació típica mostral]].
 
 En aquest cas l'interval sol ser més ampli i per tant menys precís.
 
@@ -434,7 +436,7 @@ que satisfà:
 + $P(\,|\overline{X}-\mu|\leq e) = \gamma$
 + És la semi-amplitud de l'interval de confiança.
 	Com més gran l'error, menys precís l'IC i menys informació ens proporciona.
-+ Depèn de la mida mostral, la desviació típica mostral, i el nivell de confiança. És una funció:
++ Depèn de la mida mostral, la [[#^00ad27 | desviació típica mostral]], i el nivell de confiança. És una funció:
 	+ decreixent de $n$.
 	+ creixent de $S$.
 	+ decreixent $\gamma$.
@@ -501,7 +503,7 @@ Aleshores:
 
 $$ IC_{\gamma}(\mu) = \left[\,\overline{x} - z_{1-\frac{\alpha}{2}} \frac{\sigma}{\sqrt{n}}\,,\quad \overline{x} + z_{1-\frac{\alpha}{2}} \frac{\sigma}{\sqrt{n}}\right] $$
 
-En cas de **no conèixer $\boldsymbol\sigma$**, podem substituir-la per la **desviació típica mostral $\boldsymbol s$**.
+En cas de **no conèixer $\boldsymbol\sigma$**, podem substituir-la per la [[#^00ad27 | desviació típica mostral]] $\boldsymbol s$.
 
 Quant a l'**error** i la **mida mínima** de la població, aquests són anàlegs als del cas de la [[#^05fecc | distribució normal]].
 ```
@@ -555,7 +557,7 @@ title: IC de la **mitjana $\boldsymbol\mu$**
 
 $$ IC_{\gamma}(\mu) = \left[\, \overline{x} - \sqrt{\frac{\sigma^{2}}{n\,\alpha}} ,\quad \overline{x} + \sqrt{\frac{\sigma^{2}}{n\,\alpha}} \,\right] $$
 
-En cas de **no conèixer $\boldsymbol\sigma$**, es pot substituir per una **bona aproximació** $\widehat{\text{Var}(X)}$ o en el pitjor dels casos per la **variància mostral** $\boldsymbol{s^{2}}$.
+En cas de **no conèixer $\boldsymbol\sigma$**, es pot substituir per una **bona aproximació** $\widehat{\text{Var}(X)}$ o en el pitjor dels casos per la [[#^00ad27 | variància mostral]] $\boldsymbol{s^{2}}$.
 ```
 
 ---
@@ -580,13 +582,13 @@ title: IC de la **diferència** de **mitjanes $\boldsymbol{\mu_{1}-\mu_{2}}$**
 $\,$
 **No coneixem $\boldsymbol{\sigma^{2}}$ i $\boldsymbol{\sigma_{2}^{2}}$ però podem suposar $\boldsymbol{\sigma_{1}^{2}=\sigma_{2}^{2}}$ :**
 > $$ IC_{\gamma}(\mu_{1}-\mu_{2}) = \left[ (\overline{x_{1}}-\overline{x_{2}}) \,\mp\, t_{n_{1}+n_{2}-2,\,1-\frac{\alpha}{2}}\, s \,\sqrt{\frac{1}{n_{1}} + \frac{1}{n_{2}}} \,\right] $$
-on $\boldsymbol{s=s_{1}=s_{2}}$ és la **desviació típica mostral** de les dues mostres, calculada mitjançant una mitjana ponderada
+on $\boldsymbol{s=s_{1}=s_{2}}$ és la [[#^00ad27 | desviació típica mostral]] de les dues mostres, calculada mitjançant una mitjana ponderada
 $$ S = \frac{(n_{1}-1)\,S_{1}^{2} + (n_{2}-1)\,S_{2}^{2}}{n_{1}+n_{2}-2} \,.$$
 
 $\,$
 **No coneixem $\boldsymbol{\sigma_{1}^{2}}$ i $\boldsymbol{\sigma_{2}^{2}}$ i suposem $\boldsymbol{\sigma_{1}^{2}\neq\sigma_{2}^{2}}$ :**
 > $$ IC_{\gamma}(\mu_{1}-\mu_{2}) = \left[ (\overline{x_{1}}-\overline{x_{2}}) \,\mp\, t_{\nu,\,1-\frac{\alpha}{2}} \sqrt{\frac{s_{1}^{2}}{n_{1}} + \frac{s_{2}^{2}}{n_{2}}} \,\right] $$
-on $\boldsymbol{s_{1}}$ i $\boldsymbol{s_{2}}$ son les **desviacions típiques mostrals** i
+on $\boldsymbol{s_{1}}$ i $\boldsymbol{s_{2}}$ son les [[#^00ad27 | desviacions típiques mostrals]] i
 $$\nu = \frac{\left( \frac{S_{1}^{2}}{n_{1}} + \frac{S_{2}^{2}}{n_{2}} \right)^{2}}{\frac{\left( \frac{S_{1}^{2}}{n_{1}} \right)^{2}}{n_{1}-1} + \frac{\left( \frac{S_{2}^{2}}{n_{2}} \right)^{2}}{n_{2}-1} } \,.$$
 
 ```ad-not
@@ -644,13 +646,13 @@ que és igual al del cas normal.
 $\,$
 **No coneixem $\boldsymbol{\sigma^{2}}$ i $\boldsymbol{\sigma_{2}^{2}}$ però podem suposar $\boldsymbol{\sigma_{1}^{2}=\sigma_{2}^{2}}$ :**
 > $$ IC_{\gamma}(\mu_{1}-\mu_{2}) = \left[ (\overline{x_{1}}-\overline{x_{2}}) \,\mp\, z_{1-\frac{\alpha}{2}}\, s \,\sqrt{\frac{1}{n_{1}} + \frac{1}{n_{2}}} \,\right] $$
-on $\boldsymbol{s=s_{1}=s_{2}}$ és la **desviació típica mostral** de les dues mostres, calculada mitjançant una mitjana ponderada
+on $\boldsymbol{s=s_{1}=s_{2}}$ és la [[#^00ad27 | desviació típica mostral]] de les dues mostres, calculada mitjançant una mitjana ponderada
 $$ S = \frac{(n_{1}-1)\,S_{1}^{2} + (n_{2}-1)\,S_{2}^{2}}{n_{1}+n_{2}-2} \,.$$
 
 $\,$
 **No coneixem $\boldsymbol{\sigma_{1}^{2}}$ i $\boldsymbol{\sigma_{2}^{2}}$ i suposem $\boldsymbol{\sigma_{1}^{2}\neq\sigma_{2}^{2}}$ :**
 > $$ IC_{\gamma}(\mu_{1}-\mu_{2}) = \left[ (\overline{x_{1}}-\overline{x_{2}}) \,\mp\, z_{1-\frac{\alpha}{2}} \sqrt{\frac{s_{1}^{2}}{n_{1}} + \frac{s_{2}^{2}}{n_{2}}} \,\right] $$
-on $\boldsymbol{s_{1}}$ i $\boldsymbol{s_{2}}$ son les **desviacions típiques mostrals**.
+on $\boldsymbol{s_{1}}$ i $\boldsymbol{s_{2}}$ son les [[#^00ad27 | desviacions típiques mostrals]].
 ```
 
 ```ad-met
@@ -684,5 +686,5 @@ on $\boldsymbol{\mu=\mu_{1}-\mu_{2}}$ i $\sigma^{2}$ és la **variància descone
 title: IC de la **diferència** de **mitjanes $\boldsymbol\mu$**
 
 $$ IC_{\gamma}(\mu) = \left[ \overline{d} \,\mp\, t_{n-1,\,1-\frac{\alpha}{2}} \,\frac{s_{D}}{\sqrt{n}} \right] $$
-on $\overline{d}$ és la mitjana mostral i $s_{D}$ la desviació mostral de la realització de $D$.
+on $\overline{d}$ és la mitjana mostral i $s_{D}$ la [[#^00ad27 | desviació típica mostral]] de la realització de $D$.
 ```
