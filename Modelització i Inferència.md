@@ -16,28 +16,58 @@ Una ==mostra aleatòria== de mida $n$ de $X$ és un conjunt de $n$ *v.a.*s $X_1,
 Distingim entre les variables aleatòries que defineixen la mostra $X_1,...,X_n$ i les realitzacions d'aquestes variables $x_1,...,x_n$ (que son nombres reals).
 ```
 
+````ad-ex
+title: Recordatori: *Paràmetres*
+
 ```ad-ex
-title: Paràmetres
+title: $X$ quantitativa o numèrica
 
-Per $X$ quantitativa o numèrica:
-+ ==Mitjana poblacional==: $\boldsymbol{\mu} = \text{E}(X)$
-+ ==Variància poblacional==: $\boldsymbol{\sigma^2} = \text{Var}(X)$
-+ ==Desviació típica poblacional==: $\boldsymbol{\sigma} = \sqrt{\text{Var}(X)}$
+==**Mitjana** poblacional==:
+> 
+> $\displaystyle\boldsymbol{\mu} = \text{E}(X) = \int_{-\infty}^{+\infty}x\,f(x)\,dx\,,$
+> 
+> on $f(x)$ és la funció de densitat de $X$.
+> 
+> ```ad-prop
+> title: Propietats
+> + $\text{E}(aX+bY)=a\text{E}(X)+b\text{E}(Y)$
+> + $|\text{E}(X)| = \text{E}(|X|)$
+> + $\displaystyle \text{E}(X^{2}) = \int_{-\infty}^{+\infty}x^{2}\,f(x)\,dx$ 
+> ```
 
-Per $X$ qualitativa dicotòmica o binària:
-+ ==Proporció poblacional==: $\boldsymbol{p}$
+==**Variància** poblacional==:
+> 
+> $\boldsymbol{\sigma^2} = \text{Var}(X) = \text{E}(X^{2})-(\text{E}(X))^{2}$
+> 
+> ```ad-prop
+> title: Propietats
+> 
+> + $\text{Var}(aX+b) = a^{2}Var(X)$
+> + Covariància: $\text{Cov}(X,Y)=E(X,Y)-E(X)E(Y)$
+> + $\text{Var}(X\pm Y) = \text{Var}(X)+\text{Var}(Y)\pm \text{Cov}(X,Y)$
+> ```
+
+==**Desviació típica** poblacional==:
+> 
+> $\boldsymbol{\sigma} = \sqrt{\text{Var}(X)}$
 ```
 
-Una mostra d'una població finita sense reemplaçament NO forma una mostra aleatòria perquè les variables de la mostra no són independents. En canvi sí que ho és si hi ha reposició.
+```ad-ex
+title: $X$ qualitativa dicotòmica o binària
 
-Habitualment es treballa amb mostres amb $n$ molt petita en comparació a la mida de la població. En aquests casos, tot i que el mostreig es faci sense reposició, es treballarà com si les variables fossin independents.
+==**Proporció** poblacional==: $\boldsymbol{p}$
+```
+
+Una mostra d'una població finita **sense reemplaçament NO** forma una **mostra aleatòria** perquè les variables de la mostra **no són independents**. En canvi sí que ho és si hi ha reposició.
+
+Habitualment es treballa amb mostres amb $n$ molt petita en comparació a la mida de la població. En aquests casos, tot i que el mostreig es faci sense reposició, **es treballarà com si les variables fossin independents**.
 
 ```ad-not
 title: Recordatori: *Equivalència normal*
 
 Sigui $X$ una variable aleatòria, són equivalents
 $$X\sim N(\mu,\sigma^{2}) \,\,\,\,\text{i}\,\,\,\, \frac{X-\mu}{\sigma}\sim N(0,1)\,.$$
-```
+````
 
 ---
 ## **Estadístics**
@@ -56,7 +86,6 @@ title: Estadístics importants
 + ==**Quasivariància** mostral==. Es fa servir en rar cas de conèixer la mitjana poblacional $\mu$ de $X$:
 $$\boldsymbol{\widetilde{S}^2} = \frac{1}{n}\sum\limits_{i=1}^n (X_i-\mu)^2$$
 ```
-
 ^00ad27
 
 ```ad-def
@@ -66,8 +95,6 @@ Un ==estimador== és un **estadístic** que es fa servir per a **estimar** un de
 
 Si un estadístic s'usa per a estimar el paràmetre $X$, es denotarà $\widehat{X}$, i una estimació concreta serà $\widehat{x}$.
 ```
-
----
 #### **Distribucions mostrals** d'estadístics usuals
 
 > Donat un estadístic funció de la mostra $X_1,...,X_n$ variable aleatòria, la seva **distribució** o **llei** s'anomena ==distribució mostral de l'estadístic==.
@@ -102,7 +129,7 @@ Cas particular - **població normal**:
 
 Si $X\sim N(\mu,\sigma^2)$, aleshores
 $$\frac{n\widetilde{S}^2}{\sigma^2} = \frac{1}{\sigma^2}\sum\limits_{i=1}^n(X_i-\mu)^2 \sim \chi_n^2$$
-on $\chi_n^2$ denota la [[#^a5d13c | distribució khi-quadrat]] de grau $n$.
+on $\chi_n^2$ denota la [[#^77adb9 | distribució khi-quadrat]] de grau $n$.
 ```
 
 ```ad-teor
@@ -118,98 +145,9 @@ Sigui $X \sim N(\mu,\sigma^2)$, aleshores:
 $$
 \frac{\overline{X}-\mu}{\frac{\sqrt{S^{2}}}{\sqrt{n}}} \sim t_{n-1}
 $$
-on $t_{n-1}$ denota la [[#^2fffc5 | distribució t de Student]] amb paràmetre $n-1$.
-```
-
-````
-
-`````ad-not
-title: Distribució $\boldsymbol{\chi^2}$
-
-````ad-def
-Sigui $Z_1,...,Z_\nu$ variables aleatòries independents i idènticament distribuïdes amb llei $N(0,1)$.
-
-S'anomena ==khi-quadrat amb $\nu$ graus de llibertat== ($\chi_\nu^2$) a la llei de la variable aleatòria
-$$Y= \sum\limits_{i=1}^\nu Z^2_i. $$
-````
-
-````ad-prop
-title: Propietats
-+ **Funció de densitat**:
-$$ f_{Y}(X) = \begin{cases}
-0 & \text{si } x\leq 0 \\
-\displaystyle\frac{1}{2^{\frac{\nu}{ 2}}\,\Gamma\left(\frac{\nu}{2}\right)} x^{\frac{\nu}{2}-1} e^{-\frac{x}{2}} & \text{si } x>0 \\
-\end{cases} $$
-on $\Gamma$ és la funció gamma d'Euler.
-
-```ad-not
-title: Funció gamma d'Euler
-
-La ==funció **gamma d'Euler**== és
-$$ \Gamma(\alpha) = \int_{0}^{\infty} t^{\alpha-1} e^{-t} dt \,,$$
-
-que compleix:
-+ $\Gamma(\alpha+1) = \alpha\Gamma(\alpha)$
-+ $\Gamma(n+1) = n!$
-+ $\Gamma(1)  = 1$
-+ $\Gamma\left(1/2\right) = \sqrt{\pi }$
-```
-
-+ **Funció de distribució**: Mitjançant taules.
-
-+ **Funció generatriu de moments**: 
-$$\varphi_{Y}(t) = (1-2t)^{-\frac{\nu}{2}}$$
-
-+ **Mitjana**: $\,\displaystyle\text{E}(Y)=\nu,$
-
-+ **Variància**: $\,\displaystyle\text{Var}(Y) = 2\nu.$
-````
-
-````ad-prop
-Amb $\nu>40$, $Y\sim\chi^2$ es pot aproximar fent servir una distribució normal:
-
-
-$$ \sqrt{ 2\chi^2_{\nu}} \approx N(\sqrt{ 2\nu-1 },1)$$
-````
-
-````ad-prop
-Siguin $Y_{1} \sim \chi^2_{\nu_{1}},\dots, Y_{n} \sim \chi^2_{\nu_{n}}$ independents, i sigui $Y=Y_{1}+\dots+Y_{n}$, aleshores
-$$ Y = \chi^2_{\nu_{1}+\dots+\nu_{n}}. $$
-````
-`````
-
-^a5d13c
-
-````ad-not
-title: Distribució **$\boldsymbol t$ de Student**
-
-```ad-def
-Siguin $Z\sim N(0,1)\,$ i $\,Y\sim\chi^2_{\nu}$ v.a.s independents, aleshores la llei de la v.a.
-$$
-T = \frac{Z}{\sqrt{\frac{Y}{\nu}}}
-$$
-s'anomena ==$t$ de Student amb $\nu$ graus de llibertat== i s'escriu $T\sim t_{\nu}$.
-```
-
-```ad-prop
-title: Propietats
-
-+ **Funció de densitat:**
-$$
-f_{T}(X) = \frac{\Gamma\left(\frac{\nu+1}{2}\right)}{\sqrt{\pi\nu}\,\,\Gamma\left(\frac{\nu}{2}\right)} \left(1+\frac{x^2}{\nu}\right)^{-\frac{\nu+1}{2}}
-$$
-
-+ $t_{\nu} \rightarrow N(0,1)\,$ quan $\,\nu\rightarrow\infty$
-
-+ **Funció de distribució:** Mitjançant taules.
-
-+ **Moments:** $\text{E}(T^k)$ només existeix si $k<\nu$.
-+ **Esperança:** $\text{E}(T)$ = 0 si $\nu>1$.
-+ **Variància:** $\text{Var}(T) = \frac{\nu}{\nu-2}$ si $\nu>2$.
+on $t_{n-1}$ denota la [[#^4dd1ac| distribució t de Student]] amb paràmetre $n-1$.
 ```
 ````
-
-^2fffc5
 
 En resum, per una mostra de mida $n$ amb $X\sim N(\mu,\sigma^2)$:
 
@@ -425,7 +363,7 @@ $$ n = \left\lceil \left( \frac{z_{1-\frac{\alpha}{2}}\,\sigma}{\varepsilon} \ri
 
 > **No coneixem $\boldsymbol\sigma$ :**
 $$ IC_{\gamma}(\mu) = \left[\,\overline{x} - t_{n-1,\,1-\frac{\alpha}{2}} \frac{s}{\sqrt{n}}\,, \,\overline{x} + t_{n-1,\,1-\frac{\alpha}{2}} \frac{s}{\sqrt{n}}\right] \,,$$
-on $t_{n-1,\,1-\frac{\alpha}{2}}$ és la [[#^8cd659 | quantila]] d'ordre $1-\frac{\alpha}{2}$ de la [[#^2fffc5 | llei t de Student]] amb $n-1$ graus de llibertat, i $s$ és la [[#^00ad27 | desviació típica mostral]].
+on $t_{n-1,\,1-\frac{\alpha}{2}}$ és la [[#^8cd659 | quantila]] d'ordre $1-\frac{\alpha}{2}$ de la [[#^4dd1ac | llei t de Student]] amb $n-1$ graus de llibertat, i $s$ és la [[#^00ad27 | desviació típica mostral]].
 
 En aquest cas l'interval sol ser més ampli i per tant menys precís.
 
@@ -457,6 +395,7 @@ Aquesta expressió té dos problemes:
 	Si esperem que $n$ sigui gran (que sol passar quan volem un error petit), es pot substituir $t_{n-1,\,1-\frac{\alpha}{2}}$ per $z_{1-\frac{\alpha}{2}}$. Si no, s'haurà de resoldre per tempteig mitjançant les taules de $t$ de Student.
 ```
 ````
+^05fecc
 
 ````ad-met
 title: IC de la **variància $\boldsymbol\sigma^{2}$**
@@ -479,7 +418,7 @@ $$\begin{align}
 
 > **No coneixem $\boldsymbol\mu$ :**
 $$ IC_{\gamma}(\sigma^{2}) = \left[ \frac{(n-1)s^{2}}{\chi^{2}_{n-1,\,1-\frac{\alpha}{2}}},\quad \frac{(n-1)s^{2}}{\chi^{2}_{n-1,\,\frac{\alpha}{2}}} \right] \,,$$
-on $s^{2}$ és la variància mostral.
+on $s^{2}$ és la [[#^00ad27| variància mostral]].
 
 ```ad-met
 title: **Aproximació** de $\boldsymbol\chi^{2}$ amb $\boldsymbol n$ gran
@@ -609,29 +548,6 @@ $$ IC_{\gamma}\left( \frac{\sigma_{2}^{2}}{\sigma_{1}^{2}} \right) = \left[ F_{n
 ```
 ````
 
-`````ad-not
-title: Distribució **$\boldsymbol F$ de Fisher-Snedecor**
-
-````ad-def
-Siguin $X\sim\chi_{n}^{2}$ i $Y\sim\chi_{m}^{2}$ v.a.s independents, aleshores la llei de la variable aleatòria
-$$ F = \frac{\frac{X}{n}}{\frac{Y}{n}} $$
-es diu ==$F$ de Fisher-Snedecor== amb $n$ graus de llibertat al numerador i $m$ al denominador i s'escriu $F\sim F_{n,m}$.
-````
-
-````ad-prop
-title: Propietats
-
-+ **Funció de densitat:**
-$$ f_{F}(x) = \begin{cases}
-\displaystyle\frac{\Gamma\left(\frac{n+m}{2}\right)}{\Gamma\left( \frac{n}{2} \right) \Gamma\left( \frac{m}{2} \right)} \left( \frac{n}{m} \right)^{\frac{n}{2}} x^{\frac{n}{2}-1} \left( 1+\frac{n}{m}x \right)^{-\frac{n+m}{2}} \quad&\text{si } x\geq 0 \\[0.5em]
-0 \quad&\text{si } x<0
-\end{cases} $$
-on $\Gamma(\alpha)$ és la [[#^a5d13c | funció gamma d'Euler]].
-
-+ **Funció de distribució:** Mitjançant taules.
-````
-`````
-
 ###### Distribucions **asimptòtiques**
 
 Considerem $X^{(1)}$ de mida $n_{1}$ i $X^{(2)}$ de mida $n_{2}$ prou grans.
@@ -660,7 +576,7 @@ on $\boldsymbol{s_{1}}$ i $\boldsymbol{s_{2}}$ son les [[#^00ad27 | desviacions 
 ```ad-met
 title: IC de la **diferència** de **proporcions $\boldsymbol{p_{1}-p_{2}}$**
 
-Considerem $X^{(1)} \sim B(p_{1})$ de mida $n_{1}$ i $X^{(1)} \sim B(p_{2})$ de mida $n_{2}$.
+Considerem $X^{(1)} \sim B(p_{1})$ de mida $n_{1}$ i $X^{(2)} \sim B(p_{2})$ de mida $n_{2}$.
 
 $$ IC_{\gamma}(p_{1}-p_{2}) = \left[ (\hat{\hat{p_{1}}}-\hat{\hat{p_{2}}}) \,\mp\, z_{1-\frac{\alpha}{2}} \sqrt{\bar{\bar{p}}(1-\bar{\bar{p}})\left( \frac{1}{n_{1}} + \frac{1}{n_{2}} \right)} \right] $$
 on on $\hat{\hat{p_{i}}}=\overline{x^{(i)}}$ és la realització de $\hat{p_{i}}=\overline{X^{(i)}}$ i
@@ -690,3 +606,123 @@ title: IC de la **diferència** de **mitjanes $\boldsymbol\mu$**
 $$ IC_{\gamma}(\mu) = \left[ \overline{d} \,\mp\, t_{n-1,\,1-\frac{\alpha}{2}} \,\frac{s_{D}}{\sqrt{n}} \right] $$
 on $\overline{d}$ és la mitjana mostral i $s_{D}$ la [[#^00ad27 | desviació típica mostral]] de la realització de $D$.
 ```
+
+---
+## Apèndix
+
+
+| V.A.                                                    |                                           Densitat                                 |                                                          Distribució                                            |                                  Esperança                         |            Variància                      |
+|:-------------------------------------------------------:|:----------------------------------------------------------------------------------:|:-------------------------------------------------------------------------------------------------------------- :|:------------------------------------------------------------------:|:-----------------------------------------:|
+| ~={green}Uniforme=~<br>$X\sim \boldsymbol{\mathcal{U}(a,b)}$ |                          $$f(x)=\frac{1}{b-a}\,\mathbb{1}_{(a,b)}$$                     | $$F(x)=\begin{cases}0\quad&\text{si }x<a\\ \displaystyle\frac{x-a}{b-a}&\text{si }a\leq x<b\\1 &\text{si }x\leq b\end{cases}$$ |                      $$ \text{E}(X) = \frac{a+b}{2} $$                  | $$ \text{Var}(X)=\frac{(b-a)^{2}}{12} $$      |
+| ~={green}Normal=~<br>$X\sim \boldsymbol{N(\mu,\sigma^{2})}$  |          $$ f(x) = \frac{1}{\sigma \sqrt{2\pi}} e^{-\frac{(x-\mu)}{2\sigma^{2}}} $$         |                                        taula amb<br>$$\frac{X-\mu}{\sigma}\sim N(0,1)$$                             |                           $$ \text{E}(X) = \mu $$                     | $$ \text{Var}(X)=\sigma^{2} $$               |
+| ~={green}Exponencial=~<br>$X\sim \boldsymbol{Exp(\lambda)}$ |                 $$ f(x) = \lambda e^{-\lambda x}\,\mathbb{1}_{(0,\infty)} $$              |             $$ F(x) = \begin{cases} 0 \quad&\text{si } x<0\\(1-e^{-\lambda x}) &\text{si } 0\leq x \end{cases} $$            |                    $$ \text{E}(X) = \frac{1}{\lambda} $$                | $$ \text{Var}(X) = \frac{1}{\lambda^{2}} $$    |
+| ~={green}Weibull=~<br>$X\sim \boldsymbol{W(\nu,\lambda)}$    |  $$ f(x) = \nu \,x^{\nu-1}\lambda^{\nu}e^{-(\lambda x)^{\nu}} \,\mathbb{1}_{(0,\infty)} $$   |         $$ F(x) = \begin{cases} 0 \quad&\text{si } x<0\\ (1-e^{-(\lambda x)^{\nu}}) &\text{si } 0\leq x \end{cases} $$        | $$ \text{E}(X) = \frac{1}{\lambda}\,\Gamma\left(1+\frac{1}{\alpha}\right) $$ |
+| ~={green}Erlang=~<br>$X\sim \boldsymbol{E(r,\lambda)}$      | $$ f(x) = \lambda e^{-\lambda x} \frac{(\lambda x)^{r-1}}{(r-1)!} \mathbb{1}_{(0,\infty)} $$  |
+| ~={green}Gamma=~<br>$X\sim \boldsymbol{G(r,\lambda)}$       | $$ f(x) = \lambda e^{-\lambda x} \frac{(\lambda x)^{r-1}}{\Gamma(r)} $$                     |
+
+
+```ad-not
+title: Funció *gamma d'Euler*
+
+La ==funció **gamma d'Euler**== és
+$$ \Gamma(\alpha) = \int_{0}^{\infty} t^{\alpha-1} e^{-t} dt \,,$$
+
+que compleix:
++ $\Gamma(\alpha+1) = \alpha\Gamma(\alpha)$
++ $\Gamma(n+1) = n!$
++ $\Gamma(1)  = 1$
++ $\Gamma\left(1/2\right) = \sqrt{\pi }$
+```
+^c891c7
+
+#### Distribució $\boldsymbol{\chi^2}$
+^77adb9
+
+````ad-def
+Sigui $Z_1,...,Z_\nu$ variables aleatòries independents i idènticament distribuïdes amb llei $N(0,1)$.
+
+S'anomena ==khi-quadrat amb $\nu$ graus de llibertat== ($\chi_\nu^2$) a la llei de la variable aleatòria
+$$Y= \sum\limits_{i=1}^\nu Z^2_i. $$
+````
+
+````ad-prop
+title: Propietats
++ **Funció de densitat**:
+$$ f_{Y}(X) = \begin{cases}
+0 & \text{si } x\leq 0 \\
+\displaystyle\frac{1}{2^{\frac{\nu}{ 2}}\,\Gamma\left(\frac{\nu}{2}\right)} x^{\frac{\nu}{2}-1} e^{-\frac{x}{2}} & \text{si } x>0 \\
+\end{cases} $$
+on $\Gamma$ és la [[#^c891c7 | funció gamma d'Euler]].
+
++ **Funció de distribució**: Mitjançant taules.
+
++ **Funció generatriu de moments**: 
+$$\varphi_{Y}(t) = (1-2t)^{-\frac{\nu}{2}}$$
+
++ **Mitjana**: $\,\displaystyle\text{E}(Y)=\nu,$
+
++ **Variància**: $\,\displaystyle\text{Var}(Y) = 2\nu.$
+````
+
+````ad-prop
+Amb $\nu>40$, $Y\sim\chi^2$ es pot aproximar fent servir una distribució normal:
+
+
+$$ \sqrt{ 2\chi^2_{\nu}} \approx N(\sqrt{ 2\nu-1 },1)$$
+````
+
+````ad-prop
+Siguin $Y_{1} \sim \chi^2_{\nu_{1}},\dots, Y_{n} \sim \chi^2_{\nu_{n}}$ independents, i sigui $Y=Y_{1}+\dots+Y_{n}$, aleshores
+$$ Y = \chi^2_{\nu_{1}+\dots+\nu_{n}}. $$
+````
+
+---
+#### Distribució **$\boldsymbol t$ de Student**
+^4dd1ac
+
+```ad-def
+Siguin $Z\sim N(0,1)\,$ i $\,Y\sim\chi^2_{\nu}$ v.a.s independents, aleshores la llei de la v.a.
+$$
+T = \frac{Z}{\sqrt{\frac{Y}{\nu}}}
+$$
+s'anomena ==$t$ de Student amb $\nu$ graus de llibertat== i s'escriu $T\sim t_{\nu}$.
+```
+
+```ad-prop
+title: Propietats
+
++ **Funció de densitat:**
+$$
+f_{T}(X) = \frac{\Gamma\left(\frac{\nu+1}{2}\right)}{\sqrt{\pi\nu}\,\,\Gamma\left(\frac{\nu}{2}\right)} \left(1+\frac{x^2}{\nu}\right)^{-\frac{\nu+1}{2}}
+$$
+
++ $t_{\nu} \rightarrow N(0,1)\,$ quan $\,\nu\rightarrow\infty$
+
++ **Funció de distribució:** Mitjançant taules.
+
++ **Moments:** $\text{E}(T^k)$ només existeix si $k<\nu$.
++ **Esperança:** $\text{E}(T)$ = 0 si $\nu>1$.
++ **Variància:** $\text{Var}(T) = \frac{\nu}{\nu-2}$ si $\nu>2$.
+```
+
+---
+#### Distribució **$\boldsymbol F$ de Fisher-Snedecor**
+
+````ad-def
+Siguin $X\sim\chi_{n}^{2}$ i $Y\sim\chi_{m}^{2}$ v.a.s independents, aleshores la llei de la variable aleatòria
+$$ F = \frac{\frac{X}{n}}{\frac{Y}{n}} $$
+es diu ==$F$ de Fisher-Snedecor== amb $n$ graus de llibertat al numerador i $m$ al denominador i s'escriu $F\sim F_{n,m}$.
+````
+
+````ad-prop
+title: Propietats
+
++ **Funció de densitat:**
+$$ f_{F}(x) = \begin{cases}
+\displaystyle\frac{\Gamma\left(\frac{n+m}{2}\right)}{\Gamma\left( \frac{n}{2} \right) \Gamma\left( \frac{m}{2} \right)} \left( \frac{n}{m} \right)^{\frac{n}{2}} x^{\frac{n}{2}-1} \left( 1+\frac{n}{m}x \right)^{-\frac{n+m}{2}} \quad&\text{si } x\geq 0 \\[0.5em]
+0 \quad&\text{si } x<0
+\end{cases} $$
+on $\Gamma(\alpha)$ és la [[#^c891c7 | funció gamma d'Euler]].
+
++ **Funció de distribució:** Mitjançant taules.
+````
