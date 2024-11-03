@@ -394,6 +394,8 @@ Una ==quantila== d'ordre $\beta$ ($z_{\beta}$) és el valor d'una distribució n
 $$ P(Z\leq z_{\beta}) = \beta \,.$$
 ````
 
+^8cd659
+
 ````ad-met
 title: IC de la **mitjana $\boldsymbol\mu$**
 
@@ -423,7 +425,7 @@ $$ n = \left\lceil \left( \frac{z_{1-\frac{\alpha}{2}}\,\sigma}{\varepsilon} \ri
 
 > **No coneixem $\boldsymbol\sigma$ :**
 $$ IC_{\gamma}(\mu) = \left[\,\overline{x} - t_{n-1,\,1-\frac{\alpha}{2}} \frac{s}{\sqrt{n}}\,, \,\overline{x} + t_{n-1,\,1-\frac{\alpha}{2}} \frac{s}{\sqrt{n}}\right] \,,$$
-on $t$ és la [[#^2fffc5 | llei t de Student]], i $s$ és la [[#^00ad27 | desviació típica mostral]].
+on $t_{n-1,\,1-\frac{\alpha}{2}}$ és la [[#^8cd659 | quantila]] d'ordre $1-\frac{\alpha}{2}$ de la [[#^2fffc5 | llei t de Student]] amb $n-1$ graus de llibertat, i $s$ és la [[#^00ad27 | desviació típica mostral]].
 
 En aquest cas l'interval sol ser més ampli i per tant menys precís.
 
