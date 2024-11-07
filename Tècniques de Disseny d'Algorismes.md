@@ -133,13 +133,13 @@ Per això l'anàlisi del cost d'un algorisme normalment es fa estudiant el **com
 ```ad-def
 title: Funcions d'ordre $\boldsymbol{O(f)}$
 
-Definim el conjunt de ==funcions d'ordre== $O(f)$ tal que $g\in O(f)$ si i només si $g$ està **acotada superiorment** per algun múltiple de $f$.
+Definim el conjunt de ==funcions d'ordre $O(f)$== tal que $g\in O(f)$ si i només si $g$ està **acotada superiorment** per algun múltiple de $f$.
 ```
 
 ```ad-def
 title: Funcions d'ordre $\boldsymbol{\Omega(f)}$
 
-Definim el conjunt de ==funcions d'ordre== $\Omega(f)$ tal que $g\in \Omega(f)$ si i només si $g$ està **acotada inferiorment** per algun múltiple de $f$.
+Definim el conjunt de ==funcions d'ordre $\Omega(f)$ tal que $g\in \Omega(f)$ si i només si $g$ està **acotada inferiorment** per algun múltiple de $f$.
 ```
 
 Evidentment agafarem la $O(f)$ més petita i la $\Omega(f)$ més gran que apliqui per acotar al màxim. 
@@ -147,7 +147,7 @@ Evidentment agafarem la $O(f)$ més petita i la $\Omega(f)$ més gran que apliqu
 Les complexitats més habituals, de menys complexa a més, son les següents:
 
 | $1$ | $log(n)$ | $n$ | $n^{m}$ | $c^n$ | $n!$ | $n^n$ |
-| --- | --- | --- | --- | --- | --- | --- |
+| --- | -------- | --- | ------- | ----- | ---- | ----- |
 
 amb $m\in \mathbb{N}$ i $c>1$.
 
@@ -187,7 +187,7 @@ title: Ordre de complexitat
 
 | Tipus de problema                     | Estratègia                                   |
 | ---                                   | ---                                          |
-| S'ha de complir:<br> - Existeix un **cas trivial** per parar el procés recursiu<br> - Es van **reduint el nombre de dades** en cada crida | Funció recursiva que es crida a ella mateixa |
+| S'ha de complir:<br><ul><li>Existeix un **cas trivial** per parar el procés recursiu</li><li>Es van **reduint el nombre de dades** en cada crida | Funció recursiva que es crida a ella mateixa |
 
 ```ad-prop
 title: Comportament
@@ -272,13 +272,13 @@ En comparació al cas **iteratiu**:
 | ---                                    | ---                                                   |
 | Es pot dividir en problemes més petits | Dividir el problema, solucionar les parts i tornar a combinar-les |
 
-````ad-prop
+```ad-prop
 title: Comportament
 
 + Dividir problema pare en $n$ problemes més petits, sovint recursivament.
 + Calcular les solucions dels $n$ problemes.
 + Combinar les solucions per formar la solució del problema pare.
-````
+```
 
 ````ad-ex
 title: Exemple: *merge sort*
@@ -322,7 +322,7 @@ Donat un algorisme de *divide and conquer*:
 + de mida $n$
 + dividit en $l$ subproblemes
 	+ de mida $\frac{n}{b}$
-	+ resolts en $c\,n^{k}$ operacions,
+	+ d'ordre $O(n^k)$,
 
 pel ==teorema mestre==, tenim:
 $$ T(n) \in \begin{cases}
@@ -367,3 +367,19 @@ graph TB;
 
 En el pitjor dels casos, $T(n)\in O(\log_{2}(n))$.
 ````
+
+---
+## Algorismes *backtracking*
+
+| Tipus de problema                      | Estratègia                                                         |
+| ---                                    | ---                                                                |
+| Problema combinacional que:<br><ul><li>No es pot descompondre en problemes independents</li><li>Hi ha un espai de cerca on trobar la solució | Organitzar l'espai de cerca en forma d'arbre i recorre'l buscant els nodes que podran ser solució |
+
+```ad-prop
+title: Comportament
+
++ **Organitzar** l'espai de cerca en forma d'**arbre**
++ Recórrer l'arbre en **profunditat prioritària**
+	+ No fer una **cerca exhaustiva** (==força bruta==), sino només a les parts on es poden trobar solucions (==òptim==) mitjançant el ==forward-checking==
++ **Filtrar nodes** i fulles mentres es recórre l'arbre aplicant la **condició** que ha de complir la **solució**
+```

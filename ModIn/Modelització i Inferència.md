@@ -35,6 +35,7 @@ title: $X$ quantitativa o numèrica
 > + $\displaystyle \text{E}(X^{2}) = \int_{-\infty}^{+\infty}x^{2}\,f(x)\,dx$ 
 > ```
 
+$\,$
 ==**Variància** poblacional==:
 > 
 > $\boldsymbol{\sigma^2} = \text{Var}(X) = \text{E}(X^{2})-(\text{E}(X))^{2}$
@@ -47,6 +48,7 @@ title: $X$ quantitativa o numèrica
 > + $\text{Var}(X\pm Y) = \text{Var}(X)+\text{Var}(Y)\pm \text{Cov}(X,Y)$
 > ```
 
+$\,$
 ==**Desviació típica** poblacional==:
 > 
 > $\boldsymbol{\sigma} = \sqrt{\text{Var}(X)}$
@@ -57,6 +59,7 @@ title: $X$ qualitativa dicotòmica o binària
 
 ==**Proporció** poblacional==: $\boldsymbol{p}$
 ```
+````
 
 Una mostra d'una població finita **sense reemplaçament NO** forma una **mostra aleatòria** perquè les variables de la mostra **no són independents**. En canvi sí que ho és si hi ha reposició.
 
@@ -148,77 +151,6 @@ $$
 on $t_{n-1}$ denota la [[#^4dd1ac| distribució t de Student]] amb paràmetre $n-1$.
 ```
 ````
-
-En resum, per una mostra de mida $n$ amb $X\sim N(\mu,\sigma^2)$:
-
-```mehrmaid
-graph LR;
-	A("Volem estimar $\mu\,$")
-	B("$\displaystyle\frac{\overline{X}-\mu}{\frac{\sigma}{\sqrt{n}}} \sim N(0,1)$")
-	C("$\displaystyle\frac{\overline{X}-\mu}{\frac{\sqrt{S^2}}{\sqrt{n}}} \sim t_{n-1}$")
-
-	A -- "$\sigma$ coneguda" --> B
-	A -- "$\sigma$ desconeguda" --> C
-```
-
-```mehrmaid
-graph LR;
-	A("Volem estimar $\sigma\,$")
-	B("$\displaystyle\frac{nS^2}{\sigma^2} = \frac{1}{\sigma^2}\sum_{i=1}^n(X_i - \mu)^2 \sim \chi^2_n$")
-	C("Teorema de Fisher:
-	$\displaystyle\frac{(n-1)S^2}{\sigma^2} = \frac{1}{\sigma^2}\sum_{i=1}^n(X_i -\overline{X})^2 \sim \chi^2_{n-1}$")
-
-	A -- "$\mu$ coneguda" --> B
-	A -- "$\mu$ desconeguda" --> C
-```
-
----
-####  Distribucions mostrals **asimptòtiques**
-
-###### Mitjana mostral
-
-Per una mostra de mida $n$ de $\boldsymbol{X}$ amb distribució qualsevol, on:
-+ $\text{E}(x)=\mu$
-+ $\text{Var}(X)=\sigma^{2}$
-
-````mehrmaid
-graph TB;
-	A1("Volem estimar $\mu\,$")
-	D("$\mu_{\overline{X}_n}=\mu$
-	$\displaystyle\sigma_{\overline{X}_n}=\frac{\sigma^2}{n}$")
-	A("distribució asimptòtica $\,$")
-	B("$\displaystyle\frac{\overline{X}_n-\mu}{\frac{\sigma}{\sqrt{n}}} \approx N(0,1)$")
-	C("$\displaystyle\frac{\overline{X}_n-\mu}{\frac{S_n}{\sqrt{n}}} \approx N(0,1)$")
-	
-	A1 -- "qualsevol $n$" --> D
-	A1 -- "$n\geq30$" --> A
-	A -- "$\sigma$ coneguda" --> B
-	A -- "$\sigma$ desconeguda" --> C
-````
-
-###### Proporció mostral
-
-Cas específic de la mitjana mostral amb $\boldsymbol{X\sim B(p)}$, on:
-+ $\text{E}(x)=\mu=p$
-+ $\text{Var}(X)=\sigma^{2}=p\,(p-1)$
-+ $\hat{p}_{n}=\overline{X}_{n}$
-
-```mehrmaid
-graph TB;
-	A("Volem estimar $p\,$")
-	B("$\displaystyle n\,\hat{p}_n = \sum_{i=1}^nX_i\sim B(n,p)$")
-	C("Teorema de DeMoivre-Laplace:
-	$\displaystyle n\,\hat{p}_n = \sum_{i=1}^nX_i \approx N(n\,p,n\,p\,(1-p))$")
-	D("Teorema de Poisson:
-	$\displaystyle n\,\hat{p}_n = \sum_{i=1}^nX_i \approx Pois(\lambda)$
-	amb $\lambda=n\,p$")
-	F("distribució asimptòtitca $\,$")
-	
-	A -- "$n$ qualsevol" --> B
-	A -- "$n$ gran" --> F:::hidden
-	F -- "$np(1-p)\geq18$" --> C
-	F -- "$n\geq10$, $p<0.05\,$" --> D
-```
 
 ---
 ## Estadístics **d'ordre**
@@ -432,7 +364,6 @@ $$\begin{align}
 ```
 ````
 
----
 ###### Distribucions **asimptòtiques**
 
 ```ad-met
@@ -481,7 +412,6 @@ A posteriori de construir l'interval de confiança serà adient comprovar si l'e
 ```
 ````
 
----
 ###### **Altres** distribucions o distribucions **desconegudes**
 
 Quan volem estimar un paràmetre desconegut d'una v.a. $X$ de mida $n$ però aquesta **no és prou gran** per poder aplicar distribucions asimptòtiques, podem trobar un interval (generalment **molt menys precís**) fent servir la desigualtat de Txebixev.
@@ -523,8 +453,8 @@ title: IC de la **diferència** de **mitjanes $\boldsymbol{\mu_{1}-\mu_{2}}$**
 $\,$
 **No coneixem $\boldsymbol{\sigma^{2}}$ i $\boldsymbol{\sigma_{2}^{2}}$ però podem suposar $\boldsymbol{\sigma_{1}^{2}=\sigma_{2}^{2}}$ :**
 > $$ IC_{\gamma}(\mu_{1}-\mu_{2}) = \left[ (\overline{x_{1}}-\overline{x_{2}}) \,\mp\, t_{n_{1}+n_{2}-2,\,1-\frac{\alpha}{2}}\, s \,\sqrt{\frac{1}{n_{1}} + \frac{1}{n_{2}}} \,\right] $$
-on $\boldsymbol{s=s_{1}=s_{2}}$ és la [[#^00ad27 | desviació típica mostral]] de les dues mostres, calculada mitjançant una mitjana ponderada
-$$ S = \frac{(n_{1}-1)\,S_{1}^{2} + (n_{2}-1)\,S_{2}^{2}}{n_{1}+n_{2}-2} \,.$$
+on $\boldsymbol{s}$ és la [[#^00ad27 | desviació típica mostral]] de les dues mostres, calculada mitjançant una mitjana ponderada
+$$ S^{2} = \frac{(n_{1}-1)\,S_{1}^{2} + (n_{2}-1)\,S_{2}^{2}}{n_{1}+n_{2}-2} \,.$$
 
 $\,$
 **No coneixem $\boldsymbol{\sigma_{1}^{2}}$ i $\boldsymbol{\sigma_{2}^{2}}$ i suposem $\boldsymbol{\sigma_{1}^{2}\neq\sigma_{2}^{2}}$ :**
@@ -564,8 +494,8 @@ que és igual al del cas normal.
 $\,$
 **No coneixem $\boldsymbol{\sigma^{2}}$ i $\boldsymbol{\sigma_{2}^{2}}$ però podem suposar $\boldsymbol{\sigma_{1}^{2}=\sigma_{2}^{2}}$ :**
 > $$ IC_{\gamma}(\mu_{1}-\mu_{2}) = \left[ (\overline{x_{1}}-\overline{x_{2}}) \,\mp\, z_{1-\frac{\alpha}{2}}\, s \,\sqrt{\frac{1}{n_{1}} + \frac{1}{n_{2}}} \,\right] $$
-on $\boldsymbol{s=s_{1}=s_{2}}$ és la [[#^00ad27 | desviació típica mostral]] de les dues mostres, calculada mitjançant una mitjana ponderada
-$$ S = \frac{(n_{1}-1)\,S_{1}^{2} + (n_{2}-1)\,S_{2}^{2}}{n_{1}+n_{2}-2} \,.$$
+on $\boldsymbol{s}$ és la [[#^00ad27 | desviació típica mostral]] de les dues mostres, calculada mitjançant una mitjana ponderada
+$$ S^{2} = \frac{(n_{1}-1)\,S_{1}^{2} + (n_{2}-1)\,S_{2}^{2}}{n_{1}+n_{2}-2} \,.$$
 
 $\,$
 **No coneixem $\boldsymbol{\sigma_{1}^{2}}$ i $\boldsymbol{\sigma_{2}^{2}}$ i suposem $\boldsymbol{\sigma_{1}^{2}\neq\sigma_{2}^{2}}$ :**
@@ -607,7 +537,6 @@ $$ IC_{\gamma}(\mu) = \left[ \overline{d} \,\mp\, t_{n-1,\,1-\frac{\alpha}{2}} \
 on $\overline{d}$ és la mitjana mostral i $s_{D}$ la [[#^00ad27 | desviació típica mostral]] de la realització de $D$.
 ```
 
----
 ## Apèndix
 
 

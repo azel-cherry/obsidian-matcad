@@ -41,7 +41,7 @@
     },
     "ex": {
       "type": "ex",
-      "color": "254, 204, 200",
+      "color": "236, 176, 172",
       "icon": {
         "name": "border-all",
         "type": "font-awesome"
@@ -74,6 +74,19 @@
       },
       "command": false,
       "title": "Nota",
+      "injectColor": true,
+      "noTitle": false,
+      "copy": false
+    },
+    "mehr": {
+      "type": "mehr",
+      "color": "186, 186, 186",
+      "icon": {
+        "name": "bezier-curve",
+        "type": "font-awesome"
+      },
+      "command": false,
+      "title": "Esquema",
       "injectColor": true,
       "noTitle": false,
       "copy": false

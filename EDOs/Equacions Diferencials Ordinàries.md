@@ -175,7 +175,7 @@ Tenim una EDO de la forma $\displaystyle y'=f\left(\frac{y}{x}\right)$.
 
 1. Fem el canvi de variable $\displaystyle u(x)=\frac{y(x)}{x}$, arribant a que
 
-$$\displaystyle u'(x)=\frac{du}{dx}=\frac{f(u(x))-u(x)}{x} .$$
+$$ u'(x)=\frac{du}{dx}=\frac{f(u(x))-u(x)}{x} .$$
 
 2. Resolem com a equació de variables separades.
 ```
@@ -209,28 +209,29 @@ Sigui $y'(x)=f(x,y)$ una EDO de primer ordre, i donada $m\in\mathbb{R}$, les cor
 ## Equacions diferencials **exactes**
 
 Una EDO de primer ordre
-$$ M(t,y) + N(t,y)\,y' = 0 $$
+$$ M(x,y) + N(x,y)\,y' = 0 $$
 es diu que és ==exacta== si:
 + $M$ i $N$ son funcions de classe $C^{1}$ en $\mathbb{R}$
-+ $N(t,y)\neq 0$ per tot $(t,y)\in \mathbb{R}$
-+ Existeix una funció $V(t,y)$ tal que
-$$ \frac{dV}{dt}=M\,, \quad \frac{dV}{dy}=N\,, \quad \forall (t,y)\in \mathbb{R}\,.$$
++ $N(x,y)\neq 0$ per tot $(x,y)\in \mathbb{R}$
++ Existeix una funció $V(x,y)$ tal que
+$$ \frac{dV}{dx}=M\,, \quad \frac{dV}{dy}=N\,, \quad \forall (x,y)\in \mathbb{R}\,.$$
 
-La funció $V(t,y)$ s'anomena ==funció potencial==.
+La funció $V(x,y)$ s'anomena ==funció potencial==.
 
 ```ad-def
 title: *Factors integrants*
 
-Sigui $M(t,y) + N(t,y)\,y'=0$ una equació **no exacta**.
+Sigui $M(x,y) + N(x,y)\,y'=0$ una equació **no exacta**.
 
-Direm que una funció $\mu(t,y)$ és un ==factor integrant== de l'equació si
-$$ \boldsymbol{\mu(t,y)}\,M(t,y) + \boldsymbol{\mu(t,y)}\,N(t,y)\,y' = 0 \,.$$
+Direm que una funció $\mu(x,y)$ és un ==factor integrant== de l'equació si
+$$ \boldsymbol{\mu(x,y)}\,M(x,y) + \boldsymbol{\mu(x,y)}\,N(x,y)\,y' = 0 \,.$$
 ```
 
 ---
 ## Equacions diferencials **autònomes**
 
 Les equacions autònomes
+$$ y' = f(y) $$
 + són de **variables separades**, i
 + els seus **equilibris** són els **zeros** de la funció $f$.
 
@@ -344,8 +345,9 @@ s'anomena el ==Wronksià== de les funcions $y_{1}$ i $y_{2}$.
 ```ad-teor
 title: Solució general
 
-Siguin $y_{1}$ i $y_{2}$ dues solucions de l'equació $y''(x) + a(x)y'(x) + b(x)y(x) = 0$
-amb Wronksià no nul $\forall x$. Aleshores
+Siguin $y_{1}$ i $y_{2}$ dues solucions de l'equació $y''(x) + a(x)y'(x) + b(x)y(x) = 0$ amb Wronksià no nul $\forall x$. 
+
+Aleshores
 $$ \boxed{y(x) = Ay_{1}(x) + By_{2}(x)} $$
 és la solució general de l'equació.
 ```
@@ -425,7 +427,7 @@ Sigui $f(t)$ una funció definida per a $t\geq0$.
 
 Aleshores es defineix la seva ==transformada de Laplace== com la funció
 
-$$ F(s) = \mathcal{L}[f](s) = \int_{0}^{\infty} e^{-st} f(t)\, dt \,.$$
+$$ F(s) := \mathcal{L}[f](s) = \int_{0}^{\infty} e^{-st} f(t)\, dt \,.$$
 ```
 
 La transformada de Laplace permet **reduir una EDO lineal** per $f(t)$ a una equació algebraica per la seva transformada.
