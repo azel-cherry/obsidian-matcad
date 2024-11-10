@@ -1,7 +1,7 @@
 ## Especificació formal
 
-|     |     |
-| --- | --- |
+|                                              |                                                          |
+| -------------------------------------------- | -------------------------------------------------------- |
 | ~={green}Descripció del problema=~           | Descripció **general**                                   |
 | ~={green}Especificació del problema=~        | Descripció **detallada**                                 |
 | ~={green}Especificació formal del problema=~ | Descripció detallada amb **llenguatge formal matemàtic** |
