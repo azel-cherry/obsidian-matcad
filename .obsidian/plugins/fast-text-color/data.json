@@ -146,6 +146,35 @@
           "useCssColorVariable": false,
           "colorVariable": "--color-base-00",
           "className": "ftc-color-default-fadedd"
+        },
+        {
+          "color": "#a1d3a1",
+          "id": "green_low",
+          "keybind": "",
+          "italic": false,
+          "bold": false,
+          "cap_mode": {
+            "states": [
+              "normal",
+              "all_caps",
+              "small_caps"
+            ],
+            "state": "normal",
+            "index": 0
+          },
+          "line_mode": {
+            "states": [
+              "none",
+              "underline",
+              "overline",
+              "line-through"
+            ],
+            "state": "none",
+            "index": 0
+          },
+          "useCssColorVariable": false,
+          "colorVariable": "--color-base-00",
+          "className": "ftc-color-default-green_low"
         }
       ],
       "name": "default"
@@ -508,7 +537,7 @@
           },
           "useCssColorVariable": false,
           "colorVariable": "--color-base-00",
-          "className": "ftc-color-default-red"
+          "className": "ftc-color-faded-red"
         },
         {
           "color": "#00ff00",
@@ -537,7 +566,7 @@
           },
           "useCssColorVariable": false,
           "colorVariable": "--color-base-00",
-          "className": "ftc-color-default-green"
+          "className": "ftc-color-faded-green"
         },
         {
           "color": "#0000ff",
@@ -566,7 +595,7 @@
           },
           "useCssColorVariable": false,
           "colorVariable": "--color-base-00",
-          "className": "ftc-color-default-blue"
+          "className": "ftc-color-faded-blue"
         },
         {
           "color": "#00ffff",
@@ -595,7 +624,7 @@
           },
           "useCssColorVariable": false,
           "colorVariable": "--color-base-00",
-          "className": "ftc-color-default-cyan"
+          "className": "ftc-color-faded-cyan"
         },
         {
           "color": "#ff00ff",
@@ -624,7 +653,7 @@
           },
           "useCssColorVariable": false,
           "colorVariable": "--color-base-00",
-          "className": "ftc-color-default-magenta"
+          "className": "ftc-color-faded-magenta"
         },
         {
           "color": "#ffff00",
@@ -653,7 +682,7 @@
           },
           "useCssColorVariable": false,
           "colorVariable": "--color-base-00",
-          "className": "ftc-color-default-yellow"
+          "className": "ftc-color-faded-yellow"
         },
         {
           "color": "#000000",
@@ -682,7 +711,7 @@
           },
           "useCssColorVariable": false,
           "colorVariable": "--color-base-00",
-          "className": "ftc-color-default-black"
+          "className": "ftc-color-faded-black"
         }
       ],
       "name": "faded"

@@ -41,7 +41,7 @@
     },
     "ex": {
       "type": "ex",
-      "color": "236, 176, 172",
+      "color": "254, 204, 200",
       "icon": {
         "name": "border-all",
         "type": "font-awesome"
@@ -78,11 +78,11 @@
       "noTitle": false,
       "copy": false
     },
-    "mehr": {
-      "type": "mehr",
-      "color": "186, 186, 186",
+    "graph": {
+      "type": "graph",
+      "color": "191, 191, 191",
       "icon": {
-        "name": "bezier-curve",
+        "name": "project-diagram",
         "type": "font-awesome"
       },
       "command": false,
@@ -90,6 +90,17 @@
       "injectColor": true,
       "noTitle": false,
       "copy": false
+    },
+    "war": {
+      "type": "war",
+      "color": "238, 180, 180",
+      "icon": {
+        "name": "exclamation-triangle",
+        "type": "font-awesome"
+      },
+      "command": false,
+      "injectColor": true,
+      "noTitle": true
     }
   },
   "syntaxHighlight": true,
