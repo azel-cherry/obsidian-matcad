@@ -537,6 +537,57 @@ $$ IC_{\gamma}(\mu) = \left[ \overline{d} \,\mp\, t_{n-1,\,1-\frac{\alpha}{2}} \
 on $\overline{d}$ és la mitjana mostral i $s_{D}$ la [[#^00ad27 | desviació típica mostral]] de la realització de $D$.
 ```
 
+---
+## Tests d'**hipòtesis**
+
+Una ==hipòtesi estadística== és un **enunciat** sobre la **distribució d'una o més v.a.s**. 
+
+Fer un ==test d'hipòtesis== consisteix en **acceptar o rebutjar** aquesta hipòtesis de manera objectiva a partir de les dades disponibles.
++ Es plantegen **dues hipòtesis estadístiques contradictòries**.
+	+ ~={green}Hipòtesis nul·la ($H_{0}$).=~ Hipòtesi afavorida, que no serà rebutjada llevat que hi hagi evidència en contra seva ~={faded}(però tampoc es considerarà certa si  tan sols no és inconsistent amb la mostra)=~. Sovint corresponent a la **opinió actual** que es vol substituir.
+	+ ~={green}Hipòtesis alternativa ($H_{1}$)=~ ~={green_low}o "*hipòtesi de l'investigador*".=~ Contrària a la hipòtesi nul·la, sovint corresponent a la **nova teoria** que es vol establir.
++ Es defineix una **regla de decisió** que permet decidir quina hipòtesis és més plausible.
+
+```ad-def
+title: Tests d'hipòtesis **paramètrics**
+
+Aquells en que **es suposa** que les variables tenen una **certa distribució** ~={faded}(habitualment la normal)=~ i es fan hipòtesis sobre els valors dels paràmetres de la distribució ~={faded}(com la mitjana o la desviació)=~.
+```
+
+```ad-def
+title: Tests d'hipòtesis **no paramètrics**
+
+Aquells en què **no es pot suposar** prèviament **cap tipus de distribució** de la variable que estem estudiant.
+
+Sovint ens trobem aquest cas en v.a.s **contínues**.
+```
+
+#### **Error**
+
+Com que la decisió sobre quina de les dues hipòtesis considerem certa es basa en una v.a., aquesta decisió pot ser errònia.
+
+| Hipòtesi que ens quedem $\rightarrow$<br>Hipòtesi certa $\downarrow$ |         $H_{0}$          |         $H_{1}$         |
+|:--------------------------------------------------------------------:|:------------------------:|:-----------------------:|
+| $H_{0}$                                                              |         No error         | ~={pink}Error tipus I=~ |
+| $H_{1}$                                                              | ~={pink}Error tipus II=~ |        No error         | 
+
+**No sabem** si cometem un error o no, però sí que es pot controlar la **probabilitat** d'aquests. 
+
+Com que només disposem d'una constant "lliure", això només ens permet imposar **una única restricció**, que per conveni serà controlar l'error considerat **més perillós**, el de ~={pink}tipus I=~. 
+
+D'aquesta manera s'estableix una **asimetria** entre les dues hipòtesis, **afavorint la hipòtesis nul·la**.
+
+```ad-def
+title: *Regla de decisió*
+
+Fixant $\alpha\in(0,1)$ petita (anomenada ==nivell de significació==, construim la ==relga de decisió== del test d'hipòtesis de manera que
+$$P(\text{error tipus I}) \leq\alpha \,.$$
+Intentarem que $P$ sigui el més gran possible.
+```
+
+Entre els dos tipus d'error hi ha un **efecte balança**, per això intentarem que la probabilitat de l'~={pink}error I=~ sigui el **més gran** que ens podem permetre, així **reduïnt** la probabilitat de l'~={pink}error II=~
+
+---
 ## Apèndix
 
 
