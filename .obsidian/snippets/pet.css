@@ -33,6 +33,10 @@ mark,
 	}
 }
 
+:is(ul, ol) li:first-child {
+  margin-top: var(--list-item-spacing);
+}
+
 li > p {
   margin-bottom: var(--list-item-spacing) !important;
 }

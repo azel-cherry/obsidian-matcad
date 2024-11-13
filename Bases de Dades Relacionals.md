@@ -1,4 +1,3 @@
-
 ## Introducció
 
 #### Bases de dades **depenent dels requisits**
@@ -166,7 +165,7 @@ Diferències:
 + ~={green}Disseny físic=~. Optimització del rendiment:
 	+ **Indexació** (selecció d'índexs)
 	+ ***Clustering*** (partició i agrupació de dades)
-	+ ***Hashing*** (millora de l'accés als registres)")
+	+ ***Hashing*** (millora de l'accés als registres)
 + ~={green}Implementació=~ mitjançant els llenguatges específics del 
 [[#^29ec86 | Sistema Gestor de Bases de Dades]].
 
@@ -214,9 +213,6 @@ title: Quan **no** utilitzar un **SGBD**
 
 ---
 ## Arquitectura
-
-Conjunt de models, estructures i descripció modular d'un SBD.
-
 
 #### Sistema **centralitzat tradicional**
 
@@ -351,8 +347,8 @@ graph TB;
 
 ###### **Independència**
 
-+ ~={green}Independència lògica.=~ Modificar el nivell **conceptual** sense necessitat de modificar els nivells **externs**.
-+ ~={green}Independència física.=~ Modificar el nivell **intern** sense necessitat de modificar el nivell **conceptual**.
++ ~={green}Independència lògica.=~ Es pot modificar el nivell **conceptual** sense necessitat de modificar els nivells **externs**.
++ ~={green}Independència física.=~ Es pot modificar el nivell **intern** sense necessitat de modificar el nivell **conceptual**.
 
 ###### **Correspondències**
 
