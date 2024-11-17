@@ -20,7 +20,7 @@ title: EDOs **homogènies**
 3. Resoldre per variables separades
 ```
 
-```ad-mehr
+```ad-graph
 title: **Esquema de fase** (EDOs autònomes)
 
 > $y' = f(y)$
