@@ -1,4 +1,3 @@
-
 ## EDOs de **primer** ordre
 
 ```ad-met

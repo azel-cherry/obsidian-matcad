@@ -488,6 +488,7 @@ $$ \begin{cases}
 \quad \vdots\\
 \displaystyle\frac{d\,x_{n}}{dt} = a_{n1}(t)\,x_{1} + \dots + a_{nn}(t)\,x_{n} + f_{n}(t) \\
 \end{cases} $$
+^ce2cb8
 
 Denotant les següents matrius
 $$ \boldsymbol{X} = \begin{pmatrix}
@@ -522,21 +523,11 @@ un problema de valor inicial on els elements de les **matrius $A(t)$ i $F(t)$ so
 Aleshores existeix una ~={green}única solució=~ del PVI.
 ```
 
-```ad-def
-title: Sistema lineal *homogeni*
-
-En un sistema lineal
-$$\begin{cases}
-\displaystyle\frac{d\,x_{1}}{dt} = a_{11}(t)\,x_{1} + \dots + a_{1n}(t)\,x_{n} + f_{1}(t) \\
-\quad \vdots\\
-\displaystyle\frac{d\,x_{n}}{dt} = a_{n1}(t)\,x_{1} + \dots + a_{nn}(t)\,x_{n} + f_{n}(t) \\
-\end{cases}$$
-quan $f_{i}(t)=0$ $\forall i$ es diu que el sistema és ==homogeni==.
-```
-
 Anàlogament amb les EDOs, la ~={green}solució general=~ d'un sistema és la **solució general del sistema homogeni associat** més una **solució particular**.
 
 #### Sistema lineal **homogeni**
+
+Un [[#^ce2cb8 | sistema lineal]] es diu que és ==homogeni== quan $f_{i}(t)=0$ $\forall i$.
 
 ```ad-prop
 title: Principi de Superposició
