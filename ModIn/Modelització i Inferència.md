@@ -603,6 +603,9 @@ $$ \boldsymbol{\pi(\theta)} = P_{\theta}\,(\text{rebutjar }H_{0}) = \begin{cases
 \end{cases} $$
 ```
 
+A partir de la funció de potència, tenim que la **probabilitat** de cometre l'~={pink}error de tipus II=~ per una variable $\theta$ és
+$$ P\,(\text{error II}) = P\,(\text{acceptar }H_{0}) = 1-\pi(\theta) \,.$$
+
 #### **Decisió**
 
 Si la **regla de decisió** ens porta a acceptar ~={green}$H_{1}$=~, ho farem ~={green}amb convenciment=~, ja que tenim controlada la probabilitat d'equivocar-nos en aquest cas.
@@ -646,27 +649,18 @@ title: Desviació típica desconeguda
 ==Estadístic de contrast==:
 > $\displaystyle Z = \frac{\overline{X}-\mu_{0}}{\frac{\sigma}{\sqrt{n}}} \sim N(0,1) \quad\text{si } \,\mu=\mu_{0}$
 
-==Regió de rebuig==:
-
-| Unilateral dret | Unilateral esquerre | Bilateral |
-|:---:|:---:|:---:|
-| $RR = \{\,z < -z_{1-\alpha}\,\}$ | $RR = \{\,z > z_{1-\alpha}\,\}$ | $RR = \left\{ \,\mid z\mid\, > z_{1-\frac{\alpha}{2}}\, \right\}$ |
-
 ==Funció de potència==:
 > $\displaystyle\pi(\theta) = \Phi\left( -z_{1-\alpha} + \frac{\mu_{0}-\mu}{\frac{\sigma}{\sqrt{n}}} \right)$
 >
 > on $\Phi$ és a funció de distribució de $N(0,1)$.
 
-```graph
-bounds: [-2,2,2,-2]
-elements: [
-	{type: slider, def: [[1,1],[2,1],[-10,0,10]], att: {name: "z"}},
-	{type: slider, def: [[1,0.5],[2,0.5],[0,10,50]], att: {name: "n"}},
-	{type: slider, def: [[1,-0.5],[2,-0.5],[0,10,50]], att: {name: "sigma"}},
-	{type: slider, def: [[1,-1],[2,-1],[0,10,50]], att: {name: "mu_0"}},
-	{type: functiongraph, def: ["f:(1/sqrt(2*PI))*E**(-(1/2)*(-e0+(e3-x/(e2/sqrt(e1))))**2)"]}
-]
-```
+| | Unilateral dret | Unilateral esquerre | Bilateral
+| --- |:---:|:---:|:---:|
+| **Regió de rebuig** | $RR = \{\,z < -z_{1-\alpha}\,\}$ | $RR = \{\,z > z_{1-\alpha}\,\}$ | $RR = \left\{ \,\mid z\mid\, > z_{1-\frac{\alpha}{2}}\, \right\}$ |
+| **Funció de potència**| ![[regiones2.jpg]] | ![[regiones1.jpg]] | ![[regiones3.jpg]] |
+| **Mida de la mostra** ~={pink}(*)=~ | $\displaystyle n= \left\lceil\left( \frac{\sigma\,(z_{1-\alpha}+z_{1-\beta})}{\mu_{0}-\mu_{1}} \right)^{2} \right\rceil$ | $\displaystyle n= \left\lceil\left( \frac{\sigma\,(z_{1-\alpha}+z_{1-\beta})}{\mu_{0}-\mu_{1}} \right)^{2} \right\rceil$ | $\displaystyle n\approx \left\lceil\left(\frac{\sigma\,(z_{1-\frac{\alpha}{2}}+z_{1-\beta})}{\mu_{0}-\mu_{1}}\right)^{2}\right\rceil$
+
+~={pink}(*)=~ donada una probabilitat d'error de tipus II $\boldsymbol\beta$ i un valor concret de $\boldsymbol{\mu=\mu_{1}}$.
 
 ````
 `````
