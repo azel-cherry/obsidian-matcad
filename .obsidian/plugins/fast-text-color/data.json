@@ -175,6 +175,35 @@
           "useCssColorVariable": false,
           "colorVariable": "--color-base-00",
           "className": "ftc-color-default-green_low"
+        },
+        {
+          "color": "#eaa9a9",
+          "id": "pink_low",
+          "keybind": "",
+          "italic": false,
+          "bold": false,
+          "cap_mode": {
+            "states": [
+              "normal",
+              "all_caps",
+              "small_caps"
+            ],
+            "state": "normal",
+            "index": 0
+          },
+          "line_mode": {
+            "states": [
+              "none",
+              "underline",
+              "overline",
+              "line-through"
+            ],
+            "state": "none",
+            "index": 0
+          },
+          "useCssColorVariable": false,
+          "colorVariable": "--color-base-00",
+          "className": "ftc-color-default-pink_low"
         }
       ],
       "name": "default"

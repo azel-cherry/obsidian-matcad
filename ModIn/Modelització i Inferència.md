@@ -573,20 +573,103 @@ Com que la decisió sobre quina de les dues hipòtesis considerem certa es basa 
 
 **No sabem** si cometem un error o no, però sí que es pot controlar la **probabilitat** d'aquests. 
 
++ Probabilitat de cometre l'~={pink}error I=~: $\,\boldsymbol\alpha$
++ Probabilitat de cometre l'~={pink}error II=~: $\,\boldsymbol\beta$
+
 Com que només disposem d'una constant "lliure", això només ens permet imposar **una única restricció**, que per conveni serà controlar l'error considerat **més perillós**, el de ~={pink}tipus I=~. 
 
 D'aquesta manera s'estableix una **asimetria** entre les dues hipòtesis, **afavorint la hipòtesis nul·la**.
 
 ```ad-def
-title: *Nivell de significació* | *Regla de decisió*
+title: *Nivell de significació*
 
-Fixant $\alpha\in(0,1)$ petita (anomenada ==nivell de significació==), construim la ==relga de decisió== del test d'hipòtesis de manera que
+Fixant $\alpha\in(0,1)$ petita (anomenada ==nivell de significació==), construim una **relga de decisió** del test d'hipòtesis de manera que
 $$P(\text{error tipus I}) \leq\alpha \,.$$
 Intentarem que $P$ sigui el més gran possible.
 ```
 
-Entre els dos tipus d'error hi ha un **efecte balança**, per això intentarem que la probabilitat de l'~={pink}error I=~ sigui el **més gran** que ens podem permetre, així **reduïnt** la probabilitat de l'~={pink}error II=~
+Entre els dos tipus d'error hi ha un **efecte balança**, per això intentarem que la probabilitat de l'~={pink}error I=~ ($\alpha$) sigui el **més gran** que ens podem permetre, així **reduïnt** la probabilitat de l'~={pink}error II=~ ($\beta$).
 
+```ad-def
+title: *Funció de potència*
+
+La ==funció de potència== d'un test d'hipòtesis permet tractar **simultàniament** les probabilitats dels **dos tipus d'error**.
+
+Sigui $\theta$ el veritable valor del paràmetre que estem estudiant:
+
+$$ \boldsymbol{\pi(\theta)} = P_{\theta}\,(\text{rebutjar }H_{0}) = \begin{cases}
+\, \alpha(\theta) \quad &\text{si }\theta \text{ verifica }H_{0} \\
+\, 1-\beta(\theta) &\text{si }\theta \text{ verifica }H_{1}
+\end{cases} $$
+```
+
+#### **Decisió**
+
+Si la **regla de decisió** ens porta a acceptar ~={green}$H_{1}$=~, ho farem ~={green}amb convenciment=~, ja que tenim controlada la probabilitat d'equivocar-nos en aquest cas.
+
+Contràriament, si acabem acceptant ~={pink}$H_{0}$=~, ho farem ~={pink}sense convenciment=~, ja que aquest error no el tenim controlat.
+
+```ad-def
+title: *Regla de decisió*
+
+La ==regla de decisió== consisteix en determinar una **partició** dels possibles valors de la mostra en dos subconjunts:
+
++ ~={green}Regió d'Acceptació (RA)=~
++ ~={pink}Regió de Rebuig (RR)=~ o ~={pink_low}Regió Crítica=~
+
+Moltes vegades les regions RA i RR **es determinen** a partir d'un estadístic anomenat ==estadístic de contrast== o del test.
+```
+
+```ad-def
+title: *Nivell de confiança*
+
+El ==nivell de confiança== d'un test d'hipòtesis es defineix per
+$$ 1- \alpha \,,$$
+és a dir, la probabilitat d'acceptar $H_{0}$ quan és certa.
+```
+
+#### Població **normal**
+
+`````ad-met
+title: Test per a la **mitjana $\boldsymbol\mu$**
+
+En general consisteixen en comparar el valor de $\mu$ amb un cert valor concret $\mu_{0}$.
+
+Es classificquen en tres tipus:
++ ~={green}Unilateral dret=~ $\begin{cases} H_{0}: \mu\leq\mu_{0} \\ H_{1}: \mu>\mu_{0} \end{cases}$
++ ~={green}Unilateral esquerre=~ $\begin{cases} H_{0}: \mu\geq\mu_{0} \\ H_{1}: \mu <\mu_{0} \end{cases}$
++ ~={green}Bilateral=~ $\begin{cases} H_{0}: \mu=\mu_{0} \\ H_{1}: \mu\neq\mu_{0} \end{cases}$
+
+````ad-met
+title: Desviació típica desconeguda
+
+==Estadístic de contrast==:
+> $\displaystyle Z = \frac{\overline{X}-\mu_{0}}{\frac{\sigma}{\sqrt{n}}} \sim N(0,1) \quad\text{si } \,\mu=\mu_{0}$
+
+==Regió de rebuig==:
+
+| Unilateral dret | Unilateral esquerre | Bilateral |
+|:---:|:---:|:---:|
+| $RR = \{\,z < -z_{1-\alpha}\,\}$ | $RR = \{\,z > z_{1-\alpha}\,\}$ | $RR = \left\{ \,\mid z\mid\, > z_{1-\frac{\alpha}{2}}\, \right\}$ |
+
+==Funció de potència==:
+> $\displaystyle\pi(\theta) = \Phi\left( -z_{1-\alpha} + \frac{\mu_{0}-\mu}{\frac{\sigma}{\sqrt{n}}} \right)$
+>
+> on $\Phi$ és a funció de distribució de $N(0,1)$.
+
+```graph
+bounds: [-2,2,2,-2]
+elements: [
+	{type: slider, def: [[1,1],[2,1],[-10,0,10]], att: {name: "z"}},
+	{type: slider, def: [[1,0.5],[2,0.5],[0,10,50]], att: {name: "n"}},
+	{type: slider, def: [[1,-0.5],[2,-0.5],[0,10,50]], att: {name: "sigma"}},
+	{type: slider, def: [[1,-1],[2,-1],[0,10,50]], att: {name: "mu_0"}},
+	{type: functiongraph, def: ["f:(1/sqrt(2*PI))*E**(-(1/2)*(-e0+(e3-x/(e2/sqrt(e1))))**2)"]}
+]
+```
+
+````
+`````
 
 
 ---
