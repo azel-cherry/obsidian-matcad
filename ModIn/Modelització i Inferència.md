@@ -591,6 +591,18 @@ Intentarem que $P$ sigui el més gran possible.
 Entre els dos tipus d'error hi ha un **efecte balança**, per això intentarem que la probabilitat de l'~={pink}error I=~ ($\alpha$) sigui el **més gran** que ens podem permetre, així **reduïnt** la probabilitat de l'~={pink}error II=~ ($\beta$).
 
 ```ad-def
+title: *$\boldsymbol p$-valor*
+
+El ==$p$-valor== és el màxim **nivell de significació** per al qual **no** rebutjaríem $H_{0}$.
+
+
+| $\boldsymbol{p\text{\textbf{-valor}}<\alpha}$ | $\boldsymbol{p\text{\textbf{-valor}}\geq\alpha}$ |
+| --- | --- |
+| es rebutja $H_{0}$ | s'accepta $H_{0}$ |
+
+```
+
+```ad-def
 title: *Funció de potència*
 
 La ==funció de potència== d'un test d'hipòtesis permet tractar **simultàniament** les probabilitats dels **dos tipus d'error**.
@@ -644,7 +656,7 @@ Es classificquen en tres tipus:
 + ~={green}Bilateral=~ $\begin{cases} H_{0}: \mu=\mu_{0} \\ H_{1}: \mu\neq\mu_{0} \end{cases}$
 
 ````ad-met
-title: Desviació típica desconeguda
+title: Desviació típica **coneguda**
 
 ==Estadístic de contrast==:
 > $\displaystyle Z = \frac{\overline{X}-\mu_{0}}{\frac{\sigma}{\sqrt{n}}} \sim N(0,1) \quad\text{si } \,\mu=\mu_{0}$
@@ -658,11 +670,22 @@ title: Desviació típica desconeguda
 | --- |:---:|:---:|:---:|
 | **Regió de rebuig** | $RR = \{\,z < -z_{1-\alpha}\,\}$ | $RR = \{\,z > z_{1-\alpha}\,\}$ | $RR = \left\{ \,\mid z\mid\, > z_{1-\frac{\alpha}{2}}\, \right\}$ |
 | **Funció de potència**| ![[regiones2.jpg]] | ![[regiones1.jpg]] | ![[regiones3.jpg]] |
-| **Mida de la mostra** ~={pink}(*)=~ | $\displaystyle n= \left\lceil\left( \frac{\sigma\,(z_{1-\alpha}+z_{1-\beta})}{\mu_{0}-\mu_{1}} \right)^{2} \right\rceil$ | $\displaystyle n= \left\lceil\left( \frac{\sigma\,(z_{1-\alpha}+z_{1-\beta})}{\mu_{0}-\mu_{1}} \right)^{2} \right\rceil$ | $\displaystyle n\approx \left\lceil\left(\frac{\sigma\,(z_{1-\frac{\alpha}{2}}+z_{1-\beta})}{\mu_{0}-\mu_{1}}\right)^{2}\right\rceil$
+| **Mida de la mostra** ~={pink}(*)=~ | $\displaystyle n= \left\lceil\left( \frac{\sigma\,(z_{1-\alpha}+z_{1-\beta})}{\mu_{0}-\mu_{1}} \right)^{2} \right\rceil$ | $\displaystyle n= \left\lceil\left( \frac{\sigma\,(z_{1-\alpha}+z_{1-\beta})}{\mu_{0}-\mu_{1}} \right)^{2} \right\rceil$ | $\displaystyle n\approx \left\lceil\left(\frac{\sigma\,(z_{1-\frac{\alpha}{2}}+z_{1-\beta})}{\mu_{0}-\mu_{1}}\right)^{2}\right\rceil$ |
+| **$\boldsymbol p$-valor** | $\displaystyle P\left( N(0,1)> \frac{\overline{x}-\mu_{0}}{\frac{\sigma}{\sqrt{n}}} \right)$ | $P\left( N(0,1)< \frac{\overline{x}-\mu_{0}}{\frac{\sigma}{\sqrt{n}}} \right)$ | $\displaystyle 2P\left( N(0,1)< \left\vert \frac{\overline{x}-\mu_{0}}{\frac{\sigma}{\sqrt{n}}} \right\vert\right)$ |
 
 ~={pink}(*)=~ donada una probabilitat d'error de tipus II $\boldsymbol\beta$ i un valor concret de $\boldsymbol{\mu=\mu_{1}}$.
-
 ````
+
+```ad-met
+title: Desviació típica **desconeguda**
+
+==Estadístic de contrast==:
+> $\displaystyle T = \frac{\overline{X}-\mu_{0}}{\frac{S}{\sqrt{n}}} \sim t_{n-1} \quad\text{si } \,\mu=\mu_{0}$
+
+| | Unilateral dret | Unilateral esquerre | Bilateral
+| --- |:---:|:---:|:---:|
+| **Regió de rebuig** | $RR=\{t>t_{n-1,\,1-\alpha}\}$ | $RR=\{t<-t_{n-1,\,1-\alpha}\}$ | 
+```
 `````
 
 
