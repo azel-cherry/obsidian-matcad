@@ -714,7 +714,7 @@ L'òrbita d'un punt d'equilibri es redueix a un punt.
 ```
 
 
-###### Retrats de fase de sistemes **lineals** amb **coeficients constants**
+###### Retrats de fase de sistemes autònoms **lineals** amb **coeficients constants**
 
 Considerem el sistema
 $$ \begin{pmatrix}
@@ -759,8 +759,9 @@ title: $\boldsymbol{0<\lambda_{1},\lambda_{2}}$
 
 Es diu que el sistema és un ==node repulsor==. Les òrbites tendeixen a l'origen quan $t\rightarrow -\infty$.
 
-![[Pasted image 20241215201800.png | $0<\lambda_{1}<\lambda_{2}$ | 250]]
-![[Pasted image 20241215202335.png | $0<\lambda_2<\lambda_1$ | 250]]
+| ![[20241215201800.png \| 250]] | ![[20241215202335.png \| 252]] |
+|:---:|:---:|
+| $0<\lambda_{1}<\lambda_{2}$ | $0<\lambda_2<\lambda_1$ |
 ```
 
 ```ad-met
@@ -768,9 +769,9 @@ title: $\boldsymbol{\lambda_{1},\lambda_{2}<0}$
 
 Es diu que el sistema és un ==node atractor==. 
 
-![[Pasted image 20241215202631.png | $\lambda_{2}<\lambda_{1}<0$ | 250]]
-
-![[Pasted image 20241215202757.png | $\lambda_{1}<\lambda_{2}<0$ | 250]]
+| ![[20241215202631.png \| 262]] | ![[20241215202757.png \| 250]] |
+|:---:|:---:|
+| $\lambda_{2}<\lambda_{1}<0$ | $\lambda_{1}<\lambda_{2}<0$ |
 ```
 
 ```ad-met
@@ -778,7 +779,7 @@ title: $\boldsymbol{\lambda_{2}<0<\lambda_{1}}$
 
 Es diu que l'origen és una ==sella==. 
 
-![[Pasted image 20241215202932.png | 250]]
+![[20241215202932.png | 250]]
 ```
 
 ````
@@ -808,20 +809,9 @@ y
 
 Totes les òrbites, excepte l'origen, seran semirectes.
 
-```ad-met
-title: $0<\lambda$
-
-L'origen és un ==node degenerat repulsor==.
-
-![[Pasted image 20241215204341.png | 250]]
-```
-```ad-met
-title: $\boldsymbol{\lambda<0}$
-
-L'origen és un ==node degenerat atractor==.
-
-![[Pasted image 20241215204437.png |  | 250]]
-```
+| ![[20241215204341.png \| 251]] | ![[20241215204437.png \| 250]] |
+|:---:|:---:|
+| $0<\lambda$<br>==node degenerat repulsor== | $\lambda<0$<br>==node degenerat atractor== |
 ````
 
 ````ad-met
@@ -839,22 +829,9 @@ x \\
 y
 \end{pmatrix} \,.$$
 
-```ad-met
-title: $\boldsymbol{\lambda<0}$
-
-L'origen és un ==node impropi atractor==.
-
-![[Pasted image 20241215204819.png | 250]]
-```
-
-```ad-met
-title: $\boldsymbol{0<\lambda}$
-
-L'origen és un ==node impropi repulsor==.
-
-![[Pasted image 20241215204931.png |  | 250]]
-```
-````
+| ![[20241215204819.png \| 255]] | ![[20241215204931.png \| 250]] |
+|:---:|:---:|
+| $\lambda<0$<br>==node impropi atractor== | $0<\lambda$<br>==node impropi repulsor== |
 `````
 
 ````ad-met
@@ -874,26 +851,144 @@ x \\
 y
 \end{pmatrix} \,.$$
 
-```ad-met
-title: $\boldsymbol{\alpha=0}$
+| ![[20241215210230.png \| 234]] | ![[20241215205939.png \| 250]] | ![[20241215210252.png \| 241]] |
+|:---:|:---:|:---:|
+| $\lambda<0$<br>==focus atractor== | $\lambda=0$<br>==centre== | $0<\lambda$<br>==focus repulsor== |
 
-L'origen és un ==centre==. Totes les òrbites son periòdiques de període $\displaystyle T=\frac{2\pi}{\beta}$.
-
-![[Pasted image 20241215205939.png | 250]]
-```
-```ad-met
-title: $\boldsymbol{0<\alpha}$
-
-L'origen és un ==focus repulsor==.
-
-![[Pasted image 20241215210230.png | 250]]
-```
-```ad-met
-title: $\boldsymbol{\alpha<0}$
-
-L'origen és un ==focus atractor==.
-
-![[Pasted image 20241215210252.png | 250]]
-```
+En el cas del **centre**, totes les òrbites son periòdiques amb període $\displaystyle T=\frac{2\pi}{\beta}$.
 ````
 ``````
+
+
+## Sistemes d'equacions **no lineals**
+
+Considerem un sistema autònom
+$$ \begin{cases}
+x' = f(x,y) \\
+y' = g(x,y)
+\end{cases} $$
+^6f5d73
+
+amb $f$ i $g$ de classe $C^{1}$.
+
+````ad-def
+title: Punt *estable*
+
+Es diu que un **punt d'equilibri** $\boldsymbol z\text{*}$ d'un [[#^6f5d73 | sistema no lineal]] és ==estable== si per tot $\varepsilon>0$ existeix $\delta>0$ tal que per tot $z_{0}=(x_{0},y_{0})$ amb $||z \text{*}-z_{0}||<\delta$ es compleix
+$$ ||\, z\,(t;z_{0})-z\text{*} || < \varepsilon $$
+per tot $t>0$.
+
+```ad-def
+title: Punt *asimptòticament* estable
+
+Es diu que un **punt d'equilibri** $\boldsymbol z\text{*}$ d'un [[#^6f5d73 | sistema no lineal]] és ==asimptòticament estable== si és estable i a més es compleix que
+$$ ||\ z(t,z_{0})-z\text{*} || \rightarrow \infty$$
+quan $t\rightarrow \infty$.
+```
+````
+
+```ad-def
+title: Punt *inestable*
+
+Es diu que un **punt d'equilibri** $\boldsymbol z\text{*}$ d'un [[#^6f5d73 | sistema no lineal]] és ==inestable== si **no és estable**.
+
+És a dir, per a algun $\varepsilon>0$ existeixen punts $z_{0}$ arbitràriament a prop de $z\text{*}$ tal que
+$$ ||\, z\,(t;z_{0})-z\text{*} || > \varepsilon $$
+per a algun $t>0$.
+```
+
+````ad-def
+title: Conjunt *invariant*
+
+Suposem [[#^6f5d73 | sistema no lineal]] amb solucions definides per tot $t\in \mathbb{R}$.
+
+Diem que un conjunt $D \subset \mathbb{R}^{2}$ és un ==conjunt invariant== pel sistema si per a tot $z_{0}\in D$ l'òrbita que passa per $z_{0}$ està continguda en $D$.
+
+És a dir, si $z(t;z_{0})\in D$ per tot $t\in D$.
+
+```ad-def
+title: Conjunt *positivament*/*negativament* invariant
+
+Un conjunt $D\in \mathbb{R}$ és un conjunt ==~={green}positivament=~ / ~={pink}negativament=~ invariant== per un [[#^6f5d73 | sistema]] si per tot $z_{0}\in D$ es compleix $z(t;z_{0})\in D$ per a tot ~={green}$t\geq 0$=~ / ~={pink}$t\leq 0$=~ .
+```
+````
+
+#### Sistemes **integrables**
+
+Donat un [[#^6f5d73 | sistema no lineal]], es diu que la funció $H(x,y)$ és una ==integral primera== del sistema si és **constant sobre les trajectòries**. És a dir,
+$$ H(x(t),y(t)) = C $$
+on $C\in \mathbb{R}$ és una constant. 
+
+Un sistema al pla es diu que és ==integrable== si té una integral primera $H$.
+
+```ad-prop
+title: Sistema integrable
+
+Si el vector gradient d'$H$ és **ortogonal al camp vectorial** $(f,g)$, aleshores el sistema és integrable.
+```
+
+```ad-prop
+title: Retrat de fase d'un sistema integrable
+
+Les òrbites del sistema estan contingudes als conjunts de nivell de la funció $H$ (en general de dimensió 1).
+
+Per tant el retrat de fase del sistema es pot obtenir a partir de la **representació gràfica dels conjunts de nivell**
+	$$ H_{c} = \{ (x,y) \,|\, H(x,y)=c \} \,.$$
+```
+
+
+#### Sistemes **no necessàriament integrables**
+
+###### **Linealització**
+
+A partir de l'estudi dels retrats de fase dels sistemes lineals, podem descriure el comportament dels sistemes no lineals al voltant dels seus equilibris.
+
+Considerem el sistema
+$$ z'=h(z) \quad \text{on} \begin{cases}
+z = (x,y) \\
+h(z) = (f(x,y),g(x,y))
+\end{cases} $$
+^6f5d74
+
+amb $z_{0}$ un equilibri.
+
+```ad-def
+title: Matriu *jacobiana*
+
+La ==matriu jacobiana== d'un sistema no lineal és
+$$ Dh = \begin{pmatrix}
+f_{x} & f_{y} \\
+g_{x} & g_{y}
+\end{pmatrix} \,.$$
+```
+
+```ad-teor
+title: Principi de **linealització**
+
++ Suposem que **tots** els *vap*s de la matriu jacobiana $Dh(z_{0})$ tenen **part real negativa**. Aleshores l'equilibri $z_{0}$ és **asimptòticament estable**.
++ Suposem que $Dh(z_{0})$ té **algun** *vap* amb **part real positiva**. Aleshores l'equilibri $z_{0}$ és **inestable**.
+```
+
+````ad-def
+title: Equilibri *hiperbòlic*
+
+Diem que un punt d'equilibri $z_{0}$ és ==hiperbòlic== si tots els *vap*s de $Dh(z_{0})$ tene part real diferent de 0.
+
+```ad-teor
+title: Teorema de la **funció inversa**
+
+En particular, quan cap dels *vap*s de $Dh(z_{0})$ no és 0, l'origen és l'únic equilibri del sistema linealitzat.
+
+En aquest cas podem dir que la funció $h$ és **injectiva** en un entorn de $z_{0}$ i per tant l'equilibri és aïllat.
+```
+````
+
+```ad-teor
+title: Teorema de **Hartman-Grobman**
+
+Suposem que l'equilibri $z_{0}$ és hiperbòlic.
+
+Llavors, el retrat de fase d'un [[^6f5d74 | sistema no lineal]] en un entorn de $z_{0}$ és topològicament equivalent al retrat de fase del sistema lineal
+$$ y'(t) = Dh(z_{0})y(t) $$
+en un entorn de l'origen.
+```

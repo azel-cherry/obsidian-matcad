@@ -8,7 +8,6 @@ title: EDOs **lineals**
 $$y(x) = \left( \int e^{\int a(x)\,dx}\, b(x)\, dx \right) e^{-\int a(x)dx}$$
 ```
 
-
 ```ad-met
 title: EDOs **homogènies**
 
