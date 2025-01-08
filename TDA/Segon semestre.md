@@ -109,7 +109,7 @@ Quan es trobi una solució per la *priority queue*, podem assegurar que serà la
 | **Memòria**                  | Utilitza poca memòria ~={fadedd}(única solució a completar)=~ | Pot arribar a utilitzar molta memòria ~={fadedd}(moltes solucions al mateix temps)=~ |
 
 
-## Programació dinàmica
+## Programació **dinàmica** (memorització)
 
 Basada en el **principi d'optimalitat de Bellman**: *“En una seqüència de decisions òptima tota subseqüència ha de ser també òptima"*.
 
@@ -117,10 +117,34 @@ Basada en el **principi d'optimalitat de Bellman**: *“En una seqüència de de
 | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
 | Problema que compleix:<br><ul><li>Es pot dividir en subproblemes amb la mateixa estructura<li>Els subproblemes depenen l'un de l'altre<li>**Bellman.** La solució del problema és la composició dels subproblemes | Guardar ~={fadedd}(en una taula)=~ les solucions dels subproblemes i utilitzar-les quan es detecta una repetició | 
 
-Dos estratègies:
+Dues estratègies:
 
-|                | ~={green}Top-down=~                                                                                                | ~={green}Bottom-up=~                                                      |
-| -------------- | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------- |
-| **Estratègia** | Quan volem resoldre un nou subproblema, comprovar si ja l'hem calculat, i si no calcular-lo i guardar el resultat. | Començar solucionant els problemes més simples, i construir els més grans |
-| **Eficiència** | Només es resolen els subproblemes estrictament necessaris                                                          | Millor cost temporal o espacial                                           |
+|                | ~={green}Top-down=~                                                                                               | ~={green}Bottom-up=~                                                      |
+| -------------- | ----------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| **Estratègia** | Quan volem resoldre un nou subproblema, comprovar si ja l'hem calculat, i si no calcular-lo i guardar el resultat | Començar solucionant els problemes més simples, i construir els més grans |
+| **Eficiència** | Només es resolen els subproblemes estrictament necessaris                                                         | Millor cost temporal o espacial                                           |
 
+
+## Algorismes **probabilístics**
+
+| ~={green}Tipus de problema=~                                           | ~={green}Estratègia=~                                                         |
+| ---------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| Problemes on implementar la solució correcta és massa costós o difícil | Implementar un algorisme que de vegades s'equivoca però que és molt més ràpid |
+
++ Son algorismes **no deterministes**.
+
+| ~={fadedd}Algorisme=~  | ~={green}Determinista=~                           | ~={green}Probabilístic=~                                                                                      |
+| ---------------------- | ------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
+| **Errors**             | No se li permet no acabar                         | Se li permet acabar amb probabilitat molt petita; en aquest cas s'avorta i es repeteix amb les mateixes dades |
+| **Solucions trobades** | Amb les mateixes dades, sempre trobarà la mateixa | Trobarà solucions diferents (si existeixen) a cada execució                                                   |
+| **Encerts**            | No pot arribar a una solució incorrecta           | Pot equivocar-se amb poca probabilitat, la qual                                                               |
+
+
+#### Tipus
+
++ **No garanteixen** la correcció del resultat:
+	+ ~={green}Algorismes numèrics.=~
+	+ ~={green}Algorismes de Monte Carlo.=~
++ **Mai** donen solució **incorrecta**:
+	+ ~={green}Algorismes de Las Vegas.=~
+	+ ~={green}Algorismes de Sherwood.=~
