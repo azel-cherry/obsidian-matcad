@@ -142,9 +142,58 @@ Dues estratègies:
 
 #### Tipus
 
-+ **No garanteixen** la correcció del resultat:
-	+ ~={green}Algorismes numèrics.=~
-	+ ~={green}Algorismes de Monte Carlo.=~
-+ **Mai** donen solució **incorrecta**:
-	+ ~={green}Algorismes de Las Vegas.=~
-	+ ~={green}Algorismes de Sherwood.=~
+**Poden** donar un resultat **incorrecte**:
+
+```ad-prop
+title: Algorismes *numèrics*
+
+> Donen una **solució aproximada** i un **interval de confiança** per aquest.
+
+L'error és inversament proporcional a l'arrel de l'esforç invertit en el càlcul.
+$$ e = \frac{1}{\sqrt{t}} $$
+```
+
+```ad-def
+title: Algorisme $p$-*correcte*
+
+Es diu que un algorisme és ==$p$-correcte== si retorna una solució correcta amb probabilitat $\geq p$ .
+
+Pot ser que $p$ depengui de la mida d'entrada, però mai de les dades en si.
+```
+
+`````ad-prop
+title: Algorismes de *Monte Carlo*
+
+> Donen una única **resposta exacta**, que amb poca probabilitat **pot ser incorrecte** (no es pot saber).
+
+````ad-met
+title: Amplificació de l'avantatge estocàstica
+
+Quan un algorisme de Monte Carlo **no és esbiaixat**, es necessita un mètode per **determinar** quin és el **resultat correcte**.
+
+```ad-def
+title: Avantatge
+
+Es defineix com a avantatge d'un algorisme $p$-correcte a
+$$ p-\frac{1}{2} \,.$$
+```
+
+Qualsevol algorisme de Monte Carlo $p$-correcte amb **avantatge positiu** es pot transformar en un altre amb **$\boldsymbol p$ tan petita com vulguem**, executant l'algorisme prous vegades.
+````
+`````
+
+**Sempre** donen una solució **correcta**:
+
+```ad-prop
+title: Algorismes de *Las Vegas*
+
+> Prenen **decisions a l'atzar**. Poden **no arribar a una solució** amb poca probabilitat, cas en el que es pot tornar a executar fins obtenir una solució correcta.
+
+Similarment amb els algorismes de Monte Carlo, podem augmentar la probabilitat d'obtenir un resultat executant-lo més vegades.
+```
+
+```ad-prop
+title: Algorismes de *Sherwood*
+
+> **Uniformitzen** el **temps d'execució** per entrades d'igual mida; en mitjana no millora el temps (efecte Robin Hood).
+```
