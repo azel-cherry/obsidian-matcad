@@ -1,8 +1,8 @@
 ## *Backtracking*
 
-| ~={green}Tipus de problema=~                                                                                                                           | ~={green}Estratègia=~                                                                                        |
-| ------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
-| Problema **combinacional**:<br><ul><li>Format per **conjunts** on cercar la solució, que es pot organitzar en forma d'**arbre**.</li><li>**No** es pot descompondre en **problemes independents**. | Organitzar l'espai de cerca en forma d'arbre i recorre'l buscant els nodes que podran ser solució. |
+| ~={green}Tipus de problema=~                                                                                                                                                                      | ~={green}Estratègia=~                                                                             |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| Problema **combinacional**:<br><ul><li>Format per **conjunts** on cercar la solució, que es pot organitzar en forma d'**arbre**</li><li>**No** es pot descompondre en **problemes independents**. | Organitzar l'espai de cerca en forma d'arbre i recorre'l buscant els nodes que podran ser solució |
 
 ^25f58a
 
@@ -34,9 +34,9 @@ Complexitat exponencial
 
 ## *Branch & Bound*
 
-| ~={green}Tipus de problema=~                    | ~={green}Estratègia=~                                                                                      |
-| ----------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
-| Mateix cas que amb [[#^25f58a \| backtracking]]. | Tractar **a la vegada** tots els nodes amb branques no explorades, construint **varies solucions** al mateix temps. |
+| ~={green}Tipus de problema=~                    | ~={green}Estratègia=~                                                                                              |
+| ----------------------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
+| Mateix cas que amb [[#^25f58a \| backtracking]] | Tractar **a la vegada** tots els nodes amb branques no explorades, construint **varies solucions** al mateix temps |
 
 + ~={green}Node viu.=~ Node amb possibilitats de ser ramificat.
 	+ **Node en curs/expansió.** Node viu més prometedor, del que s'estan generant fills.
@@ -82,11 +82,11 @@ amb $x'$ descendent de $x$.
 ```ad-prop
 title: Poda per **cota superior**
 
-Definim la funció **cota superior** $\boldsymbol{L(x)}$ tal que
-$$L(x) \leq \text{min}\,\{c(x')\} \,.$$
+Definim la funció **cota superior** $\boldsymbol{U(x)}$ tal que
+$$U(x) \geq \text{max}\,\{c(x')\} \,.$$
 amb $x'$ descendent de $x$.
 
-+ Quan a l'hora de ramificar una solució (parcial o completa) $s$, podarem tots els nodes $x$ tal que $U(s)<L(x)$.
++ Quan a l'hora de ramificar trobem una solució (parcial o completa) $s$, podarem tots els nodes $x$ tal que $U(s)<L(x)$.
 
 ---
 També guardarem el **mínim de $\boldsymbol{U(x)}$** ($U_{m}$) per a tots els nodes que anem explorant.
