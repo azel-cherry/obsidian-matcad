@@ -113,16 +113,16 @@ Quan es trobi una solució per la *priority queue*, podem assegurar que serà la
 
 Basada en el **principi d'optimalitat de Bellman**: *“En una seqüència de decisions òptima tota subseqüència ha de ser també òptima"*.
 
-| ~={green}Tipus de problema=~                                                                                                                                                                                      | ~={green}Estratègia=~                                                                                            |
-| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
-| Problema que compleix:<br><ul><li>Es pot dividir en subproblemes amb la mateixa estructura<li>Els subproblemes depenen l'un de l'altre<li>**Bellman.** La solució del problema és la composició dels subproblemes | Guardar ~={fadedd}(en una taula)=~ les solucions dels subproblemes i utilitzar-les quan es detecta una repetició | 
+| ~={green}Tipus de problema=~                                                                                                                                                            | ~={green}Estratègia=~                                                                                            |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| <ul><li>Es pot dividir en subproblemes amb la mateixa estructura<li>Els subproblemes depenen l'un de l'altre<li>**Bellman:** La solució del problema és la composició dels subproblemes | Guardar ~={fadedd}(en una taula)=~ les solucions dels subproblemes i utilitzar-les quan es detecta una repetició |
 
 Dues estratègies:
 
-|                | ~={green}Top-down=~                                                                                               | ~={green}Bottom-up=~                                                      |
-| -------------- | ----------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
-| **Estratègia** | Quan volem resoldre un nou subproblema, comprovar si ja l'hem calculat, i si no calcular-lo i guardar el resultat | Començar solucionant els problemes més simples, i construir els més grans |
-| **Eficiència** | Només es resolen els subproblemes estrictament necessaris                                                         | Millor cost temporal o espacial                                           |
+|                | ~={green}Top-down=~                                                                                               | ~={green}Bottom-up=~                                                                  |
+| -------------- | ----------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
+| **Estratègia** | Quan volem resoldre un nou subproblema, comprovar si ja l'hem calculat, i si no calcular-lo i guardar el resultat | Començar solucionant els problemes més simples, i construir els més grans amb aquests |
+| **Eficiència** | Només es resolen els subproblemes estrictament necessaris                                                         | Millor cost temporal o espacial                                                       |
 
 
 ## Algorismes **probabilístics**
@@ -131,13 +131,13 @@ Dues estratègies:
 | ---------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
 | Problemes on implementar la solució correcta és massa costós o difícil | Implementar un algorisme que de vegades s'equivoca però que és molt més ràpid |
 
-+ Son algorismes **no deterministes**.
+Son algorismes **no deterministes**:
 
-| ~={fadedd}Algorisme=~  | ~={green}Determinista=~                           | ~={green}Probabilístic=~                                                                                      |
-| ---------------------- | ------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
-| **Errors**             | No se li permet no acabar                         | Se li permet acabar amb probabilitat molt petita; en aquest cas s'avorta i es repeteix amb les mateixes dades |
-| **Solucions trobades** | Amb les mateixes dades, sempre trobarà la mateixa | Trobarà solucions diferents (si existeixen) a cada execució                                                   |
-| **Encerts**            | No pot arribar a una solució incorrecta           | Pot equivocar-se amb poca probabilitat, la qual                                                               |
+| ~={fadedd}Algorisme=~  | ~={green}Determinista=~                                                         | ~={green}Probabilístic=~                                                                                         |
+| ---------------------- | ------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| **Errors**             | No se li permet no acabar ~={fadedd}(bucles infinits, divisions entre 0, etc)=~ | Se li permet no acabar amb probabilitat molt petita; en aquest cas s'avorta i es repeteix amb les mateixes dades |
+| **Solucions trobades** | Amb les mateixes dades, sempre trobarà la mateixa solució                       | Trobarà solucions diferents (si existeixen) a cada execució                                                      |
+| **Encerts**            | No pot arribar a una solució incorrecta                                         | Pot equivocar-se amb poca probabilitat, la qual cosa es pot solucionar executant l'algorisme repetides vegades   |
 
 
 #### Tipus
@@ -149,16 +149,8 @@ title: Algorismes *numèrics*
 
 > Donen una **solució aproximada** i un **interval de confiança** per aquest.
 
-L'error és inversament proporcional a l'arrel de l'esforç invertit en el càlcul.
+L'error $e$ és inversament proporcional a l'arrel de l'esforç invertit en el càlcul $t$.
 $$ e = \frac{1}{\sqrt{t}} $$
-```
-
-```ad-def
-title: Algorisme $p$-*correcte*
-
-Es diu que un algorisme és ==$p$-correcte== si retorna una solució correcta amb probabilitat $\geq p$ .
-
-Pot ser que $p$ depengui de la mida d'entrada, però mai de les dades en si.
 ```
 
 `````ad-prop
@@ -171,14 +163,7 @@ title: Amplificació de l'avantatge estocàstica
 
 Quan un algorisme de Monte Carlo **no és esbiaixat**, es necessita un mètode per **determinar** quin és el **resultat correcte**.
 
-```ad-def
-title: Avantatge
-
-Es defineix com a avantatge d'un algorisme $p$-correcte a
-$$ p-\frac{1}{2} \,.$$
-```
-
-Qualsevol algorisme de Monte Carlo $p$-correcte amb **avantatge positiu** es pot transformar en un altre amb **$\boldsymbol p$ tan petita com vulguem**, executant l'algorisme prous vegades.
+Qualsevol algorisme de Monte Carlo [[#^33a1f2 | p-correcte]] amb [[#^7048e9 | avantatge positiu]] es pot transformar en un altre amb **$\boldsymbol p$ tan petita com vulguem**, executant l'algorisme prous vegades.
 ````
 `````
 
@@ -197,3 +182,25 @@ title: Algorismes de *Sherwood*
 
 > **Uniformitzen** el **temps d'execució** per entrades d'igual mida; en mitjana no millora el temps (efecte Robin Hood).
 ```
+
+
+## Apèndix
+
+```ad-def
+title: Algorisme $p$-*correcte*
+
+Es diu que un algorisme és ==$p$-correcte== si retorna una solució correcta amb probabilitat $\geq p$ .
+
+Pot ser que $p$ depengui de la mida d'entrada, però mai de les dades en si.
+```
+^33a1f2
+
+```ad-def
+title: Avantatge
+
+Es defineix com a ==avantatge== d'un algorisme [[#^33a1f2 | p-correcte]] a
+$$ p-\frac{1}{2} \,.$$
+```
+
+^7048e9
+
