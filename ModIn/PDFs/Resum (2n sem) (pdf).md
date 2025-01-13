@@ -99,6 +99,7 @@ QMA -- "LS" --> QMALS
 QMA -- "TS" --> QMATS
 ```
 
+<div style="page-break-after: always;"></div>
 
 #### 1.2. **Comparació** de poblacions
 
@@ -206,6 +207,7 @@ AMnV -- "LS" --> AMnLS
 AMnV -- "TS" --> AMnTS
 ```
 
+<div style="page-break-after: always;"></div>
 
 ###### 1.2.2. Mostres **aparellades**
 
@@ -247,7 +249,7 @@ AMM -- "LS" --> AMLS
 AMM -- "TS" --> AMTS
 ```
 
-
+---
 #### 1.3. Tests de la **khi quadrat**
 
 ###### 1.3.1. De **bondat d'ajustament**
@@ -302,8 +304,8 @@ A1 --> A
 A --> B
 ```
 
+<div style="page-break-after: always;"></div>
 
----
 ## 2. **Regressió lineal**
 
 Tenim $n$ punts $(x_{1},y_{1}),\dots,(x_{n},y_{n})$.
@@ -314,27 +316,29 @@ $$ b_{1}=\frac{ \displaystyle\sum^{n}_{i=1} x_{i}y_{i} -n\overline{x}\overline{y
 ```ad-def
 title: *Coeficient de correlació*
 
-$$ r = \frac{\displaystyle\sum_{i=1}^{n}x_{i}y_{i}}{\sqrt{\left( \displaystyle\sum_{i=1}^{n}x_{i}^{2}-n\overline{x}^{2} \right) \left( \displaystyle\sum_{i=1}^{n}y_{i}^{2}-n\overline{y}^{2} \right)}} \in [-1,1]$$
+$$ r = \frac{\displaystyle\sum_{i=1}^{n}x_{i}y_{i}}{\sqrt{\left( \displaystyle\sum_{i=1}^{n}x_{i}^{2}-n\overline{x}^{2} \right) \left( \displaystyle\sum_{i=1}^{n}y_{i}^{2}-n\overline{y}^{2} \right)}} =\, b_{1}\sqrt{\frac{\displaystyle\sum_{i=1}^{n}x_{i}^{2}-n\overline{x}^{2}}{\displaystyle\sum_{i=1}^{n}y_{i}^{2}-n\overline{y}^{2}}} \in [-1,1]$$
 
 + $r$ negatiu $\implies$ recta descendent
-+ $r^{2}$ proper a $1 \implies$ més lineal la regressió
++ **Coeficient de determinació:** $R=r^{2}$.
+	Proper a $1 \implies$ més lineal la regressió
 ```
 
 
 #### 2.1. **Inferència** sobre els coeficients de la recta
 
-$$ Y_{i} \sim N(\beta_{0}+\beta_{1}x_{i},\,\sigma^{2}) $$
-
 ```mehrmaid
 graph LR;
 
+C("$Y_{i} \sim N(\beta_{0}+\beta_{1}x_{i},\,\sigma^{2})$
+	$Y_{i}=\beta_{0}+\beta_{1}x_{i}+\varepsilon_{i}$")
 B0("Per $\beta_0\,$")
 B0T("$\displaystyle T = \frac{b_{0}-\beta_{0,0}}{\hat{\hat{\sigma}}\sqrt{\frac{\displaystyle\sum_{i=1}^{n} x_{i}^{2}}{\displaystyle n \displaystyle\sum_{i=1}^{n}x_{i}^{2} \displaystyle-n^{2}\overline{x}^{2}}}}\sim t_{n-1}$
-	on $\beta_{0,0}$ és ??")
+	on $\beta_{0,0}$ és $\beta_0$ a $H_0$")
 B0RS("$RR=\{t>t_{n-2,1-\alpha}\}$")
 B0LS("$RR=\{t<-t_{n-2,1-\alpha}\}$")
 B0TS("$RR=\{|t|>t_{n-2,1-\frac{\alpha}{2}}\}$")
 
+C --> B0
 B0 --> B0T
 B0T -- "RS" --> B0RS
 B0T -- "LS" --> B0LS
@@ -342,21 +346,26 @@ B0T -- "TS" --> B0TS
 
 B1("Per $\beta_1\,$")
 B1T("$\displaystyle T = \frac{b_{1}-\beta_{1,0}}{\hat{\hat{\sigma}}\sqrt{\frac{\displaystyle 1}{\displaystyle \displaystyle\sum_{i=1}^{n}x_{i}^{2} \displaystyle-n^{2}\overline{x}^{2}}}}\sim t_{n-2}$
-	on $\beta_{1,0}$ és ???")
+	on $\beta_{1,0}$ és $\beta_1$ a $H_0$")
 B1RS("$RR=\{t>t_{n-2,1-\alpha}\}$")
 B1LS("$RR=\{t<-t_{n-2,1-\alpha}\}$")
 B1TS("$RR=\{|t|>t_{n-2,1-\frac{\alpha}{2}}\}$")
 
+C --> B1
 B1 --> B1T
 B1T -- "RS" --> B1RS
 B1T -- "LS" --> B1LS
 B1T -- "TS" --> B1TS
+
+E("$\varepsilon_{i}\sim N(0,\sigma^{2})$")
+
+C --> E
 ```
 
-on $\,\displaystyle\hat{\hat{\sigma}}^{2} = \frac{\displaystyle\sum_{i=1}^{n}(y_{i}-\hat{y}|_{x_{i}})}{n-2}\,$, amb $\,\hat{y}|_{x_{i}}$ la predicció de $y$ de $x_{0}$ a partir de la recta de regressió.
+on $\,\displaystyle\hat{\hat{\sigma}}^{2} = \frac{\displaystyle\sum_{i=1}^{n}(y_{i}-(b_{0}+b_{1}x_{i}))}{n-2} \approx \sigma$ .
 
+<div style="page-break-after: always;"></div>
 
----
 ## 3. Apèndix
 
 #### 3.1. **Paràmetres**
