@@ -248,6 +248,114 @@ AMM -- "LS" --> AMLS
 AMM -- "TS" --> AMTS
 ```
 
+---
+#### Tests de la **khi quadrat**
+
+###### De **bondat d'ajustament**
+
+Tenim $X$ que pot prendre valors $(x_{1},\dots,x_{k})$ amb probabilitats $(p_{1},\dots,p_{k})$; mostra de mida $n$.
+
+$$\begin{cases}
+H_{0}: p_{i} = p_{0i} \\
+H_{1}: p_{i} \neq p_{0i}
+\end{cases}$$
+
+```mehrmaid
+graph LR;
+
+A("$\displaystyle\chi^{2} = \sum_{i=1}^{k} \frac{(n_{i}-np_{i,0})^{2}}{np_{0i}} \approx \chi^{2}_{k-1}$
+	on $p_{i,0}$ és $p_i$ de la hipòtesis nul·la $\,$")
+B("$RR=\{\chi^{2}>\chi^{2}_{k-1,1-\alpha}\}$")
+
+A --> B
+```
+
+
+###### D'**independència**
+
+Tenim $X,Y$ que prenen $r$ i $c$ valors respectivament.
+
+$$\begin{cases}
+H_{0}: \text{Les variables son independents} \\
+H_{1}: \text{Les variables no son independents}
+\end{cases}$$
+
+
+|                    $X\backslash Y$                     |                             $\begin{matrix} y_{1} & \dots & y_{c} \end{matrix}$                              |                                total                                 |
+|:------------------------------------------------------:|:------------------------------------------------------------------------------------------------------------:|:--------------------------------------------------------------------:|
+| $\begin{matrix} x_{1} \\ \vdots \\ x_{r} \end{matrix}$ | $\begin{matrix} n_{11} & \dots & n_{1c} \\ \vdots & \ddots & \vdots \\ n_{r1} & \dots & n_{rc} \end{matrix}$ | $\begin{matrix} x_{1\bullet} \\ \vdots \\ x_{r\bullet} \end{matrix}$ |
+|                       **totals**                       |                      $\begin{matrix} n_{\bullet1} & \dots & n_{\bullet c} \end{matrix}$                      |                                 $n$                                  |
+
+```mehrmaid
+graph LR;
+
+A2("$r=c=2$")
+AA("$\tilde{\chi}^{2} = \frac{\displaystyle n\left( |n_{11}n_{22}-n_{12}n_{21}|-\frac{n}{2} \right)^{2}}{\displaystyle n_{1\bullet}n_{2\bullet}n_{\bullet 1}n_{\bullet 2}} \approx \tilde{\chi}_{1}^{2}$")
+B("$RR=\{\chi^{2}>\chi^{2}_{(r-1)(c-1),1-\alpha}\}$")
+
+A2 --> AA
+AA --> B
+
+A1("Altres$\,$")
+A("$\displaystyle\chi^{2} = \sum_{i=1}^{r}\sum_{j=i}^{c} \frac{\left(\displaystyle n_{ij}-\frac{n_{i\bullet}n_{\bullet j}}{n} \right)^{2}}{\displaystyle\frac{n_{i\bullet}n_{\bullet j}}{n}}\approx\chi^2_{(r-1)(c-1)}$")
+
+A1 --> A
+A --> B
+```
+
+
+---
+## **Regressió lineal**
+
+Tenim $n$ punts $(x_{1},y_{1}),\dots,(x_{n},y_{n})$.
+$$ y = b_{0} + b_{1}x $$
+on
+$$ b_{1}=\frac{ \displaystyle\sum^{n}_{i=1} x_{i}y_{i} -n\overline{x}\overline{y}}{ \displaystyle\sum^{n}_{i=1} x^{2} -n\overline{x}^{2}}, \quad b_{0}=\overline{y}-b_{1}\overline{x} \,.$$
+
+```ad-def
+title: *Coeficient de correlació*
+
+$$ r = \frac{\displaystyle\sum_{i=1}^{n}x_{i}y_{i}}{\sqrt{\left( \displaystyle\sum_{i=1}^{n}x_{i}^{2}-n\overline{x}^{2} \right) \left( \displaystyle\sum_{i=1}^{n}y_{i}^{2}-n\overline{y}^{2} \right)}} \in [-1,1]$$
+
++ $r$ negatiu $\implies$ recta descendent
++ $r^{2}$ proper a $1 \implies$ més lineal la regressió
+```
+
+
+#### **Inferència** sobre els coeficients de la recta
+
+$$ Y_{i} \sim N(\beta_{0}+\beta_{1}x_{i},\,\sigma^{2}) $$
+
+```mehrmaid
+graph LR;
+
+B0("Per $\beta_0\,$")
+B0T("$\displaystyle T = \frac{b_{0}-\beta_{0,0}}{\hat{\hat{\sigma}}\sqrt{\frac{\displaystyle\sum_{i=1}^{n} x_{i}^{2}}{\displaystyle n \displaystyle\sum_{i=1}^{n}x_{i}^{2} \displaystyle-n^{2}\overline{x}^{2}}}}\sim t_{n-1}$
+	on $\beta_{0,0}$ és ??")
+B0RS("$RR=\{t>t_{n-2,1-\alpha}\}$")
+B0LS("$RR=\{t<-t_{n-2,1-\alpha}\}$")
+B0TS("$RR=\{|t|>t_{n-2,1-\frac{\alpha}{2}}\}$")
+
+B0 --> B0T
+B0T -- "RS" --> B0RS
+B0T -- "LS" --> B0LS
+B0T -- "TS" --> B0TS
+
+B1("Per $\beta_1\,$")
+B1T("$\displaystyle T = \frac{b_{1}-\beta_{1,0}}{\hat{\hat{\sigma}}\sqrt{\frac{\displaystyle 1}{\displaystyle \displaystyle\sum_{i=1}^{n}x_{i}^{2} \displaystyle-n^{2}\overline{x}^{2}}}}\sim t_{n-2}$
+	on $\beta_{1,0}$ és ???")
+B1RS("$RR=\{t>t_{n-2,1-\alpha}\}$")
+B1LS("$RR=\{t<-t_{n-2,1-\alpha}\}$")
+B1TS("$RR=\{|t|>t_{n-2,1-\frac{\alpha}{2}}\}$")
+
+B1 --> B1T
+B1T -- "RS" --> B1RS
+B1T -- "LS" --> B1LS
+B1T -- "TS" --> B1TS
+```
+
+on $\,\displaystyle\hat{\hat{\sigma}}^{2} = \frac{\displaystyle\sum_{i=1}^{n}(y_{i}-\hat{y}|_{x_{i}})}{n-2}\,$, amb $\,\hat{y}|_{x_{i}}$ la predicció de $y$ de $x_{0}$ a partir de la recta de regressió.
+
 
 ---
 ## Apèndix
