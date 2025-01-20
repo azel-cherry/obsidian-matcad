@@ -71,12 +71,23 @@ title: EDOs de **coeficients constants**
 	| Arrels reals diferents | Arrel real doble | Arrels complexes |
 	|:---:|:---:|:---:|
 	| $\lambda_{1},\lambda_{2}$ | $\lambda$ | $\lambda=\alpha\pm\beta i$ |
-	| $y_{1}(x) = C_{1} e^{\lambda_{1}x}$ | $y_{1}(x) = C_{1}e^{\lambda x}$ | $y_{h}(x) = C_{1}e^{\alpha x}\cos(\beta x)$ |
+	| $y_{1}(x) = C_{1} e^{\lambda_{1}x}$ | $y_{1}(x) = C_{1}e^{\lambda x}$ | $y_{1}(x) = C_{1}e^{\alpha x}\cos(\beta x)$ |
 	| $y_{2}(x) = C_{2} e^{\lambda_{2}x}$ | $y_{2}(x) = C_{2}xe^{\lambda x}$ | $y_{2}(x) = C_{2}e^{\alpha x}\sin(\beta x)$ |
 
 3. $y_{h}(x) = y_{1}(x) + y_{2}(x)$
-4. Buscar $y_{p}(x)$ de la mateixa forma que $q(x)$ amb coeficients arbitraris
-	+ Si $y_{p}$ és solució de $y_{h}$, multiplicar-la per $x$
-5. Substituir $y_{p}$ a l'equació original i determinar coeficients
-6. $y(x) = y_{h}(x) + y_{p}(x)$
+4. Buscar $y_{p}(x)$ de la següent forma:
+	
+	| $\boldsymbol{q(x)}$                                     | $\boldsymbol{p_{c}(x)}$          | $\boldsymbol{y_{p}(x)}$                                                    |
+	| ------------------------------------------------------- | -------------------------------- | -------------------------------------------------------------------------- |
+	| $p(x)\,e^{\alpha x}$                                    | $\alpha$ no és arrel             | $\tilde{p}(x)e^{\alpha x}$                                                 |
+	| $p(x)\,e^{\alpha x}$                                    | $\alpha$ és arrel simple         | $x\,\tilde{p}(x)\,e^{\alpha x}$                                            |
+	| $p(x)\,e^{\alpha x}$                                    | $\alpha$ es arrel doble          | $x^{2}\,\tilde{p}(x)\,e^{\alpha x}$                                        |
+	| $e^{\alpha x}(c_{1}\cos\beta x+c_{2}\sin\beta x)$       | $\alpha\pm i\beta$ no son arrels | $e^{\alpha x}(A\cos\beta x+B\sin\beta x)$                                  |
+	| $e^{\alpha x}(c_{1}\cos\beta x+c_{2}\sin\beta x)$       | $\alpha\pm i\beta$ son arrels    | $x\,e^{\alpha x}(A\cos\beta x+B\sin\beta x)$                               |
+	| $e^{\alpha x}(p_{1}(x)\cos\beta x+p_{2}(x)\sin\beta x)$ | $\alpha\pm i\beta$ no son arrels | $e^{\alpha x}(\tilde{p}_{1}(x)\cos\beta x+\tilde{p}_{2}(x)\sin\beta x)$    |
+	| $e^{\alpha x}(p_{1}(x)\cos\beta x+p_{2}(x)\sin\beta x)$ | $\alpha\pm i\beta$ son arrels    | $x\,e^{\alpha x}(\tilde{p}_{1}(x)\cos\beta x+\tilde{p}_{2}(x)\sin\beta x)$ |
+
+1. Substituir $y_{p}$ a l'equació original i determinar coeficients
+2. $y(x) = y_{h}(x) + y_{p}(x)$
 ```
+

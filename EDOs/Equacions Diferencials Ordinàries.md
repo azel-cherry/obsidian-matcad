@@ -122,7 +122,7 @@ $$ y'(x)+a(x)y(x)=0 \,,$$
 que és una EDO de variables separades.
 
 La **solució general** de l'equació homogènia associada és
-$$\boxed{\, y(x)=Ce^{-\int a(x)dx} \,}\,.$$
+$$\boxed{\, y_{h}(x)=Ce^{-\int a(x)dx} \,}\,.$$
 ```
 
 ```ad-prop
@@ -143,7 +143,7 @@ Aleshores $\boxed{\,y(x)=y_h(x)+y_p(x)\,}$ .
 title: Mètode de **variació de les constants**
 
 Per trobar $y_p(x)$ farem servir el ==*mètode de variació de les constants*==, que consisteix en buscar una solució particular de la forma
-$$ y_p(x)=C(x)e^{-\int a(x)dx} .$$
+$$ \boxed{y_p(x)=C(x)e^{-\int a(x)dx}} \,.$$
 ```
 ````
 
@@ -651,15 +651,17 @@ $$ (A - \lambda I) \,\vec{w} = 0 \,.$$
 ```
 ````
 
-#### Sistemes d'equacions **autònoms**
+## Sistemes d'equacions **autònoms**
 
-Els sistemes d'equacions no lineals generalment no es podran resoldre. No obstant, si aquests son **autònoms** i de **dimensió 2**, es poden obtenir les propietats de les solucions a partir de les seves **projeccions al pla $\boldsymbol{xy}$**. 
+Els sistemes d'equacions no lineals generalment no es podran resoldre. No obstant, si aquests son **autònoms** i de **dimensió 2**, es poden obtenir les propietats de les solucions a partir de les seves **projeccions al pla $\boldsymbol{xy}$**.
 
 Considerem el sistema ==autònom==
 $$ \begin{cases}
 x' = f(x,y) \\
 y' = g(x,y)
-\end{cases} $$
+\end{cases} $$ 
+^b311ef
+
 amb $f,g$ de classe $C^{1}$.
 
 ```ad-def
@@ -704,6 +706,7 @@ Les corbes del pla definides per ~={green}$f(x,y)=0$=~ / ~={pink}$g(x,y)=0$=~ s'
 
 Notem que les isoclines separen les regions del pla on $f$ i $g$ canvien de signe.
 ```
+^8cc979
 
 ```ad-def
 title: *Punt d'equilibri*
@@ -714,7 +717,7 @@ L'òrbita d'un punt d'equilibri es redueix a un punt.
 ```
 
 
-###### Retrats de fase de sistemes autònoms **lineals** amb **coeficients constants**
+#### Sistemes autònoms **lineals** amb **coeficients constants**
 
 Considerem el sistema
 $$ \begin{pmatrix}
@@ -790,10 +793,10 @@ title: Un *vap* real **doble**
 Tenim *vap* $\lambda$.
 
 2. Trobar vectors propis $\,\vec{u_{i}}$ tal que
-$$ (A - \lambda_{i}\, I) \,\vec{u} = 0 \,.$$
+$$ (A - \lambda\, I) \,\vec{u} = 0 \,.$$
 
 ````ad-met
-title: Dos *vep*s linealment **independents**
+title: **Dos** *vep*s linealment **independents**
 
 3. Tenim el ==sistema canònic==
 $$ \begin{pmatrix}
@@ -815,7 +818,7 @@ Totes les òrbites, excepte l'origen, seran semirectes.
 ````
 
 ````ad-met
-title: Dos *vep*s linealment **dependents**
+title: **Un** *vep* linealment **independent**
 
 3. Tenim el ==sistema canònic==
 $$ \begin{pmatrix}
@@ -837,7 +840,7 @@ y
 ````ad-met
 title: Dos *vap*s **complexos**
 
-Tenim *vap*s $\lambda=\alpha\pm\beta i$ amb *vep*s $\vec{w}=\vec{u}+\vec{v}i$.
+Tenim *vap*s $\lambda=\alpha\pm\beta i$.
 
 3. Tenim el ==sistema canònic==
 $$ \begin{pmatrix}
@@ -853,14 +856,14 @@ y
 
 | ![[20241215210230.png \| 234]] | ![[20241215205939.png \| 250]] | ![[20241215210252.png \| 241]] |
 |:---:|:---:|:---:|
-| $\lambda<0$<br>==focus atractor== | $\lambda=0$<br>==centre== | $0<\lambda$<br>==focus repulsor== |
+| $\alpha<0$<br>==focus atractor== | $\alpha=0$<br>==centre== | $0<\alpha$<br>==focus repulsor== |
 
 En el cas del **centre**, totes les òrbites son periòdiques amb període $\displaystyle T=\frac{2\pi}{\beta}$.
 ````
 ``````
 
 
-## Sistemes d'equacions **no lineals**
+#### Sistemes autònoms **no lineals**
 
 Considerem un sistema autònom
 $$ \begin{cases}
@@ -913,7 +916,7 @@ Un conjunt $D\in \mathbb{R}$ és un conjunt ==~={green}positivament=~ / ~={pink}
 ```
 ````
 
-#### Sistemes **integrables**
+###### Sistemes **integrables**
 
 Donat un [[#^6f5d73 | sistema no lineal]], es diu que la funció $H(x,y)$ és una ==integral primera== del sistema si és **constant sobre les trajectòries**. És a dir,
 $$ H(x(t),y(t)) = C $$
@@ -937,9 +940,7 @@ Per tant el retrat de fase del sistema es pot obtenir a partir de la **represent
 ```
 
 
-#### Sistemes **no necessàriament integrables**
-
-###### **Linealització**
+###### Sistemes **no necessàriament integrables**
 
 A partir de l'estudi dels retrats de fase dels sistemes lineals, podem descriure el comportament dels sistemes no lineals al voltant dels seus equilibris.
 
@@ -992,3 +993,62 @@ Llavors, el retrat de fase d'un [[^6f5d74 | sistema no lineal]] en un entorn de 
 $$ y'(t) = Dh(z_{0})y(t) $$
 en un entorn de l'origen.
 ```
+
+
+###### Funcions de **Lyapunov**
+
+Sigui $z_{0}$ un equilibri d'un [[#^b311ef | sistema autònom]], $D$ un entorn seu, i $V:D\to \mathbb{R}$ diferenciable.
+
+Es diu que $V$ és una ==Funció de Lyapunov== per $z_{0}$ a $D$ si:
++ $V(z_{0})=0$
++ $V(z)>0$ per tot $z\in D\setminus\{z_{0}\}$
++ $V'(z)\leq 0$ per tot $z\in D$
+
+Es diu que $V$ és ==estricta== si a més compleix:
++ $V'(z)<0$ per tot $z\in D\setminus\{z_{0}\}$
+
+```ad-teor
+Si existeix una funció de Lyapunov $V$ per a $z_{0}$, aleshores $z_{0}$ és **estable**.
+
+A més si $V$ és estricta, $z_{0}$ és **asimptòticament** estable.
+```
+
+```ad-teor
+title: Principi d'invariància de *Lasalle*
+
+Si $D$ és un conjunt tancat, acotat i positivament invariant per al nostre sistema, i si $V$ és una funció diferenciable definida a $D$ amb valors reals, amb 
+$V'(z)\leq 0$.
+
+Sigui $E=\{z\in D \mid V'(z)=0 \}$ i $\tilde{E}\subseteq E$ format per les trajectòries de condicions inicials en $E$ invariants.
+
+Si $z(t)$ és una solució del sistema autònom amb condició inicial $z(t_{0})\in D$, aleshores $z(t)\to\tilde{E}$ quan $t\to \infty$.
+```
+
+
+###### **Cicles límit**
+
+A les òrbites periòdiques aïllades en un retrat de fase se'ls anomena ==cicles límit==.
+
+```ad-def
+title: *Polígon d'òrbites*
+
+A un conjunt de trajectòries que connecten equilibris de manera consecutiva se'ls anomena ==polígon d'òrbites==.
+```
+
+
+###### Retrats de fase al pla: **isoclines**
+
+[[#^8cc979 | isoclines]]
+
+S'anomena ==isoclina de l'eix ~={green}horitzontal=~ / ~={pink}vertical=~== al conjunt de punts del pla on s'anul·la la ~={green}segona=~ / ~={pink}primera=~ component del camp vectorial.
+
+Sovint aquestes isoclines divideixen el pla en regions on el camp vectorial apunta en una direcció.
+
+Notem que la intersecció d'una isoclina de l'eix horitzontal i una de l'eix vertical serà un punt d'equilibri.
+
+```ad-teor
+title: Teorema de *Poincaré-Bendixson*
+
+Una trajectòria acotada d'un sistema autònom tendeix a un equilibri, a una òrbita tancada o a un polígon d'òrbites.
+```
+
