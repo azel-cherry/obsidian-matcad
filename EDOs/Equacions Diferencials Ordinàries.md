@@ -635,7 +635,7 @@ Tenim *vap* $\,\lambda$ .
 $$ (A - \lambda I) \,\vec{u} = 0 \,.$$
 
 3. Trobar ==vector propi generalitzat== $\vec{v}$ tal que
-$$ (A - \lambda I) \,\vec{v} = \vec{u} \,.$$
+
 
 4. $\boxed{ X = e^{\lambda t} \,(\vec{v} + t\,\vec{u}) }$
 ```
