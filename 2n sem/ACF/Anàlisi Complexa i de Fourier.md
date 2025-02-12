@@ -89,7 +89,54 @@ Donat $z=a+bi\in \mathbb{C}\backslash\{0\}$, existeixen
 + ~={green}$r$=~ $\displaystyle=\sqrt{a^{2}+b^{2}}=|z|$
 + ~={green}$\theta$=~ $=\text{Arg}(z)\in(-\pi,\pi]$
 
-tals que $re^{i\theta}=z$ . Li diem ==representació polar== d'un nombre complex a ~={green}$r_{\theta}$=~ .
+tals que ~={green}$z=re^{i\theta}$=~ .
 
-Tenim $\begin{cases} \,\mathrm{Re}(z)=r\cos(\theta) \\[0.5em] \,\mathrm{Im}(z)=r\,\sin(\theta)\end{cases}$ .
+Tenim $\begin{cases} \,a=r\cos(\theta) \\[0.5em] \,b=r\,\sin(\theta)\end{cases}$ .
+
+![[complex-plane-polar-rectangular-1.png | 450]]
+
+
+###### **Equacions** amb **exponencials**
+
+```ad-prop
+Siguin $z_{1},z_{2}\in \mathbb{C}$.
+$$ e^{z_{1}}=e^{z_{2}} \iff z_{1}-z_{2}\in2\pi i\,\mathbb{Z} $$
+```
+^209ac7
+
+```ad-met
+1. Passar a polars
+2. Aplicar la [[#^209ac7 | proposició anterior]]
+```
+
+
+---
+## Funcions de **variable complexa**
+
+Sigui $\Omega \subset \mathbb{C}$ un obert, una ==funció de variable complexa== és
+$$ \begin{align}
+f: \Omega &\to \mathbb{C} \\
+z &\mapsto u+vi
+\end{align}$$
+
+```ad-def
+title: *Límit*
+
+Diem que el ==límit== de $f$ en $z$ és
+$$ l = \lim_{z\to z_{0}} f(z) $$
+si per tot $\varepsilon$ existeix $\delta$ tal que
+$$ 0<|z-z_{0}|<\delta \implies |f(z)-l|<\varepsilon $$
+```
+
+```ad-def
+title: Funció *contínua*
+Diem que $f$ és ==contínua== en $z_{0}$ si
+$$  \lim_{z\to z_{0}} f(z) = f(z_{0}) $$
+```
+
+```ad-prop
+title: Continuïtat
+
+Una funció de variable complexa **$\boldsymbol f$ és contínua** si i només si **$\boldsymbol u$ i $\boldsymbol v$ son contínues**.
+```
 
