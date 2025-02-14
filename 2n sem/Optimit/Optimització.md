@@ -1,6 +1,6 @@
-## Teoria d'extrems
+## Teoria d'**extrems**
 
-#### Problema general d'optimització
+#### **Problema general** d'optimització
 
 Anomenem ==problema genera d'optimització== a
 $$ \min_{x\in S} f(x) $$
@@ -47,7 +47,7 @@ Sigui $f$ contínua i $S\subset \mathbb{R}^{n}$ un [[#^f7df0a|compacte]], alesho
 ```
 
 ````ad-def
-title: ... *factible*
+title: Conjunt/punt/direcció *factible*
 
 Donat un problema d'optimització $\displaystyle\min_{x\in S}f(x)$ :
 + El conjunt $S$ s'anomena ==conjunt factible==.
@@ -55,7 +55,7 @@ Donat un problema d'optimització $\displaystyle\min_{x\in S}f(x)$ :
 + Un vector $d\in \mathbb{R}^n$ s'anomena ==direcció factible== en $x$ si $\exists\,\varepsilon>0$ tal que 
 $$ \alpha\in[0,\varepsilon] \implies x+\alpha d\in S \,.$$
 
-![[Pasted image 20250211192905.png|300]]
+![[Pasted image 20250211192905.png | 300]]
 
 ```ad-not
 Si $x\in\mathring{S}$, aleshores tot $d\in \mathbb{R}^n$ és una direcció factible.
@@ -77,7 +77,7 @@ A més, si $x_{0}\in\mathring{S}$:
 ```
 
 ```ad-teor
-title: Condicions suficients d'un mínim local interior
+title: **Condicions suficients** d'un mínim local **interior**
 
 Siguin $x_{0}\in\mathring{S}$ i $f\in C^{2}$.
 
@@ -89,11 +89,30 @@ aleshores $x_{0}$ és un **mínim local estricte** de $f$ en $S$.
 ```
 
 
+---
+## Algorismes d'**optimització**
 
+#### Mètode de **Newton**
+
+Consisteix en aproximar el mínim de la funció $f:\mathbb{R}\to \mathbb{R}$ **iterativament** per 
+
+$$ x_{k+1} = x_{k} \frac{f'(x_{k})}{f''(x_{k})} \,.$$
+^b8a461
+
+Aquest mètode no assegura torbar solució, però si ho fa és molt ràpid. 
+
+```ad-prop
+Sigui $x_{0}$ tal que $f'(x_{0})=0$ i $f''(x_{0})\neq 0$, amb $f\in C^{3}$.
+
+Aleshores existeix $\delta>0$ tal que si $|x_{1}-x_{0}|<\delta$, la [[#^b8a461|successió]] definida anteriorment començant per $x_{1}$ convergeix a $x_{0}$ .
+```
+
+
+---
 ## Apèndix
 
 ```ad-not
-title: **Notació**
+title: Notació
 
 + ==Vector gradient== en $x\in \mathbb{R}^n$ : 
 $$ \boldsymbol{\nabla f(x)}=\left( \frac{df}{dx_{1}}(x),\,\dots, \frac{df}{dx_{n}}(x) \right) $$
@@ -110,8 +129,15 @@ $$ \boldsymbol H=\boldsymbol{\nabla^{2}f(x)} = \begin{pmatrix}
 ```
 
 ```ad-def
-title: Compacte
+title: Topologia
 
-Un conjunt ==compacte== és un conjunt **tancat** i **acotat**.
++ ~={green}Disc (obert).=~ $\,D_{r}(a)=\{z\in \mathbb{C} | |z-a|<r\}$
+	+ ~={green}Disc unitat.=~ $\,D_{1}(0)$
+	+ ~={green}Disc tancat.=~ $\,\overline{D_{r}(a)}$
++ **Conjunts**.
+	+ ~={green}Obert.=~$\quad\forall z\in A \quad\exists r>0\,$ tal que $\,D_{r}(z)\subset U$
+	+ ~={green}Tancat.=~$\quad A^C$ és obert
+	+ ~={green}Acotat.=~$\quad \exists \,r>0\,$ tal que $\,U\subset D_{r}(0)$
+	+ ~={green}Compacte.=~ **Tancat** i **acotat**.
 ```
 ^f7df0a
