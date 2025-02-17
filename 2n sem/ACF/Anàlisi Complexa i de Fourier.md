@@ -140,3 +140,79 @@ title: Continuïtat
 Una funció de variable complexa **$\boldsymbol f$ és contínua** si i només si **$\boldsymbol u$ i $\boldsymbol v$ son contínues**.
 ```
 
+
+#### Funcions **multivaluades**
+
+```ad-def
+title: *Branca contínua*
+
+Donada una funció multivaluada $f$ en $A$, diem que una funció $\mathcal{F}:B\to \mathbb{C}$ n'és una ==branca contínua== en $B\subset A$ si $\mathcal{F}(z)$ és una elecció contínua en $B$.
+```
+
+
+###### **Logaritmes** i **arguments**
+
+```ad-def
+title: Logaritme principal
+
+El ==logaritme principal== de $z\in \mathbb{C}$ es defineix com
+$$ \text{Log}(z) = \ln|z| + i \,\text{Arg}(z) \,.$$
+
+És a dir,
+$$ \text{Log} : \mathbb{C}\backslash\{0\} \to \{-\pi<\mathrm{Im}(z)\leq \pi\} \,.$$
+
+Un logaritme de $z\in \mathbb{C}$ és $\omega\in \mathbb{C}$ tal que $e^{\omega}=z$ .
+
+Hi ha **infinits logaritmes** per un sol nombre complex; és a dir, és una **funció multivaluada**. Escribim ~={green}$\log(z)$=~ per denotar aquesta.
+```
+
+```ad-prop
+Sigui $r$ una semirecta de $\mathbb{C}$ amb extrem en $0$.
+
+Aleshores existeix una branca contínua de $\text{arg}(z)$ en $\mathbb{C}\backslash r$ . 
+
+També existeix una branca contínua de $\log(z)$ en $\mathbb{C}\backslash r$ . 
+```
+
+```ad-prop
+No hi ha cap branca contínua d'$\text{arg}(z)$ en $\mathbb{S}^{1}$.
+```
+
+```ad-prop
+title: **Propietats** del logaritme
+
++ ~={green}$\boldsymbol{e^{\mathcal{L}(z)}=z}$=~ per tot $\mathcal{L}(z)$ branca de $\log(z)$
+	+ $\mathcal{L}(e^{z})$ no és cert en general
++ ~={green}$\boldsymbol{\log(z_{1}z_{2})=\log(z_{1})+\log(z_{2})}$=~ per $z_{1},z_{2}\in \mathbb{C}\backslash\{0\}$
+	+ Fixada una branca $\mathcal{L}(z)$ pot passar que $\mathcal{L}(z_{1}z_{2})\neq \mathcal{L}(z_{1})+\mathcal{L}(z_{2})$
+```
+
+`````ad-def
+title: Potències complexes
+
+Siguin $z,a\in \mathbb{C}$ amb $z\neq 0$ , definim
+$$ z^{a} := e^{a\log(z)} \,.$$
+
+Aquesta també és una **funció multivaluada**.
+
+```ad-not
+title: Observació
+
++ $a\in \mathbb{Z} \iff z^{a}$ pren un únic valor
++ $a\in \mathbb{Q} \implies z^{a}$ pren finits valors
+	+ Si $a=p/q$ amb $\text{mcd}(p,q)=1$, aleshores $z^{a}$ pren $q$ valors
++ $a\not\in \mathbb{Q} \implies z^{a}$ pren infinits valors 
+```
+`````
+
+```ad-prop
+title: **Propietats** de les potències
+
+Siguin $z,\omega,a,b\in \mathbb{C}$ amb $z,\omega\neq 0$ .
+
++ ~={green}$\boldsymbol{z^{a+b} \subseteq z^{a}z^{b}}$=~
+	+ $z^{a+b} = z^{a}z^{b}$ si $a\in \mathbb{Z}$ o $b\in \mathbb{Z}$
++ ~={green}$\boldsymbol{z^{ab}\subseteq (z^{a})^{b}}$=~
+	+ $z^{ab} = (z^{a})^{b}$ si $b\in \mathbb{Z}$
++ ~={green}$\boldsymbol{(z\omega)^{a} = z^a\,\omega^a}$=~
+```
