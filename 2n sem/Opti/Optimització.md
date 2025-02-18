@@ -67,7 +67,7 @@ title: **Condicions necessàries** d'un mínim local
 
 Sigui $x_{0}\in S$ mínim local de $f\in C^{2}$.
 
-Per tot $d$ direcció factible en $x_{0}$ :
+Per tota direcció factible $d$ en $x_{0}$ :
 + $\nabla f(x_{0})\cdot d\geq 0$
 + $\nabla f(x_{0})\cdot d=0 \implies d^{T}\cdot \nabla^{2}f(x_{0})\cdot d\geq 0$
 
@@ -87,6 +87,126 @@ Si es compleix:
 
 aleshores $x_{0}$ és un **mínim local estricte** de $f$ en $S$.
 ```
+
+
+#### **Convexitat**
+
+```ad-def
+title: Conjunt *convex*
+
+Un conjunt $S\subset \mathbb{R}$ és ==convex== si per tot $x_{1},x_{2}\in S$ i per tot $\lambda\in(0,1)$
+$$ \lambda\, x_{1}+(1-\lambda)\,x_{2} \in S \,.$$
+```
+
+`````ad-def
+title: Funció *convexa*
+
+Sigui $S\in \mathbb{R}$ convex, una funció $f:S\to \mathbb{R}$ és ==convexa== si per tot $x_{1},x_{2}\in S$ i per tot $\lambda\in(0,1)$
+$$ f(\lambda\,x_{1}+(1-\lambda)\,x_{2}) \leq \lambda f(x_{1}) + (1-\lambda) f(x_{2}) \,.$$
+
+```ad-def
+title: Funció *estrictament* convexa
+
+Una funció $f:S\to \mathbb{R}$ és ==estrictament convexa== si per tot $x_{1},x_{2}\in S$ amb $x_{1}\neq x_{2}$ i per tot $\lambda\in(0,1)$
+$$ f(\lambda\,x_{1}+(1-\lambda)\,x_{2}) < \lambda f(x_{1}) + (1-\lambda) f(x_{2}) \,.$$
+```
+`````
+
+`````ad-def
+title: Funció *còncava*
+
+Una funció $f:S\to \mathbb{R}$ és ==còncava== si $-f$ és convexa.
+```ad-def
+title: Funció *estrictament* còncava
+
+Una funció $f:S\to \mathbb{R}$ és ==estrictament còncava== si $-f$ és estrictament convexa.
+```
+`````
+
+```ad-prop
+Sigui $S\subset \mathbb{R}^{n}$ convex i $f:S\to \mathbb{R}$ de classe $C^{1}$.
+
+Aleshores $f$ és convexa en $S$ si i només si per tot $x,x_{0}\in S$
+$$ f(x) \geq f(x_{0})+\nabla f(x_{0})\cdot(x-x_{0}) \,.$$
+```
+
+```ad-prop
+Sigui $S\subset \mathbb{R}^{n}$ convex i $f:S\to \mathbb{R}$ de classe $C^{2}$.
+
+Aleshores $f$ és convexa en $S$ si i només si per tot $x\in S$ i per tota direcció factible $d$ en $x$
+$$ d^{T}\cdot \nabla^{2}f(x)\cdot d \geq 0 $$
+```
+
+```ad-teor
+title: **Local-global** per a funcions **convexes**
+
+Sigui $S\subset \mathbb{R}^{n}$ convex i $f:S\to \mathbb{R}$ convexa.
+
+Si $x_{0}\in S$ és un mínim local de $f$, aleshores també és un mínim global de $f$.
+```
+
+```ad-teor
+Sigui $S\subset \mathbb{R}^{n}$ convex i $f:S\to \mathbb{R}$ convexa i de classe $C^{1}$.
+
+Si $x_{0}\in S$ compleix $\nabla f(x_{0})\cdot d\geq 0$ per tota direcció factible $d$, aleshores $x_{0}$ és mínim global de $f$.
+
+En particular,
+$$ \nabla f(x_{0})=0 \implies x_{0} \text{ és mínim global}. $$
+```
+
+
+#### **Restriccions** funcionals
+
+Considerem que la regió factible $S$ està definida per igualtats i desigualtats funcionals:
+$$ S = \text{punts de } \mathbb{R}^{n} \text{ tal que } \begin{Bmatrix}
+h_{1}(x)=0 \\
+\vdots \\
+h_{m}(x)=0
+\end{Bmatrix} \text{ i } \begin{Bmatrix}
+g_{1}(x)\leq0 \\
+\vdots \\
+g_{r}(x)\leq 0
+\end{Bmatrix} \,,$$
+on $h_{i},g_{i}:\mathbb{R}^{n}\to \mathbb{R}$ .
+
+Si totes les funcions $h_{i},g_{i}$ son afins, es tracta d'un problema de ==Programació Lineal==. 
+
++ La funció $f$ que volem optimitzar es diu ==funció objectiu==
++ Les igualtats i desigualtats que defineixen $S$ es diuen ==restriccions==
+
+`````ad-def
+title: Restricció *activa*
+
+Donat un punt factible $x_{0}\in S$, una restricció $g_{i}(x)\leq0$ es diu que és:
++ ==Activa== en $x_{0}$ si $g_{i}(x_{0})=0$
++ ==Inactiva== en $x_{0}$ si $g_{i}(x_{0})<0$
+
+```ad-not
+Les restriccions $h_{i}(x)=0$ son **sempre actives** en tot punt factible.
+```
+`````
+
+`````ad-def
+title: Vector *tangent*
+
+Un vector $v$ és ==tangent== al conjunt $S\subset \mathbb{R}^n$ en un punt $x_{0}\in S$ si:
+1. Existeix una successió $\{x_{k}\}_{k}\subset S$ tal que $$ \lim_{k\to\infty}x_{k} =x_{0} $$ 
+2. Existeix una successió $\{t_{k}\}_{k}\subset S$ amb $t_{k}>0$, dexcreixent amb límit 0, tal que $$ \lim_{k\to\infty} \frac{x_{k}-x_{0}}{t_{k}}=v $$
+
+```ad-not
+title: Definició equivalent
+
+Un vector $v$ és ==tangent== al conjunt $S\subset \mathbb{R}^n$ en un punt $x_{0}\in S$ si (o bé $v=0$) o bé existeix una successió $\{x_{k}\}_{k}\subset S$ amb $x_{k}\neq x_{0} \,\forall k\,$ tal que
+$$ \lim_{k\to\infty}x_{k}=x_{0} \quad\text{i}\quad \lim_{k\to\infty} \frac{x_{k}-x_{0}}{||x_{k}-x_{0}||} = \frac{v}{||v||} $$
+```
+
+```ad-def
+title: *Con tangent*
+
+El conjunt format pels vectors tangents a una funció en un punt s'anomena el ==con tangent==.
+```
+`````
+
 
 
 ---

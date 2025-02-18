@@ -60,7 +60,7 @@ Sigui $p_{m}(x)$ el polinomi interpolador de $f$ sobre els nodes $x_{0}<\dots<x_
 
 La ==fórmula interpolatòria== sobre aquests nodes consisteix en aproximar $J(f)$ per $J(p_{m})$, és a dir
 $$ \begin{gather}
- \int_{a}^b f(x)\,dx \approx \int_{a}^b p_{m}(x)\,dx \approx \sum_{i=0}^m W_{i}\,f(x_{i}) \\
+ \int_{a}^b f(x)\,dx \approx \int_{a}^b p_{m}(x)\,dx \approx \boxed{\,\sum_{i=0}^m W_{i}\,f(x_{i})\,} \\
  \text{amb} \quad W_{i} = \int_{a}^b l_{i}(x)\,dx = \int_{a}^b \prod_{k=0,\,k\neq i} \frac{x-x_{k}}{x_{i}-x_{k}}
 \end{gather} $$
 
@@ -74,15 +74,16 @@ Es diu que una fórmula interpoladora és d'==ordre $r$== si és exacte per a to
 title: Fórmula dels **trapezis**
 
 Fórmula interpolatòria amb $m=1$ i els nodes $x_{0}=a$ i $x_{1}=b$ .
+
+$$ \int_{a}^b f(x)\,dx \approx \boxed{\, 
+\frac{b-a}{2} (f(a)+f(b)) + \frac{h^{3}}{12}f''(\xi) \,} $$
 ```
+^4f1fcc
 
 ```ad-ex
 title: Fórmula de **Simpson**
 
-Es volen trobar els pesos d'integració $\omega_{-1},\omega_{0},\omega_{1}$ tal que
-$$ \int_{-1}^{1} f(x)\,dx \approx \omega_{-1}\,f(-1)+\omega_{0}\,f(0)+\omega_{1}\,f(1) $$
-
-sigui exacte per a tots els polinomis de grau $\leq2$ .
+$$ \int_{a}^b f(x)\,dx \approx \boxed{\,\frac{b-a}{6}\left( f(a)+4f\left( \frac{a+b}{2} \right) +f(b) \right)} $$
 ```
 
 Les dues fórmules anteriors son casos particulars de les fórmules tancades de Newton-Cotes. 
@@ -90,21 +91,18 @@ Les dues fórmules anteriors son casos particulars de les fórmules tancades de 
 
 #### Fórmules de **Newton-Cotes**
 
-Es prenen $m+1$ nodes **equiespaiats** a l'interval $[a,b]$ :
-$$ x_{i} = a+ih\,, \quad h=\frac{b-a}{m} $$
-amb $i=0,\dots,m$ .
-
-Llavors
-$$ \begin{align}
-\int_{a}^b f(x)\,dx &= \boxed{\,h \sum_{i=0}^m \alpha_{i}\,f(x_{i})\,} \\
-\text{amb} \quad \alpha_{i} &= \int_{0}^m\prod_{k=0,\,k\neq i}^m \frac{\frac{x-a}{h}-k}{i-k}
-\end{align} $$
+La fórmula general és
+$$ \int_{a}^b f(x)\,dx \approx \boldsymbol{NC_{m}(f,[a,b])} = \boxed{\,h \sum_{i=0}^m \alpha_{i}\,f(x_{i})\,}\,,$$
+amb $$\begin{align}
+x_{i} &= a+\frac{b-a}{m}\,i \,, \\
+\alpha_{i} &= \int_{0}^m\prod_{k=0,\,k\neq i}^m \frac{\frac{x-a}{h}-k}{i-k} \,.
+\end{align}$$
 
 ````ad-prop
-title: **Error** de la fórmula de Newton-Cotes
+title: **Error**
 
-L'==error== de la fórmula de Newton-Cores satisfà:
-$$ E_{m}(f) = K_{m} \frac{f^{(p+1)}(\xi)}{(p+1)!}\,h^{p+2} $$
+L'==error== de la fórmula de Newton-Cores és
+$$ \boldsymbol{E_{m}(f,[a,b])} = \boxed{\,K_{m} \frac{f^{(p+1)}(\xi)}{(p+1)!}\,h^{p+2}\,} \,,$$
 amb $\xi\in(a,b)$ i
 
 
@@ -122,8 +120,24 @@ ja que per a aquestes funcions $f^{(p+1)}(\xi)$ és constant.
 ```
 ````
 
+^a62f30
+
 
 #### Fórmules **compostes**
+
+Dividim l'interval original en $I$ subintervals i apliquem la fórmula d'integració interpolatòria a cada subinterval.
+
+En el cas de Newton-Cotes:
+$$ \int_{a}^b f(x)\,dx \approx \boldsymbol{\text{\textbf{Compo}}_{m}(f,[a,b])} = \boxed{\,\sum_{i=0}^{I-1} NC_{m}(f,[x_{i},x_{i+1}])\,} $$
+amb $x_{i}=a+\frac{b-a}{I}\,i$ .
+
+```ad-prop
+title: **Error**
+
+L'==error== de la fórmula composta de Newton-Cotes és
+$$ \boldsymbol{EC_{m}(f,[a,b])} = \boxed{\,\frac{K_{m}}{(p+1)!} \frac{b-a}{m}  f^{(p+1)}(\xi_{i})\,} $$
+amb $\xi\in(a,b)$ i $K_{m}$ igual que a [[#^a62f30|Newton-Cotes]].
+```
 
 ```ad-teor
 title: Teorema del **valor mitjà** per integrals
@@ -133,4 +147,25 @@ Sigui $\omega:[a,b]\to[0,\infty)$ una funció integrable no negativa.
 Aleshores per tota $f:[a,b]\to \mathbb{R}$ tenim
 $$ \int_{a}^{b} f(x)\,\omega(x)\,dx = f(\xi) \int_{a}^b \omega(x)\,dx $$
 per algun $\xi\in(a,b)$ .
+```
+
+
+#### Càlcul **automàtic** de l'error
+
+La idea és desenvolupar un algorisme que calculi una successió d'aproximacions de la integral i les utilitzi per estimar l'error que es comet.
+
+Definim
+$$ Q_{n}=\text{Compo}_{m}(f,[a,b],2^n) = \sum_{i=0}^{2^n-1} NC_{m}(f,[x_{i},x_{i+1}]) $$
+amb $x_{i}=a+\frac{b-a}{2^n}\,i$ .
+
+```ad-not
+Si s'utilitza la fórmula dels [[#^4f1fcc|trapezis]], podem escriure
+$$ Q_{n+1} = \frac{1}{2}\,Q_{n} + \sum_{i=0}^{2^n-1}f(\overline{x}_{i}) \,\frac{1}{2^{n+1}} \,,$$
+on $\quad\begin{cases}\displaystyle\,\overline{x}_{i}=\frac{x_{i}+x_{i+1}}{2}\\[0.5em]\displaystyle\,x_{i}=a+\frac{b-a}{2^n}\,i\end{cases}\quad$ i $\quad\displaystyle Q_{0}=\frac{f(a)+f(b)}{2}(b-a)$ .
+```
+
+```ad-prop
+title: **Error**
+
+$$ \int_{a}^b f(x)\,dx - Q_{n+1} \approx \boxed{\,\frac{Q_{n+1}-Q_{n}}{2^{p+1}-1}\,} $$
 ```
