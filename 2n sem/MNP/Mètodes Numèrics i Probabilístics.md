@@ -70,21 +70,33 @@ title: Fórmula *d'ordre $r$*
 Es diu que una fórmula interpoladora és d'==ordre $r$== si és exacte per a tots els polinomis de grau menor o igual a $r$.
 ```
 
-```ad-ex
+`````ad-ex
 title: Fórmula dels **trapezis**
 
 Fórmula interpolatòria amb $m=1$ i els nodes $x_{0}=a$ i $x_{1}=b$ .
 
 $$ \int_{a}^b f(x)\,dx \approx \boxed{\, 
 \frac{b-a}{2} (f(a)+f(b)) + \frac{h^{3}}{12}f''(\xi) \,} $$
-```
-^4f1fcc
 
 ```ad-ex
+title: **Error**
+
+$$ |E| \leq \frac{(b-a)^{3}}{12} \max_{x\in[a,b]} |f''(x)| $$
+```
+`````
+^4f1fcc
+
+`````ad-ex
 title: Fórmula de **Simpson**
 
 $$ \int_{a}^b f(x)\,dx \approx \boxed{\,\frac{b-a}{6}\left( f(a)+4f\left( \frac{a+b}{2} \right) +f(b) \right)} $$
+
+```ad-ex
+title: **Error**
+
+$$ |E| \leq \frac{(b-a)^{5}}{90} \max_{x\in[a,b]} |f^{(4)}(x)| $$
 ```
+`````
 
 Les dues fórmules anteriors son casos particulars de les fórmules tancades de Newton-Cotes. 
 
@@ -101,7 +113,7 @@ x_{i} &= a+\frac{b-a}{m}\,i \,, \\
 ````ad-prop
 title: **Error**
 
-L'==error== de la fórmula de Newton-Cores és
+L'==error== de la fórmula de Newton-Cotes és
 $$ \boldsymbol{E_{m}(f,[a,b])} = \boxed{\,K_{m} \frac{f^{(p+1)}(\xi)}{(p+1)!}\,h^{p+2}\,} \,,$$
 amb $\xi\in(a,b)$ i
 
@@ -112,14 +124,13 @@ amb $\xi\in(a,b)$ i
 | $\boldsymbol{K_m}$ | $\int_{0}^m t(t-1)\dots(t-m)dt$ | $\int_{0}^m t^{2}(t-1)\dots(t-m)dt$
 
 ```ad-not
-Per trobar les constants $K_{m}$ no cal calcular les integrals, n'hi ha prou en calcular:
-+ $E_{m}(x^{m+1})$ si $m$ és **senar**
-+ $E_{m}(x^{m+2})$ si $m$ és **parell**
+Per trobar les constants $K_{m}$ no cal calcular les integrals, n'hi ha prou en calcular
++ $E_{m}(x^{m+1})$ si $m$ és **senar**,
++ $E_{m}(x^{m+2})$ si $m$ és **parell**,
 
 ja que per a aquestes funcions $f^{(p+1)}(\xi)$ és constant.
 ```
 ````
-
 ^a62f30
 
 
@@ -148,6 +159,34 @@ Aleshores per tota $f:[a,b]\to \mathbb{R}$ tenim
 $$ \int_{a}^{b} f(x)\,\omega(x)\,dx = f(\xi) \int_{a}^b \omega(x)\,dx $$
 per algun $\xi\in(a,b)$ .
 ```
+
+`````ad-ex
+title: Fórmula dels **trapezis composta**
+
+$$ \int_{a}^b f(x)\,dx \approx \boxed{\,\frac{h}{2} (f(a)+2\,(y_{1}+\dots+y_{n-1})+f(b))\,} $$
+
+on $y_i=f(x_{i})$ amb $x_{1},\dots,x_{n-1}\in(a,b)$ equiespaiats.
+
+```ad-ex
+title: **Error**
+
+$$ |E| \leq \frac{(b-a)^{3}}{12n^{2}} \max_{x\in[a,b]} |f''(x)| \,,$$
+on $n$ és el nombre d'iteracions.
+```
+`````
+
+`````ad-ex
+title: Fórmula de **Simpson composta**
+
+$$ \int_{a}^b f(x)\,dx \approx \boxed{\frac{\,h}{3} \left( f(a)+4\sum_{i=1}^{n-1} f(x_{2i-1}) + 2\sum_{j=2}^{n-2} f(x_{2j}) + f(b) \right)\,} $$
+
+```ad-ex
+title: **Error**
+
+$$ |E| \leq \frac{(b-a)^{5}}{180n^{4}} \max_{x\in[a,b]} |f^{(4)}(x)| $$
+on $n$ és el nombre d'iteracions.
+```
+`````
 
 
 #### Càlcul **automàtic** de l'error

@@ -94,14 +94,14 @@ aleshores $x_{0}$ és un **mínim local estricte** de $f$ en $S$.
 ```ad-def
 title: Conjunt *convex*
 
-Un conjunt $S\subset \mathbb{R}$ és ==convex== si per tot $x_{1},x_{2}\in S$ i per tot $\lambda\in(0,1)$
+Un conjunt $S\subset \mathbb{R}^n$ és ==convex== si per tot $x_{1},x_{2}\in S$ i per tot $\lambda\in(0,1)$
 $$ \lambda\, x_{1}+(1-\lambda)\,x_{2} \in S \,.$$
 ```
 
 `````ad-def
 title: Funció *convexa*
 
-Sigui $S\in \mathbb{R}$ convex, una funció $f:S\to \mathbb{R}$ és ==convexa== si per tot $x_{1},x_{2}\in S$ i per tot $\lambda\in(0,1)$
+Sigui $S\in \mathbb{R}^n$ convex, una funció $f:S\to \mathbb{R}$ és ==convexa== si per tot $x_{1},x_{2}\in S$ i per tot $\lambda\in(0,1)$
 $$ f(\lambda\,x_{1}+(1-\lambda)\,x_{2}) \leq \lambda f(x_{1}) + (1-\lambda) f(x_{2}) \,.$$
 
 ```ad-def
@@ -126,8 +126,8 @@ Una funció $f:S\to \mathbb{R}$ és ==estrictament còncava== si $-f$ és estric
 ```ad-prop
 Sigui $S\subset \mathbb{R}^{n}$ convex i $f:S\to \mathbb{R}$ de classe $C^{1}$.
 
-Aleshores $f$ és convexa en $S$ si i només si per tot $x,x_{0}\in S$
-$$ f(x) \geq f(x_{0})+\nabla f(x_{0})\cdot(x-x_{0}) \,.$$
+Aleshores $f$ és convexa en $S$ si i només si per tot $x_{1},x_{2}\in S$
+$$ f(x_{1}) \geq f(x_{2})+\nabla f(x_{2})\cdot(x_{1}-x_{2}) \,.$$
 ```
 
 ```ad-prop
