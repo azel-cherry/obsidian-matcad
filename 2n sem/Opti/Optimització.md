@@ -214,7 +214,7 @@ El conjunt format pels vectors tangents a una funció en un punt s'anomena el ==
 
 #### Mètode de **Newton**
 
-Consisteix en aproximar el mínim de la funció $f:\mathbb{R}\to \mathbb{R}$ **iterativament** per 
+Consisteix en aproximar el mínim d'una funció $f:\mathbb{R}\to \mathbb{R}$ **iterativament** per 
 
 $$ x_{k+1} = x_{k} \frac{f'(x_{k})}{f''(x_{k})} \,.$$
 ^b8a461
@@ -226,6 +226,20 @@ Sigui $x_{0}$ tal que $f'(x_{0})=0$ i $f''(x_{0})\neq 0$, amb $f\in C^{3}$.
 
 Aleshores existeix $\delta>0$ tal que si $|x_{1}-x_{0}|<\delta$, la [[#^b8a461|successió]] definida anteriorment començant per $x_{1}$ convergeix a $x_{0}$ .
 ```
+
+
+#### **Ordres** de **convergència**
+
+Sigui $\{x_{k}\}_{k}$ tal que $x_{k}\to x_{0}$ , i $C<0$ constant.
++ $\boxed{\,\displaystyle\frac{|x_{k+1}-x_{0}|}{|x_{k}-x_{0}|}\leq C\,} \implies$ **convergència ~={green}lineal=~** (d'ordre 1)
+	+ $\displaystyle\lim_{k\to\infty}\frac{|x_{k+1}-x_{0}|}{|x_{k}-x_{0}|}=0 \implies$ **convergència ~={green}superlineal=~**
++ $\boxed{\,\displaystyle\frac{|x_{k+1}-x_{0}|}{|x_{k}-x_{0}|^p} \leq C\,} \implies$ **convergència ~={green}d'ordre $\boldsymbol p$=~**
+	+ $p=2 \implies$ **convergència ~={green}quadràtica=~**
+
+#### Mètode de la **posició falsa**
+
+Consisteix en aproximar el mínim d'una funció $f:\mathbb{R}\to \mathbb{R}$ **iterativament** per
+$$ x_{k+1} = x_{k}-f'(x_{k}) \frac{x_{k}-x_{k-1}}{f'(x_{k})-f'(x_{k-1})} \,.$$
 
 
 ---
