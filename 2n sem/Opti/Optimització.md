@@ -33,6 +33,7 @@ Un mínim local $x_{0}$ s'anomena ==estricte== si $\exists\,\varepsilon>0$ tal q
 $$||x-x_{0}||<\varepsilon \implies f(x_{0})< f(x) \,.$$
 ```
 ````
+^bf1c46
 
 ```ad-not
 title: Nota: **Màxims**
@@ -216,7 +217,7 @@ El conjunt format pels vectors tangents a una funció en un punt s'anomena el ==
 
 Consisteix en aproximar el mínim d'una funció $f:\mathbb{R}\to \mathbb{R}$ **iterativament** per 
 
-$$ x_{k+1} = x_{k} \frac{f'(x_{k})}{f''(x_{k})} \,.$$
+$$ x_{k+1} = x_{k} - \frac{f'(x_{k})}{f''(x_{k})} \,.$$
 ^b8a461
 
 Aquest mètode no assegura torbar solució, però si ho fa és molt ràpid. 
@@ -230,11 +231,20 @@ Aleshores existeix $\delta>0$ tal que si $|x_{1}-x_{0}|<\delta$, la [[#^b8a461|s
 
 #### **Ordres** de **convergència**
 
-Sigui $\{x_{k}\}_{k}$ tal que $x_{k}\to x_{0}$ , i $C<0$ constant.
+Sigui $\{x_{k}\}_{k}$ tal que $x_{k}\to x_{0}$ , i $C<1$ constant.
 + $\boxed{\,\displaystyle\frac{|x_{k+1}-x_{0}|}{|x_{k}-x_{0}|}\leq C\,} \implies$ **convergència ~={green}lineal=~** (d'ordre 1)
 	+ $\displaystyle\lim_{k\to\infty}\frac{|x_{k+1}-x_{0}|}{|x_{k}-x_{0}|}=0 \implies$ **convergència ~={green}superlineal=~**
+
+Per $C\leq1$ :
 + $\boxed{\,\displaystyle\frac{|x_{k+1}-x_{0}|}{|x_{k}-x_{0}|^p} \leq C\,} \implies$ **convergència ~={green}d'ordre $\boldsymbol p$=~**
 	+ $p=2 \implies$ **convergència ~={green}quadràtica=~**
+
+
+```ad-prop
+Sigui $x_{0}$ un mínim trobat pel mètode de Newton amb la successió $\{x_{k}\}_{k}$ . Aleshores
+$$ f''(x_{0})\neq 0 \implies x_{k} \text{ té convergència quadràtica.} $$
+```
+
 
 #### Mètode de la **posició falsa**
 
@@ -261,6 +271,7 @@ $$ \boldsymbol H=\boldsymbol{\nabla^{2}f(x)} = \begin{pmatrix}
 \displaystyle\frac{d^{2}f}{dx_{n}dx_{1}} & \dots & \displaystyle\frac{d^{2}f}{dx_{n}dx_{n}}
 \end{pmatrix} $$
 ```
+
 
 ```ad-def
 title: Topologia
