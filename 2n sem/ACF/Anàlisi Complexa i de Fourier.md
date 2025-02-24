@@ -214,7 +214,8 @@ per un $k\in \mathbb{Z}$ .
 ```
 
 
-###### **Sèries** de potències
+---
+#### **Sèries** de potències
 
 Una ==sèrie de potències== de nombres complexos és
 $$ \sum_{n\geq0} a_{n}(z-b)^n $$
@@ -246,11 +247,75 @@ Si $|f_{n}(z)|\leq M_{n}$ per tot $z\in A$ amb $\sum_{n}M_{n}<\infty$ , aleshore
 ```ad-teor
 title: Teorema de **Cauchy-Hadamard**
 
-Sigui $$\sum_{n\geq0}a_{n}(z-b)^n$$ una sèrie de potències de nombres complexos.
+Sigui
+$$\sum_{n\geq0}a_{n}(z-b)^n$$
+una sèrie de potències de nombres complexos.
 
 Llavors existeix un únic $R\in[0,+\infty]$ anomenat ==radi de convergència== tal que:
-+ $|z-b|<R \implies$ la sèrie convergeix absolutament
-+ $|z-b|>R \implies$ la sèrie és divergent
++ $|z-b|<R \implies$ la sèrie ~={green}convergeix absolutament=~
+	+ $|z-b|\leq r \quad \forall\, r\in[0,R) \implies$ la sèrie també ~={green}convergeix uniformement=~
++ $|z-b|>R \implies$ la sèrie és ~={green}divergent=~
+
+A més,
+$$ R^{-1} = \limsup_{n\to\infty} \sqrt[n]{a_{n}} \,.$$
+```
+^3fc2ca
+
+```ad-prop
+title: Criteri del **quocient**
+
+Sigui
+$$\sum_{n\geq0}a_{n}(z-b)^n$$
+una sèrie de potències de nombres complexos.
+
+Aleshores el seu [[#^3fc2ca | radi de convergència]] és
+$$ R = \boxed{\,\lim_{n\to\infty} \frac{|a_{n}|}{|a_{n+1}|}\,} \,.$$
+```
+
+
+###### Comportament a la **frontera** del disc de convergència
+
+Sabem que una sèrie de nombres complexos
+$$\sum_{n\geq0}a_{n}(z-b)^n$$
+convergeix dins del disc de convergència i divergeix fora d'aquest. A la frontera, però, pot convergir o no.
+
+Per determinar-ho estudiarem la sèrie a la frontera
+$$ \sum_{n\geq 0} a_{n} R^n e^{in\theta} .$$
+
+Per $\theta$ fixat:
++ $\displaystyle\lim_{n\to\infty}|a_{n}|\,R^{n} \neq 0 \implies$ la sèrie és divergent
+
+```ad-prop
+title: Fórmula de **sumació per parts**
+
+Siguin $\{a_{n}\},\{b_{n}\}$ dues successions de nombres complexos. Aleshores
+$$ \sum_{i=1}^n a_{i}b_{i} = (a_{1}+\dots+a_{n})\,b_{n+1} - \sum_{i=1}^n (a_{0}+\dots+a_{i})(b_{i+1}-b_{i}) \,.$$
+```
+
+```ad-teor
+title: Criteri de **Dirichlet uniforme**
+
+Siguin $\{a_{n}\}_{n\geq1}, \{b_{n}\}_{n\geq1}$ dues successions de funcions $a_{n}:X\to \mathbb{C}$ i $b_{n}:Y\to \mathbb{R}$ .
+
+Si existeix $M>0$ tal que
+$$\left|\sum_{i=1}^N a_{i}(x) \right| \leq M $$
+per tot $x\in X$ i $N\geq1$, i $\{b_{n}\}_{n\geq1}$ és no negativa i uniformement decreixent cap a 0 en $Y$.
+
+Aleshores la sèrie funcional
+$$ \sum_{n=1}^{\infty} a_{n}(x)\,b_{n}(y) $$
+convergeix uniformement en $X\times Y$.
+```
+
+```ad-teor
+title: Teorema d'**Abel**
+
+Si una sèrie de potències
+$$ \sum_{n=0}^{\infty} a_{n}(z-b)^n $$
+convergeix uniformement en $A\subset \mathbb{C}$ , aleshores també convergeix uniformemen en el conjunt
+$$ C(A,b) = b + \bigcup_{t\in[0,1]} t\,(A-b) \,.$$
+
+En particular, si la sèrie convergeix en $z_{0}$ amb $|z_{0}-b|=R$, aleshores
+$$ \lim_{r\to1^-} \sum_{n\geq0} a_{n} r^n (z_{0}-b)^n = \sum_{n\geq0} a_{n} (z_{0}-b)^n \,.$$
 ```
 
 
