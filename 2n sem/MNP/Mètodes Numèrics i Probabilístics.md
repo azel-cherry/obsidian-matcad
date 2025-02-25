@@ -197,14 +197,14 @@ Definint
 $$ \boldsymbol{Q_{n}}=\text{Compo}_{m}(f,[a,b],2^n) = \sum_{i=0}^{2^n-1} NC_{m}(f,[x_{i},x_{i+1}]) $$
 amb $\displaystyle x_{i}=a+\frac{b-a}{2^n}\,i$ , aleshores tenim que l'error és
 $$ \int_{a}^b f(x)\,dx - Q_{n+1} \approx \boxed{\,\frac{Q_{n+1}-Q_{n}}{2^{p+1}-1}\,} \,,$$
-amb $p=\begin{cases}\, m &\text{si }m\text{ és senar} \\ m+1 &\text{si }m\text{ és parell} \end{cases}$ .
+amb $p=\begin{cases}\, m &\text{si }m\text{ és senar} \\\, m+1 &\text{si }m\text{ és parell} \end{cases}$ .
 
 `````ad-not
 Si s'utilitza la fórmula dels [[#^4f1fcc|trapezis]], podem escriure
 $$ Q_{n+1} = \boldsymbol{F(a,b,n,Q_{n})} = \boxed{\,\frac{Q_{n}}{2} + \frac{1}{2^{n+1}} \sum_{i=0}^{2^n-1}f(\overline{x}_{i})\,} \,,$$
 on $\quad\begin{cases}\displaystyle\,\overline{x}_{i}=\frac{x_{i}+x_{i+1}}{2}\\[0.5em]\displaystyle\,x_{i}=a+\frac{b-a}{2^n}\,i\end{cases}\quad$ i $\quad\displaystyle Q_{0}=\frac{f(a)+f(b)}{2}(b-a)$ .
 
-```
+```py title:Algorisme
 h = 0
 Q0 = (f(a)+f(b)) / 2 (b-a)
 Q1 = F(a,b,n,Q0)
@@ -218,10 +218,68 @@ return Q1
 ```
 `````
 
-```ad-met
+`````ad-met
 title: **Refinament adaptiu**
 
-Consisteix en adaptar les mides dels intervals en funció de $f$.
+Consisteix en adaptar les mides dels intervals en funció de `f`, establint també una mida mínima dels intervals `d_min`.
+
+```py title:Algorisme
+sol = 0
+refine(a,b,(a+b)/2,f,e,(f(a)+f(b))/2*(b-a))
 
 
+def refine(a,b,c,f,e,Q0):
+
+	Q1_left = (f(a) + f(c))/2 * (c-a) 
+	Q1_right = (f(c) + f(b))/2 * (b-c) 
+	Q1 = Q1_left + Q1_right
+
+	if 1/3*abs(Q1-Q0)<e || abs(b-a)<d_min:
+		sol = sol + Q1
+	
+	else:
+		refine(a,c,(a+c)/2,f,e/2,Q1_left)
+		refine(c,b,(c+b)/2,f,e/2,Q1_right)
+
+	return sol
+```
+`````
+
+
+#### Fórmula d'integració **Gaussiana**
+
+`````ad-def
+title: *Família de polinomis ortogonals*
+
+Un conjunt $\{ \psi_{0},\psi_{1},\dots \}$ es diu ==família de polinomis ortogonals== sobre l'interval $[a,b]$ i per una funció pes $\omega:[a,b]\to \mathbb{R}_{+}$ si:
++ $\text{gr}(\psi_{i})=i \quad \forall i\in \{ 0,1,\dots \}$ 
++ $\displaystyle\int_{a}^b \psi_{i}(x)\,\psi_{\rho}(x)\,\omega(x)\,dx \begin{cases}\, =0 &\text{si }i\neq\rho \\\, \neq0 &\text{si }i=\rho \end{cases}$
+
+```ad-prop
+title: Propietats
+
++ $\{ \psi_{0},\dots,\psi_{k} \}$ formen una base dels polinomis de grau $\leq k$
++ $\text{gr}(p(x))<k \implies \langle p,\psi_{k}\rangle=0$
++ $\psi_{k}$ té $k$ zeros diferents
+```
+`````
+
+Una ==fórmula d'integració Gaussiana== d'$m+1$ punts sobre l'interval $[a,b]$ associat a una família de polinomis ortogonals $\{ \psi_{0},\dots,\psi_{k} \}$ i respecte una funció $\omega:[a,b]\to \mathbb{R}_{+}$ és l'aproximació
+$$ \int_{a}^b f(x)\,\omega(x)\,dx \approx \int_{a}^b P(x,x_{0},\dots,x_{m},f)\,\omega(x)\,dx \,,$$
+on $P(x,x_{0},\dots,x_{m},f)$ és el polinomi interpolador de $f$ sobre els zeros simples $x_{0},\dots,x_{m}$ de $\psi_{m+1}$ .
+
+```ad-prop
+title: Propietat
+
+Una fórmula d'interpolació Gaussiana és exacta per tot polinomi de grau $\leq 2m+1$ .
+```
+
+
+---
+## Apèndix
+
+```ad-not
+title: Notació
+
++ ~={green}$\langle f,g\rangle$=~ $\displaystyle= \int_{a}^b \psi_{i}(x)\,\psi_{\rho}(x)\,\omega(x)\,dx$
 ```
