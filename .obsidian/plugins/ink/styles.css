@@ -123,13 +123,15 @@
 }
 
 /* src/components/dom-components/notice-components.scss */
-.ddc_ink_notice {
+.notice:has(.ddc_ink_notice) {
+  border-radius: var(--radius-m) !important;
   background-color: var(--background-primary-alt) !important;
   border: solid 1px var(--background-modifier-border) !important;
-  border-radius: var(--radius-m) !important;
   box-shadow: 0 2px 8px var(--background-modifier-box-shadow) !important;
-  text-align: left !important;
   pointer-events: none;
+}
+.ddc_ink_notice {
+  text-align: left !important;
 }
 .ddc_ink_notice p.ddc_ink_notice-label {
   color: var(--text-faint);
@@ -153,6 +155,8 @@
   background-color: var(--background-primary);
   border-radius: var(--button-radius);
   display: block;
+  outline: solid 1px var(--background-modifier-border);
+  box-shadow: inset 0px 0px 8px var(--background-modifier-box-shadow), 0px 0px 8px var(--background-modifier-box-shadow) !important;
 }
 .ddc_ink_notice ul,
 .ddc_ink_notice ol {
@@ -162,6 +166,11 @@
 .ddc_ink_notice ul li,
 .ddc_ink_notice ol li {
   margin-block-end: 1ch;
+  color: var(--text-normal);
+}
+.ddc_ink_notice ul li::marker,
+.ddc_ink_notice ol li::marker {
+  color: var(--text-accent);
 }
 .ddc_ink_notice a {
   pointer-events: all;
@@ -3207,10 +3216,6 @@
 
 /* src/tldraw/writing-menu/writing-menu.scss */
 .ink_menu-bar {
-  flex-grow: 1;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
   pointer-events: none;
 }
 .ink_menu-bar button {
@@ -3236,6 +3241,18 @@
 }
 .ink_menu-bar button:disabled:hover {
   box-shadow: var(--input-shadow);
+}
+.ink_menu-bar_full {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.ink_menu-bar_floating {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 @keyframes menu-button_scale-up {
   from {
@@ -3374,6 +3391,49 @@
 }
 .ddc_ink_overflow-button-and-menu .ddc_ink_dropdown li {
   padding: 0.5em;
+}
+
+/* src/tldraw/secondary-menu-bar/secondary-menu-bar.scss */
+.ink_secondary-menu-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: 8px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  pointer-events: none;
+}
+.cm-embed-block .ink_secondary-menu-bar {
+  padding: 8px var(--file-margins);
+  transition-property: transform;
+  transition-duration: 0.2s;
+  transition-timing-function: cubic-bezier(0, 0.5, 0, 1);
+}
+.cm-embed-block .ink_secondary-menu-bar.ddc_ink_active {
+  transform: translate(0, 50%);
+}
+
+/* src/tldraw/modify-menu/modify-menu.scss */
+.ink_modify-menu {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+}
+.ink_modify-menu button {
+  width: 2.5em;
+  height: 2.5em;
+  border-radius: 0.8em;
+  padding: 0 !important;
+}
+.ink_modify-menu button svg {
+  width: 1.5em !important;
+  height: 1.5em !important;
+}
+.ink_modify-menu button:disabled {
+  visibility: hidden;
 }
 
 /* src/tldraw/writing/writing-embed-preview/writing-embed-preview.scss */
@@ -6400,6 +6460,7 @@
 }
 .cm-preview-code-block.cm-embed-block.markdown-rendered:has(.ddc_ink_drawing-embed) {
   margin: 0 calc(-1 * var(--file-margins)) !important;
+  z-index: 10;
 }
 .cm-preview-code-block.cm-embed-block.markdown-rendered:has(.ddc_ink_drawing-embed):hover {
   box-shadow: none;

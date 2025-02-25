@@ -1,6 +1,8 @@
 {
   "enabledCssSnippets": [
-    "pet"
+    "pet",
+    "img_center",
+    "cell_center"
   ],
   "theme": "moonstone",
   "cssTheme": "",

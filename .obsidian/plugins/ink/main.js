@@ -7771,7 +7771,7 @@ var require_manifest = __commonJS({
       name: "Ink",
       author: "Dale de Silva",
       description: "Hand write or draw directly between paragraphs in your notes using a digital pen, stylus, or Apple pencil. Useful for handwriting, sketches, scribbles, or even math equations and scientific notation. Runs on the tldraw framework and drawing provides an infinite canvas.",
-      version: "0.3.3",
+      version: "0.3.4",
       minAppVersion: "1.00.0",
       authorUrl: "https://designdebt.club",
       fundingUrl: "https://ko-fi.com/daledesilva",
@@ -8327,9 +8327,9 @@ var require_ie8_dom_define = __commonJS({
     "use strict";
     var DESCRIPTORS = require_descriptors();
     var fails = require_fails();
-    var createElement36 = require_document_create_element();
+    var createElement38 = require_document_create_element();
     module2.exports = !DESCRIPTORS && !fails(function() {
-      return Object.defineProperty(createElement36("div"), "a", {
+      return Object.defineProperty(createElement38("div"), "a", {
         get: function() {
           return 7;
         }
@@ -11393,7 +11393,7 @@ var require_classnames = __commonJS({
     (function() {
       "use strict";
       var hasOwn = {}.hasOwnProperty;
-      function classNames37() {
+      function classNames41() {
         var classes = "";
         for (var i = 0; i < arguments.length; i++) {
           var arg = arguments[i];
@@ -11411,7 +11411,7 @@ var require_classnames = __commonJS({
           return "";
         }
         if (Array.isArray(arg)) {
-          return classNames37.apply(null, arg);
+          return classNames41.apply(null, arg);
         }
         if (arg.toString !== Object.prototype.toString && !arg.toString.toString().includes("[native code]")) {
           return arg.toString();
@@ -11434,14 +11434,14 @@ var require_classnames = __commonJS({
         return value + newClass;
       }
       if (typeof module2 !== "undefined" && module2.exports) {
-        classNames37.default = classNames37;
-        module2.exports = classNames37;
+        classNames41.default = classNames41;
+        module2.exports = classNames41;
       } else if (typeof define === "function" && typeof define.amd === "object" && define.amd) {
         define("classnames", [], function() {
-          return classNames37;
+          return classNames41;
         });
       } else {
-        window.classNames = classNames37;
+        window.classNames = classNames41;
       }
     })();
   }
@@ -16353,6 +16353,48 @@ var require_semver2 = __commonJS({
   }
 });
 
+// src/graphics/icons/write_default.svg
+var require_write_default = __commonJS({
+  "src/graphics/icons/write_default.svg"(exports, module2) {
+    module2.exports = '<svg\n    viewBox="2 2 21 21"\n    xmlns="http://www.w3.org/2000/svg"\n    fill="currentcolor" \n    >\n    <g class="frame-children">\n        <path d="M3.337,7.285C3.292,4.586,4.792,2.536,6.791,2.536C7.644,2.536,8.562,2.835,9.244,3.671C9.904,4.480,10.246,5.674,10.246,7.270C10.246,8.787,9.619,10.449,8.510,12.222C8.137,12.819,7.704,13.438,7.211,14.077C7.551,13.992,7.924,14.111,8.147,14.408C8.613,15.030,9.004,15.484,9.343,15.800C9.685,16.120,9.926,16.252,10.087,16.299C10.265,16.352,10.567,16.372,11.245,15.624C11.908,14.893,12.190,14.351,12.413,13.805C12.472,13.661,12.532,13.500,12.597,13.326C12.772,12.856,12.984,12.286,13.316,11.665C13.500,11.320,13.886,11.135,14.269,11.206C14.653,11.277,14.946,11.588,14.995,11.976C15.208,13.685,15.534,14.917,15.948,15.527C16.138,15.806,16.262,15.834,16.302,15.838C16.361,15.846,16.577,15.840,17.005,15.513C17.660,15.014,18.317,14.799,18.988,14.918C19.564,15.020,20.015,15.359,20.287,15.563C20.296,15.570,20.305,15.577,20.314,15.584C20.653,15.838,20.786,15.925,20.908,15.953C20.909,15.953,20.910,15.954,20.911,15.954C20.946,15.962,21.081,15.995,21.416,15.751C21.816,15.460,22.376,15.548,22.667,15.948C22.958,16.348,22.870,16.908,22.470,17.199C21.817,17.674,21.161,17.850,20.505,17.698C19.980,17.577,19.553,17.254,19.294,17.058C19.275,17.043,19.257,17.029,19.239,17.016C18.918,16.775,18.786,16.701,18.675,16.681C18.637,16.674,18.474,16.645,18.092,16.937C17.480,17.404,16.799,17.703,16.085,17.616C15.351,17.527,14.825,17.061,14.466,16.533C14.197,16.136,13.978,15.641,13.800,15.082C13.532,15.612,13.165,16.173,12.572,16.826C11.768,17.713,10.791,18.374,9.581,18.017C9.046,17.860,8.566,17.525,8.121,17.110C7.671,16.690,7.208,16.141,6.715,15.483C6.589,15.315,6.531,15.118,6.536,14.924C5.692,15.945,4.708,17.016,3.587,18.138C3.237,18.487,2.670,18.487,2.320,18.138C1.970,17.788,1.970,17.221,2.320,16.871C4.425,14.766,5.974,12.900,6.991,11.273C8.015,9.635,8.454,8.311,8.454,7.270C8.454,5.896,8.156,5.170,7.856,4.803C7.579,4.463,7.218,4.327,6.791,4.327C6.232,4.327,5.091,5.054,5.128,7.255C5.136,7.749,4.742,8.157,4.248,8.165C3.753,8.173,3.345,7.779,3.337,7.285ZZ"/>\n        <path d="M4.218,6.374C4.712,6.366,5.120,6.760,5.128,7.255C5.147,8.373,5.612,9.795,6.256,11.172C6.890,12.532,7.648,13.742,8.147,14.408C8.444,14.804,8.364,15.366,7.968,15.662C7.572,15.959,7.011,15.879,6.714,15.483C6.137,14.713,5.317,13.395,4.633,11.930C3.957,10.484,3.362,8.786,3.337,7.285C3.329,6.790,3.723,6.383,4.218,6.374ZZ"/>\n        <path d="M3.837,20.400C3.837,19.906,4.238,19.505,4.732,19.505L21.299,19.505C21.794,19.505,22.194,19.906,22.194,20.400C22.194,20.895,21.794,21.296,21.299,21.296L4.732,21.296C4.238,21.296,3.837,20.895,3.837,20.400ZZ"/>\n        <ellipse cx="14.496" cy="8.705" rx="1.107" ry="1.107" transform="matrix(0.897379, -0.441262, 0.441262, 0.897379, -2.353381, 7.289870)" />\n    </g>\n</svg>';
+  }
+});
+
+// src/graphics/icons/write_existing.svg
+var require_write_existing = __commonJS({
+  "src/graphics/icons/write_existing.svg"(exports, module2) {
+    module2.exports = '<svg\n    viewBox="2 2 21 21"\n    xmlns="http://www.w3.org/2000/svg"\n    fill="currentcolor" \n>\n    <g class="frame-children">\n        <path d="M7.522,11.373C7.941,11.111,8.494,11.239,8.756,11.658C8.952,11.972,9.202,12.364,9.312,12.511C9.609,12.906,9.528,13.468,9.133,13.764C8.737,14.061,8.176,13.981,7.879,13.585C7.713,13.363,7.417,12.896,7.237,12.607C6.975,12.188,7.103,11.635,7.522,11.373ZZ"/>\n        <path d="M13.686,10.258C14.122,10.491,14.287,11.034,14.054,11.470C13.872,11.811,13.779,12.062,13.671,12.353C13.618,12.496,13.561,12.648,13.489,12.825C13.275,13.349,12.988,13.885,12.391,14.544C11.810,15.185,11.024,15.749,10.023,15.454C9.593,15.328,9.221,15.063,8.894,14.758C8.563,14.449,8.228,14.051,7.879,13.585C7.582,13.189,7.663,12.628,8.058,12.331C8.454,12.035,9.015,12.115,9.312,12.511C9.634,12.939,9.896,13.243,10.116,13.449C10.340,13.658,10.473,13.720,10.529,13.736C10.530,13.737,10.531,13.737,10.532,13.737C10.553,13.743,10.564,13.747,10.614,13.724C10.696,13.686,10.842,13.586,11.064,13.341C11.503,12.856,11.685,12.505,11.831,12.148C11.867,12.059,11.906,11.954,11.950,11.838C12.073,11.507,12.232,11.079,12.474,10.626C12.707,10.190,13.250,10.025,13.686,10.258ZZ"/>\n        <path d="M13.153,10.160C13.644,10.098,14.091,10.446,14.153,10.937C14.302,12.134,14.526,12.936,14.775,13.303C14.807,13.350,14.832,13.379,14.849,13.396C14.893,13.381,14.984,13.341,15.129,13.231C15.673,12.815,16.258,12.673,16.840,12.838C17.285,12.965,17.641,13.260,17.831,13.418C17.845,13.429,17.858,13.440,17.870,13.450C17.938,13.506,17.990,13.547,18.029,13.576C18.040,13.564,18.052,13.550,18.066,13.535C18.387,13.159,18.953,13.116,19.328,13.437C19.704,13.759,19.747,14.325,19.425,14.700C19.021,15.173,18.484,15.519,17.819,15.412C17.335,15.335,16.950,15.015,16.768,14.863C16.755,14.852,16.743,14.842,16.733,14.834C16.495,14.638,16.412,14.583,16.363,14.565C16.343,14.572,16.294,14.594,16.215,14.655C15.760,15.002,15.214,15.256,14.616,15.183C13.998,15.108,13.569,14.716,13.294,14.309C12.777,13.549,12.524,12.349,12.375,11.159C12.314,10.668,12.662,10.221,13.153,10.160ZZM17.933,13.665C17.933,13.665,17.935,13.663,17.933,13.665ZC17.935,13.664,17.933,13.665,17.933,13.665ZZM14.876,13.419C14.876,13.419,14.874,13.418,14.876,13.419ZC14.874,13.417,14.876,13.418,14.876,13.419ZZ"/>\n        <path d="M5.463,7.694C5.430,5.731,6.534,4.099,8.148,4.099C8.809,4.099,9.534,4.332,10.072,4.992C10.588,5.624,10.833,6.530,10.833,7.679C10.833,8.812,10.366,10.025,9.578,11.286C8.784,12.557,7.615,13.953,6.097,15.471C5.747,15.820,5.180,15.820,4.830,15.471C4.481,15.121,4.481,14.554,4.830,14.204C5.624,13.411,6.300,12.670,6.865,11.979C6.203,10.773,5.487,9.116,5.463,7.694ZZM8.047,10.357C8.051,10.350,8.055,10.343,8.047,10.357ZC8.763,9.211,9.042,8.336,9.042,7.679C9.042,6.751,8.840,6.315,8.684,6.124C8.551,5.961,8.382,5.890,8.148,5.890C7.973,5.890,7.229,6.200,7.254,7.664C7.267,8.428,7.601,9.416,8.047,10.357ZZ"/>\n        <path d="M15.105,16.737C15.444,17.098,15.426,17.664,15.066,18.003C13.407,19.565,10.819,19.565,9.159,18.003C8.799,17.664,8.782,17.098,9.121,16.737C9.460,16.377,10.027,16.360,10.387,16.699C11.356,17.612,12.869,17.612,13.839,16.699C14.199,16.360,14.766,16.377,15.105,16.737ZZ"/>\n        <ellipse cx="13.695" cy="8.395" rx=".965" ry=".965" transform="matrix(0.897379, -0.441262, 0.441262, 0.897379, -2.298862, 6.904515)" />\n    </g>\n</svg>';
+  }
+});
+
+// src/graphics/icons/write_paste.svg
+var require_write_paste = __commonJS({
+  "src/graphics/icons/write_paste.svg"(exports, module2) {
+    module2.exports = '<svg\n    viewBox="2 2 21 21"\n    xmlns="http://www.w3.org/2000/svg"\n    fill="currentcolor" \n>\n    <g class="frame-children">\n        <path d="M15.954,3.315C15.954,2.821,16.355,2.420,16.850,2.420C19.968,2.420,22.495,4.947,22.495,8.065C22.495,8.559,22.094,8.960,21.599,8.960C21.105,8.960,20.704,8.559,20.704,8.065C20.704,5.936,18.978,4.211,16.850,4.211C16.355,4.211,15.954,3.810,15.954,3.315ZZ"/>\n        <path d="M8.246,19.763C8.246,20.257,7.845,20.658,7.350,20.658C4.232,20.658,1.705,18.131,1.705,15.013C1.705,14.518,2.106,14.117,2.600,14.117C3.095,14.117,3.496,14.518,3.496,15.013C3.496,17.142,5.221,18.867,7.350,18.867C7.845,18.867,8.246,19.268,8.246,19.763ZZ"/>\n        <path d="M21.599,14.117C22.094,14.117,22.495,14.518,22.495,15.013C22.495,18.131,19.968,20.658,16.850,20.658C16.355,20.658,15.954,20.257,15.954,19.763C15.954,19.268,16.355,18.867,16.850,18.867C18.978,18.867,20.704,17.142,20.704,15.013C20.704,14.518,21.105,14.117,21.599,14.117ZZ"/>\n        <path d="M2.610,8.960C2.115,8.960,1.714,8.559,1.714,8.065C1.714,4.947,4.242,2.420,7.359,2.420C7.854,2.420,8.255,2.821,8.255,3.315C8.255,3.810,7.854,4.211,7.359,4.211C5.231,4.211,3.505,5.936,3.505,8.065C3.505,8.559,3.104,8.960,2.610,8.960ZZ"/>\n        <ellipse cx="13.625" cy="9.567" rx=".965" ry=".965" transform="matrix(0.897379, -0.441262, 0.441262, 0.897379, -2.823144, 6.993809)"/>\n        <path d="M7.522,12.684C7.941,12.421,8.494,12.549,8.756,12.969C8.952,13.282,9.202,13.674,9.312,13.821C9.609,14.216,9.528,14.778,9.133,15.074C8.737,15.371,8.176,15.291,7.879,14.895C7.713,14.674,7.417,14.206,7.237,13.917C6.975,13.498,7.103,12.946,7.522,12.684ZZ"/>\n        <path d="M13.686,11.568C14.122,11.801,14.287,12.344,14.054,12.780C13.872,13.121,13.779,13.373,13.671,13.663C13.618,13.806,13.561,13.958,13.489,14.135C13.275,14.660,12.988,15.195,12.391,15.854C11.810,16.495,11.024,17.059,10.023,16.764C9.593,16.638,9.221,16.373,8.894,16.068C8.563,15.759,8.228,15.361,7.879,14.895C7.582,14.500,7.663,13.938,8.058,13.641C8.454,13.345,9.015,13.425,9.312,13.821C9.634,14.250,9.896,14.553,10.116,14.759C10.340,14.968,10.473,15.030,10.529,15.046C10.530,15.047,10.531,15.047,10.532,15.047C10.553,15.053,10.564,15.057,10.614,15.034C10.696,14.996,10.842,14.896,11.064,14.651C11.503,14.166,11.685,13.815,11.831,13.458C11.867,13.369,11.906,13.264,11.950,13.148C12.073,12.817,12.232,12.389,12.474,11.936C12.707,11.500,13.250,11.335,13.686,11.568ZZ"/>\n        <path d="M13.153,11.470C13.644,11.408,14.091,11.757,14.153,12.247C14.302,13.444,14.526,14.246,14.775,14.613C14.807,14.660,14.832,14.689,14.849,14.706C14.893,14.691,14.984,14.651,15.129,14.541C15.673,14.126,16.258,13.983,16.840,14.149C17.285,14.275,17.641,14.570,17.831,14.728C17.845,14.740,17.858,14.750,17.870,14.760C17.938,14.816,17.990,14.857,18.029,14.886C18.040,14.874,18.052,14.860,18.066,14.845C18.387,14.469,18.953,14.426,19.328,14.748C19.704,15.069,19.747,15.635,19.425,16.010C19.021,16.483,18.484,16.829,17.819,16.722C17.335,16.645,16.950,16.325,16.768,16.173C16.755,16.162,16.743,16.152,16.733,16.144C16.495,15.949,16.412,15.893,16.363,15.875C16.343,15.883,16.294,15.904,16.215,15.965C15.760,16.312,15.214,16.566,14.616,16.493C13.998,16.418,13.569,16.026,13.294,15.619C12.777,14.859,12.524,13.659,12.375,12.469C12.314,11.978,12.662,11.531,13.153,11.470ZZM17.933,14.975C17.933,14.975,17.935,14.973,17.933,14.975ZC17.935,14.974,17.933,14.975,17.933,14.975ZZM14.876,14.729C14.876,14.729,14.874,14.728,14.876,14.729ZC14.874,14.727,14.876,14.728,14.876,14.729ZZ"/>\n        <path d="M5.463,9.004C5.430,7.041,6.534,5.409,8.148,5.409C8.809,5.409,9.534,5.643,10.072,6.302C10.588,6.934,10.833,7.840,10.833,8.989C10.833,10.122,10.366,11.335,9.578,12.596C8.784,13.867,7.615,15.263,6.097,16.781C5.747,17.130,5.180,17.130,4.830,16.781C4.481,16.431,4.481,15.864,4.830,15.514C5.624,14.721,6.300,13.980,6.865,13.290C6.203,12.083,5.487,10.426,5.463,9.004ZZM8.047,11.667C8.051,11.660,8.055,11.653,8.047,11.667ZC8.763,10.521,9.042,9.646,9.042,8.989C9.042,8.062,8.840,7.625,8.684,7.434C8.551,7.271,8.382,7.200,8.148,7.200C7.973,7.200,7.229,7.510,7.254,8.974C7.267,9.738,7.601,10.726,8.047,11.667ZZ"/>\n    </g>\n</svg>';
+  }
+});
+
+// src/graphics/icons/draw_default.svg
+var require_draw_default = __commonJS({
+  "src/graphics/icons/draw_default.svg"(exports, module2) {
+    module2.exports = '<svg\n    viewBox="2 2 21 21"\n    xmlns="http://www.w3.org/2000/svg"\n    fill="currentcolor" \n>\n    <g >\n        <path d="M19.771,17.456C20.266,17.456,20.667,17.857,20.667,18.351C20.667,20.003,19.328,21.341,17.677,21.341L11.960,21.341C11.465,21.341,11.064,20.940,11.064,20.446C11.064,19.951,11.465,19.550,11.960,19.550L17.677,19.550C18.339,19.550,18.876,19.013,18.876,18.351C18.876,17.857,19.277,17.456,19.771,17.456ZZ"/>\n        <path d="M11.145,5.746C11.440,5.698,12.157,5.793,13.538,6.428C14.954,7.080,16.545,8.303,17.366,9.252C17.689,9.626,18.255,9.667,18.629,9.344C19.003,9.020,19.044,8.454,18.721,8.080C17.727,6.932,15.927,5.556,14.286,4.801C12.875,4.152,11.724,3.836,10.855,3.979C10.375,4.057,9.939,4.285,9.646,4.700C9.370,5.093,9.299,5.548,9.310,5.944C9.331,6.716,9.668,7.595,10.080,8.393C10.506,9.218,11.071,10.066,11.661,10.804C12.233,11.519,12.671,12.225,12.932,12.818C13.062,13.115,13.139,13.362,13.173,13.553C13.187,13.628,13.192,13.689,13.194,13.736C13.146,13.737,13.079,13.733,12.989,13.719C12.486,13.641,11.622,13.310,10.298,12.515C8.860,11.652,7.789,11.177,7.005,11.096C6.593,11.054,6.115,11.105,5.729,11.430C5.341,11.757,5.232,12.203,5.212,12.535C5.174,13.152,5.412,13.871,5.597,14.377C5.675,14.589,5.757,14.800,5.830,14.985C5.852,15.041,5.873,15.094,5.892,15.144C5.984,15.381,6.042,15.539,6.070,15.640C6.082,15.685,6.091,15.724,6.097,15.759C6.017,15.739,5.912,15.705,5.776,15.648C5.408,15.491,4.901,15.196,4.238,14.691C3.844,14.392,3.282,14.469,2.983,14.862C2.684,15.256,2.760,15.818,3.154,16.117C3.886,16.674,4.524,17.062,5.077,17.296C5.612,17.524,6.167,17.649,6.681,17.535C7.271,17.404,7.659,16.991,7.816,16.488C7.956,16.041,7.906,15.567,7.798,15.169C7.741,14.962,7.648,14.717,7.561,14.494C7.538,14.436,7.515,14.377,7.492,14.318C7.421,14.136,7.349,13.952,7.279,13.762C7.150,13.409,7.066,13.124,7.026,12.916C7.439,13.019,8.174,13.330,9.376,14.051C10.753,14.878,11.860,15.357,12.716,15.489C13.149,15.556,13.602,15.547,14.009,15.369C14.452,15.176,14.748,14.823,14.887,14.400C15.015,14.012,15.001,13.603,14.937,13.240C14.871,12.868,14.740,12.481,14.571,12.097C14.233,11.328,13.703,10.489,13.060,9.685C12.534,9.027,12.036,8.278,11.672,7.571C11.293,6.839,11.110,6.254,11.101,5.895C11.099,5.826,11.104,5.780,11.145,5.746ZC11.118,5.751,11.131,5.748,11.145,5.746ZZM11.077,5.764C11.077,5.764,11.078,5.763,11.077,5.764ZC11.077,5.763,11.076,5.764,11.077,5.764ZZM6.738,12.875C6.738,12.875,6.739,12.875,6.738,12.875ZZM7.001,12.625C7.002,12.624,7.002,12.623,7.001,12.625ZZ"/>\n    </g>\n</svg>';
+  }
+});
+
+// src/graphics/icons/draw_existing.svg
+var require_draw_existing = __commonJS({
+  "src/graphics/icons/draw_existing.svg"(exports, module2) {
+    module2.exports = '<svg\n    viewBox="2 2 21 21"\n    xmlns="http://www.w3.org/2000/svg"\n    fill="currentcolor" \n>\n    <g class="frame-children">\n        <path d="M14.808,16.098C15.147,16.458,15.129,17.024,14.769,17.363C13.110,18.925,10.521,18.925,8.862,17.363C8.502,17.024,8.485,16.458,8.824,16.098C9.163,15.737,9.730,15.720,10.090,16.059C11.059,16.972,12.572,16.972,13.542,16.059C13.902,15.720,14.469,15.737,14.808,16.098ZZ"/>\n        <path d="M12.576,6.218C12.819,6.242,13.279,6.354,14.047,6.707C15.069,7.177,16.224,8.066,16.811,8.745C17.135,9.119,17.700,9.160,18.074,8.837C18.448,8.513,18.489,7.948,18.166,7.573C17.406,6.695,16.043,5.654,14.795,5.080C13.744,4.596,12.833,4.333,12.114,4.451C11.709,4.517,11.324,4.713,11.065,5.081C10.821,5.428,10.765,5.820,10.773,6.144C10.791,6.770,11.060,7.461,11.371,8.062C11.695,8.690,12.123,9.333,12.570,9.891C12.985,10.410,13.299,10.917,13.482,11.335C13.534,11.453,13.573,11.557,13.600,11.647C13.248,11.555,12.684,11.316,11.856,10.820C10.788,10.178,9.954,9.800,9.316,9.734C8.977,9.699,8.549,9.738,8.196,10.035C7.842,10.334,7.748,10.737,7.731,11.018C7.699,11.531,7.895,12.108,8.030,12.479C8.089,12.639,8.152,12.799,8.206,12.937C8.217,12.966,8.228,12.993,8.238,13.019C8.012,12.898,7.727,12.716,7.377,12.450C6.983,12.150,6.421,12.227,6.122,12.621C5.823,13.014,5.899,13.576,6.293,13.876C6.846,14.295,7.336,14.596,7.770,14.780C8.187,14.956,8.652,15.070,9.102,14.970C9.627,14.853,9.975,14.482,10.115,14.036C10.237,13.647,10.190,13.246,10.103,12.927C10.058,12.760,9.984,12.567,9.920,12.403C9.903,12.358,9.885,12.314,9.868,12.270C9.815,12.135,9.763,12.002,9.713,11.864C9.689,11.799,9.667,11.737,9.647,11.677C9.667,11.685,9.689,11.694,9.711,11.704C10.020,11.838,10.421,12.047,10.934,12.355C11.964,12.973,12.817,13.349,13.498,13.453C13.843,13.506,14.228,13.504,14.586,13.348C14.978,13.176,15.241,12.861,15.364,12.489C15.476,12.151,15.461,11.805,15.409,11.515C15.356,11.216,15.252,10.910,15.122,10.614C14.861,10.020,14.455,9.380,13.968,8.772C13.586,8.293,13.225,7.750,12.962,7.240C12.732,6.795,12.613,6.446,12.576,6.218ZZM9.107,11.514C9.107,11.514,9.108,11.514,9.107,11.514ZC9.108,11.514,9.107,11.514,9.107,11.514ZZ"/>\n    </g>\n</svg>';
+  }
+});
+
+// src/graphics/icons/draw_paste.svg
+var require_draw_paste = __commonJS({
+  "src/graphics/icons/draw_paste.svg"(exports, module2) {
+    module2.exports = '<svg\n    viewBox="2 2 21 21"\n    xmlns="http://www.w3.org/2000/svg"\n    fill="currentcolor" \n>\n    <g class="frame-children">\n        <path d="M16.298,3.315C16.298,2.821,16.699,2.420,17.194,2.420C20.312,2.420,22.839,4.947,22.839,8.065C22.839,8.559,22.438,8.960,21.943,8.960C21.449,8.960,21.048,8.559,21.048,8.065C21.048,5.936,19.322,4.211,17.194,4.211C16.699,4.211,16.298,3.810,16.298,3.315ZZ" />\n        <path d="M8.590,19.763C8.590,20.257,8.189,20.658,7.694,20.658C4.576,20.658,2.049,18.131,2.049,15.013C2.049,14.518,2.450,14.117,2.944,14.117C3.439,14.117,3.840,14.518,3.840,15.013C3.840,17.142,5.565,18.867,7.694,18.867C8.189,18.867,8.590,19.268,8.590,19.763ZZ" />\n        <path d="M21.943,14.117C22.438,14.117,22.839,14.518,22.839,15.013C22.839,18.131,20.312,20.658,17.194,20.658C16.699,20.658,16.298,20.257,16.298,19.763C16.298,19.268,16.699,18.867,17.194,18.867C19.322,18.867,21.048,17.142,21.048,15.013C21.048,14.518,21.449,14.117,21.943,14.117ZZ" />\n        <path d="M2.954,8.960C2.459,8.960,2.058,8.559,2.058,8.065C2.058,4.947,4.586,2.420,7.703,2.420C8.198,2.420,8.599,2.821,8.599,3.315C8.599,3.810,8.198,4.211,7.703,4.211C5.575,4.211,3.849,5.936,3.849,8.065C3.849,8.559,3.448,8.960,2.954,8.960ZZ" />\n        <path d="M13.216,8.168C13.459,8.192,13.919,8.304,14.686,8.657C15.709,9.127,16.863,10.016,17.451,10.695C17.774,11.069,18.340,11.110,18.714,10.787C19.088,10.463,19.129,9.898,18.806,9.523C18.046,8.645,16.683,7.604,15.435,7.030C14.383,6.546,13.472,6.283,12.753,6.401C12.349,6.468,11.964,6.663,11.705,7.031C11.461,7.378,11.404,7.770,11.413,8.095C11.430,8.720,11.700,9.411,12.011,10.013C12.335,10.640,12.763,11.283,13.209,11.841C13.625,12.360,13.938,12.868,14.122,13.285C14.174,13.403,14.212,13.507,14.240,13.597C13.887,13.505,13.323,13.266,12.496,12.770C11.428,12.128,10.593,11.750,9.956,11.684C9.617,11.649,9.189,11.688,8.836,11.985C8.481,12.284,8.388,12.688,8.370,12.968C8.339,13.481,8.534,14.058,8.670,14.429C8.728,14.589,8.791,14.749,8.846,14.888C8.857,14.916,8.867,14.943,8.877,14.969C8.652,14.848,8.367,14.666,8.017,14.400C7.623,14.100,7.061,14.177,6.762,14.571C6.462,14.965,6.539,15.526,6.933,15.826C7.485,16.245,7.976,16.546,8.410,16.730C8.826,16.906,9.292,17.020,9.742,16.920C10.267,16.803,10.615,16.432,10.754,15.986C10.876,15.597,10.830,15.196,10.743,14.877C10.697,14.710,10.623,14.517,10.560,14.353C10.542,14.309,10.525,14.264,10.508,14.220C10.455,14.085,10.403,13.953,10.352,13.814C10.328,13.749,10.306,13.687,10.286,13.627C10.307,13.635,10.328,13.644,10.350,13.654C10.660,13.788,11.061,13.997,11.574,14.305C12.603,14.923,13.457,15.299,14.138,15.403C14.483,15.456,14.868,15.454,15.225,15.298C15.618,15.126,15.881,14.811,16.004,14.440C16.115,14.101,16.100,13.755,16.049,13.465C15.995,13.166,15.892,12.860,15.761,12.564C15.500,11.970,15.095,11.331,14.608,10.722C14.225,10.243,13.865,9.700,13.602,9.191C13.372,8.745,13.253,8.396,13.216,8.168ZZM9.747,13.464C9.747,13.464,9.747,13.464,9.747,13.464ZC9.747,13.464,9.747,13.464,9.747,13.464ZZ" />\n    </g>\n</svg>';
+  }
+});
+
 // src/main.ts
 var main_exports = {};
 __export(main_exports, {
@@ -16525,6 +16567,18 @@ function createNoticeCtaBar(noticeBody, props) {
   };
 }
 
+// src/utils/isIpad.ts
+function isIpad() {
+  const userAgent = navigator.userAgent.toLowerCase();
+  if (userAgent.includes("ipad")) {
+    return true;
+  }
+  if (userAgent.includes("mac") && navigator.maxTouchPoints > 2) {
+    return true;
+  }
+  return false;
+}
+
 // src/notices/welcome-notice.ts
 function showWelcomeTips_maybe(plugin) {
   if (plugin.settings.onboardingTips.welcomeTipRead)
@@ -16598,6 +16652,30 @@ function showDrawingWelcomeTip(plugin) {
   if (primaryBtnEl) {
     primaryBtnEl.addEventListener("click", () => {
       notice.hide();
+      if (isIpad()) {
+        showiPadWelcomeTip(plugin);
+      } else {
+        showSyncingWelcomeTip(plugin);
+      }
+    });
+  }
+}
+function showiPadWelcomeTip(plugin) {
+  const noticeBody = createInkNoticeTemplate();
+  noticeBody.createEl("h1").setText(`If you're using an iPad...`);
+  noticeBody.createEl("p").setText(`The 'Scribble' feature of the Apple Pencil can interfere with the ability to write in Ink embeds.`);
+  noticeBody.createEl("p").setText(`To use Ink you will need to turn off Scribble in your device settings.`);
+  const {
+    primaryBtnEl,
+    tertiaryBtnEl
+  } = createNoticeCtaBar(noticeBody, {
+    primaryLabel: "Continue",
+    tertiaryLabel: "Dismiss for now"
+  });
+  const notice = launchPersistentInkNotice(noticeBody);
+  if (primaryBtnEl) {
+    primaryBtnEl.addEventListener("click", () => {
+      notice.hide();
       showSyncingWelcomeTip(plugin);
     });
   }
@@ -16626,11 +16704,16 @@ function showDevelopmentWelcomeTip(plugin) {
   const noticeBody = createInkNoticeTemplate();
   noticeBody.createEl("h1").setText(`Get involved...`);
   noticeBody.createEl("p").setText(`If you notice any bugs, please report them through the link in the settings.`);
-  noticeBody.createEl("p").setText(`You can also follow along with development and let me know which features are important to you at the link below.`);
-  const link = noticeBody.createEl("a");
-  link.setAttribute("href", "https://youtube.com/playlist?list=PLAiv7XV4xFx2NMRSCxdGiVombKO-TiMAL&si=GVp9ILvCAaRTwyYd");
-  link.setText(`Ink development diaries`);
-  link.onClickEvent((e) => e.stopPropagation());
+  noticeBody.createEl("p").setText(`You can also follow along with development and let me know which features are important to you at the links below.`);
+  const link1 = noticeBody.createEl("a");
+  link1.setAttribute("href", "https://youtube.com/playlist?list=PLAiv7XV4xFx2NMRSCxdGiVombKO-TiMAL&si=GVp9ILvCAaRTwyYd");
+  link1.setText(`View development diaries`);
+  link1.onClickEvent((e) => e.stopPropagation());
+  noticeBody.createEl("br");
+  const link2 = noticeBody.createEl("a");
+  link2.setAttribute("href", "https://designdebt.club/socials");
+  link2.setText(`Follow on socials`);
+  link2.onClickEvent((e) => e.stopPropagation());
   const {
     tertiaryBtnEl
   } = createNoticeCtaBar(noticeBody, {
@@ -16935,13 +17018,13 @@ function insertPrereleaseWarning(containerEl) {
 
 // src/extensions/widgets/writing-embed-widget.tsx
 var import_obsidian10 = require("obsidian");
-var React88 = __toESM(require_react());
+var React90 = __toESM(require_react());
 var import_client2 = __toESM(require_client());
 
 // src/constants.ts
 var manifest = require_manifest();
 var PLUGIN_VERSION = manifest.version;
-var TLDRAW_VERSION = "2.1.0";
+var TLDRAW_VERSION = "2.4.3";
 var PLUGIN_KEY = "ddc_ink";
 var WRITE_FILE_EXT = "writing";
 var DRAW_FILE_EXT = "drawing";
@@ -17065,7 +17148,7 @@ function removeEmbed(plugin, ctx, el) {
 }
 
 // src/tldraw/writing/writing-embed.tsx
-var React87 = __toESM(require_react());
+var React89 = __toESM(require_react());
 var import_react124 = __toESM(require_react());
 
 // node_modules/@tldraw/editor/dist-esm/index.mjs
@@ -72138,13 +72221,13 @@ function getDrawShapeBounds(editor) {
   return bounds;
 }
 function cropWritingStrokeHeightTightly(height) {
-  const numOfLines = Math.ceil(height / WRITING_LINE_HEIGHT);
-  const newLineHeight = (numOfLines + 0.5) * WRITING_LINE_HEIGHT;
+  const numFilledLines = Math.ceil(height / WRITING_LINE_HEIGHT);
+  const newLineHeight = (numFilledLines + 0.5) * WRITING_LINE_HEIGHT;
   return Math.max(newLineHeight, WRITING_MIN_PAGE_HEIGHT);
 }
 function cropWritingStrokeHeightInvitingly(height) {
-  const numOfLines = Math.ceil(height / WRITING_LINE_HEIGHT);
-  const newLineHeight = (numOfLines + 1.5) * WRITING_LINE_HEIGHT;
+  const numFilledLines = Math.ceil(height / WRITING_LINE_HEIGHT);
+  const newLineHeight = (numFilledLines + 2 + 0.5) * WRITING_LINE_HEIGHT;
   return Math.max(newLineHeight, WRITING_MIN_PAGE_HEIGHT);
 }
 var resizeWritingTemplateInvitingly = (editor) => {
@@ -72278,7 +72361,7 @@ var WritingContainerUtil = class extends ShapeUtil {
 WritingContainerUtil.type = "writing-container";
 
 // src/tldraw/writing-menu/writing-menu.tsx
-var React77 = __toESM(require_react());
+var React75 = __toESM(require_react());
 
 // src/graphics/icons/write-icon.tsx
 var React72 = __toESM(require_react());
@@ -72316,61 +72399,10 @@ var SelectIcon = (props) => /* @__PURE__ */ React74.createElement("svg", {
   d: "m320-410 79-110h170L320-716v306Zm286 305q-23 11-46 2.5T526-134L406-392l-93 130q-17 24-45 15t-28-38v-513q0-25 22.5-36t42.5 5l404 318q23 17 13.5 44T684-440H516l119 255q11 23 2.5 46T606-105ZM399-520Z"
 }));
 
-// src/graphics/icons/undo-icon.tsx
-var React75 = __toESM(require_react());
-var UndoIcon = (props) => /* @__PURE__ */ React75.createElement("svg", {
-  xmlns: "http://www.w3.org/2000/svg",
-  height: 24,
-  viewBox: "0 -960 960 960",
-  width: 24,
-  ...props
-}, /* @__PURE__ */ React75.createElement("path", {
-  d: "M320-200q-17 0-28.5-11.5T280-240q0-17 11.5-28.5T320-280h244q63 0 109.5-40T720-420q0-60-46.5-100T564-560H312l76 76q11 11 11 28t-11 28q-11 11-28 11t-28-11L188-572q-6-6-8.5-13t-2.5-15q0-8 2.5-15t8.5-13l144-144q11-11 28-11t28 11q11 11 11 28t-11 28l-76 76h252q97 0 166.5 63T800-420q0 94-69.5 157T564-200H320Z"
-}));
-
-// src/graphics/icons/redo-icon.tsx
-var React76 = __toESM(require_react());
-var RedoIcon = (props) => /* @__PURE__ */ React76.createElement("svg", {
-  xmlns: "http://www.w3.org/2000/svg",
-  height: 24,
-  viewBox: "0 -960 960 960",
-  width: 24,
-  ...props
-}, /* @__PURE__ */ React76.createElement("path", {
-  d: "M648-560H396q-63 0-109.5 40T240-420q0 60 46.5 100T396-280h244q17 0 28.5 11.5T680-240q0 17-11.5 28.5T640-200H396q-97 0-166.5-63T160-420q0-94 69.5-157T396-640h252l-76-76q-11-11-11-28t11-28q11-11 28-11t28 11l144 144q6 6 8.5 13t2.5 15q0 8-2.5 15t-8.5 13L628-428q-11 11-28 11t-28-11q-11-11-11-28t11-28l76-76Z"
-}));
-
 // src/tldraw/writing-menu/writing-menu.tsx
+var import_classnames30 = __toESM(require_classnames());
 var WritingMenu = (props) => {
-  const [curTool, setCurTool] = React77.useState("draw" /* draw */);
-  const [canUndo, setCanUndo] = React77.useState(false);
-  const [canRedo, setCanRedo] = React77.useState(false);
-  React77.useEffect(() => {
-    let removeUserActionListener;
-    const mountDelayMs = 200;
-    setTimeout(() => {
-      const tlEditor = props.getTlEditor();
-      if (!tlEditor)
-        return;
-      let timeout;
-      removeUserActionListener = tlEditor.store.listen((entry) => {
-        const activity = getActivityType(entry);
-        if (activity === 0 /* PointerMoved */)
-          return;
-        clearTimeout(timeout);
-        timeout = setTimeout(() => {
-          setCanUndo(tlEditor.getCanUndo());
-          setCanRedo(tlEditor.getCanRedo());
-        }, 100);
-      }, {
-        source: "user",
-        scope: "all"
-      });
-    }, mountDelayMs);
-    return () => {
-      removeUserActionListener();
-    };
-  }, []);
+  const [curTool, setCurTool] = React75.useState("draw" /* draw */);
   function undo() {
     const tlEditor = props.getTlEditor();
     if (!tlEditor)
@@ -72378,7 +72410,6 @@ var WritingMenu = (props) => {
     silentlyChangeStore(tlEditor, () => {
       tlEditor.undo();
     });
-    setCanUndo(tlEditor.getCanUndo());
     props.onStoreChange(tlEditor);
   }
   function redo() {
@@ -72388,7 +72419,6 @@ var WritingMenu = (props) => {
     silentlyChangeStore(tlEditor, () => {
       tlEditor.redo();
     });
-    setCanRedo(tlEditor.getCanRedo());
     props.onStoreChange(tlEditor);
   }
   function activateSelectTool() {
@@ -72412,51 +72442,46 @@ var WritingMenu = (props) => {
     tlEditor.setCurrentTool("eraser");
     setCurTool("eraser" /* eraser */);
   }
-  return /* @__PURE__ */ React77.createElement(React77.Fragment, null, /* @__PURE__ */ React77.createElement("div", {
-    className: "ink_menu-bar"
-  }, /* @__PURE__ */ React77.createElement("div", {
-    className: "ink_quick-menu"
-  }, /* @__PURE__ */ React77.createElement("button", {
-    onPointerDown: undo,
-    disabled: !canUndo
-  }, /* @__PURE__ */ React77.createElement(UndoIcon, null)), /* @__PURE__ */ React77.createElement("button", {
-    onPointerDown: redo,
-    disabled: !canRedo
-  }, /* @__PURE__ */ React77.createElement(RedoIcon, null))), /* @__PURE__ */ React77.createElement("div", {
+  return /* @__PURE__ */ React75.createElement(React75.Fragment, null, /* @__PURE__ */ React75.createElement("div", {
+    className: (0, import_classnames30.default)([
+      "ink_menu-bar",
+      "ink_menu-bar_full"
+    ])
+  }, /* @__PURE__ */ React75.createElement("div", {
     className: "ink_tool-menu"
-  }, /* @__PURE__ */ React77.createElement("button", {
+  }, /* @__PURE__ */ React75.createElement("button", {
     onPointerDown: activateSelectTool,
     disabled: curTool === "select" /* select */
-  }, /* @__PURE__ */ React77.createElement(SelectIcon, null)), /* @__PURE__ */ React77.createElement("button", {
+  }, /* @__PURE__ */ React75.createElement(SelectIcon, null)), /* @__PURE__ */ React75.createElement("button", {
     onPointerDown: activateDrawTool,
     disabled: curTool === "draw" /* draw */
-  }, /* @__PURE__ */ React77.createElement(WriteIcon, null)), /* @__PURE__ */ React77.createElement("button", {
+  }, /* @__PURE__ */ React75.createElement(WriteIcon, null)), /* @__PURE__ */ React75.createElement("button", {
     onPointerDown: activateEraseTool,
     disabled: curTool === "eraser" /* eraser */
-  }, /* @__PURE__ */ React77.createElement(EraseIcon, null))), /* @__PURE__ */ React77.createElement("div", {
+  }, /* @__PURE__ */ React75.createElement(EraseIcon, null))), /* @__PURE__ */ React75.createElement("div", {
     className: "ink_other-menu"
   })));
 };
 
 // src/tldraw/writing/tldraw-writing-editor.tsx
-var React84 = __toESM(require_react());
+var React86 = __toESM(require_react());
 
 // src/tldraw/primary-menu-bar/primary-menu-bar.tsx
-var import_classnames30 = __toESM(require_classnames());
-var React78 = __toESM(require_react());
+var import_classnames31 = __toESM(require_classnames());
+var React76 = __toESM(require_react());
 var PrimaryMenuBar = (props) => {
-  const scrollContainerElRef = React78.useRef(null);
-  const primaryMenuBarElRef = React78.useRef(null);
-  const [menuActive, setMenuActive] = React78.useState(true);
-  React78.useEffect(() => {
+  const scrollContainerElRef = React76.useRef(null);
+  const primaryMenuBarElRef = React76.useRef(null);
+  const [menuActive, setMenuActive] = React76.useState(true);
+  React76.useEffect(() => {
     initScrollHandler();
     return () => {
       cleanUpScrollHandler();
     };
   });
-  return /* @__PURE__ */ React78.createElement(React78.Fragment, null, /* @__PURE__ */ React78.createElement("div", {
+  return /* @__PURE__ */ React76.createElement(React76.Fragment, null, /* @__PURE__ */ React76.createElement("div", {
     ref: primaryMenuBarElRef,
-    className: (0, import_classnames30.default)([
+    className: (0, import_classnames31.default)([
       "ink_primary-menu-bar",
       menuActive && "ddc_ink_active"
     ])
@@ -72474,28 +72499,28 @@ var PrimaryMenuBar = (props) => {
     scrollEl?.removeEventListener("scroll", handleScrolling);
   }
   function handleScrolling(e) {
-    const scrollEl = e.target;
-    const pageScrollY = scrollEl.scrollTop;
+    const scrollAreaEl = e.target;
+    const pageScrollY = scrollAreaEl.scrollTop;
     const primaryMenuBar = primaryMenuBarElRef.current;
-    const containerEl = primaryMenuBar?.parentElement;
+    const embedEl = primaryMenuBar?.parentElement;
     if (!primaryMenuBar)
       return;
-    if (!containerEl)
+    if (!embedEl)
       return;
     const menuBarHeight = primaryMenuBar.getBoundingClientRect().height;
-    const containerHeight = containerEl.getBoundingClientRect().height;
-    let containerPosY = containerEl.getBoundingClientRect().top - scrollEl.getBoundingClientRect().top || 0;
+    const embedHeight = embedEl.getBoundingClientRect().height;
+    let embedPosY = embedEl.getBoundingClientRect().top - scrollAreaEl.getBoundingClientRect().top || 0;
     if (menuActive) {
-      containerPosY -= Number(menuBarHeight);
+      embedPosY -= Number(menuBarHeight);
     }
-    const containerOffsetY = containerPosY;
-    const scrolledOffTopEdge = containerOffsetY < 0;
-    const scrolledOffBottomEdge = containerOffsetY + containerHeight < 0;
-    if (scrolledOffBottomEdge) {
-      const top = containerHeight + "px";
+    const embedOffsetY = embedPosY;
+    const embedTopScrolledOffTop = embedOffsetY < 0;
+    const embedBottomScrolledOffTop = embedOffsetY + embedHeight < 0;
+    if (embedBottomScrolledOffTop) {
+      const top = embedHeight + "px";
       primaryMenuBar.style.top = top;
-    } else if (scrolledOffTopEdge) {
-      const top = Math.abs(containerOffsetY) + "px";
+    } else if (embedTopScrolledOffTop) {
+      const top = embedOffsetY * -1 + "px";
       primaryMenuBar.style.top = top;
     } else {
       primaryMenuBar.style.removeProperty("top");
@@ -72504,33 +72529,33 @@ var PrimaryMenuBar = (props) => {
 };
 
 // src/graphics/icons/lock-icon.tsx
-var React79 = __toESM(require_react());
-var LockIcon = (props) => /* @__PURE__ */ React79.createElement("svg", {
+var React77 = __toESM(require_react());
+var LockIcon = (props) => /* @__PURE__ */ React77.createElement("svg", {
   xmlns: "http://www.w3.org/2000/svg",
   height: 24,
   viewBox: "0 -960 960 960",
   width: 24,
   ...props
-}, /* @__PURE__ */ React79.createElement("path", {
+}, /* @__PURE__ */ React77.createElement("path", {
   d: "M240-80q-33 0-56.5-23.5T160-160v-400q0-33 23.5-56.5T240-640h40v-80q0-83 58.5-141.5T480-920q83 0 141.5 58.5T680-720v80h40q33 0 56.5 23.5T800-560v400q0 33-23.5 56.5T720-80H240Zm0-80h480v-400H240v400Zm240-120q33 0 56.5-23.5T560-360q0-33-23.5-56.5T480-440q-33 0-56.5 23.5T400-360q0 33 23.5 56.5T480-280ZM360-640h240v-80q0-50-35-85t-85-35q-50 0-85 35t-35 85v80ZM240-160v-400 400Z"
 }));
 
 // src/tldraw/extended-writing-menu/extended-writing-menu.tsx
-var React82 = __toESM(require_react());
+var React80 = __toESM(require_react());
 
 // src/tldraw/overflow-menu/overflow-menu.tsx
 var import_obsidian6 = require("obsidian");
-var React81 = __toESM(require_react());
+var React79 = __toESM(require_react());
 
 // src/graphics/icons/overflow-icon.tsx
-var React80 = __toESM(require_react());
-var OverflowIcon = (props) => /* @__PURE__ */ React80.createElement("svg", {
+var React78 = __toESM(require_react());
+var OverflowIcon = (props) => /* @__PURE__ */ React78.createElement("svg", {
   xmlns: "http://www.w3.org/2000/svg",
   height: 24,
   viewBox: "0 -960 960 960",
   width: 24,
   ...props
-}, /* @__PURE__ */ React80.createElement("path", {
+}, /* @__PURE__ */ React78.createElement("path", {
   d: "M480-160q-33 0-56.5-23.5T400-240q0-33 23.5-56.5T480-320q33 0 56.5 23.5T560-240q0 33-23.5 56.5T480-160Zm0-240q-33 0-56.5-23.5T400-480q0-33 23.5-56.5T480-560q33 0 56.5 23.5T560-480q0 33-23.5 56.5T480-400Zm0-240q-33 0-56.5-23.5T400-720q0-33 23.5-56.5T480-800q33 0 56.5 23.5T560-720q0 33-23.5 56.5T480-640Z"
 }));
 
@@ -72542,14 +72567,14 @@ var OverflowMenu = (props) => {
       menuOption.action();
     }));
   });
-  return /* @__PURE__ */ React81.createElement(React81.Fragment, null, /* @__PURE__ */ React81.createElement("div", {
+  return /* @__PURE__ */ React79.createElement(React79.Fragment, null, /* @__PURE__ */ React79.createElement("div", {
     className: "ddc_ink_overflow-button-and-menu"
-  }, /* @__PURE__ */ React81.createElement("button", {
+  }, /* @__PURE__ */ React79.createElement("button", {
     className: "ddc_ink_btn-slim",
     onClick: (e) => {
       menu.showAtMouseEvent(e.nativeEvent);
     }
-  }, /* @__PURE__ */ React81.createElement(OverflowIcon, null))));
+  }, /* @__PURE__ */ React79.createElement(OverflowIcon, null))));
   {
   }
   {
@@ -72559,21 +72584,21 @@ var overflow_menu_default = OverflowMenu;
 
 // src/tldraw/extended-writing-menu/extended-writing-menu.tsx
 var ExtendedWritingMenu = (props) => {
-  return /* @__PURE__ */ React82.createElement(React82.Fragment, null, /* @__PURE__ */ React82.createElement("div", {
+  return /* @__PURE__ */ React80.createElement(React80.Fragment, null, /* @__PURE__ */ React80.createElement("div", {
     className: "ink_extended-writing-menu"
-  }, /* @__PURE__ */ React82.createElement("button", {
+  }, /* @__PURE__ */ React80.createElement("button", {
     onPointerDown: () => props.onLockClick()
-  }, /* @__PURE__ */ React82.createElement(LockIcon, null)), /* @__PURE__ */ React82.createElement(overflow_menu_default, {
+  }, /* @__PURE__ */ React80.createElement(LockIcon, null)), /* @__PURE__ */ React80.createElement(overflow_menu_default, {
     menuOptions: props.menuOptions
   })));
 };
 var extended_writing_menu_default = ExtendedWritingMenu;
 
 // src/tldraw/writing/tldraw-writing-editor.tsx
-var import_classnames31 = __toESM(require_classnames());
+var import_classnames34 = __toESM(require_classnames());
 
 // src/tldraw/writing-shapes/writing-lines.tsx
-var React83 = __toESM(require_react());
+var React81 = __toESM(require_react());
 var WritingLinesUtil = class extends ShapeUtil {
   constructor() {
     super(...arguments);
@@ -72607,7 +72632,7 @@ var WritingLinesUtil = class extends ShapeUtil {
     });
   }
   indicator(shape) {
-    return /* @__PURE__ */ React83.createElement(React83.Fragment, null, /* @__PURE__ */ React83.createElement("rect", {
+    return /* @__PURE__ */ React81.createElement(React81.Fragment, null, /* @__PURE__ */ React81.createElement("rect", {
       width: shape.props.w,
       height: shape.props.h,
       rx: 20,
@@ -72615,7 +72640,7 @@ var WritingLinesUtil = class extends ShapeUtil {
     }));
   }
   component(shape) {
-    return /* @__PURE__ */ React83.createElement(SVGContainer, null, this.createSvg(shape));
+    return /* @__PURE__ */ React81.createElement(SVGContainer, null, this.createSvg(shape));
   }
   toSvg(shape, ctx) {
     return this.createSvg(shape);
@@ -72624,14 +72649,14 @@ var WritingLinesUtil = class extends ShapeUtil {
     const numberOfLines = Math.floor(shape.props.h / WRITING_LINE_HEIGHT);
     const margin = 0.05 * shape.props.w;
     this.isAspectRatioLocked(shape);
-    const lines = Array.from({ length: numberOfLines }, (_, index2) => /* @__PURE__ */ React83.createElement("line", {
+    const lines = Array.from({ length: numberOfLines }, (_, index2) => /* @__PURE__ */ React81.createElement("line", {
       key: index2,
       x1: margin,
       y1: (index2 + 1) * WRITING_LINE_HEIGHT,
       x2: shape.props.w - margin,
       y2: (index2 + 1) * WRITING_LINE_HEIGHT
     }));
-    return /* @__PURE__ */ React83.createElement(React83.Fragment, null, lines);
+    return /* @__PURE__ */ React81.createElement(React81.Fragment, null, lines);
   }
 };
 WritingLinesUtil.type = "writing-lines";
@@ -73230,15 +73255,169 @@ async function getInkFileData(plugin, file) {
   return inkFileData;
 }
 
+// src/tldraw/secondary-menu-bar/secondary-menu-bar.tsx
+var import_classnames32 = __toESM(require_classnames());
+var React82 = __toESM(require_react());
+var SecondaryMenuBar = (props) => {
+  const scrollContainerElRef = React82.useRef(null);
+  const SecondaryMenuBarElRef = React82.useRef(null);
+  const [menuActive, setMenuActive] = React82.useState(true);
+  React82.useEffect(() => {
+    initScrollHandler();
+    return () => {
+      cleanUpScrollHandler();
+    };
+  });
+  return /* @__PURE__ */ React82.createElement(React82.Fragment, null, /* @__PURE__ */ React82.createElement("div", {
+    ref: SecondaryMenuBarElRef,
+    className: (0, import_classnames32.default)([
+      "ink_secondary-menu-bar",
+      menuActive && "ddc_ink_active"
+    ])
+  }, props.children));
+  function initScrollHandler() {
+    const SecondaryMenuBar2 = SecondaryMenuBarElRef.current;
+    const scrollEl = SecondaryMenuBar2?.closest(".cm-scroller");
+    if (!scrollEl)
+      return;
+    scrollEl.addEventListener("scroll", handleScrolling);
+    setTimeout(() => {
+      scrollEl.dispatchEvent(new CustomEvent("scroll"));
+    }, 500);
+  }
+  function cleanUpScrollHandler() {
+    const scrollEl = scrollContainerElRef.current;
+    scrollEl?.removeEventListener("scroll", handleScrolling);
+  }
+  function handleScrolling(e) {
+    const scrollAreaEl = e.target;
+    const pageScrollY = scrollAreaEl.scrollTop;
+    const SecondaryMenuBar2 = SecondaryMenuBarElRef.current;
+    const embedEl = SecondaryMenuBar2?.parentElement;
+    if (!SecondaryMenuBar2)
+      return;
+    if (!embedEl)
+      return;
+    const scrollAreaHeight = scrollAreaEl.getBoundingClientRect().height;
+    const menuBarHeight = SecondaryMenuBar2.getBoundingClientRect().height;
+    const embedHeight = embedEl.getBoundingClientRect().height;
+    let embedPosY = embedEl.getBoundingClientRect().top - scrollAreaEl.getBoundingClientRect().top || 0;
+    if (menuActive) {
+      embedPosY += Number(menuBarHeight);
+    }
+    const embedOffsetY = embedPosY;
+    const embedBottomScrolledOffScrollAreaBottom = embedOffsetY + embedHeight - menuBarHeight / 2 > scrollAreaHeight;
+    const embedTopScrolledOffScrollAreaBottom = embedOffsetY > scrollAreaHeight;
+    if (embedTopScrolledOffScrollAreaBottom) {
+      const bottom = embedHeight + "px";
+      SecondaryMenuBar2.style.bottom = bottom;
+    } else if (embedBottomScrolledOffScrollAreaBottom) {
+      const bottom = embedOffsetY + embedHeight - scrollAreaHeight - menuBarHeight / 2 + "px";
+      SecondaryMenuBar2.style.bottom = bottom;
+    } else {
+      SecondaryMenuBar2.style.removeProperty("bottom");
+    }
+  }
+};
+
+// src/tldraw/modify-menu/modify-menu.tsx
+var React85 = __toESM(require_react());
+
+// src/graphics/icons/undo-icon.tsx
+var React83 = __toESM(require_react());
+var UndoIcon = (props) => /* @__PURE__ */ React83.createElement("svg", {
+  xmlns: "http://www.w3.org/2000/svg",
+  height: 24,
+  viewBox: "0 -960 960 960",
+  width: 24,
+  ...props
+}, /* @__PURE__ */ React83.createElement("path", {
+  d: "M320-200q-17 0-28.5-11.5T280-240q0-17 11.5-28.5T320-280h244q63 0 109.5-40T720-420q0-60-46.5-100T564-560H312l76 76q11 11 11 28t-11 28q-11 11-28 11t-28-11L188-572q-6-6-8.5-13t-2.5-15q0-8 2.5-15t8.5-13l144-144q11-11 28-11t28 11q11 11 11 28t-11 28l-76 76h252q97 0 166.5 63T800-420q0 94-69.5 157T564-200H320Z"
+}));
+
+// src/graphics/icons/redo-icon.tsx
+var React84 = __toESM(require_react());
+var RedoIcon = (props) => /* @__PURE__ */ React84.createElement("svg", {
+  xmlns: "http://www.w3.org/2000/svg",
+  height: 24,
+  viewBox: "0 -960 960 960",
+  width: 24,
+  ...props
+}, /* @__PURE__ */ React84.createElement("path", {
+  d: "M648-560H396q-63 0-109.5 40T240-420q0 60 46.5 100T396-280h244q17 0 28.5 11.5T680-240q0 17-11.5 28.5T640-200H396q-97 0-166.5-63T160-420q0-94 69.5-157T396-640h252l-76-76q-11-11-11-28t11-28q11-11 28-11t28 11l144 144q6 6 8.5 13t2.5 15q0 8-2.5 15t-8.5 13L628-428q-11 11-28 11t-28-11q-11-11-11-28t11-28l76-76Z"
+}));
+
+// src/tldraw/modify-menu/modify-menu.tsx
+var import_classnames33 = __toESM(require_classnames());
+var ModifyMenu = React85.forwardRef((props, ref) => {
+  const [canUndo, setCanUndo] = React85.useState(false);
+  const [canRedo, setCanRedo] = React85.useState(false);
+  React85.useEffect(() => {
+    let removeUserActionListener;
+    const mountDelayMs = 100;
+    setTimeout(() => {
+      const tlEditor = props.getTlEditor();
+      if (!tlEditor)
+        return;
+      let timeout;
+      removeUserActionListener = tlEditor.store.listen((entry) => {
+        clearTimeout(timeout);
+        timeout = setTimeout(() => {
+          setCanUndo(tlEditor.getCanUndo());
+          setCanRedo(tlEditor.getCanRedo());
+        }, 100);
+      }, {
+        source: "all",
+        scope: "all"
+      });
+    }, mountDelayMs);
+    return () => removeUserActionListener();
+  }, []);
+  function undo() {
+    const editor = props.getTlEditor();
+    if (!editor)
+      return;
+    silentlyChangeStore(editor, () => {
+      editor.undo();
+    });
+    props.onStoreChange(editor);
+  }
+  function redo() {
+    const editor = props.getTlEditor();
+    if (!editor)
+      return;
+    silentlyChangeStore(editor, () => {
+      editor.redo();
+    });
+    props.onStoreChange(editor);
+  }
+  return /* @__PURE__ */ React85.createElement(React85.Fragment, null, /* @__PURE__ */ React85.createElement("div", {
+    ref,
+    className: (0, import_classnames33.default)([
+      "ink_menu-bar",
+      "ink_menu-bar_floating"
+    ])
+  }, /* @__PURE__ */ React85.createElement("div", {
+    className: "ink_modify-menu"
+  }, /* @__PURE__ */ React85.createElement("button", {
+    onPointerDown: undo,
+    disabled: !canUndo
+  }, /* @__PURE__ */ React85.createElement(UndoIcon, null)), /* @__PURE__ */ React85.createElement("button", {
+    onPointerDown: redo,
+    disabled: !canRedo
+  }, /* @__PURE__ */ React85.createElement(RedoIcon, null)))));
+});
+var modify_menu_default = ModifyMenu;
+
 // src/tldraw/writing/tldraw-writing-editor.tsx
 var TldrawWritingEditorWrapper = (props) => {
   const editorActive = useAtomValue(editorActiveAtom);
   if (editorActive) {
-    return /* @__PURE__ */ React84.createElement(TldrawWritingEditor, {
+    return /* @__PURE__ */ React86.createElement(TldrawWritingEditor, {
       ...props
     });
   } else {
-    return /* @__PURE__ */ React84.createElement(React84.Fragment, null);
+    return /* @__PURE__ */ React86.createElement(React86.Fragment, null);
   }
 };
 var MyCustomShapes = [WritingContainerUtil, WritingLinesUtil];
@@ -73246,7 +73425,7 @@ var tlOptions = {
   defaultSvgPadding: 0
 };
 function TldrawWritingEditor(props) {
-  const [tlEditorSnapshot, setTlEditorSnapshot] = React84.useState();
+  const [tlEditorSnapshot, setTlEditorSnapshot] = React86.useState();
   const setEmbedState = useSetAtom(embedStateAtom);
   const shortDelayPostProcessTimeoutRef = (0, import_react121.useRef)();
   const longDelayPostProcessTimeoutRef = (0, import_react121.useRef)();
@@ -73254,8 +73433,8 @@ function TldrawWritingEditor(props) {
   const editorWrapperRefEl = (0, import_react121.useRef)(null);
   const { stashStaleContent, unstashStaleContent } = useStash(props.plugin);
   const cameraLimitsRef = (0, import_react121.useRef)();
-  const [preventTransitions, setPreventTransitions] = React84.useState(true);
-  React84.useEffect(() => {
+  const [preventTransitions, setPreventTransitions] = React86.useState(true);
+  React86.useEffect(() => {
     verbose("EDITOR mounted");
     fetchFileData();
     return () => {
@@ -73263,7 +73442,7 @@ function TldrawWritingEditor(props) {
     };
   }, []);
   if (!tlEditorSnapshot)
-    return /* @__PURE__ */ React84.createElement(React84.Fragment, null);
+    return /* @__PURE__ */ React86.createElement(React86.Fragment, null);
   verbose("EDITOR snapshot loaded");
   const defaultComponents = {
     Scribble: TldrawScribble,
@@ -73429,9 +73608,9 @@ function TldrawWritingEditor(props) {
   const getTlEditor = () => {
     return tlEditorRef.current;
   };
-  return /* @__PURE__ */ React84.createElement(React84.Fragment, null, /* @__PURE__ */ React84.createElement("div", {
+  return /* @__PURE__ */ React86.createElement(React86.Fragment, null, /* @__PURE__ */ React86.createElement("div", {
     ref: editorWrapperRefEl,
-    className: (0, import_classnames31.default)([
+    className: (0, import_classnames34.default)([
       "ddc_ink_writing-editor"
     ]),
     style: {
@@ -73439,7 +73618,7 @@ function TldrawWritingEditor(props) {
       position: "relative",
       opacity: 0
     }
-  }, /* @__PURE__ */ React84.createElement(TldrawEditor, {
+  }, /* @__PURE__ */ React86.createElement(TldrawEditor, {
     options: tlOptions,
     shapeUtils: [...defaultShapeUtils, ...MyCustomShapes],
     tools: [...defaultTools, ...defaultShapeTools],
@@ -73448,15 +73627,18 @@ function TldrawWritingEditor(props) {
     components: defaultComponents,
     onMount: handleMount,
     autoFocus: false
-  }), /* @__PURE__ */ React84.createElement(PrimaryMenuBar, null, /* @__PURE__ */ React84.createElement(WritingMenu, {
+  }), /* @__PURE__ */ React86.createElement(PrimaryMenuBar, null, /* @__PURE__ */ React86.createElement(WritingMenu, {
     getTlEditor,
     onStoreChange: (tlEditor) => queueOrRunStorePostProcesses(tlEditor)
-  }), props.embedded && props.extendedMenu && /* @__PURE__ */ React84.createElement(extended_writing_menu_default, {
+  }), props.embedded && props.extendedMenu && /* @__PURE__ */ React86.createElement(extended_writing_menu_default, {
     onLockClick: async () => {
       if (props.closeEditor)
         props.closeEditor();
     },
     menuOptions: props.extendedMenu
+  })), /* @__PURE__ */ React86.createElement(SecondaryMenuBar, null, /* @__PURE__ */ React86.createElement(modify_menu_default, {
+    getTlEditor,
+    onStoreChange: (tlEditor) => queueOrRunStorePostProcesses(tlEditor)
   }))));
   async function fetchFileData() {
     const inkFileData = await getInkFileData(props.plugin, props.writingFile);
@@ -73685,14 +73867,14 @@ var duplicateWritingFile = async (plugin, existingFileRef, instigatingFile) => {
 };
 
 // src/tldraw/writing/writing-embed-preview/writing-embed-preview.tsx
-var import_classnames32 = __toESM(require_classnames());
-var React86 = __toESM(require_react());
+var import_classnames35 = __toESM(require_classnames());
+var React88 = __toESM(require_react());
 
 // node_modules/react-inlinesvg/dist/index.mjs
 var import_react122 = __toESM(require_react(), 1);
 
 // node_modules/react-from-dom/dist/index.mjs
-var React85 = __toESM(require_react(), 1);
+var React87 = __toESM(require_react(), 1);
 var styleToObject = (input) => {
   if (typeof input !== "string") {
     return {};
@@ -74080,7 +74262,7 @@ function getReactNode(node, options) {
   const { key, level: level2, ...rest } = options;
   switch (node.nodeType) {
     case 1: {
-      return React85.createElement(parseName(node.nodeName), parseAttributes(node, key), parseChildren(node.childNodes, level2, rest));
+      return React87.createElement(parseName(node.nodeName), parseAttributes(node, key), parseChildren(node.childNodes, level2, rest));
     }
     case 3: {
       const nodeText = node.nodeValue?.toString() ?? "";
@@ -74735,26 +74917,26 @@ var emptyWritingSvg = require_empty_writing_embed();
 var WritingEmbedPreviewWrapper = (props) => {
   const previewActive = useAtomValue(previewActiveAtom);
   if (previewActive) {
-    return /* @__PURE__ */ React86.createElement(WritingEmbedPreview, {
+    return /* @__PURE__ */ React88.createElement(WritingEmbedPreview, {
       ...props
     });
   } else {
-    return /* @__PURE__ */ React86.createElement(React86.Fragment, null);
+    return /* @__PURE__ */ React88.createElement(React88.Fragment, null);
   }
 };
 var WritingEmbedPreview = (props) => {
-  const containerElRef = React86.useRef(null);
+  const containerElRef = React88.useRef(null);
   const setEmbedState = useSetAtom(embedStateAtom);
-  const [fileSrc, setFileSrc] = React86.useState(emptyWritingSvg);
-  React86.useEffect(() => {
+  const [fileSrc, setFileSrc] = React88.useState(emptyWritingSvg);
+  React88.useEffect(() => {
     fetchFileData();
     return () => {
     };
   });
   const isImg = fileSrc.slice(0, 4) === "data";
-  return /* @__PURE__ */ React86.createElement(React86.Fragment, null, /* @__PURE__ */ React86.createElement("div", {
+  return /* @__PURE__ */ React88.createElement(React88.Fragment, null, /* @__PURE__ */ React88.createElement("div", {
     ref: containerElRef,
-    className: (0, import_classnames32.default)([
+    className: (0, import_classnames35.default)([
       "ddc_ink_writing-embed-preview",
       props.plugin.settings.writingLinesWhenLocked && "ddc_ink_visible-lines",
       props.plugin.settings.writingBackgroundWhenLocked && "ddc_ink_visible-background"
@@ -74764,7 +74946,7 @@ var WritingEmbedPreview = (props) => {
       width: "100%"
     },
     onClick: props.onClick
-  }, isImg && /* @__PURE__ */ React86.createElement(React86.Fragment, null, /* @__PURE__ */ React86.createElement("img", {
+  }, isImg && /* @__PURE__ */ React88.createElement(React88.Fragment, null, /* @__PURE__ */ React88.createElement("img", {
     src: fileSrc,
     style: {
       width: "100%",
@@ -74772,7 +74954,7 @@ var WritingEmbedPreview = (props) => {
       pointerEvents: "all"
     },
     onLoad
-  })), !isImg && /* @__PURE__ */ React86.createElement(React86.Fragment, null, /* @__PURE__ */ React86.createElement(InlineSVG, {
+  })), !isImg && /* @__PURE__ */ React88.createElement(React88.Fragment, null, /* @__PURE__ */ React88.createElement(InlineSVG, {
     src: fileSrc,
     style: {
       width: "100%",
@@ -74812,7 +74994,7 @@ var WritingEmbedPreview = (props) => {
 };
 
 // src/tldraw/writing/writing-embed.tsx
-var import_classnames33 = __toESM(require_classnames());
+var import_classnames36 = __toESM(require_classnames());
 var embedStateAtom = atom2("preview" /* preview */);
 var previewActiveAtom = atom2((get) => {
   const embedState = get(embedStateAtom);
@@ -74827,7 +75009,7 @@ function WritingEmbed(props) {
   const resizeContainerElRef = (0, import_react124.useRef)(null);
   const editorControlsRef = (0, import_react124.useRef)();
   const setEmbedState = useSetAtom(embedStateAtom);
-  React87.useEffect(() => {
+  React89.useEffect(() => {
     if (embedShouldActivateImmediately()) {
       setTimeout(() => {
         switchToEditMode();
@@ -74848,9 +75030,9 @@ function WritingEmbed(props) {
       }
     }
   ];
-  return /* @__PURE__ */ React87.createElement(React87.Fragment, null, /* @__PURE__ */ React87.createElement("div", {
+  return /* @__PURE__ */ React89.createElement(React89.Fragment, null, /* @__PURE__ */ React89.createElement("div", {
     ref: embedContainerElRef,
-    className: (0, import_classnames33.default)([
+    className: (0, import_classnames36.default)([
       "ddc_ink_embed",
       "ddc_ink_writing-embed"
     ]),
@@ -74858,17 +75040,17 @@ function WritingEmbed(props) {
       paddingTop: "1em",
       paddingBottom: "0.5em"
     }
-  }, /* @__PURE__ */ React87.createElement("div", {
+  }, /* @__PURE__ */ React89.createElement("div", {
     className: "ddc_ink_resize-container",
     ref: resizeContainerElRef
-  }, /* @__PURE__ */ React87.createElement(WritingEmbedPreviewWrapper, {
+  }, /* @__PURE__ */ React89.createElement(WritingEmbedPreviewWrapper, {
     plugin: props.plugin,
     onResize: (height) => resizeContainer(height),
     writingFile: props.writingFileRef,
     onClick: async (event) => {
       switchToEditMode();
     }
-  }), /* @__PURE__ */ React87.createElement(TldrawWritingEditorWrapper, {
+  }), /* @__PURE__ */ React89.createElement(TldrawWritingEditorWrapper, {
     plugin: props.plugin,
     onResize: (height) => resizeContainer(height),
     writingFile: props.writingFileRef,
@@ -74942,7 +75124,7 @@ var WritingEmbedWidget = class extends import_obsidian10.MarkdownRenderChild {
     const pageData = JSON.parse(pageDataStr);
     if (!this.root)
       this.root = (0, import_client2.createRoot)(this.el);
-    this.root.render(/* @__PURE__ */ React88.createElement(Provider, null, /* @__PURE__ */ React88.createElement(writing_embed_default, {
+    this.root.render(/* @__PURE__ */ React90.createElement(Provider, null, /* @__PURE__ */ React90.createElement(writing_embed_default, {
       plugin: this.plugin,
       writingFileRef: this.fileRef,
       pageData,
@@ -75175,7 +75357,7 @@ var insert_new_writing_file_default = insertNewWritingFile;
 
 // src/views/writing-view.tsx
 var import_obsidian12 = require("obsidian");
-var React89 = __toESM(require_react());
+var React91 = __toESM(require_react());
 var import_client3 = __toESM(require_client());
 var WRITING_VIEW_TYPE = "ink_writing-view";
 function registerWritingView(plugin) {
@@ -75199,7 +75381,7 @@ var WritingView = class extends import_obsidian12.TextFileView {
       if (this.root)
         this.clear();
       this.root = (0, import_client3.createRoot)(viewContent);
-      this.root.render(/* @__PURE__ */ React89.createElement(TldrawWritingEditor, {
+      this.root.render(/* @__PURE__ */ React91.createElement(TldrawWritingEditor, {
         plugin: this.plugin,
         writingFile: this.file,
         save: this.saveFile,
@@ -75362,54 +75544,32 @@ var insert_existing_drawing_file_default = insertExistingDrawingFile;
 
 // src/views/drawing-view.tsx
 var import_obsidian14 = require("obsidian");
-var React98 = __toESM(require_react());
+var React100 = __toESM(require_react());
 var import_client4 = __toESM(require_client());
 
 // src/tldraw/drawing/tldraw-drawing-editor.tsx
 var import_react126 = __toESM(require_react());
-var React97 = __toESM(require_react());
+var React99 = __toESM(require_react());
 
 // src/tldraw/drawing-menu/drawing-menu.tsx
-var React91 = __toESM(require_react());
+var React93 = __toESM(require_react());
 
 // src/graphics/icons/draw-icon.tsx
-var React90 = __toESM(require_react());
-var DrawIcon = (props) => /* @__PURE__ */ React90.createElement("svg", {
+var React92 = __toESM(require_react());
+var DrawIcon = (props) => /* @__PURE__ */ React92.createElement("svg", {
   xmlns: "http://www.w3.org/2000/svg",
   height: "1em",
   viewBox: "0 -960 960 960",
   width: "1em",
   ...props
-}, /* @__PURE__ */ React90.createElement("path", {
+}, /* @__PURE__ */ React92.createElement("path", {
   d: "M554-120q-54 0-91-37t-37-89q0-76 61.5-137.5T641-460q-3-36-18-54.5T582-533q-30 0-65 25t-83 82q-78 93-114.5 121T241-277q-51 0-86-38t-35-92q0-54 23.5-110.5T223-653q19-26 28-44t9-29q0-7-2.5-10.5T250-740q-5 0-12 3t-15 11q-15 14-34.5 15T155-724q-15-16-15.5-37.5T155-797q24-21 48-32t47-11q46 0 78 32t32 80q0 29-15 64t-50 84q-38 54-56.5 95T220-413q0 17 5.5 26.5T241-377q10 0 17.5-5.5T286-409q13-14 31-34.5t44-50.5q63-75 114-107t107-32q67 0 110 45t49 123h49q21 0 35.5 14.5T840-415q0 21-14.5 35.5T790-365h-49q-8 112-58.5 178.5T554-120Zm2-100q32 0 54-36.5T640-358q-46 11-80 43.5T526-250q0 14 8 22t22 8Z"
 }));
 
 // src/tldraw/drawing-menu/drawing-menu.tsx
-var DrawingMenu = React91.forwardRef((props, ref) => {
-  const [curTool, setCurTool] = React91.useState("draw" /* draw */);
-  const [canUndo, setCanUndo] = React91.useState(false);
-  const [canRedo, setCanRedo] = React91.useState(false);
-  React91.useEffect(() => {
-    let removeUserActionListener;
-    const mountDelayMs = 100;
-    setTimeout(() => {
-      const tlEditor = props.getTlEditor();
-      if (!tlEditor)
-        return;
-      let timeout;
-      removeUserActionListener = tlEditor.store.listen((entry) => {
-        clearTimeout(timeout);
-        timeout = setTimeout(() => {
-          setCanUndo(tlEditor.getCanUndo());
-          setCanRedo(tlEditor.getCanRedo());
-        }, 100);
-      }, {
-        source: "all",
-        scope: "all"
-      });
-    }, mountDelayMs);
-    return () => removeUserActionListener();
-  }, []);
+var import_classnames37 = __toESM(require_classnames());
+var DrawingMenu = React93.forwardRef((props, ref) => {
+  const [curTool, setCurTool] = React93.useState("draw" /* draw */);
   function undo() {
     const editor = props.getTlEditor();
     if (!editor)
@@ -75449,82 +75609,77 @@ var DrawingMenu = React91.forwardRef((props, ref) => {
     editor.setCurrentTool("eraser");
     setCurTool("eraser" /* eraser */);
   }
-  return /* @__PURE__ */ React91.createElement(React91.Fragment, null, /* @__PURE__ */ React91.createElement("div", {
+  return /* @__PURE__ */ React93.createElement(React93.Fragment, null, /* @__PURE__ */ React93.createElement("div", {
     ref,
-    className: "ink_menu-bar"
-  }, /* @__PURE__ */ React91.createElement("div", {
-    className: "ink_quick-menu"
-  }, /* @__PURE__ */ React91.createElement("button", {
-    onPointerDown: undo,
-    disabled: !canUndo
-  }, /* @__PURE__ */ React91.createElement(UndoIcon, null)), /* @__PURE__ */ React91.createElement("button", {
-    onPointerDown: redo,
-    disabled: !canRedo
-  }, /* @__PURE__ */ React91.createElement(RedoIcon, null))), /* @__PURE__ */ React91.createElement("div", {
+    className: (0, import_classnames37.default)([
+      "ink_menu-bar",
+      "ink_menu-bar_full"
+    ])
+  }, /* @__PURE__ */ React93.createElement("div", {
     className: "ink_tool-menu"
-  }, /* @__PURE__ */ React91.createElement("button", {
+  }, /* @__PURE__ */ React93.createElement("button", {
     onPointerDown: activateSelectTool,
     disabled: curTool === "select" /* select */
-  }, /* @__PURE__ */ React91.createElement(SelectIcon, null)), /* @__PURE__ */ React91.createElement("button", {
+  }, /* @__PURE__ */ React93.createElement(SelectIcon, null)), /* @__PURE__ */ React93.createElement("button", {
     onPointerDown: activateDrawTool,
     disabled: curTool === "draw" /* draw */
-  }, /* @__PURE__ */ React91.createElement(DrawIcon, null)), /* @__PURE__ */ React91.createElement("button", {
+  }, /* @__PURE__ */ React93.createElement(DrawIcon, null)), /* @__PURE__ */ React93.createElement("button", {
     onPointerDown: activateEraseTool,
     disabled: curTool === "eraser" /* eraser */
-  }, /* @__PURE__ */ React91.createElement(EraseIcon, null))), /* @__PURE__ */ React91.createElement("div", {
+  }, /* @__PURE__ */ React93.createElement(EraseIcon, null))), /* @__PURE__ */ React93.createElement("div", {
     className: "ink_other-menu"
   })));
 });
 var drawing_menu_default = DrawingMenu;
 
 // src/tldraw/extended-drawing-menu/extended-drawing-menu.tsx
-var React92 = __toESM(require_react());
+var React94 = __toESM(require_react());
 var ExtendedDrawingMenu = (props) => {
-  return /* @__PURE__ */ React92.createElement(React92.Fragment, null, /* @__PURE__ */ React92.createElement("div", {
+  return /* @__PURE__ */ React94.createElement(React94.Fragment, null, /* @__PURE__ */ React94.createElement("div", {
     className: "ink_extended-writing-menu"
-  }, props.onLockClick && /* @__PURE__ */ React92.createElement("button", {
+  }, props.onLockClick && /* @__PURE__ */ React94.createElement("button", {
     onPointerDown: () => props.onLockClick?.()
-  }, /* @__PURE__ */ React92.createElement(LockIcon, null)), /* @__PURE__ */ React92.createElement(overflow_menu_default, {
+  }, /* @__PURE__ */ React94.createElement(LockIcon, null)), /* @__PURE__ */ React94.createElement(overflow_menu_default, {
     menuOptions: props.menuOptions
   })));
 };
 var extended_drawing_menu_default = ExtendedDrawingMenu;
 
 // src/tldraw/drawing/tldraw-drawing-editor.tsx
-var import_classnames37 = __toESM(require_classnames());
+var import_classnames41 = __toESM(require_classnames());
 
 // src/tldraw/drawing/drawing-embed.tsx
-var React94 = __toESM(require_react());
+var React96 = __toESM(require_react());
 var import_react125 = __toESM(require_react());
 
 // src/tldraw/drawing/drawing-embed-preview/drawing-embed-preview.tsx
-var import_classnames34 = __toESM(require_classnames());
-var React93 = __toESM(require_react());
+var import_classnames38 = __toESM(require_classnames());
+var React95 = __toESM(require_react());
 var emptyDrawingSvg = require_empty_drawing_embed();
 var DrawingEmbedPreviewWrapper = (props) => {
   const previewActive = useAtomValue(previewActiveAtom2);
   if (previewActive) {
-    return /* @__PURE__ */ React93.createElement(DrawingEmbedPreview, {
+    return /* @__PURE__ */ React95.createElement(DrawingEmbedPreview, {
       ...props
     });
   } else {
-    return /* @__PURE__ */ React93.createElement(React93.Fragment, null);
+    return /* @__PURE__ */ React95.createElement(React95.Fragment, null);
   }
 };
 var DrawingEmbedPreview = (props) => {
-  const svgRef = React93.useRef(null);
-  const containerElRef = React93.useRef(null);
+  const svgRef = React95.useRef(null);
+  const containerElRef = React95.useRef(null);
   const setEmbedState = useSetAtom(embedStateAtom2);
-  const [fileSrc, setFileSrc] = React93.useState(emptyDrawingSvg);
-  React93.useEffect(() => {
+  const [fileSrc, setFileSrc] = React95.useState(emptyDrawingSvg);
+  React95.useEffect(() => {
     fetchFileData();
     return () => {
     };
   });
   const isImg = fileSrc.slice(0, 4) === "data";
-  return /* @__PURE__ */ React93.createElement(React93.Fragment, null, /* @__PURE__ */ React93.createElement("div", {
+  return /* @__PURE__ */ React95.createElement(React95.Fragment, null, /* @__PURE__ */ React95.createElement("div", {
     ref: containerElRef,
-    className: (0, import_classnames34.default)([
+    className: (0, import_classnames38.default)([
       "ddc_ink_drawing-embed-preview",
       props.plugin.settings.drawingFrameWhenLocked && "ddc_ink_visible-frame",
       props.plugin.settings.drawingBackgroundWhenLocked && "ddc_ink_visible-background"
@@ -75536,7 +75691,7 @@ var DrawingEmbedPreview = (props) => {
       pointerEvents: "all"
     },
     onClick: props.onClick
-  }, isImg && /* @__PURE__ */ React93.createElement("img", {
+  }, isImg && /* @__PURE__ */ React95.createElement("img", {
     src: fileSrc,
     style: {
       height: "100%",
@@ -75544,7 +75699,7 @@ var DrawingEmbedPreview = (props) => {
       pointerEvents: "all"
     },
     onLoad
-  }), !isImg && /* @__PURE__ */ React93.createElement(InlineSVG, {
+  }), !isImg && /* @__PURE__ */ React95.createElement(InlineSVG, {
     src: fileSrc,
     style: {
       maxWidth: "100%",
@@ -75578,7 +75733,7 @@ async function openInActiveView(plugin, fileRef) {
 }
 
 // src/tldraw/drawing/drawing-embed.tsx
-var import_classnames35 = __toESM(require_classnames());
+var import_classnames39 = __toESM(require_classnames());
 
 // src/utils/getFullPageWidth.ts
 function getFullPageWidth(childEl) {
@@ -75607,7 +75762,7 @@ function DrawingEmbed(props) {
   const embedWidthRef = (0, import_react125.useRef)(props.width || DRAWING_INITIAL_WIDTH);
   const embedAspectRatioRef = (0, import_react125.useRef)(props.aspectRatio || DRAWING_INITIAL_ASPECT_RATIO);
   const setEmbedState = useSetAtom(embedStateAtom2);
-  React94.useEffect(() => {
+  React96.useEffect(() => {
     if (embedShouldActivateImmediately()) {
       setTimeout(() => {
         switchToEditMode();
@@ -75639,9 +75794,9 @@ function DrawingEmbed(props) {
       }
     }
   ];
-  return /* @__PURE__ */ React94.createElement(React94.Fragment, null, /* @__PURE__ */ React94.createElement("div", {
+  return /* @__PURE__ */ React96.createElement(React96.Fragment, null, /* @__PURE__ */ React96.createElement("div", {
     ref: embedContainerElRef,
-    className: (0, import_classnames35.default)([
+    className: (0, import_classnames39.default)([
       "ddc_ink_embed",
       "ddc_ink_drawing-embed"
     ]),
@@ -75649,7 +75804,7 @@ function DrawingEmbed(props) {
       paddingTop: "1em",
       paddingBottom: "0.5em"
     }
-  }, /* @__PURE__ */ React94.createElement("div", {
+  }, /* @__PURE__ */ React96.createElement("div", {
     className: "ddc_ink_resize-container",
     ref: resizeContainerElRef,
     style: {
@@ -75659,7 +75814,7 @@ function DrawingEmbed(props) {
       left: "50%",
       translate: "-50%"
     }
-  }, /* @__PURE__ */ React94.createElement(DrawingEmbedPreviewWrapper, {
+  }, /* @__PURE__ */ React96.createElement(DrawingEmbedPreviewWrapper, {
     plugin: props.plugin,
     onReady: () => {
     },
@@ -75667,7 +75822,7 @@ function DrawingEmbed(props) {
     onClick: async () => {
       switchToEditMode();
     }
-  }), /* @__PURE__ */ React94.createElement(TldrawDrawingEditorWrapper, {
+  }), /* @__PURE__ */ React96.createElement(TldrawDrawingEditorWrapper, {
     onReady: () => {
     },
     plugin: props.plugin,
@@ -75735,34 +75890,34 @@ function DrawingEmbed(props) {
 var drawing_embed_default = DrawingEmbed;
 
 // src/components/jsx-components/resize-handle/resize-handle.tsx
-var import_classnames36 = __toESM(require_classnames());
-var React96 = __toESM(require_react());
+var import_classnames40 = __toESM(require_classnames());
+var React98 = __toESM(require_react());
 
 // src/graphics/icons/resize-diagonal-icon.tsx
-var React95 = __toESM(require_react());
-var ResizeDiagonalIcon = (props) => /* @__PURE__ */ React95.createElement("svg", {
+var React97 = __toESM(require_react());
+var ResizeDiagonalIcon = (props) => /* @__PURE__ */ React97.createElement("svg", {
   xmlns: "http://www.w3.org/2000/svg",
   height: "1em",
   viewBox: "0 0 24 24",
   width: "1em",
   ...props
-}, /* @__PURE__ */ React95.createElement("path", {
+}, /* @__PURE__ */ React97.createElement("path", {
   d: "M19.071 12.414a1 1 0 0 1 1 1v5.657a1 1 0 0 1-1 1h-5.657a1 1 0 0 1 0-2h4.657v-4.657a1 1 0 0 1 1-1ZM3.929 4.929a1 1 0 0 1 1-1h5.657a1 1 0 0 1 0 2H5.929v4.657a1 1 0 0 1-2 0V4.929Z"
-}), /* @__PURE__ */ React95.createElement("path", {
+}), /* @__PURE__ */ React97.createElement("path", {
   d: "M4.222 4.222a.999.999 0 0 1 1.414 0l14.142 14.142a.999.999 0 1 1-1.414 1.414L4.222 5.636a.999.999 0 0 1 0-1.414Z"
 }));
 
 // src/components/jsx-components/resize-handle/resize-handle.tsx
 var ResizeHandle = (props) => {
-  const lastPointerXPosition = React96.useRef();
-  const lastPointerYPosition = React96.useRef();
-  return /* @__PURE__ */ React96.createElement("button", {
-    className: (0, import_classnames36.default)([
+  const lastPointerXPosition = React98.useRef();
+  const lastPointerYPosition = React98.useRef();
+  return /* @__PURE__ */ React98.createElement("button", {
+    className: (0, import_classnames40.default)([
       "ddc_ink_resize-handle",
       "ddc_ink_vertical"
     ]),
     onPointerDown: startResizing
-  }, /* @__PURE__ */ React96.createElement(ResizeDiagonalIcon, null));
+  }, /* @__PURE__ */ React98.createElement(ResizeDiagonalIcon, null));
   function startResizing(e) {
     document.addEventListener("mousemove", handleMouseResizing);
     document.addEventListener("mouseup", stopResizing);
@@ -75804,24 +75959,25 @@ var ResizeHandle = (props) => {
 var TldrawDrawingEditorWrapper = (props) => {
   const editorActive = useAtomValue(editorActiveAtom2);
   if (editorActive) {
-    return /* @__PURE__ */ React97.createElement(TldrawDrawingEditor2, {
+    return /* @__PURE__ */ React99.createElement(TldrawDrawingEditor2, {
       ...props
     });
   } else {
-    return /* @__PURE__ */ React97.createElement(React97.Fragment, null);
+    return /* @__PURE__ */ React99.createElement(React99.Fragment, null);
   }
 };
+var myOverrides = {};
 var tlOptions2 = {
   defaultSvgPadding: 10
 };
 function TldrawDrawingEditor2(props) {
-  const [tlEditorSnapshot, setTlEditorSnapshot] = React97.useState();
+  const [tlEditorSnapshot, setTlEditorSnapshot] = React99.useState();
   const setEmbedState = useSetAtom(embedStateAtom2);
   const shortDelayPostProcessTimeoutRef = (0, import_react126.useRef)();
   const longDelayPostProcessTimeoutRef = (0, import_react126.useRef)();
   const tlEditorRef = (0, import_react126.useRef)();
   const editorWrapperRefEl = (0, import_react126.useRef)(null);
-  React97.useEffect(() => {
+  React99.useEffect(() => {
     verbose("EDITOR mounted");
     fetchFileData();
     return () => {
@@ -75829,7 +75985,7 @@ function TldrawDrawingEditor2(props) {
     };
   }, []);
   if (!tlEditorSnapshot)
-    return /* @__PURE__ */ React97.createElement(React97.Fragment, null);
+    return /* @__PURE__ */ React99.createElement(React99.Fragment, null);
   verbose("EDITOR snapshot loaded");
   const defaultComponents = {
     Scribble: TldrawScribble,
@@ -75991,9 +76147,9 @@ function TldrawDrawingEditor2(props) {
     },
     ...props.extendedMenu || []
   ];
-  return /* @__PURE__ */ React97.createElement(React97.Fragment, null, /* @__PURE__ */ React97.createElement("div", {
+  return /* @__PURE__ */ React99.createElement(React99.Fragment, null, /* @__PURE__ */ React99.createElement("div", {
     ref: editorWrapperRefEl,
-    className: (0, import_classnames37.default)([
+    className: (0, import_classnames41.default)([
       "ddc_ink_drawing-editor"
     ]),
     style: {
@@ -76001,27 +76157,31 @@ function TldrawDrawingEditor2(props) {
       position: "relative",
       opacity: 0
     }
-  }, /* @__PURE__ */ React97.createElement(TldrawEditor, {
+  }, /* @__PURE__ */ React99.createElement(TldrawEditor, {
     options: tlOptions2,
     shapeUtils: [...defaultShapeUtils],
     tools: [...defaultTools, ...defaultShapeTools],
     initialState: "draw",
+    overrides: myOverrides,
     snapshot: tlEditorSnapshot,
     components: defaultComponents,
     onMount: handleMount,
     autoFocus: false
-  }), /* @__PURE__ */ React97.createElement(PrimaryMenuBar, null, /* @__PURE__ */ React97.createElement(drawing_menu_default, {
+  }), /* @__PURE__ */ React99.createElement(PrimaryMenuBar, null, /* @__PURE__ */ React99.createElement(drawing_menu_default, {
     getTlEditor,
     onStoreChange: (tlEditor) => queueOrRunStorePostProcesses(tlEditor)
-  }), props.embedded && props.extendedMenu && /* @__PURE__ */ React97.createElement(extended_drawing_menu_default, {
+  }), props.embedded && props.extendedMenu && /* @__PURE__ */ React99.createElement(extended_drawing_menu_default, {
     onLockClick: async () => {
       if (props.closeEditor)
         props.closeEditor();
     },
     menuOptions: customExtendedMenu
-  }), !props.embedded && props.extendedMenu && /* @__PURE__ */ React97.createElement(extended_drawing_menu_default, {
+  }), !props.embedded && props.extendedMenu && /* @__PURE__ */ React99.createElement(extended_drawing_menu_default, {
     menuOptions: customExtendedMenu
-  }))), props.resizeEmbed && /* @__PURE__ */ React97.createElement(ResizeHandle, {
+  })), /* @__PURE__ */ React99.createElement(SecondaryMenuBar, null, /* @__PURE__ */ React99.createElement(modify_menu_default, {
+    getTlEditor,
+    onStoreChange: (tlEditor) => queueOrRunStorePostProcesses(tlEditor)
+  }))), props.resizeEmbed && /* @__PURE__ */ React99.createElement(ResizeHandle, {
     resizeEmbed
   }));
   function resizeEmbed(pxWidthDiff, pxHeightDiff) {
@@ -76063,7 +76223,7 @@ var DrawingView = class extends import_obsidian14.TextFileView {
       if (this.root)
         this.clear();
       this.root = (0, import_client4.createRoot)(viewContent);
-      this.root.render(/* @__PURE__ */ React98.createElement(Provider, null, /* @__PURE__ */ React98.createElement(TldrawDrawingEditor2, {
+      this.root.render(/* @__PURE__ */ React100.createElement(Provider, null, /* @__PURE__ */ React100.createElement(TldrawDrawingEditor2, {
         onReady: () => {
         },
         plugin: this.plugin,
@@ -76091,7 +76251,7 @@ var DrawingView = class extends import_obsidian14.TextFileView {
 
 // src/extensions/widgets/drawing-embed-widget.tsx
 var import_obsidian15 = require("obsidian");
-var React99 = __toESM(require_react());
+var React101 = __toESM(require_react());
 var import_client5 = __toESM(require_client());
 function registerDrawingEmbed(plugin) {
   plugin.registerMarkdownCodeBlockProcessor(DRAW_EMBED_KEY, (source, el, ctx) => {
@@ -76155,7 +76315,7 @@ var DrawingEmbedWidget = class extends import_obsidian15.MarkdownRenderChild {
     const pageDataStr = await v.read(this.fileRef);
     const pageData = JSON.parse(pageDataStr);
     this.root = (0, import_client5.createRoot)(this.el);
-    this.root.render(/* @__PURE__ */ React99.createElement(Provider, null, /* @__PURE__ */ React99.createElement(drawing_embed_default, {
+    this.root.render(/* @__PURE__ */ React101.createElement(Provider, null, /* @__PURE__ */ React101.createElement(drawing_embed_default, {
       plugin: this.plugin,
       drawingFileRef: this.fileRef,
       pageData,
@@ -76313,17 +76473,15 @@ function showVersionNotice(plugin) {
 }
 function showChanges(plugin) {
   const noticeBody = createInkNoticeTemplate(1, 3);
-  noticeBody.createEl("h1").setText(`Changes in Ink v0.3.3`);
+  noticeBody.createEl("h1").setText(`Changes in Ink v0.3.4`);
   const listEl = noticeBody.createEl("ul");
-  listEl.createEl("li").setText(`Resize drawing embeds (Lock them to save the size).`);
-  listEl.createEl("li").setText(`Single click unlock for embeds & multiple embeds unlocked at once.`);
-  listEl.createEl("li").setText(`More seamless transitions between locked and unlocked writing embeds.`);
-  listEl.createEl("li").setText(`Visible grid in drawing mode (Toggle from dropdown).`);
-  listEl.createEl("li").setText(`Drawing stroke/zoom now defaults similar to writing.`);
-  listEl.createEl("li").setText(`Insert commands now have temporary icons.`);
-  listEl.createEl("li").setText(`Many bug fixes and tweaks under the hood to lay groundwork for future updates and better efficiency.`);
+  listEl.createEl("li").setText(`Fixed update notice text colour in light mode (That's why you can read this!).`);
+  listEl.createEl("li").setText(`Moved Undo/Redo buttons to prevent accidental back button taps.`);
+  listEl.createEl("li").setText(`Added new command icons.`);
+  listEl.createEl("li").setText(`Added extra blank lines while writing.`);
+  listEl.createEl("li").setText(`Fixed some visual theming bugs.`);
   const link = noticeBody.createEl("a");
-  link.setAttribute("href", "https://www.youtube.com/live/_B2a9zTxb28?si=Ovkwao2EW479JRK6");
+  link.setAttribute("href", "https://youtube.com/live/50EpBdPwrxY");
   link.setText(`View release video`);
   link.onClickEvent((e) => e.stopPropagation());
   const {
@@ -76341,10 +76499,24 @@ function showChanges(plugin) {
   }
 }
 
+// src/graphics/icons/command-icons.ts
+var writeDefaultSvgStr = require_write_default();
+var writeExistingSvgStr = require_write_existing();
+var writePasteSvgStr = require_write_paste();
+var drawDefaultSvgStr = require_draw_default();
+var drawExistingSvgStr = require_draw_existing();
+var drawPasteSvgStr = require_draw_paste();
+
 // src/main.ts
 var InkPlugin = class extends import_obsidian19.Plugin {
   async onload() {
     await this.loadSettings();
+    (0, import_obsidian19.addIcon)("write_default", writeDefaultSvgStr);
+    (0, import_obsidian19.addIcon)("write_existing", writeExistingSvgStr);
+    (0, import_obsidian19.addIcon)("write_paste", writePasteSvgStr);
+    (0, import_obsidian19.addIcon)("draw_default", drawDefaultSvgStr);
+    (0, import_obsidian19.addIcon)("draw_existing", drawExistingSvgStr);
+    (0, import_obsidian19.addIcon)("draw_paste", drawPasteSvgStr);
     (0, import_obsidian19.addIcon)("bluesky", blueskySvgStr);
     (0, import_obsidian19.addIcon)("mastodon", mastodonSvgStr);
     (0, import_obsidian19.addIcon)("threads", threadsSvgStr);
@@ -76381,19 +76553,19 @@ function implementWritingEmbedActions(plugin) {
   plugin.addCommand({
     id: "create-handwritten-section",
     name: "New handwriting section",
-    icon: "signature",
+    icon: "write_default",
     editorCallback: (editor) => insert_new_writing_file_default(plugin, editor)
   });
   plugin.addCommand({
     id: "embed-writing-file",
     name: "Existing handwriting section",
-    icon: "folder-pen",
+    icon: "write_existing",
     editorCallback: (editor) => insert_existing_writing_file_default(plugin, editor)
   });
   plugin.addCommand({
     id: "insert-copied-writing",
     name: "Copied handwriting section",
-    icon: "clipboard-pen",
+    icon: "write_paste",
     editorCallback: (editor) => insert_remembered_writing_file_default(plugin, editor)
   });
 }
@@ -76401,19 +76573,19 @@ function implementDrawingEmbedActions(plugin) {
   plugin.addCommand({
     id: "create-drawing-section",
     name: "New drawing",
-    icon: "shapes",
+    icon: "draw_default",
     editorCallback: (editor) => insert_new_drawing_file_default(plugin, editor)
   });
   plugin.addCommand({
     id: "embed-drawing-file",
     name: "Existing drawing",
-    icon: "folder-dot",
+    icon: "draw_existing",
     editorCallback: (editor) => insert_existing_drawing_file_default(plugin, editor)
   });
   plugin.addCommand({
     id: "insert-copied-drawing",
     name: "Copied drawing",
-    icon: "clipboard-pen-line",
+    icon: "draw_paste",
     editorCallback: (editor) => insert_remembered_drawing_file_default(plugin, editor)
   });
 }

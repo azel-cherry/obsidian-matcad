@@ -41,7 +41,7 @@
     },
     "ex": {
       "type": "ex",
-      "color": "254, 204, 200",
+      "color": "237, 185, 182",
       "icon": {
         "name": "border-all",
         "type": "font-awesome"
@@ -99,8 +99,10 @@
         "type": "font-awesome"
       },
       "command": false,
+      "title": "Atenció",
       "injectColor": true,
-      "noTitle": true
+      "noTitle": true,
+      "copy": false
     }
   },
   "syntaxHighlight": true,
