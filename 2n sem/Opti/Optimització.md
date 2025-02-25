@@ -200,13 +200,54 @@ title: Definició equivalent
 Un vector $v$ és ==tangent== al conjunt $S\subset \mathbb{R}^n$ en un punt $x_{0}\in S$ si (o bé $v=0$) o bé existeix una successió $\{x_{k}\}_{k}\subset S$ amb $x_{k}\neq x_{0} \,\forall k\,$ tal que
 $$ \lim_{k\to\infty}x_{k}=x_{0} \quad\text{i}\quad \lim_{k\to\infty} \frac{x_{k}-x_{0}}{||x_{k}-x_{0}||} = \frac{v}{||v||} $$
 ```
+`````
 
 ```ad-def
 title: *Con tangent*
 
 El conjunt format pels vectors tangents a una funció en un punt s'anomena el ==con tangent==.
 ```
-`````
+
+A partir d'ara considerarem que totes les funcions tenen totes les derivades contínues que calguin.
+
+```ad-def
+title: Punt *regular*
+
+Sigui $h:\mathbb{R}^n\to \mathbb{R}^m$, un punt $x_{0}$ tal que $h(x_{0})=0$ és un ==punt regular== de l'equació si
+$$ \nabla h_{1}(x_{0}),\dots,\nabla h_{m}(x_{0}) $$
+son vectors linealment independents.
+```
+
+```ad-prop
+Sigui $x_{0}$ un punt regular de $h(x)=0$.
+
+Aleshores el con tangent al conjunt $\{x \mid h(x)=0\}$ en $x_{0}$ és
+$$ \{v\in \mathbb{R}^n \mid \nabla h(x_{0})\cdot v=0\} \,.$$
+```
+
+```ad-teor
+title: **Condicions necessàries** d'un **mínim local**
+
+Sigui
+$$ S:\begin{Bmatrix}
+h_{1}(x)=0 & g_{1}(x)\leq 0 \\
+\vdots & \vdots \\
+h_{m}(x)=0 & g_{r}(x)\leq0
+\end{Bmatrix} \,.$$
+
+Si $x_{0}$ és un mínim local de $f$ en $S$ i és un punt regular de les restriccions actives en $x_{0}$, aleshores existeixen $\lambda=(\lambda_{1},\dots,\lambda_{m})$ i $\mu=(\mu_{1},\dots,\mu_{r})$ tals que:
+
+1. ~={green}Condicions de KKT:=~ $$ \begin{gather}
+\nabla f(x_{0})+\lambda \cdot \nabla h(x_{0})+\mu \nabla g(x_{0}) = 0 \\
+\mu_{i}\,g_{i}(x_{0})=0 \quad \forall i\in \{1,\dots,r\}
+\end{gather} $$
+
+1. La matriu
+$$ M(x_{0}) = \nabla^{2}f(x_{0})+\sum_{i=1}^m \lambda_{i} \cdot \nabla^{2}h_{i}(x_{0}) + \sum_{i=1}^r \mu_{i} \cdot \nabla^{2}g_{i}(x_{0}) $$
+compleix $v\cdot M(x_{0})\cdot v\geq0$ per tot $v$ de l'espai tangent a les restriccions actives en $x_{0}$ .
+
+Les constants $\lambda_{1},\dots,\lambda_{m}$ s'anomenen ==multiplicadors de Lagrande== i $\mu_{1},\dots,\mu_{r}$ es diuen ==multiplicadors de Karush-Kuhn-Tucker==.
+```
 
 
 
@@ -258,14 +299,21 @@ $$ x_{k+1} = x_{k}-f'(x_{k}) \frac{x_{k}-x_{k-1}}{f'(x_{k})-f'(x_{k-1})} \,.$$
 ```ad-not
 title: Notació
 
-+ ==Vector gradient== en $x\in \mathbb{R}^n$ : 
++ ~={green}Vector gradient=~ en $x\in \mathbb{R}^n$ : 
 $$ \boldsymbol{\nabla f(x)}=\left( \frac{df}{dx_{1}}(x),\,\dots, \frac{df}{dx_{n}}(x) \right) $$
 
-+ ==Derivada en direcció $d$== de $f$ :
++ ~={green}Derivada en direcció $\boldsymbol d$=~ de $f$ :
 $$ \boldsymbol{\nabla f\cdot d}=\lim_{n\to0} \frac{f(x+hd)-f(x)}{h} $$
 
-+ ==Matriu Hessiana== en $x\in \mathbb{R}$ :
-$$ \boldsymbol H=\boldsymbol{\nabla^{2}f(x)} = \begin{pmatrix}
++ ~={green}Matriu Jacobiana=~ de $f:\mathbb{R}^n\to \mathbb{R}^m$ en $x$ :
+$$ \boldsymbol{\nabla f(x)} = \begin{pmatrix}
+\displaystyle\frac{df_{1}}{dx_{1}}(x) & \dots & \displaystyle\frac{df_{1}}{dx_{n}}(x) \\
+\vdots & \ddots & \vdots \\
+\displaystyle\frac{df_{m}}{dx_{1}}(x) & \dots & \displaystyle\frac{df_{m}}{dx_{n}}(x)
+\end{pmatrix} $$
+
++ ~={green}Matriu Hessiana=~ en $x\in \mathbb{R}$ :
+$$ \boldsymbol{\nabla^{2}f(x)} = \begin{pmatrix}
 \displaystyle\frac{d^{2}f}{dx_{1}dx_{1}}(x) & \dots & \displaystyle\frac{d^{2}f}{dx_{1}dx_{n}}(x) \\
 \vdots & \ddots & \vdots \\
 \displaystyle\frac{d^{2}f}{dx_{n}dx_{1}} & \dots & \displaystyle\frac{d^{2}f}{dx_{n}dx_{n}}
