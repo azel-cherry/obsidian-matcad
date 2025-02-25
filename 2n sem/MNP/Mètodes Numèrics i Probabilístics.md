@@ -37,7 +37,7 @@ on $\xi(x)$ és un punt de l'[[#^0ea908 | interval d'interpolació]].
 ```
 
 ---
-## Integració numèrica
+## **Integració** numèrica
 
 Donada $f$ definida sobre $[a,b]$ volem calcular
 $$ \boldsymbol{J(f)} = \int_{a}^{b} f(x)\,dx \,,$$
@@ -189,22 +189,39 @@ on $n$ és el nombre d'iteracions.
 `````
 
 
-#### Càlcul **automàtic** de l'error
+###### Càlcul **automàtic** de l'error (per Newton-Cotes)
 
 La idea és desenvolupar un algorisme que calculi una successió d'aproximacions de la integral i les utilitzi per estimar l'error que es comet.
 
-Definim
-$$ Q_{n}=\text{Compo}_{m}(f,[a,b],2^n) = \sum_{i=0}^{2^n-1} NC_{m}(f,[x_{i},x_{i+1}]) $$
-amb $x_{i}=a+\frac{b-a}{2^n}\,i$ .
+Definint
+$$ \boldsymbol{Q_{n}}=\text{Compo}_{m}(f,[a,b],2^n) = \sum_{i=0}^{2^n-1} NC_{m}(f,[x_{i},x_{i+1}]) $$
+amb $\displaystyle x_{i}=a+\frac{b-a}{2^n}\,i$ , aleshores tenim que l'error és
+$$ \int_{a}^b f(x)\,dx - Q_{n+1} \approx \boxed{\,\frac{Q_{n+1}-Q_{n}}{2^{p+1}-1}\,} \,,$$
+amb $p=\begin{cases}\, m &\text{si }m\text{ és senar} \\ m+1 &\text{si }m\text{ és parell} \end{cases}$ .
 
-```ad-not
+`````ad-not
 Si s'utilitza la fórmula dels [[#^4f1fcc|trapezis]], podem escriure
-$$ Q_{n+1} = \frac{1}{2}\,Q_{n} + \sum_{i=0}^{2^n-1}f(\overline{x}_{i}) \,\frac{1}{2^{n+1}} \,,$$
+$$ Q_{n+1} = \boldsymbol{F(a,b,n,Q_{n})} = \boxed{\,\frac{Q_{n}}{2} + \frac{1}{2^{n+1}} \sum_{i=0}^{2^n-1}f(\overline{x}_{i})\,} \,,$$
 on $\quad\begin{cases}\displaystyle\,\overline{x}_{i}=\frac{x_{i}+x_{i+1}}{2}\\[0.5em]\displaystyle\,x_{i}=a+\frac{b-a}{2^n}\,i\end{cases}\quad$ i $\quad\displaystyle Q_{0}=\frac{f(a)+f(b)}{2}(b-a)$ .
+
 ```
+h = 0
+Q0 = (f(a)+f(b)) / 2 (b-a)
+Q1 = F(a,b,n,Q0)
 
-```ad-prop
-title: **Error**
+while 1/3 * abs(Q1-Q0) > e && n<n_max:
+	n++
+	Q0 = Q1
+	Q1 = F(a,b,n,Q1)
 
-$$ \int_{a}^b f(x)\,dx - Q_{n+1} \approx \boxed{\,\frac{Q_{n+1}-Q_{n}}{2^{p+1}-1}\,} $$
+return Q1
+```
+`````
+
+```ad-met
+title: **Refinament adaptiu**
+
+Consisteix en adaptar les mides dels intervals en funció de $f$.
+
+
 ```
