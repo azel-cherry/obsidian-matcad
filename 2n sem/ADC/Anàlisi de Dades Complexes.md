@@ -118,6 +118,8 @@ on podem estimar $y$ per $\widehat{y}=X\,\widehat{\beta}$ .
 
 ###### Mètodes de **bondat d'ajustament**
 
+La ==bondat d'ajustament== d'un model es refereix a quant s'acosta aquest a la realitat.
+
 ```ad-prop
 $$ \sum_{i=1}^{n} (y_{i}-\overline{y})^2 = \sum_{i=1}^n (\widehat{y_{i}}-\overline{y})^2 + \sum_{i=1}^n (y_{i}-\widehat{y_{i}})^2 \,,$$
 on:
@@ -136,6 +138,9 @@ $$ R^{2} = \frac{\displaystyle\sum_{i=1}^n (\widehat{y_{i}}-\overline{y})^2}{\di
 
 El coeficient $R^{2}\in(0,1)$ serveix per mesurar la bondat d'ajustament; com més pròxim a $1$, millor és el model.
 ```
+
+
+
 
 
 ---
