@@ -55,7 +55,7 @@ on $\overline{c}_{i}$ i $\overline{b}$ son les mitjanes aritmètiques de la $i$-
 
 Considerem el següent model de regressió lineal:
 $$ y = X\beta + \varepsilon \,,$$
-on:
+on: ^bc941d
 + $\boldsymbol y$ : vector de la ==variable dependent== de mida $n$
 	+ $\boldsymbol n$ : mida de la mostra
 + $\boldsymbol X$ : ==matriu de disseny== de les ==variables explicatives== de dimensió $n\times (p+1)$
@@ -64,6 +64,8 @@ on:
 + $\boldsymbol\varepsilon$ : vector d'==errors aleatoris== de mida $n$
 
 ```ad-prop
+title: **Errors**
+
 S'assumeix que cada $\varepsilon_{i}$ son *v.a.*s amb $$ \text{E}(\varepsilon_{i})=0\,, \quad \text{Var}(\varepsilon_{i})=\sigma^{2} \,.$$
 Per tant: $$ \text{Cov}(\varepsilon_{i},\varepsilon_{j}) = \begin{pmatrix} \sigma^{2} & 0 & \dots & 0 \\ 0 & \sigma^{2} & \dots & 0 \\ \vdots & \vdots & \ddots & \vdots \\ 0 & 0 & \dots & \sigma^{2} \end{pmatrix} $$
 ```
@@ -105,15 +107,22 @@ assumint $\text{Rang}(X)=m$ .
 L'estimador $\widehat{\beta}$ és un estimador [[#^e8baeb|no esbiaixat]] de $\beta$.
 ```
 
-+ $\text{Var}(\widehat{\beta}) = \sigma^{2}(X^TX)^{-1}$
++ $\text{Var}(\widehat{\beta}) = \sigma^{2}\,(X^TX)^{-1}$
 `````
 
-```ad-met
+````ad-met
 title: Variància $\boldsymbol{\sigma^{2}}$
 
+L'estimador de $\sigma^{2}$ és
 $$ \widehat{\sigma}^{2} = \boxed{\,\frac{\displaystyle\sum_{i=1}^{n} (y_{i}-\widehat{y}_{i})^{2}}{n}\,} \,,$$
 on podem estimar $y$ per $\widehat{y}=X\,\widehat{\beta}$ .
+
+```ad-prop
+L'estimador de $\sigma^{2}$
+$$ \widehat{\sigma}^{2} = \frac{\sum_{i=1}^n r_{i}^{2}}{n-m} $$
+és un estimador [[#^e8baeb|no esbiaixat]] amb $m=\text{Rang}(X)$.
 ```
+````
 
 
 ###### Mètodes de **bondat d'ajustament**
@@ -139,7 +148,55 @@ $$ R^{2} = \frac{\displaystyle\sum_{i=1}^n (\widehat{y_{i}}-\overline{y})^2}{\di
 El coeficient $R^{2}\in(0,1)$ serveix per mesurar la bondat d'ajustament; com més pròxim a $1$, millor és el model.
 ```
 
+`````ad-def
+title: Coeficient de correlació
 
+Donades dues *v.a.*s $A, B$ amb mitjanes $\mu_{A}=\text{E}(A)$, $\mu_{B}=\text{E}(B)$ i variàncies $\sigma_{A}^2=\text{Var}(A)$, $\sigma_{B}^2=\text{Var}(B)$, i que compleixen $\sigma_{AB}=\text{E}((A-\mu_{A})(B-\mu_{B}))$.
+
+Aleshores el ==coeficient de correlació==  entre $A$ i $B$ és
+$$ \rho_{AB} = \frac{\sigma_{AB}}{\sigma_{A}\,\sigma_{B}} \,.$$
+
+```ad-prop
+title: Propietats
+
++ $\rho_{AB}\in(-1,1)$
++ $\rho_{AB}=0 \implies$ $A$ i $B$ no estan correlacionats linealment
+	+ $A,B$ independents $\implies$ $A,B$ no correlacionats (el contrari no és sempre cert)
+	+ $A,B$ amb distribució normal conjunta $\implies$ $A,B$ no correlacionats i independents
+```
+
+```ad-def
+title: Coeficient de correlació **mostral**
+
+Siguin $a_{1},\dots,a_{n}$ i $b_{1},\dots,b_{n}$ mostres de les *v.a.*s $A,B$ respectivament, amb mitjanes mostrals $\overline{a}, \overline{b}$ i variàncies mostrals $s_{a}^2, s_{b}^2$ .
+
+Aleshores el ==coeficient de correlació mostral== és
+$$ r_{AB} = \frac{\displaystyle\sum_{i=1}^n (a_{i}-\overline{a})^2(b_{i}-\overline{b}^2)}{s_{a}\,s_{b}} $$
+```
+`````
+
+
+
+
+---
+#### Model de regressió lineal **clàssic**
+
+Considerem el mateix model que el [[#^bc941d | general]]
+$$ y = X\beta+\varepsilon \,,$$
+però assumint ara que
+$$ \varepsilon \sim N_{n}(\vec{0},\sigma^{2}I) $$
+on $\vec{0}=(0,\dots,0)^T$, i $\text{Cov}(\varepsilon_{i},\varepsilon_{j})=0$ quan $i\neq j$, és a dir, independents.
+
+```ad-teor
+Considerem una funció lineal dels paràmetres $l^T\beta$ .
+1. $l^T\widehat{\beta}\sim N(l^T\beta,\,\sigma^{2}\,l^T(X^TX)^{-1}\,l)$
+2. L'estimador $l^T\widehat{\beta}$ i la suma de quadrats residual $RSS=(y-X\widehat{\beta})^T(y-X\widehat{\beta})$ son estocàsticament independents
+3. $\displaystyle\frac{RSS}{\sigma^{2}}\sim \chi_{m}^{2}$ on $m=\text{Rang}(X)$
+```
+
+
+---
+#### **Test $\boldsymbol t$** generalitzat
 
 
 
@@ -173,3 +230,25 @@ on $\,\text{Cov}(y_{i},y_{j}) = \text{E}(y_{i}\,y_{j})-\text{E}(y_{i})\,\text{E}
 Si $B$ és una altra matriu de constants:
 $$ \text{Cov}(Ay,By) = A \cdot \text{Var}(y) \cdot B^T $$
 ```
+
+````ad-prop
+title: Distribució **normal multivariada**
+
+Considerem $Y\sim N_{n}(\mu,\sigma)$ .
+
+```ad-prop
+title: Funció de **densitat**
+
+$$ f_{Y}(y) = \boxed{\,\frac{1}{(2\pi)^{\frac{n}{2}}\,|\sigma|^{\frac{1}{2}}} \,\exp\left( -\frac{1}{2} (y-\mu)^T\,\sigma^{-1}(y-\mu) \right)\,} $$
+quan $\text{Rang}(\sigma)=n$ .
+```
+
+```ad-prop
+title: Propietats
+
++ Per $C\in M_{k\times n}[\mathbb{R}]$ constant, $CY\sim N_{n}(C\mu,\,C^{T}\sigma C)$
++ Sigui $Z\sim N_{n}(\vec{0},I)$ , aleshores $Y=\mu_{Y}+AZ$ amb $A^TA=\sigma_{Y}$
++ $(y-\mu)^T\,\sigma^{-1}(y-\mu) \sim \chi_{n}^{2}$
++ $Y_{1},Y_{2}$ independents $\iff \text{Cov}(Y_{1},Y_{2})=0$
+```
+`````
