@@ -76,7 +76,7 @@ title: Fórmula dels **trapezis**
 Fórmula interpolatòria amb $m=1$ i els nodes $x_{0}=a$ i $x_{1}=b$ .
 
 $$ \int_{a}^b f(x)\,dx \approx \boxed{\, 
-\frac{b-a}{2} (f(a)+f(b)) + \frac{h^{3}}{12}f''(\xi) \,} $$
+\frac{b-a}{2} (f(a)+f(b)) \,} $$
 
 ```ad-ex
 title: **Error**

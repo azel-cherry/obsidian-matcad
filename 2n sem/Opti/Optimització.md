@@ -254,6 +254,17 @@ Les constants $\lambda_{1},\dots,\lambda_{m}$ s'anomenen ==multiplicadors de Lag
 ---
 ## Algorismes d'**optimització**
 
+#### **Ordres** de **convergència**
+
+Sigui $\{x_{k}\}_{k}$ tal que $x_{k}\to x_{0}$ , i $C<1$ constant.
++ $\boxed{\,\displaystyle\frac{|x_{k+1}-x_{0}|}{|x_{k}-x_{0}|}\leq C\,} \implies$ **convergència ~={green}lineal=~** (d'ordre 1)
+	+ $\displaystyle\lim_{k\to\infty}\frac{|x_{k+1}-x_{0}|}{|x_{k}-x_{0}|}=0 \implies$ **convergència ~={green}superlineal=~**
+
+Per $C\leq1$ :
++ $\boxed{\,\displaystyle\frac{|x_{k+1}-x_{0}|}{|x_{k}-x_{0}|^p} \leq C\,} \implies$ **convergència ~={green}d'ordre $\boldsymbol p$=~**
+	+ $p=2 \implies$ **convergència ~={green}quadràtica=~**
+
+
 #### Mètode de **Newton**
 
 Consisteix en aproximar el mínim d'una funció $f:\mathbb{R}\to \mathbb{R}$ **iterativament** per 
@@ -269,19 +280,9 @@ Sigui $x_{0}$ tal que $f'(x_{0})=0$ i $f''(x_{0})\neq 0$, amb $f\in C^{3}$.
 Aleshores existeix $\delta>0$ tal que si $|x_{1}-x_{0}|<\delta$, la [[#^b8a461|successió]] definida anteriorment començant per $x_{1}$ convergeix a $x_{0}$ .
 ```
 
-
-#### **Ordres** de **convergència**
-
-Sigui $\{x_{k}\}_{k}$ tal que $x_{k}\to x_{0}$ , i $C<1$ constant.
-+ $\boxed{\,\displaystyle\frac{|x_{k+1}-x_{0}|}{|x_{k}-x_{0}|}\leq C\,} \implies$ **convergència ~={green}lineal=~** (d'ordre 1)
-	+ $\displaystyle\lim_{k\to\infty}\frac{|x_{k+1}-x_{0}|}{|x_{k}-x_{0}|}=0 \implies$ **convergència ~={green}superlineal=~**
-
-Per $C\leq1$ :
-+ $\boxed{\,\displaystyle\frac{|x_{k+1}-x_{0}|}{|x_{k}-x_{0}|^p} \leq C\,} \implies$ **convergència ~={green}d'ordre $\boldsymbol p$=~**
-	+ $p=2 \implies$ **convergència ~={green}quadràtica=~**
-
-
 ```ad-prop
+title: **Ordre** de convergència
+
 Sigui $x_{0}$ un mínim trobat pel mètode de Newton amb la successió $\{x_{k}\}_{k}$ . Aleshores
 $$ f''(x_{0})\neq 0 \implies x_{k} \text{ té convergència quadràtica.} $$
 ```
@@ -290,7 +291,71 @@ $$ f''(x_{0})\neq 0 \implies x_{k} \text{ té convergència quadràtica.} $$
 #### Mètode de la **posició falsa**
 
 Consisteix en aproximar el mínim d'una funció $f:\mathbb{R}\to \mathbb{R}$ **iterativament** per
-$$ x_{k+1} = x_{k}-f'(x_{k}) \frac{x_{k}-x_{k-1}}{f'(x_{k})-f'(x_{k-1})} \,.$$
+
+$$ x_{k+1} = x_{k}-f'(x_{k}) \frac{x_{k}-x_{k-1}}{f'(x_{k})-f'(x_{k-1})} \,.$$ ^6a8208
+
+```ad-prop
+Sigui $x_{0}$ tal que $f'(x_{0})=0$ i $f''(x_{0})\neq 0$, amb $f\in C^{3}$.
+
+Aleshores existeix $\delta>0$ tal que si $|x_{1}-x_{0}|<\delta$, la [[#^6a8208 | successió]] definida anteriorment començant per $x_{1}$ convergeix a $x_{0}$ .
+```
+
+```ad-prop
+title: **Ordre** de convergència
+
+Sigui $x_{0}$ un mínim trobat pel mètode de la posició falsa amb la successió $\{x_{k}\}_{k}$ .
+
+Aleshores $\{x_{k}\}_{k}$ té convergència d'ordre
+$$ p = \frac{1+\sqrt{5}}{2} \,,$$
+conegut com la **raó àuria**.
+```
+
+
+#### Mètode d'**adjust quadràtic** de tres punts
+
+Consisteix en, partint de tres punts $x_{1},x_{2},x_{3}$ en posició convexa
+$$ f(x_{1})\geq f(x_{2})\leq f(x_{3}) \,,$$
+ajustar-los a una paràbola $P(x)=ax^{2}+bx+c$ per tal de trobar el mínim, que serà
+$$ x = \frac{-b}{2a} \,,$$
+i agafar una nova terna entre $x,x_{1},x_{2},x_{3}$ en posició convexa, per seguir aplicant aquest mètode iterativament.
+
+Aquest mètode **no assegura la convergència**, i si convergeix, només es pot assegurar una **convergència lineal**.
+
+```ad-prop
+Si partim de tres punts $x_{1},x_{2},x_{3}$ prou a prop del mínim $x_{0}$, i $f$ compleix $f'(x_{0})=0,f''(x_{0})\neq 0$ i $f'''(x)$ és [[#^70f39c | de Lipschitz]].
+
+Aleshores la successió $\{x_{k}\}_{k}$ definida pel mètode d'adjust quadràtic convergeix a $x_{0}$ amb un ordre de convergència $p\approx 1.324718$ arrel real de
+$$ p^{3}-p-1=0 \,.$$
+```
+
+
+#### Mètodes de **Fibonacci** i de la **raó àuria**
+
+Suposem que sabem que hi ha un mínim en l'interval $[a,b]$ . Aquests mètodes consisteixen en reduir aquest interval al màxim.
+
+###### **Fibonacci**
+
+Considerem que, a part dels extrems inicials, podem avaluar $f$ en $N$ punts. Aleshores els punts on hem de dividir l'interval son
+$$ r_{k} = \frac{F_{N-k}}{F_{N-k+1}} \,,$$
+on $F_{n}$ és l'$n$-èssim terme de la successió de Fibonacci. 
+
+Amb aquest mètode reduïm l'interval per un factor de $\frac{1}{F_{N}}$ a cada iteració.
+
+```ad-prop
+title: **Error**
+
+Si volem una tolerància d'error de $\pm\varepsilon$ haurem d'agafar $N-1$ punts, on $N$ és el natural més petit tal que
+$$ F_{N} > \frac{b-a}{\varepsilon} \,.$$
+```
+
+###### **Raó àuria**
+
+Consisteix en agafar tots els factors
+$$ r_{k}=\varphi=\frac{-1+\sqrt{5}}{2} \,.$$
+
+No és el mètode més òptim per reduir l'interval, però és més senzill i no cal saber en quants punts podem avaluar la nostra funció.
+
+Amb aquest mètode reduïm l'interval per un factor de $\varphi$ a cada iteració.
 
 
 ---
@@ -334,3 +399,12 @@ title: Topologia
 	+ ~={green}Compacte.=~ **Tancat** i **acotat**.
 ```
 ^f7df0a
+
+```ad-def
+title: Funció *de Lipschitz*
+
+Una funció $f$ és ==de Lipschitz== si per tot $y,z \in (c,d)$ existeix $L>0$ tal que
+$$ \mid f(x,y)-f(x,z) \mid < L\mid y-z \mid .$$
+```
+
+^70f39c
