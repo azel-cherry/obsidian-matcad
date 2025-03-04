@@ -262,6 +262,15 @@ title: Propietats
 + $\text{gr}(p(x))<k \implies \langle p,\psi_{k}\rangle=0$
 + $\psi_{k}$ té $k$ zeros diferents
 ```
+
+```ad-met
+title: Trobar una família de polinomis ortogonals
+
+1. Comencem amb $\psi_{0}=A_{0}$ (lliure).
+2. Busquem $\psi_{1}$ de grau 1 tal que $\langle \psi_{1},\psi_{0} \rangle=0$
+3. Busquem $\psi_{2}$ de grau 2 tal que $\langle \psi_{2},\psi_{0} \rangle=0$ i $\langle \psi_{2},\psi_{1} \rangle=0$
+4. ...
+```
 `````
 
 Una ==fórmula d'integració Gaussiana== d'$m+1$ punts sobre l'interval $[a,b]$ associat a una família de polinomis ortogonals $\{ \psi_{0},\dots,\psi_{k} \}$ i respecte una funció $\omega:[a,b]\to \mathbb{R}_{+}$ és l'aproximació
@@ -272,6 +281,12 @@ on $P(x,x_{0},\dots,x_{m},f)$ és el polinomi interpolador de $f$ sobre els zero
 title: Propietat
 
 Una fórmula d'interpolació Gaussiana és exacta per tot polinomi de grau $\leq 2m+1$ .
+```
+
+```ad-prop
+title: **Error**
+
+$$ |E_{m}| \leq \frac{f^{(2m+2)}(\xi)}{(2m+2)!} \int_{a}^{b} \omega(x)(x-x_{0})^{2}\dots(x-x_{m})^2\,dx $$
 ```
 
 
