@@ -426,6 +426,10 @@ title: Topologia
 		+ $\gamma(1)=y$
 	+ ~={green}Domini.=~ $A$ obert i connex
 ```
-
 ^c33d2a
 
+```ad-prop
+Si $z=x+iy$, aleshores:
++ $\displaystyle x = \frac{z+\overline{z}}{2}$
++ $\displaystyle y = \frac{z-\overline{z}}{2i}$
+```
