@@ -100,7 +100,7 @@ $$ \lambda\, x_{1}+(1-\lambda)\,x_{2} \in S \,.$$
 ```
 
 `````ad-def
-title: Funció *convexa*
+title: Funció *convexa*/*còncava*
 
 Sigui $S\in \mathbb{R}^n$ convex, una funció $f:S\to \mathbb{R}$ és ==convexa== si per tot $x_{1},x_{2}\in S$ i per tot $\lambda\in(0,1)$
 $$ f(\lambda\,x_{1}+(1-\lambda)\,x_{2}) \leq \lambda f(x_{1}) + (1-\lambda) f(x_{2}) \,.$$
@@ -111,10 +111,8 @@ title: Funció *estrictament* convexa
 Una funció $f:S\to \mathbb{R}$ és ==estrictament convexa== si per tot $x_{1},x_{2}\in S$ amb $x_{1}\neq x_{2}$ i per tot $\lambda\in(0,1)$
 $$ f(\lambda\,x_{1}+(1-\lambda)\,x_{2}) < \lambda f(x_{1}) + (1-\lambda) f(x_{2}) \,.$$
 ```
-`````
 
-`````ad-def
-title: Funció *còncava*
+---
 
 Una funció $f:S\to \mathbb{R}$ és ==còncava== si $-f$ és convexa.
 ```ad-def
@@ -125,16 +123,14 @@ Una funció $f:S\to \mathbb{R}$ és ==estrictament còncava== si $-f$ és estric
 `````
 
 ```ad-prop
-Sigui $S\subset \mathbb{R}^{n}$ convex i $f:S\to \mathbb{R}$ de classe $C^{1}$.
+title: **Convexitat** d'una **funció**
 
-Aleshores $f$ és convexa en $S$ si i només si per tot $x_{1},x_{2}\in S$
+Sigui $S\subset \mathbb{R}^{n}$ convex.
+
++ Si $f:S\to \mathbb{R}$ de classe $C^{1}$, aleshores $f$ és convexa en $S$ si i només si per tot $x_{1},x_{2}\in S$
 $$ f(x_{1}) \geq f(x_{2})+\nabla f(x_{2})\cdot(x_{1}-x_{2}) \,.$$
-```
 
-```ad-prop
-Sigui $S\subset \mathbb{R}^{n}$ convex i $f:S\to \mathbb{R}$ de classe $C^{2}$.
-
-Aleshores $f$ és convexa en $S$ si i només si per tot $x\in S$ i per tota direcció factible $d$ en $x$
++ Si $f:S\to \mathbb{R}$ de classe $C^{2}$, aleshores $f$ és convexa en $S$ si i només si per tot $x\in S$ i per tota direcció factible $d$ en $x$
 $$ d^{T}\cdot \nabla^{2}f(x)\cdot d \geq 0 $$
 ```
 
@@ -210,13 +206,12 @@ El conjunt format pels vectors tangents a una funció en un punt s'anomena el ==
 
 A partir d'ara considerarem que totes les funcions tenen totes les derivades contínues que calguin.
 
-```ad-def
+````ad-def
 title: Punt *regular*
 
 Sigui $h:\mathbb{R}^n\to \mathbb{R}^m$, un punt $x_{0}$ tal que $h(x_{0})=0$ és un ==punt regular== de l'equació si
 $$ \nabla h_{1}(x_{0}),\dots,\nabla h_{m}(x_{0}) $$
 son vectors linealment independents.
-```
 
 ```ad-prop
 Sigui $x_{0}$ un punt regular de $h(x)=0$.
@@ -224,9 +219,10 @@ Sigui $x_{0}$ un punt regular de $h(x)=0$.
 Aleshores el con tangent al conjunt $\{x \mid h(x)=0\}$ en $x_{0}$ és
 $$ \{v\in \mathbb{R}^n \mid \nabla h(x_{0})\cdot v=0\} \,.$$
 ```
+````
 
-```ad-teor
-title: **Condicions necessàries** d'un **mínim local**
+````ad-teor
+title: **Condicions ** d'un **mínim local**
 
 Sigui
 $$ S:\begin{Bmatrix}
@@ -235,10 +231,15 @@ h_{1}(x)=0 & g_{1}(x)\leq 0 \\
 h_{m}(x)=0 & g_{r}(x)\leq0
 \end{Bmatrix} \,.$$
 
-Si $x_{0}$ és un mínim local de $f$ en $S$ i és un punt regular de les restriccions actives en $x_{0}$, aleshores existeixen $\lambda=(\lambda_{1},\dots,\lambda_{m})$ i $\mu=(\mu_{1},\dots,\mu_{r})$ tals que:
+Si $x_{0}$ és un mínim local de $f$ en $S$ i és un punt regular de les restriccions actives en $x_{0}$ :
 
-1. ~={green}Condicions de KKT:=~ $$ \begin{gather}
-\nabla f(x_{0})+\lambda \cdot \nabla h(x_{0})+\mu \nabla g(x_{0}) = 0 \\
+```ad-teor
+title: **Necessàries**
+
+Aleshores existeixen $\lambda=(\lambda_{1},\dots,\lambda_{m})$ i $\mu=(\mu_{1},\dots,\mu_{r})$ tals que:
+
+1. ~={green}Condicions de Karush-Kuhn-Tucker (KKT):=~ $$ \begin{gather}
+\nabla f(x_{0})+\lambda \cdot \nabla h(x_{0})+\mu \cdot\nabla g(x_{0}) = 0 \\
 \mu_{i}\,g_{i}(x_{0})=0 \quad \forall i\in \{1,\dots,r\}
 \end{gather} $$
 
@@ -246,8 +247,24 @@ Si $x_{0}$ és un mínim local de $f$ en $S$ i és un punt regular de les restri
 $$ M(x_{0}) = \nabla^{2}f(x_{0})+\sum_{i=1}^m \lambda_{i} \cdot \nabla^{2}h_{i}(x_{0}) + \sum_{i=1}^r \mu_{i} \cdot \nabla^{2}g_{i}(x_{0}) $$
 compleix $v\cdot M(x_{0})\cdot v\geq0$ per tot $v$ de l'espai tangent a les restriccions actives en $x_{0}$ .
 
+---
+
 Les constants $\lambda_{1},\dots,\lambda_{m}$ s'anomenen ==multiplicadors de Lagrande== i $\mu_{1},\dots,\mu_{r}$ es diuen ==multiplicadors de Karush-Kuhn-Tucker==.
 ```
+
+```ad-teor
+title: **Suficients**
+
+Donat $x\in S$, si existeixen $\lambda=(\lambda_{1},\dots,\lambda_{m})$ i $\mu=(\mu_{1},\dots,\mu_{r})$ tal que
++ $\begin{cases} \,\nabla f(x)+\lambda \cdot \nabla h(x)+\mu \cdot \nabla g(x) = 0 \\[0.4em] \,\mu_{i}\,g_{i}(x)=0 \quad \forall i\in \{1,\dots,r\} \end{cases}$
++ La matriu
+$$ M(x) = \nabla^{2}f(x)+\sum_{i=1}^m \lambda_{i} \cdot \nabla^{2}h_{i}(x) + \sum_{i=1}^r \mu_{i} \cdot \nabla^{2}g_{i}(x) $$
+compleix $v\cdot M(x)\cdot v>0$ per tot $v\neq0$ del subespai
+$$ \{v \mid \nabla h(x)\cdot v=0 \,;\, \nabla g_{i}(x)\cdot v=0 \,\,\, \forall i \text{ tal que } g_{i}(x)=0 \text{ i } \mu_{i}>0\} \,,$$
+
+aleshores $x$ és mínim local (estricte) de $f$ en $S$.
+```
+````
 
 
 
@@ -348,14 +365,15 @@ Si volem una tolerància d'error de $\pm\varepsilon$ haurem d'agafar $N-1$ punts
 $$ F_{N} > \frac{b-a}{\varepsilon} \,.$$
 ```
 
+
 ###### **Raó àuria**
 
 Consisteix en agafar tots els factors
 $$ r_{k}=\varphi=\frac{-1+\sqrt{5}}{2} \,.$$
 
-No és el mètode més òptim per reduir l'interval, però és més senzill i no cal saber en quants punts podem avaluar la nostra funció.
-
 Amb aquest mètode reduïm l'interval per un factor de $\varphi$ a cada iteració.
+
+No és el mètode més òptim per reduir l'interval, però és més senzill i no cal saber en quants punts podem avaluar la nostra funció.
 
 
 ---

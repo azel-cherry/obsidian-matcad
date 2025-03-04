@@ -319,6 +319,94 @@ $$ \lim_{r\to1^-} \sum_{n\geq0} a_{n} r^n (z_{0}-b)^n = \sum_{n\geq0} a_{n} (z_{
 ```
 
 
+## **Derivació** complexa
+
+#### Funcions **holomorfes**
+
+Sigui $\Omega \subset \mathbb{C}$ un [[#^c33d2a|obert]], $f:\Omega\to \mathbb{C}$ i $z_{0}\in\Omega$ .
+
+Diem que $f$ és ==holomorfa== (o $\mathbb{C}$-derivable) en $z_{0}$ si existeix
+$$ \boldsymbol{f'(z)} := \lim_{z\to z_{0}} \frac{f(z)-f(z_{0})}{z-z_{0}} = \lim_{h\to0} \frac{f(z_{0}+h)-f(z_{0})}{h} \,.$$
+
+```ad-def
+title: Funció *entera*
+
+Si $f$ és holomorfa en tot $z_{0}\in\Omega$, diem que $f$ és una ==funció entera== i escrivim $f\in H(\Omega)$ .
+```
+
+```ad-not
+title: Notació
+
++ $\displaystyle g(z) = o(z) \,\,\iff \lim_{z\to0} \frac{g(z)}{z}=0$
++ $\displaystyle g(z) = \mathcal{O}(z) \iff \limsup_{z\to0} \frac{g(z)}{z}<+\infty$
+```
+
+````ad-prop
+title: **Propietats** de les funcions holomorfes
+
++ $f$ holomorfa en $z_{0} \implies f$ contínua en $z_{0}$
++ $f$ i $g$ holomorfes en $z_{0} \implies f+g$ i $f\cdot g$ holomorfes en $z_{0}$ amb
+$$ \begin{align}
+(f+g)'(z_{0}) &= f'(z_{0}) + g'(z_{0}) \\[0.5em]
+(f\cdot g)'(z_{0}) &= f'(z_{0})\,g(z_{0}) + f(z_{0})\,g'(z_{0})
+\end{align} $$
++ $f$ holomorfa en $z_{0}$ amb $f'(z_{0})\neq 0 \implies f^{-1}$ holomorfa en $z_{0}$ amb 
+$$ (f^{-1})'(z_{0}) = \frac{-f'(z_{0})}{(f(z_{0}))^{2}} $$
++ Siguin $\Omega,G\subset \mathbb{C}$ oberts, i $f:G\to \mathbb{C}$ i $g:\Omega\to \mathbb{C}$ amb $f(G)\subset\Omega$ :
+	+ ~={green}Regla de la cadena.=~ Si $f$ és holomorfa en $z_{0}$ i $g$ és holomorfa en $f(z_{0})$, aleshores $g\circ f$ és  holomorfa en $z_{0}$ amb $$ (g\circ f)'(z_{0}) = g'(f(z_{0}))\cdot f'(z_{0}) \,.$$
+	+ ~={green}Derivada de la inversa.=~ Si es compleix $$ g(f(z))=z $$ i $g$ és holomorfa en $\Omega$ i $g'(f(z))\neq 0$ per tot $z\in\Omega$, aleshors $f$ és holomorfa en $G$ amb $$ f'(z) = \frac{1}{g'(f(z))} \,.$$
++ ~={green}Derivada del logaritme.=~ Qualsevol branca contínua del logaritme és holomorfa, amb $$ \mathcal{L}'(z) = \frac{1}{z} $$
+
+```ad-not
+Si, donat $\alpha\in \mathbb{R}$, considerem la banda horitzontal oberta
+$$ B_{\alpha} = \{ z\in \mathbb{C} \mid \mathrm{Im}(z)\in(\alpha-\pi,\,\alpha+\pi) \} \,,$$
+aleshores la funció exponencial complexa és biholomorfa entre $B_{\alpha}$ i $\mathbb{C}\setminus e^{i\alpha}(-\infty,0]$ .
+```
+````
+
+
+#### Equacions de **Cauchy-Riemann**
+
+Una funció de variable complexa $f:\Omega \subset \mathbb{C}\to \mathbb{C}$ la podem interpretar com una funció:
+$$ \begin{align}
+f: \Omega \subset \mathbb{R}^{2} &\to \mathbb{R}^{2} \\
+(x,y) &\mapsto (u(x,y),v(x,y))
+\end{align} $$
+
+````ad-def
+title: Derivades de *Wirtinger*
+
+Sigui $z=x+iy$, les ==derivades de Wirtinger== son els operadors diferencials:
+1. $\displaystyle\frac{\partial}{\partial z}=\frac{1}{2}\left( \frac{\partial}{\partial x}-i \frac{\partial}{\partial y} \right)$
+2. $\displaystyle\frac{\partial}{\partial z}=\frac{1}{2}\left( \frac{\partial}{\partial x}+i \frac{\partial}{\partial y} \right)$
+
+```ad-not
+title: Notació
++ $\displaystyle\partial f = \partial_{z}f = \frac{\partial f}{\partial z}$ 
++ $\displaystyle\overline{\partial} f = \partial_{\overline{z}}f = \frac{\partial f}{\partial \overline{z}}$ 
+```
+````
+
+```ad-teor
+Siguin $f:\Omega \subset \mathbb{C}\to\mathbb{C}$ i $z_{0}=x_{0}+iy_{0}$ tal que
+$$ f(x+iy) = u(x+yi) + iv(x+iy) \,.$$
+Son equivalents:
++ $f$ és holomorfa en $z_{0}$ amb $f'(z_{0})=a+ic$
++ $f$ interpretada com a funció $\mathbb{R}^{2}\to \mathbb{R}^{2}$ és $\mathbb{R}$-diferenciable en $(x_{0},y_{0})$ amb
+$$ Df(x_{0},y_{0}) = \begin{pmatrix}
+a & -c \\
+c & a
+\end{pmatrix} \,,$$
+és a dir, $f$ compleix les ==equacions de Cauchy-Riemann==:
+$$ \begin{cases}
+\, \partial u_{x} = \partial v_{y} \\
+\, \partial u_{y} = -\partial v_{x}
+\end{cases} $$
+o, equivalentment, $\overline{\partial}f(z_{0})=0$ .
+```
+
+
+---
 ## Apèndix
 
 ```ad-def
@@ -338,3 +426,6 @@ title: Topologia
 		+ $\gamma(1)=y$
 	+ ~={green}Domini.=~ $A$ obert i connex
 ```
+
+^c33d2a
+
