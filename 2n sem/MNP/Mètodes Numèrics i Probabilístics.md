@@ -7,7 +7,6 @@ title: *Interval d'interpolació*
 
 Interval més petit que conté $x,x_{0},\dots,x_{m}$.
 ```
-
 ^0ea908
 
 ```ad-prop
