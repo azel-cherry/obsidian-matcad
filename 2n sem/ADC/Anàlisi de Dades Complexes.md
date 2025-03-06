@@ -198,6 +198,21 @@ Considerem una funció lineal dels paràmetres $l^T\beta$ .
 ---
 #### **Test $\boldsymbol t$** generalitzat
 
+Considerem la hipòtesis
+$$ H_{0}:\, l^T\beta = 0 \,,$$ 
+amb $\varphi^{T}y$ el millor estimador de $l^{T}\beta$ , és a dir $\varphi^{T}=l^{T}(X^{T}X)^{-1}X^{T}$.
+
+Sigui
+$$ T = \frac{\varphi^{T}y}{\widehat{\sigma}\sqrt{\varphi^{T}\varphi}} \sim t_{n-m} \,,$$
+rebutjarem $H_{0}$ si
+$$ \boxed{\,\lvert T \rvert  > t_{1-\frac{\alpha}{2},\,n-m}\,} \,.$$
+
+```ad-prop
+title: Interval de **confiança**
+
+
+$$ IC_{\alpha}(l^{T}\beta) = \left( l^{T}\widehat{\beta} \,\pm\, t_{1-\frac{\alpha}{2},\,n-m}\, \widehat{\sigma} \,\sqrt{l^{T}\,(X^{T}X)^{-1}\,l} \right) $$
+```
 
 
 ---
