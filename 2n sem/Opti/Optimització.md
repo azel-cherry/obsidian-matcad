@@ -267,6 +267,13 @@ aleshores $x$ és mínim local (estricte) de $f$ en $S$.
 ````
 
 
+#### **Extrems** en $\mathbb{R}$
+
+```ad-prop
+Sigui $f:[a,b]\to \mathbb{R}$ de classe $C^{2}$.
+$$ f'(a)>0 \,\lor (f'(a)=0 \,\land\, f''(a)>0) \implies a \text{ és mínim local.} $$
+```
+
 
 ---
 ## Algorismes d'**optimització**

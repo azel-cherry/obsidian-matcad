@@ -214,7 +214,6 @@ per un $k\in \mathbb{Z}$ .
 ```
 
 
----
 #### **Sèries** de potències
 
 Una ==sèrie de potències== de nombres complexos és
@@ -319,6 +318,7 @@ $$ \lim_{r\to1^-} \sum_{n\geq0} a_{n} r^n (z_{0}-b)^n = \sum_{n\geq0} a_{n} (z_{
 ```
 
 
+---
 ## **Derivació** complexa
 
 #### Funcions **holomorfes**
@@ -521,7 +521,7 @@ title: **Derivació** d'una **sèrie** de **potències**
 
 Sigui
 $$ S(z) = \sum_{n\geq 0} a_{n}(z-b)^{n} $$
-una sèrie de potències amb radi de convergència $R> 0$.
+una sèrie de potències amb radi de convergència $R> 0$ .
 
 Aleshores la sèrie derivada
 $$ S'(z) = \sum_{n\geq 0} n\,a_{n}(z-b)^{n-1} $$
@@ -533,6 +533,38 @@ A més, $S$ és holomorfa en $|z-b|<R$ .
 Iterant el resultat del teorema, tenim que tota sèrie de potències és infinitament derivable en $|z-b|<R$ i totes les serves derivades son holomorfes en $|z-b|<R$ .
 ```
 `````
+
+````ad-teor
+Siguin $f$ i $g$ les sumes de les sèries de potències
+$$ \sum_{n\geq 0} a_{n}(z-a)^{n}, \quad \sum_{n\geq 0} b_{n}(z-a)^{n} $$
+en $D_{r}(a)$ respectivament, amb $r$ menor que ambdós radis de convergència.
+
+Aleshores la sèrie producte de Cauchy
+$$ \sum_{n=0}^{\infty}\left( \sum_{k=0} a_{k}\,b_{n-k} \right) (z-a)^{n} $$
+convergeix absolutament en $D_{r}(a)$ i la seva suma és $f\cdot g$.
+
+```ad-not
+En particular, el producte de dues funcions analítiques en un obert $\Omega \subset \mathbb{C}$ és analítica en $\Omega$ .
+```
+````
+
+
+#### Funcions **holomorfes importants**
+
+```ad-def
+title: **Exponencial** complexa
+```
+
+````ad-def
+title: Funcions **trigonomètriques**
+
+Sigui $z\in \mathbb{C}$, definim
+$$ \cos(z) = \frac{e^{iz}+e^{-iz}}{2}\,, \quad \sin(z) = \frac{e^{iz}-e^{-iz}}{2i} $$
+
+```ad-not
+Aquestes funcions ja no son fitades.
+```
+````
 
 
 ---
@@ -560,10 +592,15 @@ title: Topologia
 ```ad-prop
 title: Sèries
 
-+ ~={green}Sèrie geomètrica:=~ $\displaystyle\sum_{n=1}^{\infty} a_{1}r^{n} = \frac{a_{1}}{1-a}$ si $|r|<1$ 
++ ~={green}Sèrie geomètrica:=~ $\,\,\displaystyle\sum_{n=1}^{\infty} a_{1}r^{n} = \frac{a_{1}}{1-a}$ si $|r|<1$ 
 ```
 
 ```ad-prop
+title: Identitats
+
++ $\overline{e^{z}}=e^{\overline{z}}$~={faded}$\quad\forall z\in \mathbb{C}$=~
++ $|e^{i\theta}|=1$~={faded}$\quad\forall \theta\in \mathbb{R}$=~
+
 Si $z=x+iy$, aleshores:
 + $\displaystyle x = \frac{z+\overline{z}}{2}$
 + $\displaystyle y = \frac{z-\overline{z}}{2i}$
