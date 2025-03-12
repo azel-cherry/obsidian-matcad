@@ -257,7 +257,7 @@ Llavors existeix un únic $R\in[0,+\infty]$ anomenat ==radi de convergència== t
 + $|z-b|>R \implies$ la sèrie és ~={green}divergent=~
 
 A més,
-$$ R^{-1} = \limsup_{n\to\infty} \sqrt[n]{a_{n}} \,.$$
+$$ \boxed{\, \frac{1}{R} = \limsup_{n\to\infty} \sqrt[n]{a_{n}} \,} \,.$$
 ```
 ^3fc2ca
 
@@ -269,7 +269,7 @@ $$\sum_{n\geq0}a_{n}(z-b)^n$$
 una sèrie de potències de nombres complexos.
 
 Aleshores el seu [[#^3fc2ca | radi de convergència]] és
-$$ R = \boxed{\,\lim_{n\to\infty} \frac{|a_{n}|}{|a_{n+1}|}\,} \,.$$
+$$ \boxed{\, R = \lim_{n\to\infty} \frac{|a_{n}|}{|a_{n+1}|}\,} \,.$$
 ```
 
 
@@ -405,6 +405,135 @@ $$ \begin{cases}
 o, equivalentment, $\overline{\partial}f(z_{0})=0$ .
 ```
 
+```ad-prop
+title: Funció holomorfa **constant**
+
+Sigui $\Omega \subset \mathbb{C}$ un obert connex, amb $f\in H(\Omega)$ i $f'(z)=0$ per tot $z\in\Omega$ .
+
+Aleshores $f$ és **constant**.
+```
+
+```ad-not
+title: Efecte de la derivada
+
+Sigui $f$ holomorfa en $z_{0}$ amb $f'(z_{0})\neq 0$.
+
++ Les corbes de nivell de $u$ i $v$ son ortogonals.
++ En un entorn infinitessimal de $z_{0}$, $f(z)$ dilata les distàncies en un factor de $|f'(z_{0})|$: $$ |f(z)-f(z_{0})| \approx |f'(z_{0})|\cdot|z-z_{0}| \,,$$
+i gira els vectors que surten de $z_{0}$ en un angle $\text{Arg}(f'(z_{0}))$: $$ \text{Arg}(f(z)-f(z_{0})) \approx \text{Arg}(f'(z_{0}))+\text{Arg}(z-z_{0}) \,.$$
+```
+
+```ad-def
+title: Funció *conforme*
+
+Una funció $f$ és ==conforme== si l'angle entre dues corbes $\gamma_{1},\gamma_{2}$ que s'intersequen en el punt $z$ es preserva, incloent l'orientació.
+```
+
+
+#### **Càlcul** de derivades
+
+```ad-prop
+Siguin
+$$ \begin{align}
+P(z) &= \sum_{\substack{n,m\in \mathbb{N}\\ n+m\leq N}} a_{n,m}\,z^{n}\,\overline{z}^{m}, \\[0.5em]
+Q(z) &= \sum_{\substack{n,m\in \mathbb{N}\\ n+m\leq N}} b_{n,m}\,z^{n}\,\overline{z}^{m}
+\end{align} $$
+dos polinomis en variables $z,\overline{z}$.
+
+Aleshores
+$$ P=Q \iff a_{n,m}=b_{n,m} \quad \forall\,n,m \,.$$
+```
+
+````ad-prop
+Sigui
+$$ A = \begin{pmatrix}
+a & b \\
+c & d
+\end{pmatrix} $$
+una matriu de coeficients reals, i $f_{A}:\mathbb{R}^{2}\to \mathbb{R}^{2}$ definida per
+$$ f_{A}(z) = f_{A}(x,y) = A \cdot \begin{pmatrix}
+x \\
+y
+\end{pmatrix} $$
+amb $z=x+iy$ . Aleshores per tot $(x,y)\in \mathbb{R}^{2}$
+$$ f_{A}(x,y) = \frac{1}{2} ((\alpha-i\beta)z + (\alpha+i\beta)\overline{z}) \,,$$
+amb $\alpha=a+ic$ i $\beta=b+id$ .
+
+```ad-not
+title: Observació
+
+Donada una funció $f:\mathbb{C}\to \mathbb{C}$ diferenciable, aleshores en tot punt del domini $z_{0}$ i per tot vector $z\in \mathbb{C}$ tenim
+$$ Df_{z_{0}}(z) = \partial f(z_{0}) \cdot z + \overline{\partial}f(z_{0})\cdot \overline{z} \,.$$
+```
+````
+
+`````ad-prop
+title: **Regla de la cadena**
+
+Siguin $f$ i $g$ diferenciables en un obert, aleshores:
++ $\partial(f\circ g) = \partial f\,\partial g+\overline{\partial}f\,\overline{\overline{\partial}g}$
++ $\overline{\partial}(f\circ g) = \partial f\,\overline{\partial}g + \overline{\partial}f\,\overline{\partial g}$
+
+```ad-not
++ $\partial \overline{g}=\overline{\overline{\partial}g}$
++ $\overline{\partial}\overline{g} = \overline{\partial g}$
+```
+`````
+
+```ad-prop
+Siguin
+$$\begin{align}
+g = (g_{1},g_{2})&:\mathbb{C}\to \mathbb{C}\times \mathbb{C} \\
+f &:\mathbb{C}\times\mathbb{C}\to \mathbb{C}
+\end{align}$$
+funcions diferenciables, i siguin $(z,w)=(x_{1}+ix_{2},\,x_{2}+ix_{4})\sim(x_{1},x_{2},x_{3},x_{4})$ amb
+$$ \begin{align}
+\partial_{z}f = \frac{1}{2} \left( \frac{\partial f}{\partial x_{1}} - i \frac{\partial f}{\partial x_{2}} \right), \quad \partial_{\overline{z}}f = \frac{1}{2} \left( \frac{\partial f}{\partial x_{1}} + i \frac{\partial f}{\partial x_{2}} \right), \\
+\partial_{w}f = \frac{1}{2} \left( \frac{\partial f}{\partial x_{3}} - i \frac{\partial f}{\partial x_{4}} \right), \quad \partial_{\overline{w}}f = \frac{1}{2} \left( \frac{\partial f}{\partial x_{3}} + i \frac{\partial f}{\partial x_{4}} \right),
+\end{align} $$
+aleshores:
++ $\partial(f\circ g)=\partial_{z}f\,\partial g_{1}+\partial_{w}f\,\partial g_{2}+\partial_{\overline{z}}f\,\overline{\overline{\partial}g_{1}}+\partial_{\overline{w}}f\,\overline{\overline{\partial}g_{2}}$
++ $\overline{\partial}(f\circ g)=\partial_{z}f\,\overline{\partial} g_{1}+\partial_{w}f\,\overline{\partial} g_{2}+\partial_{\overline{z}}f\,\overline{\partial g_{1}}+\partial_{\overline{w}}f\,\overline{\partial g_{2}}$
+```
+
+```ad-prop
+Si $F:\mathbb{C}\to \mathbb{C}$ es pot expressar com $F(z)=f(z,\overline{z})$, amb
+$$ \begin{align}
+f : \mathbb{C}\times \mathbb{C} &\to \mathbb{C} \\
+(z,w) &\mapsto f(z,w)
+\end{align} $$
+holomorfa respecte $z$ i $w$, i $\partial_{\overline{z}}f=\partial_{\overline{w}}f=0$ .
+
+Aleshores
+$$ \partial F(z) = \frac{\partial f}{\partial z}(z,\overline{z}) \quad \text{i} \quad \overline{\partial}F(z)=\frac{\partial f}{\partial w}(z,\overline{z}) $$
+i les derivades $\partial_{z}f$ i $\partial_{w}f$ es poden calcular pels mètodes habituals.
+```
+
+
+#### Funcions **analítiques**
+
+Sigui $\Omega$ un obert, una funció $f:\Omega\to \mathbb{C}$ és una funció ==analítica== en $\Omega$ si per cada punt $a\in\Omega$ existeix un disc $D_{r}(a)\subset\Omega$ tal que $f$ és la suma d'una sèrie de potències
+$$\sum_{n=0}^{\infty}a_{n}(z-a)^{n}$$
+en $D_{r}(a)$.
+
+`````ad-teor
+title: **Derivació** d'una **sèrie** de **potències**
+
+Sigui
+$$ S(z) = \sum_{n\geq 0} a_{n}(z-b)^{n} $$
+una sèrie de potències amb radi de convergència $R> 0$.
+
+Aleshores la sèrie derivada
+$$ S'(z) = \sum_{n\geq 0} n\,a_{n}(z-b)^{n-1} $$
+té el mateix radi de convergència $R$ .
+
+A més, $S$ és holomorfa en $|z-b|<R$ .
+
+```ad-not
+Iterant el resultat del teorema, tenim que tota sèrie de potències és infinitament derivable en $|z-b|<R$ i totes les serves derivades son holomorfes en $|z-b|<R$ .
+```
+`````
+
 
 ---
 ## Apèndix
@@ -427,6 +556,12 @@ title: Topologia
 	+ ~={green}Domini.=~ $A$ obert i connex
 ```
 ^c33d2a
+
+```ad-prop
+title: Sèries
+
++ ~={green}Sèrie geomètrica:=~ $\displaystyle\sum_{n=1}^{\infty} a_{1}r^{n} = \frac{a_{1}}{1-a}$ si $|r|<1$ 
+```
 
 ```ad-prop
 Si $z=x+iy$, aleshores:
