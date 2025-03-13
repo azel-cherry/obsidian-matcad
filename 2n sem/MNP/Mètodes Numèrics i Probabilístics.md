@@ -262,15 +262,33 @@ title: Propietats
 + $\psi_{k}$ té $k$ zeros diferents
 ```
 
-```ad-met
-title: Trobar una família de polinomis ortogonals
+```ad-def
+title: Família de polinomis **estandaritzada**
 
-1. Comencem amb $\psi_{0}=A_{0}$ (lliure).
-2. Busquem $\psi_{1}$ de grau 1 tal que $\langle \psi_{1},\psi_{0} \rangle=0$
-3. Busquem $\psi_{2}$ de grau 2 tal que $\langle \psi_{2},\psi_{0} \rangle=0$ i $\langle \psi_{2},\psi_{1} \rangle=0$
-4. ...
+La ==família de polinomis ortogonals estandaritzada== es defineix com la família de polinomis ortogonals
++ respecte l'interval $[-1,1]$ ,
++ respecte la funció pes $w(x)=1$ ,
++ i que satisfan $\psi_{k}(x)=1 \quad \forall k\geq 0$ .
 ```
+
+````ad-met
+title: **Recurrència** dels polinomis ortogonals
+
+Podem calcular una família de polinomis ortogonals amb la fórmula
+$$ \psi_{k+1} = \frac{A_{k+1}}{A_{k}} ((x-\alpha_{k})\,\psi_{k}(x)-\alpha_{k-1}\,\psi_{k-1}(x)) \,,$$
+amb
+$$ \alpha_{k} = \frac{\langle\psi_{k},x\,\psi_{k}\rangle }{\langle \psi_{k},\psi_{k} \rangle } \quad\text{i}\quad \alpha_{k-1}=\frac{\langle \psi_{k},x\,\psi_{k-1} \rangle }{\langle \psi_{k-1},\psi_{k-1} \rangle }\,, $$
+i on els primers termes son
+$$ \psi_{0}=A_{0} \quad\text{i}\quad \psi_{1}=A_{1}\left( x-\frac{\langle \psi_{0},x\,\psi_{0} \rangle }{\langle \psi_{0},\psi_{0} \rangle } \right) \,.$$
+
+```ad-not
+Pels polinomis estandaritzats, es pot simplificar la fórmula:
+$$ \psi_{k+1}(x) = \frac{2k+1}{k+1}\,x\,\psi_{k}(x) - \frac{k}{k+1}\,\psi_{k-1}(x) \,,$$
+amb $\psi_{0}(x)=1$ i $\psi_{1}(x)=x$ .
+```
+````
 `````
+^0d3814
 
 Una ==fórmula d'integració Gaussiana== d'$m+1$ punts sobre l'interval $[a,b]$ associat a una família de polinomis ortogonals $\{ \psi_{0},\dots,\psi_{k} \}$ i respecte una funció $\omega:[a,b]\to \mathbb{R}_{+}$ és l'aproximació
 $$ \int_{a}^b f(x)\,\omega(x)\,dx \approx \int_{a}^b P(x,x_{0},\dots,x_{m},f)\,\omega(x)\,dx \,,$$
@@ -286,6 +304,116 @@ Una fórmula d'interpolació Gaussiana és exacta per tot polinomi de grau $\leq
 title: **Error**
 
 $$ |E_{m}| \leq \frac{f^{(2m+2)}(\xi)}{(2m+2)!} \int_{a}^{b} \omega(x)(x-x_{0})^{2}\dots(x-x_{m})^2\,dx $$
+```
+
+```ad-prop
+title: Càlcul dels **pesos**
+
+Els pesos $W_{k}$ satisfan
+$$ W_{k} = \frac{A_{m+1}}{A_{m}} \, \frac{\langle \psi_{m},\psi_{m} \rangle }{\psi'_{m+1}(x_{k})\,\psi_{m}(x_{k})} $$
+per $k=0,\dots,m$ .
+```
+
+
+###### Fórmula de **Gauss-Legendre**
+
+És la fórmula d'integració Gaussiana associada als [[#^0d3814 | polinomis ortogonals estàndards de Legendre]], és a dir, aplicada a l'interval $[-1,1]$ i amb la funció pes $w(x)=1$ :
+$$ \int_{-1}^{1} f(x)\,dx = \sum_{k=0}^{m} W_{k}\,f(x_{k}) \quad\text{amb}\quad W_{k}=\frac{2}{(1-x_{k}^{2})\,\psi'_{m+1}(x_{k})^{2}} \,.$$
+
+```ad-prop
+title: **Error**
+
+$$ |E_{m}| \leq \frac{2^{2m+3}((m+1)!)^{4}}{(2m+3)((2m+2)!)^{3}}\,f^{(2m+2)}(\xi) $$
+amb $\xi\in(-1,1)$.
+```
+
+
+###### Fórmula de **Gauss-Txebyshew**
+
+```ad-def
+title: Polinomis de Txebyshew
+
+Els ==polinomis de Txebyshew== estan definits per
+$$ T_{k}(x) = \cos(k \arccos(x)) \,,$$
+que venen determinats per la recurrència
+$$ T_{k+1}(x) = 2x\,T_{k}(x) - T_{k-1} \quad\text{amb}\quad T_{0}(x)=1\,,\,T_{1}(x)=x \,.$$
+```
+
+Es pot veure que aquests polinomis son una **família de polinomis ortogonals** respecte l'interval $[-1,1]$ i la funció pes
+$$ w(x) = \frac{1}{\sqrt{1-x^{2}}} \,,$$
+dels quals n'és molt fàcil calcular els zeros.
+
+La fórmula de Gauss-Txebyshew, doncs, és 
+$$ \int_{-1}^{1} f(x)\,\frac{1}{\sqrt{1-x^{2}}}\,dx \approx \sum_{k=0}^{m} W_{k}\,f(x_{k}) $$
+amb
+$$ x_{k} = \frac{\pi(1+2k)}{2m+2} \quad\text{i}\quad W_{k}=\frac{\pi}{m+1} \,.$$
+
+```ad-prop
+title: **Error**
+
+$$ |E_{m}| = \frac{\pi}{2^{2m+1}\,(2m+2)!}\,f^{(2m+2)}(\xi) $$
+amb $\xi\in(-1,1)$.
+```
+
+
+## Integrals **singulars**
+
+Les fórmules d'integració interpolatòria son per funcions contínues en intervals tancats. Quan la funció que volem integrar presenta singularitats, s'han de tractar prèviament.
+
+```ad-met
+title: Discontinuïtat **de salt**
+
+> Considerem $f$ amb una discontinuïtat de salt $c\in(a,b)$.
+
+Caldrà treballar els dos intervals $[a,c]$ i $[c,b]$ per separat:
+$$ I_{1}=\int_{a}^{c}f(x)\,dx\,, \quad I_{2}=\int_{c}^{b}f(x)\,dx $$
+```
+
+```ad-met
+title: Discontinuïtat **asimptòtica** en un extrem
+
+> Considerem $f$ de la forma $\displaystyle\frac{\phi(x)}{(x-a)^{\mu}}$, amb  $\mu\in[0,1)$ i $\phi(x)\in C^{1}$.
+
+Caldrà separar la integral:
+$$ \int_{a}^{b} \frac{\phi(x)}{(x-a)^{\mu}} = \int_{a}^{b} \frac{\phi(x)-\phi(a)}{(x-a)^{\mu}}\,dx + \int_{a}^{b} \frac{\phi(a)}{(x-a)^{\mu}}\,dx \,,$$
+on la segona integral es pot calcular de forma exacta, i la primera és contínua i per tant es pot calcular numèricament:
+$$ \frac{\phi(x)-\phi(a)}{(x-a)^{\mu}} = \phi'(\xi(x))(x-a)^{1-\mu} \,.$$
+```
+
+```ad-met
+title: Interval **no acotat**
+
+> Considerem la integral $\displaystyle\int_{a}^{\infty}f(x)\,dx \neq \infty$ .
+
+Donat un error $\delta$, caldrà trobar $c>a$ tal que
+$$ \int_{c}^{\infty}f(x)\,dx < \frac{\delta}{2} $$
+i calcular numèricament
+$$ I = \int_{a}^{c} f(x)\,dx $$
+amb un error menor a $\delta/2$ .
+```
+
+
+---
+## Mètodes de **Monte Carlo**
+
+Els mètodes de Monte Carlo permeten calcular certes quantitats de manera **probabilística**, i es basen en el següent enunciat:
+
+> *Si una quantitat $\mu$ es pot expressar com l'esperança d'una variable aleatòria $X$, aleshores podem aproximar $\mu$ si sabem generar realitzacions d'$X$.*
+
+```ad-teor
+title: Llei dels grans nombres
+
+Siguin $X_{1},X_{2},\dots$ variables aleatòries idènticament distribuïdes tal que $\text{E}(X_{i})=\mu$ per tot $i=1,2,\dots$.
+
+Aleshores per tot $\varepsilon>0$
+$$ \lim_{n\to\infty} P\left( \left\lvert \frac{1}{n} \sum_{i=1}^{n} X_{i}-\mu \right\rvert \geq\varepsilon \right) = 0 \,.$$
+
+---
+
+En general, si volem que
+$$ \mu\in(\widehat{\mu}_{n}-\varepsilon \,,\, \widehat{\mu}_{n}+\varepsilon) $$
+amb un grau de confiança d'$1-\alpha$, aleshores cal prendre $n$ prou gran tal que
+$$ P\left( \left\lvert \frac{1}{n} \sum_{i=1}^{n} X_{i}-\mu \right\rvert \geq\varepsilon \right) < \alpha \,.$$
 ```
 
 
