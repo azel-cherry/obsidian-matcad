@@ -176,9 +176,6 @@ $$ r_{AB} = \frac{\displaystyle\sum_{i=1}^n (a_{i}-\overline{a})^2(b_{i}-\overli
 `````
 
 
-
-
----
 #### Model de regressió lineal **clàssic**
 
 Considerem el mateix model que el [[#^bc941d | general]]
@@ -195,7 +192,6 @@ Considerem una funció lineal dels paràmetres $l^T\beta$ .
 ```
 
 
----
 #### **Test $\boldsymbol t$** generalitzat
 
 Considerem la hipòtesis
@@ -212,6 +208,26 @@ title: Interval de **confiança**
 
 
 $$ IC_{\alpha}(l^{T}\beta) = \left( l^{T}\widehat{\beta} \,\pm\, t_{1-\frac{\alpha}{2},\,n-m}\, \widehat{\sigma} \,\sqrt{l^{T}\,(X^{T}X)^{-1}\,l} \right) $$
+```
+
+
+#### **Test** $\boldsymbol F$ generalitzat
+
+Considerem la hipòtesis
+$$ H_{0}:\, L\beta = 0 \,,$$ 
+amb $\text{Rang}(L)=q$ i assumint que cada fila d'$L$ és una funció lineal estimable.
+
+```ad-teor
+Sigui
+$$ U = (L\widehat{\beta}-L\beta)^{T}\,(\sigma^{2}L(X^{T}X)^{-1}\,L^{T})^{-1}\,(L\widehat{\beta}-L\beta): $$
++ $U$ té distribució $\chi_{q}^{2}$ .
++ Si $L\beta=0$, l'estadístic
+	$$ F = \frac{(L\widehat{\beta})^{T}\,(L(X^{T}X)^{-1}\,L^{T})^{-1}\,(L\widehat{\beta})\,(n-m)}{q\cdot RSS} $$
+	té distribució $F_{1,\,n-m}$ .
++ En general,
+	$$ \text{E}\left( \frac{(L\widehat{\beta})^{T}B\,(L\widehat{\beta})}{q} \right) = \sigma^{2} + \frac{(L\beta)^{T}B\,(L\beta)}{q} $$
+	amb $B=(L(X^{T}X)^{-1}\,L^{T})^{-1}$.
+	
 ```
 
 

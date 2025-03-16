@@ -1,4 +1,4 @@
-## Teoria d'**extrems**
+## Teoria d'**extrems** en $\mathbb{R}^{n}$
 
 #### **Problema general** d'optimització
 
@@ -276,7 +276,7 @@ $$ f'(a)>0 \,\lor (f'(a)=0 \,\land\, f''(a)>0) \implies a \text{ és mínim loca
 
 
 ---
-## Algorismes d'**optimització**
+## Algorismes d'**optimització** en $\mathbb{R}$
 
 #### **Ordres** de **convergència**
 
@@ -293,7 +293,7 @@ Per $C\leq1$ :
 
 Consisteix en aproximar el mínim d'una funció $f:\mathbb{R}\to \mathbb{R}$ **iterativament** per 
 
-$$ x_{k+1} = x_{k} - \frac{f'(x_{k})}{f''(x_{k})} \,.$$
+$$ \boxed{\,x_{k+1} = x_{k} - \frac{f'(x_{k})}{f''(x_{k})}\,} \,.$$
 ^b8a461
 
 Aquest mètode no assegura torbar solució, però si ho fa és molt ràpid. 
@@ -316,7 +316,8 @@ $$ f''(x_{0})\neq 0 \implies x_{k} \text{ té convergència quadràtica.} $$
 
 Consisteix en aproximar el mínim d'una funció $f:\mathbb{R}\to \mathbb{R}$ **iterativament** per
 
-$$ x_{k+1} = x_{k}-f'(x_{k}) \frac{x_{k}-x_{k-1}}{f'(x_{k})-f'(x_{k-1})} \,.$$ ^6a8208
+$$ \boxed{\,x_{k+1} = x_{k}-f'(x_{k}) \frac{x_{k}-x_{k-1}}{f'(x_{k})-f'(x_{k-1})}\,} \,.$$
+^6a8208
 
 ```ad-prop
 Sigui $x_{0}$ tal que $f'(x_{0})=0$ i $f''(x_{0})\neq 0$, amb $f\in C^{3}$.
@@ -355,12 +356,12 @@ $$ p^{3}-p-1=0 \,.$$
 
 #### Mètodes de **Fibonacci** i de la **raó àuria**
 
-Suposem que sabem que hi ha un mínim en l'interval $[a,b]$ . Aquests mètodes consisteixen en reduir aquest interval al màxim.
+Suposem que sabem que hi ha un mínim en l'interval $[a,b]$ . Aquests mètodes consisteixen en **reduir aquest interval al màxim**.
 
 ###### **Fibonacci**
 
 Considerem que, a part dels extrems inicials, podem avaluar $f$ en $N$ punts. Aleshores els punts on hem de dividir l'interval son
-$$ r_{k} = \frac{F_{N-k}}{F_{N-k+1}} \,,$$
+$$ \boxed{\,r_{k} = \frac{F_{N-k}}{F_{N-k+1}}\,} \,,$$
 on $F_{n}$ és l'$n$-èssim terme de la successió de Fibonacci. 
 
 Amb aquest mètode reduïm l'interval per un factor de $\frac{1}{F_{N}}$ a cada iteració.
@@ -376,11 +377,141 @@ $$ F_{N} > \frac{b-a}{\varepsilon} \,.$$
 ###### **Raó àuria**
 
 Consisteix en agafar tots els factors
-$$ r_{k}=\varphi=\frac{-1+\sqrt{5}}{2} \,.$$
+$$ \boxed{\,r_{k}=\varphi=\frac{-1+\sqrt{5}}{2}\,} \,.$$
 
 Amb aquest mètode reduïm l'interval per un factor de $\varphi$ a cada iteració.
 
 No és el mètode més òptim per reduir l'interval, però és més senzill i no cal saber en quants punts podem avaluar la nostra funció.
+
+
+---
+## Optimització **sense restriccions** en $\mathbb{R}^{n}$
+
+En aquest cas les condicions KKT es redueixen a
+$$ \begin{cases}
+\displaystyle\frac{\partial f}{\partial x_{1}} (x_{1},\dots,x_{n}) = 0 \\
+\quad\vdots \\
+\displaystyle\frac{\partial f}{\partial x_{n}} (x_{1},\dots,x_{n}) = 0
+\end{cases} $$
+i les de segon ordre a que $\nabla^{2}f(x_{0})$ sigui definida positiva.
+
+
+#### Mètode de **Newton**
+
+Es fa servir la successió
+$$ \boxed{\,x_{k+1} = x_{k} - (\nabla^{2}f(x_{k}))^{-1}\,\nabla f(x_{k})\,} \,.$$
+
+````ad-prop
+Sigui $f:\mathbb{R}^{n}\to \mathbb{R}$ de classe $C^{3}$, amb $x_{0}$ un punt tal que $\nabla f(x_{0})=0$ i $\nabla^{2}f(x_{0})$ és definida positiva.
+
+Aleshores existeix $\delta>0$ tal que
+$$ ||x_{1}-x_{0}||<\delta \implies \{x_{k}\}_{k}\to x_{0} \,.$$
+
+```ad-not
+Es dedueix que la convergència és quadràtica
+$$ \frac{||x_{k+1}-x_{0}||}{||x_{k}-x_{0}||^{2}} \leq C $$
+on $C$ és proporcional al *vap* més gran de $(\nabla^{2}f(x_{0}))^{-1}$. 
+
+Si la matriu $\nabla^{2}f(x_{0})$ no és invertible, la convergència no serà quadràtica si n'hi ha.
+```
+````
+
+Aquest mètode, però, té un procediment costós i numèricament problematic.
+
+
+---
+
+Considerem el mètode iteratiu genèric
+$$ x_{k+1} = x_{k} - B_{k}^{-1}\,\nabla f(x_{k}) \,.$$
+
+```ad-prop
+Sigui $B_{k}$ una matriu definida positiva,
+$$ d_{k} := -B_{k}^{-1} \,\nabla f(x_{k}) $$
+és una direcció de descens.
+```
+
+
+#### Mètode del **gradient** (*steepest descent*)
+
+Consisteix en agafar $B_{k}=I$, és a dir:
+$$ \boxed{\,x_{k+1} = x_{k} -  \alpha_{k}\nabla f(x_{k})\,} \,,$$
+on $\alpha_{k}$ és un paràmetre que determina la longitud del pas que fem  a cada iteració, que serà l'$\alpha>0$ que minimitzi
+$$ \phi(\alpha) = f(x_{k}+\alpha\,d_{k}) \,.$$
+
+```ad-prop
+Cada direcció que s'obté del mètode anterior és ortogonal a l'anterior, és a dir
+$$ d_{k+1} \cdot d_{k} = 0 \quad \forall k\in \mathbb{N} \,.$$
+```
+
+Aquest mètode sempre convergeix a un punt de gradient nul, però pot fer-ho molt lentament.
+
+
+###### Cerca **lineal inexacta**
+
+Consisteix en buscar un valor per $\alpha_{k}$ prou bo a cada iteració però sense buscar gaire.
+
+`````ad-def
+title: Condicions de Wolfe
+
+Condicions que ha de comlir $\alpha_{k}$ a cada iteració:
+1. Agafant $\varepsilon$ petit (per exemple $\varepsilon=10^{-3}$):
+	$$\phi(\alpha_{k})\leq \phi(0)+\varepsilon\,\phi'(0)\,\alpha_{k}$$
+2. Amb $\varepsilon <\eta <0$ (per exemple $\eta=0.9$):
+	$$\phi'(\alpha_{k})\geq \eta\,\phi'(0)$$
+
+````ad-def
+title: Condicions de Wolfe **fortes**
+
+A més de les anteriors, afegim:
+
+3. Amb el mateix $\eta$ :
+	$$ \phi'(a_{k}) \leq -\eta\,\phi'(0) $$
+
+---
+
+Dit d'altra manera, tenim les següents condicions:
++ Agafant $\varepsilon$ petit (per exemple $\varepsilon=10^{-3}$):
+	$$\phi(\alpha_{k})\leq \phi(0)+\varepsilon\,\phi'(0)\,\alpha_{k}$$
++ Amb $\varepsilon <\eta <0$ (per exemple $\eta=0.9$):
+	$$ |\phi'(\alpha_{k})| \leq \eta\,|\phi'(0)| $$
+
+```ad-prop
+Existeix un inverval de valors $\alpha$ complint les 3 condicions de Wolfe.
+```
+````
+`````
+
+````ad-teor
+title: Teorema de **Zoutendijk**
+
+Si a cada iteració d'un algorisme d'optimització la direcció $d_{k}$ és de descens i $\alpha_{k}$ compleix les condicions de Wolfe,
+$$ \sum_{k=1}^{\infty} \cos^{2}(\theta_{k}) \cdot ||\nabla f(x_{k})||^{2} < \infty \,,$$
+amb $\theta_{k}$ l'angle entre $\nabla f(x_{k})$ i $d_{k}$, és a dir
+$$ \cos(\theta_{k}) = \frac{\nabla f(x_{k})\cdot d_{k}}{||\nabla f(x_{k})||\cdot||d_{k}||} \,.$$
+
+```ad-prop
+Si a més es compleix $\cos^{2}(\theta_{k})\geq\delta$ per algun $\delta>0$, aleshores
+$$ \lim_{k\to\infty} \nabla f(x_{k}) = 0 \,.$$
+```
+```ad-prop
+Si a més es compleix $\cos^{2}(\theta_{k_{n}})\geq\delta$ per algun $\delta>0$ i successió parcial $\{\theta_{k_{n}}\}_{n}$, aleshores
+$$ \lim_{n\to\infty} \nabla f(x_{k_{n}}) = 0 \,.$$
+```
+````
+
+A partir d'aquestes proposicions podem assegurar que aquest algorisme convergeix a un punt estacionari.
+
+```ad-met
+title: Trobar $\boldsymbol\alpha$
+
+1. Començem amb l'interval $[\alpha_{\text{min}},\alpha_{\text{max}}]=[0,+\infty)$ .
+2. Escollim $\alpha\in[\alpha_{\text{min}},\alpha_{\text{max}}]$ i comprovem si es compleixen les condicions.
+	+ Si no es compleix *Wolfe-1*, ens hem passat. Assignem $\boxed{\alpha_{\text{max}}=\alpha}$ .
+	+ Si no es compleix *Wolfe-2*, no estem prou a prop. Assignem $\boxed{\alpha_{\text{min}}=\alpha}$ .
+3. Assignem un nou $\alpha$, per exemple
+	$$ \alpha = \frac{\alpha_{\text{min}}+\alpha_{\text{max}}}{2} \,.$$
+4. Repetim els passos (2) i (3) fins que es compleixin totes les condicions.
+```
 
 
 ---
