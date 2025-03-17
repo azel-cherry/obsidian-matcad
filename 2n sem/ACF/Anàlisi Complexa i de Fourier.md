@@ -399,8 +399,8 @@ c & a
 \end{pmatrix} \,,$$
 és a dir, $f$ compleix les ==equacions de Cauchy-Riemann==:
 $$ \begin{cases}
-\, \partial u_{x} = \partial v_{y} \\
-\, \partial u_{y} = -\partial v_{x}
+\, \partial_{x}u = \partial_{y}v \\
+\, \partial_{y}u = -\partial_{x}v
 \end{cases} $$
 o, equivalentment, $\overline{\partial}f(z_{0})=0$ .
 ```
@@ -567,6 +567,152 @@ Aquestes funcions ja no son fitades.
 ````
 
 
+---
+## **Integrals de línia** i teoria local del **Cauchy**
+
+#### **Corbes**
+
+Sigui $\Omega \subset \mathbb{C}$ un obert.
+
+Una ==corba== en $\Omega$ és una aplicació
+$$\gamma:[a,b]\to\Omega$$
+contínua.
+
+`````ad-def
+title: Definicions bàsiques
+
++ Una corba és ==tancada== si $\gamma(a)=\gamma(b)$.
++ Una corba és ==simple== si $\gamma$ és injectiva.
++ Una corba $\gamma:[a,b]\to \mathbb{C}$ és de ==classe $C^{1}$== si $\gamma(t)=\gamma_{1}(t)+i\gamma_{2}(t)$ amb $\gamma_{1},\gamma_{2}\in C^{1}$.
++ Una corba és de ==classe $C^{1}$ a trossos== o un ==camí== si existeixen $a=t_{0}<t_{1}<\dots<t_{n}=b$ tal que $\gamma|_{[t_{k-1},t_{k}]}\in C^{1}$.
++ La corba ==inversa== de $\gamma$ és $\gamma^{-}:[a,b]\to\Omega$ amb $$\gamma^{-}(t)=\gamma(a+b-t)\,.$$
+
+```ad-not
+title: Notació
+
++ La ~={green}imatge=~ o recorregut de $\gamma$ és 
+	$$ \boldsymbol{\gamma*}=\gamma([a,b])\subset\Omega \,.$$
++ La ~={green}suma dels camins=~ $\gamma$ i $\eta$ és $\boldsymbol{\gamma \lor \eta}$ , i representa recórrer primer $\gamma$ i després $\eta$ .
+```
+`````
+
+`````ad-def
+title: *Reparametrització*
+
+Una ==reparametrització== d'una corba $\gamma:[a,b]\to\Omega$ és una corba $\eta:[c,d]\to\Omega$ tal que $\eta=\gamma \circ\varphi$, amb $\varphi:[a,b]\to[b,c]$ bijectiva.
+
+```ad-not
+En el cas dels camins, les reparametritzacions son de classe $C^{1}$ a trossos.
+```
+
+Els recorreguts de $\gamma$ i $\eta$ son iguals, és a dir, $\gamma*=\eta*$. Només canvia la velocitat en què es recorre.
+`````
+
+`````ad-def
+title: *Longitud* d'una corba
+
+La ==longitud== d'una corba $C^1$ és
+$$ L(\gamma) = \int_{a}^{b}|\gamma'(t)|\,dt \,.$$
+
+```ad-def
+title: *Longitud* d'un camí
+
+Si $\gamma$ és $C^{1}$ a trossos, la seva ==longitud== és
+$$ L(\gamma) = \sum_{k=1}^{n} \int_{t_{k-1}}^{t_{k}}|\gamma'(t)|\,dt \,.$$
+```
+`````
+
+`````ad-def
+title: Integral complexa
+
+Sigui $f:[a,b]\to \mathbb{C}$ integrable. Definim
+$$ \int_{a}^{b} f(t)\,dt = \int_{a}^{b}\mathrm{Re}(f(t))\,dt + i \int_{a}^{b}\mathrm{Im}(f(t))\,dt \,.$$
+
+```ad-prop
+title: Propietats
+
+1. La integral complexa és $\mathbb{C}$-lineal. Per tot $\alpha,\beta\in \mathbb{C}$,
+	$$ \int_{a}^{b} (\alpha\,f(t)+\beta\,g(t))\,dt = \alpha \int_{a}^{b}f(t)\,dt + \beta \int_{a}^{b} g(t)\,dt \,.$$
+2. Desigualtat triangular:
+	$$\left\lvert  \int_{a}^{b}f(t)\,dt  \right\rvert \leq \int_{a}^{b}|f(t)|\,dt$$
+```
+`````
+
+###### **Integració** sobre **corbes**
+
+Sigui $\Omega \subset \mathbb{C}$ un obert, $f:\Omega\to \mathbb{C}$ contínua i $\gamma:[a,b]\to \Omega$ de classe $C^{1}$. 
+
+La integral sobre la corba $\gamma$ és
+$$ \begin{align}
+\int_{\gamma} f(z)\,dz &= \int_{a}^{b} f(\gamma(t))\,\gamma'(t)\,dt \,,\\
+\int_{\gamma} f(z)\,|dz| &= \int_{a}^{b} f(\gamma(t))\,|\gamma'(t)|\,dt \,.
+\end{align} $$
+
+```ad-not
+title: Integral sobre un **camí**
+
+La integral sobre el camí $\gamma$ és
+$$ \begin{align}
+\int_{\gamma} f(z)\,dz &= \sum_{k=1}^{n} \int_{t_{k-1}}^{t_{k}} f(\gamma(t))\,\gamma'(t)\,dt \,,\\[0.5em]
+\int_{\gamma} f(z)\,|dz| &= \sum_{k=1}^{n} \int_{t_{k-1}}^{t_{k}} f(\gamma(t))\,|\gamma'(t)|\,dt\,.
+\end{align} $$
+```
+
+```ad-prop
+title: Propietats
+
++ Linealitat. Per tot $\lambda,\mu\in \mathbb{C}$
+	$$ \int_{\gamma}(\lambda f(z) + \mu g(z))\,dz = \lambda \int_{\gamma} f(z)\,dz + \mu \int_{\gamma}g(z)\,dz \,.$$
++ $\displaystyle\int_{\gamma^{-}}f(z)\,dz = -\int_{\gamma}f(z)\,dz$
++ Si $\gamma$ és un camí, aleshores
+	$$ \left\lvert  \int_{\gamma}f(z)\,dz \right\rvert \leq \int_{\gamma} |f(z)|\,|dz| = \sum_{k=1}^{n}\int_{t_{k-1}}^{t_{k}} |f(\gamma(t))|\,|\gamma'(t)|\,dt \,.$$
+	+ En particular, si $|f(z)|\leq M$ per tot $z\in \mathbb{C}$, aleshores $|\int_{\gamma}f(z)\,dz|\leq ML(\gamma)$.
++ Sigui $\eta$ una reparametrització de $\gamma$, aleshores
+	$$ \int_{\gamma} f(z)\,dz = \pm \int_{\eta}f(z)\,dz \,.$$
+```
+
+```ad-teor
+Sigui $\Omega \subset \mathbb{C}$ un obert i $f:\Omega\to \mathbb{C}$ contínua. Suposem que existeix $F$ primitiva holomorfa de $f$.
+
+Aleshores per tot camí $\gamma$ en $\Omega$
+$$ \int_{\gamma} f(z)\,dz = F(\gamma(b))-F(\gamma(a)) \,.$$
+```
+
+````ad-teor
+title: Teorema de **Cauchy-Goursat**
+
+Sigui $\Omega \subset \mathbb{C}$ un obert amb $p\in\Omega$ i $f\in C(\Omega)\cap H(\Omega\setminus \{p\})$ . Aleshores
+$$ \int_{\partial T} f(z)\,dz = 0 $$
+per tot triangle $T\subset\Omega$ .
+
+```ad-prop
+Sigui $\Omega \subset \mathbb{C}$ un obert i $f\in H(\Omega)$ . Aleshores
+$$ \int_{\partial T} f(z)\,dz = 0 $$
+per tot triangle $T\subset\Omega$ .
+```
+
+```ad-teor
+title: Teorema de Cauchy **per un disc**
+
+Sigui $D$ un disc obert i $f\in C(D)$ amb $f\in H(D\setminus \{p\})$, llavors
+$$ \int_{\gamma}f(z)\,dz = 0 $$
+per tot camí tancat $\gamma$ en $D$.
+```
+
+```ad-teor
+title: Teorema de Cauchy **per un obert convex**
+
+Sigui $\Omega \subset \mathbb{C}$ un obert convex i $f\in C(\Omega)\cap H(\Omega\setminus \{p\})$.
+
+Aleshores $f$ te primitiva holomorfa en $\Omega$ i
+$$ \int_{\gamma}f(z)\,dz = 0 $$
+per tot camí tancat $\gamma$ en $\Omega$ .
+```
+````
+
+#### Fórmula integral de **Cauchy**
+
+ 
 ---
 ## Apèndix
 
