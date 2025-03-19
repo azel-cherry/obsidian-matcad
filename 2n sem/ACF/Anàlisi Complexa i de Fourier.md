@@ -534,6 +534,8 @@ Iterant el resultat del teorema, tenim que tota sèrie de potències és infinit
 ```
 `````
 
+^ca0883
+
 ````ad-teor
 Siguin $f$ i $g$ les sumes de les sèries de potències
 $$ \sum_{n\geq 0} a_{n}(z-a)^{n}, \quad \sum_{n\geq 0} b_{n}(z-a)^{n} $$
@@ -710,7 +712,94 @@ per tot camí tancat $\gamma$ en $\Omega$ .
 ```
 ````
 
+
 #### Fórmula integral de **Cauchy**
+
+`````ad-teor
+title: **Fórmula integral de Cauchy** (FIC)
+
+Sigui $\Omega \subset \mathbb{C}$ un obert amb $\overline{D_{r}(a)}\subset\Omega$, i $f\in H(\Omega)$. Aleshores
+$$ f(z_{0}) = \frac{1}{2\pi i} \int_{\gamma_{r}} \frac{f(z)}{z-z_{0}}\,dz \,, \quad |z_{0}-a|<r\,, $$
+on $\gamma_{r}(t)=a+re^{it}$ per $0\leq t\leq 2\pi$ .
+
+```ad-prop
+Sigui $\Omega \subset \mathbb{C}$ un obert convex, $\gamma$ un camí tancat d'$\Omega$ i $f\in H(\Omega)$. Aleshores
+$$ \frac{1}{2\pi i} \int_{\gamma} \frac{f(z)}{z-z_{0}}\,dz = f_{0}\,\text{Ind}(\gamma,z_{0}) \,,$$
+on
+$$ \text{Ind}(\gamma,z_{0}) = \frac{1}{2\pi i} \int_{\gamma} \frac{1}{z-z_{0}}\,dz $$
+és l'índex de $\gamma$ respecte $z_{0}$.
+```
+
+```ad-prop
+title: **Propietat** de la **mitjana**
+
+Sigui $\Omega \subset \mathbb{C}$ un obert amb $\overline{D_{r}(a)}\subset\Omega$, i $f\in H(\Omega)$. Aleshores
+$$ f(a) = \frac{1}{2\pi} \int_{0}^{2\pi} f(a+re^{it})\,dt \,.$$
+```
+
+````ad-teor
+title: FIC **centrada per derivades**
+
+Sigui $\Omega \subset \mathbb{C}$ un obert amb $a\in\Omega$ i $r>0$ tal que $\overline{D_{r}(a)}\subset\Omega$, i $f\in H(\Omega)$. Aleshores
+$$ f^{(n)}(a) = \frac{n!}{2\pi i} \int_{r=|w-a|} \frac{f(w)}{(w-a)^{n+1}}\,dw \,.$$
+
+```ad-prop
+title: **Desigualtats** de Cauchy
+
+Suposant el mateix,
+$$ |f^{(n)}(a)| \leq \frac{n!\,M_{r}}{r^{n}} \,,$$
+amb $n\geq 0$ i $M_{r}=\sup_{r=|z-a|}|f(z)|$ .
+```
+````
+`````
+
+````ad-teor
+title: **Desenvolupament local** en **sèrie de potències**
+
+Sigui $\Omega \subset \mathbb{C}$, tota funció $f\in H(\Omega)$ és localment una sèrie de potències.
+
+Concretament, sigui $R_{a}=\text{dist}(a,\mathbb{C}\setminus\Omega)$, aleshores
+$$ f(z) = \sum_{n=0}^{\infty} a_{n}(z-a)^{n} \quad \forall\,|z-a|<R_{a} \,,$$
+on
+$$ a_{n} = \frac{1}{2\pi i} \int_{r=|w-a|} \frac{f(w)}{(w-a)^{n+1}}\,dw \quad \forall\,r<R_{a} \,,$$
+i el radi de convergència de la sèrie és $\geq R_{a}$ .
+
+```ad-prop
+Junt amb la [[#^ca0883 | derivació d'una sèrie de potències]], veiem:
+$$ f \text{ holomorfa en }\Omega \iff f \text{ analítica en }\Omega $$
+```
+````
+
+```ad-prop
+Sigui $\Omega \subset \mathbb{C}$ un obert i $f\in H(\Omega)$.
+
+Aleshores $f\in C^{\infty}(\Omega)$ i totes les seves derivades son holomorfes.
+```
+
+
+#### Teorema de **Liouville** i de l'**àlgebra**
+
+`````ad-teor
+title: Teorema de **Liouville**
+
+Tota funció entera i fitada és constant.
+
+```ad-prop
+Si $f$ és entera i $\mathrm{Re}(f)\geq 0$, llavors $f$ és constant.
+```
+`````
+
+`````ad-teor
+title: Teorema **fonamental de l'àlgebra**
+
+Sigui $P$ un polinomi no constant, hi ha $z_{0}\in \mathbb{C}$ tal que $P(z_{0})=0$ .
+
+```ad-prop
+Tot polinomi de grau $n$ té exactament $n$ arrels complexes (incloent multiplicitats).
+```
+`````
+
+
 
  
 ---

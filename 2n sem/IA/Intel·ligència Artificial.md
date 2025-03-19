@@ -1,5 +1,4 @@
-
-## **Representacions**
+## 0. **Representacions**
 
 Parts fonamentals:
 + ~={green}Lèxica.=~ Vocabulari, símbols permesos.
@@ -7,10 +6,12 @@ Parts fonamentals:
 + ~={green}Procedimental.=~ Conjunt de procediments per crear, modificar i accedir a descripcions.
 + ~={green}Semàntica.=~ Relació entre la representació i el que vol dir.
 
-#### **Arbre semàntic**
+#### 0.1. **Arbre semàntic**
 
 Representació que farem servir.
 
+``````col
+`````col-md
 ```ad-prop
 title: Lèxica
 + node (pare, fill, arrel, fulla)
@@ -22,6 +23,18 @@ title: Lèxica
 + funció de cost
 + funció heurística
 ```
+`````
+
+`````col-md
+```ad-prop
+title: Semàntica
+
+Depèn molt del problema. En general:
++ Node: estat del problema
++ Branca: canvi d'estat
+```
+`````
+``````
 
 ```ad-prop
 title: Estructural
@@ -49,25 +62,17 @@ title: Procedimental
 1. Generació dels fills d'un node donat:
 	+ ~={green}Expandir.=~ Específica per a cada problema
 	+ ~={green}Elimiar cicles.=~ Elimina camins amb cicles ~={faded}(passen dos cops pel mateix node)=~
-2. Estratègia:
+2. Estratègia o ordre en la generació:
 	+ ~={green}Cerca.=~ Construeix l'arbre fins a la solució fent servir una estratègia concreta.
-```
-
-```ad-prop
-title: Semàntica
-
-Depèn molt del problema. En general:
-+ Node: estat del problema
-+ Branca: canvi d'estat
 ```
 
 En el codi, això ho representarem com una llista amb tots els camins, que seran llistes de nodes.
 
 
 ---
-## Cerca **no informada**
+## 1. Cerca **no informada**
 
-#### Algorismes
+#### 1.1. Algorismes
 
 ```py title:"Base search algorithm"
 def search (root, objective):
@@ -94,7 +99,7 @@ Excepte la ~={green_low}cerca en profunditat limitada=~, les diferents estratèg
 | S'insereixen els nous camins `expanded` al **principi** de la llista `paths` (pila). | Es fa servir una versió de l'algorisme de cerca **recursiu**. | S'insereixen els nous camins `expanded` al **final** de la llista `paths` (cua). | S'insereixen els nous camins `expanded` ordenats per cost acumulat $g(n)$, de menor a major. |
 
 
-###### **Anàlisi** dels algorismes
+###### 1.1.1. **Anàlisi** dels algorismes
 
 Criteris:
 + ~={green}Complexitat en temps.=~ Número de nodes que s'obren en total.
@@ -115,11 +120,16 @@ $m \equiv$ profunditat de l'arbre
 
 
 ---
-## Cerca **informada**
+## 2. Cerca **informada**
 
+````col
+```col-md
 S'utilitza **informació heurística** específica per a cada problema per guiar la cerca, **reduint molt** el nombre de **nodes que cal explorar** per trobar una solució.
-
-+ ~={green}Funció heurística $h(n)$ .=~ Estima el cost d'arribar a solució donat un estat del problema.
+```
+```col-md
+~={green}Funció heurística $h(n)$ .=~ Estima el cost d'arribar a solució donat un estat del problema.
+```
+````
 
 ```ad-def
 title: *Admissibilitat*
@@ -129,7 +139,7 @@ Una heurística és ==admissible== si **no sobreestima el cost real**.
 ^d72e3c
 
 
-#### Algorismes
+#### 2.1. Algorismes
 
 La base d'aquests algorismes és [[#^e29571 | la mateixa]] que els algorismes de cerca no informada.
 
@@ -138,7 +148,7 @@ La base d'aquests algorismes és [[#^e29571 | la mateixa]] que els algorismes de
 + ~={green}Cerca A*.=~ S'insereixen els nous camins `expanded` a `paths` ordenats per cost acumulat i cost estimat segons $f(n)=g(n)+h(n)$.
 
 
-###### **Anàlisi** dels algorismes
+###### 2.1.1. **Anàlisi** dels algorismes
 
 | Estratègia $\boldsymbol\rightarrow$<br>Criteri $\boldsymbol\downarrow$ |  ~={green}GBFS=~   |         Cerca ~={green}A*=~         |
 | ---------------------------------------------------------------------- |:------------------:|:-----------------------------------:|
@@ -151,7 +161,7 @@ $b \equiv$ factor de ramificació
 $m \equiv$ profunditat de l'arbre
 
 
-#### Programació **dinàmica**
+#### 2.2. Programació **dinàmica**
 
 ```ad-def
 title: Camí redundant
@@ -174,8 +184,10 @@ def search (root, objective):
 ```
 
 
-#### **Propietats** de les **heurístiques**
+#### 2.3. **Propietats** de les **heurístiques**
 
+`````col
+````col-md
 ```ad-def
 title: *Factor de ramificació efectiu*
 
@@ -191,7 +203,8 @@ Aquest factor mesura la qualitat de la heurística. Idealment, volem
 $$ b* \to 1 \,,$$
 és a dir, l'heurística porta directament a la solució.
 ```
-
+````
+````col-md
 ````ad-def
 title: *Dominància*
 
@@ -209,6 +222,7 @@ Donat un conjunt d'heurístiques $h_{1},\dots,h_{k}$ tals que cap heurística do
 $$ h(n) = \max_{i}(h_{i}(n)) $$
 ```
 ````
+`````
 
 ```ad-prop
 title: Heurístiques que aprenen
@@ -220,4 +234,75 @@ $$ h(n) = c_{1}\,h_{1}(n) + \dots + c_{k}\,h_{k}(n) $$
 
 
 ---
-## Cerca **local**
+## 3. Cerca **local**
+
+Aquesta cerca no explora tot l'espai per trobar una solució, sinó que es **mou localment** per **millorar l'estat actual**. Això és útil en problemes on
++ **no coneixem l'estat objectiu**,
++ només es vol **optimitzar un criteri**, o
++ l'entorn és **dinàmic**, **continu** (no discret) o **no totalment observable**.
+
+|                                        Avantatges                                        |                                  Desavantatges                                  |
+|:----------------------------------------------------------------------------------------:|:-------------------------------------------------------------------------------:|
+| <ul><li>**complexitat en memòria baixa** (si no es busquen camins, només estats solució) | <ul><li>no es pot garantir **completesa**<li>no es pot garantir **optimalitat** |
+
+
+###### **Problemes** de la cerca local
+
+````col
+```col-md
++ ~={green}Màxims locals.=~ L'estat actual és millor que els seus fills, però no és la solució.
+
+![[Pasted image 20250319115917.png]]
+```
+```col-md
++ ~={green}Planures.=~ L'estat actual és idèntic als seus fills; prendre una decisió es dificulta.
+
+![[Pasted image 20250319120113.png]]
+```
+```col-md
++ ~={green}Crestes.=~ L'estat actual sembla un màxim local, existeix un únic fill que porta a la solució, i pot ser que no sigui generat.
+
+![[Pasted image 20250319120148.png]]
+```
+````
+
+
+
+
+#### 3.1. Algorismes
+
+~={green}Cerca local:=~ Cerca del màxim en el paisatge definit per la funció heurística.
+
+###### 3.1.1. **No coneixem** l'estat objectiu
+
+`````ad-prop
+title: **Hill-climbing**
+
+Expandeix **només el node** que estima que és **més proper a la solució** segons la funció heurísrica.
+
+1. Si no volem guardar el camí:
+	```py title:"Hill-climbing search"
+	def hill_climbing_search(initial,objective):
+		
+		current = initial
+		while current != objective:
+			expanded = expand(current)
+			best = max_h(expanded,h)
+			current = best
+		
+		return current
+	```
+
+2. Si volem guardar el camí, fem servir l'[[#^e29571 | algorisme base]] de la cerca no informada, on:
+	+ Després de `remove_cycles` farem `order_h(expanded,h)` que ordena els elements d'`expanded` segons `h` de més gran a més petit.
+	+ A `insert`, inserim `expanded` al davant de `paths`.
+`````
+
+
+###### 3.1.2. **Coneixem** l'estat objectiu
+
+```ad-prop
+title: **Steepest Ascent**
+
+
+```
