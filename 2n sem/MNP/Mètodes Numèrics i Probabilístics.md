@@ -400,20 +400,107 @@ Els mètodes de Monte Carlo permeten calcular certes quantitats de manera **prob
 
 > *Si una quantitat $\mu$ es pot expressar com l'esperança d'una variable aleatòria $X$, aleshores podem aproximar $\mu$ si sabem generar realitzacions d'$X$.*
 
-```ad-teor
-title: Llei dels grans nombres
+`````ad-teor
+title: Llei dels **grans nombres**
 
-Siguin $X_{1},X_{2},\dots$ variables aleatòries idènticament distribuïdes tal que $\text{E}(X_{i})=\mu$ per tot $i=1,2,\dots$.
+Siguin $X_{1},X_{2},\dots$ variables aleatòries idènticament distribuïdes tal que $\text{E}(X_{i})=\mu$ per tot $i\in \mathbb{N}$.
 
 Aleshores per tot $\varepsilon>0$
 $$ \lim_{n\to\infty} P\left( \left\lvert \frac{1}{n} \sum_{i=1}^{n} X_{i}-\mu \right\rvert \geq\varepsilon \right) = 0 \,.$$
 
----
-
-En general, si volem que
+```ad-prop
+En general, sigui $\mu_{n}$ la *v.a.*
+$$ \mu_{n}=\frac{1}{n}\sum_{i=1}^{n}X_{i} \,,$$
+i $\widehat{\mu}_{n}$ una realització de $\mu_{n}$ , si volem que
 $$ \mu\in(\widehat{\mu}_{n}-\varepsilon \,,\, \widehat{\mu}_{n}+\varepsilon) $$
 amb un grau de confiança d'$1-\alpha$, aleshores cal prendre $n$ prou gran tal que
 $$ P\left( \left\lvert \frac{1}{n} \sum_{i=1}^{n} X_{i}-\mu \right\rvert \geq\varepsilon \right) < \alpha \,.$$
+```
+`````
+
+````ad-teor
+title: Teorema **central del límit**
+
+Siguin $X_{1},X_{2},\dots$ variables aleatòries idènticament distribuides tal que $\text{E}(X_{i})=\mu$ i $\text{Var}(X_{i})=\sigma ^2$ per tot $i\in \mathbb{N}$, i sigui $\mu_{n}$ la *v.a.*
+$$ \mu_{n}=\frac{1}{n}\sum_{i=1}^{n}X_{i} \,.$$
+
+Aleshores
+$$ Z_{n} = \frac{\sqrt{n}}{\sigma}\,(\mu_{n}-\mu) $$
+convergeix a $Z\sim N(0,1)$. És a dir,
+$$ \lim_{n\to\infty}P(Z_{n}<z) = P(Z<z) = \int_{-\infty}^{z} \frac{1}{\sqrt{2\pi}}\,e^{- \frac{x^{2}}{2}}\,dx \,.$$
+
+```ad-not
+Això també es compleix refefinint
+$$ Z_{n} = \frac{\sqrt{n}}{\sigma_{n}}\,(\mu_{n}-\mu) \quad\text{amb}\quad \sigma_{n} = \frac{1}{n-1} \sum_{i=1}^{n}(X_{i}-\mu_{n})^{2} \,.$$
+```
+````
+
+````ad-prop
+title: **IC per $\boldsymbol\mu$**
+
+Sigui $z(\alpha)>0$ tal que $P(-z(\alpha)<Z<z(\alpha))=1-\alpha$, tenim
+$$ \mu \in \left( \widehat{\mu}_{n} \pm \frac{\widehat{\sigma}_{n}\,z(\alpha)}{\sqrt{n}} \right) $$
+amb un grau de confiança $1-\alpha$, on
+$$ \widehat{\mu}_{n}=\frac{1}{n}\sum_{i=1}^{n}x_{i} \quad\text{i}\quad \widehat{\sigma}_{n} = \frac{1}{n-1} \sum_{i=1}^{n}(x_{i}-\mu_{n})^{2} $$
+
+```ad-not
+Aquest IC és aproximat. Si $n$ no és prou gran, pot passar que es conclogui que $\mu=\mu_{n}$ amb una confiança del 100%.
+```
+
+```ad-met
+title: Calcular $n$
+
+Fixant $\varepsilon$ i $\alpha$, trobem el valor de $n$ per tal que l'IC de grau $1-\alpha$ sigui $\varepsilon$.
+
+1. Prenem $n_{0}$ arbitrari, i calculem $n_{0}$ realitzacions d'$X$ $x_{1},\dots,x_{n_{0}}$.
+
+2. Calculem
+	$$ \widehat{\mu}_{n_{0}}=\frac{1}{n_{0}}\sum_{i=1}^{n_{0}}x_{i} \quad\text{i}\quad \widehat{\sigma}_{n_{0}} = \frac{1}{n_{0}-1} \sum_{i=1}^{n_{0}}(x_{i}-\mu_{n_{0}})^{2} \,.$$
+
+3. Comprovem si
+	$$ \frac{\widehat{\sigma}_{n_{0}}\,z(\alpha)}{\sqrt{n_{0}}} < \varepsilon \,.$$
+	Si es compleix, hem acabat. Si no, continuem:
+
+4. Agafem un nou $n$
+	$$ n_{1} = \left\lceil  \left( \frac{\widehat{\sigma}_{n_{0}}\,z(\alpha)}{\varepsilon} \right)^{2} \right\rceil $$
+	i tornem al pas 2.
+```
+````
+
+
+#### **Reducció** de la **variància**
+
+L'**error** en el mètode de Monte Carlo es comporta com $\boldsymbol{\sigma/\sqrt{n}}$ per $n$ prou gran, per tant es pot reduir l'error **reduint la variància**.
+
+Això comporta **treballar amb altres *v.a.*s** que tinguin una variància menor.
+
+A partir d'ara ens centrarem en el problema de calcular la integral
+$$ \int_{0}^1 g(x)\,dx $$
+o, equivalentment, trobar l'esperança $\text{E}(Y)$ amb $Y=g(X)$, i $X\sim U(0,1)$. 
+
+
+###### **Mostreig d'importància**
+
+La idea és reescriure la mitjana de $g(X)$, on la densitat de $X$ s'anomena ==densitat nominal== $f_{X}$ , en termes d'una altra *v.a.* $\tilde{X}$, on la seva densitat $f_{\tilde{X}}$ s'anomena ==densitat d'importància==.
+
+Concretament, sigui $Y=g(X)$, prendrem
+$$ \tilde{Y} = \frac{g(\tilde{X})\,f_{X}(\tilde{X})}{f_{\tilde{X}}(\tilde{X})} \,,$$
+que compleix
++ $\text{E}(\tilde{Y})=\text{E}(Y):=\mu$
++ $\displaystyle\text{Var}(\tilde{Y})=\int_{-\infty}^{\infty}\left( \frac{g(x)f_{X}(x)-\mu f_{\tilde{X}}(x)}{f_{\tilde{X}}(x)} \right)^{2}f_{\tilde{X}}(x)\,dx$
+
+```ad-prop
+title: Densitat d'importància
+
+Si $g(x)$ ~={green}és positiva=~, aleshores la densitat d'importància òptima és
+$$ f_{\tilde{X}}(x) = \frac{g(x)f_{X}(x)}{\mu} \,,$$
+que té variància nul·la.
+
+---
+
+Si $g(x)$ ~={pink}no és positiva=~, aleshores la densitat òptima és
+$$ f_{\tilde{X}}(x) = \frac{|g(x)|f_{X}(x)}{\mu} \,,$$
+que no té variància nul·la.
 ```
 
 

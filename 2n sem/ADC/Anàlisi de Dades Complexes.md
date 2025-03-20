@@ -217,7 +217,7 @@ Considerem la hipòtesis
 $$ H_{0}:\, L\beta = 0 \,,$$ 
 amb $\text{Rang}(L)=q$ i assumint que cada fila d'$L$ és una funció lineal estimable.
 
-```ad-teor
+`````ad-teor
 Sigui
 $$ U = (L\widehat{\beta}-L\beta)^{T}\,(\sigma^{2}L(X^{T}X)^{-1}\,L^{T})^{-1}\,(L\widehat{\beta}-L\beta): $$
 + $U$ té distribució $\chi_{q}^{2}$ .
@@ -227,8 +227,32 @@ $$ U = (L\widehat{\beta}-L\beta)^{T}\,(\sigma^{2}L(X^{T}X)^{-1}\,L^{T})^{-1}\,(L
 + En general,
 	$$ \text{E}\left( \frac{(L\widehat{\beta})^{T}B\,(L\widehat{\beta})}{q} \right) = \sigma^{2} + \frac{(L\beta)^{T}B\,(L\beta)}{q} $$
 	amb $B=(L(X^{T}X)^{-1}\,L^{T})^{-1}$.
-	
+
+```ad-prop
+Sigui $Y$ un vector aleatori tal que $\text{E}(Y)=\mu$ i $\text{Var}(Y)=\sigma$, i sigui $B$ una matriu de constants. Aleshores
+$$ \text{E}(Y^TB\,Y) = (B\,\sigma)^{T} + \mu^{T}B\,\mu \,.$$
+
+
 ```
+
++ Fent servir aquesta proposició, tenim:
+	$$ \text{E}\left((L\widehat{\beta})^{T}\,(L(X^{T}X)^{-1}\,L^{T})^{-1}\,(L\widehat{\beta})\right) = q\sigma^{2}+(L\beta)^{T}B\,(L\beta) \,,$$
+	amb $B=(L(X^{T}X)^{-1}\,L^{T})^{-1}$.
+`````
+
+```ad-not
+title: Observacions
+
++ Si $\text{Rang}(L)=1$, el test $F$ generalitzat és equivalent al test $t$ generalitzat.
++ El numerador d'$F$ és un estimador no esbiaixat de $\sigma^{2}$ quan $H_{0}$ és cert; contrariament, és superior.
+	
+	El denominador d'$F$ és sempre un estimador no esbiaixat de $\sigma^{2}$.
+```
+
+Així doncs rebutjarem $H_{0}$ quan
+$$ F > F_{1-\alpha;\,q,\,n-m} \,.$$
+
+
 
 
 ---
