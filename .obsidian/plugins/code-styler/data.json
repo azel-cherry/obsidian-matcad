@@ -596,11 +596,11 @@
         "lineNumbers": true,
         "unwrapLines": true,
         "wrapLinesActive": false,
-        "curvature": 5
+        "curvature": 10
       },
       "gutter": {
         "highlight": true,
-        "activeLine": false
+        "activeLine": true
       },
       "header": {
         "title": {
@@ -624,10 +624,10 @@
           "displayTimestamp": true
         },
         "fontSize": 14,
-        "foldPlaceholder": ""
+        "foldPlaceholder": "Code"
       },
       "highlights": {
-        "activeCodeblockLine": false,
+        "activeCodeblockLine": true,
         "activeEditorLine": false
       },
       "inline": {
@@ -652,17 +652,17 @@
       "light": {
         "codeblock": {
           "backgroundColour": "#EAF4E8",
-          "textColour": "#83977F"
+          "textColour": "#566956"
         },
         "gutter": {
-          "backgroundColour": "#EAF4E8",
-          "textColour": "#CCDFC8",
-          "activeTextColour": "--text-muted"
+          "backgroundColour": "#D5E9D1A6",
+          "textColour": "#B4D5AE",
+          "activeTextColour": "#9FBCA5"
         },
         "header": {
           "backgroundColour": "#EAF4E8",
           "title": {
-            "textColour": "#BAD1B5"
+            "textColour": "#61845F"
           },
           "languageTag": {
             "backgroundColour": "--code-background",
@@ -695,7 +695,7 @@
       "dark": {
         "codeblock": {
           "backgroundColour": "#EAF4E8",
-          "textColour": "#83977F"
+          "textColour": "--code-normal"
         },
         "gutter": {
           "backgroundColour": "#EAF4E8",
@@ -705,7 +705,7 @@
         "header": {
           "backgroundColour": "#EAF4E8",
           "title": {
-            "textColour": "#BAD1B5"
+            "textColour": "--code-comment"
           },
           "languageTag": {
             "backgroundColour": "--code-background",

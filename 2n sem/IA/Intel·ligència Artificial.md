@@ -74,16 +74,16 @@ En el codi, això ho representarem com una llista amb tots els camins, que seran
 
 #### 1.1. Algorismes
 
-```py title:"Base search algorithm"
+```py title:"Search Algorithm (base)"
 def search (root, objective):
-
+	
 	paths = [[root]]
 	while paths[0][0]!=objective and paths!=[]:
 		head = paths[0]
 		expanded = expand(head)
 		remove_cycles(expanded)
 		paths = insert(expanded, paths[:-1])
-
+	
 	if paths!=[]:
 		return paths[0]
 	else:
@@ -175,10 +175,10 @@ Consisteix en elimilar els [[#^bf06e7 | camins redundants]] mitjançant una ~={g
 ```py title:"Dynamic programming"
 def search (root, objective):
 	...
-	while paths[0][0]!=objective and paths!=[]:
+	while paths[0][0] != objective and paths != []:
 		...
 		remove_cycles(expanded)
-		remove_redundant_paths(expanded,paths) <--
+		remove_redundant_paths(expanded,paths)  <---
 		paths = insert(expanded,paths[:-1])
 	...
 ```
@@ -276,15 +276,28 @@ L'estat actual sembla un màxim local, existeix un únic fill que porta a la sol
 
 ~={green}Cerca local:=~ Cerca del màxim en el paisatge definit per la funció heurística.
 
+```ad-prop
+title: Funció **EXPAND**
+
+En aquests algorismes, el que farà `expand` és generar punts propers al punt actual per després avaluar-los en funció de $h(n)$.
+
++ Si només expandim en una direcció per cada dimensió de $n$, en els dos sentits, el factor de ramificació serà
+	$$ b = 2\,d_{n} \,.$$
++ Si expandim totes les combinacions de totes les direccions anteriors (les "diagonals"), tindrem un factor de ramificació de
+	$$ b = 3^{d_{n}}-1 \,.$$
+
+on $d_{n}$ és el número de dimensions dels nodes.
+```
+
 ###### 3.1.1. **No coneixem** l'estat objectiu
 
 `````ad-prop
-title: **Hill-climbing**
+title: ***Hill-climbing***
 
 Expandeix **només el node** que estima que és **més proper a la solució** segons la funció heurísrica.
 
 1. Si no volem guardar el camí:
-	```py title:"Hill-climbing search"
+	```py title:"Hill-climbing Search"
 	def hill_climbing_search(initial,objective):
 		
 		current = initial
@@ -295,6 +308,7 @@ Expandeix **només el node** que estima que és **més proper a la solució** se
 		
 		return current
 	```
+	on `max_h()` retorna l'element que maximitza $h(n)$.
 
 2. Si volem guardar el camí, fem servir l'[[#^e29571 | algorisme base]] de la cerca no informada, on:
 	+ Després de `remove_cycles` farem `order_h(expanded,h)` que ordena els elements d'`expanded` segons `h` de més gran a més petit.
@@ -304,8 +318,140 @@ Expandeix **només el node** que estima que és **més proper a la solució** se
 
 ###### 3.1.2. **Coneixem** l'estat objectiu
 
-```ad-prop
-title: **Steepest Ascent**
+````ad-prop
+title: ***Steepest Ascent***
 
+Similar a *hill-climbing*, però sense haver de coneixer l'estat objectiu.
 
+```py title:"Steepest Ascent Search (bàsic)"
+def steepest_ascent_search(initial)
+	
+	successor = initial
+	while True:
+		current = successor
+		expanded = expand(current)
+		successor = max_h(expanded)
+	if h(current) >= h(successor): break
+	
+	return current
 ```
++ ~={green_low}(7)=~ `max_h()` retorna l'element que maximitza $h(n)$
+
+
+```py title:"Steepest Ascent Search (amb control de màxims locals)"
+def steepest_ascent_search(initial, max_iter, best_case)
+	
+	num_iter = 0
+	current = initial
+	while True:
+		
+		while True:                        |
+			expanded = expand(current)     |
+			successor = max_h(expanded)    | Steepest
+		if h(current) < h(successor):      | Ascent
+			current = successor            |
+		else:                              |
+			break                          |
+		
+		if h(current) > best_case:         | save best
+			best_case = h(current)         | local maxima
+			solution = current             | and go to
+		current = random_state()           | random state
+		
+		num_iter += 1
+		if num_iter == max_iter: break
+		
+	return brest_case, solution
+```
+
++ ~={green_low}(9)=~ `max_h()` retorna l'element que maximitza $h(n)$
++ ~={green_low}(1)=~ `best_case` estableix una cota inferior per la solució que volem trobar
+````
+
+^5bc1a1
+
+````ad-prop
+title: Cerca **tabú**
+
+La idea és **evitar cicles** guardant una llista amb els `k` nodes més recentment expandits.
+
+Es tracta del mateix algorisme que [[#^5bc1a1 | Steepest Ascent amb control de màxims]] amb 3 modificacions:
+
+```py title:"Taboo Search"
+def taboo_search(initial, max_iter, best_case, k):
+	
+	num_iter = 0
+	current = initial
+	taboo_list = []  <---
+	while True:
+		
+		while True:
+			expanded = expand(current)
+			successor = max_h(expanded)
+			if (
+				h(successor) > h(current) and
+				successor not in taboo_list  <---
+			):
+				current = successor
+			else:
+				break
+		
+		if h(current) > best_case:
+			best_case = h(current)
+		current = random_state()
+		
+		insert_taboo(current, taboo_list, k)  <---
+		
+		num_iter += 1
+		if num_iter == max_iter: break
+		
+	return brest_case
+```
+
++ ~={green_low}(23)=~ `insert_taboo` insereix `current` a `taboo_list` i elimina l'element més antic si la llargada de la llista és més gran que `k`.
+````
+
+````ad-prop
+title: Cerca ***Beam***
+
+Aquest algorisme **pararel·litza** l'expansió de diversos camins ascendents.
+
+```py title:"Beam Search"
+def beam_search(initial, max_iter, best_case, k)
+	
+	num_iter = 0
+	beam_list = [initial]
+	while True:
+		
+		while True:
+			successors = []
+			for state in beam_list:
+				expanded = expand(state)
+				for child in expanded:
+					if h(child) > h(state):
+						successors = insert_h(child, successors)
+			
+			beam_list = successors[:k]
+			
+			if h(beam_list[0]) > h(best_case):
+				best_case = beam_list[0]
+			
+			if beam_list = []:
+				break
+		
+		current = random_state()
+		
+		num_iter += 1
+		if num_iter == max_iter: break
+	
+	return best_case 
+```
+
++ ~={green_low}(13)=~ `insert_h()` insereix `child` a `successors` en ordre descendent segons $h(n)$ i eliminant repeticions
+````
+
+````ad-prop
+title: ***Simulated Annealing***
+
+
+````

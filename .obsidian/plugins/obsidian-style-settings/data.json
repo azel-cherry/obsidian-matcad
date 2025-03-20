@@ -1,4 +1,7 @@
 {
   "azel-puto@@hightlight-color": "#06274B",
-  "azel@@text-highlight-bg-rgb": "#AED08C"
+  "azel@@text-highlight-bg-rgb": "#AED08C",
+  "sidenote-callout@@sidenote-backgound": true,
+  "sidenote-callout@@top-sidenote-callout-title": false,
+  "sidenote-callout@@aside-width": 150
 }
