@@ -489,7 +489,7 @@ que compleix
 + $\text{E}(\tilde{Y})=\text{E}(Y):=\mu$
 + $\displaystyle\text{Var}(\tilde{Y})=\int_{-\infty}^{\infty}\left( \frac{g(x)f_{X}(x)-\mu f_{\tilde{X}}(x)}{f_{\tilde{X}}(x)} \right)^{2}f_{\tilde{X}}(x)\,dx$
 
-```ad-prop
+````ad-prop
 title: Densitat d'importància
 
 Si $g(x)$ ~={green}és positiva=~, aleshores la densitat d'importància òptima és
@@ -501,7 +501,18 @@ que té variància nul·la.
 Si $g(x)$ ~={pink}no és positiva=~, aleshores la densitat òptima és
 $$ f_{\tilde{X}}(x) = \frac{|g(x)|f_{X}(x)}{\mu} \,,$$
 que no té variància nul·la.
+
+```ad-not
+No podem conèixer aquesta densitat òptima ja que no coneixem $\mu$.
+
+No obstant, ens ajuda a determinar que hem d'aconseguir que
+$$ \begin{cases}
+\displaystyle\frac{g(x)f_{X}(x)}{f_{\tilde{X}}(x)} &\text{si }g(x)\text{ positiva} \\[0.6em]
+\displaystyle\frac{|g(x)|f_{X}(x)}{f_{\tilde{X}}(x)} &\text{si }g(x)\text{ no positiva}
+\end{cases} $$
+sigui tan constant com es pugui.
 ```
+````
 
 
 ---
