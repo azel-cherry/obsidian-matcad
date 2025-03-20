@@ -250,17 +250,20 @@ Aquesta cerca no explora tot l'espai per trobar una solució, sinó que es **mou
 
 ````col
 ```col-md
-+ ~={green}Màxims locals.=~ L'estat actual és millor que els seus fills, però no és la solució.
+~={green}Màxims locals.=~
+L'estat actual és millor que els seus fills, però no és la solució.
 
 ![[Pasted image 20250319115917.png]]
 ```
 ```col-md
-+ ~={green}Planures.=~ L'estat actual és idèntic als seus fills; prendre una decisió es dificulta.
+~={green}Planures.=~
+L'estat actual és idèntic als seus fills; prendre una decisió es dificulta.
 
 ![[Pasted image 20250319120113.png]]
 ```
 ```col-md
-+ ~={green}Crestes.=~ L'estat actual sembla un màxim local, existeix un únic fill que porta a la solució, i pot ser que no sigui generat.
+~={green}Crestes.=~
+L'estat actual sembla un màxim local, existeix un únic fill que porta a la solució, i pot ser que no sigui generat.
 
 ![[Pasted image 20250319120148.png]]
 ```
