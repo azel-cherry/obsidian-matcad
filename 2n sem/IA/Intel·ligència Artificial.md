@@ -1,14 +1,16 @@
 ## 0. **Representacions**
 
 Parts fonamentals:
-+ ~={green}Lèxica.=~ Vocabulari, símbols permesos.
++ ~={green}Lèxica.=~ Vocabulari/símbols permesos.
++ ~={green}Semàntica.=~ Relació entre la representació i el lèxic amb el que vol dir.
 + ~={green}Estructural.=~ Restriccions i regularitats entre els símbols.
 + ~={green}Procedimental.=~ Conjunt de procediments per crear, modificar i accedir a descripcions.
-+ ~={green}Semàntica.=~ Relació entre la representació i el que vol dir.
+
+A continuació les representacions que farem servir.
+
 
 #### 0.1. **Arbre semàntic**
-
-Representació que farem servir.
+^d864f0
 
 ``````col
 `````col-md
@@ -69,8 +71,22 @@ title: Procedimental
 En el codi, això ho representarem com una llista amb tots els camins, que seran llistes de nodes.
 
 
+#### 0.2. **Espai de característiques**
+
+| Lèxic                                                                                                                       | Semàntic                                                                                                                                                                 | Estructural                                                                                                                                                                                                      | Procedimental                                                                                                                                           |
+| --------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <ul><li>sistema de coordenades<li>eixos<li>punts<li>classes<li>partició de l'espai<li>funció de decisió<li>característiques | <ul><li>els **punts** representen objectes<li>les coordenades dels punts representen les seves **característiques**<li>una part de l'espai representa objectes semblants | <ul><li>els **punts** son vectors de tantes dimensions com l'espai<li>les **característiques** van associades a cada un dels eixos de l'espai<li>una **classe** ve donada per una part de la partició de l'espai | <ul><li>**extreure les característiques** que descriuen un objecte<li>**dividir l'espai** en una partició<li>**decidir a quina classe** pertany un punt | 
+
+^57fa41
+
+![[Screenshot 2025-03-21 110519.png | 250]]
+
+
 ---
 ## 1. Cerca **no informada**
+
+Per tots els algorismes de cerca ~={faded}(no informada, informada i local)=~ farem servir la representació d'[[#^d864f0 | arbre semàntic]].
+
 
 #### 1.1. Algorismes
 
@@ -453,5 +469,117 @@ def beam_search(initial, max_iter, best_case, k)
 ````ad-prop
 title: ***Simulated Annealing***
 
+Millora [[#^5bc1a1 | Steepest Ascent amb tractament de màxims locals]] basant-se en un procés de metal·lúrgia (*annealing*) que consisteix en escalfar i refredar lentament els materials per canviar les seves propietats físiques.
+1. selecciona l'estat següent aleatòriament
+2. mira si l'estat seleccionat millora l'heurística
+	+ si la millora, continua per aquest estat
+	+ si no, decideix continuar o no segons una probabilitat
 
+```ad-met
+title: Probabilitat de continuar
+
+Es tracta d'una funció exponencial que depèn de la **mida del pas enrere** i la **temperatura**, que va disminuïnt a mesura que avança l'algorisme.
+
+És a dir, la probabilitat de continuar va baixant a mesura que progressa l'algorisme.
+```
+
+```py title:"Simulated Annealing Search"
+def simulated_annealing_search(initial, max_iter, best_case):
+	
+	current = initial
+	for t in range(max_iter):     |
+	                              | annealing
+		temp = func(t)            | simulation
+		if temp == 0:             |
+			return best_case      |
+		
+		succesor = random_state(expand(current))
+		delta = h(successor) - h(current)
+		if delta > 0:
+			current = successor
+		elif random_num < e^(delta/temp):
+			current = successor
+		
+		if h(current) > h(best_case):
+			best_case = current
+```
++ `func()` és una funció decreixent tal que `temp` disminueix a mesura que creix `t`
++ `random_num()` retorna un número aleatori entre 0 i 1
 ````
+
+
+###### 3.1.3. **Anàlisi** dels algorismes
+
+| Estratègia $\boldsymbol\rightarrow$<br>Criteri $\boldsymbol\downarrow$ |  HC (bàsic)   | HC (guardant camins) | StAs (bàsic)  | StAs (màxims locals) |        CTabú         |            CBeam            |        SimAnn        |
+| ---------------------------------------------------------------------- |:-------------:|:--------------------:|:-------------:|:--------------------:|:--------------------:|:---------------------------:|:--------------------:|
+| **Temps**                                                              | $O(b\cdot m)$ |       $O(b^m)$       | $O(b\cdot m)$ | $O(i\cdot b\cdot m)$ | $O(i\cdot b\cdot m)$ | $O(i\cdot b\cdot m\cdot k)$ | $O(i\cdot b\cdot m)$ |
+| **Espai**                                                              |    $O(b)$     |    $O(b\cdot m)$     |    $O(b)$     |        $O(b)$        |        $O(b)$        |        $O(b\cdot k)$        |        $O(b)$        |
+| **Òptim**                                                              |      no       |          no          |      no       |          no          |          no          |             no              |          no          |
+| **Complet**                                                            |      no       |          sí          |      no       |          no          |          no          |             no              |          no          | 
+
+$b\equiv$ factor de ramificació
+$m\equiv$ profunditat de l'arbre
+$i\equiv$ `max_iter`
+
+
+---
+## 4. Reconeixement de **patrons**
+
+
+Donats diversos objectes, es tracta de cassificar-los segons les seves característiques.
+
+Per aquests algorismes farem servir la representació d'[[#^57fa41 | espai de característiques]].
+
+
+#### 4.1. Reconeixement **estadístic**
+
+```ad-def
+title: Conjunt d'**aprenentatge**
+
+El conjunt d'aprenentatge és la **mostra ja classificada** que necessitem per solucionar el problema, a partir del qual l'algorisme aprendrà.
+
+Aquesta mostra vindrà donada per la matriu
+$$ X = \begin{pmatrix}
+x_{1,1} & \dots & x_{1,d} \\
+\vdots & \ddots & \vdots \\
+x_{n,1} & \dots & x_{n,d}
+\end{pmatrix} \,,$$
+on $n$ és el **nombre de punts** que té la mostra i $d$ és el **nombre de característiques** (o la dimensió de l'espai).
+```
+^c6f4f9
+
+###### 4.1.1. **Definició** de l'**espai de característiques**
+
+1. Seleccionar les característiques ~={faded}(dependrà del problema)=~.
+2. Definir el [[#^c6f4f9 | conjunt d'aprenentatge]].
+3. Reduir la dimensió de l'espai a una observable (1D, 2D o 3D) mitjançant un [[#^a82854 | anàlisi de components principals]].
+
+```ad-met
+title: Anàlisi de components principals (PCA)
+
+A partir del conjunt d'aprenentatge $X$ de dimensió $n\times d_{1}$, retorna $E$ de dimensió $n\times d_{2}<d_{1}$, que serà el nou conjunt d'aprenentatge de menor dimensió.
+
+Passos a seguir:
+
+1. Construim la matriu de covariància
+	$$ R = \frac{1}{n-1} X^{T}X \,.$$
+2. Calculem els *vap*s $\lambda_{1}\geq\dots\geq\lambda_{d_{1}}$ i *vep*s $\vec{e_{1}},\dots,\vec{e_{d_{1}}}$ de $R$.
+3. La nova base serà $\vec{e_{1}},\dots,\vec{e_{d_{2}}}$. Apliquem el canvi de base
+	$$ E = \begin{pmatrix}
+\vec{e_{1}} \\
+\vdots \\
+\vec{e_{d_{2}}}
+\end{pmatrix} X \,.$$
+```
+^a82854
+
+
+###### 4.1.1. **Categorització**
+
+Consisteix en definir funcions de decisió a partir del [[#^c6f4f9 | conjunt d'aprenentatge]].
+
+```ad-prop
+title: Aprenentatge **supervisat**
+
+
+```

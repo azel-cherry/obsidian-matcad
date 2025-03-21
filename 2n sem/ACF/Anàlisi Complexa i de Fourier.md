@@ -256,7 +256,7 @@ Llavors existeix un únic $R\in[0,+\infty]$ anomenat ==radi de convergència== t
 + $|z-b|>R \implies$ la sèrie és ~={green}divergent=~
 
 A més,
-$$ \boxed{\, \frac{1}{R} = \limsup_{n\to\infty} \sqrt[n]{a_{n}} \,} \,.$$
+$$ \boxed{\, \frac{1}{R} = \limsup_{n\to\infty} \sqrt[n]{|a_{n}|} \,} \,.$$
 ```
 ^3fc2ca
 
@@ -268,7 +268,8 @@ $$\sum_{n\geq0}a_{n}(z-b)^n$$
 una sèrie de potències de nombres complexos.
 
 Aleshores el seu [[#^3fc2ca | radi de convergència]] és
-$$ \boxed{\, R = \lim_{n\to\infty} \frac{|a_{n}|}{|a_{n+1}|}\,} \,.$$
+$$ \boxed{\, R = \lim_{n\to\infty} \frac{|a_{n}|}{|a_{n+1}|}\,} \,,$$
+si el límit existeix.
 ```
 
 
@@ -327,11 +328,12 @@ Sigui $\Omega \subset \mathbb{C}$ un [[#^c33d2a|obert]], $f:\Omega\to \mathbb{C}
 
 Diem que $f$ és ==holomorfa== (o $\mathbb{C}$-derivable) en $z_{0}$ si existeix
 $$ \boldsymbol{f'(z)} := \lim_{z\to z_{0}} \frac{f(z)-f(z_{0})}{z-z_{0}} = \lim_{h\to0} \frac{f(z_{0}+h)-f(z_{0})}{h} \,.$$
+Si $f$ és holomorfa en tot $z\in\Omega$, escrivim $f\in H(\Omega)$ .
 
 ```ad-def
 title: Funció *entera*
 
-Si $f$ és holomorfa en tot $z_{0}\in\Omega$, diem que $f$ és una ==funció entera== i escrivim $f\in H(\Omega)$ .
+Si $f$ és holomorfa en tot $z_{0}\in \mathbb{C}$, diem que $f$ és una ==funció entera==.
 ```
 
 ```ad-not
@@ -378,7 +380,7 @@ title: Derivades de *Wirtinger*
 
 Sigui $z=x+iy$, les ==derivades de Wirtinger== son els operadors diferencials:
 1. $\displaystyle\frac{\partial}{\partial z}=\frac{1}{2}\left( \frac{\partial}{\partial x}-i \frac{\partial}{\partial y} \right)$
-2. $\displaystyle\frac{\partial}{\partial z}=\frac{1}{2}\left( \frac{\partial}{\partial x}+i \frac{\partial}{\partial y} \right)$
+2. $\displaystyle\frac{\partial}{\partial \overline{z}}=\frac{1}{2}\left( \frac{\partial}{\partial x}+i \frac{\partial}{\partial y} \right)$
 
 ```ad-not
 title: Notació
@@ -825,9 +827,19 @@ title: Topologia
 ^c33d2a
 
 ```ad-prop
-title: Sèries
+title: **Successions** importants
 
-+ ~={green}Sèrie geomètrica:=~ $\,\,\displaystyle\sum_{n=1}^{\infty} a_{1}r^{n} = \frac{a_{1}}{1-a}$ si $|r|<1$ 
++ ~={green}Successió geomètrica:=~ $\,\displaystyle a_{n+1}=r\,a_{n}$
+	+ $\displaystyle \sum_{i=m}^{n}a_{i} = \frac{a_{m}-a_{n+1}}{1-r}$
+	+ $\displaystyle\sum_{i=m}^{\infty}a_{i} = \frac{a_{m}}{1-r}$
+```
+
+```ad-prop
+title: **Sèries en $\mathbb{C}$** importants
+
++ $\displaystyle e^{z}=\sum_{n=0}^{\infty} \frac{z^{n}}{n!}$
++ $\displaystyle\sin(z) = \sum_{n=0}^{\infty} (-1)^{n}\frac{z^{2n+1}}{(2n+1)!}$
++ $\displaystyle\cos(z) = \sum_{n=0}^{\infty} (-1)^{n}\frac{z^{2n}}{(2n)!}$
 ```
 
 ```ad-prop

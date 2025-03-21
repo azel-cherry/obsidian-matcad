@@ -236,7 +236,7 @@ Si $x_{0}$ és un mínim local de $f$ en $S$ i és un punt regular de les restri
 ```ad-teor
 title: **Necessàries**
 
-Aleshores existeixen $\lambda=(\lambda_{1},\dots,\lambda_{m})$ i $\mu=(\mu_{1},\dots,\mu_{r})$ tals que:
+Aleshores existeixen $\lambda=(\lambda_{1},\dots,\lambda_{m})$ i $\mu=(\mu_{1},\dots,\mu_{r})\geq 0$ tals que:
 
 1. ~={green}Condicions de Karush-Kuhn-Tucker (KKT):=~ $$ \begin{gather}
 \nabla f(x_{0})+\lambda \cdot \nabla h(x_{0})+\mu \cdot\nabla g(x_{0}) = 0 \\
@@ -249,7 +249,7 @@ compleix $v\cdot M(x_{0})\cdot v\geq0$ per tot $v$ de l'espai tangent a les rest
 
 ---
 
-Les constants $\lambda_{1},\dots,\lambda_{m}$ s'anomenen ==multiplicadors de Lagrande== i $\mu_{1},\dots,\mu_{r}$ es diuen ==multiplicadors de Karush-Kuhn-Tucker==.
+Les constants $\lambda_{1},\dots,\lambda_{m}$ s'anomenen ==multiplicadors de Lagrange== i $\mu_{1},\dots,\mu_{r}$ es diuen ==multiplicadors de Karush-Kuhn-Tucker==.
 ```
 
 ```ad-teor
