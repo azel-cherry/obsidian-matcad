@@ -119,37 +119,8 @@
           "className": "ftc-color-default-faded"
         },
         {
-          "color": "#b3b3b3",
-          "id": "fadedd",
-          "keybind": "",
-          "italic": false,
-          "bold": false,
-          "cap_mode": {
-            "states": [
-              "normal",
-              "all_caps",
-              "small_caps"
-            ],
-            "state": "normal",
-            "index": 0
-          },
-          "line_mode": {
-            "states": [
-              "none",
-              "underline",
-              "overline",
-              "line-through"
-            ],
-            "state": "none",
-            "index": 0
-          },
-          "useCssColorVariable": false,
-          "colorVariable": "--color-base-00",
-          "className": "ftc-color-default-fadedd"
-        },
-        {
           "color": "#a1d3a1",
-          "id": "green_low",
+          "id": "green-low",
           "keybind": "",
           "italic": false,
           "bold": false,
@@ -174,11 +145,11 @@
           },
           "useCssColorVariable": false,
           "colorVariable": "--color-base-00",
-          "className": "ftc-color-default-green_low"
+          "className": "ftc-color-default-green-low"
         },
         {
           "color": "#eaa9a9",
-          "id": "pink_low",
+          "id": "pink-low",
           "keybind": "",
           "italic": false,
           "bold": false,
@@ -203,7 +174,7 @@
           },
           "useCssColorVariable": false,
           "colorVariable": "--color-base-00",
-          "className": "ftc-color-default-pink_low"
+          "className": "ftc-color-default-pink-low"
         }
       ],
       "name": "default"

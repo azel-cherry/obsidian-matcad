@@ -676,8 +676,8 @@
           "lineColour": "#D5E9D1"
         },
         "highlights": {
-          "activeCodeblockLineColour": "--color-base-30",
-          "activeEditorLineColour": "--color-base-20",
+          "activeCodeblockLineColour": "#E6EBE7",
+          "activeEditorLineColour": "#FF0000",
           "defaultColour": "--text-highlight-bg",
           "alternativeHighlights": {}
         },

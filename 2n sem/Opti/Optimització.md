@@ -63,10 +63,14 @@ Si $x\in\mathring{S}$, aleshores tot $d\in \mathbb{R}^n$ és una direcció facti
 ```
 ````
 
-```ad-teor
-title: **Condicions necessàries** d'un mínim local
+````ad-teor
+title: **Condicions** d'un **mínim local** (sense restriccions)
 
-Sigui $x_{0}\in S$ mínim local de $f\in C^{2}$.
+Sigui $f\in C^{2}$.
+```ad-teor
+title: **Necessàries**
+
+Sigui $x_{0}\in S$ mínim local de $f$.
 
 Per tota direcció factible $d$ en $x_{0}$ :
 + $\nabla f(x_{0})\cdot d\geq 0$
@@ -78,9 +82,9 @@ A més, si $x_{0}\in\mathring{S}$:
 ```
 
 ```ad-teor
-title: **Condicions suficients** d'un mínim local **interior**
+title: **Suficients** (interior)
 
-Siguin $x_{0}\in\mathring{S}$ i $f\in C^{2}$.
+Sigui $x_{0}\in\mathring{S}$.
 
 Si es compleix:
 + $\nabla f(x_{0})=0$
@@ -88,6 +92,7 @@ Si es compleix:
 
 aleshores $x_{0}$ és un **mínim local estricte** de $f$ en $S$.
 ```
+````
 
 
 #### **Convexitat**
@@ -221,8 +226,8 @@ $$ \{v\in \mathbb{R}^n \mid \nabla h(x_{0})\cdot v=0\} \,.$$
 ```
 ````
 
-````ad-teor
-title: **Condicions ** d'un **mínim local**
+`````ad-teor
+title: **Condicions ** d'un **mínim local** (amb restriccions)
 
 Sigui
 $$ S:\begin{Bmatrix}
@@ -231,28 +236,26 @@ h_{1}(x)=0 & g_{1}(x)\leq 0 \\
 h_{m}(x)=0 & g_{r}(x)\leq0
 \end{Bmatrix} \,.$$
 
-Si $x_{0}$ és un mínim local de $f$ en $S$ i és un punt regular de les restriccions actives en $x_{0}$ :
-
-```ad-teor
+````ad-teor
 title: **Necessàries**
+
+Sigui $x_{0}$ un mínim local de $f$ en $S$ i un punt regular de les restriccions actives en $x_{0}$.
 
 Aleshores existeixen $\lambda=(\lambda_{1},\dots,\lambda_{m})$ i $\mu=(\mu_{1},\dots,\mu_{r})\geq 0$ tals que:
 
-1. ~={green}Condicions de Karush-Kuhn-Tucker (KKT):=~ $$ \begin{gather}
+1. Condicions de **primer ordre** (o de ~={green}Karush-Kuhn-Tucker (KKT)=~): 
+	$$ \begin{gather}
 \nabla f(x_{0})+\lambda \cdot \nabla h(x_{0})+\mu \cdot\nabla g(x_{0}) = 0 \\
 \mu_{i}\,g_{i}(x_{0})=0 \quad \forall i\in \{1,\dots,r\}
 \end{gather} $$
 
-1. La matriu
+2. Condicions de **segon ordre**:
+	La matriu
 $$ M(x_{0}) = \nabla^{2}f(x_{0})+\sum_{i=1}^m \lambda_{i} \cdot \nabla^{2}h_{i}(x_{0}) + \sum_{i=1}^r \mu_{i} \cdot \nabla^{2}g_{i}(x_{0}) $$
 compleix $v\cdot M(x_{0})\cdot v\geq0$ per tot $v$ de l'espai tangent a les restriccions actives en $x_{0}$ .
+````
 
----
-
-Les constants $\lambda_{1},\dots,\lambda_{m}$ s'anomenen ==multiplicadors de Lagrange== i $\mu_{1},\dots,\mu_{r}$ es diuen ==multiplicadors de Karush-Kuhn-Tucker==.
-```
-
-```ad-teor
+````ad-teor
 title: **Suficients**
 
 Donat $x\in S$, si existeixen $\lambda=(\lambda_{1},\dots,\lambda_{m})$ i $\mu=(\mu_{1},\dots,\mu_{r})$ tal que
@@ -263,8 +266,13 @@ compleix $v\cdot M(x)\cdot v>0$ per tot $v\neq0$ del subespai
 $$ \{v \mid \nabla h(x)\cdot v=0 \,;\, \nabla g_{i}(x)\cdot v=0 \,\,\, \forall i \text{ tal que } g_{i}(x)=0 \text{ i } \mu_{i}>0\} \,,$$
 
 aleshores $x$ és mínim local (estricte) de $f$ en $S$.
-```
 ````
+```ad-def
+title: *Multiplicadors*
+
+Les constants $\lambda_{1},\dots,\lambda_{m}$ s'anomenen ==multiplicadors de Lagrange== i $\mu_{1},\dots,\mu_{r}$ es diuen ==multiplicadors de Karush-Kuhn-Tucker==.
+```
+`````
 
 
 #### **Extrems** en $\mathbb{R}$
@@ -338,11 +346,13 @@ conegut com la **raó àuria**.
 
 #### Mètode d'**adjust quadràtic** de tres punts
 
-Consisteix en, partint de tres punts $x_{1},x_{2},x_{3}$ en posició convexa
-$$ f(x_{1})\geq f(x_{2})\leq f(x_{3}) \,,$$
-ajustar-los a una paràbola $P(x)=ax^{2}+bx+c$ per tal de trobar el mínim, que serà
-$$ x = \frac{-b}{2a} \,,$$
-i agafar una nova terna entre $x,x_{1},x_{2},x_{3}$ en posició convexa, per seguir aplicant aquest mètode iterativament.
+Partim de tres punts $x_{1},x_{2},x_{3}$ en posició convexa
+$$ f(x_{1})\geq f(x_{2})\leq f(x_{3}) \,.$$
+
+1. Els ajustem a una paràbola $P(x)=ax^{2}+bx+c$.
+2. Calculem el mínim, que serà
+$$ x = \frac{-b}{2a} \,.$$
+3. Agafem una nova terna entre $x,x_{1},x_{2},x_{3}$ en posició convexa, i iterem des del principi.
 
 Aquest mètode **no assegura la convergència**, i si convergeix, només es pot assegurar una **convergència lineal**.
 
@@ -385,15 +395,16 @@ No és el mètode més òptim per reduir l'interval, però és més senzill i no
 
 
 ---
-## Optimització **sense restriccions** en $\mathbb{R}^{n}$
+## Algorismes d'optimització **sense restriccions** en $\mathbb{R}^{n}$
 
-En aquest cas les condicions KKT es redueixen a
+En aquest cas, les condicions d'un mínim local es redueixen a:
+1. Condicions de primer ordre (KKT):
 $$ \begin{cases}
 \displaystyle\frac{\partial f}{\partial x_{1}} (x_{1},\dots,x_{n}) = 0 \\
 \quad\vdots \\
 \displaystyle\frac{\partial f}{\partial x_{n}} (x_{1},\dots,x_{n}) = 0
 \end{cases} $$
-i les de segon ordre a que $\nabla^{2}f(x_{0})$ sigui definida positiva.
+2. Condicions de segon ordre: $\nabla^{2}f(x_{0})$ definida positiva
 
 
 #### Mètode de **Newton**
@@ -408,11 +419,11 @@ Aleshores existeix $\delta>0$ tal que
 $$ ||x_{1}-x_{0}||<\delta \implies \{x_{k}\}_{k}\to x_{0} \,.$$
 
 ```ad-not
-Es dedueix que la convergència és quadràtica
-$$ \frac{||x_{k+1}-x_{0}||}{||x_{k}-x_{0}||^{2}} \leq C $$
+Es dedueix que la convergència és quadràtica,
+$$ \frac{||x_{k+1}-x_{0}||}{||x_{k}-x_{0}||^{2}} \leq C \,,$$
 on $C$ és proporcional al *vap* més gran de $(\nabla^{2}f(x_{0}))^{-1}$. 
 
-Si la matriu $\nabla^{2}f(x_{0})$ no és invertible, la convergència no serà quadràtica si n'hi ha.
+Si la matriu $\nabla^{2}f(x_{0})$ no és invertible, la convergència (si n'hi ha) no serà quadràtica.
 ```
 ````
 
@@ -422,7 +433,7 @@ Aquest mètode, però, té un procediment costós i numèricament problematic.
 ---
 
 Considerem el mètode iteratiu genèric
-$$ x_{k+1} = x_{k} - B_{k}^{-1}\,\nabla f(x_{k}) \,.$$
+$$ x_{k+1} = x_{k} - B_{k}^{-1}\,\nabla f(x_{k}) \,.$$ ^278a27
 
 ```ad-prop
 Sigui $B_{k}$ una matriu definida positiva,
@@ -436,7 +447,7 @@ $$ d_{k} := -B_{k}^{-1} \,\nabla f(x_{k}) $$
 Consisteix en agafar $B_{k}=I$, és a dir:
 $$ \boxed{\,x_{k+1} = x_{k} -  \alpha_{k}\nabla f(x_{k})\,} \,,$$
 on $\alpha_{k}$ és un paràmetre que determina la longitud del pas que fem  a cada iteració, que serà l'$\alpha>0$ que minimitzi
-$$ \phi(\alpha) = f(x_{k}+\alpha\,d_{k}) \,.$$
+$$ \phi(\alpha) = f(x_{k}+\alpha\,d_{k}) \,.$$ ^707376
 
 ```ad-prop
 Cada direcció que s'obté del mètode anterior és ortogonal a l'anterior, és a dir
@@ -512,6 +523,86 @@ title: Trobar $\boldsymbol\alpha$
 	$$ \alpha = \frac{\alpha_{\text{min}}+\alpha_{\text{max}}}{2} \,.$$
 4. Repetim els passos (2) i (3) fins que es compleixin totes les condicions.
 ```
+^41d4df
+
+
+#### Mètode de Broyden-Fletcher-Goldfarb-Shanno (**BFGS**)
+
+Partint de la [[#^278a27 | fórmula iterativa genèrica]], es tracta de trobar $B_{k}$ simètrica i definida positiva que s'assembli a la Hessiana, però sigui més fàcil de calcular i tingui un ordre de convergència major al [[#^707376 | mètode del gradient]].
+
+1. Trobar $B_{k}$.
+```ad-met
+title: Trobar $\boldsymbol{B_{k}}$
+
+Siguin
+$$ \begin{align}
+s_{k} &= x_{k+1} - x_{k} \\
+y_{k} &= \nabla f(x_{k+1}) - \nabla f(x_{k}) \,,
+\end{align} $$
+definirem $B_{k}$ iterativament per
+$$ B_{k+1}^{-1} = \left(I-\frac{s_{k}\,y_{k}^{T}}{y_{k}^{T}s_{k}}\right) B_{k}^{-1} \left(I-\frac{y_{k}\,s_{k}^{T}}{y_{k}^{T}s_{k}}\right) + \frac{s_{k}\,s_{k}^{T}}{y_{k}^{T}s_{k}} \,,$$
+on els vectors son columnes.
+```
+
+2. Calcular la direcció de descens
+$$ d_{k} = -B_{k}^{-1}\,\nabla f(x_{k}) \,.$$
+
+3. [[#^41d4df | Buscar un pas]] $\alpha_{k}$ complint les condicions de Wolfe.
+4. Calcular el punt següent:
+	$$ x_{k+1} = x_{k} + \alpha_{k}\,d_{k} $$
+
+
+#### Mètode de **Nelder-Mead** (o del símplex)
+
+Aquest mètode busca un mínim d'una funció de diverses variables sense fer servir **cap derivada**.
+
+```ad-def
+title: *Símplex*
+
+Un ==símplex== és un conjunt de $n+1$ punts de $\mathbb{R}^{n}$ tal que no estan continguts en un hiperplà.
+```
+
+```ad-met
+Partim del símplex $\{x_{0},\dots,x_{n}\}\subset\mathbb{R}^n$, amb $x_{\min}$ i $x_{\max}$ el màxim i el mínim del símplex respectivament.
+
+1. Calcular el ~={green-low}centre de masses=~:
+	$$ \widehat{x} = \frac{1}{n} \left( -x_{\max} + \sum_{i=0}^{n} x_{i} \right) \,.$$
+
+2. Calculem el ~={green-low}punt reflectit=~ de $x_{\max}$
+	$$ x_{\text{ref}} = 2\widehat{x} - x_{\max} \,.$$
+
+3. Tenim 4 casos:
+	+ $\boxed{\boldsymbol{f(x_{\text{\textbf{ref}}})}<f(x_{\min})}$
+		
+		Fem una ~={green-low}expansió=~:
+		$$ x_{\text{exp}} = 2x_{\text{ref}}-\widehat{x} $$
+		Si $f(x_{\text{exp}})<f(x_{\text{ref}})$, canviem $x_{\max}$ per $x_{\text{exp}}$.
+		Si $f(x_{\text{exp}})>f(x_{\text{ref}})$, canviem $x_{\max}$ per $x_{\text{ref}}$.
+	
+	+ $\boxed{f(x_{\min})<\boldsymbol{f(x_{\text{\textbf{ref}}})}<\max\{f(x_{i}) \mid x_{i}\neq x_{\max}\}}$
+		
+		Canviem $x_{\max}$ per $x_{\text{ref}}$.
+	
+	+ $\boxed{\max\{f(x_{i}) \mid x_{i}\neq x_{\max}\}<\boldsymbol{f(x_{\text{\textbf{ref}}})}<f(x_{\max})}$
+		
+		Calculem
+		$$ x_{\text{ce}} = \frac{1}{2} (x_{\text{ref}}+\widehat{x}) $$
+		Si $f(x_{\text{ce}})<f(x_{\text{ref}})$, canviem $x_{\max}$ per $x_{\text{ce}}$ (~={green-low}contracció exterior=~).
+		
+		Si no, canviem cada $x_{i}$ per $\frac{1}{2}(x_{\min}+x_{i})$.
+	
+	+ $\boxed{f(x_{\max})<\boldsymbol{f(x_{\text{\textbf{ref}}})}}$
+		
+		Calculem
+		$$ x_{\text{ci}} = \frac{1}{2} (x_{\max}+\widehat{x}) $$
+		Si $f(x_{\text{ci}})<f(x_{\max})$, canviem $x_{\max}$ per $x_{\text{ci}}$ (~={green-low}contracció interior=~).
+		
+		Si no, canviem cada $x_{i}$ per $\frac{1}{2}(x_{\min}+x_{i})$.
+
+4. Tornem a començar amb el nou símplex.
+```
+
+Aquest mètode **no garanteix la convergència** a un punt estacionari, però sol funcionar bé.
 
 
 ---
@@ -541,7 +632,6 @@ $$ \boldsymbol{\nabla^{2}f(x)} = \begin{pmatrix}
 \end{pmatrix} $$
 ```
 
-
 ```ad-def
 title: Topologia
 
@@ -562,5 +652,4 @@ title: Funció *de Lipschitz*
 Una funció $f$ és ==de Lipschitz== si per tot $y,z \in (c,d)$ existeix $L>0$ tal que
 $$ \mid f(x,y)-f(x,z) \mid < L\mid y-z \mid .$$
 ```
-
 ^70f39c

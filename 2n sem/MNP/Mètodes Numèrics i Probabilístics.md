@@ -77,7 +77,7 @@ Fórmula interpolatòria amb $m=1$ i els nodes $x_{0}=a$ i $x_{1}=b$ .
 $$ \int_{a}^b f(x)\,dx \approx \boxed{\, 
 \frac{b-a}{2} (f(a)+f(b)) \,} $$
 
-```ad-ex
+```ad-prop
 title: **Error**
 
 $$ |E| \leq \frac{(b-a)^{3}}{12} \max_{x\in[a,b]} |f''(x)| $$
@@ -90,7 +90,7 @@ title: Fórmula de **Simpson**
 
 $$ \int_{a}^b f(x)\,dx \approx \boxed{\,\frac{b-a}{6}\left( f(a)+4f\left( \frac{a+b}{2} \right) +f(b) \right)} $$
 
-```ad-ex
+```ad-prop
 title: **Error**
 
 $$ |E| \leq \frac{(b-a)^{5}}{90} \max_{x\in[a,b]} |f^{(4)}(x)| $$
@@ -166,7 +166,7 @@ $$ \int_{a}^b f(x)\,dx \approx \boxed{\,\frac{h}{2} (f(a)+2\,(y_{1}+\dots+y_{n-1
 
 on $y_i=f(x_{i})$ amb $x_{1},\dots,x_{n-1}\in(a,b)$ equiespaiats.
 
-```ad-ex
+```ad-prop
 title: **Error**
 
 $$ |E| \leq \frac{(b-a)^{3}}{12n^{2}} \max_{x\in[a,b]} |f''(x)| \,,$$
@@ -179,7 +179,7 @@ title: Fórmula de **Simpson composta**
 
 $$ \int_{a}^b f(x)\,dx \approx \boxed{\frac{\,h}{3} \left( f(a)+4\sum_{i=1}^{n-1} f(x_{2i-1}) + 2\sum_{j=2}^{n-2} f(x_{2j}) + f(b) \right)\,} $$
 
-```ad-ex
+```ad-prop
 title: **Error**
 
 $$ |E| \leq \frac{(b-a)^{5}}{180n^{4}} \max_{x\in[a,b]} |f^{(4)}(x)| $$
@@ -330,20 +330,22 @@ amb $\xi\in(-1,1)$.
 
 ###### Fórmula de **Gauss-Txebyshew**
 
-```ad-def
+````ad-def
 title: Polinomis de Txebyshew
 
 Els ==polinomis de Txebyshew== estan definits per
 $$ T_{k}(x) = \cos(k \arccos(x)) \,,$$
 que venen determinats per la recurrència
 $$ T_{k+1}(x) = 2x\,T_{k}(x) - T_{k-1} \quad\text{amb}\quad T_{0}(x)=1\,,\,T_{1}(x)=x \,.$$
-```
 
+```ad-prop
 Es pot veure que aquests polinomis son una **família de polinomis ortogonals** respecte l'interval $[-1,1]$ i la funció pes
 $$ w(x) = \frac{1}{\sqrt{1-x^{2}}} \,,$$
 dels quals n'és molt fàcil calcular els zeros.
+```
+````
 
-La fórmula de Gauss-Txebyshew, doncs, és 
+La fórmula de Gauss-Txebyshew és 
 $$ \int_{-1}^{1} f(x)\,\frac{1}{\sqrt{1-x^{2}}}\,dx \approx \sum_{k=0}^{m} W_{k}\,f(x_{k}) $$
 amb
 $$ x_{k} = \frac{\pi(1+2k)}{2m+2} \quad\text{i}\quad W_{k}=\frac{\pi}{m+1} \,.$$
@@ -356,7 +358,7 @@ amb $\xi\in(-1,1)$.
 ```
 
 
-## Integrals **singulars**
+#### Integrals **singulars**
 
 Les fórmules d'integració interpolatòria son per funcions contínues en intervals tancats. Quan la funció que volem integrar presenta singularitats, s'han de tractar prèviament.
 

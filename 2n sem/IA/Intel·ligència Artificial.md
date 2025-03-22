@@ -252,6 +252,8 @@ $$ h(n) = c_{1}\,h_{1}(n) + \dots + c_{k}\,h_{k}(n) $$
 ---
 ## 3. Cerca **local**
 
+^9ffa51
+
 Aquesta cerca no explora tot l'espai per trobar una solució, sinó que es **mou localment** per **millorar l'estat actual**. Això és útil en problemes on
 + **no coneixem l'estat objectiu**,
 + només es vol **optimitzar un criteri**, o
@@ -531,7 +533,7 @@ Donats diversos objectes, es tracta de cassificar-los segons les seves caracter�
 Per aquests algorismes farem servir la representació d'[[#^57fa41 | espai de característiques]].
 
 
-#### 4.1. Reconeixement **estadístic**
+### 4.1. Reconeixement **estadístic**
 
 ```ad-def
 title: Conjunt d'**aprenentatge**
@@ -548,7 +550,7 @@ on $n$ és el **nombre de punts** que té la mostra i $d$ és el **nombre de car
 ```
 ^c6f4f9
 
-###### 4.1.1. **Definició** de l'**espai de característiques**
+##### 4.1.1. **Definició** de l'**espai de característiques**
 
 1. Seleccionar les característiques ~={faded}(dependrà del problema)=~.
 2. Definir el [[#^c6f4f9 | conjunt d'aprenentatge]].
@@ -574,12 +576,182 @@ Passos a seguir:
 ^a82854
 
 
-###### 4.1.1. **Categorització**
+##### 4.1.2. **Categorització** i **classificació**
 
-Consisteix en definir funcions de decisió a partir del [[#^c6f4f9 | conjunt d'aprenentatge]].
++ ~={green}Categorització.=~ Es divideix l'espai de característiques en regions que corresponen a diferents classes.
++ ~={green}Classificació.=~ Mitjançant una **funció de decisió** es classifiquen tots els punts.
 
-```ad-prop
-title: Aprenentatge **supervisat**
 
+###### Aprenentatge **supervisat**
+
+Es fa a partir del [[#^c6f4f9 | conjunt d'aprenentatge]].
+
+````ad-prop
+title: Classificadors **lineals** i **no-lineals**
+
+Es tracta d'ajustar els paràmetres d'una equació mitjançant una [[#^9ffa51 | cerca local]] en què:
++ **Node:** Configuració concreta dels paràmetres.
++ **Heurística:** Nombre de punts ben classificats.
+
+|                Lineal                |              No-lineal               |
+|:------------------------------------:|:------------------------------------:|
+| ![[Pasted image 20250321204730.png \| 200]] | ![[Pasted image 20250321204817.png \| 200]] |
+| $d(\vec{x})=a\,x_{1}+b\,x_{2}+c$                                     | $d(\vec{x}) = r^{2}-x_{1}^{2}-x_{2}^{2}$                                     |
+
+```py title:"Funció de decisió"
+def classify(y, d, classes):
+	if d(y) < 0:
+		return classes[0]
+	else:
+		return classes[1]
+```
+````
+
+````ad-prop
+title: Classificador **probabilístic**
+
+Assumim que les configuracions de punts de cada classe segueixen una distribució normal, és a dir
+$$ P(C_{i}\mid\vec{x}) = N(\mu_{i},\sigma_{i}) \,.$$
+
+Per cada classe, estimarem els seus paràmetres fent servir:
+
+| Dimensions $\rightarrow$ |                                  1D                                   |                              >1D                              | 
+| ------------------------:|:---------------------------------------------------------------------:|:-------------------------------------------------------------:|
+|              **Mitjana** |           $\mu=\displaystyle\frac{1}{n}\sum_{i=1}^{n}x_{i}$           | $\vec{\mu}=\displaystyle\frac{1}{n}\sum_{i=1}^{n}\vec{x_{i}}$ |
+|            **Desviació** | $\sigma=\displaystyle\sqrt{\frac{1}{n}\sum_{i=1}^{n}(x_{i}-\mu)^{2}}$ |       $\displaystyle\Sigma \approx \frac{1}{n-1}X^{T}X$       |
+
+```py title:"Funció de decisió"
+def classify(y, classes):
+	i = argmax([prob(y,c) for c in classes])
+	return classes[i]
+```
++ `prob(y,c)` retorna la probabilitat que `y` estigui a la classe `c`.
+````
+
+````ad-prop
+title: Classificador **K-*Nearest Neighbors*** (KNN)
+
+Es basa la decisió en la classe a la que pertanyen els `k` veïns més propers d'un objecte donat.
+
+```py title:"Funció de decisió"
+def classify(y, X, k):
+
+	all_neighbors = []
+	for x in X:
+		neighbors.insert([d(y,x), class(x)])
+	k_neighbors = dist_sort(all_neighbors)[:k]
+	
+	if count(k_neighbors, c1) > count(neighbors, c2):
+		return c1
+	else:
+		return c2
+```
++ `d()` retorna la distància entre els dos arguments
++ `class(x)` retorna la classe de `x`
++ `dist_sort()` retorna la llista amb els elements en ordre en funció de la distància
++ `count(l,c)` retorna el nombre d'elements d'`l` que pertanyen a `c`
+
+```ad-not
+title: Funció **distància**
+Es poden fer servir diferents distàncies depenent del problema:
++ **Euclideana.** $\,\displaystyle d(\vec{x},\vec{y})=\sqrt{\sum_{i=1}^{n}(x_{i}-y_{i})^{2}}$
++ **Manhattan.** $\,\displaystyle d(\vec{x},\vec{y})=\sum_{i=1}^{n}\mid x_{i}-y_{i}\mid$
++ **Minkowski.** $\,\displaystyle d(\vec{x},\vec{y})=\left( \sum_{i=1}^{n}(\mid x_{i}-y_{i}\mid)^{q} \right)^{\frac{1}{q}}$
+```
+
+Tot i que es pot aplicar a qualsevol conjunt d'aprenentatge, té una **funció de decisió costosa**, requereix **triar una bona `k`**.
+````
+
+```ad-not
+title: **Tipus** de classificadors
+
+| Tipus $\rightarrow$ | Discriminatius                                | Generatius        |
+| ------------------- | --------------------------------------------- | ----------------- |
+| **Descripció**      | modelen la frontera                           | modelen la classe |
+| **Classificadors**                    | <li>lineal<li>no lieal<li>k-nearest neighbors | <li>probabilístic |
 
 ```
+
+
+###### Aprenentatge **no supervisat**
+
+Per quan no existeix un conjunt d'aprenentatge. Els objectes es classificaran per *clustering*.
+
+`````ad-prop
+title: **K-*means***
+
+````ad-met
+title: Algorisme
+
+```ad-ex
+title: Definicions
+
+Tenim:
++ $X = \{\vec{x_{i}}\mid \vec{x_{i}}=(x_{i,1},\dots,x_{i,d})\}$ : conjunt de punts
++ $k$ : nombre de classes en què es vol dividir l'espai
++ $C_{i}$ : conjunt de punts de la classe $i$
+	+ $n_{C_{i}}$ : nombre de punts a la classe $i$
+	+ $CI_{i}^{t}$ : centre d'inèrcia de la classe $i$ a l'instant $t$
++ $d(x,y)$ : distància entre dos punts
+```
+
+1. Inicialització:
+	+ Inicialitzar els centres d'inèrcia amb $\vec{x} \in X$ aleatori:
+		$CI_{i}^{0} = \text{random}(X) \quad \text{per } i=0,\dots,k$
+	+ $t=0$
+2. Fins que $CI_{i}^{t}=CI_{i}^{t+1}$ per tot $i=1,\dots,k$, repetir:
+	+ Per cada classe $C_{i}$ amb $i=1,\dots,k$ :
+		1. Omplir la classe: 
+			$C_{i}=\{x\in X\mid d(x,CI_{i}^{t})\leq d(x,CI_{j}^{t}) \text{ per tot } j\neq i\}$
+		2. Calcular el nou centre d'inèrcia:
+			$$ CI_{i}^{t+1} = \left( \frac{\sum_{j=1}^{n_{C_{i}}}x_{j,1}}{n_{C_{i}}},\dots,\frac{\sum_{j=1}^{n_{C_{i}}}x_{j,d}}{n_{C_{i}}} \right) $$
+	
+	+ $t++$
+3. Retornar $\{CI_{i}^{t}\mid i=1,\dots,k\}$
+````
+Algunes propietats:
++ Complexitat $O(t\cdot n\cdot k)$
++ Sempre convergeix ~={faded}(no sempre amb la configuració desitjada)=~
++ Molt sensible a la selecció incial aleatòria
+
+````ad-prop
+title: **Qualitat** de la classificació
+
+Un cop aplicat *k-means*, es pot estimar una mesura sobre la qualitat de la classificació resultant.
+
++ ~={green}Distància *intra-class*.=~ Per cada classe:
+	$$ D(C) = \frac{2}{m(m-1)} \sum_{i=1}^{m}\sum_{j=i+1}^{m} d(\vec{x_{i}},\vec{x_{j}}) $$
+	per $\vec{x} \in C$ i $m$ nombre de punts de la classe.
+	Volem que sigui **petita**.
+
++ ~={green}Distància *inter-class*.=~ Per cada parella de classes:
+	$$ D(C_{1},C_{2}) = \frac{1}{m_{1}m_{2}} \sum_{i=1}^{m_{1}}\sum_{j=1}^{m_{2}} d(\vec{x_{i}},\vec{x_{j}}) $$
+	per $\vec{x_{i}}\in C_{1}$, $\vec{x_{j}}\in C_{2}$ i $m_{i}$ nombre de punts  a la classe $i$.
+	Volem que sigui **gran**.
+
++ ~={green}Discriminant de Fisher.=~ Combina les dues mesures anteriors. Globalment:
+	$$ D = \frac{\displaystyle\sum_{i=1}^{k}D(C_{i})}{\displaystyle\sum_{i=1}^{k}\sum_{j=i+1}^{k} D(C_{i},C_{j})} $$
+	amb $k$ nombre de classes.
+	Volem que sigui **petit**.
+
+```ad-met
+title: **Estimació automàtica** del nombre de classes
+
+Es pot estudiar com varia la ~={green-low}qualitat de classificació=~ per diverses $k$ per trobar la ideal.
+```
+````
+`````
+
+
+##### 4.1.3. **Avaluació** d'un classificador
+
+```ad-def
+title: *Ground-truth* (GT)
+
+Es refereix al resultat ideal que s'espera de la resolució del problema; la **veritat**.
+```
+
+1. **GT dona la classificació correcta.**
+	$$ \text{Accuracy} = \frac{\#\text{mostres ben classificades}}{\#\text{mostres totals}} $$
+2. **GT dona un conjunt d'etiquetes.** Sigui $A$ el conjunt d'etiquetes trobades pel classificador i $B$ les etiquetes del GT:
+	$$ \text{Similitud}(A,B) = \frac{\text{Card}(A\cap B)}{\text{Card}(A)} $$
