@@ -565,7 +565,7 @@ Un ==símplex== és un conjunt de $n+1$ punts de $\mathbb{R}^{n}$ tal que no est
 ```ad-met
 Partim del símplex $\{x_{0},\dots,x_{n}\}\subset\mathbb{R}^n$, amb $x_{\min}$ i $x_{\max}$ el màxim i el mínim del símplex respectivament.
 
-1. Calcular el ~={green-low}centre de masses=~:
+1. Calculem el ~={green-low}centre de masses=~:
 	$$ \widehat{x} = \frac{1}{n} \left( -x_{\max} + \sum_{i=0}^{n} x_{i} \right) \,.$$
 
 2. Calculem el ~={green-low}punt reflectit=~ de $x_{\max}$
