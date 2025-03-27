@@ -74,6 +74,11 @@ tals que ~={green}$\boldsymbol{z=re^{i\theta}}$=~. A aquesta expressió li diem 
 ![[complex-plane-polar-rectangular-1.png | 400]]
 
 
+#### **Arrels** $n$-èssimes
+
+$$ \sqrt[n]{re^{i\theta}} \in \left\{ \sqrt[n]{r}\,e^{i\frac{\theta+2k\pi}{n}} \mid k=1,\dots,n \right\} $$
+
+
 ---
 ## Funcions de **variable complexa**
 
@@ -393,7 +398,8 @@ title: Notació
 Siguin $f:\Omega \subset \mathbb{C}\to\mathbb{C}$ i $z_{0}=x_{0}+iy_{0}$ tal que
 $$ f(x+iy) = u(x+yi) + iv(x+iy) \,.$$
 Son equivalents:
-+ $f$ és holomorfa en $z_{0}$ amb $f'(z_{0})=a+ic$
++ $f$ és holomorfa en $z_{0}$ amb
+	$$ \boxed{\,f'(z_{0})=\partial_{x} u+i\,\partial_{y}v\,} \,.$$
 + $f$ interpretada com a funció $\mathbb{R}^{2}\to \mathbb{R}^{2}$ és $\mathbb{R}$-diferenciable en $(x_{0},y_{0})$ amb
 $$ Df(x_{0},y_{0}) = \begin{pmatrix}
 a & -c \\
@@ -939,7 +945,7 @@ En particular, si $f$ i $g$ coincideixen en un obert, un arc, una recta, etc., l
 ```ad-def
 title: Topologia
 
-+ ~={green}Disc (obert).=~ $\,D_{r}(a)=\{z\in \mathbb{C} | |z-a|<r\}$
++ ~={green}Disc (obert).=~ $\,D_{r}(a)=\{z\in \mathbb{C} \mid |z-a|<r\}$
 	+ ~={green}Disc unitat.=~ $\,D_{1}(0)$
 	+ ~={green}Disc tancat.=~ $\,\overline{D_{r}(a)}$
 + **Conjunts**.
@@ -966,6 +972,7 @@ title: **Successions** importants
 ```ad-prop
 title: **Sèries en $\mathbb{C}$** importants
 
+Centrat en 0:
 + $\displaystyle e^{z}=\sum_{n=0}^{\infty} \frac{z^{n}}{n!}$
 + $\displaystyle\sin(z) = \sum_{n=0}^{\infty} (-1)^{n}\frac{z^{2n+1}}{(2n+1)!}$
 + $\displaystyle\cos(z) = \sum_{n=0}^{\infty} (-1)^{n}\frac{z^{2n}}{(2n)!}$
