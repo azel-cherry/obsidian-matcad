@@ -176,7 +176,31 @@ $$ r_{AB} = \frac{\displaystyle\sum_{i=1}^n (a_{i}-\overline{a})^2(b_{i}-\overli
 `````
 
 
+###### Detecció d'**observacions influents**
+
+Es proposa la ==mesura de la influència== de la observació $i$ com a
+$$ D_{i} = \frac{(\widehat{\beta}-\widehat{\beta}_{\overline{i}})^{T} X^{T}X\,(\widehat{\beta}-\widehat{\beta}_{\overline{i}})}{(p+1)\,\widehat{\sigma}^{2}} \,,$$
+on $\widehat{\beta}_{\overline{i}}$ és l'estimador de $\beta$ sense la $i$-èssima observació.
+
+```ad-not
+title: Interpretació de $D$
+
+Hi ha diverses opinions sobre per quin valor de $D$ direm que una observació és influent.
++ $D_{i}>1$
++ $D_{i} > \frac{4}{n}$
+```
+
+```ad-prop
+title: *Leverage*
+
+L'element $p_{ii}$ de $P=X\,(X^{T}X)^{-1}X^{T}$ es pot interpretar com el *leverage* de la observació $i$-èssima del model.
+
+Punts amb *leverage* alt (típicament $p_{ii} > \frac{2(p+1)}{n}$) poden influenciar el model excessivament.
+```
+
+
 #### Model de regressió lineal **clàssic**
+^3ae612
 
 Considerem el mateix model que el [[#^bc941d | general]]
 $$ y = X\beta+\varepsilon \,,$$
@@ -192,7 +216,71 @@ Considerem una funció lineal dels paràmetres $l^T\beta$ .
 ```
 
 
-#### **Test $\boldsymbol t$** generalitzat
+###### **Residus**
+
+El vector de residus és
+$$r=y-\widehat{y}=(1-P)\,y\,,$$
+amb $P=X\,(X^TX)^{-1}X^{T}$.
+
++ $\text{Var}(r)=\sigma^{2}(I-P)$
++ $\text{Var}(r_{i})=\sigma^{2}(1-p_{ii})$
+
+````ad-def
+title: **Residus** estandaritzats
+
+Definim els ==residus estandaritzats== com
+$$ rst_{i} = \frac{r_{i}}{\widehat{\sigma}\,\sqrt{1-p_{ii}}} \sim N(0,1) \,.$$
+
+```ad-not
+Si $|rst_{i}|>2$ , tenim un potencial *outlier*.
+```
+````
+
+#### **Altres models** de regressió lineal
+
+###### Model amb **errors dependents**
+
+Considerem el model lineal $y = X\beta+\varepsilon$, on 
+$$e_{i}=\varepsilon_{i}-\rho\,\varepsilon_{i-1}$$
+tal que:
++ $\text{E}(e_{i})=0$
++ $\text{Var}(e_{i})=\sigma^{2}$
+
+```ad-met
+
+Considerarem el nou model
+$$ y_{i}^* = \beta_{0}(1-\rho)+\beta_{1}x_{i}^*+e_{i} $$
+amb 
+$$ \begin{align}
+y_{i}^* &= y_{i}-\rho\,y_{i-1} \,, \\
+x_{i}^* &= x_{i}-\rho\,x_{i-1} \,,
+\end{align} $$
+que és un [[#^3ae612 | model de regressió lineal clàssic]].
+```
+
+
+###### Model dels **mínims quadrats generalitzat**
+
+Considerem el model lineal
+$$ y = X\beta+\varepsilon $$
+que satisfà
++ $\text{E}(\varepsilon)=0$
++ $\text{Var}(\varepsilon)=\sigma^{2}\Sigma=\sigma^{2}P^{2}$
+
+```ad-met
+title: Estimació de paràmetres
+
+Es tracta de construir el nou model lineal
+$$ \begin{align}
+P^{-1}Y &= P^{-1}X\beta+P^{-1}\varepsilon \\
+y^* &= X^*\beta+\varepsilon^*
+\end{align} $$
+que és un [[#^3ae612 | model de regressió lineal clàssic]]. D'aquí trobem
+$$ \boxed{\,\widehat{\beta} = (X^T\,\Sigma^{-1}X)^{-1}X^{T}\,\Sigma^{-1}Y\,} \,.$$
+```
+
+
+#### **Test t** generalitzat
 
 Considerem la hipòtesis
 $$ H_{0}:\, l^T\beta = 0 \,,$$ 
@@ -211,7 +299,7 @@ $$ IC_{\alpha}(l^{T}\beta) = \left( l^{T}\widehat{\beta} \,\pm\, t_{1-\frac{\alp
 ```
 
 
-#### **Test** $\boldsymbol F$ generalitzat
+#### **Test F** generalitzat
 
 Considerem la hipòtesis
 $$ H_{0}:\, L\beta = 0 \,,$$ 
@@ -253,6 +341,37 @@ Així doncs rebutjarem $H_{0}$ quan
 $$ F > F_{1-\alpha;\,q,\,n-m} \,.$$
 
 
+#### Transformacions **estabilitzants de la variància**
+
+```ad-prop
+title: Mètode **delta**
+
+Sigui $X$ una *v.a.* amb $\text{E}(X)=\mu$ i $\text{Var}(X)=\sigma^{2}$, i $Y=g(X)$ tal que $g'(\mu)\neq0$. Aleshores:
+$$ \begin{align}
+\text{E}(Y) &\sim g(\mu) \\
+\text{Var}(Y) &\sim \sigma^{2}g'(\mu)^{2}
+\end{align} $$
+```
+
+Considerem una *v.a.* $X$ tal que la seva **variància depèn de l'esperança**, és a dir:
++ $\text{E}(X)=\mu$
++ $\text{Var}(X)=k\,h(\mu)$
+
+```ad-met
+Es tracta de construir una nova *v.a.* $Y=g(X)$ amb
+$$ \text{Var}(Y)\sim k\,h(\mu)\,g'(\mu)^{2} = C \,,$$
+on $C$ és una constant i
+$$ g(\mu) = \int \frac{C}{\sqrt{h(\mu)}}\,d\mu \,.$$
+
+| Distribució             |       Variància        |                                                                           Transformació                                                                           | 
+| ----------------------- |:----------------------:|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| Poisson                 |     $\propto \mu$      |                                                                     $g(X)=\sqrt{X}$ ~={pink}(*)=~                                                                      |
+| Binomial                | $\propto \mu\,(1-\mu)$ |                                                                        $g(X)=\arcsin(\sqrt{X})$                                                                        |
+| Exponencial             |   $\propto \mu^{2}$    |                                                                             $g(X)=\ln(X)$                                                                              |
+| desconeguda (*Box-Cox*) |      desconeguda       | $g_{\lambda}(x_{i})=\begin{cases}\,\displaystyle\frac{x_{i}^{\lambda}-1}{\lambda} &\text{si }\lambda\neq0\\[0.3em] \,\log(x_{i}) &\text{si }\lambda=0\end{cases}$ |
+
+~={pink}(*)=~ Per $n$ petita, podem fer servir $\sqrt{X+\frac{3}{8}}$ .
+```
 
 
 ---

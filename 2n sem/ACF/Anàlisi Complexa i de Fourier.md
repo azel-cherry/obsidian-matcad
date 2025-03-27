@@ -372,7 +372,7 @@ aleshores la funció exponencial complexa és biholomorfa entre $B_{\alpha}$ i $
 ````
 
 
-#### Equacions de **Cauchy-Riemann**
+#### **Derivació** complexa
 
 Una funció de variable complexa $f:\Omega \subset \mathbb{C}\to \mathbb{C}$ la podem interpretar com una funció:
 $$ \begin{align}
@@ -414,7 +414,6 @@ o, equivalentment, $\overline{\partial}f(z_{0})=0$ .
 ```
 
 ```ad-prop
-title: Funció holomorfa **constant**
 
 Sigui $\Omega \subset \mathbb{C}$ un obert connex, amb $f\in H(\Omega)$ i $f'(z)=0$ per tot $z\in\Omega$ .
 
@@ -721,7 +720,7 @@ per tot camí tancat $\gamma$ en $\Omega$ .
 ````
 
 
-#### Fórmula integral de **Cauchy**
+#### **Integració** complexa
 
 `````ad-teor
 title: **Fórmula integral de Cauchy** (FIC)
@@ -782,72 +781,6 @@ $$ f \text{ holomorfa en }\Omega \iff f \text{ analítica en }\Omega $$
 Sigui $\Omega \subset \mathbb{C}$ un obert i $f\in H(\Omega)$.
 
 Aleshores $f\in C^{\infty}(\Omega)$ i totes les seves derivades son holomorfes.
-```
-
-
-#### Teoremes bastant random
-
-`````ad-teor
-title: Teorema de **Liouville**
-
-Tota funció entera i fitada és constant.
-
-```ad-prop
-Si $f$ és entera i $\mathrm{Re}(f)\geq 0$, llavors $f$ és constant.
-```
-`````
-
-`````ad-teor
-title: Teorema **fonamental de l'àlgebra**
-
-Sigui $P$ un polinomi no constant, hi ha $z_{0}\in \mathbb{C}$ tal que $P(z_{0})=0$ .
-
-```ad-prop
-Tot polinomi de grau $n$ té exactament $n$ arrels complexes (incloent multiplicitats).
-```
-`````
-
-````ad-teor
-title: Teorema de **Morera**
-
-Sigui $\Omega \subset \mathbb{C}$ un obert i $f\in C(\Omega)$.
-
-Si per tot triangle $T\subset\Omega$ es compleix
-$$ \int_{\partial T} f(z)\,dz = 0 \,,$$
-llavors $f$ és holomorfa en $\Omega$.
-
-```ad-prop
-Sigui $\Omega \subset \mathbb{C}$ un obert i $f\in C(\Omega)\cap H(\Omega\setminus \{p\})$.
-
-Aleshores $f\in H(\Omega)$.
-```
-````
-
-```ad-teor
-title: Principi de **reflexió de Schwarz**
-
-Sigui $\Omega$ un domini simètric respecte l'eix real, i
-$$ \begin{align}
-\Omega_+ = \Omega \cap \{\mathrm{Im}(z)>0\} \\
-\Omega_- = \Omega \cap \{\mathrm{Im}(z)<0\}
-\end{align} \,,$$
-i sigui $g\in H(\Omega_+)$ tal que per tot $x \in \mathbb{R}$ existeix
-$$ g(x) = \lim_{z\to x} g(z)\in \mathbb{R} \quad\text{per }z\in\Omega_{+} \,.$$
-Aleshores la funció
-$$ f(z) = \begin{cases}
-g(z) &\text{si }z\in\Omega_{+} \\[0.3em]
-g(x) &\text{si }z\in \mathbb{R}\cap\Omega \\
-\overline{g(\overline{z})} &\text{si }z\in\Omega_{-}
-\end{cases} $$
-compleix $f\in H(\Omega)$.
-```
-
-```ad-teor
-title: Teorema de **Weierstrass**
-
-Sigui $\Omega \subset \mathbb{C}$ un obert i $\{f_{n}\}$ una successió de funcions $\in H(\Omega)$ tal que $f_{n}\to f$ uniformement sobre els compactes d'$\Omega$.
-
-Aleshores $f\in H(\Omega)$ i $f'_{n}\to f'$ uniformement sobre els compactes d'$\Omega$.
 ```
 
 
@@ -937,6 +870,112 @@ En particular, si $f$ i $g$ coincideixen en un obert, un arc, una recta, etc., l
 ```
 ````
 `````
+
+
+#### **Teoremes** bastant random
+
+`````ad-teor
+title: Teorema de **Liouville**
+
+Tota funció entera i fitada és constant.
+
+```ad-prop
+Si $f$ és entera i $\mathrm{Re}(f)\geq 0$, llavors $f$ és constant.
+```
+`````
+
+`````ad-teor
+title: Teorema **fonamental de l'àlgebra**
+
+Sigui $P$ un polinomi no constant, hi ha $z_{0}\in \mathbb{C}$ tal que $P(z_{0})=0$ .
+
+```ad-prop
+Tot polinomi de grau $n$ té exactament $n$ arrels complexes (incloent multiplicitats).
+```
+`````
+
+````ad-teor
+title: Teorema de **Morera**
+
+Sigui $\Omega \subset \mathbb{C}$ un obert i $f\in C(\Omega)$.
+
+Si per tot triangle $T\subset\Omega$ es compleix
+$$ \int_{\partial T} f(z)\,dz = 0 \,,$$
+llavors $f$ és holomorfa en $\Omega$.
+
+```ad-prop
+Sigui $\Omega \subset \mathbb{C}$ un obert i $f\in C(\Omega)\cap H(\Omega\setminus \{p\})$.
+
+Aleshores $f\in H(\Omega)$.
+```
+````
+
+```ad-teor
+title: Principi de **reflexió de Schwarz**
+
+Sigui $\Omega$ un domini simètric respecte l'eix real, i
+$$ \begin{align}
+\Omega_+ = \Omega \cap \{\mathrm{Im}(z)>0\} \\
+\Omega_- = \Omega \cap \{\mathrm{Im}(z)<0\}
+\end{align} \,,$$
+i sigui $g\in H(\Omega_+)$ tal que per tot $x \in \mathbb{R}$ existeix
+$$ g(x) = \lim_{z\to x} g(z)\in \mathbb{R} \quad\text{per }z\in\Omega_{+} \,.$$
+Aleshores la funció
+$$ f(z) = \begin{cases}
+g(z) &\text{si }z\in\Omega_{+} \\[0.3em]
+g(x) &\text{si }z\in \mathbb{R}\cap\Omega \\
+\overline{g(\overline{z})} &\text{si }z\in\Omega_{-}
+\end{cases} $$
+compleix $f\in H(\Omega)$.
+```
+
+```ad-teor
+title: Teorema de **Weierstrass**
+
+Sigui $\Omega \subset \mathbb{C}$ un obert i $\{f_{n}\}$ una successió de funcions $\in H(\Omega)$ tal que $f_{n}\to f$ uniformement sobre els compactes d'$\Omega$.
+
+Aleshores $f\in H(\Omega)$ i $f'_{n}\to f'$ uniformement sobre els compactes d'$\Omega$.
+```
+
+`````ad-teor
+title: Principi del **mòdul màxim**
+
+Sigui $\Omega \subset \mathbb{C}$ un obert connex i $f\in H(\Omega)$.
+
+Si $f$ té màxim absolut en $\Omega$, llavors $f$ és constant.
+
+```ad-prop
+Sigui $\Omega \subset \mathbb{C}$ fitat i $f\in H(\Omega)\cap C(\overline{\Omega})$.
+
+Aleshores el màxim de $f$ s'assoleix a la frontera $\partial\Omega$.
+```
+
+```ad-prop
+Sigui $\Omega \subset \mathbb{C}$ un obert connex i $f\in H(\Omega)$.
+
+Aleshores el màxim de $f$ s'assoleix a la frontera $\partial\Omega$.
+
+Si $|f|$ té un màxim local en $\Omega$, llavors $f$ és constant.
+```
+
+```ad-prop
+title: Lema de **Schwarz**
+
+Sigui $\mathbb{D}\to \mathbb{\overline{D}}$ holomorfa tal que $f(0)=0$. Aleshores:
++ $|f(z)|\leq|z|$ per tot $z\in \mathbb{D}$
++ $|f'(0)|\leq1$
+
+Si es compleix $|f(z_{0})|=|z_{0}|$ per algun $z_{0}\in \mathbb{D}$ o $|f'(0)|=1$, aleshores $f(z)=\lambda z$ per algun $\lambda \in \partial \mathbb{D}$.
+```
+`````
+
+```ad-teor
+title: Teorema de l'**aplicació oberta**
+
+Siguin $\Omega \subset \mathbb{C}$ un obert connex i $f\in H(\Omega)$ no constant.
+
+Aleshores $f(U)$ és obert per $U\subset\Omega$ obert.
+```
 
  
 ---

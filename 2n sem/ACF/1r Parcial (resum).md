@@ -23,7 +23,7 @@ Si $f$ holomorfa:
 ```
 
 ```ad-met
-title: **Multiplicitat** d'un zero
+title: Calcular la **multiplicitat** d'un zero
 
 Sigui $z_{0}$ tal que $f(z_{0})=0$.
 1. **$\boldsymbol f$ es pot desenvolupar en sèries fàcilment:** Mirar quina potència és factor comú
@@ -41,18 +41,26 @@ $$ \sum_{n\geq0} a_{n}(z-b)^{n} $$
 + **Teorema de** ~={green}Cauchy-Hadamard:=~ $\,\displaystyle\frac{1}{R} = \limsup_{n\to\infty} \sqrt[n]{|a_{n}|}$
 
 + La **derivada** d'una sèrie de potències té el **mateix radi de convergència**
++ $f:\Omega\to \mathbb{C}$ es pot desenvolupar en sèrie de potències en $|z-a|<R_{a}$ amb $\boxed{\,R_{a}=\text{dist}(\,a,\mathbb{C}\setminus\Omega)\,}$
 
 ```ad-def
 title: **Desenvolupaments en sèries** (centrats en 0)
 
-+ $\displaystyle\frac{1}{1-z} = \sum_{n=0}^{\infty}z^{n}$
-+ $\displaystyle e^{z}=\sum_{n=0}^{\infty} \frac{z^{n}}{n!}$
-+ $\displaystyle\sin(z) = \sum_{n=0}^{\infty} (-1)^{n}\frac{z^{2n+1}}{(2n+1)!}$
-+ $\displaystyle\cos(z) = \sum_{n=0}^{\infty} (-1)^{n}\frac{z^{2n}}{(2n)!}$
++ ~={green}$\displaystyle\frac{1}{1-z}$=~ $= \sum_{n=0}^{\infty}z^{n}=1+z+z^{2}+\dots$
++ ~={green}$\displaystyle e^{z}$=~ $=\sum_{n=0}^{\infty} \frac{z^{n}}{n!}=1+z+\frac{z^{2}}{2!}+\dots$
++ ~={green}$\displaystyle\sin(z)$=~ $= \sum_{n=0}^{\infty} (-1)^{n}\frac{z^{2n+1}}{(2n+1)!}=z-\frac{z^{3}}{3!}+\frac{z^{5}}{5!}-\dots$
++ ~={green}$\displaystyle\cos(z)$=~ $= \sum_{n=0}^{\infty} (-1)^{n}\frac{z^{2n}}{(2n)!}=1-\frac{z^{2}}{2!}+\frac{z^{4}}{4!}-\dots$
 ```
 
 
 #### **Derivades**
+
+```ad-def
+title: Definicions
+
++ $f$ ~={green}holomorfa=~ en $z_{0}$ si existeix
+	$$ \boldsymbol{f'(z)} = \lim_{z\to z_{0}} \frac{f(z)-f(z_{0})}{z-z_{0}} = \lim_{h\to0} \frac{f(z_{0}+h)-f(z_{0})}{h} \,.$$
+```
 
 És equivalent:
 + $f$ és holomorfa en $z_{0}$ amb $\boxed{\,f'(z_{0})=\partial_{x} u+i\,\partial_{y}v\,}$ .
