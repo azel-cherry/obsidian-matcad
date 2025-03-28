@@ -16,7 +16,7 @@ title: Això és una **proposició**, **lema** o **corol·lari**
 
 Perquè honestament no m'importa prou la diferència entre ells.
 
-També és el *callout* que faig servir per defecte quan cap altre té sentit.
+També és el *callout* que faig servir **per defecte** quan cap altre té sentit.
 ```
 
 ```ad-teor
@@ -47,7 +47,7 @@ title: Això és una **nota** o **observació**
 En general escrites menys formalment, per tal d'explicar o donar intuició de teoria.
 ```
 
-Cal dir que no segueixo cap d'aquestes aplicacions religiosament. Poden haver-hi *outliers*, però tindran més o menys sentit dins del que acabo d'explicar.
+Cal dir que no segueixo cap d'aquestes guies religiosament. Poden haver-hi *outliers*, però tindran més o menys sentit dins del que acabo d'explicar.
 
 
 #### PDFs
