@@ -378,9 +378,10 @@ $$ g(\mu) = \int \frac{C}{\sqrt{h(\mu)}}\,d\mu \,.$$
 ## Apèndix
 
 ```ad-def
-title: Estimador *no esbiaixat*
+title: Definicions
 
-Un estimador $\widehat{\alpha}$ d'una variable $\alpha$ ==no és esbiaixat== si $$ \text{E}(\widehat{\alpha})=\alpha \,.$$
++ Un estimador $\widehat{\alpha}$ d'una variable $\alpha$ ==no és esbiaixat== si $$ \text{E}(\widehat{\alpha})=\alpha \,.$$
++ Un conjunt de variables és ==i.i.d.== si les variables son *independent and identically distributed*.
 ```
 ^e8baeb
 
@@ -425,4 +426,29 @@ title: Propietats
 + $(y-\mu)^T\,\sigma^{-1}(y-\mu) \sim \chi_{n}^{2}$
 + $Y_{1},Y_{2}$ independents $\iff \text{Cov}(Y_{1},Y_{2})=0$
 ```
+`````
+
+`````ad-prop
+title: Interpretació de comandes d'**R**
+
+Per $y = X\beta+\varepsilon$ :
+
+```r title:""lm" output"
+Coefficients:  Estimate   Std. Error   t value   PR(>|t|)
+(Intercept)    [...]      [...]        [...]     [...]
+x1             [...]      [...]        [...]     [...]
+[...]          [...]      [...]        [...]     [...]
+---
+Residual standard error: [...] on [...] degrees of freedom
+Multiple R-squared: [...], Adjusted R-squared: [...]
+F-statistic: [...] on [...] and [...] DF, p-value: [...]
+```
+
++ `Estimate` $=$ `Std. Error` $\cdot$ `t value`
++ `PR(>|t|)` és el ~={green-low}*p-value* (bilateral)=~: Probabilitat amb distribució t de Student d'observar un valor més alt que `p-value`
+	+ `PR(>|t|)` $=2\,\,\cdot$ `pt(t-value)`
++ `Residual standard error` és la desviació típica de $\varepsilon$
++ IC amb confiança `1-a`:
+	$[$`Estimate`$\pm$`qt(1-a/2)`$\cdot$`Std. Error`$]$
++ Variable significativa quan `PR(<|t|)`$<\alpha$
 `````

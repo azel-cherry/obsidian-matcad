@@ -6,15 +6,18 @@ title: Definicions
 
 + Restricció $g(x)\leq0$ ~={green}activa=~ en $x^*$ si ==$g(x^*)=0$==
 + Restricció $g(x)\leq0$ ~={green}inactiva=~ en $x^*$ si ==$g(x^*)<0$==
-+ $x^*$ ~={green}punt regular=~ de $h:\mathbb{R}^n\to \mathbb{R}^m$ si
-	+ $h(x^*)=0$
-	+ $\nabla h_{1}(x^*),\dots,\nabla h_{m}(x^*)$ independents
++ $x^*$ ~={green}punt regular=~ de les seves restriccions actives $h_{1},\dots,h_{m}$ si ==$\nabla h_{1}(x^*),\dots,\nabla h_{m}(x^*)$ independents==
 ```
 
-```ad-teor
-title: **Condicions necessàries** d'un mínim local
+````ad-teor
+title: **Condicions** d'un mínim local
 
-> $x^*$ mínim local, punt regular de les restriccions actives
+> $S:\begin{Bmatrix}h_{1}(x)=0 & g_{1}(x)\leq 0 \\ \vdots & \vdots \\ h_{m}(x)=0 & g_{r}(x)\leq0\end{Bmatrix}$
+
+```ad-teor
+title: **Necessàries**
+
+> $x^*$ mínim local, punt regular de les seves restriccions actives
 
 Existeixen ~={green}multiplicadors de Lagrange=~ $\lambda=(\lambda_{1},\dots,\lambda_{m})$ i ~={green}de Karush-Kuhn-Tucker=~ $\mu=(\mu_{1},\dots,\mu_{r})\geq 0$ tals que
 1. **Primer ordre (KKT)**:
@@ -25,8 +28,30 @@ Existeixen ~={green}multiplicadors de Lagrange=~ $\lambda=(\lambda_{1},\dots,\la
 
 2. **Segon ordre**:
 	$$ M(x) = \nabla^{2}f(x)+\sum_{i=1}^m \lambda_{i} \cdot \nabla^{2}h_{i}(x) + \sum_{i=1}^r \mu_{i} \cdot \nabla^{2}g_{i}(x) $$
-	compleix $\boxed{\,v\cdot M(x^*)\cdot v\geq0\,}$ per tot $v$ de l'espai tangent a les restriccions actives en $x^*$
+	compleix $\boxed{\,v\cdot M(x^*)\cdot v\geq0\,}$ per tot $v$ de l'espai tangent a les restriccions actives en $x^*$.
 ```
+
+```ad-teor
+title: **Suficients**
+
+> $x*\in S$
+
+Si existeixen ~={green}multiplicadors de Lagrange=~ $\lambda=(\lambda_{1},\dots,\lambda_{m})$ i ~={green}de Karush-Kuhn-Tucker=~ $\mu=(\mu_{1},\dots,\mu_{r})\geq 0$ tals que
+1. **Primer ordre (KKT)**:
+	$$ \begin{gather}
+\nabla f(x^*)+\lambda \cdot \nabla h(x^*)+\mu \cdot\nabla g(x^*) = 0 \\[0.5em]
+\mu_{i}\,g_{i}(x^*)=0
+\end{gather} $$
+
+2. **Segon ordre**:
+	$$ M(x) = \nabla^{2}f(x)+\sum_{i=1}^m \lambda_{i} \cdot \nabla^{2}h_{i}(x) + \sum_{i=1}^r \mu_{i} \cdot \nabla^{2}g_{i}(x) $$
+	compleix $\boxed{\,v\cdot M(x)\cdot v>0\,}$ per tot $v\neq0$ tal que
+	+ $\nabla h(x)\cdot v=0$
+	+ $\nabla g_{i}(x)\cdot v=0$ per tot $i$ tal que $g_{i}(x)=0$ i $\mu_{i}>0$
+
+llavors $x*$ és un mínim local de $f$ en $S$.
+```
+````
 
 
 ## 2. **Algorismes** d'optimització
@@ -173,10 +198,10 @@ title: Trobar $\boldsymbol\alpha$
 
 ```ad-def
 title: Condicions de Wolfe
-> $\phi(\alpha) = f(x_{k}+\alpha\,d_{k})$
+> $\phi(\alpha) = f(x_{k}+\alpha\,d_{k})$, generalment amb $d_{k}=\nabla f(x_{k})$
 
-1. $\boxed{\,\phi(\alpha_{k})\leq \phi(0)+\varepsilon\,\phi'(0)\,\alpha_{k}\,}$ amb $\varepsilon=10^{-3}$
-2. $\boxed{\,\phi'(\alpha_{k})\geq \eta\,\phi'(0)\,}$ amb $\eta=0.9$
+1. $\boxed{\,\phi(\alpha_{k})\leq \phi(0)+\varepsilon\,\phi'(0)\,\alpha_{k}\,}$ amb $\varepsilon \in(0,1)$ petita ~={faded}($\varepsilon=10^{-3}$)=~
+2. $\boxed{\,\phi'(\alpha_{k})\geq \eta\,\phi'(0)\,}$ amb $\eta \in(\varepsilon,1)$ gran ~={faded}($\eta=0.9$)=~
 ```
 
 Començem amb l'interval $[\alpha_{\text{min}},\alpha_{\text{max}}]=[0,+\infty)$ .
