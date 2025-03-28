@@ -59,7 +59,7 @@ on: ^bc941d
 + $\boldsymbol y$ : vector de la ==variable dependent== de mida $n$
 	+ $\boldsymbol n$ : mida de la mostra
 + $\boldsymbol X$ : ==matriu de disseny== de les ==variables explicatives== de dimensió $n\times (p+1)$
-	+ $\boldsymbol p$ : número de ==regressors==, covarietats o variables independents
+	+ $\boldsymbol p$ : número de ==regressors==, co-varietats o variables independents
 + $\boldsymbol \beta$ : vector dels paràmetres que s'han d'estimar a partir de les dades, de mida $p+1$
 + $\boldsymbol\varepsilon$ : vector d'==errors aleatoris== de mida $n$
 
