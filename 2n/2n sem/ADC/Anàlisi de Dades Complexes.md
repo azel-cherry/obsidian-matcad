@@ -171,7 +171,7 @@ title: Coeficient de correlació **mostral**
 Siguin $a_{1},\dots,a_{n}$ i $b_{1},\dots,b_{n}$ mostres de les *v.a.*s $A,B$ respectivament, amb mitjanes mostrals $\overline{a}, \overline{b}$ i variàncies mostrals $s_{a}^2, s_{b}^2$ .
 
 Aleshores el ==coeficient de correlació mostral== és
-$$ r_{AB} = \frac{\displaystyle\sum_{i=1}^n (a_{i}-\overline{a})^2(b_{i}-\overline{b}^2)}{s_{a}\,s_{b}} $$
+$$ r_{AB} = \frac{\displaystyle\sum_{i=1}^n (a_{i}-\overline{a})(b_{i}-\overline{b})}{s_{a}\,s_{b}} $$
 ```
 `````
 
@@ -276,7 +276,7 @@ P^{-1}Y &= P^{-1}X\beta+P^{-1}\varepsilon \\
 y^* &= X^*\beta+\varepsilon^*
 \end{align} $$
 que és un [[#^3ae612 | model de regressió lineal clàssic]]. D'aquí trobem
-$$ \boxed{\,\widehat{\beta} = (X^T\,\Sigma^{-1}X)^{-1}X^{T}\,\Sigma^{-1}Y\,} \,.$$
+$$ \boxed{\,\widehat{\beta} = (X^T\,\Sigma^{-1}X)^{-1}X^{T}\,\Sigma^{-1}y\,} \,.$$
 ```
 
 
