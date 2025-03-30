@@ -59,7 +59,7 @@ on: ^bc941d
 + $\boldsymbol y$ : vector de la ==variable dependent== de mida $n$
 	+ $\boldsymbol n$ : mida de la mostra
 + $\boldsymbol X$ : ==matriu de disseny== de les ==variables explicatives== de dimensió $n\times (p+1)$
-	+ $\boldsymbol p$ : número de ==regressors==, covarietats o variables independents
+	+ $\boldsymbol p$ : número de ==regressors==, co-varietats o variables independents
 + $\boldsymbol \beta$ : vector dels paràmetres que s'han d'estimar a partir de les dades, de mida $p+1$
 + $\boldsymbol\varepsilon$ : vector d'==errors aleatoris== de mida $n$
 
@@ -171,7 +171,7 @@ title: Coeficient de correlació **mostral**
 Siguin $a_{1},\dots,a_{n}$ i $b_{1},\dots,b_{n}$ mostres de les *v.a.*s $A,B$ respectivament, amb mitjanes mostrals $\overline{a}, \overline{b}$ i variàncies mostrals $s_{a}^2, s_{b}^2$ .
 
 Aleshores el ==coeficient de correlació mostral== és
-$$ r_{AB} = \frac{\displaystyle\sum_{i=1}^n (a_{i}-\overline{a})^2(b_{i}-\overline{b}^2)}{s_{a}\,s_{b}} $$
+$$ r_{AB} = \frac{\displaystyle\sum_{i=1}^n (a_{i}-\overline{a})(b_{i}-\overline{b})}{s_{a}\,s_{b}} $$
 ```
 `````
 
@@ -276,7 +276,7 @@ P^{-1}Y &= P^{-1}X\beta+P^{-1}\varepsilon \\
 y^* &= X^*\beta+\varepsilon^*
 \end{align} $$
 que és un [[#^3ae612 | model de regressió lineal clàssic]]. D'aquí trobem
-$$ \boxed{\,\widehat{\beta} = (X^T\,\Sigma^{-1}X)^{-1}X^{T}\,\Sigma^{-1}Y\,} \,.$$
+$$ \boxed{\,\widehat{\beta} = (X^T\,\Sigma^{-1}X)^{-1}X^{T}\,\Sigma^{-1}y\,} \,.$$
 ```
 
 
