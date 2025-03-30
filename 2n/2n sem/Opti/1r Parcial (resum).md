@@ -138,6 +138,7 @@ $$ \text{amb}\quad B_{k+1}^{-1} = \left(I-\frac{s_{k}\,y_{k}^{T}}{y_{k}^{T}s_{k}
 \,\,s_{k} = x_{k+1} - x_{k} \\
 \,\,y_{k} = \nabla f(x_{k+1}) - \nabla f(x_{k})
 \end{cases} $$
+si $y_{k}^{T}s_{k}>0$ .
 ```
 
 ````ad-met

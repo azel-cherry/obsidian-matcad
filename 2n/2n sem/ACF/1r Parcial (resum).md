@@ -26,7 +26,8 @@ Si $f$ holomorfa:
 title: Calcular la **multiplicitat** d'un zero
 
 Sigui $z_{0}$ tal que $f(z_{0})=0$.
-1. **$\boldsymbol f$ es pot desenvolupar en sèries fàcilment:** Mirar quina potència és factor comú
+1. **$\boldsymbol f$ es pot desenvolupar en sèries fàcilment:**
+	Mirar quina potència és factor comú
 	$$ \sum_{n\geq0} f(z) = (z-z_{0})^{n}\,(\dots) \,.$$
 	La multiplicitat de $z_{0}$ és $n$.
 2. **Si no:** Derivar fins que $f^{(n)}(z_{0})=0$. Aleshores la mutliplicitat de $z_{0}$ és $n$.
@@ -37,9 +38,8 @@ Sigui $z_{0}$ tal que $f(z_{0})=0$.
 
 $$ \sum_{n\geq0} a_{n}(z-b)^{n} $$
 
-+ **Criteri del** ~={green}quocient:=~ $\,\displaystyle R = \lim_{n\to\infty} \frac{|a_{n}|}{|a_{n+1}|}$
++ **Criteri del** ~={green}quocient:=~ $\,\displaystyle R = \lim_{n\to\infty} \frac{|a_{n}|}{|a_{n+1}|}$ (si existeix)
 + **Teorema de** ~={green}Cauchy-Hadamard:=~ $\,\displaystyle\frac{1}{R} = \limsup_{n\to\infty} \sqrt[n]{|a_{n}|}$
-
 + La **derivada** d'una sèrie de potències té el **mateix radi de convergència**
 + $f:\Omega\to \mathbb{C}$ es pot desenvolupar en sèrie de potències en $|z-a|<R_{a}$ amb $\boxed{\,R_{a}=\text{dist}(\,a,\mathbb{C}\setminus\Omega)\,}$
 
@@ -55,12 +55,11 @@ title: **Desenvolupaments en sèries** (centrats en 0)
 
 #### **Derivades**
 
-```ad-def
-title: Definicions
-
 + $f$ ~={green}holomorfa=~ en $z_{0}$ si existeix
 	$$ \boldsymbol{f'(z)} = \lim_{z\to z_{0}} \frac{f(z)-f(z_{0})}{z-z_{0}} = \lim_{h\to0} \frac{f(z_{0}+h)-f(z_{0})}{h} \,.$$
-```
+
+```ad-teor
+title: Equacions de **Cauchy-Riemann**
 
 És equivalent:
 + $f$ és holomorfa en $z_{0}$ amb $\boxed{\,f'(z_{0})=\partial_{x} u+i\,\partial_{y}v\,}$ .
@@ -69,7 +68,7 @@ title: Definicions
 	\, \partial_{x}u = \partial_{y}v \\
 	\, \partial_{y}u = -\partial_{x}v
 	\end{cases} $$
-
+```
 
 #### **Integrals**
 
