@@ -38,7 +38,7 @@ Típicament per **fórmules** o explicacions **pas a pas** de com aplicar teoria
 ```ad-graph
 title: Això és una **representació gràfica**
 
-Pot ser tant una **representació gràfica en si** ~={faded}(diagrama, gràfica, etc)=~ o una **explicació** sobre representacions gràfiques ~={faded}(per exemple com representar una funció en $\mathbb{C}$)=~.
+Pot ser tant una **representació gràfica en si** ~={faded}(diagrama, gràfica, etc)=~ o una **explicació** sobre representacions gràfiques ~={faded}(per exemple com representar una funció de variable complexa)=~.
 ```
 
 ```ad-not

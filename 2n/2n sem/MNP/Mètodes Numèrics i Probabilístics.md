@@ -268,7 +268,7 @@ title: Família de polinomis **estandaritzada**
 La ==família de polinomis ortogonals estandaritzada== es defineix com la família de polinomis ortogonals
 + respecte l'interval $[-1,1]$ ,
 + respecte la funció pes $w(x)=1$ ,
-+ i que satisfan $\psi_{k}(x)=1 \quad \forall k\geq 0$ .
++ i que satisfan $\psi_{k}(1)=1 \quad \forall k\geq 0$ .
 ```
 
 ````ad-met
