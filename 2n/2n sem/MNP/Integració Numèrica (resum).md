@@ -56,10 +56,10 @@ $$ \boldsymbol{EC_{m}(f,[a,b])} \leq \boxed{\,\frac{K_{m}}{(p+1)!} \frac{b-a}{m}
 + $K_{m}$ igual que a [[#^a62f30|Newton-Cotes]]
 ```
 
-|         |                                 Trapezis                                  |                                                       Simpson                                                       |
+|         |                             Trapezis composta                             |                                                  Simpson composta                                                   | 
 | ------- |:-------------------------------------------------------------------------:|:-------------------------------------------------------------------------------------------------------------------:|
 | Fórmula |   $\displaystyle\frac{h}{2} (f(a)+2\,(f(x_{1})+\dots+f(x_{n-1}))+f(b))$   | $\displaystyle\frac{\,h}{3} \left( f(a)+4\sum_{i=1}^{n-1} f(x_{2i-1}) + 2\sum_{j=2}^{n-2} f(x_{2j}) + f(b) \right)$ |
-| Error   | $\displaystyle\frac{(b-a)^{3}}{12n^{2}} \max_{x\in[a,b]} \mid f''(x)\mid$ |                          $\displaystyle\frac{(b-a)^{5}}{180n^{4}} \max_{x\in[a,b]} \mid f^{(4)}(x)\mid$                          | 
+| Error   | $\displaystyle\frac{(b-a)^{3}}{12n^{2}} \max_{x\in[a,b]} \mid f''(x)\mid$ |                   $\displaystyle\frac{(b-a)^{5}}{180n^{4}} \max_{x\in[a,b]} \mid f^{(4)}(x)\mid$                    |
 
 
 ##### 2.1. Càlcul **automàtic** de l'error
@@ -84,7 +84,7 @@ $$ Q_{n+1} = \boldsymbol{F(a,b,n,Q_{n})} = \boxed{\,\frac{Q_{n}}{2} + \frac{1}{2
 ```
 
 
-### 2. Integració **Gaussiana**
+### 3. Integració **Gaussiana**
 
 $$ \int_{a}^b f(x)\,\omega(x)\,dx \approx \sum_{k=0}^{m}W_{k}\,f(x_{k}) $$
 +  $x_{k}$ zeros simples de $\psi_{m+1}$
@@ -100,13 +100,13 @@ Calcular $\displaystyle\frac{1}{A_{m+1}^{2}}\int_{a}^{b} \psi_{m+1}^{2}(x)\,\ome
 ```
 ````
 
-|               |                           Gauss-Legendre                            |                 Gauss-Txebyshew                  |
-| ------------- |:-------------------------------------------------------------------:|:------------------------------------------------:|
-| Interval      |                              $[-1,1]$                               |                     $[-1,1]$                     |
-| $w(x)$        |                                  1                                  |     $\displaystyle\frac{1}{\sqrt{1-x^{2}}}$      |
-| Punts $x_{k}$ |                  zeros simples de $\psi_{m+1}(x)$<br>(polinomis de Legendre)                  |      $\cos\left( \displaystyle\frac{\pi(1+2k)}{2m+2} \right)$       |
-| Pesos $W_{k}$ |   $\displaystyle\frac{2}{(1-x_{k}^{2})\,\psi'_{m+1}(x_{k})^{2}}$    |          $\displaystyle\frac{\pi}{m+1}$          |
-| Error         | $\displaystyle\frac{2^{2m+3}((m+1)!)^{4}}{(2m+3)((2m+2)!)^{3}}\,f^{(2m+2)}(\xi)$ | $\displaystyle\frac{\pi}{2^{2m+1}\,(2m+2)!}\,f^{(2m+2)}(\xi)$ | 
+|               |                                  Gauss-Legendre                                  |                        Gauss-Txebyshew                        |
+| ------------- |:--------------------------------------------------------------------------------:|:-------------------------------------------------------------:|
+| Interval      |                                     $[-1,1]$                                     |                           $[-1,1]$                            |
+| $w(x)$        |                                        1                                         |            $\displaystyle\frac{1}{\sqrt{1-x^{2}}}$            |
+| Punts $x_{k}$ |   zeros simples de $\psi_{m+1}(x)$<br>([[#^1d74cc \| polinomis de Legendre]])    |   $\cos\left( \displaystyle\frac{\pi(1+2k)}{2m+2} \right)$    |
+| Pesos $W_{k}$ |          $\displaystyle\frac{2}{(1-x_{k}^{2})\,\psi'_{m+1}(x_{k})^{2}}$          |                $\displaystyle\frac{\pi}{m+1}$                 | 
+| Error         | $\displaystyle\frac{2^{2m+3}((m+1)!)^{4}}{(2m+3)((2m+2)!)^{3}}\,f^{(2m+2)}(\xi)$ | $\displaystyle\frac{\pi}{2^{2m+1}\,(2m+2)!}\,f^{(2m+2)}(\xi)$ |
 
 
 ### 4. Integrals **singulars**
@@ -184,6 +184,8 @@ $$ \psi_{k+1}(x) = \frac{2k+1}{k+1}\,x\,\psi_{k}(x) - \frac{k}{k+1}\,\psi_{k-1}(
 + $\psi_{0}(x)=1\,,\quad\psi_{1}(x)=x$
 ```
 ````
+
+^1d74cc
 
 ````ad-prop
 title: Polinomis de **Txebyshew**
