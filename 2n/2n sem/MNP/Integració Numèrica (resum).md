@@ -154,6 +154,16 @@ $$ \int_{a}^{b} f(x)\,\omega(x)\,dx = f(\xi) \int_{a}^b \omega(x)\,dx $$
 per algun $\xi\in(a,b)$ .
 ```
 
+```ad-prop
+title: Identitats **trigonomètriques**
+
++ $\sin^{2}(x)+\cos^{2}(x)=1$
++ $\sin(2x)=2\sin(x)\cos(x)$
++ $\cos(2x)=\cos^{2}(x)-\sin^{2}(x)$
++ $\cos(a\pm b)=\cos(a)\cos(b)\mp \sin(a)\sin(b)$
++ $\sin(a\pm b)=\sin(a)\cos(b)\pm \cos(a)\sin(b)$
+```
+
 
 ##### 5.1. Polinomis **ortogonals**
 
