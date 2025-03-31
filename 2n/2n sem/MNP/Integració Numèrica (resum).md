@@ -38,10 +38,10 @@ $$ E_{m}(f,[a,b]) \leq \boxed{\,K_{m} \frac{f^{(p+1)}(\xi)}{(p+1)!}\,h^{p+2}\,} 
 + $K_{m}$ constant (calcular $E_{m}(x^{p+1})$ on $f^{(p+1)}(\xi)$ és constant).
 ```
 
-|         |                        Trapezis                         |                                       Simpson                                        |
-| ------- |:-------------------------------------------------------:|:------------------------------------------------------------------------------------:|
-| Fórmula |        $\displaystyle\frac{b-a}{2} (f(a)+f(b))$         | $\displaystyle\frac{b-a}{6}\left( f(a)+4f\left( \frac{a+b}{2} \right) +f(b) \right)$ | 
-| Error   | $\displaystyle\frac{(b-a)^{3}}{12} \max_{x\in[a,b]} \mid f''(x)\mid$ | $\displaystyle\frac{(b-a)^{5}}{90} \max_{x\in[a,b]} \mid f^{(4)}(x)\mid$                                                                                     |
+|         |                               Trapezis                               |                                       Simpson                                        |
+| ------- |:--------------------------------------------------------------------:|:------------------------------------------------------------------------------------:|
+| Fórmula |               $\displaystyle\frac{b-a}{2} (f(a)+f(b))$               | $\displaystyle\frac{b-a}{6}\left( f(a)+4f\left( \frac{a+b}{2} \right) +f(b) \right)$ |
+| Error   | $\displaystyle\frac{(b-a)^{3}}{12} \max_{x\in[a,b]} \mid f''(x)\mid$ |       $\displaystyle\frac{(b-a)^{5}}{90} \max_{x\in[a,b]} \mid f^{(4)}(x)\mid$       | 
 
 
 ### 2. Fórmules de Newton-Cotes **compostes**
@@ -104,7 +104,7 @@ Calcular $\displaystyle\frac{1}{A_{m+1}^{2}}\int_{a}^{b} \psi_{m+1}^{2}(x)\,\ome
 | ------------- |:-------------------------------------------------------------------:|:------------------------------------------------:|
 | Interval      |                              $[-1,1]$                               |                     $[-1,1]$                     |
 | $w(x)$        |                                  1                                  |     $\displaystyle\frac{1}{\sqrt{1-x^{2}}}$      |
-| Punts $x_{k}$ |                  zeros simples de $\psi_{m+1}(x)$                   |      $\cos\left( \displaystyle\frac{\pi(1+2k)}{2m+2} \right)$       |
+| Punts $x_{k}$ |                  zeros simples de $\psi_{m+1}(x)$<br>(polinomis de Legendre)                  |      $\cos\left( \displaystyle\frac{\pi(1+2k)}{2m+2} \right)$       |
 | Pesos $W_{k}$ |   $\displaystyle\frac{2}{(1-x_{k}^{2})\,\psi'_{m+1}(x_{k})^{2}}$    |          $\displaystyle\frac{\pi}{m+1}$          |
 | Error         | $\displaystyle\frac{2^{2m+3}((m+1)!)^{4}}{(2m+3)((2m+2)!)^{3}}\,f^{(2m+2)}(\xi)$ | $\displaystyle\frac{\pi}{2^{2m+1}\,(2m+2)!}\,f^{(2m+2)}(\xi)$ | 
 
@@ -173,7 +173,7 @@ $$ \psi_{k+1} = \boxed{\,\frac{A_{k+1}}{A_{k}} ((x-\alpha_{k})\,\psi_{k}(x)-\alp
 `````
 
 ````ad-prop
-title: Polinomis de **Legendre estandaritzats**
+title: Polinomis de **Legendre**
 + $[a,b]=[-1,1]$
 + $w(x)=1$
 + $\psi_{k}(1)=1 \quad \forall k\geq 0$
