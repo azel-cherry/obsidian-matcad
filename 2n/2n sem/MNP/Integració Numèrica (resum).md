@@ -126,7 +126,7 @@ title: Discontinuïtat **asimptòtica** en un extrem
 > $f$ de la forma $\displaystyle\frac{\phi(x)}{(x-a)^{\mu}}$, amb  $\mu\in[0,1)$ i $\phi(x)\in C^{1}$
 
 Separar la integral:
-$$ \int_{a}^{b} \frac{\phi(x)}{(x-a)^{\mu}} = \int_{a}^{b} \frac{\phi(x)-\phi(a)}{(x-a)^{\mu}}\,dx + \int_{a}^{b} \frac{\phi(a)}{(x-a)^{\mu}}\,dx $$
+$$ \int_{a}^{b} \frac{\phi(x)}{(x-a)^{\mu}}\,dx = \int_{a}^{b} \frac{\phi(x)-\phi(a)}{(x-a)^{\mu}}\,dx + \int_{a}^{b} \frac{\phi(a)}{(x-a)^{\mu}}\,dx $$
 + Primera integral exacta
 + Segona integral contínua:
 	$$ \frac{\phi(x)-\phi(a)}{(x-a)^{\mu}} = \phi'(\xi(x))(x-a)^{1-\mu} $$
@@ -194,7 +194,6 @@ $$ \psi_{k+1}(x) = \frac{2k+1}{k+1}\,x\,\psi_{k}(x) - \frac{k}{k+1}\,\psi_{k-1}(
 + $\psi_{0}(x)=1\,,\quad\psi_{1}(x)=x$
 ```
 ````
-
 ^1d74cc
 
 ````ad-prop
