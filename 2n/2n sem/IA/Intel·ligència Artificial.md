@@ -43,7 +43,7 @@ title: Estructural
 
 Nodes:
 + cada node fill té un únic pare
-+ el seu **factor de ramificació** és el nombre de fills que t
++ el seu **factor de ramificació** és el nombre de fills que té
 + un node sense fills és un **node fulla**
 + el **node arrel** és l'únic que no té pare
 
