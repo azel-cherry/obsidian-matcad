@@ -159,7 +159,7 @@ Una heurística és ==admissible== si **no sobreestima el cost real**.
 
 La base d'aquests algorismes és [[#^e29571 | la mateixa]] que els algorismes de cerca no informada.
 
-+ ~={green}Greedy Best-First Search=~ ~={green_low}(GBFS).=~ S'insereixen els nous camins `expanded` a `paths` ordenats per cost estimat segons $h(n)$.
++ ~={green}Greedy Best-First Search=~ ~={green-low}(GBFS).=~ S'insereixen els nous camins `expanded` a `paths` ordenats per cost estimat segons $h(n)$.
 
 + ~={green}Cerca A*.=~ S'insereixen els nous camins `expanded` a `paths` ordenats per cost acumulat i cost estimat segons $f(n)=g(n)+h(n)$.
 
@@ -307,7 +307,7 @@ En aquests algorismes, el que farà `expand` és generar punts propers al punt a
 on $d_{n}$ és el número de dimensions dels nodes.
 ```
 
-###### 3.1.1. **No coneixem** l'estat objectiu
+###### 3.1.1. **Coneixem** l'estat objectiu
 
 `````ad-prop
 title: ***Hill-climbing***
@@ -334,7 +334,7 @@ Expandeix **només el node** que estima que és **més proper a la solució** se
 `````
 
 
-###### 3.1.2. **Coneixem** l'estat objectiu
+###### 3.1.2. **No coneixem** l'estat objectiu
 
 ````ad-prop
 title: ***Steepest Ascent***
@@ -629,7 +629,7 @@ def classify(y, classes):
 ````
 
 ````ad-prop
-title: Classificador **K-*Nearest Neighbors*** (KNN)
+title: Classificador ***K-Nearest Neighbors*** (KNN)
 
 Es basa la decisió en la classe a la que pertanyen els `k` veïns més propers d'un objecte donat.
 
