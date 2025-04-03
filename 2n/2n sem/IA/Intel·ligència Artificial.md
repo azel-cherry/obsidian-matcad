@@ -124,11 +124,11 @@ Criteris:
 + ~={green}Completesa.=~ Si existeix solució, sempre es troba.
 
 | Estratègia $\boldsymbol\rightarrow$<br>Criteri $\boldsymbol\downarrow$ | Cerca en ~={green}profunditat=~ | Cerca en ~={green}profunditat limitada=~ | Cerca en ~={green}amplada=~ | Cerca de ~={green}cost uniforme=~ |
-| ------------------------------------------------------------------ |:-------------------------------:|:----------------------------------------:|:---------------------------:|:---------------------------------:|
-| **Temps**                                                          |           $O(b^{m})$            |            $O(b^{p\_{max}})$             |        $O(b^{d+1})$         |             $O(b^m)$              |
-| **Espai**                                                          |          $O(b\cdot m)$          |           $O(b\cdot p\_{max})$           |        $O(b^{d+1})$         |             $O(b^m)$              |
-| **Òptim**                                                    |               no                |                    no                    |   si òptim és el més curt   |                sí                 |
-| **Complet**                                                     |               sí                |                    no                    |        si $b$ finit         |  si $b$ finit i costos positius   |
+| ---------------------------------------------------------------------- | :-----------------------------: | :--------------------------------------: | :-------------------------: | :-------------------------------: |
+| **Temps**                                                              |           $O(b^{m})$            |            $O(b^{p\_{max}})$             |        $O(b^{d+1})$         |             $O(b^m)$              |
+| **Espai**                                                              |          $O(b\cdot m)$          |           $O(b\cdot p\_{max})$           |        $O(b^{d+1})$         |             $O(b^m)$              |
+| **Òptim**                                                              |               no                |                    no                    |   si òptim és el més curt   |                sí                 |
+| **Complet**                                                            |               sí                |                    no                    |        si $b$ finit         |  si $b$ finit i costos positius   |
 
 $b \equiv$ factor de ramificació
 $d \equiv$ profunditat de la solució menys profunda
@@ -167,11 +167,11 @@ La base d'aquests algorismes és [[#^e29571 | la mateixa]] que els algorismes de
 ###### 2.1.1. **Anàlisi** dels algorismes
 
 | Estratègia $\boldsymbol\rightarrow$<br>Criteri $\boldsymbol\downarrow$ |  ~={green}GBFS=~   |         Cerca ~={green}A*=~         |
-| ---------------------------------------------------------------------- |:------------------:|:-----------------------------------:|
+| ---------------------------------------------------------------------- | :----------------: | :---------------------------------: |
 | **Temps**                                                              |      $O(b^m)$      |              $O(b^m)$               |
 | **Espai**                                                              |      $O(b^m)$      | $O(b^m)$<br>en el pitjor dels casos |
-| **Òptim**                                                        |         no         |  si $h$ [[#^d72e3c \| admissible]]  |
-| **Complet**                                                         | si eliminem cicles | si costos positius                                    |
+| **Òptim**                                                              |         no         |  si $h$ [[#^d72e3c \| admissible]]  |
+| **Complet**                                                            | si eliminem cicles |         si costos positius          |
 
 $b \equiv$ factor de ramificació
 $m \equiv$ profunditat de l'arbre
@@ -385,7 +385,6 @@ def steepest_ascent_search(initial, max_iter, best_case)
 + ~={green_low}(9)=~ `max_h()` retorna l'element que maximitza $h(n)$
 + ~={green_low}(1)=~ `best_case` estableix una cota inferior per la solució que volem trobar
 ````
-
 ^5bc1a1
 
 ````ad-prop
@@ -472,10 +471,10 @@ def beam_search(initial, max_iter, best_case, k)
 title: ***Simulated Annealing***
 
 Millora [[#^5bc1a1 | Steepest Ascent amb tractament de màxims locals]] basant-se en un procés de metal·lúrgia (*annealing*) que consisteix en escalfar i refredar lentament els materials per canviar les seves propietats físiques.
-1. selecciona l'estat següent aleatòriament
-2. mira si l'estat seleccionat millora l'heurística
-	+ si la millora, continua per aquest estat
-	+ si no, decideix continuar o no segons una probabilitat
+1. Selecciona l'estat següent aleatòriament
+2. Mira si l'estat seleccionat millora l'heurística
+	+ Si la millora, continua per aquest estat
+	+ Si no, decideix continuar o no segons una probabilitat
 
 ```ad-met
 title: Probabilitat de continuar
@@ -499,7 +498,7 @@ def simulated_annealing_search(initial, max_iter, best_case):
 		delta = h(successor) - h(current)
 		if delta > 0:
 			current = successor
-		elif random_num < e^(delta/temp):
+		elif random_num() < e^(delta/temp):
 			current = successor
 		
 		if h(current) > h(best_case):
@@ -512,12 +511,12 @@ def simulated_annealing_search(initial, max_iter, best_case):
 
 ###### 3.1.3. **Anàlisi** dels algorismes
 
-| Estratègia $\boldsymbol\rightarrow$<br>Criteri $\boldsymbol\downarrow$ |  HC (bàsic)   | HC (guardant camins) | StAs (bàsic)  | StAs (màxims locals) |        CTabú         |            CBeam            |        SimAnn        |
-| ---------------------------------------------------------------------- |:-------------:|:--------------------:|:-------------:|:--------------------:|:--------------------:|:---------------------------:|:--------------------:|
-| **Temps**                                                              | $O(b\cdot m)$ |       $O(b^m)$       | $O(b\cdot m)$ | $O(i\cdot b\cdot m)$ | $O(i\cdot b\cdot m)$ | $O(i\cdot b\cdot m\cdot k)$ | $O(i\cdot b\cdot m)$ |
-| **Espai**                                                              |    $O(b)$     |    $O(b\cdot m)$     |    $O(b)$     |        $O(b)$        |        $O(b)$        |        $O(b\cdot k)$        |        $O(b)$        |
-| **Òptim**                                                              |      no       |          no          |      no       |          no          |          no          |             no              |          no          |
-| **Complet**                                                            |      no       |          sí          |      no       |          no          |          no          |             no              |          no          | 
+| Estratègia $\boldsymbol\rightarrow$<br>Criteri $\boldsymbol\downarrow$ |  HC (bàsic)   | HC (guardant camins) | StAs (bàsic)  | StAs (màxims locals) |        CTabú         |            CBeam            |        SimAnn        |     |     |
+| ---------------------------------------------------------------------- | :-----------: | :------------------: | :-----------: | :------------------: | :------------------: | :-------------------------: | :------------------: | --- | --- |
+| **Temps**                                                              | $O(b\cdot m)$ |       $O(b^m)$       | $O(b\cdot m)$ | $O(i\cdot b\cdot m)$ | $O(i\cdot b\cdot m)$ | $O(i\cdot b\cdot m\cdot k)$ | $O(i\cdot b\cdot m)$ |     |     |
+| **Espai**                                                              |    $O(b)$     |    $O(b\cdot m)$     |    $O(b)$     |        $O(b)$        |        $O(b)$        |        $O(b\cdot k)$        |        $O(b)$        |     |     |
+| **Òptim**                                                              |      no       |          no          |      no       |          no          |          no          |             no              |          no          |     |     |
+| **Complet**                                                            |      no       |          sí          |      no       |          no          |          no          |             no              |          no          |     |     |
 
 $b\equiv$ factor de ramificació
 $m\equiv$ profunditat de l'arbre
@@ -638,10 +637,10 @@ def classify(y, X, k):
 
 	all_neighbors = []
 	for x in X:
-		neighbors.insert([d(y,x), class(x)])
+		all_neighbors.insert([d(y,x), class(x)])
 	k_neighbors = dist_sort(all_neighbors)[:k]
 	
-	if count(k_neighbors, c1) > count(neighbors, c2):
+	if count(k_neighbors, c1) > count(k_neighbors, c2):
 		return c1
 	else:
 		return c2
@@ -659,7 +658,7 @@ Es poden fer servir diferents distàncies depenent del problema:
 + **Minkowski.** $\,\displaystyle d(\vec{x},\vec{y})=\left( \sum_{i=1}^{n}(\mid x_{i}-y_{i}\mid)^{q} \right)^{\frac{1}{q}}$
 ```
 
-Tot i que es pot aplicar a qualsevol conjunt d'aprenentatge, té una **funció de decisió costosa**, requereix **triar una bona `k`**.
+Tot i que es pot aplicar a qualsevol conjunt d'aprenentatge, té una **funció de decisió costosa** i requereix **triar una bona `k`**.
 ````
 
 ```ad-not
@@ -755,3 +754,29 @@ Es refereix al resultat ideal que s'espera de la resolució del problema; la **v
 	$$ \text{Accuracy} = \frac{\#\text{mostres ben classificades}}{\#\text{mostres totals}} $$
 2. **GT dona un conjunt d'etiquetes.** Sigui $A$ el conjunt d'etiquetes trobades pel classificador i $B$ les etiquetes del GT:
 	$$ \text{Similitud}(A,B) = \frac{\text{Card}(A\cap B)}{\text{Card}(A)} $$
+
+
+---
+## 5. **Anàlisi** de tots els algorismes
+
+| Criteri $\boldsymbol\rightarrow$<br>Estratègia $\boldsymbol\downarrow$ |          **Temps**          |              **Espai**              |                    **Òptim**                     |                  **Complet**                  |
+| ---------------------------------------------------------------------- |:---------------------------:|:-----------------------------------:|:------------------------------------------------:|:---------------------------------------------:|
+| **CProfunditat**                                                       |         $O(b^{m})$          |            $O(b\cdot m)$            |                   ~={pink}no=~                   |                 ~={green}sí=~                 |
+| **CPLimitada**                                                         |      $O(b^{p\_{max}})$      |        $O(b\cdot p\_{max})$         |                   ~={pink}no=~                   |                 ~={pink}no=~                  |
+| **CAmplada**                                                           |        $O(b^{d+1})$         |            $O(b^{d+1})$             |      ~={ylw}si òptim és el més curt=~      |          ~={ylw}si $b$ finit=~          |
+| **CCU**                                                                |          $O(b^m)$           |              $O(b^m)$               |                  ~={green}sí=~                   | ~={ylw}si $b$ finit i costos positius=~ |
+| **GBFS**                                                               |          $O(b^m)$           |              $O(b^m)$               |                   ~={pink}no=~                   |       ~={ylw}si eliminem cicles=~       |
+| **A***                                                                 |          $O(b^m)$           | $O(b^m)$<br>~={faded}(pitjor cas)=~ | ~={ylw}si $h$ admissible=~ |       ~={ylw}si costos positius=~       |
+| **HC** (bàsic)                                                         |        $O(b\cdot m)$        |               $O(b)$                |                   ~={pink}no=~                   |                 ~={pink}no=~                  |
+| **HC** (guardant camins)                                               |          $O(b^m)$           |            $O(b\cdot m)$            |                   ~={pink}no=~                   |                 ~={green}sí=~                 |
+| **SA** (bàsic)                                                         |        $O(b\cdot m)$        |               $O(b)$                |                   ~={pink}no=~                   |                 ~={pink}no=~                  |
+| **SA** (màxims locals)                                                 |    $O(i\cdot b\cdot m)$     |               $O(b)$                |                   ~={pink}no=~                   |                 ~={pink}no=~                  |
+| **CTabú**                                                              |    $O(i\cdot b\cdot m)$     |               $O(b)$                |                   ~={pink}no=~                   |                 ~={pink}no=~                  |
+| **CBeam**                                                              | $O(i\cdot b\cdot m\cdot k)$ |            $O(b\cdot k)$            |                   ~={pink}no=~                   |                 ~={pink}no=~                  |
+| **SimAnnealing**                                                             |    $O(i\cdot b\cdot m)$     |               $O(b)$                |                   ~={pink}no=~                   |                 ~={pink}no=~                  |
+| **KMeans**                                                             |    $O(t\cdot n\cdot k)$     |                 ??                  |                   ~={pink}no=~                   |                 ~={green}sí=~                 |
+
+$b\equiv$ factor de ramificació
+$d \equiv$ profunditat de la solució menys profunda
+$m\equiv$ profunditat de l'arbre
+$i\equiv$ `max_iter`
