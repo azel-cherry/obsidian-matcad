@@ -349,7 +349,7 @@ def steepest_ascent_search(initial)
 		current = successor
 		expanded = expand(current)
 		successor = max_h(expanded)
-	if h(current) >= h(successor): break
+		if h(current) >= h(successor): break
 	
 	return current
 ```
