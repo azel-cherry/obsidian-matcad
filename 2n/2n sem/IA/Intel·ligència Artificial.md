@@ -687,6 +687,7 @@ title: Definicions
 
 Tenim:
 + $X = \{\vec{x_{i}}\mid \vec{x_{i}}=(x_{i,1},\dots,x_{i,d})\}$ : conjunt de punts
+	+ $n$ : nombre de punts
 + $k$ : nombre de classes en què es vol dividir l'espai
 + $C_{i}$ : conjunt de punts de la classe $i$
 	+ $n_{C_{i}}$ : nombre de punts a la classe $i$
@@ -757,24 +758,24 @@ Es refereix al resultat ideal que s'espera de la resolució del problema; la **v
 
 
 ---
-## 5. **Anàlisi** de tots els algorismes
+## 5. **Anàlisi** de **tots** els algorismes
 
-| Criteri $\boldsymbol\rightarrow$<br>Estratègia $\boldsymbol\downarrow$ |          **Temps**          |              **Espai**              |                    **Òptim**                     |                  **Complet**                  |
-| ---------------------------------------------------------------------- |:---------------------------:|:-----------------------------------:|:------------------------------------------------:|:---------------------------------------------:|
-| **CProfunditat**                                                       |         $O(b^{m})$          |            $O(b\cdot m)$            |                   ~={pink}no=~                   |                 ~={green}sí=~                 |
-| **CPLimitada**                                                         |      $O(b^{p\_{max}})$      |        $O(b\cdot p\_{max})$         |                   ~={pink}no=~                   |                 ~={pink}no=~                  |
-| **CAmplada**                                                           |        $O(b^{d+1})$         |            $O(b^{d+1})$             |      ~={ylw}si òptim és el més curt=~      |          ~={ylw}si $b$ finit=~          |
-| **CCU**                                                                |          $O(b^m)$           |              $O(b^m)$               |                  ~={green}sí=~                   | ~={ylw}si $b$ finit i costos positius=~ |
-| **GBFS**                                                               |          $O(b^m)$           |              $O(b^m)$               |                   ~={pink}no=~                   |       ~={ylw}si eliminem cicles=~       |
-| **A***                                                                 |          $O(b^m)$           | $O(b^m)$<br>~={faded}(pitjor cas)=~ | ~={ylw}si $h$ admissible=~ |       ~={ylw}si costos positius=~       |
-| **HC** (bàsic)                                                         |        $O(b\cdot m)$        |               $O(b)$                |                   ~={pink}no=~                   |                 ~={pink}no=~                  |
-| **HC** (guardant camins)                                               |          $O(b^m)$           |            $O(b\cdot m)$            |                   ~={pink}no=~                   |                 ~={green}sí=~                 |
-| **SA** (bàsic)                                                         |        $O(b\cdot m)$        |               $O(b)$                |                   ~={pink}no=~                   |                 ~={pink}no=~                  |
-| **SA** (màxims locals)                                                 |    $O(i\cdot b\cdot m)$     |               $O(b)$                |                   ~={pink}no=~                   |                 ~={pink}no=~                  |
-| **CTabú**                                                              |    $O(i\cdot b\cdot m)$     |               $O(b)$                |                   ~={pink}no=~                   |                 ~={pink}no=~                  |
-| **CBeam**                                                              | $O(i\cdot b\cdot m\cdot k)$ |            $O(b\cdot k)$            |                   ~={pink}no=~                   |                 ~={pink}no=~                  |
-| **SimAnnealing**                                                             |    $O(i\cdot b\cdot m)$     |               $O(b)$                |                   ~={pink}no=~                   |                 ~={pink}no=~                  |
-| **KMeans**                                                             |    $O(t\cdot n\cdot k)$     |                 ??                  |                   ~={pink}no=~                   |                 ~={green}sí=~                 |
+| Criteri $\boldsymbol\rightarrow$<br>Estratègia $\boldsymbol\downarrow$ |          **Temps**          |              **Espai**              |           **Òptim**            |               **Complet**               |
+| ---------------------------------------------------------------------- | :-------------------------: | :---------------------------------: | :----------------------------: | :-------------------------------------: |
+| **CProfunditat**                                                       |         $O(b^{m})$          |            $O(b\cdot m)$            |          ~={pink}no=~          |              ~={green}sí=~              |
+| **CPLimitada**                                                         |      $O(b^{p\_{max}})$      |        $O(b\cdot p\_{max})$         |          ~={pink}no=~          |              ~={pink}no=~               |
+| **CAmplada**                                                           |        $O(b^{d+1})$         |            $O(b^{d+1})$             | ~={ylw}si "òptim" = més curt=~ |          ~={ylw}si $b$ finit=~          |
+| **CCU**                                                                |          $O(b^m)$           |              $O(b^m)$               |         ~={green}sí=~          | ~={ylw}si $b$ finit i costos positius=~ |
+| **GBFS**                                                               |          $O(b^m)$           |              $O(b^m)$               |          ~={pink}no=~          |       ~={ylw}si eliminem cicles=~       |
+| **A***                                                                 |          $O(b^m)$           | $O(b^m)$<br>~={faded}(pitjor cas)=~ |   ~={ylw}si $h$ admissible=~   |       ~={ylw}si costos positius=~       |
+| **HC** (bàsic)                                                         |        $O(b\cdot m)$        |               $O(b)$                |          ~={pink}no=~          |              ~={pink}no=~               |
+| **HC** (guardant camins)                                               |          $O(b^m)$           |            $O(b\cdot m)$            |          ~={pink}no=~          |              ~={green}sí=~              |
+| **SA** (bàsic)                                                         |        $O(b\cdot m)$        |               $O(b)$                |          ~={pink}no=~          |              ~={pink}no=~               |
+| **SA** (màxims locals)                                                 |    $O(i\cdot b\cdot m)$     |               $O(b)$                |          ~={pink}no=~          |              ~={pink}no=~               |
+| **CTabú**                                                              |    $O(i\cdot b\cdot m)$     |               $O(b)$                |          ~={pink}no=~          |              ~={pink}no=~               |
+| **CBeam**                                                              | $O(i\cdot b\cdot m\cdot k)$ |            $O(b\cdot k)$            |          ~={pink}no=~          |              ~={pink}no=~               |
+| **SimAnnealing**                                                       |    $O(i\cdot b\cdot m)$     |               $O(b)$                |          ~={pink}no=~          |              ~={pink}no=~               |
+| **KMeans**                                                             |    $O(t\cdot n\cdot k)$     |                 ??                  |          ~={pink}no=~          |              ~={green}sí=~              |
 
 $b\equiv$ factor de ramificació
 $d \equiv$ profunditat de la solució menys profunda
