@@ -472,7 +472,7 @@ Fixant $\varepsilon$ i $\alpha$, trobem el valor de $n$ per tal que l'IC de grau
 
 #### **Reducció** de la **variància**
 
-L'**error** en el mètode de Monte Carlo es comporta com $\boldsymbol{\sigma/\sqrt{n}}$ per $n$ prou gran, per tant es pot reduir l'error **reduint la variància**.
+L'**error** en el mètode de Monte Carlo es comporta com $\boldsymbol{\frac{\sigma}{\sqrt{n}}}$ per $n$ prou gran, per tant es pot reduir l'error **reduint la variància**.
 
 Això comporta **treballar amb altres *v.a.*s** que tinguin una variància menor.
 
@@ -515,6 +515,27 @@ $$ \begin{cases}
 sigui tan constant com es pugui.
 ```
 ````
+
+
+#### **Generació** de *v.a.*s
+
+Per generar realitzacions de *v.a.*s arbitràries **es parteix de realitzacions d'una *v.a.* $\boldsymbol{U(0,1)}$**, generades per mètodes deterministes que retornen una seqüència de números distribuïts de manera molt similar a una uniforme (com que no son pròpiament aleatoris, es diuen nombres **pseudo-aleatoris**).
+
+###### Mètode de la **inversa**
+
+Aquest mètode permet generar realitzacions d'una *v.a.* $X$ si coneixem la seva funció de distribució $F_{X}(x)=P(X<x)$ .
+
+```ad-def
+title: *Inversa generalitzada* de $\boldsymbol{F_{X}}$
+
+$$ F_{X}^{-1}(u) = \text{inf}\{x \in \mathbb{R} \mid F_{X}(x)\geq u\} $$
+```
+
+```ad-teor
+Sigui $F_X$ la funció de distribució de la *v.a.* $X$, $F_{X}^{-1}$ la seva inversa generalitzada i $U\sim U(0,1)$.
+
+Aleshores la *v.a.* $F_{X}^{-1}(U)$ té la mateixa distribució que $X$.
+```
 
 
 ---
