@@ -45,9 +45,9 @@ Si existeixen ~={green}multiplicadors de Lagrange=~ $\lambda=(\lambda_{1},\dots,
 
 2. **Segon ordre**:
 	$$ M(x) = \nabla^{2}f(x)+\sum_{i=1}^m \lambda_{i} \cdot \nabla^{2}h_{i}(x) + \sum_{i=1}^r \mu_{i} \cdot \nabla^{2}g_{i}(x) $$
-	compleix $\boxed{\,v\cdot M(x)\cdot v>0\,}$ per tot $v\neq0$ tal que
-	+ $\nabla h(x)\cdot v=0$
-	+ $\nabla g_{i}(x)\cdot v=0$ per tot $i$ tal que $g_{i}(x)=0$ i $\mu_{i}>0$
+	compleix $\boxed{\,v\cdot M(x^*)\cdot v>0\,}$ per tot $v\neq0$ tal que
+	+ $\nabla h(x^*)\cdot v=0$
+	+ $\nabla g_{i}(x^*)\cdot v=0$ per tot $i$ tal que $g_{i}(x^*)=0$ i $\mu_{i}>0$
 
 llavors $x*$ és un mínim local de $f$ en $S$.
 ```
@@ -108,8 +108,8 @@ title: Mètodes per **reducció de l'interval**
 
 | Mètode                                                      |               ~={green}Fibonacci=~                |                ~={green}Raó àuria=~                 |
 |:----------------------------------------------------------- |:-------------------------------------------------:|:---------------------------------------------------:|
-| **Punts de divisió**                                        | $\displaystyle r_{k} = \frac{F_{N-k}}{F_{N-k+1}}$ | $\displaystyle r_{k}=\varphi=\frac{-1+\sqrt{5}}{2}$ |
-| **Factor de reducció**                                      |          $\displaystyle \frac{1}{F_{N}}$          |                      $\varphi$                      |
+| **Raons de divisió $\boldsymbol r_{k}$**                                        | $\displaystyle \frac{F_{N-k}}{F_{N-k+1}}$ | $\displaystyle \varphi=\frac{-1+\sqrt{5}}{2}$ |
+| **Factor de reducció**<br>a cada iteració                                     |          $\displaystyle \frac{1}{F_{N}}$          |                      $\varphi$                      |
 
 + Amb Fibonacci, per **tolerància** $\varepsilon$ agafem $N$ tal que $\displaystyle F_{N+1}> \frac{b-a}{\varepsilon}$.
 ```

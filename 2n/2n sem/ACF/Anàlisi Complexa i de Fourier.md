@@ -900,7 +900,147 @@ Siguin $\Omega \subset \mathbb{C}$ un obert connex i $f\in H(\Omega)$ no constan
 Aleshores $f(U)$ és obert per $U\subset\Omega$ obert.
 ```
 
- 
+
+---
+## Sèries de **Laurent**
+
+Una ==sèrie de Laurent== al voltant d'$a\in \mathbb{C}$ és una sèrie de la forma
+$$ \sum_{n=-\infty}^{\infty} c_{n}\,(z-a)^{n} = \sum_{n=1}^{\infty} \frac{c_{-n}}{(z-a)^{n}} + \sum_{n=0}^{\infty} c_{n}\,(z-a)^{n} \,,$$
+on la part d'exponents negatius s'anomena ==part singular== de la sèrie.
+
+```ad-prop
+
+> Sigui $f(z) = f_{1}(z) + f_{2}(z)$ una sèrie de Laurent amb
+> $$\begin{align}
+\,f_{1}(z) &= \sum_{n=1}^{\infty} \frac{c_{-n}}{(z-a)^{n}} \,,\\
+\,f_{2}(z) &= \sum_{n=0}^{\infty} c_{n}\,(z-a)^{n} \,,
+\end{align}$$
+i $R_{1},R_{2}$ els radis de convergència de $f_{1}(z)$ i $f_{2}(z)$ respectivament.
+
+Aleshores $f(z)$ és holomorfa en l'anell $\left\{ \frac{1}{R_{1}}<|z-a|<R_{2} \right\}$.
+```
+
+```ad-teor
+> Sigui $\Omega=\{z\in \mathbb{C}\mid r<|z-a|<R\}$ amb $0\leq r<R\leq \infty$ i sigui $f\in H(\Omega)$.
+
+Aleshores hi ha una única sèrie de Laurent amb
+$$ f(z) = \sum_{n\in \mathbb{Z}} c_{n}\,(z-a)^{n}\,, \quad z\in\Omega\,. $$
+
+A més, la sèrie és absoluta i uniformement convergent en els compactes d'$\Omega$ amb
+$$ c_{n} = \frac{1}{2\pi i} \int_{|z-a|=\rho} \frac{f(z)}{(z-a)^{n+1}}\,dz \,.$$
+```
+
+
+#### **Singularitats aïllades** de funcions holomorfes
+
+
+> Sigui $f\in H(\Omega\setminus E)$.
+
+Les ==singularitats== de $f$ son els punts d'$z_{0}\in E$, que es diuen ==aïllades== si existeix $r>0$ tal que
+$$ f\in H(D_{r}(z_{0})\setminus \{z_{0}\}) \,.$$
+
+````ad-def
+title: Singularitat *evitable*
+
+> Sigui $z_{0}$ una singularitat aïllada d'una funció holomorfa $f$.
+
+ La singularitat $z_{0}$ es diu ==evitable== si existeix $\varepsilon>0$ i $g\in H(D_{\varepsilon}(z_{0}))$ tal que $f(z)=g(z)$ per tot $z\in D_{\varepsilon}(z_{0})\setminus z_{0}$ .
+
+```ad-prop
+> Sigui $z_{0}$ una singularitat aïllada d'una funció holomorfa $f$.
+
+Aleshores $z_{0}$ és evitable si i només si
+$$ \lim_{z\to z_{0}} (z-z_{0})\,f(z) = 0 \,.$$
+```
+````
+
+````ad-def
+title: *Pol*
+
+> Sigui $z_{0}$ una singularitat aïllada d'una funció holomorfa $f$.
+
+La singularitat $z_{0}$ és un ==pol== si $\displaystyle\lim_{z\to z_{0}} |f(z)| = +\infty$ .
+
+```ad-def
+title: *Ordre* d'un pol
+
+> Sigui $z_{0}$ un pol de la funció $f$.
+
+L'==ordre== del pol $z_{0}$ és $m$ tal que
+$$ f(z) = \sum_{n=-m}^{+\infty} c_{n}\,(z-z_{0})^{n} $$
+amb $c_{-m}\neq 0$ .
+```
+````
+
+````ad-def
+title: Singularitat *essencial*
+
+Una singularitat aïllada d'una funció holomorfa que **no és evitable ni és un pol** es diu singularitat ==essencial==.
+
+```ad-teor
+title: Teorema de **Casorati-Weierstrass**
+
+> Sigui $f$ holomorfa en $D_{r}(z_{0})\setminus \{z_{0}\}$ amb $z_{0}$ singularitat essencial.
+```
+
+Aleshores per tot $0<\varepsilon\leq r$ el conjunt $f(D_{\varepsilon}(z_{0})\setminus \{z_{0}\})$ és dens en $\mathbb{C}$ .
+````
+
+```ad-prop
+title: **Classificació** de singularitats aïllades
+
+> Sigui $f$ holomorfa en $\{0<|z-z_{0}|<r\}$ amb $f(z)=\displaystyle\sum_{n\in \mathbb{Z}}c_{n}\,(z-z_{0})^{n}$.
+
+Aleshores $z_{0}$ és:
+1. ~={green}Evitable=~ si $c_{-n}=0$ per per tot $n\geq1$ .
+2. Un ~={green}pol d'ordre $\boldsymbol m$=~ si $c_{-n}=0$ per tot $n>m$ amb $c_{-m}\neq0$ .
+3. ~={green}Essencial=~ si existeixen infinits $c_{-n}\neq0$ per $n>0$ .
+```
+
+
+#### Teorema dels **residus**
+
+> Sigui $f$ holomorfa amb una singularitat aïllada en $a$ amb $f(z)=\sum_{n\in \mathbb{Z}}c_{n}\,(z-z_{0})$ el seu desenvolupament en sèrie de Laurent.
+
+El ==residu== de $f$ 3n $a$ és
+$$ \mathrm{Res}(f,a) = c_{-1} \,.$$
+
+```ad-prop
+> Sigui $r>0$ i $f\in H(D_{r}(a)\setminus \{a\})$.
+
+Aleshores
+$$ \int_{|z-a|=\varepsilon} f(z)\,dz = 2\pi i \,\mathrm{Res}(f,a) $$
+per tot $0<\varepsilon<r$ .
+```
+
+```ad-met
+title: Càlcul de residus
+
++ Si $z=a$ és una singularitat **evitable** de $f$, aleshores
+	$$ \mathrm{Res}(f,a)=0 \,.$$
++ Si $z=a$ és un **pol d'ordre $\boldsymbol m$** de $f$, aleshores
+	$$ \mathrm{Res}(f,a) = \frac{1}{(m-1)!}\,\partial^{(m-1)}[(z-a)^{m}f(z)]_{z=a} \,.$$
+	+ Si $z=a$ és un **pol simple** de $f$, aleshores
+		$$ \mathrm{Res}(f,a) = \lim_{z\to a}\,(z-a)\,f(z) $$
+```
+
+````ad-teor
+title: Teorema dels **residus**
+
+> Sigui $\Omega \subset \mathbb{C}$ un obert i $f\in H(\Omega\setminus A)$ amb $A\subset\Omega$ sense punts d'acumulació en $\Omega$, i $\Gamma$ un cicle en $\Omega \setminus A$ homògeg a 0 en $\Omega$.
+
+Aleshores
+$$ \int_{\Gamma} f(z)\,dz = 2\pi i \sum_{a\in A} \text{Ind}(\Gamma,a)\,\mathrm{Res}(f,a) \,.$$
+
+```ad-not
+Generalment farem servir aquest teorema per funcions holomorfes amb un conjunt finit de singularitats $\{a_{1},\dots,a_{n}\}$ dins d'una corba tancada simple $\gamma$. 
+
+En aquest cas, tenim que
+$$ \int_{\gamma} f(z)\,dz = 2\pi i \sum_{i=1}^{n} \mathrm{Res}(f,a_{i}) \,.$$
+```
+````
+
+
 ---
 ## Apèndix
 
