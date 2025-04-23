@@ -538,6 +538,22 @@ Aleshores la *v.a.* $F_{X}^{-1}(U)$ té la mateixa distribució que $X$.
 ```
 
 
+###### Mètode d'**acceptació rebuig**
+
+Quan no es pot trobar la inversa $F_{X}^{-1}$ fàcilment, aquest mètode permet generar realitzacions de $X$ solament avaluant la seva funció de densitat $f_{X}(x)$.
+
+S'haurà de saber generar realitzacions d'una *v.a.* $Y$ amb funció de densitat $f_{Y}$ que compleix $f_{X}\leq m\,f_{Y}$ per un $m>0$ .
+
+```ad-met
+
+1. Generem una realització $x$ de $Y$.
+2. Generem una realització $u$ de $U\sim\text{Unif}(0,1)$.
+3. Si es compleix
+	$$ u < \frac{f_{X}(x)}{m\,f_{Y}(x)} \,,$$
+	acceptem $x$ com a realització de $X$.
+```
+
+
 ---
 ## Apèndix
 
