@@ -375,6 +375,108 @@ $$ g(\mu) = \int \frac{C}{\sqrt{h(\mu)}}\,d\mu \,.$$
 
 
 ---
+## Models lineals **generalitzats** (GLM)
+
+```ad-not
+title: Preàmbul
+
+Models unificats per **variables resposta no normalment distribuïdes**.
+
++ ~={green}Regressió:=~ Variables explicatives **numèriques**
++ ~={green}ANOVA=~ ~={green-low}(Analysis of Variance):=~ Variables explicatives **categòriques**
+```
+
++ ~={green}Variables resposta=~ $y_{1},\dots,y_{n}$ 
+	+ Distribució de la *Família Exponencial de de Distribucions* ~={faded}(Normal, Bernoulli, Binomial, Poission, Gamma, etc)=~, amb funció de densitat
+		$$ \boxed{\,f(y_{i};\theta_{i},\phi) = \exp\left( \frac{\theta_{i}\,y_{i}-b(\theta_{i})}{a(\phi)}+c(y_{i},\phi) \right)\,} $$
+		+ $\theta_{i}:\,$ ==Paràmetre natural== (depèn de les covariants)
+		+ $\phi:\,$ ==Paràmetre de dispersió==
+	+ Mitjana $\mu_{i}$ que compleix la ==funció *link*==:
+		$$ \boxed{\,g(\mu_{i}) = \beta_{0}+\beta_{1}x_{1}+\dots+\beta_{p}x_{pi}\,} $$
+		+ Per defecte es fa servir el ~={green-low}*link* canònic=~ $\,g(\mu_{i})=\theta_{i}\,$ .
++ ~={green}Covariants=~ $x_{1i},\dots,x_{pi}$ .
+
+
+#### Models **binaris**
+
+Resposta $Y=\{y_{1},\dots,y_{n}\}$ **dicotòmica** ~={faded}(formada per 0s i 1s)=~.
+
+
+###### Models **logit** (regressió logística)
+
+Suposem que la variable resposta segueix una distribució **Binomial** (Bernoulli) $B(\pi)$.
+
+```ad-prop
+title: Funció ***link*** $\boldsymbol g$
+
+Farem servir la ==funció *logit*== (que també representa els ==*log-odds*==):
+$$ g(\pi) = \boxed{\,\log\left( \frac{\pi}{1-\pi} \right)\,} $$
+
+```
+
+```ad-prop
+title: **Proporció** $\boldsymbol{\pi_{i}}$
+
+La probabilitat d'èxit (o la mitjana) és:
+$$ \begin{gather}
+\pi_{i} = g^{-1}(\beta_{0}+\beta_{1}x_{1i}+\dots+\beta_{p}x_{pi}) = \\
+= \boxed{\,\frac{1}{1+\exp(-\beta_{0}-\beta_{1}x_{1i}-\dots-\beta_{p}x_{pi})} \,}
+\end{gather}$$
+
+```
+
+```ad-prop
+title: Funció ***log-likelihood*** (versemblança)
+
+$$ l(Y;\beta) = \boxed{\,\sum_{i=1}^{n} y_{i}\log(\pi_{i}(\beta))+(1-y_{i})\log(1-\pi_{i}(\beta))\,} $$
+	Els paràmetres s'estimen [[#^f2113a | maximitzant aquesta funció]] respecte $\beta$.
+```
+
+```ad-not
+Els coeficients $\exp(\beta_{k})$ es poden interpretar com el canvi (multiplicatiu) en els *odds* de la variable resposta quan $x_{k}$ s'incrementa per 1.
+```
+
+
+###### Models ***probit***
+
+Suposem que la resposta segueix una distribució **normal** $N(\mu,\sigma^{2})$.
+
+```ad-prop
+title: **Proporció** $\boldsymbol \pi$
+
+$$\displaystyle\pi=\boxed{\,\phi\left( \frac{x-\mu}{\sigma} \right)\,}$$
+amb $\phi$ funció de distribució de la normal estàndard.
+```
+
+```ad-prop
+title: Funció ***link*** $\boldsymbol g$
+
+==Funció *probit*==:
+$$\,g(\pi)=\displaystyle\phi^{-1}(\pi)=\boxed{\,\frac{1}{\sigma}\,x-\frac{\mu}{\sigma}\,}$$
+```
+
+
+#### Models **Poisson**
+
+Variable resposta que representa el compte d'un cert esdeveniment, que assumim que segueix una distribució **Poisson** $\text{Pois}(\mu_{i})$.
+
+```ad-prop
+title: Funcions ***link*** $g$
+
++ ~={green-low}Log-lineal:=~ $g(\mu)=\log(\mu)$
++ ~={green-low}Identitat:=~ $g(\mu)=\mu$
+```
+
+```ad-prop
+title: Funció ***log-likelihood*** (versemblança)
+
+$$ l(Y;\beta) \sim \boxed{\,\sum_{i=1}^{n} -\mu_{i}(\beta) + y_{i}\log(\mu_{i}(\beta))\,} $$
+
+Els paràmetres $\beta$ s'estimen numèricament [[#^f2113a | maximitzant aquesta funció]].
+```
+
+
+---
 ## Apèndix
 
 ```ad-def
@@ -452,3 +554,16 @@ F-statistic: [...] on [...] and [...] DF, p-value: [...]
 	$[$`Estimate`$\pm$`qt(1-a/2)`$\cdot$`Std. Error`$]$
 + Variable significativa quan `PR(<|t|)`$<\alpha$
 `````
+
+```ad-prop
+title: GLM en R
+
+Es pot maximitzar la funció *log-likelihood* fent servir les funcions:
++ ~={green-low}Non-linear minimization:=~ `nlm(<loglik>, p=c(...))`
+	+ `<loglik>` és la funció a minimitzar, és a dir la *log-likelihood*
+	+ `p` son els valors inicials
++ ~={green-low}Generalized linear model:=~ `glm(y~..., family=...(link=...))`
+	+ `y` son les dades de la variable resposta
+	+ `family` especifica la distribució de la variable resposta
+```
+^f2113a
