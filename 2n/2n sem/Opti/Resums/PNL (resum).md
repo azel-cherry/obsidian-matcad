@@ -1,4 +1,3 @@
-
 ## 1. Teoria d'**extrems**
 
 ```ad-def

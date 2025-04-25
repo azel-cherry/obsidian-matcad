@@ -252,7 +252,7 @@ title: *Família de polinomis ortogonals*
 
 Un conjunt $\{ \psi_{0},\psi_{1},\dots \}$ es diu ==família de polinomis ortogonals== sobre l'interval $[a,b]$ i per una funció pes $\omega:[a,b]\to \mathbb{R}_{+}$ si:
 + $\text{gr}(\psi_{i})=i \quad \forall i\in \{ 0,1,\dots \}$ 
-+ $\displaystyle\int_{a}^b \psi_{i}(x)\,\psi_{\rho}(x)\,\omega(x)\,dx \begin{cases}\, =0 &\text{si }i\neq\rho \\\, \neq0 &\text{si }i=\rho \end{cases}$
++ $\langle f,g\rangle := \displaystyle\int_{a}^b \psi_{i}(x)\,\psi_{\rho}(x)\,\omega(x)\,dx \begin{cases}\, =0 &\text{si }i\neq\rho \\\, \neq0 &\text{si }i=\rho \end{cases}$
 
 ```ad-prop
 title: Propietats
@@ -555,10 +555,80 @@ S'haurà de saber generar realitzacions d'una *v.a.* $Y$ amb funció de densitat
 
 
 ---
-## Apèndix
+## Mètodes numèrics per **EDOs**
+
+Tenim un PVI de la forma:
+$$ \begin{cases}
+\, y'(t) &= f(y(t), t) \\
+\, y(t_{0}) &= y_{0}
+\end{cases} $$
 
 ```ad-not
 title: Notació
 
-+ ~={green}$\langle f,g\rangle$=~ $\displaystyle= \int_{a}^b \psi_{i}(x)\,\psi_{\rho}(x)\,\omega(x)\,dx$
++ ~={green}$y$=~ : solució exacta
++ ~={green}$Y_{n}$=~ : solució numèrica a temps $t_{n} = t_{0}+nh$
+```
+
+```ad-not
+title: Recordatori: PVIs
+
+Un PVI té solució única en un entorn de $t_{0}$ si $f$ és de Lipschitz respecte $y$, és a dir
+$$ |f(y_{1},t)-f(y_{2},t)| \leq L\,|y_{1}-y_{2}| \,,$$
+amb $L$ constant de Lipschitz.
+```
+
+````ad-prop
+title: Esquemes de **Taylor**
+
+Si coneixem el valor de $y$ en un punt $t$, es pot aproximar el valor que tindrà després d'un pas $h$ mitjançant el desenvolupament de Taylor:
+
+$$ y(t+h) = y(t) + y'(t)\,h + y''(t) \frac{h^{2}}{2} + y'''(t) \frac{h^{3}}{3!} + \dots $$
+
+---
+
++ Si ens quedem amb els **dos primers termes**, obtenim l'==esquema d'Euler==:
+	$$ y(t+h) \approx y(t) + y'(t)\,h \,,$$
+	que en termes de la solució numèrica s'escriu
+	$$ \begin{cases}
+	Y_{n+1} &= Y_{n} + h\,f(Y_{n},t_{n}) \\
+	Y_{0} &= t_{0} 
+	\end{cases} $$
+
++ Si ens quedem amb els **tres primers termes**, obtenim l'==esquema de Taylor d'ordre 2==:
+	$$ y(t+h) \approx y(t) + y'(t)\,h + (\partial_{1}f(y,t)\,f(y,t)+\partial_{2}f(y,t)) \frac{h^{2}}{2} \,,$$
+	que en termes de la solució numèrica s'escriu
+	$$ \begin{cases}
+	Y_{n+1} &= Y_{n} + h\,f(Y_{n},t_{n}) + \frac{h^{2}}{2} (\partial_{1}f(Y_{n},t_{n})\,f(Y_{n},t_{n}) + \partial_{2}f(Y_{n},t_{n})) \\
+	Y_{0} &= t_{0} 
+	\end{cases} $$
+
+```ad-met
+title: Mètode d'**Adams**
+
+$$ \begin{cases}
+Y_{n+1} &= Y_{n} + \displaystyle \frac{3f(Y_{n},t_{n})-f(Y_{n-1},t_{n-1})}{2}h \\
+Y_{0} &= t_{0}
+\end{cases} $$
+
+El primer pas $Y_{1}$ es calcularà fent servir algun mètode d'un pas.
+```
+````
+
+#### **Sistemes** d'EDOs
+
+Tenim el següent sistema:
+$$ \begin{cases}
+\, x'(t) = y(t) \\
+\, y'(t) = x(t)\,y(t)
+\end{cases} $$
+amb $x(0)=x_{0}$ i $y(0)=y_{0}$ .
+
+```ad-prop
+title: Esquema d'**Euler**
+
+$$ \begin{cases}
+X_{n+1} &= X_{n} + Y_{n}\,h \\
+Y_{n+1} &= Y_{n} + X_{n}\,Y_{n}\,h
+\end{cases} $$
 ```
