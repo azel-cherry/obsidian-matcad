@@ -82,6 +82,51 @@ En el codi, això ho representarem com una llista amb tots els camins, que seran
 ![[Screenshot 2025-03-21 110519.png | 250]]
 
 
+#### 0.3. **Xarxa semàntica**
+
+```ad-prop
+title: Lèxic
++ graf (dirigit, no dirigit)
+	+ correspondència
++ node
+	+ grau de sortida
+	+ grau d'entrada
++ arc
++ etiqueta
++ matriu d'adjacència
+```
+
+| ~={green-low}Semàntic=~ | 1                      | 2                    | 3             |
+| ------------------------ | ---------------------- | -------------------- | ------------- |
+| **Node**                 | objecte                | part                 | estat         |
+| **Arc**                  | relació entre objectes | connexió entre parts | canvi d'estat |
+
+```ad-prop
+title: Estructural
+
++ un arc va unit a dos nodes
++ etiquetes associades a nodes i/o arcs
++ grau de sortida/entrada d'un node: número d'arcs que entren/surten del node
++ matriu d'adjacència: xarxa $N\times N$ amb $N$ número de nodes
+```
+
+```ad-prop
+title: Procedimental
+
++ construir un graf i manipular-lo
++ correspondència entre grafs
++ mesurar similituds entre grafs
+```
+
+###### 0.3.1. Representacions
+
+|                           | ~={green-low}No dirigit=~                                                                                                                                   | ~={green-low}Dirigit=~ sense etiquetes                                                                                                           | ~={green-low}Dirigit=~ amb etiquetes                                                                                                                                                                 |
+| ------------------------- |:----------------------------------------------------------------------------------------------------------------------------------------------------------- |:------------------------------------------------------------------------------------------------------------------------------------------------ |:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Representació gràfica** | ![[Pasted image 20250425180254.png]]                                                                                                                        | ![[Pasted image 20250425180313.png]]                                                                                                             | ![[Pasted image 20250425180403.png]]                                                                                                                                                                 |
+| **Llista**                | `[[a,b],[a,c],[a,d],[b,e],[b,c],[c,d],[d,e]]`                                                                                                               | `[[a,[b,d]],`<br>` [b,[e]],`<br>` [c,[a,b]],`<br>` [d,[c]],`<br>` [e,[d]]]`                                                                          | `[[a,[[e1,b],[e7,d]]],`<br>` [b,[[e2,e]]],`<br>` [c,[[e5,a],[e6,b]]],`<br>` [d,[[e4,c]]],`<br>` [e,[[e3,d]]]]`                                                                                           |
+| **Matriu d'adjacència**   | $\begin{gather}a \quad b \quad c \quad d \quad e\\\begin{pmatrix}0&1&1&1&0\\1&0&1&0&1\\1&1&0&1&0\\1&0&1&0&1\\0&1&0&1&0\end{pmatrix}\end{gather}$ | $\begin{gather}a \quad b \quad c \quad d \quad e\\\begin{pmatrix}0&1&0&1&0\\0&0&0&0&1\\1&1&0&0&0\\0&0&1&0&0\\0&0&0&1&0\end{pmatrix}\end{gather}$ | $\begin{gather}a \quad\,\,\, b \,\,\,\quad c \,\,\,\quad d \,\,\,\quad e\\\begin{pmatrix}0&e_{1}&0&e_{7}&0\\0&0&0&0&e_{2}\\e_{5}&e_{7}&0&0&0\\0&0&e_{4}&0&0\\0&0&0&e_{3}&0\end{pmatrix}\end{gather}$ |
+
+
 ---
 ## 1. Cerca **no informada**
 
@@ -526,13 +571,14 @@ $i\equiv$ `max_iter`
 ---
 ## 4. Reconeixement de **patrons**
 
-
 Donats diversos objectes, es tracta de cassificar-los segons les seves característiques.
-
-Per aquests algorismes farem servir la representació d'[[#^57fa41 | espai de característiques]].
 
 
 ### 4.1. Reconeixement **estadístic**
+
+
+
+Per aquests algorismes farem servir la representació d'[[#^57fa41 | espai de característiques]].
 
 ```ad-def
 title: Conjunt d'**aprenentatge**
