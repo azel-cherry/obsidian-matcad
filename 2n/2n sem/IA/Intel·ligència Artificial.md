@@ -84,6 +84,8 @@ En el codi, això ho representarem com una llista amb tots els camins, que seran
 
 #### 0.3. **Xarxa semàntica**
 
+^82c6b3
+
 ```ad-prop
 title: Lèxic
 + graf (dirigit, no dirigit)
@@ -801,6 +803,97 @@ Es refereix al resultat ideal que s'espera de la resolució del problema; la **v
 	$$ \text{Accuracy} = \frac{\#\text{mostres ben classificades}}{\#\text{mostres totals}} $$
 2. **GT dona un conjunt d'etiquetes.** Sigui $A$ el conjunt d'etiquetes trobades pel classificador i $B$ les etiquetes del GT:
 	$$ \text{Similitud}(A,B) = \frac{\text{Card}(A\cap B)}{\text{Card}(A)} $$
+
+
+---
+### 4.2. Reconeixement **estructural**
+
+Consisteix en, mitjançant la representació de [[#^82c6b3 | xarxa semàntica]], identificar si dos grafs son iguals o semblants.
+
+
+##### 4.2.1. Problemes de ***graph-matching***
+
+Es tracta de trobar la correspondència entre dos grafs.
+
+````ad-def
+title: *Correspondència* de grafs
+
+Trobar la ==correspondència== entre dos grafs $G_{1}$ i $G_{2}$ és trobar una substitució dels nodes de $G_{1}$ pels nodes de $G_{2}$ que faci que siguin iguals.
+
+```ad-ex
+|            $\boldsymbol{G_{1}}$             |      $\boldsymbol{G_{2}}$                                       |     |
+|:-------------------------------------------:|:-------------------------------------------:|
+| ![[Pasted image 20250426113045.png \| 200]] | ![[Pasted image 20250426113126.png \| 200]] |
+
+> **Correspondència:** $a=5$ , $b=2$ , $c=1$ , $d=4$ , $e=3$
+```
+````
+
+````ad-prop
+title: *Generate and Test*
+
+Genera totes les possibles susbtitucions i les comprova.
+
+```py title:"Generate and Test algorithm"
+def graph_matching(G1, G2):
+
+	permutations = permute(G1)
+	for p in permutations:
+		M1 = permute_matrix(p, MA(G1))
+		
+		if M1 = MA(G2):
+			return p
+
+	return None
+```
++ `permute(G)` retorna la llista de totes les permutacions de `G`
++ `MA(G)` retorna la matriu d'adjacència de `G`
++ `permute_matrix(p,M)` retorna la matriu `M` amb la permutació `p`
+````
+
+````ad-prop
+title: *Graph-matching* (recursiu)
+
+```py title:"Graph-matching algorithm (recursive)"
+def permute(L):
+	if L = []: return L
+	else:
+		for e1 in L:
+			L = permute(L.remove(e1))
+			for e2 in L:
+				L.insert(e2)
+			L_out =+ L
+```
+
+> ~={green}Complexitat:=~ $O(n!)$ amb $n$ nombre de nodes
+````
+
+
+##### 4.2.2. **Constraint Satisfaction** Problems (CSP)
+
+Consisteix a assignar valors a un conjunt de variables a partir d'un domini que verifiquin un conjunt de restriccions.
+
+````ad-prop
+title: *Backtracking*
+
+Algorisme de *backtracking* de cerca en profunditat que poda les branques que no compleixen les restriccions.
+
+```py title:"Backtracking algorithm"
+def backtracking(variables, domain, restrictions):
+	
+	initial = initialize(variables)
+	L = [[initial]]
+	
+	while !solution(L[0]) and L != []:
+		head = L[0]
+		expanded = expand(head, domain)
+		expanded = apply_restrictions(expanded)
+		L = [expanded] + L[1:]
+	
+	if L != []: return L
+	else: return None
+```
+````
 
 
 ---
