@@ -810,6 +810,7 @@ Es refereix al resultat ideal que s'espera de la resolució del problema; la **v
 
 Consisteix en, mitjançant la representació de [[#^82c6b3 | xarxa semàntica]], identificar si dos grafs son iguals o semblants.
 
+Podem interpretar aquests problemes de dues maneres:
 
 ##### 4.2.1. Problemes de ***graph-matching***
 
@@ -832,7 +833,7 @@ Trobar la ==correspondència== entre dos grafs $G_{1}$ i $G_{2}$ és trobar una 
 ````ad-prop
 title: *Generate and Test*
 
-Genera totes les possibles susbtitucions i les comprova.
+Genera **totes les possibles susbtitucions** i les comprova.
 
 ```py title:"Generate and Test algorithm"
 def graph_matching(G1, G2):
@@ -852,9 +853,11 @@ def graph_matching(G1, G2):
 ````
 
 ````ad-prop
-title: *Graph-matching* (recursiu)
+title: *Generate and Test* (recursiu)
 
-```py title:"Graph-matching algorithm (recursive)"
+Versió recursiva de l'alogrisme anterior.
+
+```py title:"Generate and Test algorithm (recursive)"
 def permute(L):
 	if L = []: return L
 	else:
@@ -876,7 +879,7 @@ Consisteix a assignar valors a un conjunt de variables a partir d'un domini que 
 ````ad-prop
 title: *Backtracking*
 
-Algorisme de *backtracking* de cerca en profunditat que poda les branques que no compleixen les restriccions.
+Algorisme de *backtracking* de **cerca en profunditat** que **poda** les branques que no compleixen les restriccions.
 
 ```py title:"Backtracking algorithm"
 def backtracking(variables, domain, restrictions):
@@ -887,13 +890,76 @@ def backtracking(variables, domain, restrictions):
 	while !solution(L[0]) and L != []:
 		head = L[0]
 		expanded = expand(head, domain)
-		expanded = apply_restrictions(expanded)
+		expanded = apply_restrictions(expanded, restrictions)
 		L = [expanded] + L[1:]
 	
 	if L != []: return L
 	else: return None
 ```
++ `initialize()` retorna una llista de totes les variables `[a,b,c,...]` inicialitzades sense valor `[[a,None], [b,None], [c,None], ...]`
++ `solution(e)` retorna `True` si `e` és solució
++ `expand()` retorna la llista de possibles assignacions de les `variables` amb valors de `domain`
++ `apply_restrictions(e,r)` retorna la llista `e` després d'eliminar els camins que no compleixen les restriccions `r`
+
+> ~={green}Complexitat:=~ $O(n!)$ and $n$ nombre de nodes
 ````
+
+````ad-prop
+title: Algorismes ***Arc-Consistency*** (AC)
+
+Millora *backtracking* amb un pas incial **comprovant la consistència** entre els diferents dominis de les variables i **eliminant substitucions inconsistents**.
+
+Per fer això s'utilitza una certa propietat que dependrà del problema.
+
+```py title:"Arc-Consistency algorithm"
+def AC_backtracking(variables, domain, restrictions)
+	
+	[var, dom] = AC(variables, domain, restrictions)  <---
+	initial = initialize(variables)
+	L = [[initial]]
+	
+	while !solution(L[0]) and L != []:
+		head = L[0]
+		expanded = expand(head, [var, dom])  <---
+		expanded = apply_restrictions(expanded, restrictions)
+		L = [expanded] + L[1:]
+	
+	if L != []: return L
+	else: return None
+```
++ `AC(v,d,r)` retorna per a cada variable el domini que verifica les restriccions
++ `expand(h,[v,d])` retorna la llista de possibles assignacions de `h` considerant el domini especificat
+
+> ~={green}Complexitat:=~ $O(n_{1}!\,n_{2}!\dots n_{p}!)$ amb $n_{1},n_{2},\dots,n_{p}$ subconjunts dels nodes que comparteixen la propietat estructural triada.
+````
+
+
+##### 4.2.3. *Graph-matching* **no-exacte**
+
+En comptes de buscar la correspondència que fa que dos grafs siguin iguals, busquem que siguin el més semblants possible.
+
+```ad-met
+title: Mesures de **semblança entre grafs**
+
+1. **Elements comuns i no comuns** entre grafs:
+	$$ \text{Similutud}(G_{1},G_{2}) = \alpha\,\text{Card}(S_{G_{1}}\cap S_{G_{2}}) + \beta\,\text{Card}(S_{G_{1}}\setminus S_{G_{2}}) + \gamma\,\text{Card}(S_{G_{2}}\setminus S_{G_{1}}) $$
+	amb $S_{G}$ conjunt d'elements de $G$ com ara:
+	+ nodes amb tipus
+	+ enllaços amb etiquetes
+	+ nodes amb enllaços
+
+2. **Distàncies** de cada node d'un graf amb els altres nodes:
+	$$ \text{Distància}(G_{1},G_{2}) = \sum_{n_{1}\in G_{1}} \min_{n_{1}\in G_{2}}\{d(n_{1},n_{2})\} $$
+	amb $d(n_{1},n_{2})$ distància entre els dos nodes, que pot estar basada en diferents aspectes, per exemple:
+	+ tipus de node ~={faded}($+1$ si son de tipus diferent)=~
+	+ diferència d'arcs de sortida
+	+ diferència d'etiquetes dels arcs de sortida
+
+3. **Distància d'edició**: Mínim cost de totes les operacions d'edició necessàries perque $G_{1}$ es converteixi en $G_{2}$:
+	+ substitució d'un node o un arc
+	+ eliminació d'un node o un arc
+	+ inserció d'un node o un arc
+```
 
 
 ---
