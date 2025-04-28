@@ -1002,7 +1002,7 @@ Aleshores $z_{0}$ és:
 
 > Sigui $f$ holomorfa amb una singularitat aïllada en $a$ amb $f(z)=\sum_{n\in \mathbb{Z}}c_{n}\,(z-z_{0})$ el seu desenvolupament en sèrie de Laurent.
 
-El ==residu== de $f$ 3n $a$ és
+El ==residu== de $f$ en $a$ és
 $$ \mathrm{Res}(f,a) = c_{-1} \,.$$
 
 ```ad-prop
@@ -1039,6 +1039,80 @@ En aquest cas, tenim que
 $$ \int_{\gamma} f(z)\,dz = 2\pi i \sum_{i=1}^{n} \mathrm{Res}(f,a_{i}) \,.$$
 ```
 ````
+
+
+#### Residu a l'**infinit**
+
+```ad-prop
+title: **Classificació** de singularitats a l'**infinit**
+
+> Sigui $f$ holomorfa en un domini que conté un entorn de l'infinit, i sigui
+> $$ f(\infty) := \lim_{z\to\infty}f(z) \,.$$
+
++ $f(\infty)=\infty \implies$ pol
++ $f(\infty)\in \mathbb{C} \implies$ singularitat evitable
++ $\not\exists\,f(\infty) \implies$ singularitat essencial
+
+```
+
+```ad-def
+title: Residu a l'infinit
+
+> Sigui $f\in H(\mathbb{C}\setminus E)$ amb un conjunt finit de singularitats aïllades $E$, i $\Gamma$ una corba simple orientada positivament que conté $E$.
+
+El ==residu a l'infinit== de $f$ és
+$$ \mathrm{Res}(f,\infty) = -\frac{1}{2\pi i} \int_{\Gamma} f(z)\,dz \,.$$
+```
+
+Pel teorema dels residus, tenim:
+$$ \mathrm{Res}(f,\infty) = \boxed{\,-\sum_{a\in A} \text{Ind}(\Gamma,a)\,\mathrm{Res}(f,a)\,} \,,$$
+amb $A$ conjunt de pols de $f$.
+
+```ad-prop
+> Sigui $f\in H(\mathbb{C}\setminus E)$ amb un conjunt finit de singularitats $E$.
+
+Aleshores el residu a l'infinit és
+$$ \mathrm{Res}(f,\infty) = \boxed{\, -\mathrm{Res}\left( \frac{1}{w^{2}}f\left( \frac{1}{w} \right),0 \right) \,} \,.$$
+```
+
+
+#### Càlcul d'**integrals** (exemples)
+
+~={green}$\displaystyle\int_{0}^{2\pi} f(\sin t,\cos t)\,dt$=~ $= \displaystyle\frac{1}{i}\int_{|z|=1}f\left( \frac{z-\frac{1}{z}}{2i} ,\frac{z+\frac{1}{z}}{2}\right) \frac{dz}{z}$
+amb $f$ racional sense singularitats en $|z|=1$.
+
+```ad-met
+1. $z=e^{it}$
+2. $\displaystyle dz=ie^{it}dt \implies dt = \frac{dz}{iz}$
+3. $\displaystyle \sin t=\frac{e^{it}-e^{-it}}{2i}=\frac{z-\frac{1}{z}}{2i}, \quad\cos t=\frac{e^{it}+e^{-it}}{2}=\frac{z+\frac{1}{z}}{2}$
+```
+
+
+#### Principi de l'**argument**
+
+```ad-def
+title: Funció *meroforma*
+
+> Sigui $\Omega \subset \mathbb{C}$ un obert i $f:\Omega \to \mathbb{C}$.
+
+Diem que $f$ és ==meroforma== i escrivim $f\in M(\Omega)$ si $f\in H(\Omega\setminus E)$ amb $E\subset\Omega$ format de punts aïllats singularitats de pol.
+```
+
+`````ad-teor
+title: Principi de l'**argument**
+
+> Sigui $\Omega \subset \mathbb{C}$ un obert amb $f\in M(\Omega)$, $Z$ el conjunt de zeros de $f$ i $E$ el conjunt de pols de $f$. Sigui $\gamma$ un camí tancat en $\Omega\setminus(Z\cup E)$ homòleg a 0 en $\Omega$.
+
+Aleshores
+$$ \frac{1}{2\pi i} \int_{\gamma} \frac{f'(z)}{f(z)}dz = \boxed{\,\sum_{z\in Z} \text{Ind}(\gamma,z)\,m(f,z) - \sum_{p\in E}\text{Ind}(\gamma,p)\,m(f,p)\,} \,,$$
+amb $m(f,z)$ la multiplicitat del zero i $m(f,p)$ l'ordre del pol.
+
+```ad-not
+
+S'anomena *principi del'argument* ja que
+$$ \frac{1}{2\pi i} \int_{\gamma} \frac{f'(z)}{f(z)}dz = \text{Ind}(f(\gamma),0) \,.$$
+```
+`````
 
 
 ---
@@ -1085,6 +1159,7 @@ title: Identitats
 
 + $\overline{e^{z}}=e^{\overline{z}}$~={faded}$\quad\forall z\in \mathbb{C}$=~
 + $|e^{i\theta}|=1$~={faded}$\quad\forall \theta\in \mathbb{R}$=~
++ $|z|=1\implies\overline{z}=\frac{1}{z}$
 
 Si $z=x+iy$, aleshores:
 + $\displaystyle x = \frac{z+\overline{z}}{2}$
