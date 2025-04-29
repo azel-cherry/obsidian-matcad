@@ -208,7 +208,7 @@ La base d'aquests algorismes és [[#^e29571 | la mateixa]] que els algorismes de
 
 + ~={green}Greedy Best-First Search=~ ~={green-low}(GBFS).=~ S'insereixen els nous camins `expanded` a `paths` ordenats per cost estimat segons $h(n)$.
 
-+ ~={green}Cerca A*.=~ S'insereixen els nous camins `expanded` a `paths` ordenats per cost acumulat i cost estimat segons $f(n)=g(n)+h(n)$.
++ ~={green}Cerca A*.=~ S'insereixen els nous camins `expanded` a `paths` ordenats per cost acumulat i cost estimat segons $f(n)=g(n)+h(n)$. ^d16782
 
 
 ###### 2.1.1. **Anàlisi** dels algorismes
@@ -234,6 +234,7 @@ Un ==camí redundant== és un camí que conté un camí parcial no òptim, és a
 ^bf06e7
 
 Consisteix en elimilar els [[#^bf06e7 | camins redundants]] mitjançant una ~={green}Taula de Costos Parcials Òptims=~, que es manté actualitzada constantment.
+^taucos
 
 ```py title:"Dynamic programming"
 def search (root, objective):
@@ -810,12 +811,6 @@ Es refereix al resultat ideal que s'espera de la resolució del problema; la **v
 
 Consisteix en, mitjançant la representació de [[#^82c6b3 | xarxa semàntica]], identificar si dos grafs son iguals o semblants.
 
-Podem interpretar aquests problemes de dues maneres:
-
-##### 4.2.1. Problemes de ***graph-matching***
-
-Es tracta de trobar la correspondència entre dos grafs.
-
 ````ad-def
 title: *Correspondència* de grafs
 
@@ -829,6 +824,11 @@ Trobar la ==correspondència== entre dos grafs $G_{1}$ i $G_{2}$ és trobar una 
 > **Correspondència:** $a=5$ , $b=2$ , $c=1$ , $d=4$ , $e=3$
 ```
 ````
+
+
+##### 4.2.1. ***Graph-matching*** exacte
+
+Es tracta de trobar la correspondència entre dos grafs.
 
 ````ad-prop
 title: *Generate and Test*
@@ -850,10 +850,8 @@ def graph_matching(G1, G2):
 + `permute(G)` retorna la llista de totes les permutacions de `G`
 + `MA(G)` retorna la matriu d'adjacència de `G`
 + `permute_matrix(p,M)` retorna la matriu `M` amb la permutació `p`
-````
 
-````ad-prop
-title: *Generate and Test* (recursiu)
+---
 
 Versió recursiva de l'alogrisme anterior.
 
@@ -871,15 +869,12 @@ def permute(L):
 > ~={green}Complexitat:=~ $O(n!)$ amb $n$ nombre de nodes
 ````
 
-
-##### 4.2.2. **Constraint Satisfaction** Problems (CSP)
+````ad-prop
+title: ***Constraint Satisfaction*** *Problems* (CSP)
 
 Consisteix a assignar valors a un conjunt de variables a partir d'un domini que verifiquin un conjunt de restriccions.
 
-````ad-prop
-title: *Backtracking*
-
-Algorisme de *backtracking* de **cerca en profunditat** que **poda** les branques que no compleixen les restriccions.
+Es fa servir un algorisme de *backtracking* de **cerca en profunditat** que **poda** les branques que no compleixen les restriccions.
 
 ```py title:"Backtracking algorithm"
 def backtracking(variables, domain, restrictions):
@@ -903,13 +898,14 @@ def backtracking(variables, domain, restrictions):
 
 > ~={green}Complexitat:=~ $O(n!)$ and $n$ nombre de nodes
 ````
+^backtr
 
 ````ad-prop
-title: Algorismes ***Arc-Consistency*** (AC)
+title: ***Arc-Consistency*** (AC)
 
-Millora *backtracking* amb un pas incial **comprovant la consistència** entre els diferents dominis de les variables i **eliminant substitucions inconsistents**.
+Millora l'[[#^backtr | algorisme anterior]] amb un pas incial **comprovant la consistència** entre els diferents dominis de les variables i **eliminant substitucions inconsistents**.
 
-Per fer això s'utilitza una certa propietat que dependrà del problema.
+Per fer això s'utilitza una certa propietat que dependrà del problema, com ara ~={faded}(nombre d'enllaços de sortida, tipus d'etiquetes dels nodes, etc)=~.
 
 ```py title:"Arc-Consistency algorithm"
 def AC_backtracking(variables, domain, restrictions)
@@ -934,32 +930,70 @@ def AC_backtracking(variables, domain, restrictions)
 ````
 
 
-##### 4.2.3. *Graph-matching* **no-exacte**
+##### 4.2.2. *Graph-matching* **no-exacte**
 
-En comptes de buscar la correspondència que fa que dos grafs siguin iguals, busquem que siguin el més semblants possible.
+En comptes de buscar la correspondència que fa que dos grafs siguin iguals, busquem que siguin **el més semblants possible**.
 
 ```ad-met
 title: Mesures de **semblança entre grafs**
 
-1. **Elements comuns i no comuns** entre grafs:
-	$$ \text{Similutud}(G_{1},G_{2}) = \alpha\,\text{Card}(S_{G_{1}}\cap S_{G_{2}}) + \beta\,\text{Card}(S_{G_{1}}\setminus S_{G_{2}}) + \gamma\,\text{Card}(S_{G_{2}}\setminus S_{G_{1}}) $$
+1. ~={green}Elements comuns i no comuns:=~
+	$$ \begin{align}
+	\text{Similutud}(G_{1},G_{2}) &= \alpha\,\text{Card}(S_{G_{1}}\cap S_{G_{2}}) \\
+	&+\, \beta\,\text{Card}(S_{G_{1}}\setminus S_{G_{2}}) \\
+	&+\, \gamma\,\text{Card}(S_{G_{2}}\setminus S_{G_{1}})
+	\end{align} $$
 	amb $S_{G}$ conjunt d'elements de $G$ com ara:
 	+ nodes amb tipus
 	+ enllaços amb etiquetes
 	+ nodes amb enllaços
 
-2. **Distàncies** de cada node d'un graf amb els altres nodes:
+2. ~={green}Distàncies=~ de cada node d'un graf amb els altres nodes:
 	$$ \text{Distància}(G_{1},G_{2}) = \sum_{n_{1}\in G_{1}} \min_{n_{1}\in G_{2}}\{d(n_{1},n_{2})\} $$
 	amb $d(n_{1},n_{2})$ distància entre els dos nodes, que pot estar basada en diferents aspectes, per exemple:
 	+ tipus de node ~={faded}($+1$ si son de tipus diferent)=~
 	+ diferència d'arcs de sortida
 	+ diferència d'etiquetes dels arcs de sortida
 
-3. **Distància d'edició**: Mínim cost de totes les operacions d'edició necessàries perque $G_{1}$ es converteixi en $G_{2}$:
+3. ~={green}Distància d'edició:=~ Mínim cost de totes les operacions d'edició necessàries perque $G_{1}$ es converteixi en $G_{2}$:
 	+ substitució d'un node o un arc
 	+ eliminació d'un node o un arc
 	+ inserció d'un node o un arc
+
+Generalment farem servir ~={green-low}distància d'edició=~.
 ```
+^messem
+
+Farem servir una [[#^d16782 | cerca A*]] on:
++ $g(n) =$ suma dels costos de totes les operacions d'edició
++ $h(n) =$ estimació del mínim nombre d'edicions que s'hauran de der
+
+
+###### 4.2.2.1. ***String-matching***
+
+Cas particular de la cerca inexacta amb grafs d'**una dimensió**, on cada node és una lletra del *string*.
+
+```ad-teor
+title: Principi de **programació dinàmica**
+
+> *Qualsevol solució òptima està formada per solucions parcials òptimes.*
+
+La simplicitat dels grafs unidimensionals ens permeten aplicar aquest principi.
+```
+
+````ad-prop
+title: ***String-matching***
+
+Calcula la [[#^messem | distància d'edició]] entre dues paraules mitjançant una [[#^taucos | taula de costos parcials]].
+
+**Costos habituals:**
++ Inserció: 2
++ Eliminació: 3
++ Substitució: 1 ~={faded}(per un caràcter diferent)=~
+
+```py title:"String-matching algorithm"
+```
+````
 
 
 ---
