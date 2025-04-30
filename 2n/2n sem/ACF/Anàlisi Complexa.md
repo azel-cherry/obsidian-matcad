@@ -1088,7 +1088,7 @@ amb $f$ racional sense singularitats en $|z|=1$.
 ```
 
 
-#### Principi de l'**argument**
+#### Principi de l'argument
 
 ```ad-def
 title: Funció *meroforma*

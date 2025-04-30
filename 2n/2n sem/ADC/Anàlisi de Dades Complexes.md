@@ -477,6 +477,83 @@ Els paràmetres $\beta$ s'estimen numèricament [[#^f2113a | maximitzant aquesta
 
 
 ---
+#### **Desviació típica**
+
++ ~={green}Desviació del model:=~ $\,D_{M} = \boxed{\,2\,(\,\log(L_{max})-\log(L(\hat{\beta}))\,)\,}$
++ ~={green}Desviació nul·la:=~ $\,D_{0} = \boxed{\,2\,(\,\log(L_{max})-\log(L(\hat{\beta_{0}}))\,)\,}$
+
+amb $L_{max}$ la *log-likelihood* més gran possible.
+
+
+#### **Residus**
+
+```ad-def
+title: *Residus de Pearson*
+
+$$ rp_{i} = \boxed{\,\frac{y_{i}-\widehat{\mu}_{i}}{\sqrt{V(\widehat{\mu}_{i})}}\,} $$
+amb $V(\widehat{\mu})$ la desviació típica estimada del valor observat.
+```
+
+Aquests residus haurien de resultar **pròxims a constants**. D'aquesta manera podem **detectar potencials *outliers***.
+
+
+---
+#### Test de **raó de versemblança** (*likelihood ratio test*)
+
+Donat un model generalitzat $g(\mu_{i}) = \beta_{0} + \beta_{1}x_{1i} + \dots + \beta_{p}x_{pi}$ ,
+volem fer el test
+$$ H_{0}:\boxed{\,\beta_{1}=\dots=\beta_{p}=0\,} \,.$$
+
+```ad-prop
+title: Estadístic de contrast
+
+$$ W = D_{0} - D_{M} = \boxed{\,2\,(\,\log(L(\widehat{\beta})) - \log(L(\widehat{\beta}_{0}))\,)\,} \sim \chi^{2}_{\nu} $$
+```
+
+Rebutjarem $H_{0}$ si $\boxed{\,\chi^{2}_{p,\,1-\alpha} < W\,}$ .
+
+
+---
+#### GLM en **R**
+
+###### **Maximitzar** $\boldsymbol L$
+^f2113a
+
+Es pot maximitzar la funció *log-likelihood* fent servir les funcions:
++ ~={green-low}Non-linear minimization:=~
+	```r
+	nlm(<loglik>, p=c(...))
+	```
+	+ `<loglik>` és la funció a minimitzar, és a dir la *log-likelihood*
+	+ `p` son els valors inicials
+
++ ~={green-low}Generalized linear model:=~ 
+	```r
+	glm(y~..., family=...(link=...))
+	```
+	+ `y` son les dades de la variable resposta
+	+ `family` especifica la distribució de la variable resposta
+
+
+###### Test de **raó de versemblança**
+
+```r
+model = glm(...)
+W = model$null.deviance - model$deviance
+df = model$df.null - model$df.residual
+pvalue = 1 - pchisq(W,df)
+```
+
+
+###### **Residus** de Pearson
+
+```r
+model = glm(...)
+res = residuals(model, "pearson")
+```
+
+
+---
 ## Apèndix
 
 ```ad-def
@@ -554,16 +631,3 @@ F-statistic: [...] on [...] and [...] DF, p-value: [...]
 	$[$`Estimate`$\pm$`qt(1-a/2)`$\cdot$`Std. Error`$]$
 + Variable significativa quan `PR(<|t|)`$<\alpha$
 `````
-
-```ad-prop
-title: GLM en R
-
-Es pot maximitzar la funció *log-likelihood* fent servir les funcions:
-+ ~={green-low}Non-linear minimization:=~ `nlm(<loglik>, p=c(...))`
-	+ `<loglik>` és la funció a minimitzar, és a dir la *log-likelihood*
-	+ `p` son els valors inicials
-+ ~={green-low}Generalized linear model:=~ `glm(y~..., family=...(link=...))`
-	+ `y` son les dades de la variable resposta
-	+ `family` especifica la distribució de la variable resposta
-```
-^f2113a

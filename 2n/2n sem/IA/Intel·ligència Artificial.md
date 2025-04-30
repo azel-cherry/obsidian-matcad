@@ -15,7 +15,7 @@ A continuació les representacions que farem servir.
 ``````col
 `````col-md
 ```ad-prop
-title: Lèxica
+title: Lèxic
 + node (pare, fill, arrel, fulla)
 + branca
 + camí
@@ -29,7 +29,7 @@ title: Lèxica
 
 `````col-md
 ```ad-prop
-title: Semàntica
+title: Semàntic
 
 Depèn molt del problema. En general:
 + Node: estat del problema
@@ -69,6 +69,17 @@ title: Procedimental
 ```
 
 En el codi, això ho representarem com una llista amb tots els camins, que seran llistes de nodes.
+
+
+###### 0.1.1. Arbre de **joc**
+
+Representació d'arbre semàntic amb les següents particularitats:
+
+| ~={green}Lèxic=~                                                               | ~={green}Semàntic=~                                                | ~={green}Estructural=~                                                                                       | ~={green}Procedimental=~                                                                                                        |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------- |
+| <ul><li>nivells maximitzadors (***max***)<li>nivells minimitzadors (***min***) | <ul><li>**node:** estat del joc<li>**branca:** moviment d'una peça | <ul><li>nivell de l'arbre té **etiqueta associada** (alternant entre *min* i *max*)<li>fulles sense etiqueta | <ul><li>*minimax*<li>alfa-beta<li>aprofundiment progressiu<li>calcular mínim i màxim d'una llista d'estats amb valors associats | 
+
+^79692f
 
 
 #### 0.2. **Espai de característiques**
@@ -981,23 +992,209 @@ title: Principi de **programació dinàmica**
 La simplicitat dels grafs unidimensionals ens permeten aplicar aquest principi.
 ```
 
+Farem servir una **taula de costos parcials**:
+
 ````ad-prop
-title: ***String-matching***
+title: Taula de costos parcials
 
-Calcula la [[#^messem | distància d'edició]] entre dues paraules mitjançant una [[#^taucos | taula de costos parcials]].
++ La primera columna és l'***string* de sortida**
++ La primera fila és l'***string* d'arribada**
++ Una **casella** representa un **conjunt d'edicions** i guarda el seu **cost mínim**
 
-**Costos habituals:**
-+ Inserció: 2
-+ Eliminació: 3
-+ Substitució: 1 ~={faded}(per un caràcter diferent)=~
+| Edició       |   Inserció    |  Eliminació  | Substitució (diferent) | Substitució (mateix) |
+| ------------ |:-------------:|:------------:|:----------------------:|:--------------------:|
+| **Direcció** | $\rightarrow$ | $\downarrow$ |       $\searrow$       |      $\searrow$      | 
+| **Cost**     |       $C_{i}=2$       |      $C_{e}=3$       |           $C_{s}=1$            |          $C_{s}=0$           |
+
+La distància d'edició de cada casella serà, recursivament:
+$$ d_{ij} = \boxed{\,\min\{d_{(i-1)j}+C_{i}\,,\,d_{(i-1)(j-1)}+C_{s}\,,\,d_{i(j-1)}+C_{e}\}\,} $$
+
+```ad-ex
+| *string*            | $\emptyset$ |        A         |         M         |         I          |          C          |
+| -----------:|:-----------:|:----------------:|:-----------------:|:------------------:|:-------------------:|
+| $\emptyset$ |    anic     | ~={pink}a=~anic | a~={pink}m=~anic | am~={pink}i=~anic | ami~={pink}c=~anic |
+|       **A** |     nic     | ~={pink}a=~nic  | a~={pink}m=~nic  | am~={pink}i=~nic  | ami~={pink}c=~nic  |
+|       **N** |     ic      |  ~={pink}a=~ic  |  ==a~={pink}m=~ic==  |  am~={pink}i=~ic  |  ami~={pink}c=~ic  |
+|       **I** |      c      |  ~={pink}a=~c   |  a~={pink}m=~c   |  ==am~={pink}i=~c==   |  ami~={pink}c=~c   | 
+|       **C** |             |   ~={pink}a=~   |   a~={pink}m=~   |   am~={pink}i=~   |   ==ami~={pink}c=~==   |
+
+|  cost           | $\emptyset$ |  A  |  M  |  I  |  C  |
+| -----------:|:-----------:|:---:|:---:|:---:|:---:|
+| $\emptyset$ |      0      |  3  |  6  |  9  | 12  |
+|       **A** |      2      |  0  |  2  |  6  |  9  |
+|       **N** |      4      |  2  |  ~={green}1=~  |  3  |  7  |
+|       **I** |      6      |  4  |  3  |  ~={green}1=~  |  4  |
+|       **C** |      8      |  6  |  5  |  3  |  ~={green}1=~  | 
+
+```
+````
+
+````ad-prop
+title: Algorisme d'***string-matching***
+
+Calcula ordenadament els valors de totes les operacions d'edició de la taula de costos parcials.
 
 ```py title:"String-matching algorithm"
+def string_matching(S1,S2):
+	
+	for n in S1:                          | primera
+		S1.remove(n)                      | columna
+		cost(n,0) = cost(n-1,0) + COST_E  |
+		
+	for n in S2:                          | primera
+		S1.insert_front(n)                | fila
+		cost(0,n) = cost(0,n-1) + COST_I  |
+
+	for n in S1[1:]:                      | resta de
+		for m in S2[1:]:                  | la taula
+		                                  |
+			for i in S2[:m]:              |
+				S2.remove(i)              |
+			S2.insert_front(n)            |
+			                              |
+			cost(m,n) = min(              |
+				cost(m-1,n) + COST_I,     |
+				cost(m-1,n-1) + COST_S,   |
+				cost(m,n-1) + COST_E      |
+			)                             |
 ```
++ al pas final s'ha de guardar la **direcció** del cost òptim
 ````
 
 
 ---
-## 5. **Anàlisi** de **tots** els algorismes
+## 5. Cerca amb **adversaris**
+
+Resolució de problemes de **presa de decisions** de quina jugada és millor en **jocs bi-personals competitius**.
+
+Farem servir la representació d'[[#^79692f | arbre de joc]].
+
+
+#### 5.1. Tècniques **clàssiques**: *minimax*
+
+Es tracta de limitar la profunditat de l'arbre de cerca per tal d'evitar el creixement exponencial dels jocs.
+
+```ad-not
+title: Assumpcions
+
++ Jugadors:
+	1. Juguen alternativament un i l'altre
+	2. Trien les millors jugades
+3. Profunditat màxima prefixada
+4. **Funció heurística** que avalua l'estat del joc de manera **simètrica**:
+	$$ h: \{\text{estats del joc}\} \to [\nu_{m}-\delta,\nu_{m}+\delta] $$
+```
+
+````ad-prop
+title: ***Minimax***
+
+Segueix els passos següents:
+1. **Construir l'arbre de joc** des de l'estat actual
+2. Avaluar fulles amb funció **heurística**
+3. Retornar valors de baix a dalt d'acord amb la **funció *max* o *min*** de cada nivell
+
+```py title:"Minimax algorithm"
+def minimax(current_state, player, profmax):
+	
+	if profmax == 0:
+		return [h(current_state), current_state]
+	
+	else:
+		expanded = expand(current_state)
+		L = []
+		for e in expanded:
+			next_state = minimax(e, inv(player), profmax--)
+			L = [next_state[0], e] + L
+		if player == min:
+			reuturn min_v(L)
+		else:  # player == max
+			return max_v(L)
+```
++ `inv(player)` retorna el jugador oposat a `player`
++ `min_v(L)` i `max_v(L)` retornen la subllista d'`L` que conté com a primer element el valor mínim/màxim de la llista
+````
+
+````ad-prop
+title: **Poda *Alfa-Beta***
+
+Millora de l'algorisme *minimax* no obrint els camins que no poden afectar el seu estat final.
+
+Per cada estat guardem un interval $[\alpha,\beta]$ on:
++ **Nivells minimitzadors:**
+	+ $\beta=\min\{\nu_{1},\nu_{2},\dots\}$
+	+ si $\beta\leq\alpha:\,$ podem branca
++ **Nivells maximitxadors:**
+	+ $\alpha=\max\{\nu_{1},\nu_{2},\dots\}$
+	+ si $\alpha\geq\beta:\,$ podem branca
+
+amb $\nu_{1},\nu_{2},\dots$ heurística dels nodes sortints.
+
+```py title:"Alpha-beta trim algorithm"
+def alpha_beta(current_state, alpha, beta, player, profmax):
+	
+	if profmax == 0:
+		return [h(current_state), current_state]
+	
+	else:
+		expanded = expand(current)
+		
+		if player == min:
+			while expanded != [] and alpha < beta:
+				next_state = alpha_beta(expanded[0], alpha, beta, inv(player), profmax--)
+				if next_state[0] < beta:   <---
+					beta = next_state[0]   <---
+					e = expanded[0]
+				expanded = expanded[1:]
+			return [beta, e]               <---
+		
+		else:  # player == max
+			while expanded != [] and alpha < beta:
+				next_state = alpha_beta(expanded[0], alpha, beta, inv(player), profmax--)
+				if next_state[0] > alpha:  <---
+					alpha = next_state[0]  <---
+					e = expanded[0]
+				expanded = expanded[1:]
+			return [alpha, e]              <---
+```
+````
+
+````ad-prop
+title: Aprofundiment progressiu
+
+Millora de *minimax* amb poda alfa-beta a **totes les profunditats que es pugui** des d'una profunditat mínima fins un **límit de temps**.
+
+```py title:"Progressive deepening algorithm"
+def progressive_deepening(current_state, alpha, beta, player, pmin):
+	p = pmin
+	while t != 0:
+		r = alpha_beta(current_state, alpha, beta, player, p)
+		p++
+		update(t)
+	return r
+```
++ `update(t)` retorna el temps `t` actualitzat (decreixent)
+````
+
+
+###### 5.1.1. **Complexitat**
+
+En jocs, no té sentit parlar d'optimalitat.
+
+| Estratègia $\to$<br>Criteri $\downarrow$ |    *~={green}Minimax=~*    |                  ~={green}Poda Alfa-Beta=~                  |
+| ---------------------------------------- |:--------------------------:|:-----------------------------------------------------------:|
+| **Temps**                                |         $O(b^{p})$         | Pitjor cas: $O(b^{p})$<br>Millor cas: $O(2b^{\frac{p}{2}})$ |
+| **Espai**                                |       $O(b\cdot p)$        |                        $O(b\cdot p)$                        |
+| **Complet**                              | si no hi ha límit de temps |                 si no hi ha límit de temps                  |
+
+$b\equiv$ factor de ramificació
+$b\equiv$ profunditat màxima
+
+
+#### 5.2. Tècniques amb **simulacions**: *Monte-Carlo Tree Search*
+
+
+---
+## 6. **Anàlisi** de **tots** els algorismes
 
 | Criteri $\boldsymbol\rightarrow$<br>Estratègia $\boldsymbol\downarrow$ |          **Temps**          |              **Espai**              |           **Òptim**            |               **Complet**               |
 | ---------------------------------------------------------------------- | :-------------------------: | :---------------------------------: | :----------------------------: | :-------------------------------------: |
