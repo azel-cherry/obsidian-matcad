@@ -39,6 +39,7 @@ $$ \hat{f}^L(\theta) = \frac{1}{L} \int_{a}^{b} f(\theta)\,e^{-\frac{2\pi in\the
 ````
 
 
+---
 ## **Convergència** puntual
 
 ```ad-def
@@ -55,3 +56,71 @@ title: **Suma parcial** de Fourier
 L'$N$-èssima suma parcial de Fourier és
 $$ S_{N}f(x) = \boxed{\,\sum_{n=-N}^{N} \hat{f}(n)\,e^{in\theta}\,} \,.$$
 ```
+
+
+#### **Suavitat** i convergència
+
+Veurem que, si la funció és prou suau, aleshores els coeficients  de Fourier decauen i podem garantir la convergència de la sèrie.
+
+A la vegada, el decaïment dels coeficients implica un cert grau de suavitat.
+
+```ad-not
+title: Notació
+
++ Denotem com $\mathbb{T}$ a la circumferència unitat
+$$ \mathbb{T} = \{z\in \mathbb{C}\mid|z|=1\} = \{z=e^{i\theta} \mid -\pi\leq\theta<\pi\} \,.$$
++ $||f||_{L'(\mathbb{T})} := \displaystyle\frac{1}{2\pi} \int_{-\pi}^{\pi}|f|\,d\theta$
++ $Sf := \displaystyle\lim_{N\to\infty}S_{N}f$
++ $a \,^{\longrightarrow}_{\longrightarrow}\,b \implies a$ convergeix uniformement en $b$ 
+```
+
+`````ad-prop
+title: Preliminars
+
+```ad-prop
+title: Proposicions
+Sigui $f\in C^{k}(\mathbb{T})$:
++ Si $k\geq1$, aleshores $$\widehat{f^{(k)}}(n) = (in)^{k}\hat{f}(n)\,.$$
++ Per $n\neq0$ :
+	$$ |\hat{f}(n)| \leq \frac{|\widehat{f^{(k)}}(n)|}{|n|^{k}} \leq \frac{||f^{(k)}||_{L'(\mathbb{T})}}{|n|^{k}}  \,.$$
+```
+
+```ad-teor
+> Sigui $f\in L^{1}(\mathbb{T})$ tal que $\sum |\hat{f}(n)|<\infty$.
+
+Aleshores $S_{N}f\,^{\longrightarrow}_{\longrightarrow}\,Sf \in C(\mathbb{T})$.
+```
+
+```ad-prop
+> Sigui $\{a_{n}\}_{n=1}^{\infty}$ una successió de nombres reals convergent.
+
+Aleshres la successió de les seves mitjanes
+$$ \lim_{n\to\infty} \frac{a_{1}+\dots+a_{n}}{n} = \lim_{n\to\infty}a_{n} \,.$$
+```
+`````
+
+```ad-teor
+> Sigui $f\in C(\mathbb{T})$ amb $\sum|\hat{f}(n)|<\infty$.
+
+Aleshores
+$$ \lim_{N\to\infty} S_{N}f(\theta)=f(\theta) $$
+i la convergència és uniforme en $\mathbb{T}$.
+```
+
+```ad-teor
+> Sigui $f\in C^{1}(\mathbb{T})$.
+
+Aleshores la sèrie de Fourier de $f$ convergeix uniformement a $f$ en $\mathbb{T}$.
+```
+
+
+#### Suavitat i **decaïment dels coeficients**
+
+````ad-prop
+title: Lemes de **Riemann-Lebesgue**
+
++ **Per funcions contínues:** Sigui $f\in C(\mathbb{T})$, aleshores
+	$$\{\hat{f}(n)\}_{n\in Z}\in C_{0}(\mathbb{Z})\,.$$
++ **Per funcions integrables:** Sigui $f\in L^{1}(\mathbb{T})$, aleshores
+	$$\{\hat{f}(n)\}_{n\in \mathbb{Z}}\in C_{0}(\mathbb{Z})\,.$$
+````
