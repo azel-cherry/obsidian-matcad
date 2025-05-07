@@ -578,7 +578,12 @@ $$ |f(y_{1},t)-f(y_{2},t)| \leq L\,|y_{1}-y_{2}| \,,$$
 amb $L$ constant de Lipschitz.
 ```
 
-````ad-prop
+
+#### **Esquemes**
+
+###### Esquemes **monopàs**
+
+````ad-met
 title: Esquemes de **Taylor**
 
 Si coneixem el valor de $y$ en un punt $t$, es pot aproximar el valor que tindrà després d'un pas $h$ mitjançant el desenvolupament de Taylor:
@@ -587,24 +592,46 @@ $$ y(t+h) = y(t) + y'(t)\,h + y''(t) \frac{h^{2}}{2} + y'''(t) \frac{h^{3}}{3!} 
 
 ---
 
-+ Si ens quedem amb els **dos primers termes**, obtenim l'==esquema d'Euler==:
-	$$ y(t+h) \approx y(t) + y'(t)\,h \,,$$
-	que en termes de la solució numèrica s'escriu
++ Si ens quedem amb els **dos primers termes**, obtenim l'==esquema de Taylor d'ordre 1== o ==esquema d'Euler explícit==:
 	$$ \begin{cases}
 	Y_{n+1} &= Y_{n} + h\,f(Y_{n},t_{n}) \\
 	Y_{0} &= t_{0} 
 	\end{cases} $$
 
 + Si ens quedem amb els **tres primers termes**, obtenim l'==esquema de Taylor d'ordre 2==:
-	$$ y(t+h) \approx y(t) + y'(t)\,h + (\partial_{1}f(y,t)\,f(y,t)+\partial_{2}f(y,t)) \frac{h^{2}}{2} \,,$$
-	que en termes de la solució numèrica s'escriu
 	$$ \begin{cases}
 	Y_{n+1} &= Y_{n} + h\,f(Y_{n},t_{n}) + \frac{h^{2}}{2} (\partial_{1}f(Y_{n},t_{n})\,f(Y_{n},t_{n}) + \partial_{2}f(Y_{n},t_{n})) \\
 	Y_{0} &= t_{0} 
 	\end{cases} $$
+````
 
 ```ad-met
-title: Mètode d'**Adams**
+title: Esquema de **Runge-Kutta** (exemple)
+
+$$ \begin{cases}
+Y_{n+1} &= Y_{n} + \frac{h}{2} (f(Y_{n},t_{n})+f(Y_{n}+hf(Y_{n},t_{n}),t_{n+1})) \\
+Y_{0} &= y_{0}
+\end{cases} $$
+```
+
+```ad-met
+title: Esquema d'**Euler implícit**
+
+$$ \begin{cases}
+Y_{n+1} &= Y_{n} + hf(Y_{n+1},t_{n+1}) \\
+Y_{0} &= y_{0}
+\end{cases} $$
+
+Com que es tracta d'un esquema **implícit**, caldria utilitzar algun mètode de cerca de solucions d’equacions no lineals ~={faded}(per exemple el mètode de Newton)=~.
+
+Tot i que poden semblar poc pràctics, presenten algunes propietats que els fan adients en certes situacions.
+```
+
+
+###### Esquemes **multipàs**
+
+```ad-met
+title: Esquema d'**Adams**
 
 $$ \begin{cases}
 Y_{n+1} &= Y_{n} + \displaystyle \frac{3f(Y_{n},t_{n})-f(Y_{n-1},t_{n-1})}{2}h \\
@@ -613,7 +640,7 @@ Y_{0} &= t_{0}
 
 El primer pas $Y_{1}$ es calcularà fent servir algun mètode d'un pas.
 ```
-````
+
 
 #### **Sistemes** d'EDOs
 
@@ -624,7 +651,7 @@ $$ \begin{cases}
 \end{cases} $$
 amb $x(0)=x_{0}$ i $y(0)=y_{0}$ .
 
-```ad-prop
+```ad-met
 title: Esquema d'**Euler**
 
 $$ \begin{cases}
