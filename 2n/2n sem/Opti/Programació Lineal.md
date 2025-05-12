@@ -153,3 +153,118 @@ title: Resoldre un PL
 2. Avaluar $f$ en $x_{0}$. El valor òptim és el més baix.
 ```
 ````
+
+
+---
+## Mètode del **Símplex**
+
+`````ad-def
+title: PL *actualitzat*
+
+> Sigui un PL en forma estàndard i un conjunt bàsic $B$.
+
++ **Per un sistema:** Diem que el sistema $Ax=d$ està ==actualitzat== a la base $B$ si per cada variable $x_{j}$ de $B$, la columna $A_{j}$ és igual a una columna de la identitat $I_{m}$ ~={faded}(l'$i$-èssim índex $j$ de $B$ és igual a la columna $i$-èssima de $I_{m}$)=~.
+
++ **Per una funció objectiu:** Si la funció objectiu $z=cx+c_{0}$ té coeficients bàsics nuls ~={faded}($c_{j}=0$ per tot $j\in B$)=~, direm que està ==actualitzada== a la base $B$.
+
+Direm que el PL està ==actualitzat== a la base $B$ si tant el sistema com la funció objectiu estan actualitzats a la base $B$.
+
+L'escriurem com:
+$$ \begin{align}
+\text{minimitzar }& z=c_{N}z_{N}+c_{0} \\
+\text{subjecte a }& \begin{cases}
+\,X_{B}+A_{N}\,x_{N}&=d \\
+\,x\geq0
+\end{cases}
+\end{align} $$
+amb $A\in M_{m,\,n-m}(\mathbb{R})$.
+
+```ad-prop
+title: Conseqüències
+
++ **Parametrització de les solucions factibles** posant com a paràmetres les solucions no bàsiques:
+	$$ x_{B} = d-A_{N}\,x_{N} \,,$$
+	amb $x_{N},x_{B}\geq0$ .
+
++ **Solució factible bàsica** associada a $B$ directa:
+	$$ x_{N}=0\,, \quad x_{B}=d \,.$$
+
++ **Valor de la funció objectiu** en la solució bàsica associada a $B$:
+	$$ z = c_{0} \,.$$
+```
+
+```ad-met
+title: Actualitzar un sistema (**matricial**)
+
+> Tenim un sistema $A_{B}\,x_{B}+A_{N}\,x_{N} = d$ amb una base $B$.
+
+1. Actualitzar el sistema:
+	$$ x_{B}+A_{B}^{-1}A_{N}\,x_{N}=A_{B}^{-1}d $$
+2. Actualitzar la funció objectiu:
+	$$ z=c_{N}'\,x_{N}+c_{0}' \text{ amb } \begin{cases}
+	c'_{N} = c_{N} - c_{B}\,A_{N} \\
+	c_{0}' = c_{0} + c_{B}\,d
+	\end{cases} $$
+```
+
+```ad-met
+title: Actualitzar un sistema (**pràctica**)
+
+Partim de la **taula del símplex**:
+$$\begin{array}{|c c c c|c|}
+\hline
+x_{1} & x_{2} & \dots & x_{n} &  \\ \hline
+a_{11} & a_{12} & \dots & a_{1n} & d_{1} \\
+a_{21} & a_{22} & \dots & a_{2n} & d_{2} \\
+\vdots & \vdots & \ddots & \vdots &  \vdots \\
+a_{m1} & a_{m2} & \dots & a_{mn} & d_{m} \\ \hline
+c_{1} & c_{2} & \dots & c_{n} & -c_{0} \\
+\hline
+\end{array}$$
+
+Actualitzada a una base $B$ factible, i suposant que les variables bàsiques son $x_{1},\dots,x_{m}$, tindrem:
+$$ \begin{array}{|c c c c c c c|c|}
+\hline x_{1} & x_{2} & \dots & x_{m} & x_{m+1} & \dots & x_{n} &  \\ \hline
+1 & 0 & \dots & 0 & a_{1,m+1} & \dots & a_{1,n} & d_{1} \\
+0 & 1 & \dots & 0 & a_{2,m+1} & \dots & a_{2,n} & d_{2} \\
+\vdots & \vdots & \ddots & \vdots & \vdots & \ddots & \vdots & \vdots \\
+0 & 0 & \dots & 1 & a_{m,m+1} & \dots & a_{m,n} & d_{m} \\ \hline
+c_{1} & c_{2} & \dots & c_{m} & c_{m+1} & \dots & c_{n} & -c_{0} \\ \hline
+\end{array} $$
+
+Per actualitzar la funció objectiu, restem a la última fila la fila $i\in \{1,\dots,m\}$ multiplicada per $c_{i}$.
+```
+`````
+
+El ==mètode del Símplex== consisteix en passar d'una base a una altra, actualitzant en cada pas el sistema i la funció objectiu.
+
+
+#### **Criteris** d'optimalitat, no acotació i millora
+
+Suposem que tenim un PL actualitzat a la base $B$.
+
+1. ~={green}Criteri d'optimalitat.=~ Si $c_{j}\geq0$ per tot $j$, hem trobat la solució bàsica optimal
+	$$ x_{B}=d\,,\, x_{N}=0\,, \quad z=c_{0} \,.$$
+
+2. ~={green}Criteri de no acotació.=~ Si per algun $j\in N$ tenim:
+	+ $c_{j}<0$,
+	+ Tots els coeficients d'$A_{j}$ son $\leq0$,
+	
+	Aleshores el PL és no acotat.
+
+3. ~={green}Criteri de millora de la solució.=~ Si existeixen $j\in N$ tals que $c_{j}<0$ i per cada $j$ existeix un coeficient d'$A_{j}$ que és $>0$, aleshores es pot millorar la solució.
+
+```ad-met
+title: Millora de la solució
+
+Si ens trobem en el 3r cas, farem el següent:
+
+1. Triem una columna $j$ tal que $c_{j}<0$ i una fila $k$ tal que
+	$$ \frac{d_{k}}{d_{j}} = \min\left\{ \frac{d_{i}}{a_{ij}} \mid a_{ij}>0 \right\} \,.$$
+
+2. Pivotem sobre $a_{kj}$ .
+3. Substituïm la variable bàsica que tenia un 1 a la fila $k$ per $x_{j}$ .
+4. El valor de la nova solució és
+	$$ z = c_{j}\,\frac{d_{k}}{a_{kj}} + c_{0} \leq c_{0} \,.$$
+	La desigualtat serà una igualtat només si $d_{k}=0$. En aquest cas es diu que hem fet una ==iteració degenerada==.
+```

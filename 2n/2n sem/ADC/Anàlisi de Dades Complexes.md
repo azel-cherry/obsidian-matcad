@@ -554,6 +554,35 @@ res = residuals(model, "pearson")
 
 
 ---
+## **Big Data** en LM i GLM
+
+Es tracta d'ajustar la regressió
+$$ \begin{align}
+Y &= X\cdot\beta + \varepsilon \\
+y_{i} &= \beta_{0} + \beta_{1}x_{i} + \varepsilon_{i}
+\end{align} $$
+per $i=1,\dots,n$, però quan $n$ és **molt gran**.
+
+```ad-prop
+> Suposem que les dades estan segmentades en $k$ *chunks* tal que
+> $$ X = \begin{pmatrix}
+X_{1} \\
+X_{2} \\
+\vdots \\
+X_{k}
+\end{pmatrix} \,, \quad Y = \begin{pmatrix}
+Y_{1} \\
+Y_{2} \\
+\vdots \\
+Y_{k}
+\end{pmatrix} $$
+> amb $X_{i}$ matrius de mida $n_{i}\times m$ i $Y_{i}$ vectors de mida $n_{i}$.
+
+FALTA
+```
+
+
+---
 ## Apèndix
 
 ```ad-def

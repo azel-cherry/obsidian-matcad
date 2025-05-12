@@ -124,3 +124,42 @@ title: Lemes de **Riemann-Lebesgue**
 + **Per funcions integrables:** Sigui $f\in L^{1}(\mathbb{T})$, aleshores
 	$$\{\hat{f}(n)\}_{n\in \mathbb{Z}}\in C_{0}(\mathbb{Z})\,.$$
 ````
+
+
+#### **Teoremes** importants
+
+`````ad-teor
+title: Teorema de **Jordan**
+
+```ad-def
+title: Funció de *variació fitada*
+
+Una funció $f$ és de ==variació fitada== si
+$$ V(f) := \sup_{P} \sum_{n=1}^{N} |f(\theta_{n})-f(\theta_{n-1})| < \infty $$
+amb $P=\{\theta_{n}\}_{n=0}^{N}$ tal que
+$$ -\pi = \theta_{0} < \theta_{1} < \dots < \theta_{N} = \pi \,.$$
+```
+
+> Sigui $f$ una funció de variació fitada.
+
+Aleshores la sèrie de Fourier convergeix a
+$$ \lim_{N\to\infty} S_{N}f(\theta) = \frac{1}{2}\,[f(\theta^+) + f(\theta^-)] $$
+a tot arreu. La convergència és uniforme en intervals tancats continus.
+
+```ad-not
+Això implica que la sèrie de Fourier convergeix a $f(\theta)$ als punts de continuïtat $\theta$ si $f$ és de variació acotada.
+```
+`````
+
+
+---
+## Apèndix
+
+```ad-prop
+title: Identitats **trigonomètriques**
+
++ $\sin(\alpha\pm\beta) = \sin(\alpha)\cos(\beta)\pm\cos(\alpha)\sin(\beta)$
+	+ $\sin(2\alpha)=2\sin(\alpha)\cos(\alpha)$
++ $\cos(\alpha\pm\beta)=\cos(\alpha)\cos(\beta)\mp\sin(\alpha)\sin(\beta)$
+	+ $\cos(2\alpha) = \cos^{2}(\alpha)-\sin^{2}(\alpha)$
+```
