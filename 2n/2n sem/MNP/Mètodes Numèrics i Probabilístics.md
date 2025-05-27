@@ -579,9 +579,11 @@ amb $L$ constant de Lipschitz.
 ```
 
 
-#### **Esquemes**
+#### Esquemes **monopàs**
 
-###### Esquemes **monopàs**
+Un esquema monopàs es pot expressar de la forma
+$$ Y_{i+1} = Y_{i} + h\,\phi(x_{i},Y_{i},h;f) \,,$$
+amb $\phi$ una funció que depèn del node $x_{i}$, l'aproximació $Y_{i}$, el pas $h$ i la funció $f$ (incloent possibles derivades i avaluacions en punts donats).
 
 ````ad-met
 title: Esquemes de **Taylor**
@@ -628,6 +630,31 @@ Tot i que poden semblar poc pràctics, presenten algunes propietats que els fan 
 ```
 
 
+###### **Convergència**
+
+Diem que un esquema monopàs
+$$ Y_{i+1} = Y_{i} + h\,\phi(x_{i},Y_{i},h;f) $$
+amb condició inicial $Y_{0}=y_{0}$ ==convergeix== a la solució del PVI
+$$ \begin{cases}
+\, y'(t) &= f(y(t), t) \\
+\, y(t_{0}) &= y_{0}
+\end{cases} $$
+si per tot $x_{f}$ del domini d'$y$ tenim:
+$$ \boxed{\,\lim_{n\to0} Y_{n}(h_{n}) = y(x_{f})\,} $$
+amb $\displaystyle h_{n}=\frac{x_{f}-x_{0}}{n}$.
+
+````ad-def
+title: *Error de truncament local*
+
+L'error de truncament local és
+$$ \tau(h,x) = \frac{y(x+h) - y(x) - h\,\phi(x,y(x),h;f)}{h} $$
+
+```ad-not
+Aquest és l'error efectiu que es produeix en un pas $h$ quan s'està al punt $x$.
+```
+````
+
+
 ###### Esquemes **multipàs**
 
 ```ad-met
@@ -640,6 +667,9 @@ Y_{0} &= t_{0}
 
 El primer pas $Y_{1}$ es calcularà fent servir algun mètode d'un pas.
 ```
+
+
+## 
 
 
 #### **Sistemes** d'EDOs
