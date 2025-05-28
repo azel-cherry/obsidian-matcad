@@ -582,10 +582,10 @@ amb $L$ constant de Lipschitz.
 #### Esquemes **monopàs**
 
 Un esquema monopàs es pot expressar de la forma
-$$ Y_{i+1} = Y_{i} + h\,\phi(x_{i},Y_{i},h;f) \,,$$
+$$ \boxed{\,Y_{i+1} = Y_{i} + h\,\phi(x_{i},Y_{i},h;f)\,} \,,$$
 amb $\phi$ una funció que depèn del node $x_{i}$, l'aproximació $Y_{i}$, el pas $h$ i la funció $f$ (incloent possibles derivades i avaluacions en punts donats).
 
-````ad-met
+````ad-ex
 title: Esquemes de **Taylor**
 
 Si coneixem el valor de $y$ en un punt $t$, es pot aproximar el valor que tindrà després d'un pas $h$ mitjançant el desenvolupament de Taylor:
@@ -607,8 +607,8 @@ $$ y(t+h) = y(t) + y'(t)\,h + y''(t) \frac{h^{2}}{2} + y'''(t) \frac{h^{3}}{3!} 
 	\end{cases} $$
 ````
 
-```ad-met
-title: Esquema de **Runge-Kutta** (exemple)
+```ad-ex
+title: Esquema de **Runge-Kutta** (un d'ells)
 
 $$ \begin{cases}
 Y_{n+1} &= Y_{n} + \frac{h}{2} (f(Y_{n},t_{n})+f(Y_{n}+hf(Y_{n},t_{n}),t_{n+1})) \\
@@ -616,25 +616,15 @@ Y_{0} &= y_{0}
 \end{cases} $$
 ```
 
-```ad-met
-title: Esquema d'**Euler implícit**
-
-$$ \begin{cases}
-Y_{n+1} &= Y_{n} + hf(Y_{n+1},t_{n+1}) \\
-Y_{0} &= y_{0}
-\end{cases} $$
-
-Com que es tracta d'un esquema **implícit**, caldria utilitzar algun mètode de cerca de solucions d’equacions no lineals ~={faded}(per exemple el mètode de Newton)=~.
-
-Tot i que poden semblar poc pràctics, presenten algunes propietats que els fan adients en certes situacions.
-```
-
 
 ###### **Convergència**
 
 Diem que un esquema monopàs
-$$ Y_{i+1} = Y_{i} + h\,\phi(x_{i},Y_{i},h;f) $$
-amb condició inicial $Y_{0}=y_{0}$ ==convergeix== a la solució del PVI
+$$ \begin{cases}
+\,Y_{i+1} &= Y_{i} + h\,\phi(x_{i},Y_{i},h;f) \\
+\,Y_{0} &= y_{0}
+\end{cases} $$
+==convergeix== a la solució del PVI
 $$ \begin{cases}
 \, y'(t) &= f(y(t), t) \\
 \, y(t_{0}) &= y_{0}
@@ -654,10 +644,120 @@ Aquest és l'error efectiu que es produeix en un pas $h$ quan s'està al punt $x
 ```
 ````
 
+```ad-def
+title: *Ordre* de l'esquema
 
-###### Esquemes **multipàs**
+Es diu que un esquema és d'==ordre== $p$ si $p$ és el natural més gran tal que
+$$ \lim_{h\to0} \frac{\tau(h,x)}{h^{p}} < \infty $$
+per tot $x$.
 
-```ad-met
++ Un esquema és ==consistent== si és d'ordre $\geq1$ .
+```
+
+````ad-teor
+> $\phi(x,y,x;f)$ contínua respecte $x,y,h$ i Lipschitz respecte $y$.
+
+```ad-not
+title: Lipschitz
+
+Existeix $k$ tal que
+$$ |\phi(x,y_{1},h;f)-\phi(x,y_{2},h;f)| \leq |y_{1}-y_{2}| $$
+per tota parella $y_{1},y_{2}$ .
+```
+
+Aleshores
+$$ |Y_{n}(h_{n})-y(x_{f})| \leq e^{k|x_{f}-x_{0}|} \left( e_{0}+\frac{\tau(h_{n})}{k} \right) $$
+amb:
++ $e_{0}=Y_{0}-y_{0}$ error en la condició incial
++ $\tau(h_{n})=\displaystyle\max_{x \in [x_{0},x_{f}]}|\tau(h_{n},x)|$
+
+```ad-not
++ Si un esquema és d'ordre $p$, aleshores
+$$ \tau(h) = O(h^{p}) \,.$$
+
++ Si $e_{0}=0$, aleshores la velocitat de convergència de l'esquema serà d'ordre $h^{p}$.
+```
+````
+
+
+###### Esquemes **implícits**
+
+Els mètodes monopàs implícits es poden escriure de la forma
+$$ \boxed{\,Y_{i+1} = Y_{i} + h\,\phi(x_{i},Y_{i},Y_{i+1},h;f)\,} \,.$$
+
+```ad-not
+Tot esquema implícit es pot reescriure de manera "explícita":
+$$ Y_{i+1} = Y_{i} + h\,\overline{\phi}(x_{i},Y_{i},Y_{i}+h\,K(Y_{i},x_{i}),h;f) $$
+amb $K(Y_{i},x_{i})$ solució de l'equació
+$$K(Y_{i},x_{i}) = \overline{\phi}(x_{i},Y_{i},Y_{i}+h\,K(Y_{i},x_{i}),h;f)\,,$$
+per tant els resultats anteriors son també vàlids per a esquemes implícits.
+```
+
+```ad-ex
+title: Esquema d'**Euler implícit**
+
+$$ \begin{cases}
+Y_{n+1} &= Y_{n} + hf(Y_{n+1},t_{n+1}) \\
+Y_{0} &= y_{0}
+\end{cases} $$
+
+Com que es tracta d'un esquema **implícit**, caldria utilitzar algun mètode de cerca de solucions d’equacions no lineals ~={faded}(per exemple el mètode de Newton)=~.
+
+Tot i que poden semblar poc pràctics, presenten algunes propietats que els fan adients en certes situacions.
+```
+
+
+###### Esquemes de **Runge-Kutta**
+
+Un ==esquema de Runge-Kutta de $m$ etapes== és
+$$ Y_{i+1} = Y_{i} + h\,\phi(x_{i},Y_{i},h;f) $$
+amb
+$$ \begin{gather}
+\phi(x_{i},Y_{i},h;f) = \sum_{r=1}^{m} c_{r}K_{r}(x_{i},Y_{i},h;f) \\
+\text{amb} \quad K_{r} = f\left( Y_{i}+h\sum_{s=1}^{m} b_{r,s}\,K_{s},x_{i}+ha_{r} \right),
+\end{gather} $$
+i on els paràmetres $c_{r},a_{r},b_{r,s}$ per $r,s \in \{1,\dots,m\}$ son seleccionats tal que l'esquema sigui d'ordre més gran possible.
+
+```ad-not
+Si $b_{r,s}=0$ per tot $s\geq r$, aleshores $K_{r}$ es pot calcular de manera explícita de la següent manera:
+$$ \begin{align}
+K_{1} &= f(Y_{i},x_{i}+ha_{1}) \\
+K_{2} &= f(Y_{i}+h\,b_{2,1}\,K_{1},x_{i}+ha_{2}) \\
+&\,\,\,\vdots \\
+K_{m} &= f(Y_{i} + h(b_{m,1}\,K_{1}+h\,b_{m,2}\,K_{2}+\dots+b_{m,m-1}K_{m-1}),x_{i}+ha_{m})
+\end{align} $$
+
+D'altra banda, si $b_{r,s}\neq0$ per algun $s\geq r$, aleshores s'haurà de resoldre un sistema d'equacions no lineals per trobar cada $K$.
+```
+
+```ad-teor
+Donat un esquema RK d'$m$ etapes explícit, tenim que el seu ordre màxim $p$ és:
+
+| $\boldsymbol m$ | $1$ | $2$ | $3$ | $4$ | $5$ | $6$ | $7$ | $8$ | $9$ |   $>=10$   |
+|:---------------:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:----------:|
+| $\boldsymbol p$ | $1$ | $2$ | $3$ | $4$ | $4$ | $5$ | $6$ | $6$ | $7$ | $\leq m-2$ |
+
+```
+
+```ad-ex
+title: Runge-Kutta de 4 etapes
+
+$$ \begin{gather}
+Y_{i+1} = Y_{i} + \frac{h}{6}(K_{1}+2K_{2}+2K_{3}+K_{4}) \\[0.5em]
+\text{amb } \begin{cases}
+\,K_{1} = f(Y_{i},x_{i}) \\[0.4em]
+\,K_{2} =\displaystyle f\left( Y_{i}+\frac{h}{2} K_{1},x_{i}+\frac{h}{2} \right) \\[0.4em]
+\,K_{3} =\displaystyle f\left( Y_{i}+\frac{h}{2} K_{2}, x_{i}+\frac{h}{2} \right) \\[0.4em]
+\,K_{4} = f(Y_{i}+hK_{3},x_{i}+h)
+\end{cases}
+\end{gather} $$
+
+```
+
+
+#### Esquemes **multipàs**
+
+```ad-ex
 title: Esquema d'**Adams**
 
 $$ \begin{cases}
@@ -668,8 +768,6 @@ Y_{0} &= t_{0}
 El primer pas $Y_{1}$ es calcularà fent servir algun mètode d'un pas.
 ```
 
-
-## 
 
 
 #### **Sistemes** d'EDOs
