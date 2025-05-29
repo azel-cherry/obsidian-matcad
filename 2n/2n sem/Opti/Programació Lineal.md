@@ -57,7 +57,7 @@ Tot PL en amb punts factibles es pot transformar en un PL en forma estàndard eq
 ```
 
 
-###### Solucions **bàsiques**
+#### Solucions **bàsiques**
 
 ```ad-not
 title: Notació
@@ -118,7 +118,7 @@ Una ==solució factible bàsica== d'un PL és una solució bàsica que a més t�
 ```
 
 
-###### **Teorema fonamental** de la programació lineal
+#### **Teorema fonamental** de la programació lineal
 
 ````ad-prop
 title: Lema de la **paret**
@@ -239,20 +239,59 @@ Per actualitzar la funció objectiu, restem a la última fila la fila $i\in \{1,
 El ==mètode del Símplex== consisteix en passar d'una base a una altra, actualitzant en cada pas el sistema i la funció objectiu.
 
 
-#### **Criteris** d'optimalitat, no acotació i millora
+#### Fase **I**
 
-Suposem que tenim un PL actualitzat a la base $B$.
+Es tracta de trobar una solució factible bàsica o demostrar que no n'existeix cap.
 
-1. ~={green}Criteri d'optimalitat.=~ Si $c_{j}\geq0$ per tot $j$, hem trobat la solució bàsica optimal
-	$$ x_{B}=d\,,\, x_{N}=0\,, \quad z=c_{0} \,.$$
+Considerem el PL següent:
+$$ P_{z} : \begin{cases}
+\text{minimitzar}& z=cx+c_{0} \\
+\text{subjecte a}& \begin{cases}
+Ax &=d \\
+x &\geq0
+\end{cases}
+\end{cases} $$
 
-2. ~={green}Criteri de no acotació.=~ Si per algun $j\in N$ tenim:
-	+ $c_{j}<0$,
-	+ Tots els coeficients d'$A_{j}$ son $\leq0$,
+1. Si la matriu $A$ conté totes les columnes de la identitat $I_{m}$, ja tenim solució factible bàsica i podem començar amb la fase II.
+2. Si no, afegirem **variables artificials** $y=(y_{1},y_{2},\dots)$ a cada equació que faci falta per aconseguir la identitat:
+	$$ P_{w} : \begin{cases}
+\text{minimitzar}& w=y_{1}+y_{2}+\dots \\
+\text{subjecte a}& \begin{cases}
+Ax+y &=d \\
+x,y &\geq0
+\end{cases}
+\end{cases} $$
+
+```ad-prop
+Siguin $P_{z}$ i $P_{w}$ definits anteirorment. Aleshores:
++ $P_{w}$ té solucions factibles.
++ La funció objectiu de $P_{w}$ és acotada inferiorment.
++ $P_{z}$ té alguna solució factible si i només si $P_{w}$ té òptim 0. En aquest cas, eliminant les components artificials de $P_{w}$, obtenim una solució factible bàsica de $P_{z}$ .
+```
+
+Quan ja hem solucionat $P_{w}$, doncs, ens podem trobar amb el següent:
+1. **L'òptim de $\boldsymbol{P_{w}}$ no és 0.** Aleshores $P_{z}$ no té solucions factibles i és, per tant, impossible.
+2. **L'òptim de $\boldsymbol{P_{w}}$ és 0.** Arribem a una solució factible bàsica amb $y_{1}=y_{2}=\dots=0$.
+	+ **No hi ha variables artificials a la base.** Ja tenim una base per $P_{z}$; només cal eliminar les columnes de les variables artificials.
+	+ **Hi ha variables artificials a la base.** Pivotem per treure-les de la base. Aquestes pivotacions no canviaran el valor de $w$.
+
+
+#### Fase **II**
+
+Tenim un PL en forma estàndard amb una solució factible bàsica.
+
+1. Actualitzem la funció objectiu a la base ~={faded}(zeros a les columnes de les variables bàsiques)=~.
+2. Apliquem els criteris fins que trobem l'optimal o la no acotació:
+	+ ~={green}Criteri d'optimalitat.=~ Si $c_{j}\geq0$ per tot $j$, hem trobat la solució bàsica optimal
+		$$ x_{B}=d\,,\, x_{N}=0\,, \quad z=c_{0} \,.$$
 	
-	Aleshores el PL és no acotat.
-
-3. ~={green}Criteri de millora de la solució.=~ Si existeixen $j\in N$ tals que $c_{j}<0$ i per cada $j$ existeix un coeficient d'$A_{j}$ que és $>0$, aleshores es pot millorar la solució.
+	+ ~={green}Criteri de no acotació.=~ Si per algun $j\in N$ tenim:
+		+ $c_{j}<0$,
+		+ Tots els coeficients d'$A_{j}$ son $\leq0$,
+		
+		Aleshores el PL és no acotat.
+	
+	+ ~={green}Criteri de millora de la solució.=~ Si existeixen $j\in N$ tals que $c_{j}<0$ i per cada $j$ existeix un coeficient d'$A_{j}$ que és $>0$, aleshores es pot millorar la solució.
 
 ```ad-met
 title: Millora de la solució
@@ -268,3 +307,63 @@ Si ens trobem en el 3r cas, farem el següent:
 	$$ z = c_{j}\,\frac{d_{k}}{a_{kj}} + c_{0} \leq c_{0} \,.$$
 	La desigualtat serà una igualtat només si $d_{k}=0$. En aquest cas es diu que hem fet una ==iteració degenerada==.
 ```
+
+```ad-not
+Els **coeficients de la funció objectiu** actualitzats a una base es poden interpretar com el **creixement** que experimenta la funció objectiu quan la **variable no bàsica corresponent s'incrementa** en una unitat.
+```
+
+
+#### Programes **degenerats**
+
+Diem que un sistema d'equacions és ==degenerat== quan té una solució bàsica amb coeficient bàsic nul. Si triem com a pivot l'element amb el coeficient nul, la funció objectiu **no millorarà** i podem entrar en un cicle.
+
+```ad-teor
+title: Regla de Bland
+
+> Totes les columnes $A_{j}$ amb $c_{j}<0$ tenen alguna component positiva.
+
+Hi ha possibilitat de millora de la funció objectiu. Per tritar quina variable $x_{j}$ surt i quina entra, apliquem les regles següents:
+
+1. **Variable que entra:** Si hi ha diverses columnes sobre les que pivotar, triem la de més a l'esquerra.
+2. **Variable que surt:** Pivotem per la fila que té el possible pivot més a l'esquerra.
+
+Seguint aquestes regles, el PL no entrarà en cap cicle.
+```
+
+
+---
+## Programació **Entera**
+
+La ==Programació Entera== es refereix a programes lineals que busquen una solució entera.
+
+```ad-not
+title: Regió factible
+
+Anomenarem $S$ a la regió factible sobre els nombres reals, és a dir els punts que compleixen totes les restriccions excepte la de variables enteres.
+
+La regió factible de veritat serà el conjunt de punts de coordenades enteres dins d'$S$.
+```
+
+
+#### *Branch & Bound*
+
+Consisteix en anar resolent PLs, bifurcant en dos problemes nous (dividint $S$) quan la solució no sigui entera, i podant les branques de l'arbre que no aportaran res.
+
+És convenient explorar una de les branques de cada bifurcació fins al final abans de passar a la branca germana. Aquesta estratègia ajuda a trobar bones acotacions per estalviar-nos feina.
+
+Per cada node de l'arbre, ens podem trobar amb les següents situacions:
+
+1. **Regió factible buida.** Abandonem la branca.
+2. **Solució optimal pitjor o igual a la solució titular.** Abandonem la branca.
+3. **Solució optimal millor que la titular.**
+	+ **Solució entera.** Agafem aquesta solució com la solució titular.
+	+ **Solució no entera.** Utilitzem el valor d'una de les coordenades no enteres de la solució $x_{i}=a$, i bifurquem la branca en dues subregions $x_{i}\leq \lfloor a \rfloor$ i $x_{i}\geq\lfloor a\rfloor +1$ .
+
+
+##### Variables **binàries**
+
+Afegirem les restriccions $0\leq x_{i}\leq1$ .
+
+Quan fem una subdivisió utilitzant la variable $x_{i}$, triarem les subregions $x_{i}=0$ i $x_{i}=1$ .
+
+
