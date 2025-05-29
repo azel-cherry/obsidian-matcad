@@ -347,6 +347,16 @@ La regió factible de veritat serà el conjunt de punts de coordenades enteres d
 
 #### *Branch & Bound*
 
+```ad-prop
+title: Elements
++ **Sistema d'acotació.** Cota superior i/o inferior de cada subregió factible.
++ **Estratègia.** Tria del proper node en explorar.
+	1. **Best first.** Node amb millor cota.
+	2. **Breath first.** Explorem tot un nivell de l'arbre abans de passar al següent.
+	3. **Depth first.** Arribem al final d'una branca abans de passar a les altres.
++ Regla per dividir una regió.
+```
+
 Consisteix en anar resolent PLs, bifurcant en dos problemes nous (dividint $S$) quan la solució no sigui entera, i podant les branques de l'arbre que no aportaran res.
 
 És convenient explorar una de les branques de cada bifurcació fins al final abans de passar a la branca germana. Aquesta estratègia ajuda a trobar bones acotacions per estalviar-nos feina.
@@ -360,10 +370,21 @@ Per cada node de l'arbre, ens podem trobar amb les següents situacions:
 	+ **Solució no entera.** Utilitzem el valor d'una de les coordenades no enteres de la solució $x_{i}=a$, i bifurquem la branca en dues subregions $x_{i}\leq \lfloor a \rfloor$ i $x_{i}\geq\lfloor a\rfloor +1$ .
 
 
-##### Variables **binàries**
+###### Variables **binàries**
 
 Afegirem les restriccions $0\leq x_{i}\leq1$ .
 
 Quan fem una subdivisió utilitzant la variable $x_{i}$, triarem les subregions $x_{i}=0$ i $x_{i}=1$ .
+
+---
+
+Alternativament, podem escollir en cada pas el node que ofereix la millor solució.
+
+Es tracta d'anar assignant valors un a un, començant pel millor cas possible, i observant com afecta això a les restriccions i a la cota de la funció objectiu.
+
++ Si alguna de les restriccions es viola, tornem enrere i abandonem la branca.
++ Quan arribem al final d'una branca (totes les variables tenen un valor assignat i no s'ha violat cap restricció), guardem el resultat com a titular.
++ Quan una branca té una cota de la funció objectiu menor/major a la solució titular, abandonem la branca.
+Es continua així fins que s'explora tot l'arbre.
 
 
