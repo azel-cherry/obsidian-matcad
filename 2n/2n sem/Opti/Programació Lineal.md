@@ -369,22 +369,28 @@ Per cada node de l'arbre, ens podem trobar amb les següents situacions:
 	+ **Solució entera.** Agafem aquesta solució com la solució titular.
 	+ **Solució no entera.** Utilitzem el valor d'una de les coordenades no enteres de la solució $x_{i}=a$, i bifurquem la branca en dues subregions $x_{i}\leq \lfloor a \rfloor$ i $x_{i}\geq\lfloor a\rfloor +1$ .
 
+^brnbo
+
 
 ###### Variables **binàries**
 
-Afegirem les restriccions $0\leq x_{i}\leq1$ .
+Afegirem les restriccions $0\leq x_{i}\leq1$ . Tenim dos mètodes.
 
-Quan fem una subdivisió utilitzant la variable $x_{i}$, triarem les subregions $x_{i}=0$ i $x_{i}=1$ .
+```ad-met
+title: *Branch & Bound* (com abans)
 
----
+Igual que [[#^brnbo | l'anterior]] però, quan fem una subdivisió utilitzant la variable $x_{i}$, triarem les subregions $x_{i}=0$ i $x_{i}=1$ .
+```
 
-Alternativament, podem escollir en cada pas el node que ofereix la millor solució.
+```ad-met
+title: *Branch & Bound* (*Best First*)
 
-Es tracta d'anar assignant valors un a un, començant pel millor cas possible, i observant com afecta això a les restriccions i a la cota de la funció objectiu.
+Es tracta d'anar assignant valors un a un, començant pel millor cas possible, i observant com això afecta a les restriccions i a la cota de la funció objectiu.
 
 + Si alguna de les restriccions es viola, tornem enrere i abandonem la branca.
 + Quan arribem al final d'una branca (totes les variables tenen un valor assignat i no s'ha violat cap restricció), guardem el resultat com a titular.
 + Quan una branca té una cota de la funció objectiu menor/major a la solució titular, abandonem la branca.
 Es continua així fins que s'explora tot l'arbre.
+```
 
 

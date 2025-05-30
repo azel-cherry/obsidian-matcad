@@ -171,14 +171,14 @@ title: Identitats **trigonomètriques**
 title: Polinomis **ortogonals**
 
 Polinomis $\psi_{i}(x)$ i $\psi_{j}(x)$ ==ortogonals== sobre $[a,b]$ i per $w(x):[a,b]\to \mathbb{R}_+$ si
-$$ \int_{a}^{b} \psi_{i}(x)\,\psi_{j}(x)\,w(x)\,dx \begin{cases}\, =0 &\text{si }i\neq j \\\, \neq0 &\text{si }i=j \end{cases} $$
+$$ \langle\psi_{i},\psi_{j}\rangle = \int_{a}^{b} \psi_{i}(x)\,\psi_{j}(x)\,w(x)\,dx \begin{cases}\, =0 &\text{si }i\neq j \\\, \neq0 &\text{si }i=j \end{cases} $$
 
 ```ad-met
 title: Recurrència 
 
 $$ \psi_{k+1} = \boxed{\,\frac{A_{k+1}}{A_{k}} ((x-\alpha_{k})\,\psi_{k}(x)-\alpha_{k-1}\,\psi_{k-1}(x))\,} $$
 + $\alpha_{k} = \displaystyle \frac{\langle\psi_{k},x\,\psi_{k}\rangle }{\langle \psi_{k},\psi_{k} \rangle }\,,\quad\alpha_{k-1}=\displaystyle\frac{\langle \psi_{k},x\,\psi_{k-1} \rangle }{\langle \psi_{k-1},\psi_{k-1} \rangle }$
-+ $\psi_{0}=A_{0}\,,\quad\psi_{1}=A_{1}\left( x-\frac{\langle \psi_{0},x\,\psi_{0} \rangle }{\langle \psi_{0},\psi_{0} \rangle } \right)$
++ $\psi_{0}=A_{0}\,,\quad\psi_{1}=\displaystyle A_{1}\left( x-\frac{\langle \psi_{0},x\,\psi_{0} \rangle }{\langle \psi_{0},\psi_{0} \rangle } \right)$
 ```
 `````
 
