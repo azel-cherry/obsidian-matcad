@@ -432,7 +432,7 @@ convergeix a $Z\sim N(0,1)$. És a dir,
 $$ \lim_{n\to\infty}P(Z_{n}<z) = P(Z<z) = \int_{-\infty}^{z} \frac{1}{\sqrt{2\pi}}\,e^{- \frac{x^{2}}{2}}\,dx \,.$$
 
 ```ad-not
-Això també es compleix refefinint
+Això també es compleix redefinint
 $$ Z_{n} = \frac{\sqrt{n}}{\sigma_{n}}\,(\mu_{n}-\mu) \quad\text{amb}\quad \sigma_{n} = \frac{1}{n-1} \sum_{i=1}^{n}(X_{i}-\mu_{n})^{2} \,.$$
 ```
 ````

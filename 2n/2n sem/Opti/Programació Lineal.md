@@ -394,3 +394,145 @@ Es continua així fins que s'explora tot l'arbre.
 ```
 
 
+---
+## Modelització
+
+#### **Plantejament** de problemes
+
+```ad-met
+title: **Assignació**
+
+> Assignar tasques $T_{1},\dots,T_{n}$ a persones $P_{1},\dots,P_{n}$ amb diferents qualificacions:
+> $$ Q = \begin{pmatrix}
+q_{11} & \dots & q_{1n} \\
+\vdots & \ddots & \vdots \\
+q_{n1} & \dots & q_{nn}
+\end{pmatrix} $$
+> amb $q_{ij}$ qualificació de la persona $P_{i}$ per fer la tasca $T_{j}$.
+
+~={green}Variables.=~ $x_{ij}=\begin{cases}1&\text{si assignem }P_{i}\text{ a }T_{j}\\0&\text{en cas contrari}\end{cases}$
+
+~={green}Restriccions.=~
+
+| $\displaystyle\sum_{j=1}^{n}x_{ij} = 1 \quad \forall j$ | $\displaystyle\sum_{i=1}^{n} x_{ij} = 1 \quad \forall i$ |
+|:------------------------------------------:|:-------------------------------------------:|
+|      Cada persona ha de fer una tasca      |      Cada tasca s'ha de fer una vegada      |
+
+~={green}Funció objectiu.=~ Maximitzar suma de qualificacions:
+	$$ z = \sum_{i=1}^{n} \sum_{j=1}^{n} q_{ij}\,x_{ij} $$
+```
+
+```ad-met
+title: **Recobriment** mínim
+
+> Decidir quins edificis $E_{1},\dots,E_{m}$ es queden oberts per tal d'abarcar totes les zones necessàries $Z_{1},\dots Z_{n}$, quan cada edifici pot abarcar unes quantes zones:
+> $$ A = \begin{pmatrix}
+a_{11} & \dots & a_{1m} \\
+\vdots & \ddots & \vdots \\
+a_{nm} & \dots & a_{nm} \\
+\end{pmatrix} $$
+> amb $a_{ij}$ binària indicant si l'edifici $E_{j}$ abarca la zona $Z_{i}$.
+
+~={green}Variables.=~ $x_{i}$ binària indicant si es manté $E_{i}$ obert.
+
+~={green}Restriccions.=~ Cada zona necessita com a mínim un edifici obert:
+$$ \sum_{j=1}^{m} a_{ij}\,x_{j} \geq1 \quad\forall i $$
+
+~={green}Funció objectiu.=~ Minimitzar els edificis oberts:
+$$ z = \sum_{j=1}^{m} x_{j} $$
+```
+
+```ad-met
+title: **Costos fixos**
+
+> Distribuir el cost total $N$ en diferentes companyies $C_{1},\dots,C_{n}$ amb costos fixos $f_{1},\dots,f_{n}$ i costos variables $v_{1},\dots,v_{n}$.
+
+~={green}Variables.=~
++ $y_{i}$ binària indicant si fem servir mai la companyia $C_{i}$
++ $x_{i}\equiv$ quantitat de la necessitat que cobrim amb la companyia $C_{i}$
+
+~={green}Restriccions.=~
+
+| $x_{1}+\dots+x_{n} = N$ | $x_{i}\leq Ny_{i} \quad \forall i$ |
+|:-----------------------:|:------------------:|
+|   Necessitat coberta    | $x_{i}=0 \iff y_{i}=0$                  |
+
+~={green}Funció objectiu.=~ Minimitzar el cost total:
+	$$ z = f_{1}\,y_{1} + \dots + f_{n}\,y_{n} + v_{1}\,x_{1} + \dots + v_{n}\,x_{n} $$
+```
+
+```ad-met
+title: **Camins**
+
+> Trobar la ruta més curta per visitar tots els llocs $A_{1},\dots,A_{n}$ tenint la distància entre ells:
+> $$ D = \begin{pmatrix}
+d_{11} & \dots & d_{1n} \\
+\vdots & \ddots & \vdots \\
+d_{n1} & \dots & d_{nn} \\
+\end{pmatrix} $$
+> amb $d_{ij}$ la distància entre $A_{i}$ i $A_{j}$. Evidentment $d_{ii}=0$ per tot $i$.
+
+~={green}Variables.=~ $x_{ij}=\begin{cases}1&\text{si anem d'}A_{i} \text{ a }A_{j}\\0 &\text{en cas contrari}\end{cases}$
+
+~={green}Restriccions.=~
+
+| $\displaystyle\sum_{i=1}^{n}x_{ij}=1 \quad\forall j$ | $\displaystyle\sum_{j=1}^{n}x_{ij}=1 \quad\forall i$ |
+|:----------------------------------------------------:|:----------------------------------------------------:|
+|       S'ha d'entrar un cop a totes les ciutats       |      S'ha de sortir un cop de totes les ciutats      | 
+
++ També s'ha de tenir en compte que no apareguin cicles disjunts. Per $n\leq5$ :
+	$$ x_{ij} + x_{ji} \leq 1 \quad \forall\,i\neq j$$
+
+~={green}Funció objectiu.=~ Minimitzar la distància total:
+	$$ z = \sum_{i=1}^{n}\sum_{j=1}^{n} d_{ij}\,x_{ij} $$
+```
+
+
+#### **Variables** i **funcions** ...rares 
+
+```ad-met
+title: **Variables** que prenen **finits valors**
+
+> Variable $x$ que només pot prendre els valors $X_{1},\dots,X_{n}$.
+
+~={green}Variables.=~ Expressem $x$ com a suma de variables binàries $y_{1},\dots,y_{n}$:
+$$ x = X_{1}\,y_{1} + \dots + X_{n}\,y_{n} $$
+
+~={green}Restriccions.=~ La variable $x$ només pot prendre un valor:
+$$ y_{1}+\dots+y_{n} = 1 $$
+```
+
+```ad-met
+title: **Funcions** (lineals) **a trossos**
+
+> Funció $g(x)$ definida en $n$ trossos lineals, amb els canvis (incloent extrems) a $(X_{0},Y_{0}),\dots,(X_{n},Y_{n})$:
+> $$ g(x) = Y_{i-1} + \frac{Y_{i}-Y_{i-1}}{X_{i}-X_{i-1}}\,(x-X_{i-1}) \quad \text{si }X_{i-1}\leq x\leq X_{i} $$
+> per $i=1,\dots,n$.
+
+~={green}Variables.=~ Descomponem $x$ en $n$ variables reals:
+$$ x = x_{1} + \dots + x_{n} $$
+
+~={green}Restriccions.=~ Introduim $n+1$ variable binàries $z_{0},\dots,z_{n}$ que indiquen si $x$ ha arribat a $X_{i}$ (observem que els extrems $z_{0}=1$ i $z_{n}=0$ sempre):
+$$ (X_{i}-X_{i-1})\,z_{i} \leq x_{i} \leq (X_{i}-X_{i-1})\,z_{i-1}$$
+
+~={green}Funció.=~ Expressem $g$ en funció de les noves variables:
+$$ g = \frac{Y_{1}-Y_{0}}{X_{1}-X_{0}}\,x_{1} + \dots +  \frac{Y_{n}-Y_{n-1}}{X_{n}-X_{n-1}}\,x_{n} $$
+```
+
+```ad-met
+title: **Màxim de funcions** (lineals)
+
+> Funció $g=\max(g_{1},\dots,g_{n})$ amb $g_{i}\geq0$ lineals. 
+
+~={green}Variables.=~ 
++ $y_{i}=\begin{cases}1&\text{si }g_{i}\text{ és la màxima}\\0&\text{en cas contrari}\end{cases}$
++ $z_{i}=\begin{cases}g_{i}&\text{si }g_{i}\text{ és la màxima}\\0&\text{en cas contrari}\end{cases}$
++ $M\equiv$ cota superior de $g_{1},\dots,g_{n}$ a la regió factible
+
+~={green}Restriccions.=~
++ $\begin{cases}\,y_{1}+\dots+y_{n}=1\\[0.4em] \,g_{2}-g_{1}\leq M(1-y_{1}),\,\dots,\,\,\,\,\,\,\,\,g_{n}-g_{1}\leq M(1-y_{1})\\ \,\dots\\ \,g_{1}-g_{n}\leq M(1-y_{n}),\,\dots,\,g_{n-1}-g_{n}\leq M(1-y_{n})\end{cases}$
++ $\begin{cases}z_{i}-g_{i}&\leq\,\,\,\,M(1-y_{i})\\z_{i}-g_{i}&\geq-M(1-y_{i})\\z_{i}&\leq\,\,\,\,My_{i}\end{cases} \quad\forall i$
+
+~={green}Funció objectiu.=~
+$$ z = z_{1}+\dots+z_{n} $$
+```
