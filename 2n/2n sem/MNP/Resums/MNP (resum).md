@@ -144,7 +144,7 @@ title: Interval **no acotat**
 ---
 ## 2. Mètodes de **Monte Carlo**
 
-$$ \boxed{\,\int_{a}^{b}g(x)\,dx \approx \mathbb{E}(g(X))\,} \text{ amb } X\sim U(a,b) $$
+$$ \boxed{\,\int_{a}^{b}g(x)\,dx \approx (b-a)\,\mathbb{E}(g(X))\,} \text{ amb } X\sim U(a,b) $$
 
 + **Error** $\sim\frac{\sigma}{\sqrt{n}}$ per $n$ prou gran
 
@@ -154,7 +154,7 @@ title: **IC** per $\boldsymbol{\mu}$ amb confiança $1-\alpha$
 > $z(\alpha)>0$ tal que $P(-z(\alpha)<Z<z(\alpha))=1-\alpha$
 
 $$ \boxed{\,\mu \in \left( \widehat{\mu}_{n} \pm \frac{\widehat{\sigma}_{n}\,z(\alpha)}{\sqrt{n}} \right)\,} $$
-$$ \text{amb}\quad \widehat{\mu}_{n}=\frac{1}{n}\sum_{i=1}^{n}x_{i}\,,\quad \widehat{\sigma}_{n} = \frac{1}{n-1} \sum_{i=1}^{n}(x_{i}-\mu_{n})^{2} $$
+$$ \text{amb}\quad \widehat{\mu}_{n}=\frac{1}{n}\sum_{i=1}^{n}x_{i}\,,\quad \widehat{\sigma}_{n}^{2} = \frac{1}{n-1} \sum_{i=1}^{n}(x_{i}-\mu_{n})^{2} $$
 ```
 
 #### 2.1. Mostreig d'**importància**
@@ -212,7 +212,7 @@ $$ \boxed{\,Y_{i+1} = Y_{i} + h\,\phi(x_{i},Y_{i},h;f)\,} $$
 | Euler explícit       | $\begin{cases}Y_{n+1} &= Y_{n} + h\,f(Y_{n},t_{n}) \\Y_{0} &= t_{0} \end{cases}$                                                                                            |
 | -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Taylor d'ordre 2** | $\begin{cases}Y_{n+1} &= Y_{n} + h\,f(Y_{n},t_{n}) + \frac{h^{2}}{2}(\partial_{1}f(Y_{n},t_{n})\,f(Y_{n},t_{n}) + \partial_{2}f(Y_{n},t_{n})) \\Y_{0} &= t_{0} \end{cases}$ |
-| **Runge-Kutta**      | $\begin{cases}Y_{n+1} &= Y_{n} + \frac{h}{2} (f(Y_{n},t_{n})+f(Y_{n}+hf(Y_{n},t_{n}),t_{n+1})) \\Y_{0} &= y_{0}\end{cases}$                                                 | 
+| **Runge-Kutta 2**      | $\begin{cases}Y_{n+1} &= Y_{n} + \frac{h}{2} (f(Y_{n},t_{n})+f(Y_{n}+hf(Y_{n},t_{n}),t_{n+1})) \\Y_{0} &= y_{0}\end{cases}$                                                 | 
 
 
 #### 3.3. Esquemes **multipàs**

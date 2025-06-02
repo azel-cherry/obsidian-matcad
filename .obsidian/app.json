@@ -4,6 +4,6 @@
     "pageSize": "A5",
     "landscape": false,
     "margin": "1",
-    "downscalePercent": 90
+    "downscalePercent": 75
   }
 }
