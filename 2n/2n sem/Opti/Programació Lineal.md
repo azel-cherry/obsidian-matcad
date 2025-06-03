@@ -541,11 +541,10 @@ $$ z = z_{1}+\dots+z_{n} $$
 ---
 ## **Fluxos** lineals sobre **xarxes**
 
-```ad-def
+````ad-def
 title: *Xarxa*
 
 Un ==graf dirigit== o ==xarxa== és un graf $(V,A)$ en què $V$ és un conjunt i $A\subseteq(V\times V)$. En aquest cas, les arestes s'anomenen ==arcs==.
-```
 
 ```ad-def
 title: *Matriu d'incidència*
@@ -557,6 +556,39 @@ $$ a_{ij} = \begin{cases}
 0 & \text{si el vèrtex }i\text{ no és incident amb l'arc }j
 \end{cases} $$
 ```
+
++ Un ==camí== és una seqüència d'arestes consecutives.
++ Un ==cicle== és un camí que comença i acaba al mateix vèrtex.
++ Un graf és ==connex== si per cada parella de vèrtexs hi ha un camí que els uneix.
+````
+
+````ad-def
+title: *Arbre*
+
+Un ==arbre== és un graf connex sense cicles.
+
+```ad-prop
+title: Propietats dels arbres
+
++ No té cicles a menys que li afegim una aresta. Llavors aparex un sol cicle.
++ És connex fins que li traiem una sola aresta.
++ Entre cada parella de vèrtexs hi ha només un camí.
+```
+
+```ad-prop
+Donat un graf connex qualsevol, es pot aconseguir un arbre que conté tots els seus vèrtexs eliminant-li arestes.
+```
+
+```ad-def
+title: Arbre *generador*
+
+Un arbre format per tots els vèrtexs d'un graf i algunes de les seves arestes s'anomena ==arbre generador== del graf.
+```
+
+```ad-prop
+Donat un arbre amb $m$ vèrtexs, aleshores té $m-1$ arestes i la seva matriu d'incidència és de rang $m-1$.
+```
+````
 
 
 #### Capacitat **ilimitada**
@@ -594,43 +626,6 @@ $$ z = \sum_{ij} c_{ij}\,x_{ij} $$
 
 
 ###### **Arbres generadors** i solucions factibles bàsiques
-
-````ad-def
-title: Definicions
-> Donada una xarxa $(V,A)$.
-
-+ Un ==camí== és una seqüència d'arestes consecutives.
-+ Un ==cicle== és un camí que comença i acaba al mateix vèrtex.
-+ Un graf és ==connex== si per cada parella de vèrtexs hi ha un camí que els uneix.
-````
-
-````ad-def
-title: *Arbre*
-
-Un ==arbre== és un graf connex sense cicles.
-
-```ad-prop
-title: Propietats dels arbres
-
-+ No té cicles a menys que li afegim una aresta. Llavors aparex un sol cicle.
-+ És connex fins que li traiem una sola aresta.
-+ Entre cada parella de vèrtexs hi ha només un camí.
-```
-
-```ad-prop
-Donat un graf connex qualsevol, es pot aconseguir un arbre que conté tots els seus vèrtexs eliminant-li arestes.
-```
-
-```ad-def
-title: Arbre *generador*
-
-Un arbre format per tots els vèrtexs d'un graf i algunes de les seves arestes s'anomena ==arbre generador== del graf.
-```
-
-```ad-prop
-Donat un arbre amb $m$ vèrtexs, aleshores té $m-1$ arestes i la seva matriu d'incidència és de rang $m-1$.
-```
-````
 
 ```ad-def
 title: Solució associada a un arbre generador
@@ -676,8 +671,7 @@ Partim d'una solució factible bàsica associada a un arbre generador.
 	+ **Tots els coeficients de la funció objectiu son positius o nuls:** Hem arribat a l'optimal.
 	+ **Si no:** Continuem.
 2. Introduïm a la base un dels arcs de coeficient negatiu assignant-li el flux màxim possible.
-3. Traiem de la base l'arcs bàsics que hagi passat a tenir flux $0$.
-4. Tornem a començar.
+3. Traiem de la base l'arc bàsic que hagi passat a tenir flux $0$ i tornem a començar.
 ```
 
 
@@ -696,3 +690,25 @@ $$ \begin{align}
 \,0\leq x_{ij}\leq k_{ij} \quad &\forall e_{ij}
 \end{cases}
 \end{align} $$
+
+En aquests problemes, a part dels arcs bàsics i no bàsics, tindrem els **arcs saturats**. Quan tenim una solució factible, dividirem els arcs en tres conjunts:
++ $\mathcal{E}\equiv$ arcs buits (flux $0$)
++ $\mathcal{S}\equiv$ arcs saturats (flux amb capacitat de l'arc)
++ $\mathcal{B}\equiv$ resta d'arcs
+
+```ad-teor
+Per a una solució factible és bàsica si i només si els arcs de $\mathcal{B}$ formen un graf sense cicles (no necessàriament arbre).
+```
+
+
+###### Mètode del **Símplex**
+
+```ad-met
+title: Fase **II**
+
+A l'hora de provar d'introduir un arc $e_{ij}$ a $\mathcal{B}$:
++ $\boldsymbol{e_{ij}\in \mathcal{E}:}$ Similar a les xarxes amb capacitat ilimitada, li assignem el flux màxim possible.
++ $\boldsymbol{e_{ij}\in \mathcal{S}:}$ Cal dessaturar-lo. Li restem el $t$ màxim possible al seu flux i compensem els fluxos dels arcs $\in \mathcal{B}$ que formin un cicle amb $e_{ij}$.
+
+Si la suma dels costos de les arestes del cicle que es forma (recorregut en sentit de $e_{ij}$ si s'afexeig flux, i en sentit contrari si se'n treu) és $\geq0$, afegir $e_{ij}$ a $\mathcal{B}$ no millorarà la funció objectiu, i per tant triem una altra aresta.
+```
