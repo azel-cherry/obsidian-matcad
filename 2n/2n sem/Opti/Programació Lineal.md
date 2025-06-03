@@ -536,3 +536,163 @@ title: **Màxim de funcions** (lineals)
 ~={green}Funció objectiu.=~
 $$ z = z_{1}+\dots+z_{n} $$
 ```
+
+
+---
+## **Fluxos** lineals sobre **xarxes**
+
+```ad-def
+title: *Xarxa*
+
+Un ==graf dirigit== o ==xarxa== és un graf $(V,A)$ en què $V$ és un conjunt i $A\subseteq(V\times V)$. En aquest cas, les arestes s'anomenen ==arcs==.
+```
+
+```ad-def
+title: *Matriu d'incidència*
+
+La ==matriu d'incidència== d'una xarxa $(V,A)$ és la matriu amb tantes files com vèrtexs $V$ i tantes columnes com arcs $A$ té la xarxa, i els seus elements son
+$$ a_{ij} = \begin{cases}
+1 & \text{si el vèrtex }i\text{ és origen de l'arc }j \\
+-1 & \text{si el vèrtex }i\text{ és destí de l'arc }j \\
+0 & \text{si el vèrtex }i\text{ no és incident amb l'arc }j
+\end{cases} $$
+```
+
+
+#### Capacitat **ilimitada**
+
+Tenim una xarxa amb $m$ nodes $v_{1},\dots,v_{m}$ i $n$ arcs $e_{ij}$ (que van de $v_{i}$ a $v_{j}$).
+
+Els vèrtexs poden ser:
++ **Productors.** Vèrtexs $v_{i}$ que subministren un flux $d_{i}>0$.
++ **Consumidors.** Vèrtexs $v_{i}$ que demanden un flux $d_{i}<0$.
++ **De pas.** Vèrtexs $v_{i}$ ni productors ni consumidors amb $d_{i}=0$.
+
+Per altra banda:
++ Cada arc $e_{ij}$ té un **cost per unitat** transportada $c_{ij}$.
++ La suma total de requeriments ha de ser nul·la: $\sum d_{i}=0$
+
+Finalment suposem que no hi ha arcs $e_{ij},e_{pq}$ amb $i=p$ i $j=q$.
+
+````ad-met
+title: Model matemàtic
+
+~={green}Variables.=~ $x_{ij}$ per cada $e_{ij}$ igual al flux que circula per l'arc
+
+~={green}Restriccions.=~
++ $\displaystyle\sum_{j} x_{ij} - \sum_{j}x_{ji} = d_{i} \quad\forall\,i=1,\dots,m$
++ Matriu d'incidència de la xarxa
+
+~={green}Funció objectiu.=~ Minimitzar el cost total:
+$$ z = \sum_{ij} c_{ij}\,x_{ij} $$
+
+```ad-not
++ El sistema que obtenim está quasi en forma estàndard; només cal multiplicar per $-1$ les files amb $d_{i}<0$.
++ El rang d'$A$ serà $m-1$, per tant haurem d'eliminar una fila.
+```
+````
+
+
+###### **Arbres generadors** i solucions factibles bàsiques
+
+````ad-def
+title: Definicions
+> Donada una xarxa $(V,A)$.
+
++ Un ==camí== és una seqüència d'arestes consecutives.
++ Un ==cicle== és un camí que comença i acaba al mateix vèrtex.
++ Un graf és ==connex== si per cada parella de vèrtexs hi ha un camí que els uneix.
+````
+
+````ad-def
+title: *Arbre*
+
+Un ==arbre== és un graf connex sense cicles.
+
+```ad-prop
+title: Propietats dels arbres
+
++ No té cicles a menys que li afegim una aresta. Llavors aparex un sol cicle.
++ És connex fins que li traiem una sola aresta.
++ Entre cada parella de vèrtexs hi ha només un camí.
+```
+
+```ad-prop
+Donat un graf connex qualsevol, es pot aconseguir un arbre que conté tots els seus vèrtexs eliminant-li arestes.
+```
+
+```ad-def
+title: Arbre *generador*
+
+Un arbre format per tots els vèrtexs d'un graf i algunes de les seves arestes s'anomena ==arbre generador== del graf.
+```
+
+```ad-prop
+Donat un arbre amb $m$ vèrtexs, aleshores té $m-1$ arestes i la seva matriu d'incidència és de rang $m-1$.
+```
+````
+
+```ad-def
+title: Solució associada a un arbre generador
+
+Direm que una solució d'un problema de fluxos lineals està ==associada== a un arbre generador si tots els arcs de fora de l'arbre tenen flux $0$.
+```
+
+````ad-teor
+Donat un problema de fluxos lineals sense limitació una solució és bàsica si i només si està associada a un arbre generador.
+
+```ad-prop
+Si un problema de fluxos lineals té òptim, aleshores hi ha una solució optimal amb flux enter a tots els arcs.
+```
+````
+
+
+###### Mètode del **Símplex**
+
+````ad-met
+title: Fase **I**
+
+Partim de no tenir una solució factible bàsica evident. Consisteix en resoldre un problema auxiliar de la xarxa amb les modificacions següents:
+
+1. Afegir un node.
+2. Afegir un arc amb cost $1$ des de cada node productor al node afegit, i des del node adegit a cada node consumidor.
+3. Posar cost $0$ a tots els arcs de la xarxa original.
+
+```ad-not
+Si en la xarxa original hi ha algun node de pas, es pot fer servir en comptes del nou node.
+```
+
+Aquest nou problema té solució evident.
++ **Òptim $\boldsymbol{=0}$.** El flux passa pels arcs de cost $0$ (de la xarxa original).
++ **Òptim $\boldsymbol{\neq0}$.** No hi ha solució.
+````
+
+```ad-met
+title: Fase **II**
+
+Partim d'una solució factible bàsica associada a un arbre generador.
+
+1. Per cada arc no bàsic, actualitzem el seu coeficient de la funció objectiu.
+	+ **Tots els coeficients de la funció objectiu son positius o nuls:** Hem arribat a l'optimal.
+	+ **Si no:** Continuem.
+2. Introduïm a la base un dels arcs de coeficient negatiu assignant-li el flux màxim possible.
+3. Traiem de la base l'arcs bàsics que hagi passat a tenir flux $0$.
+4. Tornem a començar.
+```
+
+
+#### Capacitat **limitada**
+
+
+|              Arcs $e_{ij}$              | Nodes $v_{i}$ |
+|:---------------------------------------:|:-------------:|
+| <ul><li>cost $c_{ij}$<li>capacitat $k_{ij}$ | <ul><li>requeriment $b_{i}$              |
+
+El PL serà el següent:
+$$ \begin{align}
+\text{minimitzar}& \quad z=\sum_{ij}c_{ij}\,x_{ij} \\
+\text{subjecte a:}& \quad \begin{cases}
+\,\displaystyle\sum_{j}x_{ij}-\sum_{j}x_{ji} = d_{i} \quad &\forall i \\[0.5em]
+\,0\leq x_{ij}\leq k_{ij} \quad &\forall e_{ij}
+\end{cases}
+\end{align} $$
