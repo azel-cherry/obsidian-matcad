@@ -541,6 +541,8 @@ $$ z = z_{1}+\dots+z_{n} $$
 ---
 ## **Fluxos** lineals sobre **xarxes**
 
+#### **Xarxes** i **arbres**
+
 ````ad-def
 title: *Xarxa*
 
@@ -591,7 +593,7 @@ Donat un arbre amb $m$ vèrtexs, aleshores té $m-1$ arestes i la seva matriu d'
 ````
 
 
-#### Capacitat **ilimitada**
+#### Xarxes amb capacitat **ilimitada**
 
 Tenim una xarxa amb $m$ nodes $v_{1},\dots,v_{m}$ i $n$ arcs $e_{ij}$ (que van de $v_{i}$ a $v_{j}$).
 
@@ -625,7 +627,7 @@ $$ z = \sum_{ij} c_{ij}\,x_{ij} $$
 ````
 
 
-###### **Arbres generadors** i solucions factibles bàsiques
+###### Solucions **factibles bàsiques**
 
 ```ad-def
 title: Solució associada a un arbre generador
@@ -634,7 +636,7 @@ Direm que una solució d'un problema de fluxos lineals està ==associada== a un 
 ```
 
 ````ad-teor
-Donat un problema de fluxos lineals sense limitació una solució és bàsica si i només si està associada a un arbre generador.
+Donat un problema de fluxos lineals sense limitació, una solució és bàsica si i només si està associada a un arbre generador.
 
 ```ad-prop
 Si un problema de fluxos lineals té òptim, aleshores hi ha una solució optimal amb flux enter a tots els arcs.
@@ -675,7 +677,7 @@ Partim d'una solució factible bàsica associada a un arbre generador.
 ```
 
 
-#### Capacitat **limitada**
+#### Xarxes amb capacitat **limitada**
 
 
 |              Arcs $e_{ij}$              | Nodes $v_{i}$ |
