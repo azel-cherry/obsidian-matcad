@@ -70,5 +70,43 @@ x_{n} & x_{n}^{2}
 \end{align} $$
 
 **(b) Variància de $\boldsymbol{\widehat{y}}$.**
-
+> Tenim el següent:
 > $$ \widehat{y} = X\widehat{\beta} = X(X^TX)^{-1}X^Ty $$
+> Per tant la variància de $\widehat{y}$ és
+> $$ \begin{align}
+\mathbb{V}(\widehat{y}) &= \mathbb{V}(X(X^TX)^{-1}X^Ty) = \\
+&= X(X^TX)^{-1}X^T\,\mathbb{V}(y)\,(X(X^TX)^{-1}X^T)^{T},
+\end{align} $$
+on $\mathbb{V}(y)=\mathbb{V}(X\beta+\varepsilon)=\mathbb{V}(\varepsilon)=\sigma ^{2}I$ , i per tant:
+> $$ \begin{align}
+\mathbb{V}(\widehat{y}) &= \sigma^{2}X(X^TX)^{-1}X^T(X(X^TX)^{-1}X^T)^{T} = \\
+&= \boxed{\,\sigma^{2}X(X^{T}X)^{-1}X^{T}\,}
+\end{align} $$
+
+**(c) Variància de $\boldsymbol\varepsilon$.**
+> El vector d'errors és:
+> $$ \begin{align}
+\varepsilon &= y-\widehat{y} = y-X\widehat{\beta} =\\
+&= y - X(X^TX)^{-1}X^T y = \\
+&=(I-X(X^TX)^{-1}X^T)\,y
+\end{align} $$
+> Per tant, la seva variància serà:
+> $$ \begin{align}
+\mathbb{V}(\varepsilon) &= \mathbb{V}((I-X(X^TX)^{-1}X^T)\,y) = \\
+&= (I-X(X^TX)^{-1}X^T)\,\mathbb{V}(y)\,(I-X(X^TX)^{-1}X^T)^{T} \\
+&= \sigma^{2}\,(I-X(X^TX)^{-1}X^T)\,(I-X(X^TX)^{-1}X^T)^{T} \\
+&= \sigma^{2}\,(I- X(X^TX)^{-1}X^T)
+\end{align}$$
+
+
+---
+##### Exercici 3.
+
+**(a) Funció *link*.**
+> Escollim l'enllaç d'identitat, ja que s'especifica que segueix una distribució amb mitjana $\beta_{1}x_{i}$, és a dir, una relació directa. Provant el model amb `link = "identity"` obtenim els mateixos resultats que la sortida proporcionada.
+
+**(b) IC del 95% per $\boldsymbol{\beta_{1}}$.**
+> El verdader valor de $\beta_{1}$ es troba en l'interval $(1.719, 3.913)$ amb un $95\%$ de confiança.
+
+**(c) Aberracions cromosòmiques per $\boldsymbol{x=4}$ .**
+> Per a una dosi $x=4$, s'esperen $10.5$ aberracions cromosòmiques en mitjana. El valor real es troba en linterval $(6.009, 14.991)$ amb un $95\%$ de confiança.
