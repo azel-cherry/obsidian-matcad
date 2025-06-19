@@ -916,7 +916,7 @@ title: ***Arc-Consistency*** (AC)
 
 Millora l'[[#^backtr | algorisme anterior]] amb un pas incial **comprovant la consistència** entre els diferents dominis de les variables i **eliminant substitucions inconsistents**.
 
-Per fer això s'utilitza una certa propietat que dependrà del problema, com ara ~={faded}(nombre d'enllaços de sortida, tipus d'etiquetes dels nodes, etc)=~.
+Per fer això s'utilitza una certa propietat que dependrà del problema ~={faded}(com ara nombre d'enllaços de sortida, tipus d'etiquetes dels nodes, etc)=~.
 
 ```py title:"Arc-Consistency algorithm"
 def AC_backtracking(variables, domain, restrictions)
@@ -1176,21 +1176,69 @@ def progressive_deepening(current_state, alpha, beta, player, pmin):
 ````
 
 
-###### 5.1.1. **Complexitat**
+#### 5.2. Tècniques amb **simulacions**: *Monte-Carlo Tree Search* (MCTS)
+
+Consisteix en estimar la informació de guany/pèrdua fent **simulacions aleatòries** fins la profunditat final.
+
+```ad-graph
+title: Arbre de joc
+
+Cada node de l'arbre de joc del MCTS té un valor que estima la **probabilitat que guanyi** un jugador. N'hi ha de 3 tipus:
++ **Node obert.** Node que ja ha estat expandit i té tots els seus fills dins l'arbre.
++ **Node fulla.** Node que no ha estat expandit i per tant no té fills. Pot tenir dos estats:
+	+ **No visitat.** No se li ha fet cap simulació.
+	+ **Visitat.** Ja se li ha fet una simulació i per tant ja podrà ser expandit.
++ **Node terminal.** Node en què un des dos jugadors guanya la partida.
+```
+
+````ad-prop
+title: **Passos**
+
+1. ~={green}Selecció=~ **de l'estat actual.** Recórre l'arbre fins trobar un node fulla que maximitza la funció de selecció:
+
+```ad-met
+title: Funció de **selecció**
+
+$$ \underbrace{\frac{V_{i}}{n_{i}}}_{\text{explotació}} + \underbrace{c\,\sqrt{\frac{\ln(N)}{n_{i}}}}_{\text{exploració}} $$
+
++ $V_{i}\equiv$ nombre de guanys del node $i$
++ $n_{i}\equiv$ nombre de simulacions del node $i$
++ $c \equiv$ paràmetre, habitualment $=2$
++ $N \equiv$ nombre de simulacions del pare del node $i$
+
+---
+
+Segueix els següents criteris:
++ **Explotació.** Dona més valor als nodes amb més probabilitat de guanyar.
++ **Exploració.** Donar més opcions a nodes menys explorats però amb pares molt explorats.
+```
+
+2. ~={green}Expansió=~ **de l'estat actual.** Expandeix tots els fills del node i selecciona el primer com a estat actual.
+3. ~={green}Simulació=~ **sobre l'estat actual.** Genera una simulació des de l'estat actual fins un estat terminal en què el jugador guanya (1), perd (0) o empata (0.5).
+4. ~={green}Actualització=~ **de valors fins l'arrel.** Actualitza els valors de tots els nodes des de l'actual fins l'arrel.
+````
+
+
+| Avantatges                                                                                                                                                                                                                   | Desavantatges |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------- |
+| <ul><li>Implementació simple.<li>Es pot aturar en qualsevol iteració.<li>Es pot aplicar de manera genèrica (no té funció herística).<li>L'arbre no creix completament en amplada; es centra en les jugades més interessants. | <ul><li>Pot crèixer ràpidament i donar problemes de memòria.<li>Necessita un alt nombre d'iteracions per jugar bé.              |
+
+
+
+#### 5.3. **Complexitat**
 
 En jocs, no té sentit parlar d'optimalitat.
 
-| Estratègia $\to$<br>Criteri $\downarrow$ |    *~={green}Minimax=~*    |                  ~={green}Poda Alfa-Beta=~                  |
-| ---------------------------------------- |:--------------------------:|:-----------------------------------------------------------:|
-| **Temps**                                |         $O(b^{p})$         | Pitjor cas: $O(b^{p})$<br>Millor cas: $O(2b^{\frac{p}{2}})$ |
-| **Espai**                                |       $O(b\cdot p)$        |                        $O(b\cdot p)$                        |
-| **Complet**                              | si no hi ha límit de temps |                 si no hi ha límit de temps                  |
+| Estratègia $\to$<br>Criteri $\downarrow$ |    *~={green}Minimax=~*    |                  ~={green}Poda Alfa-Beta=~                  | ~={green}MCTS=~ |
+| ---------------------------------------- |:--------------------------:|:-----------------------------------------------------------:|:---------------:|
+| **Temps**                                |         $O(b^{p})$         | Pitjor cas: $O(b^{p})$<br>Millor cas: $O(2\,b^{\frac{p}{2}})$ |   $O(m\cdot t)$    |
+| **Espai**                                |       $O(b\cdot p)$        |                        $O(b\cdot p)$                        |   $O(b\cdot t)$    |
+| **Complet**                              | si no hi ha límit de temps |                 si no hi ha límit de temps                  | si té límit de temps                |
 
 $b\equiv$ factor de ramificació
-$b\equiv$ profunditat màxima
-
-
-#### 5.2. Tècniques amb **simulacions**: *Monte-Carlo Tree Search*
+$p\equiv$ profunditat màxima predefinida
+$t\equiv$ màxim nombre d'iteracions
+$m\equiv$ profunditat màxima (nombre mitjà de moviments en una partida)
 
 
 ---
