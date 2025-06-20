@@ -1,9 +1,9 @@
 {
   "promptDelete": false,
   "pdfExportSettings": {
-    "pageSize": "A5",
+    "pageSize": "A4",
     "landscape": false,
-    "margin": "1",
-    "downscalePercent": 75
+    "margin": "0",
+    "downscalePercent": 80
   }
 }

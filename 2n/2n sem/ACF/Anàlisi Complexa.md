@@ -1052,7 +1052,6 @@ title: **Classificació** de singularitats a l'**infinit**
 + $f(\infty)=\infty \implies$ pol
 + $f(\infty)\in \mathbb{C} \implies$ singularitat evitable
 + $\not\exists\,f(\infty) \implies$ singularitat essencial
-
 ```
 
 ```ad-def
