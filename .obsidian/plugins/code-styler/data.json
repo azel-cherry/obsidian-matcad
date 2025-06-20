@@ -682,7 +682,7 @@
           "alternativeHighlights": {}
         },
         "inline": {
-          "backgroundColour": "--code-background",
+          "backgroundColour": "#EAF4E8",
           "textColour": "--code-normal",
           "activeTextColour": "--code-normal",
           "titleTextColour": "--code-comment"
