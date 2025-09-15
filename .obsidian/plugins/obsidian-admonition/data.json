@@ -1,132 +1,24 @@
 {
-  "userAdmonitions": {
-    "def": {
-      "type": "def",
-      "color": "133, 173, 133",
-      "icon": {
-        "name": "bookmark",
-        "type": "font-awesome"
-      },
-      "command": false,
-      "title": "Definició",
-      "injectColor": true,
-      "noTitle": false,
-      "copy": false
-    },
-    "teor": {
-      "type": "teor",
-      "color": "166, 206, 131",
-      "icon": {
-        "name": "book",
-        "type": "font-awesome"
-      },
-      "command": false,
-      "title": "Teorema",
-      "injectColor": true,
-      "noTitle": false,
-      "copy": false
-    },
-    "prop": {
-      "type": "prop",
-      "color": "163, 204, 168",
-      "icon": {
-        "name": "angle-double-right",
-        "type": "font-awesome"
-      },
-      "command": false,
-      "title": "Proposició",
-      "injectColor": true,
-      "noTitle": false,
-      "copy": false
-    },
-    "ex": {
-      "type": "ex",
-      "color": "237, 185, 182",
-      "icon": {
-        "name": "border-all",
-        "type": "font-awesome"
-      },
-      "command": false,
-      "title": "Exemple",
-      "injectColor": true,
-      "noTitle": false,
-      "copy": false
-    },
-    "met": {
-      "type": "met",
-      "color": "177, 201, 182",
-      "icon": {
-        "name": "calculator",
-        "type": "font-awesome"
-      },
-      "command": false,
-      "title": "Mètode",
-      "injectColor": true,
-      "noTitle": false,
-      "copy": false
-    },
-    "not": {
-      "type": "not",
-      "color": "200, 224, 184",
-      "icon": {
-        "name": "pencil-alt",
-        "type": "font-awesome"
-      },
-      "command": false,
-      "title": "Nota",
-      "injectColor": true,
-      "noTitle": false,
-      "copy": false
-    },
-    "graph": {
-      "type": "graph",
-      "color": "191, 191, 191",
-      "icon": {
-        "name": "project-diagram",
-        "type": "font-awesome"
-      },
-      "command": false,
-      "title": "Esquema",
-      "injectColor": true,
-      "noTitle": false,
-      "copy": false
-    },
-    "war": {
-      "type": "war",
-      "color": "238, 180, 180",
-      "icon": {
-        "name": "exclamation-triangle",
-        "type": "font-awesome"
-      },
-      "command": false,
-      "title": "Atenció",
-      "injectColor": true,
-      "noTitle": true,
-      "copy": false
-    }
-  },
-  "syntaxHighlight": true,
+  "userAdmonitions": {},
+  "syntaxHighlight": false,
   "copyButton": false,
   "version": "10.3.2",
-  "autoCollapse": true,
+  "autoCollapse": false,
   "defaultCollapseType": "open",
   "injectColor": true,
   "parseTitles": true,
-  "dropShadow": false,
+  "dropShadow": true,
   "hideEmpty": false,
   "open": {
     "admonitions": true,
     "icons": true,
     "other": true,
-    "advanced": true
+    "advanced": false
   },
-  "icons": [
-    "octicons",
-    "rpg"
-  ],
+  "icons": [],
   "useFontAwesome": true,
   "rpgDownloadedOnce": false,
   "msDocConverted": false,
   "useSnippet": false,
-  "snippetPath": "custom-admonitions.f34476"
+  "snippetPath": "custom-admonitions.2ddd9f"
 }
