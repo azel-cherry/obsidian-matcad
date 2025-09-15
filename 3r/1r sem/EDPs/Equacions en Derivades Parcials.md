@@ -72,6 +72,20 @@ amb $\vec{n}(S)$ el vector normal exterior de $\partial\Omega$ en $S$.
 ```
 
 
+---
+## Preliminars: **Classificació**
+
+Denotarem una EDP genèrica com a $F(\vec{x},u,\nabla u)=0$.
+
+```ad-def
+title: EDP *lineal*
+
+Una EDP es diu **lineal** si és una expressió lineal en $u$ i les seves derivades:
+$$ a(x,y)u_x +  $$
+```
+
+
+---
 ## **Apèndix**
 
 ```ad-not

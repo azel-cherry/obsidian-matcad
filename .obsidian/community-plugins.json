@@ -3,7 +3,6 @@
   "obsidian-math-plus",
   "obsidian42-brat",
   "ink",
-  "obsidian-admonition",
   "css-editor",
   "obsidian-style-settings",
   "obsidian-latex",
@@ -19,5 +18,6 @@
   "obsidian-image-layouts",
   "image-captions",
   "obsidian-columns",
-  "better-export-pdf"
+  "better-export-pdf",
+  "obsidian-admonition"
 ]

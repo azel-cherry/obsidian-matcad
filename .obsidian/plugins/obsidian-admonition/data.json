@@ -1,5 +1,54 @@
 {
-  "userAdmonitions": {},
+  "userAdmonitions": {
+    "def": {
+      "type": "def",
+      "color": "126, 160, 127",
+      "icon": {
+        "name": "bookmark",
+        "type": "font-awesome"
+      },
+      "command": false,
+      "title": "Definició",
+      "injectColor": true,
+      "noTitle": false
+    },
+    "met": {
+      "type": "met",
+      "color": "143, 183, 158",
+      "icon": {
+        "name": "calculator",
+        "type": "font-awesome"
+      },
+      "command": false,
+      "title": "Mètode",
+      "injectColor": true,
+      "noTitle": false
+    },
+    "teor": {
+      "type": "teor",
+      "color": "145, 209, 122",
+      "icon": {
+        "name": "book",
+        "type": "font-awesome"
+      },
+      "command": false,
+      "title": "Teorema",
+      "injectColor": true,
+      "noTitle": false
+    },
+    "not": {
+      "type": "not",
+      "color": "180, 222, 171",
+      "icon": {
+        "name": "pencil-alt",
+        "type": "font-awesome"
+      },
+      "command": false,
+      "title": "Nota",
+      "injectColor": true,
+      "noTitle": false
+    }
+  },
   "syntaxHighlight": false,
   "copyButton": false,
   "version": "10.3.2",
