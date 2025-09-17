@@ -54,3 +54,27 @@ li > p {
 .markdown-rendered ul ul { margin-block-start: inherit; }
 .markdown-rendered ol { margin-block-start: 0em; }
 .markdown-rendered ol ol { margin-block-start: inherit; }  */
+
+
+/* source mode latex colors */
+/* commands */
+.cm-s-obsidian .cm-inline-code,
+    .cm-s-obsidian .cm-math {
+        color: #6ab07c ;
+    }
+
+/* dolla sign */
+.cm-s-obsidian span.cm-formatting-math {
+    color: #e05353 !important;
+}
+
+/* text */
+cm-link, .cm-variable, .cm-variable-2, .cm-variable-3 {
+    color: #5e8f64 !important;
+    font-weight: bold;
+}
+
+/* brackets */
+.theme-light .latex-suite-color-bracket-0, .theme-light .latex-suite-color-bracket-0 .cm-bracket {
+    color: #db7979;
+}

@@ -24,14 +24,15 @@ var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: tru
 // src/main.ts
 var main_exports = {};
 __export(main_exports, {
+  DEFAULT_SETTINGS: () => DEFAULT_SETTINGS,
   default: () => CssEditorPlugin
 });
 module.exports = __toCommonJS(main_exports);
-var import_obsidian5 = require("obsidian");
+var import_obsidian11 = require("obsidian");
 
 // src/views/CssEditorView.ts
-var import_obsidian = require("obsidian");
-var import_view5 = require("@codemirror/view");
+var import_obsidian7 = require("obsidian");
+var import_view7 = require("@codemirror/view");
 
 // node_modules/@replit/codemirror-vim/dist/index.js
 var import_state = require("@codemirror/state");
@@ -43,11 +44,9 @@ function initVim(CodeMirror2) {
   var Pos2 = CodeMirror2.Pos;
   function transformCursor(cm, range) {
     var vim2 = cm.state.vim;
-    if (!vim2 || vim2.insertMode)
-      return range.head;
+    if (!vim2 || vim2.insertMode) return range.head;
     var head = vim2.sel.head;
-    if (!head)
-      return range.head;
+    if (!head) return range.head;
     if (vim2.visualBlock) {
       if (range.head.line != head.line) {
         return;
@@ -304,8 +303,7 @@ function initVim(CodeMirror2) {
     cm.off("cursorActivity", onCursorActivity);
     CodeMirror2.off(cm.getInputField(), "paste", getOnPasteFn(cm));
     cm.state.vim = null;
-    if (highlightTimeout)
-      clearTimeout(highlightTimeout);
+    if (highlightTimeout) clearTimeout(highlightTimeout);
   }
   function detachVimMap(cm, next) {
     if (this == CodeMirror2.keyMap.vim) {
@@ -317,8 +315,7 @@ function initVim(CodeMirror2) {
   }
   function attachVimMap(cm, prev) {
     if (this == CodeMirror2.keyMap.vim) {
-      if (cm.curOp)
-        cm.curOp.selectionChanged = true;
+      if (cm.curOp) cm.curOp.selectionChanged = true;
       cm.options.$customCursor = transformCursor;
       CodeMirror2.addClass(cm.getWrapperElement(), "cm-fat-cursor");
     }
@@ -885,8 +882,7 @@ function initVim(CodeMirror2) {
           }
           vimGlobalState.macroModeState.lastInsertModeChanges.changes.pop();
         }
-        if (!match.command)
-          clearInputState(cm);
+        if (!match.command) clearInputState(cm);
         return match.command;
       }
       function handleKeyNonInsertMode() {
@@ -978,8 +974,7 @@ function initVim(CodeMirror2) {
   var noremap = false;
   function doKeyToKey(cm, keys2, fromKey) {
     if (fromKey) {
-      if (keyToKeyStack.indexOf(fromKey) != -1)
-        return;
+      if (keyToKeyStack.indexOf(fromKey) != -1) return;
       keyToKeyStack.push(fromKey);
       noremap = fromKey.noremap;
     }
@@ -996,12 +991,9 @@ function initVim(CodeMirror2) {
             var lowerKey = key.toLowerCase().slice(1, -1);
             var parts = lowerKey.split("-");
             var lowerKey = parts.pop();
-            if (lowerKey == "lt")
-              key = "<";
-            else if (lowerKey == "space")
-              key = " ";
-            else if (lowerKey == "cr")
-              key = "\n";
+            if (lowerKey == "lt") key = "<";
+            else if (lowerKey == "space") key = " ";
+            else if (lowerKey == "cr") key = "\n";
             else if (vimToCmKeyMap.hasOwnProperty(lowerKey)) {
               key = vimToCmKeyMap[lowerKey];
               sendCmKey(cm, key);
@@ -1118,8 +1110,7 @@ function initVim(CodeMirror2) {
   }
   RegisterController.prototype = {
     pushText: function(registerName, operator, text, linewise, blockwise) {
-      if (registerName === "_")
-        return;
+      if (registerName === "_") return;
       if (linewise && text.charAt(text.length - 1) !== "\n") {
         text += "\n";
       }
@@ -1185,8 +1176,7 @@ function initVim(CodeMirror2) {
     nextMatch: function(input, up) {
       var historyBuffer = this.historyBuffer;
       var dir = up ? -1 : 1;
-      if (this.initialPrefix === null)
-        this.initialPrefix = input;
+      if (this.initialPrefix === null) this.initialPrefix = input;
       for (var i = this.iterator + dir; up ? i >= 0 : i < historyBuffer.length; i += dir) {
         var element = historyBuffer[i];
         for (var j = 0; j <= element.length; j++) {
@@ -1200,15 +1190,12 @@ function initVim(CodeMirror2) {
         this.iterator = historyBuffer.length;
         return this.initialPrefix;
       }
-      if (i < 0)
-        return input;
+      if (i < 0) return input;
     },
     pushInput: function(input) {
       var index = this.historyBuffer.indexOf(input);
-      if (index > -1)
-        this.historyBuffer.splice(index, 1);
-      if (input.length)
-        this.historyBuffer.push(input);
+      if (index > -1) this.historyBuffer.splice(index, 1);
+      if (input.length) this.historyBuffer.push(input);
     },
     reset: function() {
       this.initialPrefix = null;
@@ -1232,8 +1219,7 @@ function initVim(CodeMirror2) {
       }
       if (bestMatch.keys.slice(-11) == "<character>") {
         var character = lastChar(keys2);
-        if (!character || character.length > 1)
-          return { type: "clear" };
+        if (!character || character.length > 1) return { type: "clear" };
         inputState.selectedCharacter = character;
       }
       return { type: "full", command: bestMatch };
@@ -1378,8 +1364,7 @@ function initVim(CodeMirror2) {
           offset = e.target ? e.target.selectionEnd : 0;
           query2 = vimGlobalState.searchHistoryController.nextMatch(query2, up) || "";
           close(query2);
-          if (offset && e.target)
-            e.target.selectionEnd = e.target.selectionStart = Math.min(offset, e.target.value.length);
+          if (offset && e.target) e.target.selectionEnd = e.target.selectionStart = Math.min(offset, e.target.value.length);
         } else {
           if (keyName != "Left" && keyName != "Right" && keyName != "Ctrl" && keyName != "Alt" && keyName != "Shift")
             vimGlobalState.searchHistoryController.reset();
@@ -1491,8 +1476,7 @@ function initVim(CodeMirror2) {
         vimGlobalState.exCommandHistoryController.pushInput(input);
         vimGlobalState.exCommandHistoryController.reset();
         exCommandDispatcher.processCommand(cm, input);
-        if (cm.state.vim)
-          clearInputState(cm);
+        if (cm.state.vim) clearInputState(cm);
       }
       function onPromptKeyDown(e, input, close) {
         var keyName = CodeMirror2.keyName(e), up, offset;
@@ -1510,8 +1494,7 @@ function initVim(CodeMirror2) {
           offset = e.target ? e.target.selectionEnd : 0;
           input = vimGlobalState.exCommandHistoryController.nextMatch(input, up) || "";
           close(input);
-          if (offset && e.target)
-            e.target.selectionEnd = e.target.selectionStart = Math.min(offset, e.target.value.length);
+          if (offset && e.target) e.target.selectionEnd = e.target.selectionStart = Math.min(offset, e.target.value.length);
         } else if (keyName == "Ctrl-U") {
           CodeMirror2.e_stop(e);
           close("");
@@ -1986,8 +1969,7 @@ function initVim(CodeMirror2) {
       );
       var increment = motionArgs.forward ? -1 : 1;
       recordLastCharacterSearch(increment, motionArgs);
-      if (!curEnd)
-        return null;
+      if (!curEnd) return null;
       curEnd.ch += increment;
       return curEnd;
     },
@@ -2070,8 +2052,7 @@ function initVim(CodeMirror2) {
     moveToEndOfDisplayLine: function(cm) {
       cm.execCommand("goLineRight");
       var head = cm.getCursor();
-      if (head.sticky == "before")
-        head.ch--;
+      if (head.sticky == "before") head.ch--;
       return head;
     },
     textObjectManipulation: function(cm, head, motionArgs, vim2) {
@@ -2276,10 +2257,8 @@ function initVim(CodeMirror2) {
       if (cm.indentMore) {
         var repeat = vim2.visualMode ? args.repeat : 1;
         for (var j = 0; j < repeat; j++) {
-          if (args.indentRight)
-            cm.indentMore();
-          else
-            cm.indentLess();
+          if (args.indentRight) cm.indentMore();
+          else cm.indentLess();
         }
       } else {
         var startLine = ranges[0].anchor.line;
@@ -2517,8 +2496,7 @@ function initVim(CodeMirror2) {
       }
       if (!vimGlobalState.macroModeState.isPlaying) {
         cm.on("change", onChange);
-        if (vim2.insertEnd)
-          vim2.insertEnd.clear();
+        if (vim2.insertEnd) vim2.insertEnd.clear();
         vim2.insertEnd = cm.setBookmark(head, { insertLeft: true });
         CodeMirror2.on(cm.getInputField(), "keydown", onKeyEventTargetKeyDown);
       }
@@ -2809,8 +2787,7 @@ function initVim(CodeMirror2) {
       exitInsertMode(cm, true);
       vim2.insertModeReturn = true;
       CodeMirror2.on(cm, "vim-command-done", function handler() {
-        if (vim2.visualMode)
-          return;
+        if (vim2.visualMode) return;
         if (vim2.insertModeReturn) {
           vim2.insertModeReturn = false;
           if (!vim2.insertMode) {
@@ -2845,8 +2822,7 @@ function initVim(CodeMirror2) {
       curStart = newPositions.start;
       curEnd = newPositions.end;
       if (replaceWith == "\n") {
-        if (!vim2.visualMode)
-          cm.replaceRange("", curStart, curEnd);
+        if (!vim2.visualMode) cm.replaceRange("", curStart, curEnd);
         (CodeMirror2.commands.newlineAndIndentContinueComment || CodeMirror2.commands.newlineAndIndent)(cm);
       } else {
         var replaceWithStr = cm.getRange(curStart, curEnd);
@@ -2881,11 +2857,9 @@ function initVim(CodeMirror2) {
       while ((match = re.exec(lineStr)) !== null) {
         start = match.index;
         end = start + match[0].length;
-        if (cur2.ch < end)
-          break;
+        if (cur2.ch < end) break;
       }
-      if (!actionArgs.backtrack && end <= cur2.ch)
-        return;
+      if (!actionArgs.backtrack && end <= cur2.ch) return;
       if (match) {
         var baseStr = match[2] || match[4];
         var digits = match[3] || match[5];
@@ -2948,8 +2922,7 @@ function initVim(CodeMirror2) {
         direction = -1;
       }
       ch += direction;
-      if (ch > maxCh)
-        ch -= 2;
+      if (ch > maxCh) ch -= 2;
     }
     return new Pos2(line, ch);
   }
@@ -3290,8 +3263,7 @@ function initVim(CodeMirror2) {
     vim2.visualMode = false;
     vim2.visualLine = false;
     vim2.visualBlock = false;
-    if (!vim2.insertMode)
-      CodeMirror2.signal(cm, "vim-mode-change", { mode: "normal" });
+    if (!vim2.insertMode) CodeMirror2.signal(cm, "vim-mode-change", { mode: "normal" });
   }
   function clipToLine(cm, curStart, curEnd) {
     var selection = cm.getRange(curStart, curEnd);
@@ -3415,8 +3387,7 @@ function initVim(CodeMirror2) {
       isComplete: function(state) {
         if (state.nextCh === state.symb) {
           state.depth++;
-          if (state.depth >= 1)
-            return true;
+          if (state.depth >= 1) return true;
         } else if (state.nextCh === state.reverseSymb) {
           state.depth--;
         }
@@ -3448,8 +3419,7 @@ function initVim(CodeMirror2) {
         state.reverseSymb = state.symb === "{" ? "}" : "{";
       },
       isComplete: function(state) {
-        if (state.nextCh === state.symb)
-          return true;
+        if (state.nextCh === state.symb) return true;
         return false;
       }
     },
@@ -3471,8 +3441,7 @@ function initVim(CodeMirror2) {
             }
             state.depth--;
           }
-          if (token === "else" && state.depth === 0)
-            return true;
+          if (token === "else" && state.depth === 0) return true;
         }
         return false;
       }
@@ -3497,8 +3466,7 @@ function initVim(CodeMirror2) {
       curMoveThrough: false
     };
     var mode = symbolToMode[symb];
-    if (!mode)
-      return cur2;
+    if (!mode) return cur2;
     var init = findSymbolModes[mode].init;
     var isComplete = findSymbolModes[mode].isComplete;
     if (init) {
@@ -3952,8 +3920,7 @@ function initVim(CodeMirror2) {
     var offset = curChar === openSym ? 1 : 0;
     start = cm.scanForBracket(new Pos2(cur2.line, cur2.ch + offset), -1, void 0, { "bracketRegex": bracketRegexp });
     end = cm.scanForBracket(new Pos2(cur2.line, cur2.ch + offset), 1, void 0, { "bracketRegex": bracketRegexp });
-    if (!start || !end)
-      return null;
+    if (!start || !end) return null;
     start = start.pos;
     end = end.pos;
     if (start.line == end.line && start.ch > end.ch || start.line > end.line) {
@@ -4054,11 +4021,9 @@ function initVim(CodeMirror2) {
   }
   function splitBySeparator(argString, separator) {
     var slashes = findUnescapedSeparators(argString, separator) || [];
-    if (!slashes.length)
-      return [];
+    if (!slashes.length) return [];
     var tokens = [];
-    if (slashes[0] !== 0)
-      return;
+    if (slashes[0] !== 0) return;
     for (var i = 0; i < slashes.length; i++) {
       if (typeof slashes[i] == "number")
         tokens.push(argString.substring(slashes[i] + 1, slashes[i + 1]));
@@ -4200,24 +4165,16 @@ function initVim(CodeMirror2) {
     return regexp;
   }
   function dom(n) {
-    if (typeof n === "string")
-      n = document.createElement(n);
+    if (typeof n === "string") n = document.createElement(n);
     for (var a, i = 1; i < arguments.length; i++) {
-      if (!(a = arguments[i]))
-        continue;
-      if (typeof a !== "object")
-        a = document.createTextNode(a);
-      if (a.nodeType)
-        n.appendChild(a);
-      else
-        for (var key in a) {
-          if (!Object.prototype.hasOwnProperty.call(a, key))
-            continue;
-          if (key[0] === "$")
-            n.style[key.slice(1)] = a[key];
-          else
-            n.setAttribute(key, a[key]);
-        }
+      if (!(a = arguments[i])) continue;
+      if (typeof a !== "object") a = document.createTextNode(a);
+      if (a.nodeType) n.appendChild(a);
+      else for (var key in a) {
+        if (!Object.prototype.hasOwnProperty.call(a, key)) continue;
+        if (key[0] === "$") n.style[key.slice(1)] = a[key];
+        else n.setAttribute(key, a[key]);
+      }
     }
     return n;
   }
@@ -4260,10 +4217,8 @@ function initVim(CodeMirror2) {
       });
     } else {
       var shortText = "";
-      if (typeof options2.prefix != "string" && options2.prefix)
-        shortText += options2.prefix.textContent;
-      if (options2.desc)
-        shortText += " " + options2.desc;
+      if (typeof options2.prefix != "string" && options2.prefix) shortText += options2.prefix.textContent;
+      if (options2.desc) shortText += " " + options2.desc;
       options2.onClose(prompt(shortText, ""));
     }
   }
@@ -4324,8 +4279,7 @@ function initVim(CodeMirror2) {
         }
         while (!stream.eol()) {
           stream.next();
-          if (stream.match(query, false))
-            break;
+          if (stream.match(query, false)) break;
         }
       },
       query
@@ -4335,8 +4289,7 @@ function initVim(CodeMirror2) {
   function highlightSearchMatches(cm, query) {
     clearTimeout(highlightTimeout);
     highlightTimeout = setTimeout(function() {
-      if (!cm.state.vim)
-        return;
+      if (!cm.state.vim) return;
       var searchState = getSearchState(cm);
       var overlay = searchState.getOverlay();
       if (!overlay || query != overlay.query) {
@@ -4574,8 +4527,7 @@ function initVim(CodeMirror2) {
         case "'":
           var markName = inputStream.next();
           var markPos = getMarkPos(cm, cm.state.vim, markName);
-          if (!markPos)
-            throw new Error("Mark not set");
+          if (!markPos) throw new Error("Mark not set");
           return this.parseLineSpecOffset_(inputStream, markPos.line);
         case "-":
         case "+":
@@ -5305,6 +5257,7 @@ function initVim(CodeMirror2) {
           break;
         case "L":
           replace();
+        // fall through and exit.
         case "Q":
         case "Esc":
         case "Ctrl-C":
@@ -5347,8 +5300,7 @@ function initVim(CodeMirror2) {
     var lastChange = macroModeState.lastInsertModeChanges;
     if (!isPlaying) {
       cm.off("change", onChange);
-      if (vim2.insertEnd)
-        vim2.insertEnd.clear();
+      if (vim2.insertEnd) vim2.insertEnd.clear();
       vim2.insertEnd = null;
       CodeMirror2.off(cm.getInputField(), "keydown", onKeyEventTargetKeyDown);
     }
@@ -5496,8 +5448,7 @@ function initVim(CodeMirror2) {
                   }
                 }
               }
-              if (text)
-                lastChange.changes.push(text);
+              if (text) lastChange.changes.push(text);
             }
           }
         }
@@ -5517,8 +5468,7 @@ function initVim(CodeMirror2) {
         lastChange.expectCursorActivityForChange = false;
       } else {
         lastChange.maybeReset = true;
-        if (vim2.insertEnd)
-          vim2.insertEnd.clear();
+        if (vim2.insertEnd) vim2.insertEnd.clear();
         vim2.insertEnd = cm.setBookmark(cm.getCursor(), { insertLeft: true });
       }
     } else if (!cm.curOp.isVimOp) {
@@ -5652,8 +5602,7 @@ function initVim(CodeMirror2) {
   function cloneVimState(state) {
     var n = new state.constructor();
     Object.keys(state).forEach(function(key) {
-      if (key == "insertEnd")
-        return;
+      if (key == "insertEnd") return;
       var o = state[key];
       if (Array.isArray(o))
         o = o.slice();
@@ -5844,7 +5793,7 @@ function runHistoryCommand(cm, revert) {
   }
 }
 var keys = {};
-var CodeMirror = class {
+var CodeMirror = class _CodeMirror {
   constructor(cm6) {
     this.state = {};
     this.marks = /* @__PURE__ */ Object.create(null);
@@ -6070,7 +6019,7 @@ var CodeMirror = class {
   }
   execCommand(name) {
     if (name == "indentAuto")
-      CodeMirror.commands.indentAuto(this);
+      _CodeMirror.commands.indentAuto(this);
     else if (name == "goLineLeft")
       (0, import_commands.cursorLineBoundaryBackward)(this.cm6);
     else if (name == "goLineRight") {
@@ -6352,8 +6301,10 @@ var CodeMirror = class {
         return this.cm6.state.readOnly;
       case "indentWithTabs":
         return this.cm6.state.facet(import_language.indentUnit) == "	";
+      // TODO
       case "indentUnit":
         return this.cm6.state.facet(import_language.indentUnit).length || 2;
+      // for tests
       case "keyMap":
         return this.state.keyMap || "vim";
     }
@@ -6767,7 +6718,7 @@ var BlockCursorPlugin = class {
     this.setBlinkRate();
   }
   setBlinkRate() {
-    this.cursorLayer.style.animationDuration = 1200 + "ms";
+    this.cursorLayer.style.animationDuration = "1200ms";
   }
   update(update) {
     if (update.selectionSet || update.geometryChanged || update.viewportChanged) {
@@ -6966,8 +6917,7 @@ var vimPlugin = /* @__PURE__ */ import_view.ViewPlugin.fromClass(class {
     if (update.selectionSet) {
       this.cm.onSelectionChange();
     }
-    if (update.viewportChanged)
-      ;
+    if (update.viewportChanged) ;
     if (this.cm.curOp && !this.cm.curOp.isVimOp) {
       this.cm.onBeforeEndOperation();
     }
@@ -7224,44 +7174,78 @@ function getCM(view) {
   return view.cm || null;
 }
 
+// src/CssFile.ts
+var CssFile = class {
+  constructor(name) {
+    /** File extension. */
+    this.extension = "css";
+    if (typeof name !== "string" || name.length === 0) {
+      throw new Error("Invalid file name.");
+    }
+    const extensionWithDot = `.${this.extension}`;
+    const basename = name.endsWith(extensionWithDot) ? name.slice(0, name.length - extensionWithDot.length) : name;
+    this.name = `${basename}.${this.extension}`;
+    this.basename = basename;
+  }
+};
+
 // src/obsidian/file-system-helpers.ts
+var import_obsidian = require("obsidian");
 function getSnippetDirectory(app) {
   return `${app.vault.configDir}/snippets/`;
 }
-async function readSnippetFile(app, fileName) {
+async function readSnippetFile(app, file) {
   const data = await app.vault.adapter.read(
-    `${getSnippetDirectory(app)}${fileName}`
+    (0, import_obsidian.normalizePath)(`${getSnippetDirectory(app)}${file.name}`)
   );
   return data;
 }
 async function createSnippetFile(app, fileName, data = "") {
-  await _validateFilename(fileName);
+  const file = new CssFile(fileName);
+  await _validateFile(file);
   await _createSnippetDirectoryIfNotExists(app);
   await app.vault.adapter.write(
-    `${getSnippetDirectory(app)}${fileName}`,
+    (0, import_obsidian.normalizePath)(`${getSnippetDirectory(app)}${file.name}`),
     data
   );
+  return file;
 }
-async function writeSnippetFile(app, fileName, data) {
+async function renameSnippetFile(app, oldFile, newFileName) {
+  const newFile = new CssFile(newFileName);
+  if (oldFile.name === newFile.name) return oldFile;
+  await _validateFile(newFile);
+  await app.vault.adapter.rename(
+    (0, import_obsidian.normalizePath)(`${getSnippetDirectory(app)}${oldFile.name}`),
+    (0, import_obsidian.normalizePath)(`${getSnippetDirectory(app)}${newFile.name}`)
+  );
+  toggleSnippetFileState(app, oldFile);
+  toggleSnippetFileState(app, newFile);
+  app.workspace.trigger("css-snippet-rename", newFile, oldFile.name);
+  return newFile;
+}
+async function writeSnippetFile(app, file, data) {
   await app.vault.adapter.write(
-    `${getSnippetDirectory(app)}${fileName}`,
+    (0, import_obsidian.normalizePath)(`${getSnippetDirectory(app)}${file.name}`),
     data
   );
 }
 async function checkSnippetExists(app, fileName) {
-  return app.vault.adapter.exists(`${getSnippetDirectory(app)}${fileName}`);
+  return app.vault.adapter.exists(
+    (0, import_obsidian.normalizePath)(`${getSnippetDirectory(app)}${fileName}`)
+  );
 }
-async function deleteSnippetFile(app, fileName) {
-  await app.vault.adapter.remove(`${getSnippetDirectory(app)}${fileName}`);
+async function deleteSnippetFile(app, file) {
+  await app.vault.adapter.remove(
+    (0, import_obsidian.normalizePath)(`${getSnippetDirectory(app)}${file.name}`)
+  );
 }
-function toggleSnippetFileState(app, fileName) {
+function toggleSnippetFileState(app, file) {
   var _a;
-  const snippetName = fileName.replace(".css", "");
   if (!((_a = app.customCss) == null ? void 0 : _a.enabledSnippets) || !app.customCss.setCssEnabledStatus) {
     throw new Error("Failed to enable/disable CSS snippet.");
   }
-  const isEnabled = app.customCss.enabledSnippets.has(snippetName);
-  app.customCss.setCssEnabledStatus(snippetName, !isEnabled);
+  const isEnabled = app.customCss.enabledSnippets.has(file.basename);
+  app.customCss.setCssEnabledStatus(file.basename, !isEnabled);
   return !isEnabled;
 }
 async function _createSnippetDirectoryIfNotExists(app) {
@@ -7269,16 +7253,16 @@ async function _createSnippetDirectoryIfNotExists(app) {
     await app.vault.adapter.mkdir(getSnippetDirectory(app));
   }
 }
-async function _validateFilename(value) {
+async function _validateFile(file) {
   const errors = {
     exists: "",
     regex: ""
   };
-  if (value.length > 0 && await checkSnippetExists(this.app, value)) {
+  if (file.name.length > 0 && await checkSnippetExists(this.app, file.name)) {
     errors.exists = "File already exists.";
   }
   const regex = /^[0-9a-zA-Z\-_ ]+\.css$/;
-  if (!regex.test(value)) {
+  if (!regex.test(file.name)) {
     errors.regex = "Must end with .css and only contain alphanumeric, spaces, dashes, or underscore characters.";
   }
   if (Object.values(errors).some((x) => x !== "")) {
@@ -7290,10 +7274,1632 @@ ${curr}`, "Failed to create file.");
 
 // src/codemirror-extensions/basic-extensions.ts
 var import_commands2 = require("@codemirror/commands");
+var import_language6 = require("@codemirror/language");
+var import_state3 = require("@codemirror/state");
+var import_view5 = require("@codemirror/view");
+
+// node_modules/@codemirror/autocomplete/dist/index.js
+var import_state2 = require("@codemirror/state");
+var import_view2 = require("@codemirror/view");
+var import_language2 = require("@codemirror/language");
+var CompletionContext = class {
+  /**
+  Create a new completion context. (Mostly useful for testing
+  completion sources—in the editor, the extension will create
+  these for you.)
+  */
+  constructor(state, pos, explicit) {
+    this.state = state;
+    this.pos = pos;
+    this.explicit = explicit;
+    this.abortListeners = [];
+  }
+  /**
+  Get the extent, content, and (if there is a token) type of the
+  token before `this.pos`.
+  */
+  tokenBefore(types) {
+    let token = (0, import_language2.syntaxTree)(this.state).resolveInner(this.pos, -1);
+    while (token && types.indexOf(token.name) < 0)
+      token = token.parent;
+    return token ? {
+      from: token.from,
+      to: this.pos,
+      text: this.state.sliceDoc(token.from, this.pos),
+      type: token.type
+    } : null;
+  }
+  /**
+  Get the match of the given expression directly before the
+  cursor.
+  */
+  matchBefore(expr) {
+    let line = this.state.doc.lineAt(this.pos);
+    let start = Math.max(line.from, this.pos - 250);
+    let str = line.text.slice(start - line.from, this.pos - line.from);
+    let found = str.search(ensureAnchor(expr, false));
+    return found < 0 ? null : { from: start + found, to: this.pos, text: str.slice(found) };
+  }
+  /**
+  Yields true when the query has been aborted. Can be useful in
+  asynchronous queries to avoid doing work that will be ignored.
+  */
+  get aborted() {
+    return this.abortListeners == null;
+  }
+  /**
+  Allows you to register abort handlers, which will be called when
+  the query is
+  [aborted](https://codemirror.net/6/docs/ref/#autocomplete.CompletionContext.aborted).
+  */
+  addEventListener(type, listener) {
+    if (type == "abort" && this.abortListeners)
+      this.abortListeners.push(listener);
+  }
+};
+function toSet(chars) {
+  let flat = Object.keys(chars).join("");
+  let words = /\w/.test(flat);
+  if (words)
+    flat = flat.replace(/\w/g, "");
+  return `[${words ? "\\w" : ""}${flat.replace(/[^\w\s]/g, "\\$&")}]`;
+}
+function prefixMatch(options) {
+  let first = /* @__PURE__ */ Object.create(null), rest = /* @__PURE__ */ Object.create(null);
+  for (let { label } of options) {
+    first[label[0]] = true;
+    for (let i = 1; i < label.length; i++)
+      rest[label[i]] = true;
+  }
+  let source = toSet(first) + toSet(rest) + "*$";
+  return [new RegExp("^" + source), new RegExp(source)];
+}
+function completeFromList(list) {
+  let options = list.map((o) => typeof o == "string" ? { label: o } : o);
+  let [validFor, match] = options.every((o) => /^\w+$/.test(o.label)) ? [/\w*$/, /\w+$/] : prefixMatch(options);
+  return (context) => {
+    let token = context.matchBefore(match);
+    return token || context.explicit ? { from: token ? token.from : context.pos, options, validFor } : null;
+  };
+}
+var Option = class {
+  constructor(completion, source, match, score2) {
+    this.completion = completion;
+    this.source = source;
+    this.match = match;
+    this.score = score2;
+  }
+};
+function cur(state) {
+  return state.selection.main.from;
+}
+function ensureAnchor(expr, start) {
+  var _a;
+  let { source } = expr;
+  let addStart = start && source[0] != "^", addEnd = source[source.length - 1] != "$";
+  if (!addStart && !addEnd)
+    return expr;
+  return new RegExp(`${addStart ? "^" : ""}(?:${source})${addEnd ? "$" : ""}`, (_a = expr.flags) !== null && _a !== void 0 ? _a : expr.ignoreCase ? "i" : "");
+}
+var pickedCompletion = /* @__PURE__ */ import_state2.Annotation.define();
+function insertCompletionText(state, text, from, to) {
+  let { main } = state.selection, fromOff = from - main.from, toOff = to - main.from;
+  return Object.assign(Object.assign({}, state.changeByRange((range) => {
+    if (range != main && from != to && state.sliceDoc(range.from + fromOff, range.from + toOff) != state.sliceDoc(from, to))
+      return { range };
+    return {
+      changes: { from: range.from + fromOff, to: to == main.from ? range.to : range.from + toOff, insert: text },
+      range: import_state2.EditorSelection.cursor(range.from + fromOff + text.length)
+    };
+  })), { userEvent: "input.complete" });
+}
+var SourceCache = /* @__PURE__ */ new WeakMap();
+function asSource(source) {
+  if (!Array.isArray(source))
+    return source;
+  let known = SourceCache.get(source);
+  if (!known)
+    SourceCache.set(source, known = completeFromList(source));
+  return known;
+}
+var startCompletionEffect = /* @__PURE__ */ import_state2.StateEffect.define();
+var closeCompletionEffect = /* @__PURE__ */ import_state2.StateEffect.define();
+var FuzzyMatcher = class {
+  constructor(pattern) {
+    this.pattern = pattern;
+    this.chars = [];
+    this.folded = [];
+    this.any = [];
+    this.precise = [];
+    this.byWord = [];
+    for (let p = 0; p < pattern.length; ) {
+      let char = (0, import_state2.codePointAt)(pattern, p), size = (0, import_state2.codePointSize)(char);
+      this.chars.push(char);
+      let part = pattern.slice(p, p + size), upper = part.toUpperCase();
+      this.folded.push((0, import_state2.codePointAt)(upper == part ? part.toLowerCase() : upper, 0));
+      p += size;
+    }
+    this.astral = pattern.length != this.chars.length;
+  }
+  // Matches a given word (completion) against the pattern (input).
+  // Will return null for no match, and otherwise an array that starts
+  // with the match score, followed by any number of `from, to` pairs
+  // indicating the matched parts of `word`.
+  //
+  // The score is a number that is more negative the worse the match
+  // is. See `Penalty` above.
+  match(word) {
+    if (this.pattern.length == 0)
+      return [
+        -100
+        /* NotFull */
+      ];
+    if (word.length < this.pattern.length)
+      return null;
+    let { chars, folded, any, precise, byWord } = this;
+    if (chars.length == 1) {
+      let first = (0, import_state2.codePointAt)(word, 0), firstSize = (0, import_state2.codePointSize)(first);
+      let score2 = firstSize == word.length ? 0 : -100;
+      if (first == chars[0]) ;
+      else if (first == folded[0])
+        score2 += -200;
+      else
+        return null;
+      return [score2, 0, firstSize];
+    }
+    let direct = word.indexOf(this.pattern);
+    if (direct == 0)
+      return [word.length == this.pattern.length ? 0 : -100, 0, this.pattern.length];
+    let len = chars.length, anyTo = 0;
+    if (direct < 0) {
+      for (let i = 0, e = Math.min(word.length, 200); i < e && anyTo < len; ) {
+        let next = (0, import_state2.codePointAt)(word, i);
+        if (next == chars[anyTo] || next == folded[anyTo])
+          any[anyTo++] = i;
+        i += (0, import_state2.codePointSize)(next);
+      }
+      if (anyTo < len)
+        return null;
+    }
+    let preciseTo = 0;
+    let byWordTo = 0, byWordFolded = false;
+    let adjacentTo = 0, adjacentStart = -1, adjacentEnd = -1;
+    let hasLower = /[a-z]/.test(word), wordAdjacent = true;
+    for (let i = 0, e = Math.min(word.length, 200), prevType = 0; i < e && byWordTo < len; ) {
+      let next = (0, import_state2.codePointAt)(word, i);
+      if (direct < 0) {
+        if (preciseTo < len && next == chars[preciseTo])
+          precise[preciseTo++] = i;
+        if (adjacentTo < len) {
+          if (next == chars[adjacentTo] || next == folded[adjacentTo]) {
+            if (adjacentTo == 0)
+              adjacentStart = i;
+            adjacentEnd = i + 1;
+            adjacentTo++;
+          } else {
+            adjacentTo = 0;
+          }
+        }
+      }
+      let ch, type = next < 255 ? next >= 48 && next <= 57 || next >= 97 && next <= 122 ? 2 : next >= 65 && next <= 90 ? 1 : 0 : (ch = (0, import_state2.fromCodePoint)(next)) != ch.toLowerCase() ? 1 : ch != ch.toUpperCase() ? 2 : 0;
+      if (!i || type == 1 && hasLower || prevType == 0 && type != 0) {
+        if (chars[byWordTo] == next || folded[byWordTo] == next && (byWordFolded = true))
+          byWord[byWordTo++] = i;
+        else if (byWord.length)
+          wordAdjacent = false;
+      }
+      prevType = type;
+      i += (0, import_state2.codePointSize)(next);
+    }
+    if (byWordTo == len && byWord[0] == 0 && wordAdjacent)
+      return this.result(-100 + (byWordFolded ? -200 : 0), byWord, word);
+    if (adjacentTo == len && adjacentStart == 0)
+      return [-200 - word.length + (adjacentEnd == word.length ? 0 : -100), 0, adjacentEnd];
+    if (direct > -1)
+      return [-700 - word.length, direct, direct + this.pattern.length];
+    if (adjacentTo == len)
+      return [-200 + -700 - word.length, adjacentStart, adjacentEnd];
+    if (byWordTo == len)
+      return this.result(-100 + (byWordFolded ? -200 : 0) + -700 + (wordAdjacent ? 0 : -1100), byWord, word);
+    return chars.length == 2 ? null : this.result((any[0] ? -700 : 0) + -200 + -1100, any, word);
+  }
+  result(score2, positions, word) {
+    let result = [score2 - word.length], i = 1;
+    for (let pos of positions) {
+      let to = pos + (this.astral ? (0, import_state2.codePointSize)((0, import_state2.codePointAt)(word, pos)) : 1);
+      if (i > 1 && result[i - 1] == pos)
+        result[i - 1] = to;
+      else {
+        result[i++] = pos;
+        result[i++] = to;
+      }
+    }
+    return result;
+  }
+};
+var completionConfig = /* @__PURE__ */ import_state2.Facet.define({
+  combine(configs) {
+    return (0, import_state2.combineConfig)(configs, {
+      activateOnTyping: true,
+      selectOnOpen: true,
+      override: null,
+      closeOnBlur: true,
+      maxRenderedOptions: 100,
+      defaultKeymap: true,
+      tooltipClass: () => "",
+      optionClass: () => "",
+      aboveCursor: false,
+      icons: true,
+      addToOptions: [],
+      positionInfo: defaultPositionInfo,
+      compareCompletions: (a, b) => a.label.localeCompare(b.label),
+      interactionDelay: 75
+    }, {
+      defaultKeymap: (a, b) => a && b,
+      closeOnBlur: (a, b) => a && b,
+      icons: (a, b) => a && b,
+      tooltipClass: (a, b) => (c) => joinClass(a(c), b(c)),
+      optionClass: (a, b) => (c) => joinClass(a(c), b(c)),
+      addToOptions: (a, b) => a.concat(b)
+    });
+  }
+});
+function joinClass(a, b) {
+  return a ? b ? a + " " + b : a : b;
+}
+function defaultPositionInfo(view, list, option, info, space2) {
+  let rtl = view.textDirection == import_view2.Direction.RTL, left = rtl, narrow = false;
+  let side = "top", offset, maxWidth;
+  let spaceLeft = list.left - space2.left, spaceRight = space2.right - list.right;
+  let infoWidth = info.right - info.left, infoHeight = info.bottom - info.top;
+  if (left && spaceLeft < Math.min(infoWidth, spaceRight))
+    left = false;
+  else if (!left && spaceRight < Math.min(infoWidth, spaceLeft))
+    left = true;
+  if (infoWidth <= (left ? spaceLeft : spaceRight)) {
+    offset = Math.max(space2.top, Math.min(option.top, space2.bottom - infoHeight)) - list.top;
+    maxWidth = Math.min(400, left ? spaceLeft : spaceRight);
+  } else {
+    narrow = true;
+    maxWidth = Math.min(
+      400,
+      (rtl ? list.right : space2.right - list.left) - 30
+      /* Margin */
+    );
+    let spaceBelow = space2.bottom - list.bottom;
+    if (spaceBelow >= infoHeight || spaceBelow > list.top) {
+      offset = option.bottom - list.top;
+    } else {
+      side = "bottom";
+      offset = list.bottom - option.top;
+    }
+  }
+  return {
+    style: `${side}: ${offset}px; max-width: ${maxWidth}px`,
+    class: "cm-completionInfo-" + (narrow ? rtl ? "left-narrow" : "right-narrow" : left ? "left" : "right")
+  };
+}
+function optionContent(config3) {
+  let content = config3.addToOptions.slice();
+  if (config3.icons)
+    content.push({
+      render(completion) {
+        let icon = document.createElement("div");
+        icon.classList.add("cm-completionIcon");
+        if (completion.type)
+          icon.classList.add(...completion.type.split(/\s+/g).map((cls) => "cm-completionIcon-" + cls));
+        icon.setAttribute("aria-hidden", "true");
+        return icon;
+      },
+      position: 20
+    });
+  content.push({
+    render(completion, _s, match) {
+      let labelElt = document.createElement("span");
+      labelElt.className = "cm-completionLabel";
+      let { label } = completion, off2 = 0;
+      for (let j = 1; j < match.length; ) {
+        let from = match[j++], to = match[j++];
+        if (from > off2)
+          labelElt.appendChild(document.createTextNode(label.slice(off2, from)));
+        let span = labelElt.appendChild(document.createElement("span"));
+        span.appendChild(document.createTextNode(label.slice(from, to)));
+        span.className = "cm-completionMatchedText";
+        off2 = to;
+      }
+      if (off2 < label.length)
+        labelElt.appendChild(document.createTextNode(label.slice(off2)));
+      return labelElt;
+    },
+    position: 50
+  }, {
+    render(completion) {
+      if (!completion.detail)
+        return null;
+      let detailElt = document.createElement("span");
+      detailElt.className = "cm-completionDetail";
+      detailElt.textContent = completion.detail;
+      return detailElt;
+    },
+    position: 80
+  });
+  return content.sort((a, b) => a.position - b.position).map((a) => a.render);
+}
+function rangeAroundSelected(total, selected, max) {
+  if (total <= max)
+    return { from: 0, to: total };
+  if (selected < 0)
+    selected = 0;
+  if (selected <= total >> 1) {
+    let off3 = Math.floor(selected / max);
+    return { from: off3 * max, to: (off3 + 1) * max };
+  }
+  let off2 = Math.floor((total - selected) / max);
+  return { from: total - (off2 + 1) * max, to: total - off2 * max };
+}
+var CompletionTooltip = class {
+  constructor(view, stateField, applyCompletion2) {
+    this.view = view;
+    this.stateField = stateField;
+    this.applyCompletion = applyCompletion2;
+    this.info = null;
+    this.infoDestroy = null;
+    this.placeInfoReq = {
+      read: () => this.measureInfo(),
+      write: (pos) => this.placeInfo(pos),
+      key: this
+    };
+    this.space = null;
+    this.currentClass = "";
+    let cState = view.state.field(stateField);
+    let { options, selected } = cState.open;
+    let config3 = view.state.facet(completionConfig);
+    this.optionContent = optionContent(config3);
+    this.optionClass = config3.optionClass;
+    this.tooltipClass = config3.tooltipClass;
+    this.range = rangeAroundSelected(options.length, selected, config3.maxRenderedOptions);
+    this.dom = document.createElement("div");
+    this.dom.className = "cm-tooltip-autocomplete";
+    this.updateTooltipClass(view.state);
+    this.dom.addEventListener("mousedown", (e) => {
+      for (let dom = e.target, match; dom && dom != this.dom; dom = dom.parentNode) {
+        if (dom.nodeName == "LI" && (match = /-(\d+)$/.exec(dom.id)) && +match[1] < options.length) {
+          this.applyCompletion(view, options[+match[1]]);
+          e.preventDefault();
+          return;
+        }
+      }
+    });
+    this.dom.addEventListener("focusout", (e) => {
+      let state = view.state.field(this.stateField, false);
+      if (state && state.tooltip && view.state.facet(completionConfig).closeOnBlur && e.relatedTarget != view.contentDOM)
+        view.dispatch({ effects: closeCompletionEffect.of(null) });
+    });
+    this.list = this.dom.appendChild(this.createListBox(options, cState.id, this.range));
+    this.list.addEventListener("scroll", () => {
+      if (this.info)
+        this.view.requestMeasure(this.placeInfoReq);
+    });
+  }
+  mount() {
+    this.updateSel();
+  }
+  update(update) {
+    var _a, _b, _c;
+    let cState = update.state.field(this.stateField);
+    let prevState = update.startState.field(this.stateField);
+    this.updateTooltipClass(update.state);
+    if (cState != prevState) {
+      this.updateSel();
+      if (((_a = cState.open) === null || _a === void 0 ? void 0 : _a.disabled) != ((_b = prevState.open) === null || _b === void 0 ? void 0 : _b.disabled))
+        this.dom.classList.toggle("cm-tooltip-autocomplete-disabled", !!((_c = cState.open) === null || _c === void 0 ? void 0 : _c.disabled));
+    }
+  }
+  updateTooltipClass(state) {
+    let cls = this.tooltipClass(state);
+    if (cls != this.currentClass) {
+      for (let c of this.currentClass.split(" "))
+        if (c)
+          this.dom.classList.remove(c);
+      for (let c of cls.split(" "))
+        if (c)
+          this.dom.classList.add(c);
+      this.currentClass = cls;
+    }
+  }
+  positioned(space2) {
+    this.space = space2;
+    if (this.info)
+      this.view.requestMeasure(this.placeInfoReq);
+  }
+  updateSel() {
+    let cState = this.view.state.field(this.stateField), open = cState.open;
+    if (open.selected > -1 && open.selected < this.range.from || open.selected >= this.range.to) {
+      this.range = rangeAroundSelected(open.options.length, open.selected, this.view.state.facet(completionConfig).maxRenderedOptions);
+      this.list.remove();
+      this.list = this.dom.appendChild(this.createListBox(open.options, cState.id, this.range));
+      this.list.addEventListener("scroll", () => {
+        if (this.info)
+          this.view.requestMeasure(this.placeInfoReq);
+      });
+    }
+    if (this.updateSelectedOption(open.selected)) {
+      this.destroyInfo();
+      let { completion } = open.options[open.selected];
+      let { info } = completion;
+      if (!info)
+        return;
+      let infoResult = typeof info === "string" ? document.createTextNode(info) : info(completion);
+      if (!infoResult)
+        return;
+      if ("then" in infoResult) {
+        infoResult.then((obj) => {
+          if (obj && this.view.state.field(this.stateField, false) == cState)
+            this.addInfoPane(obj, completion);
+        }).catch((e) => (0, import_view2.logException)(this.view.state, e, "completion info"));
+      } else {
+        this.addInfoPane(infoResult, completion);
+      }
+    }
+  }
+  addInfoPane(content, completion) {
+    this.destroyInfo();
+    let wrap = this.info = document.createElement("div");
+    wrap.className = "cm-tooltip cm-completionInfo";
+    if (content.nodeType != null) {
+      wrap.appendChild(content);
+      this.infoDestroy = null;
+    } else {
+      let { dom, destroy } = content;
+      wrap.appendChild(dom);
+      this.infoDestroy = destroy || null;
+    }
+    this.dom.appendChild(wrap);
+    this.view.requestMeasure(this.placeInfoReq);
+  }
+  updateSelectedOption(selected) {
+    let set = null;
+    for (let opt = this.list.firstChild, i = this.range.from; opt; opt = opt.nextSibling, i++) {
+      if (opt.nodeName != "LI" || !opt.id) {
+        i--;
+      } else if (i == selected) {
+        if (!opt.hasAttribute("aria-selected")) {
+          opt.setAttribute("aria-selected", "true");
+          set = opt;
+        }
+      } else {
+        if (opt.hasAttribute("aria-selected"))
+          opt.removeAttribute("aria-selected");
+      }
+    }
+    if (set)
+      scrollIntoView(this.list, set);
+    return set;
+  }
+  measureInfo() {
+    let sel = this.dom.querySelector("[aria-selected]");
+    if (!sel || !this.info)
+      return null;
+    let listRect = this.dom.getBoundingClientRect();
+    let infoRect = this.info.getBoundingClientRect();
+    let selRect = sel.getBoundingClientRect();
+    let space2 = this.space;
+    if (!space2) {
+      let win = this.dom.ownerDocument.defaultView || window;
+      space2 = { left: 0, top: 0, right: win.innerWidth, bottom: win.innerHeight };
+    }
+    if (selRect.top > Math.min(space2.bottom, listRect.bottom) - 10 || selRect.bottom < Math.max(space2.top, listRect.top) + 10)
+      return null;
+    return this.view.state.facet(completionConfig).positionInfo(this.view, listRect, selRect, infoRect, space2);
+  }
+  placeInfo(pos) {
+    if (this.info) {
+      if (pos) {
+        if (pos.style)
+          this.info.style.cssText = pos.style;
+        this.info.className = "cm-tooltip cm-completionInfo " + (pos.class || "");
+      } else {
+        this.info.style.cssText = "top: -1e6px";
+      }
+    }
+  }
+  createListBox(options, id, range) {
+    const ul = document.createElement("ul");
+    ul.id = id;
+    ul.setAttribute("role", "listbox");
+    ul.setAttribute("aria-expanded", "true");
+    ul.setAttribute("aria-label", this.view.state.phrase("Completions"));
+    let curSection = null;
+    for (let i = range.from; i < range.to; i++) {
+      let { completion, match } = options[i], { section } = completion;
+      if (section) {
+        let name = typeof section == "string" ? section : section.name;
+        if (name != curSection && (i > range.from || range.from == 0)) {
+          curSection = name;
+          if (typeof section != "string" && section.header) {
+            ul.appendChild(section.header(section));
+          } else {
+            let header = ul.appendChild(document.createElement("completion-section"));
+            header.textContent = name;
+          }
+        }
+      }
+      const li = ul.appendChild(document.createElement("li"));
+      li.id = id + "-" + i;
+      li.setAttribute("role", "option");
+      let cls = this.optionClass(completion);
+      if (cls)
+        li.className = cls;
+      for (let source of this.optionContent) {
+        let node = source(completion, this.view.state, match);
+        if (node)
+          li.appendChild(node);
+      }
+    }
+    if (range.from)
+      ul.classList.add("cm-completionListIncompleteTop");
+    if (range.to < options.length)
+      ul.classList.add("cm-completionListIncompleteBottom");
+    return ul;
+  }
+  destroyInfo() {
+    if (this.info) {
+      if (this.infoDestroy)
+        this.infoDestroy();
+      this.info.remove();
+      this.info = null;
+    }
+  }
+  destroy() {
+    this.destroyInfo();
+  }
+};
+function completionTooltip(stateField, applyCompletion2) {
+  return (view) => new CompletionTooltip(view, stateField, applyCompletion2);
+}
+function scrollIntoView(container, element) {
+  let parent = container.getBoundingClientRect();
+  let self = element.getBoundingClientRect();
+  if (self.top < parent.top)
+    container.scrollTop -= parent.top - self.top;
+  else if (self.bottom > parent.bottom)
+    container.scrollTop += self.bottom - parent.bottom;
+}
+function score(option) {
+  return (option.boost || 0) * 100 + (option.apply ? 10 : 0) + (option.info ? 5 : 0) + (option.type ? 1 : 0);
+}
+function sortOptions(active, state) {
+  let options = [];
+  let sections = null;
+  let addOption = (option) => {
+    options.push(option);
+    let { section } = option.completion;
+    if (section) {
+      if (!sections)
+        sections = [];
+      let name = typeof section == "string" ? section : section.name;
+      if (!sections.some((s) => s.name == name))
+        sections.push(typeof section == "string" ? { name } : section);
+    }
+  };
+  for (let a of active)
+    if (a.hasResult()) {
+      if (a.result.filter === false) {
+        let getMatch = a.result.getMatch;
+        for (let option of a.result.options) {
+          let match = [1e9 - options.length];
+          if (getMatch)
+            for (let n of getMatch(option))
+              match.push(n);
+          addOption(new Option(option, a.source, match, match[0]));
+        }
+      } else {
+        let matcher = new FuzzyMatcher(state.sliceDoc(a.from, a.to)), match;
+        for (let option of a.result.options)
+          if (match = matcher.match(option.label)) {
+            addOption(new Option(option, a.source, match, match[0] + (option.boost || 0)));
+          }
+      }
+    }
+  if (sections) {
+    let sectionOrder = /* @__PURE__ */ Object.create(null), pos = 0;
+    let cmp = (a, b) => {
+      var _a, _b;
+      return ((_a = a.rank) !== null && _a !== void 0 ? _a : 1e9) - ((_b = b.rank) !== null && _b !== void 0 ? _b : 1e9) || (a.name < b.name ? -1 : 1);
+    };
+    for (let s of sections.sort(cmp)) {
+      pos -= 1e5;
+      sectionOrder[s.name] = pos;
+    }
+    for (let option of options) {
+      let { section } = option.completion;
+      if (section)
+        option.score += sectionOrder[typeof section == "string" ? section : section.name];
+    }
+  }
+  let result = [], prev = null;
+  let compare = state.facet(completionConfig).compareCompletions;
+  for (let opt of options.sort((a, b) => b.score - a.score || compare(a.completion, b.completion))) {
+    let cur2 = opt.completion;
+    if (!prev || prev.label != cur2.label || prev.detail != cur2.detail || prev.type != null && cur2.type != null && prev.type != cur2.type || prev.apply != cur2.apply || prev.boost != cur2.boost)
+      result.push(opt);
+    else if (score(opt.completion) > score(prev))
+      result[result.length - 1] = opt;
+    prev = opt.completion;
+  }
+  return result;
+}
+var CompletionDialog = class _CompletionDialog {
+  constructor(options, attrs, tooltip, timestamp, selected, disabled) {
+    this.options = options;
+    this.attrs = attrs;
+    this.tooltip = tooltip;
+    this.timestamp = timestamp;
+    this.selected = selected;
+    this.disabled = disabled;
+  }
+  setSelected(selected, id) {
+    return selected == this.selected || selected >= this.options.length ? this : new _CompletionDialog(this.options, makeAttrs(id, selected), this.tooltip, this.timestamp, selected, this.disabled);
+  }
+  static build(active, state, id, prev, conf) {
+    let options = sortOptions(active, state);
+    if (!options.length) {
+      return prev && active.some(
+        (a) => a.state == 1
+        /* Pending */
+      ) ? new _CompletionDialog(prev.options, prev.attrs, prev.tooltip, prev.timestamp, prev.selected, true) : null;
+    }
+    let selected = state.facet(completionConfig).selectOnOpen ? 0 : -1;
+    if (prev && prev.selected != selected && prev.selected != -1) {
+      let selectedValue = prev.options[prev.selected].completion;
+      for (let i = 0; i < options.length; i++)
+        if (options[i].completion == selectedValue) {
+          selected = i;
+          break;
+        }
+    }
+    return new _CompletionDialog(options, makeAttrs(id, selected), {
+      pos: active.reduce((a, b) => b.hasResult() ? Math.min(a, b.from) : a, 1e8),
+      create: completionTooltip(completionState, applyCompletion),
+      above: conf.aboveCursor
+    }, prev ? prev.timestamp : Date.now(), selected, false);
+  }
+  map(changes) {
+    return new _CompletionDialog(this.options, this.attrs, Object.assign(Object.assign({}, this.tooltip), { pos: changes.mapPos(this.tooltip.pos) }), this.timestamp, this.selected, this.disabled);
+  }
+};
+var CompletionState = class _CompletionState {
+  constructor(active, id, open) {
+    this.active = active;
+    this.id = id;
+    this.open = open;
+  }
+  static start() {
+    return new _CompletionState(none, "cm-ac-" + Math.floor(Math.random() * 2e6).toString(36), null);
+  }
+  update(tr) {
+    let { state } = tr, conf = state.facet(completionConfig);
+    let sources = conf.override || state.languageDataAt("autocomplete", cur(state)).map(asSource);
+    let active = sources.map((source) => {
+      let value = this.active.find((s) => s.source == source) || new ActiveSource(
+        source,
+        this.active.some(
+          (a) => a.state != 0
+          /* Inactive */
+        ) ? 1 : 0
+        /* Inactive */
+      );
+      return value.update(tr, conf);
+    });
+    if (active.length == this.active.length && active.every((a, i) => a == this.active[i]))
+      active = this.active;
+    let open = this.open;
+    if (open && tr.docChanged)
+      open = open.map(tr.changes);
+    if (tr.selection || active.some((a) => a.hasResult() && tr.changes.touchesRange(a.from, a.to)) || !sameResults(active, this.active))
+      open = CompletionDialog.build(active, state, this.id, open, conf);
+    else if (open && open.disabled && !active.some(
+      (a) => a.state == 1
+      /* Pending */
+    ))
+      open = null;
+    if (!open && active.every(
+      (a) => a.state != 1
+      /* Pending */
+    ) && active.some((a) => a.hasResult()))
+      active = active.map((a) => a.hasResult() ? new ActiveSource(
+        a.source,
+        0
+        /* Inactive */
+      ) : a);
+    for (let effect of tr.effects)
+      if (effect.is(setSelectedEffect))
+        open = open && open.setSelected(effect.value, this.id);
+    return active == this.active && open == this.open ? this : new _CompletionState(active, this.id, open);
+  }
+  get tooltip() {
+    return this.open ? this.open.tooltip : null;
+  }
+  get attrs() {
+    return this.open ? this.open.attrs : baseAttrs;
+  }
+};
+function sameResults(a, b) {
+  if (a == b)
+    return true;
+  for (let iA = 0, iB = 0; ; ) {
+    while (iA < a.length && !a[iA].hasResult)
+      iA++;
+    while (iB < b.length && !b[iB].hasResult)
+      iB++;
+    let endA = iA == a.length, endB = iB == b.length;
+    if (endA || endB)
+      return endA == endB;
+    if (a[iA++].result != b[iB++].result)
+      return false;
+  }
+}
+var baseAttrs = {
+  "aria-autocomplete": "list"
+};
+function makeAttrs(id, selected) {
+  let result = {
+    "aria-autocomplete": "list",
+    "aria-haspopup": "listbox",
+    "aria-controls": id
+  };
+  if (selected > -1)
+    result["aria-activedescendant"] = id + "-" + selected;
+  return result;
+}
+var none = [];
+function getUserEvent(tr) {
+  return tr.isUserEvent("input.type") ? "input" : tr.isUserEvent("delete.backward") ? "delete" : null;
+}
+var ActiveSource = class _ActiveSource {
+  constructor(source, state, explicitPos = -1) {
+    this.source = source;
+    this.state = state;
+    this.explicitPos = explicitPos;
+  }
+  hasResult() {
+    return false;
+  }
+  update(tr, conf) {
+    let event = getUserEvent(tr), value = this;
+    if (event)
+      value = value.handleUserEvent(tr, event, conf);
+    else if (tr.docChanged)
+      value = value.handleChange(tr);
+    else if (tr.selection && value.state != 0)
+      value = new _ActiveSource(
+        value.source,
+        0
+        /* Inactive */
+      );
+    for (let effect of tr.effects) {
+      if (effect.is(startCompletionEffect))
+        value = new _ActiveSource(value.source, 1, effect.value ? cur(tr.state) : -1);
+      else if (effect.is(closeCompletionEffect))
+        value = new _ActiveSource(
+          value.source,
+          0
+          /* Inactive */
+        );
+      else if (effect.is(setActiveEffect)) {
+        for (let active of effect.value)
+          if (active.source == value.source)
+            value = active;
+      }
+    }
+    return value;
+  }
+  handleUserEvent(tr, type, conf) {
+    return type == "delete" || !conf.activateOnTyping ? this.map(tr.changes) : new _ActiveSource(
+      this.source,
+      1
+      /* Pending */
+    );
+  }
+  handleChange(tr) {
+    return tr.changes.touchesRange(cur(tr.startState)) ? new _ActiveSource(
+      this.source,
+      0
+      /* Inactive */
+    ) : this.map(tr.changes);
+  }
+  map(changes) {
+    return changes.empty || this.explicitPos < 0 ? this : new _ActiveSource(this.source, this.state, changes.mapPos(this.explicitPos));
+  }
+};
+var ActiveResult = class _ActiveResult extends ActiveSource {
+  constructor(source, explicitPos, result, from, to) {
+    super(source, 2, explicitPos);
+    this.result = result;
+    this.from = from;
+    this.to = to;
+  }
+  hasResult() {
+    return true;
+  }
+  handleUserEvent(tr, type, conf) {
+    var _a;
+    let from = tr.changes.mapPos(this.from), to = tr.changes.mapPos(this.to, 1);
+    let pos = cur(tr.state);
+    if ((this.explicitPos < 0 ? pos <= from : pos < this.from) || pos > to || type == "delete" && cur(tr.startState) == this.from)
+      return new ActiveSource(
+        this.source,
+        type == "input" && conf.activateOnTyping ? 1 : 0
+        /* Inactive */
+      );
+    let explicitPos = this.explicitPos < 0 ? -1 : tr.changes.mapPos(this.explicitPos), updated;
+    if (checkValid(this.result.validFor, tr.state, from, to))
+      return new _ActiveResult(this.source, explicitPos, this.result, from, to);
+    if (this.result.update && (updated = this.result.update(this.result, from, to, new CompletionContext(tr.state, pos, explicitPos >= 0))))
+      return new _ActiveResult(this.source, explicitPos, updated, updated.from, (_a = updated.to) !== null && _a !== void 0 ? _a : cur(tr.state));
+    return new ActiveSource(this.source, 1, explicitPos);
+  }
+  handleChange(tr) {
+    return tr.changes.touchesRange(this.from, this.to) ? new ActiveSource(
+      this.source,
+      0
+      /* Inactive */
+    ) : this.map(tr.changes);
+  }
+  map(mapping) {
+    return mapping.empty ? this : new _ActiveResult(this.source, this.explicitPos < 0 ? -1 : mapping.mapPos(this.explicitPos), this.result, mapping.mapPos(this.from), mapping.mapPos(this.to, 1));
+  }
+};
+function checkValid(validFor, state, from, to) {
+  if (!validFor)
+    return false;
+  let text = state.sliceDoc(from, to);
+  return typeof validFor == "function" ? validFor(text, from, to, state) : ensureAnchor(validFor, true).test(text);
+}
+var setActiveEffect = /* @__PURE__ */ import_state2.StateEffect.define({
+  map(sources, mapping) {
+    return sources.map((s) => s.map(mapping));
+  }
+});
+var setSelectedEffect = /* @__PURE__ */ import_state2.StateEffect.define();
+var completionState = /* @__PURE__ */ import_state2.StateField.define({
+  create() {
+    return CompletionState.start();
+  },
+  update(value, tr) {
+    return value.update(tr);
+  },
+  provide: (f) => [
+    import_view2.showTooltip.from(f, (val) => val.tooltip),
+    import_view2.EditorView.contentAttributes.from(f, (state) => state.attrs)
+  ]
+});
+function applyCompletion(view, option) {
+  const apply = option.completion.apply || option.completion.label;
+  let result = view.state.field(completionState).active.find((a) => a.source == option.source);
+  if (!(result instanceof ActiveResult))
+    return false;
+  if (typeof apply == "string")
+    view.dispatch(Object.assign(Object.assign({}, insertCompletionText(view.state, apply, result.from, result.to)), { annotations: pickedCompletion.of(option.completion) }));
+  else
+    apply(view, option.completion, result.from, result.to);
+  return true;
+}
+function moveCompletionSelection(forward, by = "option") {
+  return (view) => {
+    let cState = view.state.field(completionState, false);
+    if (!cState || !cState.open || cState.open.disabled || Date.now() - cState.open.timestamp < view.state.facet(completionConfig).interactionDelay)
+      return false;
+    let step = 1, tooltip;
+    if (by == "page" && (tooltip = (0, import_view2.getTooltip)(view, cState.open.tooltip)))
+      step = Math.max(2, Math.floor(tooltip.dom.offsetHeight / tooltip.dom.querySelector("li").offsetHeight) - 1);
+    let { length } = cState.open.options;
+    let selected = cState.open.selected > -1 ? cState.open.selected + step * (forward ? 1 : -1) : forward ? 0 : length - 1;
+    if (selected < 0)
+      selected = by == "page" ? 0 : length - 1;
+    else if (selected >= length)
+      selected = by == "page" ? length - 1 : 0;
+    view.dispatch({ effects: setSelectedEffect.of(selected) });
+    return true;
+  };
+}
+var acceptCompletion = (view) => {
+  let cState = view.state.field(completionState, false);
+  if (view.state.readOnly || !cState || !cState.open || cState.open.selected < 0 || cState.open.disabled || Date.now() - cState.open.timestamp < view.state.facet(completionConfig).interactionDelay)
+    return false;
+  return applyCompletion(view, cState.open.options[cState.open.selected]);
+};
+var startCompletion = (view) => {
+  let cState = view.state.field(completionState, false);
+  if (!cState)
+    return false;
+  view.dispatch({ effects: startCompletionEffect.of(true) });
+  return true;
+};
+var closeCompletion = (view) => {
+  let cState = view.state.field(completionState, false);
+  if (!cState || !cState.active.some(
+    (a) => a.state != 0
+    /* Inactive */
+  ))
+    return false;
+  view.dispatch({ effects: closeCompletionEffect.of(null) });
+  return true;
+};
+var RunningQuery = class {
+  constructor(active, context) {
+    this.active = active;
+    this.context = context;
+    this.time = Date.now();
+    this.updates = [];
+    this.done = void 0;
+  }
+};
+var DebounceTime = 50;
+var MaxUpdateCount = 50;
+var MinAbortTime = 1e3;
+var completionPlugin = /* @__PURE__ */ import_view2.ViewPlugin.fromClass(class {
+  constructor(view) {
+    this.view = view;
+    this.debounceUpdate = -1;
+    this.running = [];
+    this.debounceAccept = -1;
+    this.composing = 0;
+    for (let active of view.state.field(completionState).active)
+      if (active.state == 1)
+        this.startQuery(active);
+  }
+  update(update) {
+    let cState = update.state.field(completionState);
+    if (!update.selectionSet && !update.docChanged && update.startState.field(completionState) == cState)
+      return;
+    let doesReset = update.transactions.some((tr) => {
+      return (tr.selection || tr.docChanged) && !getUserEvent(tr);
+    });
+    for (let i = 0; i < this.running.length; i++) {
+      let query = this.running[i];
+      if (doesReset || query.updates.length + update.transactions.length > MaxUpdateCount && Date.now() - query.time > MinAbortTime) {
+        for (let handler of query.context.abortListeners) {
+          try {
+            handler();
+          } catch (e) {
+            (0, import_view2.logException)(this.view.state, e);
+          }
+        }
+        query.context.abortListeners = null;
+        this.running.splice(i--, 1);
+      } else {
+        query.updates.push(...update.transactions);
+      }
+    }
+    if (this.debounceUpdate > -1)
+      clearTimeout(this.debounceUpdate);
+    this.debounceUpdate = cState.active.some((a) => a.state == 1 && !this.running.some((q) => q.active.source == a.source)) ? setTimeout(() => this.startUpdate(), DebounceTime) : -1;
+    if (this.composing != 0)
+      for (let tr of update.transactions) {
+        if (getUserEvent(tr) == "input")
+          this.composing = 2;
+        else if (this.composing == 2 && tr.selection)
+          this.composing = 3;
+      }
+  }
+  startUpdate() {
+    this.debounceUpdate = -1;
+    let { state } = this.view, cState = state.field(completionState);
+    for (let active of cState.active) {
+      if (active.state == 1 && !this.running.some((r) => r.active.source == active.source))
+        this.startQuery(active);
+    }
+  }
+  startQuery(active) {
+    let { state } = this.view, pos = cur(state);
+    let context = new CompletionContext(state, pos, active.explicitPos == pos);
+    let pending = new RunningQuery(active, context);
+    this.running.push(pending);
+    Promise.resolve(active.source(context)).then((result) => {
+      if (!pending.context.aborted) {
+        pending.done = result || null;
+        this.scheduleAccept();
+      }
+    }, (err) => {
+      this.view.dispatch({ effects: closeCompletionEffect.of(null) });
+      (0, import_view2.logException)(this.view.state, err);
+    });
+  }
+  scheduleAccept() {
+    if (this.running.every((q) => q.done !== void 0))
+      this.accept();
+    else if (this.debounceAccept < 0)
+      this.debounceAccept = setTimeout(() => this.accept(), DebounceTime);
+  }
+  // For each finished query in this.running, try to create a result
+  // or, if appropriate, restart the query.
+  accept() {
+    var _a;
+    if (this.debounceAccept > -1)
+      clearTimeout(this.debounceAccept);
+    this.debounceAccept = -1;
+    let updated = [];
+    let conf = this.view.state.facet(completionConfig);
+    for (let i = 0; i < this.running.length; i++) {
+      let query = this.running[i];
+      if (query.done === void 0)
+        continue;
+      this.running.splice(i--, 1);
+      if (query.done) {
+        let active = new ActiveResult(query.active.source, query.active.explicitPos, query.done, query.done.from, (_a = query.done.to) !== null && _a !== void 0 ? _a : cur(query.updates.length ? query.updates[0].startState : this.view.state));
+        for (let tr of query.updates)
+          active = active.update(tr, conf);
+        if (active.hasResult()) {
+          updated.push(active);
+          continue;
+        }
+      }
+      let current = this.view.state.field(completionState).active.find((a) => a.source == query.active.source);
+      if (current && current.state == 1) {
+        if (query.done == null) {
+          let active = new ActiveSource(
+            query.active.source,
+            0
+            /* Inactive */
+          );
+          for (let tr of query.updates)
+            active = active.update(tr, conf);
+          if (active.state != 1)
+            updated.push(active);
+        } else {
+          this.startQuery(current);
+        }
+      }
+    }
+    if (updated.length)
+      this.view.dispatch({ effects: setActiveEffect.of(updated) });
+  }
+}, {
+  eventHandlers: {
+    blur(event) {
+      let state = this.view.state.field(completionState, false);
+      if (state && state.tooltip && this.view.state.facet(completionConfig).closeOnBlur) {
+        let dialog = state.open && (0, import_view2.getTooltip)(this.view, state.open.tooltip);
+        if (!dialog || !dialog.dom.contains(event.relatedTarget))
+          this.view.dispatch({ effects: closeCompletionEffect.of(null) });
+      }
+    },
+    compositionstart() {
+      this.composing = 1;
+    },
+    compositionend() {
+      if (this.composing == 3) {
+        setTimeout(() => this.view.dispatch({ effects: startCompletionEffect.of(false) }), 20);
+      }
+      this.composing = 0;
+    }
+  }
+});
+var baseTheme = /* @__PURE__ */ import_view2.EditorView.baseTheme({
+  ".cm-tooltip.cm-tooltip-autocomplete": {
+    "& > ul": {
+      fontFamily: "monospace",
+      whiteSpace: "nowrap",
+      overflow: "hidden auto",
+      maxWidth_fallback: "700px",
+      maxWidth: "min(700px, 95vw)",
+      minWidth: "250px",
+      maxHeight: "10em",
+      height: "100%",
+      listStyle: "none",
+      margin: 0,
+      padding: 0,
+      "& > li, & > completion-section": {
+        padding: "1px 3px",
+        lineHeight: 1.2
+      },
+      "& > li": {
+        overflowX: "hidden",
+        textOverflow: "ellipsis",
+        cursor: "pointer"
+      },
+      "& > completion-section": {
+        display: "list-item",
+        borderBottom: "1px solid silver",
+        paddingLeft: "0.5em",
+        opacity: 0.7
+      }
+    }
+  },
+  "&light .cm-tooltip-autocomplete ul li[aria-selected]": {
+    background: "#17c",
+    color: "white"
+  },
+  "&light .cm-tooltip-autocomplete-disabled ul li[aria-selected]": {
+    background: "#777"
+  },
+  "&dark .cm-tooltip-autocomplete ul li[aria-selected]": {
+    background: "#347",
+    color: "white"
+  },
+  "&dark .cm-tooltip-autocomplete-disabled ul li[aria-selected]": {
+    background: "#444"
+  },
+  ".cm-completionListIncompleteTop:before, .cm-completionListIncompleteBottom:after": {
+    content: '"\xB7\xB7\xB7"',
+    opacity: 0.5,
+    display: "block",
+    textAlign: "center"
+  },
+  ".cm-tooltip.cm-completionInfo": {
+    position: "absolute",
+    padding: "3px 9px",
+    width: "max-content",
+    maxWidth: `${400}px`,
+    boxSizing: "border-box"
+  },
+  ".cm-completionInfo.cm-completionInfo-left": { right: "100%" },
+  ".cm-completionInfo.cm-completionInfo-right": { left: "100%" },
+  ".cm-completionInfo.cm-completionInfo-left-narrow": { right: `${30}px` },
+  ".cm-completionInfo.cm-completionInfo-right-narrow": { left: `${30}px` },
+  "&light .cm-snippetField": { backgroundColor: "#00000022" },
+  "&dark .cm-snippetField": { backgroundColor: "#ffffff22" },
+  ".cm-snippetFieldPosition": {
+    verticalAlign: "text-top",
+    width: 0,
+    height: "1.15em",
+    display: "inline-block",
+    margin: "0 -0.7px -.7em",
+    borderLeft: "1.4px dotted #888"
+  },
+  ".cm-completionMatchedText": {
+    textDecoration: "underline"
+  },
+  ".cm-completionDetail": {
+    marginLeft: "0.5em",
+    fontStyle: "italic"
+  },
+  ".cm-completionIcon": {
+    fontSize: "90%",
+    width: ".8em",
+    display: "inline-block",
+    textAlign: "center",
+    paddingRight: ".6em",
+    opacity: "0.6",
+    boxSizing: "content-box"
+  },
+  ".cm-completionIcon-function, .cm-completionIcon-method": {
+    "&:after": { content: "'\u0192'" }
+  },
+  ".cm-completionIcon-class": {
+    "&:after": { content: "'\u25CB'" }
+  },
+  ".cm-completionIcon-interface": {
+    "&:after": { content: "'\u25CC'" }
+  },
+  ".cm-completionIcon-variable": {
+    "&:after": { content: "'\u{1D465}'" }
+  },
+  ".cm-completionIcon-constant": {
+    "&:after": { content: "'\u{1D436}'" }
+  },
+  ".cm-completionIcon-type": {
+    "&:after": { content: "'\u{1D461}'" }
+  },
+  ".cm-completionIcon-enum": {
+    "&:after": { content: "'\u222A'" }
+  },
+  ".cm-completionIcon-property": {
+    "&:after": { content: "'\u25A1'" }
+  },
+  ".cm-completionIcon-keyword": {
+    "&:after": { content: "'\u{1F511}\uFE0E'" }
+    // Disable emoji rendering
+  },
+  ".cm-completionIcon-namespace": {
+    "&:after": { content: "'\u25A2'" }
+  },
+  ".cm-completionIcon-text": {
+    "&:after": { content: "'abc'", fontSize: "50%", verticalAlign: "middle" }
+  }
+});
+var defaults = {
+  brackets: ["(", "[", "{", "'", '"'],
+  before: ")]}:;>",
+  stringPrefixes: []
+};
+var closeBracketEffect = /* @__PURE__ */ import_state2.StateEffect.define({
+  map(value, mapping) {
+    let mapped = mapping.mapPos(value, -1, import_state2.MapMode.TrackAfter);
+    return mapped == null ? void 0 : mapped;
+  }
+});
+var closedBracket = /* @__PURE__ */ new class extends import_state2.RangeValue {
+}();
+closedBracket.startSide = 1;
+closedBracket.endSide = -1;
+var bracketState = /* @__PURE__ */ import_state2.StateField.define({
+  create() {
+    return import_state2.RangeSet.empty;
+  },
+  update(value, tr) {
+    if (tr.selection) {
+      let lineStart = tr.state.doc.lineAt(tr.selection.main.head).from;
+      let prevLineStart = tr.startState.doc.lineAt(tr.startState.selection.main.head).from;
+      if (lineStart != tr.changes.mapPos(prevLineStart, -1))
+        value = import_state2.RangeSet.empty;
+    }
+    value = value.map(tr.changes);
+    for (let effect of tr.effects)
+      if (effect.is(closeBracketEffect))
+        value = value.update({ add: [closedBracket.range(effect.value, effect.value + 1)] });
+    return value;
+  }
+});
+function closeBrackets() {
+  return [inputHandler, bracketState];
+}
+var definedClosing = "()[]{}<>";
+function closing(ch) {
+  for (let i = 0; i < definedClosing.length; i += 2)
+    if (definedClosing.charCodeAt(i) == ch)
+      return definedClosing.charAt(i + 1);
+  return (0, import_state2.fromCodePoint)(ch < 128 ? ch : ch + 1);
+}
+function config(state, pos) {
+  return state.languageDataAt("closeBrackets", pos)[0] || defaults;
+}
+var android = typeof navigator == "object" && /* @__PURE__ */ /Android\b/.test(navigator.userAgent);
+var inputHandler = /* @__PURE__ */ import_view2.EditorView.inputHandler.of((view, from, to, insert) => {
+  if ((android ? view.composing : view.compositionStarted) || view.state.readOnly)
+    return false;
+  let sel = view.state.selection.main;
+  if (insert.length > 2 || insert.length == 2 && (0, import_state2.codePointSize)((0, import_state2.codePointAt)(insert, 0)) == 1 || from != sel.from || to != sel.to)
+    return false;
+  let tr = insertBracket(view.state, insert);
+  if (!tr)
+    return false;
+  view.dispatch(tr);
+  return true;
+});
+var deleteBracketPair = ({ state, dispatch }) => {
+  if (state.readOnly)
+    return false;
+  let conf = config(state, state.selection.main.head);
+  let tokens = conf.brackets || defaults.brackets;
+  let dont = null, changes = state.changeByRange((range) => {
+    if (range.empty) {
+      let before = prevChar(state.doc, range.head);
+      for (let token of tokens) {
+        if (token == before && nextChar(state.doc, range.head) == closing((0, import_state2.codePointAt)(token, 0)))
+          return {
+            changes: { from: range.head - token.length, to: range.head + token.length },
+            range: import_state2.EditorSelection.cursor(range.head - token.length)
+          };
+      }
+    }
+    return { range: dont = range };
+  });
+  if (!dont)
+    dispatch(state.update(changes, { scrollIntoView: true, userEvent: "delete.backward" }));
+  return !dont;
+};
+var closeBracketsKeymap = [
+  { key: "Backspace", run: deleteBracketPair }
+];
+function insertBracket(state, bracket) {
+  let conf = config(state, state.selection.main.head);
+  let tokens = conf.brackets || defaults.brackets;
+  for (let tok of tokens) {
+    let closed = closing((0, import_state2.codePointAt)(tok, 0));
+    if (bracket == tok)
+      return closed == tok ? handleSame(state, tok, tokens.indexOf(tok + tok + tok) > -1, conf) : handleOpen(state, tok, closed, conf.before || defaults.before);
+    if (bracket == closed && closedBracketAt(state, state.selection.main.from))
+      return handleClose(state, tok, closed);
+  }
+  return null;
+}
+function closedBracketAt(state, pos) {
+  let found = false;
+  state.field(bracketState).between(0, state.doc.length, (from) => {
+    if (from == pos)
+      found = true;
+  });
+  return found;
+}
+function nextChar(doc, pos) {
+  let next = doc.sliceString(pos, pos + 2);
+  return next.slice(0, (0, import_state2.codePointSize)((0, import_state2.codePointAt)(next, 0)));
+}
+function prevChar(doc, pos) {
+  let prev = doc.sliceString(pos - 2, pos);
+  return (0, import_state2.codePointSize)((0, import_state2.codePointAt)(prev, 0)) == prev.length ? prev : prev.slice(1);
+}
+function handleOpen(state, open, close, closeBefore) {
+  let dont = null, changes = state.changeByRange((range) => {
+    if (!range.empty)
+      return {
+        changes: [{ insert: open, from: range.from }, { insert: close, from: range.to }],
+        effects: closeBracketEffect.of(range.to + open.length),
+        range: import_state2.EditorSelection.range(range.anchor + open.length, range.head + open.length)
+      };
+    let next = nextChar(state.doc, range.head);
+    if (!next || /\s/.test(next) || closeBefore.indexOf(next) > -1)
+      return {
+        changes: { insert: open + close, from: range.head },
+        effects: closeBracketEffect.of(range.head + open.length),
+        range: import_state2.EditorSelection.cursor(range.head + open.length)
+      };
+    return { range: dont = range };
+  });
+  return dont ? null : state.update(changes, {
+    scrollIntoView: true,
+    userEvent: "input.type"
+  });
+}
+function handleClose(state, _open, close) {
+  let dont = null, changes = state.changeByRange((range) => {
+    if (range.empty && nextChar(state.doc, range.head) == close)
+      return {
+        changes: { from: range.head, to: range.head + close.length, insert: close },
+        range: import_state2.EditorSelection.cursor(range.head + close.length)
+      };
+    return dont = { range };
+  });
+  return dont ? null : state.update(changes, {
+    scrollIntoView: true,
+    userEvent: "input.type"
+  });
+}
+function handleSame(state, token, allowTriple, config3) {
+  let stringPrefixes = config3.stringPrefixes || defaults.stringPrefixes;
+  let dont = null, changes = state.changeByRange((range) => {
+    if (!range.empty)
+      return {
+        changes: [{ insert: token, from: range.from }, { insert: token, from: range.to }],
+        effects: closeBracketEffect.of(range.to + token.length),
+        range: import_state2.EditorSelection.range(range.anchor + token.length, range.head + token.length)
+      };
+    let pos = range.head, next = nextChar(state.doc, pos), start;
+    if (next == token) {
+      if (nodeStart(state, pos)) {
+        return {
+          changes: { insert: token + token, from: pos },
+          effects: closeBracketEffect.of(pos + token.length),
+          range: import_state2.EditorSelection.cursor(pos + token.length)
+        };
+      } else if (closedBracketAt(state, pos)) {
+        let isTriple = allowTriple && state.sliceDoc(pos, pos + token.length * 3) == token + token + token;
+        let content = isTriple ? token + token + token : token;
+        return {
+          changes: { from: pos, to: pos + content.length, insert: content },
+          range: import_state2.EditorSelection.cursor(pos + content.length)
+        };
+      }
+    } else if (allowTriple && state.sliceDoc(pos - 2 * token.length, pos) == token + token && (start = canStartStringAt(state, pos - 2 * token.length, stringPrefixes)) > -1 && nodeStart(state, start)) {
+      return {
+        changes: { insert: token + token + token + token, from: pos },
+        effects: closeBracketEffect.of(pos + token.length),
+        range: import_state2.EditorSelection.cursor(pos + token.length)
+      };
+    } else if (state.charCategorizer(pos)(next) != import_state2.CharCategory.Word) {
+      if (canStartStringAt(state, pos, stringPrefixes) > -1 && !probablyInString(state, pos, token, stringPrefixes))
+        return {
+          changes: { insert: token + token, from: pos },
+          effects: closeBracketEffect.of(pos + token.length),
+          range: import_state2.EditorSelection.cursor(pos + token.length)
+        };
+    }
+    return { range: dont = range };
+  });
+  return dont ? null : state.update(changes, {
+    scrollIntoView: true,
+    userEvent: "input.type"
+  });
+}
+function nodeStart(state, pos) {
+  let tree = (0, import_language2.syntaxTree)(state).resolveInner(pos + 1);
+  return tree.parent && tree.from == pos;
+}
+function probablyInString(state, pos, quoteToken, prefixes) {
+  let node = (0, import_language2.syntaxTree)(state).resolveInner(pos, -1);
+  let maxPrefix = prefixes.reduce((m, p) => Math.max(m, p.length), 0);
+  for (let i = 0; i < 5; i++) {
+    let start = state.sliceDoc(node.from, Math.min(node.to, node.from + quoteToken.length + maxPrefix));
+    let quotePos = start.indexOf(quoteToken);
+    if (!quotePos || quotePos > -1 && prefixes.indexOf(start.slice(0, quotePos)) > -1) {
+      let first = node.firstChild;
+      while (first && first.from == node.from && first.to - first.from > quoteToken.length + quotePos) {
+        if (state.sliceDoc(first.to - quoteToken.length, first.to) == quoteToken)
+          return false;
+        first = first.firstChild;
+      }
+      return true;
+    }
+    let parent = node.to == pos && node.parent;
+    if (!parent)
+      break;
+    node = parent;
+  }
+  return false;
+}
+function canStartStringAt(state, pos, prefixes) {
+  let charCat = state.charCategorizer(pos);
+  if (charCat(state.sliceDoc(pos - 1, pos)) != import_state2.CharCategory.Word)
+    return pos;
+  for (let prefix of prefixes) {
+    let start = pos - prefix.length;
+    if (state.sliceDoc(start, pos) == prefix && charCat(state.sliceDoc(start - 1, start)) != import_state2.CharCategory.Word)
+      return start;
+  }
+  return -1;
+}
+function autocompletion(config3 = {}) {
+  return [
+    completionState,
+    completionConfig.of(config3),
+    completionPlugin,
+    completionKeymapExt,
+    baseTheme
+  ];
+}
+var completionKeymap = [
+  { key: "Ctrl-Space", run: startCompletion },
+  { key: "Escape", run: closeCompletion },
+  { key: "ArrowDown", run: /* @__PURE__ */ moveCompletionSelection(true) },
+  { key: "ArrowUp", run: /* @__PURE__ */ moveCompletionSelection(false) },
+  { key: "PageDown", run: /* @__PURE__ */ moveCompletionSelection(true, "page") },
+  { key: "PageUp", run: /* @__PURE__ */ moveCompletionSelection(false, "page") },
+  { key: "Enter", run: acceptCompletion }
+];
+var completionKeymapExt = /* @__PURE__ */ import_state2.Prec.highest(/* @__PURE__ */ import_view2.keymap.computeN([completionConfig], (state) => state.facet(completionConfig).defaultKeymap ? [completionKeymap] : []));
+
+// src/codemirror-extensions/basic-extensions.ts
+var import_search2 = require("@codemirror/search");
+var import_lint = require("@codemirror/lint");
+
+// src/codemirror-extensions/obsidian-theme.ts
+var import_view3 = require("@codemirror/view");
+var import_language3 = require("@codemirror/language");
+var import_highlight = require("@lezer/highlight");
+var config2 = {
+  name: "obsidian",
+  dark: false,
+  background: "var(--background-primary)",
+  foreground: "var(--text-normal)",
+  selection: "var(--text-selection)",
+  cursor: "var(--text-normal)",
+  dropdownBackground: "var(--background-primary)",
+  dropdownBorder: "var(--background-modifier-border)",
+  activeLine: "var(--background-secondary)",
+  activeLineNumber: "var(--text-normal)",
+  matchingBracket: "var(--background-modifier-accent)",
+  keyword: "#d73a49",
+  storage: "#d73a49",
+  variable: "var(--text-normal)",
+  parameter: "var(--text-accent-hover)",
+  function: "var(--text-accent-hover)",
+  string: "var(--text-accent)",
+  constant: "var(--text-accent-hover)",
+  type: "var(--text-accent-hover)",
+  class: "#6f42c1",
+  number: "var(--text-accent-hover)",
+  comment: "var(--text-faint)",
+  invalid: "var(--text-error)",
+  regexp: "#032f62",
+  monospace: "var(--font-monospace)"
+};
+var obsidianTheme = import_view3.EditorView.theme(
+  {
+    "&": {
+      color: config2.foreground,
+      backgroundColor: config2.background
+    },
+    ".cm-scroller": { fontFamily: config2.monospace },
+    ".cm-content": { caretColor: config2.cursor },
+    "&.cm-focused .cm-cursor": { borderLeftColor: config2.cursor },
+    ".cm-selectionBackground, &.cm-focused > .cm-scroller > .cm-selectionLayer .cm-selectionBackground, & ::selection": { backgroundColor: config2.selection },
+    ".cm-panels": {
+      backgroundColor: config2.dropdownBackground,
+      color: config2.foreground
+    },
+    ".cm-panels.cm-panels-top": { borderBottom: "2px solid black" },
+    ".cm-panels.cm-panels-bottom": { borderTop: "2px solid black" },
+    ".cm-searchMatch": {
+      backgroundColor: config2.dropdownBackground,
+      outline: `1px solid ${config2.dropdownBorder}`
+    },
+    ".cm-searchMatch.cm-searchMatch-selected": {
+      backgroundColor: config2.selection
+    },
+    ".cm-activeLine": { backgroundColor: config2.activeLine },
+    ".cm-activeLineGutter": {
+      backgroundColor: config2.activeLine,
+      ".cm-lineNumbers &": {
+        color: config2.activeLineNumber
+      }
+    },
+    ".cm-selectionMatch": { backgroundColor: config2.selection },
+    ".cm-matchingBracket, .cm-nonmatchingBracket": {
+      backgroundColor: config2.matchingBracket,
+      outline: "none"
+    },
+    ".cm-gutters": {
+      backgroundColor: config2.background,
+      color: config2.comment,
+      borderRight: "1px solid var(--background-modifier-border)"
+    },
+    ".cm-lineNumbers, .cm-gutterElement": { color: "inherit" },
+    ".cm-foldPlaceholder": {
+      backgroundColor: "transparent",
+      border: "none",
+      color: config2.foreground
+    },
+    ".cm-tooltip": {
+      border: `1px solid ${config2.dropdownBorder}`,
+      backgroundColor: config2.dropdownBackground,
+      color: config2.foreground
+    },
+    ".cm-tooltip.cm-tooltip-autocomplete": {
+      "& > ul": {
+        fontFamily: config2.monospace,
+        "& > li[aria-selected]": {
+          background: config2.selection,
+          color: config2.foreground
+        }
+      }
+    }
+  },
+  { dark: config2.dark }
+);
+var obsidianHighlightStyle = import_language3.HighlightStyle.define([
+  { tag: import_highlight.tags.keyword, color: config2.keyword },
+  {
+    tag: [import_highlight.tags.name, import_highlight.tags.deleted, import_highlight.tags.character, import_highlight.tags.macroName],
+    color: config2.variable
+  },
+  { tag: [import_highlight.tags.propertyName], color: config2.function },
+  {
+    tag: [
+      import_highlight.tags.processingInstruction,
+      import_highlight.tags.string,
+      import_highlight.tags.inserted,
+      import_highlight.tags.special(import_highlight.tags.string)
+    ],
+    color: config2.string
+  },
+  { tag: [import_highlight.tags.function(import_highlight.tags.variableName), import_highlight.tags.labelName], color: config2.function },
+  {
+    tag: [import_highlight.tags.color, import_highlight.tags.constant(import_highlight.tags.name), import_highlight.tags.standard(import_highlight.tags.name)],
+    color: config2.constant
+  },
+  { tag: [import_highlight.tags.definition(import_highlight.tags.name), import_highlight.tags.separator], color: config2.variable },
+  { tag: [import_highlight.tags.className], color: config2.class },
+  {
+    tag: [
+      import_highlight.tags.number,
+      import_highlight.tags.changed,
+      import_highlight.tags.annotation,
+      import_highlight.tags.modifier,
+      import_highlight.tags.self,
+      import_highlight.tags.namespace
+    ],
+    color: config2.number
+  },
+  { tag: [import_highlight.tags.typeName], color: config2.type, fontStyle: config2.type },
+  { tag: [import_highlight.tags.operator, import_highlight.tags.operatorKeyword], color: config2.keyword },
+  { tag: [import_highlight.tags.url, import_highlight.tags.escape, import_highlight.tags.regexp, import_highlight.tags.link], color: config2.regexp },
+  { tag: [import_highlight.tags.meta, import_highlight.tags.comment], color: config2.comment },
+  {
+    tag: [import_highlight.tags.atom, import_highlight.tags.bool, import_highlight.tags.special(import_highlight.tags.variableName)],
+    color: config2.variable
+  },
+  { tag: import_highlight.tags.invalid, color: config2.invalid }
+]);
+var obsidian = [
+  obsidianTheme,
+  (0, import_language3.syntaxHighlighting)(obsidianHighlightStyle)
+];
 
 // node_modules/@lezer/css/dist/index.es.js
 var import_lr = require("@lezer/lr");
-var import_highlight = require("@lezer/highlight");
+var import_highlight2 = require("@lezer/highlight");
 var descendantOp = 94;
 var Unit = 1;
 var callee = 95;
@@ -7344,10 +8950,8 @@ var identifiers = new import_lr.ExternalTokenizer((input, stack) => {
   for (let inside = false, dashes = 0, i = 0; ; i++) {
     let { next } = input;
     if (isAlpha(next) || next == dash || next == underscore || inside && isDigit(next)) {
-      if (!inside && (next != dash || i > 0))
-        inside = true;
-      if (dashes === i && next == dash)
-        dashes++;
+      if (!inside && (next != dash || i > 0)) inside = true;
+      if (dashes === i && next == dash) dashes++;
       input.advance();
     } else {
       if (inside)
@@ -7378,39 +8982,39 @@ var unitToken = new import_lr.ExternalTokenizer((input) => {
     }
   }
 });
-var cssHighlighting = (0, import_highlight.styleTags)({
-  "AtKeyword import charset namespace keyframes media supports": import_highlight.tags.definitionKeyword,
-  "from to selector": import_highlight.tags.keyword,
-  NamespaceName: import_highlight.tags.namespace,
-  KeyframeName: import_highlight.tags.labelName,
-  TagName: import_highlight.tags.tagName,
-  ClassName: import_highlight.tags.className,
-  PseudoClassName: import_highlight.tags.constant(import_highlight.tags.className),
-  IdName: import_highlight.tags.labelName,
-  "FeatureName PropertyName": import_highlight.tags.propertyName,
-  AttributeName: import_highlight.tags.attributeName,
-  NumberLiteral: import_highlight.tags.number,
-  KeywordQuery: import_highlight.tags.keyword,
-  UnaryQueryOp: import_highlight.tags.operatorKeyword,
-  "CallTag ValueName": import_highlight.tags.atom,
-  VariableName: import_highlight.tags.variableName,
-  Callee: import_highlight.tags.operatorKeyword,
-  Unit: import_highlight.tags.unit,
-  "UniversalSelector NestingSelector": import_highlight.tags.definitionOperator,
-  MatchOp: import_highlight.tags.compareOperator,
-  "ChildOp SiblingOp, LogicOp": import_highlight.tags.logicOperator,
-  BinOp: import_highlight.tags.arithmeticOperator,
-  Important: import_highlight.tags.modifier,
-  Comment: import_highlight.tags.blockComment,
-  ParenthesizedContent: import_highlight.tags.special(import_highlight.tags.name),
-  ColorLiteral: import_highlight.tags.color,
-  StringLiteral: import_highlight.tags.string,
-  ":": import_highlight.tags.punctuation,
-  "PseudoOp #": import_highlight.tags.derefOperator,
-  "; ,": import_highlight.tags.separator,
-  "( )": import_highlight.tags.paren,
-  "[ ]": import_highlight.tags.squareBracket,
-  "{ }": import_highlight.tags.brace
+var cssHighlighting = (0, import_highlight2.styleTags)({
+  "AtKeyword import charset namespace keyframes media supports": import_highlight2.tags.definitionKeyword,
+  "from to selector": import_highlight2.tags.keyword,
+  NamespaceName: import_highlight2.tags.namespace,
+  KeyframeName: import_highlight2.tags.labelName,
+  TagName: import_highlight2.tags.tagName,
+  ClassName: import_highlight2.tags.className,
+  PseudoClassName: import_highlight2.tags.constant(import_highlight2.tags.className),
+  IdName: import_highlight2.tags.labelName,
+  "FeatureName PropertyName": import_highlight2.tags.propertyName,
+  AttributeName: import_highlight2.tags.attributeName,
+  NumberLiteral: import_highlight2.tags.number,
+  KeywordQuery: import_highlight2.tags.keyword,
+  UnaryQueryOp: import_highlight2.tags.operatorKeyword,
+  "CallTag ValueName": import_highlight2.tags.atom,
+  VariableName: import_highlight2.tags.variableName,
+  Callee: import_highlight2.tags.operatorKeyword,
+  Unit: import_highlight2.tags.unit,
+  "UniversalSelector NestingSelector": import_highlight2.tags.definitionOperator,
+  MatchOp: import_highlight2.tags.compareOperator,
+  "ChildOp SiblingOp, LogicOp": import_highlight2.tags.logicOperator,
+  BinOp: import_highlight2.tags.arithmeticOperator,
+  Important: import_highlight2.tags.modifier,
+  Comment: import_highlight2.tags.blockComment,
+  ParenthesizedContent: import_highlight2.tags.special(import_highlight2.tags.name),
+  ColorLiteral: import_highlight2.tags.color,
+  StringLiteral: import_highlight2.tags.string,
+  ":": import_highlight2.tags.punctuation,
+  "PseudoOp #": import_highlight2.tags.derefOperator,
+  "; ,": import_highlight2.tags.separator,
+  "( )": import_highlight2.tags.paren,
+  "[ ]": import_highlight2.tags.squareBracket,
+  "{ }": import_highlight2.tags.brace
 });
 var spec_callee = { __proto__: null, lang: 32, "nth-child": 32, "nth-last-child": 32, "nth-of-type": 32, "nth-last-of-type": 32, dir: 32, "host-context": 32, url: 60, "url-prefix": 60, domain: 60, regexp: 60, selector: 134 };
 var spec_AtKeyword = { __proto__: null, "@import": 114, "@media": 138, "@charset": 142, "@namespace": 146, "@keyframes": 152, "@supports": 164 };
@@ -7437,7 +9041,7 @@ var parser = import_lr.LRParser.deserialize({
 });
 
 // node_modules/@codemirror/lang-css/dist/index.js
-var import_language2 = require("@codemirror/language");
+var import_language4 = require("@codemirror/language");
 var import_common = require("@lezer/common");
 var _properties = null;
 function properties() {
@@ -8222,7 +9826,7 @@ function variableNames(doc, node, isVariable) {
   }
 }
 var defineCSSCompletionSource = (isVariable) => (context) => {
-  let { state, pos } = context, node = (0, import_language2.syntaxTree)(state).resolveInner(pos, -1);
+  let { state, pos } = context, node = (0, import_language4.syntaxTree)(state).resolveInner(pos, -1);
   let isDash = node.type.isError && node.from == node.to - 1 && state.doc.sliceString(node.from, node.to) == "-";
   if (node.name == "PropertyName" || (isDash || node.name == "TagName") && /^(Block|Styles)$/.test(node.resolve(node.to).name))
     return { from: node.from, options: properties(), validFor: identifier2 };
@@ -8253,16 +9857,15 @@ var defineCSSCompletionSource = (isVariable) => (context) => {
     return { from: pos, options: properties(), validFor: identifier2 };
   return null;
 };
-var cssCompletionSource = /* @__PURE__ */ defineCSSCompletionSource((n) => n.name == "VariableName");
-var cssLanguage = /* @__PURE__ */ import_language2.LRLanguage.define({
+var cssLanguage = /* @__PURE__ */ import_language4.LRLanguage.define({
   name: "css",
   parser: /* @__PURE__ */ parser.configure({
     props: [
-      /* @__PURE__ */ import_language2.indentNodeProp.add({
-        Declaration: /* @__PURE__ */ (0, import_language2.continuedIndent)()
+      /* @__PURE__ */ import_language4.indentNodeProp.add({
+        Declaration: /* @__PURE__ */ (0, import_language4.continuedIndent)()
       }),
-      /* @__PURE__ */ import_language2.foldNodeProp.add({
-        Block: import_language2.foldInside
+      /* @__PURE__ */ import_language4.foldNodeProp.add({
+        Block: import_language4.foldInside
       })
     ]
   }),
@@ -8272,1645 +9875,135 @@ var cssLanguage = /* @__PURE__ */ import_language2.LRLanguage.define({
     wordChars: "-"
   }
 });
-function css() {
-  return new import_language2.LanguageSupport(cssLanguage, cssLanguage.data.of({ autocomplete: cssCompletionSource }));
-}
 
-// src/codemirror-extensions/basic-extensions.ts
+// src/codemirror-extensions/reconfigured-css.ts
 var import_language5 = require("@codemirror/language");
-var import_state3 = require("@codemirror/state");
-var import_view4 = require("@codemirror/view");
-
-// node_modules/@codemirror/autocomplete/dist/index.js
-var import_state2 = require("@codemirror/state");
-var import_view2 = require("@codemirror/view");
-var import_language3 = require("@codemirror/language");
-var CompletionContext = class {
-  /**
-  Create a new completion context. (Mostly useful for testing
-  completion sources—in the editor, the extension will create
-  these for you.)
-  */
-  constructor(state, pos, explicit) {
-    this.state = state;
-    this.pos = pos;
-    this.explicit = explicit;
-    this.abortListeners = [];
-  }
-  /**
-  Get the extent, content, and (if there is a token) type of the
-  token before `this.pos`.
-  */
-  tokenBefore(types) {
-    let token = (0, import_language3.syntaxTree)(this.state).resolveInner(this.pos, -1);
-    while (token && types.indexOf(token.name) < 0)
-      token = token.parent;
-    return token ? {
-      from: token.from,
-      to: this.pos,
-      text: this.state.sliceDoc(token.from, this.pos),
-      type: token.type
-    } : null;
-  }
-  /**
-  Get the match of the given expression directly before the
-  cursor.
-  */
-  matchBefore(expr) {
-    let line = this.state.doc.lineAt(this.pos);
-    let start = Math.max(line.from, this.pos - 250);
-    let str = line.text.slice(start - line.from, this.pos - line.from);
-    let found = str.search(ensureAnchor(expr, false));
-    return found < 0 ? null : { from: start + found, to: this.pos, text: str.slice(found) };
-  }
-  /**
-  Yields true when the query has been aborted. Can be useful in
-  asynchronous queries to avoid doing work that will be ignored.
-  */
-  get aborted() {
-    return this.abortListeners == null;
-  }
-  /**
-  Allows you to register abort handlers, which will be called when
-  the query is
-  [aborted](https://codemirror.net/6/docs/ref/#autocomplete.CompletionContext.aborted).
-  */
-  addEventListener(type, listener) {
-    if (type == "abort" && this.abortListeners)
-      this.abortListeners.push(listener);
-  }
+var import_common2 = require("@lezer/common");
+var ClassSelectorCtx = ["ClassSelector"];
+var IdSelectorCtx = ["IdSelector"];
+var SelectorsByNode = {
+  ["class" /* CLASS */]: new import_common2.NodeWeakMap(),
+  ["id" /* ID */]: new import_common2.NodeWeakMap()
 };
-function toSet(chars) {
-  let flat = Object.keys(chars).join("");
-  let words = /\w/.test(flat);
-  if (words)
-    flat = flat.replace(/\w/g, "");
-  return `[${words ? "\\w" : ""}${flat.replace(/[^\w\s]/g, "\\$&")}]`;
-}
-function prefixMatch(options) {
-  let first = /* @__PURE__ */ Object.create(null), rest = /* @__PURE__ */ Object.create(null);
-  for (let { label } of options) {
-    first[label[0]] = true;
-    for (let i = 1; i < label.length; i++)
-      rest[label[i]] = true;
-  }
-  let source = toSet(first) + toSet(rest) + "*$";
-  return [new RegExp("^" + source), new RegExp(source)];
-}
-function completeFromList(list) {
-  let options = list.map((o) => typeof o == "string" ? { label: o } : o);
-  let [validFor, match] = options.every((o) => /^\w+$/.test(o.label)) ? [/\w*$/, /\w+$/] : prefixMatch(options);
-  return (context) => {
-    let token = context.matchBefore(match);
-    return token || context.explicit ? { from: token ? token.from : context.pos, options, validFor } : null;
-  };
-}
-var Option = class {
-  constructor(completion, source, match, score2) {
-    this.completion = completion;
-    this.source = source;
-    this.match = match;
-    this.score = score2;
-  }
-};
-function cur(state) {
-  return state.selection.main.from;
-}
-function ensureAnchor(expr, start) {
-  var _a;
-  let { source } = expr;
-  let addStart = start && source[0] != "^", addEnd = source[source.length - 1] != "$";
-  if (!addStart && !addEnd)
-    return expr;
-  return new RegExp(`${addStart ? "^" : ""}(?:${source})${addEnd ? "$" : ""}`, (_a = expr.flags) !== null && _a !== void 0 ? _a : expr.ignoreCase ? "i" : "");
-}
-var pickedCompletion = /* @__PURE__ */ import_state2.Annotation.define();
-function insertCompletionText(state, text, from, to) {
-  let { main } = state.selection, fromOff = from - main.from, toOff = to - main.from;
-  return Object.assign(Object.assign({}, state.changeByRange((range) => {
-    if (range != main && from != to && state.sliceDoc(range.from + fromOff, range.from + toOff) != state.sliceDoc(from, to))
-      return { range };
-    return {
-      changes: { from: range.from + fromOff, to: to == main.from ? range.to : range.from + toOff, insert: text },
-      range: import_state2.EditorSelection.cursor(range.from + fromOff + text.length)
-    };
-  })), { userEvent: "input.complete" });
-}
-var SourceCache = /* @__PURE__ */ new WeakMap();
-function asSource(source) {
-  if (!Array.isArray(source))
-    return source;
-  let known = SourceCache.get(source);
-  if (!known)
-    SourceCache.set(source, known = completeFromList(source));
-  return known;
-}
-var startCompletionEffect = /* @__PURE__ */ import_state2.StateEffect.define();
-var closeCompletionEffect = /* @__PURE__ */ import_state2.StateEffect.define();
-var FuzzyMatcher = class {
-  constructor(pattern) {
-    this.pattern = pattern;
-    this.chars = [];
-    this.folded = [];
-    this.any = [];
-    this.precise = [];
-    this.byWord = [];
-    for (let p = 0; p < pattern.length; ) {
-      let char = (0, import_state2.codePointAt)(pattern, p), size = (0, import_state2.codePointSize)(char);
-      this.chars.push(char);
-      let part = pattern.slice(p, p + size), upper = part.toUpperCase();
-      this.folded.push((0, import_state2.codePointAt)(upper == part ? part.toLowerCase() : upper, 0));
-      p += size;
-    }
-    this.astral = pattern.length != this.chars.length;
-  }
-  // Matches a given word (completion) against the pattern (input).
-  // Will return null for no match, and otherwise an array that starts
-  // with the match score, followed by any number of `from, to` pairs
-  // indicating the matched parts of `word`.
-  //
-  // The score is a number that is more negative the worse the match
-  // is. See `Penalty` above.
-  match(word) {
-    if (this.pattern.length == 0)
-      return [
-        -100
-        /* NotFull */
-      ];
-    if (word.length < this.pattern.length)
-      return null;
-    let { chars, folded, any, precise, byWord } = this;
-    if (chars.length == 1) {
-      let first = (0, import_state2.codePointAt)(word, 0), firstSize = (0, import_state2.codePointSize)(first);
-      let score2 = firstSize == word.length ? 0 : -100;
-      if (first == chars[0])
-        ;
-      else if (first == folded[0])
-        score2 += -200;
-      else
-        return null;
-      return [score2, 0, firstSize];
-    }
-    let direct = word.indexOf(this.pattern);
-    if (direct == 0)
-      return [word.length == this.pattern.length ? 0 : -100, 0, this.pattern.length];
-    let len = chars.length, anyTo = 0;
-    if (direct < 0) {
-      for (let i = 0, e = Math.min(word.length, 200); i < e && anyTo < len; ) {
-        let next = (0, import_state2.codePointAt)(word, i);
-        if (next == chars[anyTo] || next == folded[anyTo])
-          any[anyTo++] = i;
-        i += (0, import_state2.codePointSize)(next);
-      }
-      if (anyTo < len)
-        return null;
-    }
-    let preciseTo = 0;
-    let byWordTo = 0, byWordFolded = false;
-    let adjacentTo = 0, adjacentStart = -1, adjacentEnd = -1;
-    let hasLower = /[a-z]/.test(word), wordAdjacent = true;
-    for (let i = 0, e = Math.min(word.length, 200), prevType = 0; i < e && byWordTo < len; ) {
-      let next = (0, import_state2.codePointAt)(word, i);
-      if (direct < 0) {
-        if (preciseTo < len && next == chars[preciseTo])
-          precise[preciseTo++] = i;
-        if (adjacentTo < len) {
-          if (next == chars[adjacentTo] || next == folded[adjacentTo]) {
-            if (adjacentTo == 0)
-              adjacentStart = i;
-            adjacentEnd = i + 1;
-            adjacentTo++;
-          } else {
-            adjacentTo = 0;
-          }
-        }
-      }
-      let ch, type = next < 255 ? next >= 48 && next <= 57 || next >= 97 && next <= 122 ? 2 : next >= 65 && next <= 90 ? 1 : 0 : (ch = (0, import_state2.fromCodePoint)(next)) != ch.toLowerCase() ? 1 : ch != ch.toUpperCase() ? 2 : 0;
-      if (!i || type == 1 && hasLower || prevType == 0 && type != 0) {
-        if (chars[byWordTo] == next || folded[byWordTo] == next && (byWordFolded = true))
-          byWord[byWordTo++] = i;
-        else if (byWord.length)
-          wordAdjacent = false;
-      }
-      prevType = type;
-      i += (0, import_state2.codePointSize)(next);
-    }
-    if (byWordTo == len && byWord[0] == 0 && wordAdjacent)
-      return this.result(-100 + (byWordFolded ? -200 : 0), byWord, word);
-    if (adjacentTo == len && adjacentStart == 0)
-      return [-200 - word.length + (adjacentEnd == word.length ? 0 : -100), 0, adjacentEnd];
-    if (direct > -1)
-      return [-700 - word.length, direct, direct + this.pattern.length];
-    if (adjacentTo == len)
-      return [-200 + -700 - word.length, adjacentStart, adjacentEnd];
-    if (byWordTo == len)
-      return this.result(-100 + (byWordFolded ? -200 : 0) + -700 + (wordAdjacent ? 0 : -1100), byWord, word);
-    return chars.length == 2 ? null : this.result((any[0] ? -700 : 0) + -200 + -1100, any, word);
-  }
-  result(score2, positions, word) {
-    let result = [score2 - word.length], i = 1;
-    for (let pos of positions) {
-      let to = pos + (this.astral ? (0, import_state2.codePointSize)((0, import_state2.codePointAt)(word, pos)) : 1);
-      if (i > 1 && result[i - 1] == pos)
-        result[i - 1] = to;
-      else {
-        result[i++] = pos;
-        result[i++] = to;
-      }
-    }
-    return result;
-  }
-};
-var completionConfig = /* @__PURE__ */ import_state2.Facet.define({
-  combine(configs) {
-    return (0, import_state2.combineConfig)(configs, {
-      activateOnTyping: true,
-      selectOnOpen: true,
-      override: null,
-      closeOnBlur: true,
-      maxRenderedOptions: 100,
-      defaultKeymap: true,
-      tooltipClass: () => "",
-      optionClass: () => "",
-      aboveCursor: false,
-      icons: true,
-      addToOptions: [],
-      positionInfo: defaultPositionInfo,
-      compareCompletions: (a, b) => a.label.localeCompare(b.label),
-      interactionDelay: 75
-    }, {
-      defaultKeymap: (a, b) => a && b,
-      closeOnBlur: (a, b) => a && b,
-      icons: (a, b) => a && b,
-      tooltipClass: (a, b) => (c) => joinClass(a(c), b(c)),
-      optionClass: (a, b) => (c) => joinClass(a(c), b(c)),
-      addToOptions: (a, b) => a.concat(b)
-    });
-  }
-});
-function joinClass(a, b) {
-  return a ? b ? a + " " + b : a : b;
-}
-function defaultPositionInfo(view, list, option, info, space2) {
-  let rtl = view.textDirection == import_view2.Direction.RTL, left = rtl, narrow = false;
-  let side = "top", offset, maxWidth;
-  let spaceLeft = list.left - space2.left, spaceRight = space2.right - list.right;
-  let infoWidth = info.right - info.left, infoHeight = info.bottom - info.top;
-  if (left && spaceLeft < Math.min(infoWidth, spaceRight))
-    left = false;
-  else if (!left && spaceRight < Math.min(infoWidth, spaceLeft))
-    left = true;
-  if (infoWidth <= (left ? spaceLeft : spaceRight)) {
-    offset = Math.max(space2.top, Math.min(option.top, space2.bottom - infoHeight)) - list.top;
-    maxWidth = Math.min(400, left ? spaceLeft : spaceRight);
-  } else {
-    narrow = true;
-    maxWidth = Math.min(
-      400,
-      (rtl ? list.right : space2.right - list.left) - 30
-      /* Margin */
-    );
-    let spaceBelow = space2.bottom - list.bottom;
-    if (spaceBelow >= infoHeight || spaceBelow > list.top) {
-      offset = option.bottom - list.top;
-    } else {
-      side = "bottom";
-      offset = list.bottom - option.top;
-    }
-  }
-  return {
-    style: `${side}: ${offset}px; max-width: ${maxWidth}px`,
-    class: "cm-completionInfo-" + (narrow ? rtl ? "left-narrow" : "right-narrow" : left ? "left" : "right")
-  };
-}
-function optionContent(config3) {
-  let content = config3.addToOptions.slice();
-  if (config3.icons)
-    content.push({
-      render(completion) {
-        let icon = document.createElement("div");
-        icon.classList.add("cm-completionIcon");
-        if (completion.type)
-          icon.classList.add(...completion.type.split(/\s+/g).map((cls) => "cm-completionIcon-" + cls));
-        icon.setAttribute("aria-hidden", "true");
-        return icon;
-      },
-      position: 20
-    });
-  content.push({
-    render(completion, _s, match) {
-      let labelElt = document.createElement("span");
-      labelElt.className = "cm-completionLabel";
-      let { label } = completion, off2 = 0;
-      for (let j = 1; j < match.length; ) {
-        let from = match[j++], to = match[j++];
-        if (from > off2)
-          labelElt.appendChild(document.createTextNode(label.slice(off2, from)));
-        let span = labelElt.appendChild(document.createElement("span"));
-        span.appendChild(document.createTextNode(label.slice(from, to)));
-        span.className = "cm-completionMatchedText";
-        off2 = to;
-      }
-      if (off2 < label.length)
-        labelElt.appendChild(document.createTextNode(label.slice(off2)));
-      return labelElt;
-    },
-    position: 50
-  }, {
-    render(completion) {
-      if (!completion.detail)
-        return null;
-      let detailElt = document.createElement("span");
-      detailElt.className = "cm-completionDetail";
-      detailElt.textContent = completion.detail;
-      return detailElt;
-    },
-    position: 80
-  });
-  return content.sort((a, b) => a.position - b.position).map((a) => a.render);
-}
-function rangeAroundSelected(total, selected, max) {
-  if (total <= max)
-    return { from: 0, to: total };
-  if (selected < 0)
-    selected = 0;
-  if (selected <= total >> 1) {
-    let off3 = Math.floor(selected / max);
-    return { from: off3 * max, to: (off3 + 1) * max };
-  }
-  let off2 = Math.floor((total - selected) / max);
-  return { from: total - (off2 + 1) * max, to: total - off2 * max };
-}
-var CompletionTooltip = class {
-  constructor(view, stateField, applyCompletion2) {
-    this.view = view;
-    this.stateField = stateField;
-    this.applyCompletion = applyCompletion2;
-    this.info = null;
-    this.infoDestroy = null;
-    this.placeInfoReq = {
-      read: () => this.measureInfo(),
-      write: (pos) => this.placeInfo(pos),
-      key: this
-    };
-    this.space = null;
-    this.currentClass = "";
-    let cState = view.state.field(stateField);
-    let { options, selected } = cState.open;
-    let config3 = view.state.facet(completionConfig);
-    this.optionContent = optionContent(config3);
-    this.optionClass = config3.optionClass;
-    this.tooltipClass = config3.tooltipClass;
-    this.range = rangeAroundSelected(options.length, selected, config3.maxRenderedOptions);
-    this.dom = document.createElement("div");
-    this.dom.className = "cm-tooltip-autocomplete";
-    this.updateTooltipClass(view.state);
-    this.dom.addEventListener("mousedown", (e) => {
-      for (let dom = e.target, match; dom && dom != this.dom; dom = dom.parentNode) {
-        if (dom.nodeName == "LI" && (match = /-(\d+)$/.exec(dom.id)) && +match[1] < options.length) {
-          this.applyCompletion(view, options[+match[1]]);
-          e.preventDefault();
-          return;
-        }
-      }
-    });
-    this.dom.addEventListener("focusout", (e) => {
-      let state = view.state.field(this.stateField, false);
-      if (state && state.tooltip && view.state.facet(completionConfig).closeOnBlur && e.relatedTarget != view.contentDOM)
-        view.dispatch({ effects: closeCompletionEffect.of(null) });
-    });
-    this.list = this.dom.appendChild(this.createListBox(options, cState.id, this.range));
-    this.list.addEventListener("scroll", () => {
-      if (this.info)
-        this.view.requestMeasure(this.placeInfoReq);
-    });
-  }
-  mount() {
-    this.updateSel();
-  }
-  update(update) {
-    var _a, _b, _c;
-    let cState = update.state.field(this.stateField);
-    let prevState = update.startState.field(this.stateField);
-    this.updateTooltipClass(update.state);
-    if (cState != prevState) {
-      this.updateSel();
-      if (((_a = cState.open) === null || _a === void 0 ? void 0 : _a.disabled) != ((_b = prevState.open) === null || _b === void 0 ? void 0 : _b.disabled))
-        this.dom.classList.toggle("cm-tooltip-autocomplete-disabled", !!((_c = cState.open) === null || _c === void 0 ? void 0 : _c.disabled));
-    }
-  }
-  updateTooltipClass(state) {
-    let cls = this.tooltipClass(state);
-    if (cls != this.currentClass) {
-      for (let c of this.currentClass.split(" "))
-        if (c)
-          this.dom.classList.remove(c);
-      for (let c of cls.split(" "))
-        if (c)
-          this.dom.classList.add(c);
-      this.currentClass = cls;
-    }
-  }
-  positioned(space2) {
-    this.space = space2;
-    if (this.info)
-      this.view.requestMeasure(this.placeInfoReq);
-  }
-  updateSel() {
-    let cState = this.view.state.field(this.stateField), open = cState.open;
-    if (open.selected > -1 && open.selected < this.range.from || open.selected >= this.range.to) {
-      this.range = rangeAroundSelected(open.options.length, open.selected, this.view.state.facet(completionConfig).maxRenderedOptions);
-      this.list.remove();
-      this.list = this.dom.appendChild(this.createListBox(open.options, cState.id, this.range));
-      this.list.addEventListener("scroll", () => {
-        if (this.info)
-          this.view.requestMeasure(this.placeInfoReq);
-      });
-    }
-    if (this.updateSelectedOption(open.selected)) {
-      this.destroyInfo();
-      let { completion } = open.options[open.selected];
-      let { info } = completion;
-      if (!info)
-        return;
-      let infoResult = typeof info === "string" ? document.createTextNode(info) : info(completion);
-      if (!infoResult)
-        return;
-      if ("then" in infoResult) {
-        infoResult.then((obj) => {
-          if (obj && this.view.state.field(this.stateField, false) == cState)
-            this.addInfoPane(obj, completion);
-        }).catch((e) => (0, import_view2.logException)(this.view.state, e, "completion info"));
-      } else {
-        this.addInfoPane(infoResult, completion);
-      }
-    }
-  }
-  addInfoPane(content, completion) {
-    this.destroyInfo();
-    let wrap = this.info = document.createElement("div");
-    wrap.className = "cm-tooltip cm-completionInfo";
-    if (content.nodeType != null) {
-      wrap.appendChild(content);
-      this.infoDestroy = null;
-    } else {
-      let { dom, destroy } = content;
-      wrap.appendChild(dom);
-      this.infoDestroy = destroy || null;
-    }
-    this.dom.appendChild(wrap);
-    this.view.requestMeasure(this.placeInfoReq);
-  }
-  updateSelectedOption(selected) {
-    let set = null;
-    for (let opt = this.list.firstChild, i = this.range.from; opt; opt = opt.nextSibling, i++) {
-      if (opt.nodeName != "LI" || !opt.id) {
-        i--;
-      } else if (i == selected) {
-        if (!opt.hasAttribute("aria-selected")) {
-          opt.setAttribute("aria-selected", "true");
-          set = opt;
-        }
-      } else {
-        if (opt.hasAttribute("aria-selected"))
-          opt.removeAttribute("aria-selected");
-      }
-    }
-    if (set)
-      scrollIntoView(this.list, set);
-    return set;
-  }
-  measureInfo() {
-    let sel = this.dom.querySelector("[aria-selected]");
-    if (!sel || !this.info)
-      return null;
-    let listRect = this.dom.getBoundingClientRect();
-    let infoRect = this.info.getBoundingClientRect();
-    let selRect = sel.getBoundingClientRect();
-    let space2 = this.space;
-    if (!space2) {
-      let win = this.dom.ownerDocument.defaultView || window;
-      space2 = { left: 0, top: 0, right: win.innerWidth, bottom: win.innerHeight };
-    }
-    if (selRect.top > Math.min(space2.bottom, listRect.bottom) - 10 || selRect.bottom < Math.max(space2.top, listRect.top) + 10)
-      return null;
-    return this.view.state.facet(completionConfig).positionInfo(this.view, listRect, selRect, infoRect, space2);
-  }
-  placeInfo(pos) {
-    if (this.info) {
-      if (pos) {
-        if (pos.style)
-          this.info.style.cssText = pos.style;
-        this.info.className = "cm-tooltip cm-completionInfo " + (pos.class || "");
-      } else {
-        this.info.style.cssText = "top: -1e6px";
-      }
-    }
-  }
-  createListBox(options, id, range) {
-    const ul = document.createElement("ul");
-    ul.id = id;
-    ul.setAttribute("role", "listbox");
-    ul.setAttribute("aria-expanded", "true");
-    ul.setAttribute("aria-label", this.view.state.phrase("Completions"));
-    let curSection = null;
-    for (let i = range.from; i < range.to; i++) {
-      let { completion, match } = options[i], { section } = completion;
-      if (section) {
-        let name = typeof section == "string" ? section : section.name;
-        if (name != curSection && (i > range.from || range.from == 0)) {
-          curSection = name;
-          if (typeof section != "string" && section.header) {
-            ul.appendChild(section.header(section));
-          } else {
-            let header = ul.appendChild(document.createElement("completion-section"));
-            header.textContent = name;
-          }
-        }
-      }
-      const li = ul.appendChild(document.createElement("li"));
-      li.id = id + "-" + i;
-      li.setAttribute("role", "option");
-      let cls = this.optionClass(completion);
-      if (cls)
-        li.className = cls;
-      for (let source of this.optionContent) {
-        let node = source(completion, this.view.state, match);
-        if (node)
-          li.appendChild(node);
-      }
-    }
-    if (range.from)
-      ul.classList.add("cm-completionListIncompleteTop");
-    if (range.to < options.length)
-      ul.classList.add("cm-completionListIncompleteBottom");
-    return ul;
-  }
-  destroyInfo() {
-    if (this.info) {
-      if (this.infoDestroy)
-        this.infoDestroy();
-      this.info.remove();
-      this.info = null;
-    }
-  }
-  destroy() {
-    this.destroyInfo();
-  }
-};
-function completionTooltip(stateField, applyCompletion2) {
-  return (view) => new CompletionTooltip(view, stateField, applyCompletion2);
-}
-function scrollIntoView(container, element) {
-  let parent = container.getBoundingClientRect();
-  let self = element.getBoundingClientRect();
-  if (self.top < parent.top)
-    container.scrollTop -= parent.top - self.top;
-  else if (self.bottom > parent.bottom)
-    container.scrollTop += self.bottom - parent.bottom;
-}
-function score(option) {
-  return (option.boost || 0) * 100 + (option.apply ? 10 : 0) + (option.info ? 5 : 0) + (option.type ? 1 : 0);
-}
-function sortOptions(active, state) {
-  let options = [];
-  let sections = null;
-  let addOption = (option) => {
-    options.push(option);
-    let { section } = option.completion;
-    if (section) {
-      if (!sections)
-        sections = [];
-      let name = typeof section == "string" ? section : section.name;
-      if (!sections.some((s) => s.name == name))
-        sections.push(typeof section == "string" ? { name } : section);
-    }
-  };
-  for (let a of active)
-    if (a.hasResult()) {
-      if (a.result.filter === false) {
-        let getMatch = a.result.getMatch;
-        for (let option of a.result.options) {
-          let match = [1e9 - options.length];
-          if (getMatch)
-            for (let n of getMatch(option))
-              match.push(n);
-          addOption(new Option(option, a.source, match, match[0]));
-        }
-      } else {
-        let matcher = new FuzzyMatcher(state.sliceDoc(a.from, a.to)), match;
-        for (let option of a.result.options)
-          if (match = matcher.match(option.label)) {
-            addOption(new Option(option, a.source, match, match[0] + (option.boost || 0)));
-          }
-      }
-    }
-  if (sections) {
-    let sectionOrder = /* @__PURE__ */ Object.create(null), pos = 0;
-    let cmp = (a, b) => {
-      var _a, _b;
-      return ((_a = a.rank) !== null && _a !== void 0 ? _a : 1e9) - ((_b = b.rank) !== null && _b !== void 0 ? _b : 1e9) || (a.name < b.name ? -1 : 1);
-    };
-    for (let s of sections.sort(cmp)) {
-      pos -= 1e5;
-      sectionOrder[s.name] = pos;
-    }
-    for (let option of options) {
-      let { section } = option.completion;
-      if (section)
-        option.score += sectionOrder[typeof section == "string" ? section : section.name];
-    }
-  }
-  let result = [], prev = null;
-  let compare = state.facet(completionConfig).compareCompletions;
-  for (let opt of options.sort((a, b) => b.score - a.score || compare(a.completion, b.completion))) {
-    let cur2 = opt.completion;
-    if (!prev || prev.label != cur2.label || prev.detail != cur2.detail || prev.type != null && cur2.type != null && prev.type != cur2.type || prev.apply != cur2.apply || prev.boost != cur2.boost)
-      result.push(opt);
-    else if (score(opt.completion) > score(prev))
-      result[result.length - 1] = opt;
-    prev = opt.completion;
-  }
-  return result;
-}
-var CompletionDialog = class {
-  constructor(options, attrs, tooltip, timestamp, selected, disabled) {
-    this.options = options;
-    this.attrs = attrs;
-    this.tooltip = tooltip;
-    this.timestamp = timestamp;
-    this.selected = selected;
-    this.disabled = disabled;
-  }
-  setSelected(selected, id) {
-    return selected == this.selected || selected >= this.options.length ? this : new CompletionDialog(this.options, makeAttrs(id, selected), this.tooltip, this.timestamp, selected, this.disabled);
-  }
-  static build(active, state, id, prev, conf) {
-    let options = sortOptions(active, state);
-    if (!options.length) {
-      return prev && active.some(
-        (a) => a.state == 1
-        /* Pending */
-      ) ? new CompletionDialog(prev.options, prev.attrs, prev.tooltip, prev.timestamp, prev.selected, true) : null;
-    }
-    let selected = state.facet(completionConfig).selectOnOpen ? 0 : -1;
-    if (prev && prev.selected != selected && prev.selected != -1) {
-      let selectedValue = prev.options[prev.selected].completion;
-      for (let i = 0; i < options.length; i++)
-        if (options[i].completion == selectedValue) {
-          selected = i;
-          break;
-        }
-    }
-    return new CompletionDialog(options, makeAttrs(id, selected), {
-      pos: active.reduce((a, b) => b.hasResult() ? Math.min(a, b.from) : a, 1e8),
-      create: completionTooltip(completionState, applyCompletion),
-      above: conf.aboveCursor
-    }, prev ? prev.timestamp : Date.now(), selected, false);
-  }
-  map(changes) {
-    return new CompletionDialog(this.options, this.attrs, Object.assign(Object.assign({}, this.tooltip), { pos: changes.mapPos(this.tooltip.pos) }), this.timestamp, this.selected, this.disabled);
-  }
-};
-var CompletionState = class {
-  constructor(active, id, open) {
-    this.active = active;
-    this.id = id;
-    this.open = open;
-  }
-  static start() {
-    return new CompletionState(none, "cm-ac-" + Math.floor(Math.random() * 2e6).toString(36), null);
-  }
-  update(tr) {
-    let { state } = tr, conf = state.facet(completionConfig);
-    let sources = conf.override || state.languageDataAt("autocomplete", cur(state)).map(asSource);
-    let active = sources.map((source) => {
-      let value = this.active.find((s) => s.source == source) || new ActiveSource(
-        source,
-        this.active.some(
-          (a) => a.state != 0
-          /* Inactive */
-        ) ? 1 : 0
-        /* Inactive */
-      );
-      return value.update(tr, conf);
-    });
-    if (active.length == this.active.length && active.every((a, i) => a == this.active[i]))
-      active = this.active;
-    let open = this.open;
-    if (open && tr.docChanged)
-      open = open.map(tr.changes);
-    if (tr.selection || active.some((a) => a.hasResult() && tr.changes.touchesRange(a.from, a.to)) || !sameResults(active, this.active))
-      open = CompletionDialog.build(active, state, this.id, open, conf);
-    else if (open && open.disabled && !active.some(
-      (a) => a.state == 1
-      /* Pending */
-    ))
-      open = null;
-    if (!open && active.every(
-      (a) => a.state != 1
-      /* Pending */
-    ) && active.some((a) => a.hasResult()))
-      active = active.map((a) => a.hasResult() ? new ActiveSource(
-        a.source,
-        0
-        /* Inactive */
-      ) : a);
-    for (let effect of tr.effects)
-      if (effect.is(setSelectedEffect))
-        open = open && open.setSelected(effect.value, this.id);
-    return active == this.active && open == this.open ? this : new CompletionState(active, this.id, open);
-  }
-  get tooltip() {
-    return this.open ? this.open.tooltip : null;
-  }
-  get attrs() {
-    return this.open ? this.open.attrs : baseAttrs;
-  }
-};
-function sameResults(a, b) {
-  if (a == b)
-    return true;
-  for (let iA = 0, iB = 0; ; ) {
-    while (iA < a.length && !a[iA].hasResult)
-      iA++;
-    while (iB < b.length && !b[iB].hasResult)
-      iB++;
-    let endA = iA == a.length, endB = iB == b.length;
-    if (endA || endB)
-      return endA == endB;
-    if (a[iA++].result != b[iB++].result)
-      return false;
+var Identifier = /^(\w[\w-]*|-\w[\w-]*|)$/;
+function getASTTop(node) {
+  for (let cur2 = node; ; ) {
+    if (cur2.type.isTop)
+      return cur2;
+    if (!(cur2 = cur2.parent))
+      return node;
   }
 }
-var baseAttrs = {
-  "aria-autocomplete": "list"
-};
-function makeAttrs(id, selected) {
-  let result = {
-    "aria-autocomplete": "list",
-    "aria-haspopup": "listbox",
-    "aria-controls": id
-  };
-  if (selected > -1)
-    result["aria-activedescendant"] = id + "-" + selected;
-  return result;
-}
-var none = [];
-function getUserEvent(tr) {
-  return tr.isUserEvent("input.type") ? "input" : tr.isUserEvent("delete.backward") ? "delete" : null;
-}
-var ActiveSource = class {
-  constructor(source, state, explicitPos = -1) {
-    this.source = source;
-    this.state = state;
-    this.explicitPos = explicitPos;
-  }
-  hasResult() {
-    return false;
-  }
-  update(tr, conf) {
-    let event = getUserEvent(tr), value = this;
-    if (event)
-      value = value.handleUserEvent(tr, event, conf);
-    else if (tr.docChanged)
-      value = value.handleChange(tr);
-    else if (tr.selection && value.state != 0)
-      value = new ActiveSource(
-        value.source,
-        0
-        /* Inactive */
-      );
-    for (let effect of tr.effects) {
-      if (effect.is(startCompletionEffect))
-        value = new ActiveSource(value.source, 1, effect.value ? cur(tr.state) : -1);
-      else if (effect.is(closeCompletionEffect))
-        value = new ActiveSource(
-          value.source,
-          0
-          /* Inactive */
-        );
-      else if (effect.is(setActiveEffect)) {
-        for (let active of effect.value)
-          if (active.source == value.source)
-            value = active;
-      }
-    }
-    return value;
-  }
-  handleUserEvent(tr, type, conf) {
-    return type == "delete" || !conf.activateOnTyping ? this.map(tr.changes) : new ActiveSource(
-      this.source,
-      1
-      /* Pending */
-    );
-  }
-  handleChange(tr) {
-    return tr.changes.touchesRange(cur(tr.startState)) ? new ActiveSource(
-      this.source,
-      0
-      /* Inactive */
-    ) : this.map(tr.changes);
-  }
-  map(changes) {
-    return changes.empty || this.explicitPos < 0 ? this : new ActiveSource(this.source, this.state, changes.mapPos(this.explicitPos));
-  }
-};
-var ActiveResult = class extends ActiveSource {
-  constructor(source, explicitPos, result, from, to) {
-    super(source, 2, explicitPos);
-    this.result = result;
-    this.from = from;
-    this.to = to;
-  }
-  hasResult() {
-    return true;
-  }
-  handleUserEvent(tr, type, conf) {
-    var _a;
-    let from = tr.changes.mapPos(this.from), to = tr.changes.mapPos(this.to, 1);
-    let pos = cur(tr.state);
-    if ((this.explicitPos < 0 ? pos <= from : pos < this.from) || pos > to || type == "delete" && cur(tr.startState) == this.from)
-      return new ActiveSource(
-        this.source,
-        type == "input" && conf.activateOnTyping ? 1 : 0
-        /* Inactive */
-      );
-    let explicitPos = this.explicitPos < 0 ? -1 : tr.changes.mapPos(this.explicitPos), updated;
-    if (checkValid(this.result.validFor, tr.state, from, to))
-      return new ActiveResult(this.source, explicitPos, this.result, from, to);
-    if (this.result.update && (updated = this.result.update(this.result, from, to, new CompletionContext(tr.state, pos, explicitPos >= 0))))
-      return new ActiveResult(this.source, explicitPos, updated, updated.from, (_a = updated.to) !== null && _a !== void 0 ? _a : cur(tr.state));
-    return new ActiveSource(this.source, 1, explicitPos);
-  }
-  handleChange(tr) {
-    return tr.changes.touchesRange(this.from, this.to) ? new ActiveSource(
-      this.source,
-      0
-      /* Inactive */
-    ) : this.map(tr.changes);
-  }
-  map(mapping) {
-    return mapping.empty ? this : new ActiveResult(this.source, this.explicitPos < 0 ? -1 : mapping.mapPos(this.explicitPos), this.result, mapping.mapPos(this.from), mapping.mapPos(this.to, 1));
-  }
-};
-function checkValid(validFor, state, from, to) {
-  if (!validFor)
-    return false;
-  let text = state.sliceDoc(from, to);
-  return typeof validFor == "function" ? validFor(text, from, to, state) : ensureAnchor(validFor, true).test(text);
-}
-var setActiveEffect = /* @__PURE__ */ import_state2.StateEffect.define({
-  map(sources, mapping) {
-    return sources.map((s) => s.map(mapping));
-  }
-});
-var setSelectedEffect = /* @__PURE__ */ import_state2.StateEffect.define();
-var completionState = /* @__PURE__ */ import_state2.StateField.define({
-  create() {
-    return CompletionState.start();
-  },
-  update(value, tr) {
-    return value.update(tr);
-  },
-  provide: (f) => [
-    import_view2.showTooltip.from(f, (val) => val.tooltip),
-    import_view2.EditorView.contentAttributes.from(f, (state) => state.attrs)
-  ]
-});
-function applyCompletion(view, option) {
-  const apply = option.completion.apply || option.completion.label;
-  let result = view.state.field(completionState).active.find((a) => a.source == option.source);
-  if (!(result instanceof ActiveResult))
-    return false;
-  if (typeof apply == "string")
-    view.dispatch(Object.assign(Object.assign({}, insertCompletionText(view.state, apply, result.from, result.to)), { annotations: pickedCompletion.of(option.completion) }));
-  else
-    apply(view, option.completion, result.from, result.to);
-  return true;
-}
-function moveCompletionSelection(forward, by = "option") {
-  return (view) => {
-    let cState = view.state.field(completionState, false);
-    if (!cState || !cState.open || cState.open.disabled || Date.now() - cState.open.timestamp < view.state.facet(completionConfig).interactionDelay)
-      return false;
-    let step = 1, tooltip;
-    if (by == "page" && (tooltip = (0, import_view2.getTooltip)(view, cState.open.tooltip)))
-      step = Math.max(2, Math.floor(tooltip.dom.offsetHeight / tooltip.dom.querySelector("li").offsetHeight) - 1);
-    let { length } = cState.open.options;
-    let selected = cState.open.selected > -1 ? cState.open.selected + step * (forward ? 1 : -1) : forward ? 0 : length - 1;
-    if (selected < 0)
-      selected = by == "page" ? 0 : length - 1;
-    else if (selected >= length)
-      selected = by == "page" ? length - 1 : 0;
-    view.dispatch({ effects: setSelectedEffect.of(selected) });
-    return true;
-  };
-}
-var acceptCompletion = (view) => {
-  let cState = view.state.field(completionState, false);
-  if (view.state.readOnly || !cState || !cState.open || cState.open.selected < 0 || cState.open.disabled || Date.now() - cState.open.timestamp < view.state.facet(completionConfig).interactionDelay)
-    return false;
-  return applyCompletion(view, cState.open.options[cState.open.selected]);
-};
-var startCompletion = (view) => {
-  let cState = view.state.field(completionState, false);
-  if (!cState)
-    return false;
-  view.dispatch({ effects: startCompletionEffect.of(true) });
-  return true;
-};
-var closeCompletion = (view) => {
-  let cState = view.state.field(completionState, false);
-  if (!cState || !cState.active.some(
-    (a) => a.state != 0
-    /* Inactive */
-  ))
-    return false;
-  view.dispatch({ effects: closeCompletionEffect.of(null) });
-  return true;
-};
-var RunningQuery = class {
-  constructor(active, context) {
-    this.active = active;
-    this.context = context;
-    this.time = Date.now();
-    this.updates = [];
-    this.done = void 0;
-  }
-};
-var DebounceTime = 50;
-var MaxUpdateCount = 50;
-var MinAbortTime = 1e3;
-var completionPlugin = /* @__PURE__ */ import_view2.ViewPlugin.fromClass(class {
-  constructor(view) {
-    this.view = view;
-    this.debounceUpdate = -1;
-    this.running = [];
-    this.debounceAccept = -1;
-    this.composing = 0;
-    for (let active of view.state.field(completionState).active)
-      if (active.state == 1)
-        this.startQuery(active);
-  }
-  update(update) {
-    let cState = update.state.field(completionState);
-    if (!update.selectionSet && !update.docChanged && update.startState.field(completionState) == cState)
-      return;
-    let doesReset = update.transactions.some((tr) => {
-      return (tr.selection || tr.docChanged) && !getUserEvent(tr);
-    });
-    for (let i = 0; i < this.running.length; i++) {
-      let query = this.running[i];
-      if (doesReset || query.updates.length + update.transactions.length > MaxUpdateCount && Date.now() - query.time > MinAbortTime) {
-        for (let handler of query.context.abortListeners) {
-          try {
-            handler();
-          } catch (e) {
-            (0, import_view2.logException)(this.view.state, e);
-          }
-        }
-        query.context.abortListeners = null;
-        this.running.splice(i--, 1);
-      } else {
-        query.updates.push(...update.transactions);
-      }
-    }
-    if (this.debounceUpdate > -1)
-      clearTimeout(this.debounceUpdate);
-    this.debounceUpdate = cState.active.some((a) => a.state == 1 && !this.running.some((q) => q.active.source == a.source)) ? setTimeout(() => this.startUpdate(), DebounceTime) : -1;
-    if (this.composing != 0)
-      for (let tr of update.transactions) {
-        if (getUserEvent(tr) == "input")
-          this.composing = 2;
-        else if (this.composing == 2 && tr.selection)
-          this.composing = 3;
-      }
-  }
-  startUpdate() {
-    this.debounceUpdate = -1;
-    let { state } = this.view, cState = state.field(completionState);
-    for (let active of cState.active) {
-      if (active.state == 1 && !this.running.some((r) => r.active.source == active.source))
-        this.startQuery(active);
-    }
-  }
-  startQuery(active) {
-    let { state } = this.view, pos = cur(state);
-    let context = new CompletionContext(state, pos, active.explicitPos == pos);
-    let pending = new RunningQuery(active, context);
-    this.running.push(pending);
-    Promise.resolve(active.source(context)).then((result) => {
-      if (!pending.context.aborted) {
-        pending.done = result || null;
-        this.scheduleAccept();
-      }
-    }, (err) => {
-      this.view.dispatch({ effects: closeCompletionEffect.of(null) });
-      (0, import_view2.logException)(this.view.state, err);
-    });
-  }
-  scheduleAccept() {
-    if (this.running.every((q) => q.done !== void 0))
-      this.accept();
-    else if (this.debounceAccept < 0)
-      this.debounceAccept = setTimeout(() => this.accept(), DebounceTime);
-  }
-  // For each finished query in this.running, try to create a result
-  // or, if appropriate, restart the query.
-  accept() {
-    var _a;
-    if (this.debounceAccept > -1)
-      clearTimeout(this.debounceAccept);
-    this.debounceAccept = -1;
-    let updated = [];
-    let conf = this.view.state.facet(completionConfig);
-    for (let i = 0; i < this.running.length; i++) {
-      let query = this.running[i];
-      if (query.done === void 0)
-        continue;
-      this.running.splice(i--, 1);
-      if (query.done) {
-        let active = new ActiveResult(query.active.source, query.active.explicitPos, query.done, query.done.from, (_a = query.done.to) !== null && _a !== void 0 ? _a : cur(query.updates.length ? query.updates[0].startState : this.view.state));
-        for (let tr of query.updates)
-          active = active.update(tr, conf);
-        if (active.hasResult()) {
-          updated.push(active);
-          continue;
-        }
-      }
-      let current = this.view.state.field(completionState).active.find((a) => a.source == query.active.source);
-      if (current && current.state == 1) {
-        if (query.done == null) {
-          let active = new ActiveSource(
-            query.active.source,
-            0
-            /* Inactive */
-          );
-          for (let tr of query.updates)
-            active = active.update(tr, conf);
-          if (active.state != 1)
-            updated.push(active);
-        } else {
-          this.startQuery(current);
-        }
-      }
-    }
-    if (updated.length)
-      this.view.dispatch({ effects: setActiveEffect.of(updated) });
-  }
-}, {
-  eventHandlers: {
-    blur(event) {
-      let state = this.view.state.field(completionState, false);
-      if (state && state.tooltip && this.view.state.facet(completionConfig).closeOnBlur) {
-        let dialog = state.open && (0, import_view2.getTooltip)(this.view, state.open.tooltip);
-        if (!dialog || !dialog.dom.contains(event.relatedTarget))
-          this.view.dispatch({ effects: closeCompletionEffect.of(null) });
-      }
-    },
-    compositionstart() {
-      this.composing = 1;
-    },
-    compositionend() {
-      if (this.composing == 3) {
-        setTimeout(() => this.view.dispatch({ effects: startCompletionEffect.of(false) }), 20);
-      }
-      this.composing = 0;
-    }
-  }
-});
-var baseTheme = /* @__PURE__ */ import_view2.EditorView.baseTheme({
-  ".cm-tooltip.cm-tooltip-autocomplete": {
-    "& > ul": {
-      fontFamily: "monospace",
-      whiteSpace: "nowrap",
-      overflow: "hidden auto",
-      maxWidth_fallback: "700px",
-      maxWidth: "min(700px, 95vw)",
-      minWidth: "250px",
-      maxHeight: "10em",
-      height: "100%",
-      listStyle: "none",
-      margin: 0,
-      padding: 0,
-      "& > li, & > completion-section": {
-        padding: "1px 3px",
-        lineHeight: 1.2
-      },
-      "& > li": {
-        overflowX: "hidden",
-        textOverflow: "ellipsis",
-        cursor: "pointer"
-      },
-      "& > completion-section": {
-        display: "list-item",
-        borderBottom: "1px solid silver",
-        paddingLeft: "0.5em",
-        opacity: 0.7
-      }
-    }
-  },
-  "&light .cm-tooltip-autocomplete ul li[aria-selected]": {
-    background: "#17c",
-    color: "white"
-  },
-  "&light .cm-tooltip-autocomplete-disabled ul li[aria-selected]": {
-    background: "#777"
-  },
-  "&dark .cm-tooltip-autocomplete ul li[aria-selected]": {
-    background: "#347",
-    color: "white"
-  },
-  "&dark .cm-tooltip-autocomplete-disabled ul li[aria-selected]": {
-    background: "#444"
-  },
-  ".cm-completionListIncompleteTop:before, .cm-completionListIncompleteBottom:after": {
-    content: '"\xB7\xB7\xB7"',
-    opacity: 0.5,
-    display: "block",
-    textAlign: "center"
-  },
-  ".cm-tooltip.cm-completionInfo": {
-    position: "absolute",
-    padding: "3px 9px",
-    width: "max-content",
-    maxWidth: `${400}px`,
-    boxSizing: "border-box"
-  },
-  ".cm-completionInfo.cm-completionInfo-left": { right: "100%" },
-  ".cm-completionInfo.cm-completionInfo-right": { left: "100%" },
-  ".cm-completionInfo.cm-completionInfo-left-narrow": { right: `${30}px` },
-  ".cm-completionInfo.cm-completionInfo-right-narrow": { left: `${30}px` },
-  "&light .cm-snippetField": { backgroundColor: "#00000022" },
-  "&dark .cm-snippetField": { backgroundColor: "#ffffff22" },
-  ".cm-snippetFieldPosition": {
-    verticalAlign: "text-top",
-    width: 0,
-    height: "1.15em",
-    display: "inline-block",
-    margin: "0 -0.7px -.7em",
-    borderLeft: "1.4px dotted #888"
-  },
-  ".cm-completionMatchedText": {
-    textDecoration: "underline"
-  },
-  ".cm-completionDetail": {
-    marginLeft: "0.5em",
-    fontStyle: "italic"
-  },
-  ".cm-completionIcon": {
-    fontSize: "90%",
-    width: ".8em",
-    display: "inline-block",
-    textAlign: "center",
-    paddingRight: ".6em",
-    opacity: "0.6",
-    boxSizing: "content-box"
-  },
-  ".cm-completionIcon-function, .cm-completionIcon-method": {
-    "&:after": { content: "'\u0192'" }
-  },
-  ".cm-completionIcon-class": {
-    "&:after": { content: "'\u25CB'" }
-  },
-  ".cm-completionIcon-interface": {
-    "&:after": { content: "'\u25CC'" }
-  },
-  ".cm-completionIcon-variable": {
-    "&:after": { content: "'\u{1D465}'" }
-  },
-  ".cm-completionIcon-constant": {
-    "&:after": { content: "'\u{1D436}'" }
-  },
-  ".cm-completionIcon-type": {
-    "&:after": { content: "'\u{1D461}'" }
-  },
-  ".cm-completionIcon-enum": {
-    "&:after": { content: "'\u222A'" }
-  },
-  ".cm-completionIcon-property": {
-    "&:after": { content: "'\u25A1'" }
-  },
-  ".cm-completionIcon-keyword": {
-    "&:after": { content: "'\u{1F511}\uFE0E'" }
-    // Disable emoji rendering
-  },
-  ".cm-completionIcon-namespace": {
-    "&:after": { content: "'\u25A2'" }
-  },
-  ".cm-completionIcon-text": {
-    "&:after": { content: "'abc'", fontSize: "50%", verticalAlign: "middle" }
-  }
-});
-var defaults = {
-  brackets: ["(", "[", "{", "'", '"'],
-  before: ")]}:;>",
-  stringPrefixes: []
-};
-var closeBracketEffect = /* @__PURE__ */ import_state2.StateEffect.define({
-  map(value, mapping) {
-    let mapped = mapping.mapPos(value, -1, import_state2.MapMode.TrackAfter);
-    return mapped == null ? void 0 : mapped;
-  }
-});
-var closedBracket = /* @__PURE__ */ new class extends import_state2.RangeValue {
-}();
-closedBracket.startSide = 1;
-closedBracket.endSide = -1;
-var bracketState = /* @__PURE__ */ import_state2.StateField.define({
-  create() {
-    return import_state2.RangeSet.empty;
-  },
-  update(value, tr) {
-    if (tr.selection) {
-      let lineStart = tr.state.doc.lineAt(tr.selection.main.head).from;
-      let prevLineStart = tr.startState.doc.lineAt(tr.startState.selection.main.head).from;
-      if (lineStart != tr.changes.mapPos(prevLineStart, -1))
-        value = import_state2.RangeSet.empty;
-    }
-    value = value.map(tr.changes);
-    for (let effect of tr.effects)
-      if (effect.is(closeBracketEffect))
-        value = value.update({ add: [closedBracket.range(effect.value, effect.value + 1)] });
-    return value;
-  }
-});
-function closeBrackets() {
-  return [inputHandler, bracketState];
-}
-var definedClosing = "()[]{}<>";
-function closing(ch) {
-  for (let i = 0; i < definedClosing.length; i += 2)
-    if (definedClosing.charCodeAt(i) == ch)
-      return definedClosing.charAt(i + 1);
-  return (0, import_state2.fromCodePoint)(ch < 128 ? ch : ch + 1);
-}
-function config(state, pos) {
-  return state.languageDataAt("closeBrackets", pos)[0] || defaults;
-}
-var android = typeof navigator == "object" && /* @__PURE__ */ /Android\b/.test(navigator.userAgent);
-var inputHandler = /* @__PURE__ */ import_view2.EditorView.inputHandler.of((view, from, to, insert) => {
-  if ((android ? view.composing : view.compositionStarted) || view.state.readOnly)
-    return false;
-  let sel = view.state.selection.main;
-  if (insert.length > 2 || insert.length == 2 && (0, import_state2.codePointSize)((0, import_state2.codePointAt)(insert, 0)) == 1 || from != sel.from || to != sel.to)
-    return false;
-  let tr = insertBracket(view.state, insert);
-  if (!tr)
-    return false;
-  view.dispatch(tr);
-  return true;
-});
-var deleteBracketPair = ({ state, dispatch }) => {
-  if (state.readOnly)
-    return false;
-  let conf = config(state, state.selection.main.head);
-  let tokens = conf.brackets || defaults.brackets;
-  let dont = null, changes = state.changeByRange((range) => {
-    if (range.empty) {
-      let before = prevChar(state.doc, range.head);
-      for (let token of tokens) {
-        if (token == before && nextChar(state.doc, range.head) == closing((0, import_state2.codePointAt)(token, 0)))
-          return {
-            changes: { from: range.head - token.length, to: range.head + token.length },
-            range: import_state2.EditorSelection.cursor(range.head - token.length)
-          };
-      }
-    }
-    return { range: dont = range };
-  });
-  if (!dont)
-    dispatch(state.update(changes, { scrollIntoView: true, userEvent: "delete.backward" }));
-  return !dont;
-};
-var closeBracketsKeymap = [
-  { key: "Backspace", run: deleteBracketPair }
-];
-function insertBracket(state, bracket) {
-  let conf = config(state, state.selection.main.head);
-  let tokens = conf.brackets || defaults.brackets;
-  for (let tok of tokens) {
-    let closed = closing((0, import_state2.codePointAt)(tok, 0));
-    if (bracket == tok)
-      return closed == tok ? handleSame(state, tok, tokens.indexOf(tok + tok + tok) > -1, conf) : handleOpen(state, tok, closed, conf.before || defaults.before);
-    if (bracket == closed && closedBracketAt(state, state.selection.main.from))
-      return handleClose(state, tok, closed);
-  }
-  return null;
-}
-function closedBracketAt(state, pos) {
-  let found = false;
-  state.field(bracketState).between(0, state.doc.length, (from) => {
-    if (from == pos)
-      found = true;
-  });
-  return found;
-}
-function nextChar(doc, pos) {
-  let next = doc.sliceString(pos, pos + 2);
-  return next.slice(0, (0, import_state2.codePointSize)((0, import_state2.codePointAt)(next, 0)));
-}
-function prevChar(doc, pos) {
-  let prev = doc.sliceString(pos - 2, pos);
-  return (0, import_state2.codePointSize)((0, import_state2.codePointAt)(prev, 0)) == prev.length ? prev : prev.slice(1);
-}
-function handleOpen(state, open, close, closeBefore) {
-  let dont = null, changes = state.changeByRange((range) => {
-    if (!range.empty)
-      return {
-        changes: [{ insert: open, from: range.from }, { insert: close, from: range.to }],
-        effects: closeBracketEffect.of(range.to + open.length),
-        range: import_state2.EditorSelection.range(range.anchor + open.length, range.head + open.length)
-      };
-    let next = nextChar(state.doc, range.head);
-    if (!next || /\s/.test(next) || closeBefore.indexOf(next) > -1)
-      return {
-        changes: { insert: open + close, from: range.head },
-        effects: closeBracketEffect.of(range.head + open.length),
-        range: import_state2.EditorSelection.cursor(range.head + open.length)
-      };
-    return { range: dont = range };
-  });
-  return dont ? null : state.update(changes, {
-    scrollIntoView: true,
-    userEvent: "input.type"
-  });
-}
-function handleClose(state, _open, close) {
-  let dont = null, changes = state.changeByRange((range) => {
-    if (range.empty && nextChar(state.doc, range.head) == close)
-      return {
-        changes: { from: range.head, to: range.head + close.length, insert: close },
-        range: import_state2.EditorSelection.cursor(range.head + close.length)
-      };
-    return dont = { range };
-  });
-  return dont ? null : state.update(changes, {
-    scrollIntoView: true,
-    userEvent: "input.type"
-  });
-}
-function handleSame(state, token, allowTriple, config3) {
-  let stringPrefixes = config3.stringPrefixes || defaults.stringPrefixes;
-  let dont = null, changes = state.changeByRange((range) => {
-    if (!range.empty)
-      return {
-        changes: [{ insert: token, from: range.from }, { insert: token, from: range.to }],
-        effects: closeBracketEffect.of(range.to + token.length),
-        range: import_state2.EditorSelection.range(range.anchor + token.length, range.head + token.length)
-      };
-    let pos = range.head, next = nextChar(state.doc, pos), start;
-    if (next == token) {
-      if (nodeStart(state, pos)) {
-        return {
-          changes: { insert: token + token, from: pos },
-          effects: closeBracketEffect.of(pos + token.length),
-          range: import_state2.EditorSelection.cursor(pos + token.length)
-        };
-      } else if (closedBracketAt(state, pos)) {
-        let isTriple = allowTriple && state.sliceDoc(pos, pos + token.length * 3) == token + token + token;
-        let content = isTriple ? token + token + token : token;
-        return {
-          changes: { from: pos, to: pos + content.length, insert: content },
-          range: import_state2.EditorSelection.cursor(pos + content.length)
-        };
-      }
-    } else if (allowTriple && state.sliceDoc(pos - 2 * token.length, pos) == token + token && (start = canStartStringAt(state, pos - 2 * token.length, stringPrefixes)) > -1 && nodeStart(state, start)) {
-      return {
-        changes: { insert: token + token + token + token, from: pos },
-        effects: closeBracketEffect.of(pos + token.length),
-        range: import_state2.EditorSelection.cursor(pos + token.length)
-      };
-    } else if (state.charCategorizer(pos)(next) != import_state2.CharCategory.Word) {
-      if (canStartStringAt(state, pos, stringPrefixes) > -1 && !probablyInString(state, pos, token, stringPrefixes))
-        return {
-          changes: { insert: token + token, from: pos },
-          effects: closeBracketEffect.of(pos + token.length),
-          range: import_state2.EditorSelection.cursor(pos + token.length)
-        };
-    }
-    return { range: dont = range };
-  });
-  return dont ? null : state.update(changes, {
-    scrollIntoView: true,
-    userEvent: "input.type"
-  });
-}
-function nodeStart(state, pos) {
-  let tree = (0, import_language3.syntaxTree)(state).resolveInner(pos + 1);
-  return tree.parent && tree.from == pos;
-}
-function probablyInString(state, pos, quoteToken, prefixes) {
-  let node = (0, import_language3.syntaxTree)(state).resolveInner(pos, -1);
-  let maxPrefix = prefixes.reduce((m, p) => Math.max(m, p.length), 0);
-  for (let i = 0; i < 5; i++) {
-    let start = state.sliceDoc(node.from, Math.min(node.to, node.from + quoteToken.length + maxPrefix));
-    let quotePos = start.indexOf(quoteToken);
-    if (!quotePos || quotePos > -1 && prefixes.indexOf(start.slice(0, quotePos)) > -1) {
-      let first = node.firstChild;
-      while (first && first.from == node.from && first.to - first.from > quoteToken.length + quotePos) {
-        if (state.sliceDoc(first.to - quoteToken.length, first.to) == quoteToken)
-          return false;
-        first = first.firstChild;
-      }
-      return true;
-    }
-    let parent = node.to == pos && node.parent;
-    if (!parent)
-      break;
-    node = parent;
-  }
+function isSelectorIdentifier(node) {
+  if (node.name == "ClassName")
+    return "class" /* CLASS */;
+  if (node.name == "IdName")
+    return "id" /* ID */;
   return false;
 }
-function canStartStringAt(state, pos, prefixes) {
-  let charCat = state.charCategorizer(pos);
-  if (charCat(state.sliceDoc(pos - 1, pos)) != import_state2.CharCategory.Word)
-    return pos;
-  for (let prefix of prefixes) {
-    let start = pos - prefix.length;
-    if (state.sliceDoc(start, pos) == prefix && charCat(state.sliceDoc(start - 1, start)) != import_state2.CharCategory.Word)
-      return start;
-  }
-  return -1;
+function touchSelection(selection, range) {
+  return selection.ranges.findIndex(
+    (selRange) => selRange.from <= range.to && selRange.to >= range.from
+  ) >= 0;
 }
-function autocompletion(config3 = {}) {
-  return [
-    completionState,
-    completionConfig.of(config3),
-    completionPlugin,
-    completionKeymapExt,
-    baseTheme
-  ];
-}
-var completionKeymap = [
-  { key: "Ctrl-Space", run: startCompletion },
-  { key: "Escape", run: closeCompletion },
-  { key: "ArrowDown", run: /* @__PURE__ */ moveCompletionSelection(true) },
-  { key: "ArrowUp", run: /* @__PURE__ */ moveCompletionSelection(false) },
-  { key: "PageDown", run: /* @__PURE__ */ moveCompletionSelection(true, "page") },
-  { key: "PageUp", run: /* @__PURE__ */ moveCompletionSelection(false, "page") },
-  { key: "Enter", run: acceptCompletion }
-];
-var completionKeymapExt = /* @__PURE__ */ import_state2.Prec.highest(/* @__PURE__ */ import_view2.keymap.computeN([completionConfig], (state) => state.facet(completionConfig).defaultKeymap ? [completionKeymap] : []));
-
-// src/codemirror-extensions/basic-extensions.ts
-var import_search2 = require("@codemirror/search");
-var import_lint = require("@codemirror/lint");
-
-// src/codemirror-extensions/obsidian-theme.ts
-var import_view3 = require("@codemirror/view");
-var import_language4 = require("@codemirror/language");
-var import_highlight2 = require("@lezer/highlight");
-var config2 = {
-  name: "obsidian",
-  dark: false,
-  background: "var(--background-primary)",
-  foreground: "var(--text-normal)",
-  selection: "var(--text-selection)",
-  cursor: "var(--text-normal)",
-  dropdownBackground: "var(--background-primary)",
-  dropdownBorder: "var(--background-modifier-border)",
-  activeLine: "var(--background-primary)",
-  matchingBracket: "var(--background-modifier-accent)",
-  keyword: "#d73a49",
-  storage: "#d73a49",
-  variable: "var(--text-normal)",
-  parameter: "var(--text-accent-hover)",
-  function: "var(--text-accent-hover)",
-  string: "var(--text-accent)",
-  constant: "var(--text-accent-hover)",
-  type: "var(--text-accent-hover)",
-  class: "#6f42c1",
-  number: "var(--text-accent-hover)",
-  comment: "var(--text-faint)",
-  invalid: "var(--text-error)",
-  regexp: "#032f62"
-};
-var obsidianTheme = import_view3.EditorView.theme(
-  {
-    "&": {
-      color: config2.foreground,
-      backgroundColor: config2.background
-    },
-    ".cm-content": { caretColor: config2.cursor },
-    "&.cm-focused .cm-cursor": { borderLeftColor: config2.cursor },
-    "&.cm-focused .cm-selectionBackground, .cm-selectionBackground, & ::selection": { backgroundColor: config2.selection },
-    ".cm-panels": {
-      backgroundColor: config2.dropdownBackground,
-      color: config2.foreground
-    },
-    ".cm-panels.cm-panels-top": { borderBottom: "2px solid black" },
-    ".cm-panels.cm-panels-bottom": { borderTop: "2px solid black" },
-    ".cm-searchMatch": {
-      backgroundColor: config2.dropdownBackground,
-      outline: `1px solid ${config2.dropdownBorder}`
-    },
-    ".cm-searchMatch.cm-searchMatch-selected": {
-      backgroundColor: config2.selection
-    },
-    ".cm-activeLine": { backgroundColor: config2.activeLine },
-    ".cm-activeLineGutter": { backgroundColor: config2.background },
-    ".cm-selectionMatch": { backgroundColor: config2.selection },
-    ".cm-matchingBracket, .cm-nonmatchingBracket": {
-      backgroundColor: config2.matchingBracket,
-      outline: "none"
-    },
-    ".cm-gutters": {
-      backgroundColor: config2.background,
-      color: config2.comment,
-      borderRight: "1px solid var(--background-modifier-border)"
-    },
-    ".cm-lineNumbers, .cm-gutterElement": { color: "inherit" },
-    ".cm-foldPlaceholder": {
-      backgroundColor: "transparent",
-      border: "none",
-      color: config2.foreground
-    },
-    ".cm-tooltip": {
-      border: `1px solid ${config2.dropdownBorder}`,
-      backgroundColor: config2.dropdownBackground,
-      color: config2.foreground
-    },
-    ".cm-tooltip.cm-tooltip-autocomplete": {
-      "& > ul > li[aria-selected]": {
-        background: config2.selection,
-        color: config2.foreground
+function getSelectorNames(state, node, type) {
+  if (node.to - node.from > 4096) {
+    const known = SelectorsByNode[type].get(node);
+    if (known)
+      return known;
+    const result = [], seen = /* @__PURE__ */ new Set(), cursor = node.cursor(import_common2.IterMode.IncludeAnonymous);
+    if (cursor.firstChild())
+      do {
+        for (const option of getSelectorNames(state, cursor.node, type))
+          if (!seen.has(option.label)) {
+            seen.add(option.label);
+            result.push(option);
+          }
+      } while (cursor.nextSibling());
+    SelectorsByNode[type].set(node, result);
+    return result;
+  } else {
+    const result = [], seen = /* @__PURE__ */ new Set(), { doc, selection } = state;
+    node.cursor().iterate((node2) => {
+      if (type == isSelectorIdentifier(node2) && !touchSelection(selection, node2)) {
+        const name = doc.sliceString(node2.from, node2.to);
+        if (!seen.has(name)) {
+          seen.add(name);
+          result.push({ label: name, type: "variable" });
+        }
       }
+    });
+    return result;
+  }
+}
+var cssCompletionSource = (context) => {
+  let result = defineCSSCompletionSource((node) => node.name == "VariableName")(context);
+  if (!result) {
+    const { state, pos } = context, node = (0, import_language5.syntaxTree)(state).resolveInner(pos, -1);
+    if (node.matchContext(ClassSelectorCtx)) {
+      const isDot = node.name == ".";
+      result = {
+        from: isDot ? node.to : node.from,
+        options: getSelectorNames(state, getASTTop(node), "class" /* CLASS */),
+        validFor: Identifier
+      };
+    } else if (node.matchContext(IdSelectorCtx)) {
+      const isHash = node.name == "#";
+      result = {
+        from: isHash ? node.to : node.from,
+        options: getSelectorNames(state, getASTTop(node), "id" /* ID */),
+        validFor: Identifier
+      };
     }
+  }
+  return result;
+};
+var css = () => new import_language5.LanguageSupport(cssLanguage, cssLanguage.data.of({ autocomplete: cssCompletionSource }));
+
+// src/codemirror-extensions/highlight-active-line.ts
+var import_view4 = require("@codemirror/view");
+function highlightActiveLine() {
+  return activeLineLayer;
+}
+var activeLineLayer = (0, import_view4.layer)({
+  above: false,
+  class: "cm-activeLineLayer",
+  markers(view) {
+    const selection = view.state.selection, markers = [], paddingTop = view.documentPadding.top, { width, left: contentLeft } = view.contentDOM.getBoundingClientRect(), { left: scrollerLeft } = view.scrollDOM.getBoundingClientRect();
+    for (const range of selection.ranges) {
+      const { top, height } = view.lineBlockAt(range.head), layer2 = new import_view4.RectangleMarker("cm-activeLine", contentLeft - scrollerLeft, top + paddingTop, width, height);
+      markers.push(layer2);
+    }
+    return markers;
   },
-  { dark: config2.dark }
-);
-var obsidianHighlightStyle = import_language4.HighlightStyle.define([
-  { tag: import_highlight2.tags.keyword, color: config2.keyword },
-  {
-    tag: [import_highlight2.tags.name, import_highlight2.tags.deleted, import_highlight2.tags.character, import_highlight2.tags.macroName],
-    color: config2.variable
-  },
-  { tag: [import_highlight2.tags.propertyName], color: config2.function },
-  {
-    tag: [
-      import_highlight2.tags.processingInstruction,
-      import_highlight2.tags.string,
-      import_highlight2.tags.inserted,
-      import_highlight2.tags.special(import_highlight2.tags.string)
-    ],
-    color: config2.string
-  },
-  { tag: [import_highlight2.tags.function(import_highlight2.tags.variableName), import_highlight2.tags.labelName], color: config2.function },
-  {
-    tag: [import_highlight2.tags.color, import_highlight2.tags.constant(import_highlight2.tags.name), import_highlight2.tags.standard(import_highlight2.tags.name)],
-    color: config2.constant
-  },
-  { tag: [import_highlight2.tags.definition(import_highlight2.tags.name), import_highlight2.tags.separator], color: config2.variable },
-  { tag: [import_highlight2.tags.className], color: config2.class },
-  {
-    tag: [
-      import_highlight2.tags.number,
-      import_highlight2.tags.changed,
-      import_highlight2.tags.annotation,
-      import_highlight2.tags.modifier,
-      import_highlight2.tags.self,
-      import_highlight2.tags.namespace
-    ],
-    color: config2.number
-  },
-  { tag: [import_highlight2.tags.typeName], color: config2.type, fontStyle: config2.type },
-  { tag: [import_highlight2.tags.operator, import_highlight2.tags.operatorKeyword], color: config2.keyword },
-  { tag: [import_highlight2.tags.url, import_highlight2.tags.escape, import_highlight2.tags.regexp, import_highlight2.tags.link], color: config2.regexp },
-  { tag: [import_highlight2.tags.meta, import_highlight2.tags.comment], color: config2.comment },
-  {
-    tag: [import_highlight2.tags.atom, import_highlight2.tags.bool, import_highlight2.tags.special(import_highlight2.tags.variableName)],
-    color: config2.variable
-  },
-  { tag: import_highlight2.tags.invalid, color: config2.invalid }
-]);
-var obsidian = [
-  obsidianTheme,
-  (0, import_language4.syntaxHighlighting)(obsidianHighlightStyle)
-];
+  update(update) {
+    return update.docChanged || update.selectionSet || update.viewportChanged || update.geometryChanged;
+  }
+});
 
 // src/codemirror-extensions/basic-extensions.ts
 var basicExtensions = [
-  import_view4.keymap.of([
+  import_view5.keymap.of([
     ...closeBracketsKeymap,
     // "{|}" -> backspace -> "|"
     ...import_commands2.defaultKeymap,
     ...import_search2.searchKeymap,
     ...import_commands2.historyKeymap,
     import_commands2.indentWithTab,
-    ...import_language5.foldKeymap,
+    ...import_language6.foldKeymap,
     ...completionKeymap,
     ...import_lint.lintKeymap
   ]),
-  (0, import_commands2.history)(),
   css(),
-  (0, import_language5.foldGutter)(),
-  (0, import_view4.dropCursor)(),
+  (0, import_view5.lineNumbers)(),
+  (0, import_language6.foldGutter)(),
+  (0, import_view5.highlightActiveLineGutter)(),
+  (0, import_view5.dropCursor)(),
+  (0, import_view5.drawSelection)({ drawRangeCursor: true }),
   import_state3.EditorState.allowMultipleSelections.of(true),
-  (0, import_language5.indentOnInput)(),
-  import_view4.EditorView.lineWrapping,
-  (0, import_language5.bracketMatching)(),
+  highlightActiveLine(),
+  (0, import_language6.indentOnInput)(),
+  (0, import_language6.bracketMatching)(),
   autocompletion(),
   closeBrackets(),
   (0, import_search2.highlightSelectionMatches)(),
@@ -9918,26 +10011,2301 @@ var basicExtensions = [
 ].filter((ext) => ext);
 
 // src/views/CssEditorView.ts
+var import_commands3 = require("@codemirror/commands");
+
+// src/codemirror-extensions/compartments.ts
+var import_state4 = require("@codemirror/state");
+var lineWrap = new import_state4.Compartment();
+var indentSize = new import_state4.Compartment();
+var historyCompartment = new import_state4.Compartment();
+
+// src/views/CssEditorView.ts
+var import_language8 = require("@codemirror/language");
+
+// src/modals/CssSnippetRenameModal.ts
+var import_obsidian3 = require("obsidian");
+
+// src/obsidian/Notice.ts
+var import_obsidian2 = require("obsidian");
+var DEFAULT_NOTICE_TIMEOUT_SECONDS = 5;
+var InfoNotice = class extends import_obsidian2.Notice {
+  constructor(message, timeout = DEFAULT_NOTICE_TIMEOUT_SECONDS) {
+    super(message, timeout * 1e3);
+  }
+};
+var ErrorNotice = class extends import_obsidian2.Notice {
+  constructor(message, timeout = DEFAULT_NOTICE_TIMEOUT_SECONDS) {
+    super(message, timeout * 1e3);
+    console.error(`css-editor: ${message}`);
+  }
+};
+
+// src/modals/CssSnippetRenameModal.ts
+var CssSnippetRenameModal = class extends import_obsidian3.Modal {
+  constructor(app, file) {
+    super(app);
+    this.value = "";
+    this.file = file;
+  }
+  onOpen() {
+    super.onOpen();
+    this.titleEl.setText("Rename CSS snippet");
+    this.containerEl.addClass("css-editor-rename-modal");
+    this.buildForm();
+  }
+  buildForm() {
+    const textInput = new import_obsidian3.TextComponent(this.contentEl);
+    textInput.setPlaceholder("CSS snippet file name (ex: snippet.css)");
+    textInput.setValue(this.file.basename);
+    textInput.onChange((val) => this.value = val);
+    textInput.inputEl.addEventListener("keydown", (evt) => {
+      this.handleKeydown(evt);
+    });
+    const buttonContainer = this.contentEl.createDiv(
+      "modal-button-container"
+    );
+    new import_obsidian3.ButtonComponent(buttonContainer).setButtonText("Save").setCta().onClick(() => this.save());
+    new import_obsidian3.ButtonComponent(buttonContainer).setButtonText("Cancel").onClick(() => this.close());
+  }
+  async handleKeydown(evt) {
+    if (evt.key === "Escape") {
+      this.close();
+    } else if (evt.key === "Enter") {
+      this.save();
+    }
+  }
+  async save() {
+    try {
+      await renameSnippetFile(this.app, this.file, this.value);
+      this.close();
+    } catch (err) {
+      if (err instanceof Error) {
+        new ErrorNotice(err.message);
+      } else {
+        new ErrorNotice("Failed to rename file. Reason unknown.");
+      }
+    }
+  }
+};
+
+// src/obsidian/view-helpers.ts
+function focusAndSelectElement(el) {
+  el.focus({ preventScroll: true });
+  const range = document.createRange();
+  range.selectNodeContents(el);
+  const selection = getSelection();
+  if (selection) {
+    selection.removeAllRanges();
+    selection.addRange(range);
+  }
+}
+
+// src/codemirror-extensions/color-picker.ts
+var import_view6 = require("@codemirror/view");
+var import_obsidian4 = require("obsidian");
+
+// node_modules/color-string/node_modules/color-name/index.js
+var color_name_default = {
+  aliceblue: [240, 248, 255],
+  antiquewhite: [250, 235, 215],
+  aqua: [0, 255, 255],
+  aquamarine: [127, 255, 212],
+  azure: [240, 255, 255],
+  beige: [245, 245, 220],
+  bisque: [255, 228, 196],
+  black: [0, 0, 0],
+  blanchedalmond: [255, 235, 205],
+  blue: [0, 0, 255],
+  blueviolet: [138, 43, 226],
+  brown: [165, 42, 42],
+  burlywood: [222, 184, 135],
+  cadetblue: [95, 158, 160],
+  chartreuse: [127, 255, 0],
+  chocolate: [210, 105, 30],
+  coral: [255, 127, 80],
+  cornflowerblue: [100, 149, 237],
+  cornsilk: [255, 248, 220],
+  crimson: [220, 20, 60],
+  cyan: [0, 255, 255],
+  darkblue: [0, 0, 139],
+  darkcyan: [0, 139, 139],
+  darkgoldenrod: [184, 134, 11],
+  darkgray: [169, 169, 169],
+  darkgreen: [0, 100, 0],
+  darkgrey: [169, 169, 169],
+  darkkhaki: [189, 183, 107],
+  darkmagenta: [139, 0, 139],
+  darkolivegreen: [85, 107, 47],
+  darkorange: [255, 140, 0],
+  darkorchid: [153, 50, 204],
+  darkred: [139, 0, 0],
+  darksalmon: [233, 150, 122],
+  darkseagreen: [143, 188, 143],
+  darkslateblue: [72, 61, 139],
+  darkslategray: [47, 79, 79],
+  darkslategrey: [47, 79, 79],
+  darkturquoise: [0, 206, 209],
+  darkviolet: [148, 0, 211],
+  deeppink: [255, 20, 147],
+  deepskyblue: [0, 191, 255],
+  dimgray: [105, 105, 105],
+  dimgrey: [105, 105, 105],
+  dodgerblue: [30, 144, 255],
+  firebrick: [178, 34, 34],
+  floralwhite: [255, 250, 240],
+  forestgreen: [34, 139, 34],
+  fuchsia: [255, 0, 255],
+  gainsboro: [220, 220, 220],
+  ghostwhite: [248, 248, 255],
+  gold: [255, 215, 0],
+  goldenrod: [218, 165, 32],
+  gray: [128, 128, 128],
+  green: [0, 128, 0],
+  greenyellow: [173, 255, 47],
+  grey: [128, 128, 128],
+  honeydew: [240, 255, 240],
+  hotpink: [255, 105, 180],
+  indianred: [205, 92, 92],
+  indigo: [75, 0, 130],
+  ivory: [255, 255, 240],
+  khaki: [240, 230, 140],
+  lavender: [230, 230, 250],
+  lavenderblush: [255, 240, 245],
+  lawngreen: [124, 252, 0],
+  lemonchiffon: [255, 250, 205],
+  lightblue: [173, 216, 230],
+  lightcoral: [240, 128, 128],
+  lightcyan: [224, 255, 255],
+  lightgoldenrodyellow: [250, 250, 210],
+  lightgray: [211, 211, 211],
+  lightgreen: [144, 238, 144],
+  lightgrey: [211, 211, 211],
+  lightpink: [255, 182, 193],
+  lightsalmon: [255, 160, 122],
+  lightseagreen: [32, 178, 170],
+  lightskyblue: [135, 206, 250],
+  lightslategray: [119, 136, 153],
+  lightslategrey: [119, 136, 153],
+  lightsteelblue: [176, 196, 222],
+  lightyellow: [255, 255, 224],
+  lime: [0, 255, 0],
+  limegreen: [50, 205, 50],
+  linen: [250, 240, 230],
+  magenta: [255, 0, 255],
+  maroon: [128, 0, 0],
+  mediumaquamarine: [102, 205, 170],
+  mediumblue: [0, 0, 205],
+  mediumorchid: [186, 85, 211],
+  mediumpurple: [147, 112, 219],
+  mediumseagreen: [60, 179, 113],
+  mediumslateblue: [123, 104, 238],
+  mediumspringgreen: [0, 250, 154],
+  mediumturquoise: [72, 209, 204],
+  mediumvioletred: [199, 21, 133],
+  midnightblue: [25, 25, 112],
+  mintcream: [245, 255, 250],
+  mistyrose: [255, 228, 225],
+  moccasin: [255, 228, 181],
+  navajowhite: [255, 222, 173],
+  navy: [0, 0, 128],
+  oldlace: [253, 245, 230],
+  olive: [128, 128, 0],
+  olivedrab: [107, 142, 35],
+  orange: [255, 165, 0],
+  orangered: [255, 69, 0],
+  orchid: [218, 112, 214],
+  palegoldenrod: [238, 232, 170],
+  palegreen: [152, 251, 152],
+  paleturquoise: [175, 238, 238],
+  palevioletred: [219, 112, 147],
+  papayawhip: [255, 239, 213],
+  peachpuff: [255, 218, 185],
+  peru: [205, 133, 63],
+  pink: [255, 192, 203],
+  plum: [221, 160, 221],
+  powderblue: [176, 224, 230],
+  purple: [128, 0, 128],
+  rebeccapurple: [102, 51, 153],
+  red: [255, 0, 0],
+  rosybrown: [188, 143, 143],
+  royalblue: [65, 105, 225],
+  saddlebrown: [139, 69, 19],
+  salmon: [250, 128, 114],
+  sandybrown: [244, 164, 96],
+  seagreen: [46, 139, 87],
+  seashell: [255, 245, 238],
+  sienna: [160, 82, 45],
+  silver: [192, 192, 192],
+  skyblue: [135, 206, 235],
+  slateblue: [106, 90, 205],
+  slategray: [112, 128, 144],
+  slategrey: [112, 128, 144],
+  snow: [255, 250, 250],
+  springgreen: [0, 255, 127],
+  steelblue: [70, 130, 180],
+  tan: [210, 180, 140],
+  teal: [0, 128, 128],
+  thistle: [216, 191, 216],
+  tomato: [255, 99, 71],
+  turquoise: [64, 224, 208],
+  violet: [238, 130, 238],
+  wheat: [245, 222, 179],
+  white: [255, 255, 255],
+  whitesmoke: [245, 245, 245],
+  yellow: [255, 255, 0],
+  yellowgreen: [154, 205, 50]
+};
+
+// node_modules/color-string/index.js
+var reverseNames = /* @__PURE__ */ Object.create(null);
+for (const name in color_name_default) {
+  if (Object.hasOwn(color_name_default, name)) {
+    reverseNames[color_name_default[name]] = name;
+  }
+}
+var cs = {
+  to: {},
+  get: {}
+};
+cs.get = function(string) {
+  const prefix = string.slice(0, 3).toLowerCase();
+  let value;
+  let model;
+  switch (prefix) {
+    case "hsl": {
+      value = cs.get.hsl(string);
+      model = "hsl";
+      break;
+    }
+    case "hwb": {
+      value = cs.get.hwb(string);
+      model = "hwb";
+      break;
+    }
+    default: {
+      value = cs.get.rgb(string);
+      model = "rgb";
+      break;
+    }
+  }
+  if (!value) {
+    return null;
+  }
+  return { model, value };
+};
+cs.get.rgb = function(string) {
+  if (!string) {
+    return null;
+  }
+  const abbr = /^#([a-f\d]{3,4})$/i;
+  const hex = /^#([a-f\d]{6})([a-f\d]{2})?$/i;
+  const rgba = /^rgba?\(\s*([+-]?\d+)(?=[\s,])\s*(?:,\s*)?([+-]?\d+)(?=[\s,])\s*(?:,\s*)?([+-]?\d+)\s*(?:[,|/]\s*([+-]?[\d.]+)(%?)\s*)?\)$/;
+  const per = /^rgba?\(\s*([+-]?[\d.]+)%\s*,?\s*([+-]?[\d.]+)%\s*,?\s*([+-]?[\d.]+)%\s*(?:[,|/]\s*([+-]?[\d.]+)(%?)\s*)?\)$/;
+  const keyword = /^(\w+)$/;
+  let rgb = [0, 0, 0, 1];
+  let match;
+  let i;
+  let hexAlpha;
+  if (match = string.match(hex)) {
+    hexAlpha = match[2];
+    match = match[1];
+    for (i = 0; i < 3; i++) {
+      const i2 = i * 2;
+      rgb[i] = Number.parseInt(match.slice(i2, i2 + 2), 16);
+    }
+    if (hexAlpha) {
+      rgb[3] = Number.parseInt(hexAlpha, 16) / 255;
+    }
+  } else if (match = string.match(abbr)) {
+    match = match[1];
+    hexAlpha = match[3];
+    for (i = 0; i < 3; i++) {
+      rgb[i] = Number.parseInt(match[i] + match[i], 16);
+    }
+    if (hexAlpha) {
+      rgb[3] = Number.parseInt(hexAlpha + hexAlpha, 16) / 255;
+    }
+  } else if (match = string.match(rgba)) {
+    for (i = 0; i < 3; i++) {
+      rgb[i] = Number.parseInt(match[i + 1], 10);
+    }
+    if (match[4]) {
+      rgb[3] = match[5] ? Number.parseFloat(match[4]) * 0.01 : Number.parseFloat(match[4]);
+    }
+  } else if (match = string.match(per)) {
+    for (i = 0; i < 3; i++) {
+      rgb[i] = Math.round(Number.parseFloat(match[i + 1]) * 2.55);
+    }
+    if (match[4]) {
+      rgb[3] = match[5] ? Number.parseFloat(match[4]) * 0.01 : Number.parseFloat(match[4]);
+    }
+  } else if (match = string.match(keyword)) {
+    if (match[1] === "transparent") {
+      return [0, 0, 0, 0];
+    }
+    if (!Object.hasOwn(color_name_default, match[1])) {
+      return null;
+    }
+    rgb = color_name_default[match[1]];
+    rgb[3] = 1;
+    return rgb;
+  } else {
+    return null;
+  }
+  for (i = 0; i < 3; i++) {
+    rgb[i] = clamp(rgb[i], 0, 255);
+  }
+  rgb[3] = clamp(rgb[3], 0, 1);
+  return rgb;
+};
+cs.get.hsl = function(string) {
+  if (!string) {
+    return null;
+  }
+  const hsl = /^hsla?\(\s*([+-]?(?:\d{0,3}\.)?\d+)(?:deg)?\s*,?\s*([+-]?[\d.]+)%\s*,?\s*([+-]?[\d.]+)%\s*(?:[,|/]\s*([+-]?(?=\.\d|\d)(?:0|[1-9]\d*)?(?:\.\d*)?(?:[eE][+-]?\d+)?)\s*)?\)$/;
+  const match = string.match(hsl);
+  if (match) {
+    const alpha = Number.parseFloat(match[4]);
+    const h = (Number.parseFloat(match[1]) % 360 + 360) % 360;
+    const s = clamp(Number.parseFloat(match[2]), 0, 100);
+    const l = clamp(Number.parseFloat(match[3]), 0, 100);
+    const a = clamp(Number.isNaN(alpha) ? 1 : alpha, 0, 1);
+    return [h, s, l, a];
+  }
+  return null;
+};
+cs.get.hwb = function(string) {
+  if (!string) {
+    return null;
+  }
+  const hwb = /^hwb\(\s*([+-]?\d{0,3}(?:\.\d+)?)(?:deg)?\s*,\s*([+-]?[\d.]+)%\s*,\s*([+-]?[\d.]+)%\s*(?:,\s*([+-]?(?=\.\d|\d)(?:0|[1-9]\d*)?(?:\.\d*)?(?:[eE][+-]?\d+)?)\s*)?\)$/;
+  const match = string.match(hwb);
+  if (match) {
+    const alpha = Number.parseFloat(match[4]);
+    const h = (Number.parseFloat(match[1]) % 360 + 360) % 360;
+    const w = clamp(Number.parseFloat(match[2]), 0, 100);
+    const b = clamp(Number.parseFloat(match[3]), 0, 100);
+    const a = clamp(Number.isNaN(alpha) ? 1 : alpha, 0, 1);
+    return [h, w, b, a];
+  }
+  return null;
+};
+cs.to.hex = function(...rgba) {
+  return "#" + hexDouble(rgba[0]) + hexDouble(rgba[1]) + hexDouble(rgba[2]) + (rgba[3] < 1 ? hexDouble(Math.round(rgba[3] * 255)) : "");
+};
+cs.to.rgb = function(...rgba) {
+  return rgba.length < 4 || rgba[3] === 1 ? "rgb(" + Math.round(rgba[0]) + ", " + Math.round(rgba[1]) + ", " + Math.round(rgba[2]) + ")" : "rgba(" + Math.round(rgba[0]) + ", " + Math.round(rgba[1]) + ", " + Math.round(rgba[2]) + ", " + rgba[3] + ")";
+};
+cs.to.rgb.percent = function(...rgba) {
+  const r = Math.round(rgba[0] / 255 * 100);
+  const g = Math.round(rgba[1] / 255 * 100);
+  const b = Math.round(rgba[2] / 255 * 100);
+  return rgba.length < 4 || rgba[3] === 1 ? "rgb(" + r + "%, " + g + "%, " + b + "%)" : "rgba(" + r + "%, " + g + "%, " + b + "%, " + rgba[3] + ")";
+};
+cs.to.hsl = function(...hsla) {
+  return hsla.length < 4 || hsla[3] === 1 ? "hsl(" + hsla[0] + ", " + hsla[1] + "%, " + hsla[2] + "%)" : "hsla(" + hsla[0] + ", " + hsla[1] + "%, " + hsla[2] + "%, " + hsla[3] + ")";
+};
+cs.to.hwb = function(...hwba) {
+  let a = "";
+  if (hwba.length >= 4 && hwba[3] !== 1) {
+    a = ", " + hwba[3];
+  }
+  return "hwb(" + hwba[0] + ", " + hwba[1] + "%, " + hwba[2] + "%" + a + ")";
+};
+cs.to.keyword = function(...rgb) {
+  return reverseNames[rgb.slice(0, 3)];
+};
+function clamp(number_, min, max) {
+  return Math.min(Math.max(min, number_), max);
+}
+function hexDouble(number_) {
+  const string_ = Math.round(number_).toString(16).toUpperCase();
+  return string_.length < 2 ? "0" + string_ : string_;
+}
+var color_string_default = cs;
+
+// node_modules/color/node_modules/color-name/index.js
+var color_name_default2 = {
+  aliceblue: [240, 248, 255],
+  antiquewhite: [250, 235, 215],
+  aqua: [0, 255, 255],
+  aquamarine: [127, 255, 212],
+  azure: [240, 255, 255],
+  beige: [245, 245, 220],
+  bisque: [255, 228, 196],
+  black: [0, 0, 0],
+  blanchedalmond: [255, 235, 205],
+  blue: [0, 0, 255],
+  blueviolet: [138, 43, 226],
+  brown: [165, 42, 42],
+  burlywood: [222, 184, 135],
+  cadetblue: [95, 158, 160],
+  chartreuse: [127, 255, 0],
+  chocolate: [210, 105, 30],
+  coral: [255, 127, 80],
+  cornflowerblue: [100, 149, 237],
+  cornsilk: [255, 248, 220],
+  crimson: [220, 20, 60],
+  cyan: [0, 255, 255],
+  darkblue: [0, 0, 139],
+  darkcyan: [0, 139, 139],
+  darkgoldenrod: [184, 134, 11],
+  darkgray: [169, 169, 169],
+  darkgreen: [0, 100, 0],
+  darkgrey: [169, 169, 169],
+  darkkhaki: [189, 183, 107],
+  darkmagenta: [139, 0, 139],
+  darkolivegreen: [85, 107, 47],
+  darkorange: [255, 140, 0],
+  darkorchid: [153, 50, 204],
+  darkred: [139, 0, 0],
+  darksalmon: [233, 150, 122],
+  darkseagreen: [143, 188, 143],
+  darkslateblue: [72, 61, 139],
+  darkslategray: [47, 79, 79],
+  darkslategrey: [47, 79, 79],
+  darkturquoise: [0, 206, 209],
+  darkviolet: [148, 0, 211],
+  deeppink: [255, 20, 147],
+  deepskyblue: [0, 191, 255],
+  dimgray: [105, 105, 105],
+  dimgrey: [105, 105, 105],
+  dodgerblue: [30, 144, 255],
+  firebrick: [178, 34, 34],
+  floralwhite: [255, 250, 240],
+  forestgreen: [34, 139, 34],
+  fuchsia: [255, 0, 255],
+  gainsboro: [220, 220, 220],
+  ghostwhite: [248, 248, 255],
+  gold: [255, 215, 0],
+  goldenrod: [218, 165, 32],
+  gray: [128, 128, 128],
+  green: [0, 128, 0],
+  greenyellow: [173, 255, 47],
+  grey: [128, 128, 128],
+  honeydew: [240, 255, 240],
+  hotpink: [255, 105, 180],
+  indianred: [205, 92, 92],
+  indigo: [75, 0, 130],
+  ivory: [255, 255, 240],
+  khaki: [240, 230, 140],
+  lavender: [230, 230, 250],
+  lavenderblush: [255, 240, 245],
+  lawngreen: [124, 252, 0],
+  lemonchiffon: [255, 250, 205],
+  lightblue: [173, 216, 230],
+  lightcoral: [240, 128, 128],
+  lightcyan: [224, 255, 255],
+  lightgoldenrodyellow: [250, 250, 210],
+  lightgray: [211, 211, 211],
+  lightgreen: [144, 238, 144],
+  lightgrey: [211, 211, 211],
+  lightpink: [255, 182, 193],
+  lightsalmon: [255, 160, 122],
+  lightseagreen: [32, 178, 170],
+  lightskyblue: [135, 206, 250],
+  lightslategray: [119, 136, 153],
+  lightslategrey: [119, 136, 153],
+  lightsteelblue: [176, 196, 222],
+  lightyellow: [255, 255, 224],
+  lime: [0, 255, 0],
+  limegreen: [50, 205, 50],
+  linen: [250, 240, 230],
+  magenta: [255, 0, 255],
+  maroon: [128, 0, 0],
+  mediumaquamarine: [102, 205, 170],
+  mediumblue: [0, 0, 205],
+  mediumorchid: [186, 85, 211],
+  mediumpurple: [147, 112, 219],
+  mediumseagreen: [60, 179, 113],
+  mediumslateblue: [123, 104, 238],
+  mediumspringgreen: [0, 250, 154],
+  mediumturquoise: [72, 209, 204],
+  mediumvioletred: [199, 21, 133],
+  midnightblue: [25, 25, 112],
+  mintcream: [245, 255, 250],
+  mistyrose: [255, 228, 225],
+  moccasin: [255, 228, 181],
+  navajowhite: [255, 222, 173],
+  navy: [0, 0, 128],
+  oldlace: [253, 245, 230],
+  olive: [128, 128, 0],
+  olivedrab: [107, 142, 35],
+  orange: [255, 165, 0],
+  orangered: [255, 69, 0],
+  orchid: [218, 112, 214],
+  palegoldenrod: [238, 232, 170],
+  palegreen: [152, 251, 152],
+  paleturquoise: [175, 238, 238],
+  palevioletred: [219, 112, 147],
+  papayawhip: [255, 239, 213],
+  peachpuff: [255, 218, 185],
+  peru: [205, 133, 63],
+  pink: [255, 192, 203],
+  plum: [221, 160, 221],
+  powderblue: [176, 224, 230],
+  purple: [128, 0, 128],
+  rebeccapurple: [102, 51, 153],
+  red: [255, 0, 0],
+  rosybrown: [188, 143, 143],
+  royalblue: [65, 105, 225],
+  saddlebrown: [139, 69, 19],
+  salmon: [250, 128, 114],
+  sandybrown: [244, 164, 96],
+  seagreen: [46, 139, 87],
+  seashell: [255, 245, 238],
+  sienna: [160, 82, 45],
+  silver: [192, 192, 192],
+  skyblue: [135, 206, 235],
+  slateblue: [106, 90, 205],
+  slategray: [112, 128, 144],
+  slategrey: [112, 128, 144],
+  snow: [255, 250, 250],
+  springgreen: [0, 255, 127],
+  steelblue: [70, 130, 180],
+  tan: [210, 180, 140],
+  teal: [0, 128, 128],
+  thistle: [216, 191, 216],
+  tomato: [255, 99, 71],
+  turquoise: [64, 224, 208],
+  violet: [238, 130, 238],
+  wheat: [245, 222, 179],
+  white: [255, 255, 255],
+  whitesmoke: [245, 245, 245],
+  yellow: [255, 255, 0],
+  yellowgreen: [154, 205, 50]
+};
+
+// node_modules/color/node_modules/color-convert/conversions.js
+var reverseKeywords = {};
+for (const key of Object.keys(color_name_default2)) {
+  reverseKeywords[color_name_default2[key]] = key;
+}
+var convert = {
+  rgb: { channels: 3, labels: "rgb" },
+  hsl: { channels: 3, labels: "hsl" },
+  hsv: { channels: 3, labels: "hsv" },
+  hwb: { channels: 3, labels: "hwb" },
+  cmyk: { channels: 4, labels: "cmyk" },
+  xyz: { channels: 3, labels: "xyz" },
+  lab: { channels: 3, labels: "lab" },
+  oklab: { channels: 3, labels: ["okl", "oka", "okb"] },
+  lch: { channels: 3, labels: "lch" },
+  oklch: { channels: 3, labels: ["okl", "okc", "okh"] },
+  hex: { channels: 1, labels: ["hex"] },
+  keyword: { channels: 1, labels: ["keyword"] },
+  ansi16: { channels: 1, labels: ["ansi16"] },
+  ansi256: { channels: 1, labels: ["ansi256"] },
+  hcg: { channels: 3, labels: ["h", "c", "g"] },
+  apple: { channels: 3, labels: ["r16", "g16", "b16"] },
+  gray: { channels: 1, labels: ["gray"] }
+};
+var conversions_default = convert;
+var LAB_FT = (6 / 29) ** 3;
+function srgbNonlinearTransform(c) {
+  const cc = c > 31308e-7 ? 1.055 * c ** (1 / 2.4) - 0.055 : c * 12.92;
+  return Math.min(Math.max(0, cc), 1);
+}
+function srgbNonlinearTransformInv(c) {
+  return c > 0.04045 ? ((c + 0.055) / 1.055) ** 2.4 : c / 12.92;
+}
+for (const model of Object.keys(convert)) {
+  if (!("channels" in convert[model])) {
+    throw new Error("missing channels property: " + model);
+  }
+  if (!("labels" in convert[model])) {
+    throw new Error("missing channel labels property: " + model);
+  }
+  if (convert[model].labels.length !== convert[model].channels) {
+    throw new Error("channel and label counts mismatch: " + model);
+  }
+  const { channels, labels } = convert[model];
+  delete convert[model].channels;
+  delete convert[model].labels;
+  Object.defineProperty(convert[model], "channels", { value: channels });
+  Object.defineProperty(convert[model], "labels", { value: labels });
+}
+convert.rgb.hsl = function(rgb) {
+  const r = rgb[0] / 255;
+  const g = rgb[1] / 255;
+  const b = rgb[2] / 255;
+  const min = Math.min(r, g, b);
+  const max = Math.max(r, g, b);
+  const delta = max - min;
+  let h;
+  let s;
+  switch (max) {
+    case min: {
+      h = 0;
+      break;
+    }
+    case r: {
+      h = (g - b) / delta;
+      break;
+    }
+    case g: {
+      h = 2 + (b - r) / delta;
+      break;
+    }
+    case b: {
+      h = 4 + (r - g) / delta;
+      break;
+    }
+  }
+  h = Math.min(h * 60, 360);
+  if (h < 0) {
+    h += 360;
+  }
+  const l = (min + max) / 2;
+  if (max === min) {
+    s = 0;
+  } else if (l <= 0.5) {
+    s = delta / (max + min);
+  } else {
+    s = delta / (2 - max - min);
+  }
+  return [h, s * 100, l * 100];
+};
+convert.rgb.hsv = function(rgb) {
+  let rdif;
+  let gdif;
+  let bdif;
+  let h;
+  let s;
+  const r = rgb[0] / 255;
+  const g = rgb[1] / 255;
+  const b = rgb[2] / 255;
+  const v = Math.max(r, g, b);
+  const diff = v - Math.min(r, g, b);
+  const diffc = function(c) {
+    return (v - c) / 6 / diff + 1 / 2;
+  };
+  if (diff === 0) {
+    h = 0;
+    s = 0;
+  } else {
+    s = diff / v;
+    rdif = diffc(r);
+    gdif = diffc(g);
+    bdif = diffc(b);
+    switch (v) {
+      case r: {
+        h = bdif - gdif;
+        break;
+      }
+      case g: {
+        h = 1 / 3 + rdif - bdif;
+        break;
+      }
+      case b: {
+        h = 2 / 3 + gdif - rdif;
+        break;
+      }
+    }
+    if (h < 0) {
+      h += 1;
+    } else if (h > 1) {
+      h -= 1;
+    }
+  }
+  return [
+    h * 360,
+    s * 100,
+    v * 100
+  ];
+};
+convert.rgb.hwb = function(rgb) {
+  const r = rgb[0];
+  const g = rgb[1];
+  let b = rgb[2];
+  const h = convert.rgb.hsl(rgb)[0];
+  const w = 1 / 255 * Math.min(r, Math.min(g, b));
+  b = 1 - 1 / 255 * Math.max(r, Math.max(g, b));
+  return [h, w * 100, b * 100];
+};
+convert.rgb.oklab = function(rgb) {
+  const r = srgbNonlinearTransformInv(rgb[0] / 255);
+  const g = srgbNonlinearTransformInv(rgb[1] / 255);
+  const b = srgbNonlinearTransformInv(rgb[2] / 255);
+  const lp = Math.cbrt(0.4122214708 * r + 0.5363325363 * g + 0.0514459929 * b);
+  const mp = Math.cbrt(0.2119034982 * r + 0.6806995451 * g + 0.1073969566 * b);
+  const sp = Math.cbrt(0.0883024619 * r + 0.2817188376 * g + 0.6299787005 * b);
+  const l = 0.2104542553 * lp + 0.793617785 * mp - 0.0040720468 * sp;
+  const aa = 1.9779984951 * lp - 2.428592205 * mp + 0.4505937099 * sp;
+  const bb = 0.0259040371 * lp + 0.7827717662 * mp - 0.808675766 * sp;
+  return [l * 100, aa * 100, bb * 100];
+};
+convert.rgb.cmyk = function(rgb) {
+  const r = rgb[0] / 255;
+  const g = rgb[1] / 255;
+  const b = rgb[2] / 255;
+  const k = Math.min(1 - r, 1 - g, 1 - b);
+  const c = (1 - r - k) / (1 - k) || 0;
+  const m = (1 - g - k) / (1 - k) || 0;
+  const y = (1 - b - k) / (1 - k) || 0;
+  return [c * 100, m * 100, y * 100, k * 100];
+};
+function comparativeDistance(x, y) {
+  return (x[0] - y[0]) ** 2 + (x[1] - y[1]) ** 2 + (x[2] - y[2]) ** 2;
+}
+convert.rgb.keyword = function(rgb) {
+  const reversed = reverseKeywords[rgb];
+  if (reversed) {
+    return reversed;
+  }
+  let currentClosestDistance = Number.POSITIVE_INFINITY;
+  let currentClosestKeyword;
+  for (const keyword of Object.keys(color_name_default2)) {
+    const value = color_name_default2[keyword];
+    const distance = comparativeDistance(rgb, value);
+    if (distance < currentClosestDistance) {
+      currentClosestDistance = distance;
+      currentClosestKeyword = keyword;
+    }
+  }
+  return currentClosestKeyword;
+};
+convert.keyword.rgb = function(keyword) {
+  return color_name_default2[keyword];
+};
+convert.rgb.xyz = function(rgb) {
+  const r = srgbNonlinearTransformInv(rgb[0] / 255);
+  const g = srgbNonlinearTransformInv(rgb[1] / 255);
+  const b = srgbNonlinearTransformInv(rgb[2] / 255);
+  const x = r * 0.4124564 + g * 0.3575761 + b * 0.1804375;
+  const y = r * 0.2126729 + g * 0.7151522 + b * 0.072175;
+  const z = r * 0.0193339 + g * 0.119192 + b * 0.9503041;
+  return [x * 100, y * 100, z * 100];
+};
+convert.rgb.lab = function(rgb) {
+  const xyz = convert.rgb.xyz(rgb);
+  let x = xyz[0];
+  let y = xyz[1];
+  let z = xyz[2];
+  x /= 95.047;
+  y /= 100;
+  z /= 108.883;
+  x = x > LAB_FT ? x ** (1 / 3) : 7.787 * x + 16 / 116;
+  y = y > LAB_FT ? y ** (1 / 3) : 7.787 * y + 16 / 116;
+  z = z > LAB_FT ? z ** (1 / 3) : 7.787 * z + 16 / 116;
+  const l = 116 * y - 16;
+  const a = 500 * (x - y);
+  const b = 200 * (y - z);
+  return [l, a, b];
+};
+convert.hsl.rgb = function(hsl) {
+  const h = hsl[0] / 360;
+  const s = hsl[1] / 100;
+  const l = hsl[2] / 100;
+  let t3;
+  let value;
+  if (s === 0) {
+    value = l * 255;
+    return [value, value, value];
+  }
+  const t2 = l < 0.5 ? l * (1 + s) : l + s - l * s;
+  const t1 = 2 * l - t2;
+  const rgb = [0, 0, 0];
+  for (let i = 0; i < 3; i++) {
+    t3 = h + 1 / 3 * -(i - 1);
+    if (t3 < 0) {
+      t3++;
+    }
+    if (t3 > 1) {
+      t3--;
+    }
+    if (6 * t3 < 1) {
+      value = t1 + (t2 - t1) * 6 * t3;
+    } else if (2 * t3 < 1) {
+      value = t2;
+    } else if (3 * t3 < 2) {
+      value = t1 + (t2 - t1) * (2 / 3 - t3) * 6;
+    } else {
+      value = t1;
+    }
+    rgb[i] = value * 255;
+  }
+  return rgb;
+};
+convert.hsl.hsv = function(hsl) {
+  const h = hsl[0];
+  let s = hsl[1] / 100;
+  let l = hsl[2] / 100;
+  let smin = s;
+  const lmin = Math.max(l, 0.01);
+  l *= 2;
+  s *= l <= 1 ? l : 2 - l;
+  smin *= lmin <= 1 ? lmin : 2 - lmin;
+  const v = (l + s) / 2;
+  const sv = l === 0 ? 2 * smin / (lmin + smin) : 2 * s / (l + s);
+  return [h, sv * 100, v * 100];
+};
+convert.hsv.rgb = function(hsv) {
+  const h = hsv[0] / 60;
+  const s = hsv[1] / 100;
+  let v = hsv[2] / 100;
+  const hi = Math.floor(h) % 6;
+  const f = h - Math.floor(h);
+  const p = 255 * v * (1 - s);
+  const q = 255 * v * (1 - s * f);
+  const t2 = 255 * v * (1 - s * (1 - f));
+  v *= 255;
+  switch (hi) {
+    case 0: {
+      return [v, t2, p];
+    }
+    case 1: {
+      return [q, v, p];
+    }
+    case 2: {
+      return [p, v, t2];
+    }
+    case 3: {
+      return [p, q, v];
+    }
+    case 4: {
+      return [t2, p, v];
+    }
+    case 5: {
+      return [v, p, q];
+    }
+  }
+};
+convert.hsv.hsl = function(hsv) {
+  const h = hsv[0];
+  const s = hsv[1] / 100;
+  const v = hsv[2] / 100;
+  const vmin = Math.max(v, 0.01);
+  let sl;
+  let l;
+  l = (2 - s) * v;
+  const lmin = (2 - s) * vmin;
+  sl = s * vmin;
+  sl /= lmin <= 1 ? lmin : 2 - lmin;
+  sl = sl || 0;
+  l /= 2;
+  return [h, sl * 100, l * 100];
+};
+convert.hwb.rgb = function(hwb) {
+  const h = hwb[0] / 360;
+  let wh = hwb[1] / 100;
+  let bl = hwb[2] / 100;
+  const ratio = wh + bl;
+  let f;
+  if (ratio > 1) {
+    wh /= ratio;
+    bl /= ratio;
+  }
+  const i = Math.floor(6 * h);
+  const v = 1 - bl;
+  f = 6 * h - i;
+  if ((i & 1) !== 0) {
+    f = 1 - f;
+  }
+  const n = wh + f * (v - wh);
+  let r;
+  let g;
+  let b;
+  switch (i) {
+    default:
+    case 6:
+    case 0: {
+      r = v;
+      g = n;
+      b = wh;
+      break;
+    }
+    case 1: {
+      r = n;
+      g = v;
+      b = wh;
+      break;
+    }
+    case 2: {
+      r = wh;
+      g = v;
+      b = n;
+      break;
+    }
+    case 3: {
+      r = wh;
+      g = n;
+      b = v;
+      break;
+    }
+    case 4: {
+      r = n;
+      g = wh;
+      b = v;
+      break;
+    }
+    case 5: {
+      r = v;
+      g = wh;
+      b = n;
+      break;
+    }
+  }
+  return [r * 255, g * 255, b * 255];
+};
+convert.cmyk.rgb = function(cmyk) {
+  const c = cmyk[0] / 100;
+  const m = cmyk[1] / 100;
+  const y = cmyk[2] / 100;
+  const k = cmyk[3] / 100;
+  const r = 1 - Math.min(1, c * (1 - k) + k);
+  const g = 1 - Math.min(1, m * (1 - k) + k);
+  const b = 1 - Math.min(1, y * (1 - k) + k);
+  return [r * 255, g * 255, b * 255];
+};
+convert.xyz.rgb = function(xyz) {
+  const x = xyz[0] / 100;
+  const y = xyz[1] / 100;
+  const z = xyz[2] / 100;
+  let r;
+  let g;
+  let b;
+  r = x * 3.2404542 + y * -1.5371385 + z * -0.4985314;
+  g = x * -0.969266 + y * 1.8760108 + z * 0.041556;
+  b = x * 0.0556434 + y * -0.2040259 + z * 1.0572252;
+  r = srgbNonlinearTransform(r);
+  g = srgbNonlinearTransform(g);
+  b = srgbNonlinearTransform(b);
+  return [r * 255, g * 255, b * 255];
+};
+convert.xyz.lab = function(xyz) {
+  let x = xyz[0];
+  let y = xyz[1];
+  let z = xyz[2];
+  x /= 95.047;
+  y /= 100;
+  z /= 108.883;
+  x = x > LAB_FT ? x ** (1 / 3) : 7.787 * x + 16 / 116;
+  y = y > LAB_FT ? y ** (1 / 3) : 7.787 * y + 16 / 116;
+  z = z > LAB_FT ? z ** (1 / 3) : 7.787 * z + 16 / 116;
+  const l = 116 * y - 16;
+  const a = 500 * (x - y);
+  const b = 200 * (y - z);
+  return [l, a, b];
+};
+convert.xyz.oklab = function(xyz) {
+  const x = xyz[0] / 100;
+  const y = xyz[1] / 100;
+  const z = xyz[2] / 100;
+  const lp = Math.cbrt(0.8189330101 * x + 0.3618667424 * y - 0.1288597137 * z);
+  const mp = Math.cbrt(0.0329845436 * x + 0.9293118715 * y + 0.0361456387 * z);
+  const sp = Math.cbrt(0.0482003018 * x + 0.2643662691 * y + 0.633851707 * z);
+  const l = 0.2104542553 * lp + 0.793617785 * mp - 0.0040720468 * sp;
+  const a = 1.9779984951 * lp - 2.428592205 * mp + 0.4505937099 * sp;
+  const b = 0.0259040371 * lp + 0.7827717662 * mp - 0.808675766 * sp;
+  return [l * 100, a * 100, b * 100];
+};
+convert.oklab.oklch = function(oklab) {
+  return convert.lab.lch(oklab);
+};
+convert.oklab.xyz = function(oklab) {
+  const ll = oklab[0] / 100;
+  const a = oklab[1] / 100;
+  const b = oklab[2] / 100;
+  const l = (0.999999998 * ll + 0.396337792 * a + 0.215803758 * b) ** 3;
+  const m = (1.000000008 * ll - 0.105561342 * a - 0.063854175 * b) ** 3;
+  const s = (1.000000055 * ll - 0.089484182 * a - 1.291485538 * b) ** 3;
+  const x = 1.227013851 * l - 0.55779998 * m + 0.281256149 * s;
+  const y = -0.040580178 * l + 1.11225687 * m - 0.071676679 * s;
+  const z = -0.076381285 * l - 0.421481978 * m + 1.58616322 * s;
+  return [x * 100, y * 100, z * 100];
+};
+convert.oklab.rgb = function(oklab) {
+  const ll = oklab[0] / 100;
+  const aa = oklab[1] / 100;
+  const bb = oklab[2] / 100;
+  const l = (ll + 0.3963377774 * aa + 0.2158037573 * bb) ** 3;
+  const m = (ll - 0.1055613458 * aa - 0.0638541728 * bb) ** 3;
+  const s = (ll - 0.0894841775 * aa - 1.291485548 * bb) ** 3;
+  const r = srgbNonlinearTransform(4.0767416621 * l - 3.3077115913 * m + 0.2309699292 * s);
+  const g = srgbNonlinearTransform(-1.2684380046 * l + 2.6097574011 * m - 0.3413193965 * s);
+  const b = srgbNonlinearTransform(-0.0041960863 * l - 0.7034186147 * m + 1.707614701 * s);
+  return [r * 255, g * 255, b * 255];
+};
+convert.oklch.oklab = function(oklch) {
+  return convert.lch.lab(oklch);
+};
+convert.lab.xyz = function(lab) {
+  const l = lab[0];
+  const a = lab[1];
+  const b = lab[2];
+  let x;
+  let y;
+  let z;
+  y = (l + 16) / 116;
+  x = a / 500 + y;
+  z = y - b / 200;
+  const y2 = y ** 3;
+  const x2 = x ** 3;
+  const z2 = z ** 3;
+  y = y2 > LAB_FT ? y2 : (y - 16 / 116) / 7.787;
+  x = x2 > LAB_FT ? x2 : (x - 16 / 116) / 7.787;
+  z = z2 > LAB_FT ? z2 : (z - 16 / 116) / 7.787;
+  x *= 95.047;
+  y *= 100;
+  z *= 108.883;
+  return [x, y, z];
+};
+convert.lab.lch = function(lab) {
+  const l = lab[0];
+  const a = lab[1];
+  const b = lab[2];
+  let h;
+  const hr = Math.atan2(b, a);
+  h = hr * 360 / 2 / Math.PI;
+  if (h < 0) {
+    h += 360;
+  }
+  const c = Math.sqrt(a * a + b * b);
+  return [l, c, h];
+};
+convert.lch.lab = function(lch) {
+  const l = lch[0];
+  const c = lch[1];
+  const h = lch[2];
+  const hr = h / 360 * 2 * Math.PI;
+  const a = c * Math.cos(hr);
+  const b = c * Math.sin(hr);
+  return [l, a, b];
+};
+convert.rgb.ansi16 = function(args, saturation = null) {
+  const [r, g, b] = args;
+  let value = saturation === null ? convert.rgb.hsv(args)[2] : saturation;
+  value = Math.round(value / 50);
+  if (value === 0) {
+    return 30;
+  }
+  let ansi = 30 + (Math.round(b / 255) << 2 | Math.round(g / 255) << 1 | Math.round(r / 255));
+  if (value === 2) {
+    ansi += 60;
+  }
+  return ansi;
+};
+convert.hsv.ansi16 = function(args) {
+  return convert.rgb.ansi16(convert.hsv.rgb(args), args[2]);
+};
+convert.rgb.ansi256 = function(args) {
+  const r = args[0];
+  const g = args[1];
+  const b = args[2];
+  if (r >> 4 === g >> 4 && g >> 4 === b >> 4) {
+    if (r < 8) {
+      return 16;
+    }
+    if (r > 248) {
+      return 231;
+    }
+    return Math.round((r - 8) / 247 * 24) + 232;
+  }
+  const ansi = 16 + 36 * Math.round(r / 255 * 5) + 6 * Math.round(g / 255 * 5) + Math.round(b / 255 * 5);
+  return ansi;
+};
+convert.ansi16.rgb = function(args) {
+  args = args[0];
+  let color = args % 10;
+  if (color === 0 || color === 7) {
+    if (args > 50) {
+      color += 3.5;
+    }
+    color = color / 10.5 * 255;
+    return [color, color, color];
+  }
+  const mult = (Math.trunc(args > 50) + 1) * 0.5;
+  const r = (color & 1) * mult * 255;
+  const g = (color >> 1 & 1) * mult * 255;
+  const b = (color >> 2 & 1) * mult * 255;
+  return [r, g, b];
+};
+convert.ansi256.rgb = function(args) {
+  args = args[0];
+  if (args >= 232) {
+    const c = (args - 232) * 10 + 8;
+    return [c, c, c];
+  }
+  args -= 16;
+  let rem;
+  const r = Math.floor(args / 36) / 5 * 255;
+  const g = Math.floor((rem = args % 36) / 6) / 5 * 255;
+  const b = rem % 6 / 5 * 255;
+  return [r, g, b];
+};
+convert.rgb.hex = function(args) {
+  const integer = ((Math.round(args[0]) & 255) << 16) + ((Math.round(args[1]) & 255) << 8) + (Math.round(args[2]) & 255);
+  const string = integer.toString(16).toUpperCase();
+  return "000000".slice(string.length) + string;
+};
+convert.hex.rgb = function(args) {
+  const match = args.toString(16).match(/[a-f\d]{6}|[a-f\d]{3}/i);
+  if (!match) {
+    return [0, 0, 0];
+  }
+  let colorString = match[0];
+  if (match[0].length === 3) {
+    colorString = [...colorString].map((char) => char + char).join("");
+  }
+  const integer = Number.parseInt(colorString, 16);
+  const r = integer >> 16 & 255;
+  const g = integer >> 8 & 255;
+  const b = integer & 255;
+  return [r, g, b];
+};
+convert.rgb.hcg = function(rgb) {
+  const r = rgb[0] / 255;
+  const g = rgb[1] / 255;
+  const b = rgb[2] / 255;
+  const max = Math.max(Math.max(r, g), b);
+  const min = Math.min(Math.min(r, g), b);
+  const chroma = max - min;
+  let hue;
+  const grayscale = chroma < 1 ? min / (1 - chroma) : 0;
+  if (chroma <= 0) {
+    hue = 0;
+  } else if (max === r) {
+    hue = (g - b) / chroma % 6;
+  } else if (max === g) {
+    hue = 2 + (b - r) / chroma;
+  } else {
+    hue = 4 + (r - g) / chroma;
+  }
+  hue /= 6;
+  hue %= 1;
+  return [hue * 360, chroma * 100, grayscale * 100];
+};
+convert.hsl.hcg = function(hsl) {
+  const s = hsl[1] / 100;
+  const l = hsl[2] / 100;
+  const c = l < 0.5 ? 2 * s * l : 2 * s * (1 - l);
+  let f = 0;
+  if (c < 1) {
+    f = (l - 0.5 * c) / (1 - c);
+  }
+  return [hsl[0], c * 100, f * 100];
+};
+convert.hsv.hcg = function(hsv) {
+  const s = hsv[1] / 100;
+  const v = hsv[2] / 100;
+  const c = s * v;
+  let f = 0;
+  if (c < 1) {
+    f = (v - c) / (1 - c);
+  }
+  return [hsv[0], c * 100, f * 100];
+};
+convert.hcg.rgb = function(hcg) {
+  const h = hcg[0] / 360;
+  const c = hcg[1] / 100;
+  const g = hcg[2] / 100;
+  if (c === 0) {
+    return [g * 255, g * 255, g * 255];
+  }
+  const pure = [0, 0, 0];
+  const hi = h % 1 * 6;
+  const v = hi % 1;
+  const w = 1 - v;
+  let mg = 0;
+  switch (Math.floor(hi)) {
+    case 0: {
+      pure[0] = 1;
+      pure[1] = v;
+      pure[2] = 0;
+      break;
+    }
+    case 1: {
+      pure[0] = w;
+      pure[1] = 1;
+      pure[2] = 0;
+      break;
+    }
+    case 2: {
+      pure[0] = 0;
+      pure[1] = 1;
+      pure[2] = v;
+      break;
+    }
+    case 3: {
+      pure[0] = 0;
+      pure[1] = w;
+      pure[2] = 1;
+      break;
+    }
+    case 4: {
+      pure[0] = v;
+      pure[1] = 0;
+      pure[2] = 1;
+      break;
+    }
+    default: {
+      pure[0] = 1;
+      pure[1] = 0;
+      pure[2] = w;
+    }
+  }
+  mg = (1 - c) * g;
+  return [
+    (c * pure[0] + mg) * 255,
+    (c * pure[1] + mg) * 255,
+    (c * pure[2] + mg) * 255
+  ];
+};
+convert.hcg.hsv = function(hcg) {
+  const c = hcg[1] / 100;
+  const g = hcg[2] / 100;
+  const v = c + g * (1 - c);
+  let f = 0;
+  if (v > 0) {
+    f = c / v;
+  }
+  return [hcg[0], f * 100, v * 100];
+};
+convert.hcg.hsl = function(hcg) {
+  const c = hcg[1] / 100;
+  const g = hcg[2] / 100;
+  const l = g * (1 - c) + 0.5 * c;
+  let s = 0;
+  if (l > 0 && l < 0.5) {
+    s = c / (2 * l);
+  } else if (l >= 0.5 && l < 1) {
+    s = c / (2 * (1 - l));
+  }
+  return [hcg[0], s * 100, l * 100];
+};
+convert.hcg.hwb = function(hcg) {
+  const c = hcg[1] / 100;
+  const g = hcg[2] / 100;
+  const v = c + g * (1 - c);
+  return [hcg[0], (v - c) * 100, (1 - v) * 100];
+};
+convert.hwb.hcg = function(hwb) {
+  const w = hwb[1] / 100;
+  const b = hwb[2] / 100;
+  const v = 1 - b;
+  const c = v - w;
+  let g = 0;
+  if (c < 1) {
+    g = (v - c) / (1 - c);
+  }
+  return [hwb[0], c * 100, g * 100];
+};
+convert.apple.rgb = function(apple) {
+  return [apple[0] / 65535 * 255, apple[1] / 65535 * 255, apple[2] / 65535 * 255];
+};
+convert.rgb.apple = function(rgb) {
+  return [rgb[0] / 255 * 65535, rgb[1] / 255 * 65535, rgb[2] / 255 * 65535];
+};
+convert.gray.rgb = function(args) {
+  return [args[0] / 100 * 255, args[0] / 100 * 255, args[0] / 100 * 255];
+};
+convert.gray.hsl = function(args) {
+  return [0, 0, args[0]];
+};
+convert.gray.hsv = convert.gray.hsl;
+convert.gray.hwb = function(gray) {
+  return [0, 100, gray[0]];
+};
+convert.gray.cmyk = function(gray) {
+  return [0, 0, 0, gray[0]];
+};
+convert.gray.lab = function(gray) {
+  return [gray[0], 0, 0];
+};
+convert.gray.hex = function(gray) {
+  const value = Math.round(gray[0] / 100 * 255) & 255;
+  const integer = (value << 16) + (value << 8) + value;
+  const string = integer.toString(16).toUpperCase();
+  return "000000".slice(string.length) + string;
+};
+convert.rgb.gray = function(rgb) {
+  const value = (rgb[0] + rgb[1] + rgb[2]) / 3;
+  return [value / 255 * 100];
+};
+
+// node_modules/color/node_modules/color-convert/route.js
+function buildGraph() {
+  const graph = {};
+  const models2 = Object.keys(conversions_default);
+  for (let { length } = models2, i = 0; i < length; i++) {
+    graph[models2[i]] = {
+      // http://jsperf.com/1-vs-infinity
+      // micro-opt, but this is simple.
+      distance: -1,
+      parent: null
+    };
+  }
+  return graph;
+}
+function deriveBFS(fromModel) {
+  const graph = buildGraph();
+  const queue = [fromModel];
+  graph[fromModel].distance = 0;
+  while (queue.length > 0) {
+    const current = queue.pop();
+    const adjacents = Object.keys(conversions_default[current]);
+    for (let { length } = adjacents, i = 0; i < length; i++) {
+      const adjacent = adjacents[i];
+      const node = graph[adjacent];
+      if (node.distance === -1) {
+        node.distance = graph[current].distance + 1;
+        node.parent = current;
+        queue.unshift(adjacent);
+      }
+    }
+  }
+  return graph;
+}
+function link(from, to) {
+  return function(args) {
+    return to(from(args));
+  };
+}
+function wrapConversion(toModel, graph) {
+  const path = [graph[toModel].parent, toModel];
+  let fn = conversions_default[graph[toModel].parent][toModel];
+  let cur2 = graph[toModel].parent;
+  while (graph[cur2].parent) {
+    path.unshift(graph[cur2].parent);
+    fn = link(conversions_default[graph[cur2].parent][cur2], fn);
+    cur2 = graph[cur2].parent;
+  }
+  fn.conversion = path;
+  return fn;
+}
+function route(fromModel) {
+  const graph = deriveBFS(fromModel);
+  const conversion = {};
+  const models2 = Object.keys(graph);
+  for (let { length } = models2, i = 0; i < length; i++) {
+    const toModel = models2[i];
+    const node = graph[toModel];
+    if (node.parent === null) {
+      continue;
+    }
+    conversion[toModel] = wrapConversion(toModel, graph);
+  }
+  return conversion;
+}
+var route_default = route;
+
+// node_modules/color/node_modules/color-convert/index.js
+var convert2 = {};
+var models = Object.keys(conversions_default);
+function wrapRaw(fn) {
+  const wrappedFn = function(...args) {
+    const arg0 = args[0];
+    if (arg0 === void 0 || arg0 === null) {
+      return arg0;
+    }
+    if (arg0.length > 1) {
+      args = arg0;
+    }
+    return fn(args);
+  };
+  if ("conversion" in fn) {
+    wrappedFn.conversion = fn.conversion;
+  }
+  return wrappedFn;
+}
+function wrapRounded(fn) {
+  const wrappedFn = function(...args) {
+    const arg0 = args[0];
+    if (arg0 === void 0 || arg0 === null) {
+      return arg0;
+    }
+    if (arg0.length > 1) {
+      args = arg0;
+    }
+    const result = fn(args);
+    if (typeof result === "object") {
+      for (let { length } = result, i = 0; i < length; i++) {
+        result[i] = Math.round(result[i]);
+      }
+    }
+    return result;
+  };
+  if ("conversion" in fn) {
+    wrappedFn.conversion = fn.conversion;
+  }
+  return wrappedFn;
+}
+for (const fromModel of models) {
+  convert2[fromModel] = {};
+  Object.defineProperty(convert2[fromModel], "channels", { value: conversions_default[fromModel].channels });
+  Object.defineProperty(convert2[fromModel], "labels", { value: conversions_default[fromModel].labels });
+  const routes = route_default(fromModel);
+  const routeModels = Object.keys(routes);
+  for (const toModel of routeModels) {
+    const fn = routes[toModel];
+    convert2[fromModel][toModel] = wrapRounded(fn);
+    convert2[fromModel][toModel].raw = wrapRaw(fn);
+  }
+}
+var color_convert_default = convert2;
+
+// node_modules/color/index.js
+var skippedModels = [
+  // To be honest, I don't really feel like keyword belongs in color convert, but eh.
+  "keyword",
+  // Gray conflicts with some method names, and has its own method defined.
+  "gray",
+  // Shouldn't really be in color-convert either...
+  "hex"
+];
+var hashedModelKeys = {};
+for (const model of Object.keys(color_convert_default)) {
+  hashedModelKeys[[...color_convert_default[model].labels].sort().join("")] = model;
+}
+var limiters = {};
+function Color(object, model) {
+  if (!(this instanceof Color)) {
+    return new Color(object, model);
+  }
+  if (model && model in skippedModels) {
+    model = null;
+  }
+  if (model && !(model in color_convert_default)) {
+    throw new Error("Unknown model: " + model);
+  }
+  let i;
+  let channels;
+  if (object == null) {
+    this.model = "rgb";
+    this.color = [0, 0, 0];
+    this.valpha = 1;
+  } else if (object instanceof Color) {
+    this.model = object.model;
+    this.color = [...object.color];
+    this.valpha = object.valpha;
+  } else if (typeof object === "string") {
+    const result = color_string_default.get(object);
+    if (result === null) {
+      throw new Error("Unable to parse color from string: " + object);
+    }
+    this.model = result.model;
+    channels = color_convert_default[this.model].channels;
+    this.color = result.value.slice(0, channels);
+    this.valpha = typeof result.value[channels] === "number" ? result.value[channels] : 1;
+  } else if (object.length > 0) {
+    this.model = model || "rgb";
+    channels = color_convert_default[this.model].channels;
+    const newArray = Array.prototype.slice.call(object, 0, channels);
+    this.color = zeroArray(newArray, channels);
+    this.valpha = typeof object[channels] === "number" ? object[channels] : 1;
+  } else if (typeof object === "number") {
+    this.model = "rgb";
+    this.color = [
+      object >> 16 & 255,
+      object >> 8 & 255,
+      object & 255
+    ];
+    this.valpha = 1;
+  } else {
+    this.valpha = 1;
+    const keys2 = Object.keys(object);
+    if ("alpha" in object) {
+      keys2.splice(keys2.indexOf("alpha"), 1);
+      this.valpha = typeof object.alpha === "number" ? object.alpha : 0;
+    }
+    const hashedKeys = keys2.sort().join("");
+    if (!(hashedKeys in hashedModelKeys)) {
+      throw new Error("Unable to parse color from object: " + JSON.stringify(object));
+    }
+    this.model = hashedModelKeys[hashedKeys];
+    const { labels } = color_convert_default[this.model];
+    const color = [];
+    for (i = 0; i < labels.length; i++) {
+      color.push(object[labels[i]]);
+    }
+    this.color = zeroArray(color);
+  }
+  if (limiters[this.model]) {
+    channels = color_convert_default[this.model].channels;
+    for (i = 0; i < channels; i++) {
+      const limit = limiters[this.model][i];
+      if (limit) {
+        this.color[i] = limit(this.color[i]);
+      }
+    }
+  }
+  this.valpha = Math.max(0, Math.min(1, this.valpha));
+  if (Object.freeze) {
+    Object.freeze(this);
+  }
+}
+Color.prototype = {
+  toString() {
+    return this.string();
+  },
+  toJSON() {
+    return this[this.model]();
+  },
+  string(places) {
+    let self = this.model in color_string_default.to ? this : this.rgb();
+    self = self.round(typeof places === "number" ? places : 1);
+    const arguments_ = self.valpha === 1 ? self.color : [...self.color, this.valpha];
+    return color_string_default.to[self.model](...arguments_);
+  },
+  percentString(places) {
+    const self = this.rgb().round(typeof places === "number" ? places : 1);
+    const arguments_ = self.valpha === 1 ? self.color : [...self.color, this.valpha];
+    return color_string_default.to.rgb.percent(...arguments_);
+  },
+  array() {
+    return this.valpha === 1 ? [...this.color] : [...this.color, this.valpha];
+  },
+  object() {
+    const result = {};
+    const { channels } = color_convert_default[this.model];
+    const { labels } = color_convert_default[this.model];
+    for (let i = 0; i < channels; i++) {
+      result[labels[i]] = this.color[i];
+    }
+    if (this.valpha !== 1) {
+      result.alpha = this.valpha;
+    }
+    return result;
+  },
+  unitArray() {
+    const rgb = this.rgb().color;
+    rgb[0] /= 255;
+    rgb[1] /= 255;
+    rgb[2] /= 255;
+    if (this.valpha !== 1) {
+      rgb.push(this.valpha);
+    }
+    return rgb;
+  },
+  unitObject() {
+    const rgb = this.rgb().object();
+    rgb.r /= 255;
+    rgb.g /= 255;
+    rgb.b /= 255;
+    if (this.valpha !== 1) {
+      rgb.alpha = this.valpha;
+    }
+    return rgb;
+  },
+  round(places) {
+    places = Math.max(places || 0, 0);
+    return new Color([...this.color.map(roundToPlace(places)), this.valpha], this.model);
+  },
+  alpha(value) {
+    if (value !== void 0) {
+      return new Color([...this.color, Math.max(0, Math.min(1, value))], this.model);
+    }
+    return this.valpha;
+  },
+  // Rgb
+  red: getset("rgb", 0, maxfn(255)),
+  green: getset("rgb", 1, maxfn(255)),
+  blue: getset("rgb", 2, maxfn(255)),
+  hue: getset(["hsl", "hsv", "hsl", "hwb", "hcg"], 0, (value) => (value % 360 + 360) % 360),
+  saturationl: getset("hsl", 1, maxfn(100)),
+  lightness: getset("hsl", 2, maxfn(100)),
+  saturationv: getset("hsv", 1, maxfn(100)),
+  value: getset("hsv", 2, maxfn(100)),
+  chroma: getset("hcg", 1, maxfn(100)),
+  gray: getset("hcg", 2, maxfn(100)),
+  white: getset("hwb", 1, maxfn(100)),
+  wblack: getset("hwb", 2, maxfn(100)),
+  cyan: getset("cmyk", 0, maxfn(100)),
+  magenta: getset("cmyk", 1, maxfn(100)),
+  yellow: getset("cmyk", 2, maxfn(100)),
+  black: getset("cmyk", 3, maxfn(100)),
+  x: getset("xyz", 0, maxfn(95.047)),
+  y: getset("xyz", 1, maxfn(100)),
+  z: getset("xyz", 2, maxfn(108.833)),
+  l: getset("lab", 0, maxfn(100)),
+  a: getset("lab", 1),
+  b: getset("lab", 2),
+  keyword(value) {
+    if (value !== void 0) {
+      return new Color(value);
+    }
+    return color_convert_default[this.model].keyword(this.color);
+  },
+  hex(value) {
+    if (value !== void 0) {
+      return new Color(value);
+    }
+    return color_string_default.to.hex(...this.rgb().round().color);
+  },
+  hexa(value) {
+    if (value !== void 0) {
+      return new Color(value);
+    }
+    const rgbArray = this.rgb().round().color;
+    let alphaHex = Math.round(this.valpha * 255).toString(16).toUpperCase();
+    if (alphaHex.length === 1) {
+      alphaHex = "0" + alphaHex;
+    }
+    return color_string_default.to.hex(...rgbArray) + alphaHex;
+  },
+  rgbNumber() {
+    const rgb = this.rgb().color;
+    return (rgb[0] & 255) << 16 | (rgb[1] & 255) << 8 | rgb[2] & 255;
+  },
+  luminosity() {
+    const rgb = this.rgb().color;
+    const lum = [];
+    for (const [i, element] of rgb.entries()) {
+      const chan = element / 255;
+      lum[i] = chan <= 0.04045 ? chan / 12.92 : ((chan + 0.055) / 1.055) ** 2.4;
+    }
+    return 0.2126 * lum[0] + 0.7152 * lum[1] + 0.0722 * lum[2];
+  },
+  contrast(color2) {
+    const lum1 = this.luminosity();
+    const lum2 = color2.luminosity();
+    if (lum1 > lum2) {
+      return (lum1 + 0.05) / (lum2 + 0.05);
+    }
+    return (lum2 + 0.05) / (lum1 + 0.05);
+  },
+  level(color2) {
+    const contrastRatio = this.contrast(color2);
+    if (contrastRatio >= 7) {
+      return "AAA";
+    }
+    return contrastRatio >= 4.5 ? "AA" : "";
+  },
+  isDark() {
+    const rgb = this.rgb().color;
+    const yiq = (rgb[0] * 2126 + rgb[1] * 7152 + rgb[2] * 722) / 1e4;
+    return yiq < 128;
+  },
+  isLight() {
+    return !this.isDark();
+  },
+  negate() {
+    const rgb = this.rgb();
+    for (let i = 0; i < 3; i++) {
+      rgb.color[i] = 255 - rgb.color[i];
+    }
+    return rgb;
+  },
+  lighten(ratio) {
+    const hsl = this.hsl();
+    hsl.color[2] += hsl.color[2] * ratio;
+    return hsl;
+  },
+  darken(ratio) {
+    const hsl = this.hsl();
+    hsl.color[2] -= hsl.color[2] * ratio;
+    return hsl;
+  },
+  saturate(ratio) {
+    const hsl = this.hsl();
+    hsl.color[1] += hsl.color[1] * ratio;
+    return hsl;
+  },
+  desaturate(ratio) {
+    const hsl = this.hsl();
+    hsl.color[1] -= hsl.color[1] * ratio;
+    return hsl;
+  },
+  whiten(ratio) {
+    const hwb = this.hwb();
+    hwb.color[1] += hwb.color[1] * ratio;
+    return hwb;
+  },
+  blacken(ratio) {
+    const hwb = this.hwb();
+    hwb.color[2] += hwb.color[2] * ratio;
+    return hwb;
+  },
+  grayscale() {
+    const rgb = this.rgb().color;
+    const value = rgb[0] * 0.3 + rgb[1] * 0.59 + rgb[2] * 0.11;
+    return Color.rgb(value, value, value);
+  },
+  fade(ratio) {
+    return this.alpha(this.valpha - this.valpha * ratio);
+  },
+  opaquer(ratio) {
+    return this.alpha(this.valpha + this.valpha * ratio);
+  },
+  rotate(degrees) {
+    const hsl = this.hsl();
+    let hue = hsl.color[0];
+    hue = (hue + degrees) % 360;
+    hue = hue < 0 ? 360 + hue : hue;
+    hsl.color[0] = hue;
+    return hsl;
+  },
+  mix(mixinColor, weight) {
+    if (!mixinColor || !mixinColor.rgb) {
+      throw new Error('Argument to "mix" was not a Color instance, but rather an instance of ' + typeof mixinColor);
+    }
+    const color1 = mixinColor.rgb();
+    const color2 = this.rgb();
+    const p = weight === void 0 ? 0.5 : weight;
+    const w = 2 * p - 1;
+    const a = color1.alpha() - color2.alpha();
+    const w1 = ((w * a === -1 ? w : (w + a) / (1 + w * a)) + 1) / 2;
+    const w2 = 1 - w1;
+    return Color.rgb(
+      w1 * color1.red() + w2 * color2.red(),
+      w1 * color1.green() + w2 * color2.green(),
+      w1 * color1.blue() + w2 * color2.blue(),
+      color1.alpha() * p + color2.alpha() * (1 - p)
+    );
+  }
+};
+for (const model of Object.keys(color_convert_default)) {
+  if (skippedModels.includes(model)) {
+    continue;
+  }
+  const { channels } = color_convert_default[model];
+  Color.prototype[model] = function(...arguments_) {
+    if (this.model === model) {
+      return new Color(this);
+    }
+    if (arguments_.length > 0) {
+      return new Color(arguments_, model);
+    }
+    return new Color([...assertArray(color_convert_default[this.model][model].raw(this.color)), this.valpha], model);
+  };
+  Color[model] = function(...arguments_) {
+    let color = arguments_[0];
+    if (typeof color === "number") {
+      color = zeroArray(arguments_, channels);
+    }
+    return new Color(color, model);
+  };
+}
+function roundTo(number, places) {
+  return Number(number.toFixed(places));
+}
+function roundToPlace(places) {
+  return function(number) {
+    return roundTo(number, places);
+  };
+}
+function getset(model, channel, modifier) {
+  model = Array.isArray(model) ? model : [model];
+  for (const m of model) {
+    (limiters[m] || (limiters[m] = []))[channel] = modifier;
+  }
+  model = model[0];
+  return function(value) {
+    let result;
+    if (value !== void 0) {
+      if (modifier) {
+        value = modifier(value);
+      }
+      result = this[model]();
+      result.color[channel] = value;
+      return result;
+    }
+    result = this[model]().color[channel];
+    if (modifier) {
+      result = modifier(result);
+    }
+    return result;
+  };
+}
+function maxfn(max) {
+  return function(v) {
+    return Math.max(0, Math.min(max, v));
+  };
+}
+function assertArray(value) {
+  return Array.isArray(value) ? value : [value];
+}
+function zeroArray(array, length) {
+  for (let i = 0; i < length; i++) {
+    if (typeof array[i] !== "number") {
+      array[i] = 0;
+    }
+  }
+  return array;
+}
+var color_default = Color;
+
+// src/utils/colors.ts
+var import_state5 = require("@codemirror/state");
+var import_language7 = require("@codemirror/language");
+
+// src/codemirror-extensions/inline-css.ts
+var inlineCssLanguage = cssLanguage.configure({
+  top: "Styles"
+});
+
+// src/utils/colors.ts
+function findColorValues(state) {
+  const matches = [];
+  const tree = (0, import_language7.syntaxTree)(state);
+  const doc = state.doc;
+  tree.cursor().iterate((nodeRef) => {
+    const { node } = nodeRef;
+    const nodeText = doc.sliceString(node.from, node.to);
+    if (isColorValue(node.name, nodeText)) {
+      matches.push({
+        from: node.from,
+        to: node.to,
+        color: nodeText
+      });
+    } else if (node.name === "Comment") {
+      const commentMatches = findColorsInComment(nodeText, node.from);
+      matches.push(...commentMatches);
+    }
+  });
+  return matches.sort((a, b) => a.from - b.from);
+}
+function convertToColorModel(color, model) {
+  switch (model) {
+    case "rgb":
+      return convertToRgb(color);
+    case "hsl":
+      return convertToHsl(color);
+    case "hex":
+      return convertToHex(color);
+    default:
+      return color;
+  }
+}
+function getColorModel(color) {
+  try {
+    if (color.startsWith("#")) return "hex";
+    if (isValidColorName(color)) return "hex";
+    return color_default(color).toJSON().model;
+  } catch (e) {
+    return "hex";
+  }
+}
+function convertToHex(color) {
+  try {
+    return color_default(color).hex().toLowerCase();
+  } catch (e) {
+    return color;
+  }
+}
+function convertToRgb(color) {
+  try {
+    return color_default(color).rgb().toString();
+  } catch (e) {
+    return color;
+  }
+}
+function convertToHsl(color) {
+  try {
+    return color_default(color).hsl().round().toString();
+  } catch (e) {
+    return color;
+  }
+}
+function isColorValue(nodeName, nodeText) {
+  switch (nodeName) {
+    case "ColorLiteral":
+      return true;
+    case "ValueName":
+      return isValidColorName(nodeText);
+    case "CallExpression":
+      return /^(rgb|rgba|hsl|hsla|hwb)\s*\(/.test(nodeText);
+    default:
+      return false;
+  }
+}
+var validColorNames = /* @__PURE__ */ new Set([
+  "aliceblue",
+  "antiquewhite",
+  "aqua",
+  "aquamarine",
+  "azure",
+  "beige",
+  "bisque",
+  "black",
+  "blanchedalmond",
+  "blue",
+  "blueviolet",
+  "brown",
+  "burlywood",
+  "cadetblue",
+  "chartreuse",
+  "chocolate",
+  "coral",
+  "cornflowerblue",
+  "cornsilk",
+  "crimson",
+  "cyan",
+  "darkblue",
+  "darkcyan",
+  "darkgoldenrod",
+  "darkgray",
+  "darkgreen",
+  "darkgrey",
+  "darkkhaki",
+  "darkmagenta",
+  "darkolivegreen",
+  "darkorange",
+  "darkorchid",
+  "darkred",
+  "darksalmon",
+  "darkseagreen",
+  "darkslateblue",
+  "darkslategray",
+  "darkslategrey",
+  "darkturquoise",
+  "darkviolet",
+  "deeppink",
+  "deepskyblue",
+  "dimgray",
+  "dimgrey",
+  "dodgerblue",
+  "firebrick",
+  "floralwhite",
+  "forestgreen",
+  "fuchsia",
+  "gainsboro",
+  "ghostwhite",
+  "gold",
+  "goldenrod",
+  "gray",
+  "green",
+  "greenyellow",
+  "grey",
+  "honeydew",
+  "hotpink",
+  "indianred",
+  "indigo",
+  "ivory",
+  "khaki",
+  "lavender",
+  "lavenderblush",
+  "lawngreen",
+  "lemonchiffon",
+  "lightblue",
+  "lightcoral",
+  "lightcyan",
+  "lightgoldenrodyellow",
+  "lightgray",
+  "lightgreen",
+  "lightgrey",
+  "lightpink",
+  "lightsalmon",
+  "lightseagreen",
+  "lightskyblue",
+  "lightslategray",
+  "lightslategrey",
+  "lightsteelblue",
+  "lightyellow",
+  "lime",
+  "limegreen",
+  "linen",
+  "magenta",
+  "maroon",
+  "mediumaquamarine",
+  "mediumblue",
+  "mediumorchid",
+  "mediumpurple",
+  "mediumseagreen",
+  "mediumslateblue",
+  "mediumspringgreen",
+  "mediumturquoise",
+  "mediumvioletred",
+  "midnightblue",
+  "mintcream",
+  "mistyrose",
+  "moccasin",
+  "navajowhite",
+  "navy",
+  "oldlace",
+  "olive",
+  "olivedrab",
+  "orange",
+  "orangered",
+  "orchid",
+  "palegoldenrod",
+  "palegreen",
+  "paleturquoise",
+  "palevioletred",
+  "papayawhip",
+  "peachpuff",
+  "peru",
+  "pink",
+  "plum",
+  "powderblue",
+  "purple",
+  "rebeccapurple",
+  "red",
+  "rosybrown",
+  "royalblue",
+  "saddlebrown",
+  "salmon",
+  "sandybrown",
+  "seagreen",
+  "seashell",
+  "sienna",
+  "silver",
+  "skyblue",
+  "slateblue",
+  "slategray",
+  "slategrey",
+  "snow",
+  "springgreen",
+  "steelblue",
+  "tan",
+  "teal",
+  "thistle",
+  "tomato",
+  "turquoise",
+  "violet",
+  "wheat",
+  "white",
+  "whitesmoke",
+  "yellow",
+  "yellowgreen"
+]);
+function isValidColorName(name) {
+  return validColorNames.has(name.toLowerCase());
+}
+function findColorsInComment(commentText, commentStart) {
+  var _a, _b;
+  const matches = [];
+  const withoutDelimiters = commentText.replace(/^\/\*|\*\/$/g, "");
+  const content = withoutDelimiters.trim();
+  if (!content) {
+    return matches;
+  }
+  const leadingWhitespaceMatch = withoutDelimiters.match(/^(\s*)/);
+  const leadingWhitespaceLength = leadingWhitespaceMatch ? (_b = (_a = leadingWhitespaceMatch[1]) == null ? void 0 : _a.length) != null ? _b : 0 : 0;
+  const totalOffset = 2 + leadingWhitespaceLength;
+  try {
+    const commentState = import_state5.EditorState.create({
+      doc: content,
+      extensions: [inlineCssLanguage]
+    });
+    const commentTree = (0, import_language7.syntaxTree)(commentState);
+    const commentDoc = commentState.doc;
+    commentTree.cursor().iterate((nodeRef) => {
+      const { node } = nodeRef;
+      const nodeText = commentDoc.sliceString(node.from, node.to);
+      if (isColorValue(node.name, nodeText)) {
+        const absoluteStart = commentStart + node.from + totalOffset;
+        const absoluteEnd = commentStart + node.to + totalOffset;
+        matches.push({
+          from: absoluteStart,
+          to: absoluteEnd,
+          color: nodeText
+        });
+      }
+    });
+  } catch (error) {
+    console.warn(
+      "Failed to parse comment as CSS, skipping color detection:",
+      error
+    );
+  }
+  return matches;
+}
+
+// src/codemirror-extensions/color-picker.ts
+var ColorPickerWidget = class extends import_view6.WidgetType {
+  constructor(color, from, to, view) {
+    super();
+    this.color = color;
+    this.from = from;
+    this.to = to;
+    this.view = view;
+  }
+  eq(other) {
+    return this.color === other.color && this.from === other.from && this.to === other.to;
+  }
+  toDOM() {
+    const wrapper = document.createElement("span");
+    wrapper.className = "css-editor-color-picker-wrapper";
+    new import_obsidian4.ColorComponent(wrapper).setValue(convertToHex(this.color)).onChange((newColor) => {
+      const model = getColorModel(this.color);
+      this.view.dispatch({
+        changes: {
+          from: this.from,
+          to: this.to,
+          insert: convertToColorModel(newColor, model)
+        }
+      });
+    });
+    return wrapper;
+  }
+};
+var colorPickerPlugin = import_view6.ViewPlugin.fromClass(
+  class {
+    constructor(view) {
+      this.decorations = this.buildDecorations(view);
+    }
+    update(update) {
+      if (update.docChanged || update.viewportChanged) {
+        this.decorations = this.buildDecorations(update.view);
+      }
+    }
+    buildDecorations(view) {
+      const builder = new Array();
+      const doc = view.state.doc;
+      if (!doc || doc.length === 0) {
+        return import_view6.Decoration.set([]);
+      }
+      const colorMatches = findColorValues(view.state);
+      for (const match of colorMatches) {
+        if (match.from < 0 || match.to > doc.length || match.from >= match.to) {
+          continue;
+        }
+        const line = doc.lineAt(match.from);
+        if (view.viewport.from <= line.to && line.from <= view.viewport.to) {
+          const decoration = import_view6.Decoration.widget({
+            widget: new ColorPickerWidget(
+              match.color,
+              match.from,
+              match.to,
+              view
+            ),
+            side: 1
+          });
+          builder.push(decoration.range(match.to));
+        }
+      }
+      return import_view6.Decoration.set(builder);
+    }
+    destroy() {
+      this.decorations = import_view6.Decoration.set([]);
+    }
+  },
+  {
+    decorations: (v) => v.decorations
+  }
+);
+
+// src/obsidian/workspace-helpers.ts
+var import_obsidian5 = require("obsidian");
+async function openView(workspace, type, openInNewTab, state) {
+  const leaf = workspace.getLeaf(openInNewTab);
+  await leaf.setViewState({
+    type,
+    state
+  });
+  workspace.setActiveLeaf(leaf);
+}
+async function detachCssFileLeaves(workspace, file) {
+  var _a;
+  const leaves = workspace.getLeavesOfType(VIEW_TYPE_CSS);
+  for (const leaf of leaves) {
+    if ((0, import_obsidian5.requireApiVersion)("1.7.2")) {
+      await leaf.loadIfDeferred();
+    }
+    if (((_a = leaf.getViewState().state) == null ? void 0 : _a.file) === file.name) {
+      leaf.detach();
+    }
+  }
+}
+
+// src/modals/CssSnippetDeleteConfirmModal.ts
+var import_obsidian6 = require("obsidian");
+var CssSnippetDeleteConfirmModal = class extends import_obsidian6.Modal {
+  constructor(app, plugin, file) {
+    super(app);
+    this.plugin = plugin;
+    this.file = file;
+  }
+  onOpen() {
+    super.onOpen();
+    this.titleEl.setText("Delete CSS snippet");
+    this.containerEl.addClass("css-editor-delete-confirm-modal");
+    this.buildForm();
+  }
+  buildForm() {
+    this.contentEl.createEl("p", {
+      text: `Are you sure you want to delete "${this.file.name}"?`
+    });
+    this.contentEl.createEl("p", {
+      text: "This action cannot be undone."
+    });
+    const buttonContainer = this.contentEl.createDiv(
+      "modal-button-container"
+    );
+    const dontAskAgainLabel = buttonContainer.createEl("label", {
+      cls: "mod-checkbox"
+    });
+    const dontAskAgainCheckbox = dontAskAgainLabel.createEl("input", {
+      type: "checkbox"
+    });
+    dontAskAgainCheckbox.insertAdjacentText("afterend", "Don't ask again");
+    new import_obsidian6.ButtonComponent(buttonContainer).setButtonText("Delete").setWarning().onClick(() => this.delete());
+    new import_obsidian6.ButtonComponent(buttonContainer).setButtonText("Cancel").onClick(() => this.close());
+  }
+  async delete() {
+    try {
+      const dontAskAgain = this.contentEl.querySelector(
+        'input[type="checkbox"]'
+      );
+      if (dontAskAgain == null ? void 0 : dontAskAgain.checked) {
+        this.plugin.settings.promptDelete = false;
+        await this.plugin.saveSettings();
+      }
+      await detachCssFileLeaves(this.app.workspace, this.file);
+      await deleteSnippetFile(this.app, this.file);
+      this.close();
+    } catch (err) {
+      if (err instanceof Error) {
+        new ErrorNotice(err.message);
+      } else {
+        new ErrorNotice("Failed to delete file. Reason unknown.");
+      }
+    }
+  }
+};
+
+// src/views/CssEditorView.ts
 var VIEW_TYPE_CSS = "css-editor-view";
-var CssEditorView = class extends import_obsidian.ItemView {
-  constructor(leaf) {
+var CssEditorView = class extends import_obsidian7.ItemView {
+  constructor(leaf, plugin) {
     var _a, _b;
     super(leaf);
-    this.requestSave = (0, import_obsidian.debounce)(this.save, 1e3);
+    this.file = null;
+    this.isSavingTitle = false;
+    /** If the editor contents differ from the file contents on disk */
+    this.isEditorDirty = false;
+    this.requestSave = (0, import_obsidian7.debounce)(this.save, 1e3);
+    this.plugin = plugin;
     this.navigation = true;
-    this.editor = new import_view5.EditorView({
+    this.editor = new import_view7.EditorView({
       parent: this.contentEl,
       extensions: [
         basicExtensions,
+        lineWrap.of(
+          this.plugin.settings.lineWrap ? import_view7.EditorView.lineWrapping : []
+        ),
+        indentSize.of(
+          import_language8.indentUnit.of("".padEnd(this.plugin.settings.indentSize))
+        ),
+        historyCompartment.of((0, import_commands3.history)()),
+        colorPickerPlugin,
         ((_b = (_a = this.app.vault).getConfig) == null ? void 0 : _b.call(_a, "vimMode")) ? vim() : [],
-        import_view5.EditorView.updateListener.of((update) => {
+        import_view7.EditorView.updateListener.of((update) => {
           if (update.docChanged) {
+            this.isEditorDirty = true;
             this.requestSave(update.state.doc.toString());
+            if (this.file) {
+              this.app.workspace.trigger(
+                "css-editor-change",
+                this.file,
+                update.state.doc.toString()
+              );
+            }
           }
         })
       ]
     });
-    this.filename = "";
+    this.scope = new import_obsidian7.Scope(this.app.scope);
+    this.scope.register(null, "F2", () => {
+      if (!this.file) return;
+      if (this.titleEl.isShown()) {
+        focusAndSelectElement(this.titleEl);
+      } else {
+        new CssSnippetRenameModal(this.app, this.file).open();
+      }
+    });
   }
   getViewType() {
     return VIEW_TYPE_CSS;
@@ -9946,26 +12314,166 @@ var CssEditorView = class extends import_obsidian.ItemView {
     return "file-code";
   }
   getDisplayText() {
-    return this.filename;
+    var _a, _b;
+    return (_b = (_a = this.file) == null ? void 0 : _a.basename) != null ? _b : "No file open";
   }
   async onOpen() {
-    var _a;
-    const filename = (_a = this.getState()) == null ? void 0 : _a.filename;
-    if (filename) {
-      this.filename = filename;
-      const data = await readSnippetFile(this.app, filename);
-      this.dispatchEditorData(data);
-      this.app.workspace.requestSaveLayout();
-    }
     const timer = window.setInterval(() => {
       this.editor.focus();
-      if (this.editor.hasFocus)
-        clearInterval(timer);
+      if (this.editor.hasFocus) clearInterval(timer);
     }, 200);
     this.registerInterval(timer);
+    if (import_obsidian7.Platform.isMobileApp) {
+      this.titleEl.addEventListener("touchstart", () => {
+        this.titleEl.contentEditable = "true";
+      });
+    } else {
+      this.titleEl.contentEditable = "true";
+    }
+    this.titleEl.addEventListener("focus", this.onTitleFocus.bind(this));
+    this.titleEl.addEventListener("blur", this.onTitleBlur.bind(this));
+    this.titleEl.addEventListener(
+      "keydown",
+      this.onTitleKeydown.bind(this)
+    );
+    this.registerEvent(
+      this.app.workspace.on("css-editor-change", async (file, data) => {
+        var _a;
+        if (((_a = this.file) == null ? void 0 : _a.name) === file.name && this.getEditorData() !== data) {
+          this.dispatchEditorData(data);
+        }
+      })
+    );
+    this.registerEvent(
+      this.app.workspace.on(
+        "css-snippet-rename",
+        async (file, oldFileName) => {
+          var _a;
+          if (((_a = this.file) == null ? void 0 : _a.name) === oldFileName) {
+            this.file = file;
+            this.titleEl.setText(this.getDisplayText());
+            this.leaf.updateHeader();
+            this.app.workspace.requestSaveLayout();
+          }
+        }
+      )
+    );
+    this.registerEvent(
+      this.app.workspace.on("css-change", async (data) => {
+        if (!this.file) return;
+        if (typeof data === "object" && data !== null && "source" in data && (data == null ? void 0 : data.source) === "style-settings") {
+          return;
+        }
+        if (this.isEditorDirty) {
+          this.isEditorDirty = false;
+          return;
+        }
+        const contents = await readSnippetFile(this.app, this.file);
+        if (contents !== this.getEditorData()) {
+          this.dispatchEditorData(contents);
+        }
+      })
+    );
+    this.registerEvent(
+      this.app.workspace.on("leaf-menu", (menu, leaf) => {
+        if (leaf === this.leaf && !!this.file) {
+          menu.addItem((item) => {
+            item.setIcon("lucide-edit-3").setSection("action").setTitle("Rename...").onClick(() => {
+              if (this.file) {
+                new CssSnippetRenameModal(
+                  this.app,
+                  this.file
+                ).open();
+              }
+            });
+          });
+          menu.addItem((item) => {
+            const isEnabled = this.isEnabled();
+            item.setIcon(
+              isEnabled ? "lucide-toggle-left" : "lucide-toggle-right"
+            ).setSection("action").setTitle(
+              isEnabled ? "Disable snippet" : "Enable snippet"
+            ).onClick(() => {
+              if (this.file) {
+                toggleSnippetFileState(this.app, this.file);
+              }
+            });
+          });
+          menu.addItem((item) => {
+            item.setIcon("lucide-trash-2").setSection("danger").setTitle("Delete snippet").setWarning(true).onClick(async () => {
+              if (this.file) {
+                if (this.plugin.settings.promptDelete) {
+                  new CssSnippetDeleteConfirmModal(
+                    this.app,
+                    this.plugin,
+                    this.file
+                  ).open();
+                } else {
+                  try {
+                    await detachCssFileLeaves(
+                      this.app.workspace,
+                      this.file
+                    );
+                    await deleteSnippetFile(
+                      this.app,
+                      this.file
+                    );
+                  } catch (err) {
+                    if (err instanceof Error) {
+                      new ErrorNotice(err.message);
+                    } else {
+                      new ErrorNotice(
+                        "Failed to delete file. Reason unknown."
+                      );
+                    }
+                  }
+                }
+              }
+            });
+          });
+        }
+      })
+    );
+  }
+  onTitleFocus() {
+    var _a, _b;
+    this.titleEl.spellcheck = ((_b = (_a = this.app.vault).getConfig) == null ? void 0 : _b.call(_a, "spellcheck")) === true;
+  }
+  onTitleBlur() {
+    this.saveTitle(this.titleEl);
+    this.titleEl.spellcheck = false;
+    if (import_obsidian7.Platform.isMobileApp) {
+      this.titleEl.contentEditable = "false";
+    }
+    this.editor.focus();
+  }
+  onTitleKeydown(event) {
+    if (!this.file) return;
+    if (event.isComposing) return;
+    if (event.key === "Escape") {
+      this.titleEl.setText(this.getDisplayText());
+      this.titleEl.blur();
+    }
+    if (event.key === "Enter" || event.key === "Tab") {
+      event.preventDefault();
+      this.saveTitle(this.titleEl);
+      this.titleEl.blur();
+    }
+  }
+  async saveTitle(el) {
+    if (!this.file) return;
+    const newTitle = el.getText().trim();
+    if (newTitle === this.file.basename) return;
+    if (this.isSavingTitle) return;
+    this.isSavingTitle = true;
+    await renameSnippetFile(this.app, this.file, newTitle);
+    this.isSavingTitle = false;
   }
   getEditorData() {
     return this.editor.state.doc.toString();
+  }
+  dispatchEditorTransaction(...specs) {
+    this.editor.dispatch(...specs);
   }
   dispatchEditorData(data) {
     this.editor.dispatch({
@@ -9977,31 +12485,71 @@ var CssEditorView = class extends import_obsidian.ItemView {
     });
   }
   getState() {
+    var _a;
     return {
-      filename: this.filename
+      file: (_a = this.file) == null ? void 0 : _a.name
     };
   }
   async setState(state, result) {
+    var _a;
+    let file = null;
     if (state && typeof state === "object") {
-      if ("filename" in state && state.filename && typeof state.filename === "string") {
-        if (state.filename !== this.filename) {
-          const data = await readSnippetFile(
-            this.app,
-            state.filename
-          );
-          this.dispatchEditorData(data);
+      if ("filename" in state && typeof state.filename === "string") {
+        file = new CssFile(state.filename);
+      }
+      if ("file" in state) {
+        if (state.file instanceof CssFile) {
+          file = state.file;
+        } else if (typeof state.file === "string") {
+          file = new CssFile(state.file);
         }
-        this.filename = state.filename;
       }
     }
-    super.setState(state, result);
+    if (file) {
+      if (file.name !== ((_a = this.file) == null ? void 0 : _a.name)) {
+        try {
+          await this.loadFile(file);
+        } catch (e) {
+          await this.loadFile(null);
+        }
+      }
+    } else {
+      await this.loadFile(null);
+    }
+    result.history = true;
+    super.setState({ file: file == null ? void 0 : file.name }, result);
+  }
+  async loadFile(file) {
+    this.file = file;
+    this.titleEl.setText(this.getDisplayText());
+    this.leaf.updateHeader();
+    const data = file ? await readSnippetFile(this.app, file) : "";
+    this.dispatchEditorData(data);
+    this.resetHistory();
+    this.app.workspace.requestSaveLayout();
+  }
+  resetHistory() {
+    this.editor.dispatch({
+      effects: [historyCompartment.reconfigure([])]
+    });
+    this.editor.dispatch({
+      effects: [historyCompartment.reconfigure((0, import_commands3.history)())]
+    });
+  }
+  isEnabled() {
+    var _a, _b;
+    if (!this.file) return false;
+    const currentState = (_b = (_a = this.app.customCss) == null ? void 0 : _a.enabledSnippets) == null ? void 0 : _b.has(
+      this.file.basename
+    );
+    return currentState || false;
   }
   /**
    * You should almost always call `requestSave` instead of `save` to debounce the saving.
    */
   async save(data) {
-    if (this.filename) {
-      writeSnippetFile(this.app, this.filename, data);
+    if (this.file) {
+      writeSnippetFile(this.app, this.file, data);
     }
   }
   async onClose() {
@@ -10010,44 +12558,8 @@ var CssEditorView = class extends import_obsidian.ItemView {
 };
 
 // src/modals/CssSnippetFuzzySuggestModal.ts
-var import_obsidian3 = require("obsidian");
-
-// src/obsidian/workspace-helpers.ts
-async function openView(workspace, type, openInNewTab, state) {
-  const leaf = workspace.getLeaf(openInNewTab);
-  await leaf.setViewState({
-    type,
-    state
-  });
-  workspace.setActiveLeaf(leaf);
-}
-function detachLeavesOfTypeAndDisplay(workspace, type, display) {
-  const leaves = workspace.getLeavesOfType(type);
-  leaves.forEach((leaf) => {
-    if (leaf.getDisplayText() === display) {
-      leaf.detach();
-    }
-  });
-}
-
-// src/obsidian/Notice.ts
-var import_obsidian2 = require("obsidian");
-var DEFAULT_NOTICE_TIMEOUT_SECONDS = 5;
-var InfoNotice = class extends import_obsidian2.Notice {
-  constructor(message, timeout = DEFAULT_NOTICE_TIMEOUT_SECONDS) {
-    super(message, timeout * 1e3);
-    console.info(`css-editor: ${message}`);
-  }
-};
-var ErrorNotice = class extends import_obsidian2.Notice {
-  constructor(message, timeout = DEFAULT_NOTICE_TIMEOUT_SECONDS) {
-    super(message, timeout * 1e3);
-    console.error(`css-editor: ${message}`);
-  }
-};
-
-// src/modals/CssSnippetFuzzySuggestModal.ts
-var CssSnippetFuzzySuggestModal = class extends import_obsidian3.FuzzySuggestModal {
+var import_obsidian8 = require("obsidian");
+var CssSnippetFuzzySuggestModal = class extends import_obsidian8.FuzzySuggestModal {
   constructor(app, plugin) {
     super(app);
     this.plugin = plugin;
@@ -10056,10 +12568,14 @@ var CssSnippetFuzzySuggestModal = class extends import_obsidian3.FuzzySuggestMod
       if (!evt.isComposing && ((_b = (_a = this.chooser) == null ? void 0 : _a.useSelectedItem) == null ? void 0 : _b.call(_a, evt))) {
         return false;
       }
+      return true;
     });
     this.scope.register(["Shift"], "Enter", (evt) => {
       this.selectSuggestion(
-        { item: this.inputEl.value, match: { score: 0, matches: [] } },
+        {
+          item: new CssFile(this.inputEl.value),
+          match: { score: 0, matches: [] }
+        },
         evt
       );
       return false;
@@ -10069,18 +12585,20 @@ var CssSnippetFuzzySuggestModal = class extends import_obsidian3.FuzzySuggestMod
       if (!evt.isComposing && ((_b = (_a = this.chooser) == null ? void 0 : _a.useSelectedItem) == null ? void 0 : _b.call(_a, evt))) {
         return false;
       }
+      return true;
     });
     this.scope.register([], "Tab", (evt) => {
+      var _a, _b;
       if (this.chooser) {
-        const selItem = this.chooser.selectedItem;
-        const selSnippet = this.chooser.values[selItem].item;
-        const isEnabled = toggleSnippetFileState(this.app, selSnippet);
-        const selEl = this.chooser.suggestions[selItem].querySelector(
+        const selectedItem = this.chooser.selectedItem;
+        const file = (_a = this.chooser.values[selectedItem]) == null ? void 0 : _a.item;
+        if (!file) return false;
+        const isEnabled = toggleSnippetFileState(this.app, file);
+        const buttonEl = (_b = this.chooser.suggestions[selectedItem]) == null ? void 0 : _b.querySelector(
           ".css-editor-status"
         );
-        selEl == null ? void 0 : selEl.setText(isEnabled ? "enabled" : "disabled");
-        selEl == null ? void 0 : selEl.removeClass(isEnabled ? "disabled" : "enabled");
-        selEl == null ? void 0 : selEl.addClass(isEnabled ? "enabled" : "disabled");
+        buttonEl == null ? void 0 : buttonEl.setText(isEnabled ? "enabled" : "disabled");
+        buttonEl == null ? void 0 : buttonEl.toggleClass("mod-cta", isEnabled);
       }
       return false;
     });
@@ -10089,12 +12607,12 @@ var CssSnippetFuzzySuggestModal = class extends import_obsidian3.FuzzySuggestMod
     this.setInstructions([
       { command: "\u2191\u2193", purpose: "to navigate" },
       {
-        command: import_obsidian3.Platform.isMacOS ? "\u2318 \u21B5" : "ctrl \u21B5",
+        command: import_obsidian8.Platform.isMacOS ? "\u2318 \u21B5" : "ctrl \u21B5",
         purpose: "to open in new tab"
       },
       { command: "shift \u21B5", purpose: "to create" },
       {
-        command: import_obsidian3.Platform.isMacOS ? "\u2318 del" : "ctrl del",
+        command: import_obsidian8.Platform.isMacOS ? "\u2318 del" : "ctrl del",
         purpose: "to delete"
       },
       { command: "tab", purpose: "to enable/disable" },
@@ -10103,19 +12621,20 @@ var CssSnippetFuzzySuggestModal = class extends import_obsidian3.FuzzySuggestMod
   }
   isEnabled(item) {
     var _a, _b;
-    const snippetName = item.replace(".css", "");
-    const currentState = (_b = (_a = this.app.customCss) == null ? void 0 : _a.enabledSnippets) == null ? void 0 : _b.has(snippetName);
+    const currentState = (_b = (_a = this.app.customCss) == null ? void 0 : _a.enabledSnippets) == null ? void 0 : _b.has(
+      item.basename
+    );
     return currentState || false;
   }
   getItems() {
     var _a;
     if ((_a = this.app.customCss) == null ? void 0 : _a.snippets) {
-      return this.app.customCss.snippets.map((x) => `${x}.css`);
+      return this.app.customCss.snippets.map((x) => new CssFile(x));
     }
     return [];
   }
   getItemText(item) {
-    return item;
+    return item.name;
   }
   renderSuggestion(item, el) {
     super.renderSuggestion(item, el);
@@ -10140,7 +12659,7 @@ var CssSnippetFuzzySuggestModal = class extends import_obsidian3.FuzzySuggestMod
               createDiv(
                 { cls: "css-editor-suggestion-description" },
                 (el2) => el2.appendText(
-                  `${getSnippetDirectory(this.app)}${item.item}`
+                  `${getSnippetDirectory(this.app)}${item.item.name}`
                 )
               )
             );
@@ -10150,18 +12669,22 @@ var CssSnippetFuzzySuggestModal = class extends import_obsidian3.FuzzySuggestMod
       const isEnabled = this.isEnabled(item.item);
       const isNewElement = this.inputEl.value.trim().length > 0 && item.match.score === 0;
       if (!isNewElement) {
-        el.appendChild(
-          createDiv(
-            {
-              cls: [
-                "suggestion-aux",
-                "css-editor-status",
-                isEnabled ? "enabled" : "disabled"
-              ]
-            },
-            (el2) => el2.appendText(isEnabled ? "enabled" : "disabled")
-          )
-        );
+        const button = new import_obsidian8.ButtonComponent(el).setButtonText(isEnabled ? "enabled" : "disabled").setClass("css-editor-status").onClick(async (e) => {
+          e.stopPropagation();
+          const newState = toggleSnippetFileState(
+            this.app,
+            item.item
+          );
+          button.setButtonText(newState ? "enabled" : "disabled");
+          if (newState) {
+            button.setCta();
+          } else {
+            button.removeCta();
+          }
+        });
+        if (isEnabled) {
+          button.setCta();
+        }
       }
     }
     if (this.inputEl.value.trim().length > 0 && item.match.score === 0) {
@@ -10192,7 +12715,10 @@ var CssSnippetFuzzySuggestModal = class extends import_obsidian3.FuzzySuggestMod
     const isCreateNewDueToNoSuggestion = this.inputEl.value.trim().length > 0 && item.match.score === 0;
     if (isCreateNewDueToNoSuggestion && item.item) {
       const openInNewTab = evt.metaKey;
-      await this.plugin.createAndOpenSnippet(item.item, openInNewTab);
+      await this.plugin.createAndOpenSnippet(
+        item.item.name,
+        openInNewTab
+      );
     } else {
       await this.onChooseItem(item.item, evt);
     }
@@ -10202,7 +12728,7 @@ var CssSnippetFuzzySuggestModal = class extends import_obsidian3.FuzzySuggestMod
     const item = this.inputEl.value.trim();
     if (item.length > 0) {
       (_b = (_a = this.chooser) == null ? void 0 : _a.setSuggestions) == null ? void 0 : _b.call(_a, [
-        { item, match: { score: 0, matches: [] } }
+        { item: new CssFile(item), match: { score: 0, matches: [] } }
       ]);
       (_d = (_c = this.chooser) == null ? void 0 : _c.addMessage) == null ? void 0 : _d.call(
         _c,
@@ -10217,31 +12743,29 @@ var CssSnippetFuzzySuggestModal = class extends import_obsidian3.FuzzySuggestMod
     }
   }
   async onChooseItem(item, evt) {
-    if (!item)
-      return;
+    if (!item) return;
     if (evt instanceof KeyboardEvent) {
       if (evt.key === "Enter") {
         const openInNewTab = evt.metaKey;
         if (evt.shiftKey) {
-          await this.plugin.createAndOpenSnippet(item, openInNewTab);
+          await this.plugin.createAndOpenSnippet(
+            item.name,
+            openInNewTab
+          );
         } else {
           openView(this.app.workspace, VIEW_TYPE_CSS, openInNewTab, {
-            filename: item
+            file: item
           });
         }
       } else if (evt.key === "Delete") {
-        deleteSnippetFile(this.app, item);
-        detachLeavesOfTypeAndDisplay(
-          this.app.workspace,
-          VIEW_TYPE_CSS,
-          item
-        );
+        await detachCssFileLeaves(this.app.workspace, item);
+        await deleteSnippetFile(this.app, item);
         new InfoNotice(`${item} was deleted.`);
       }
     } else {
       const openInNewTab = evt.metaKey;
       openView(this.app.workspace, VIEW_TYPE_CSS, openInNewTab, {
-        filename: item
+        file: item
       });
     }
   }
@@ -10302,8 +12826,8 @@ function isKeymapInfo(hotkey) {
 }
 
 // src/modals/CssSnippetCreateModal.ts
-var import_obsidian4 = require("obsidian");
-var CssSnippetCreateModal = class extends import_obsidian4.Modal {
+var import_obsidian9 = require("obsidian");
+var CssSnippetCreateModal = class extends import_obsidian9.Modal {
   constructor(app, plugin) {
     super(app);
     this.value = "";
@@ -10311,48 +12835,112 @@ var CssSnippetCreateModal = class extends import_obsidian4.Modal {
   }
   onOpen() {
     super.onOpen();
-    this.titleEl.setText("Create CSS Snippet");
+    this.titleEl.setText("Create CSS snippet");
     this.containerEl.addClass("css-editor-create-modal");
     this.buildForm();
   }
   buildForm() {
-    const textInput = new import_obsidian4.TextComponent(this.contentEl);
+    const textInput = new import_obsidian9.TextComponent(this.contentEl);
     textInput.setPlaceholder("CSS snippet file name (ex: snippet.css)");
     textInput.onChange((val) => this.value = val);
     textInput.inputEl.addEventListener("keydown", (evt) => {
       this.handleKeydown(evt);
     });
+    const buttonContainer = this.contentEl.createDiv(
+      "modal-button-container"
+    );
+    new import_obsidian9.ButtonComponent(buttonContainer).setButtonText("Save").setCta().onClick(() => this.save());
+    new import_obsidian9.ButtonComponent(buttonContainer).setButtonText("Cancel").onClick(() => this.close());
   }
   async handleKeydown(evt) {
     if (evt.key === "Escape") {
       this.close();
     } else if (evt.key === "Enter") {
-      try {
-        const openInNewTab = evt.metaKey;
-        await this.plugin.createAndOpenSnippet(
-          this.value,
-          openInNewTab
-        );
-        this.close();
-      } catch (err) {
-        if (err instanceof Error) {
-          new ErrorNotice(err.message);
-        } else {
-          new ErrorNotice("Failed to create file. Reason unknown.");
-        }
+      this.save(evt.metaKey);
+    }
+  }
+  async save(openInNewTab = false) {
+    try {
+      await this.plugin.createAndOpenSnippet(this.value, openInNewTab);
+      this.close();
+    } catch (err) {
+      if (err instanceof Error) {
+        new ErrorNotice(err.message);
+      } else {
+        new ErrorNotice("Failed to create file. Reason unknown.");
       }
     }
   }
 };
 
+// src/obsidian/setting-tab.ts
+var import_language9 = require("@codemirror/language");
+var import_view8 = require("@codemirror/view");
+var import_obsidian10 = require("obsidian");
+function updateCSSEditorView(app, spec) {
+  app.workspace.getLeavesOfType(VIEW_TYPE_CSS).forEach((leaf) => {
+    if (leaf.view instanceof CssEditorView) {
+      leaf.view.dispatchEditorTransaction(spec);
+    }
+  });
+}
+var CSSEditorSettingTab = class extends import_obsidian10.PluginSettingTab {
+  constructor(app, plugin) {
+    super(app, plugin);
+    this.plugin = plugin;
+  }
+  display() {
+    this.containerEl.empty();
+    new import_obsidian10.Setting(this.containerEl).setName("Confirm CSS snippet deletion").setDesc("Prompt before CSS snippet deletion.").addToggle((toggle) => {
+      toggle.setValue(this.plugin.settings.promptDelete);
+      toggle.onChange((val) => {
+        this.plugin.settings.promptDelete = val;
+        this.plugin.saveSettings();
+      });
+    });
+    new import_obsidian10.Setting(this.containerEl).setName("Line wrap").setDesc("Toggle line wrap in the editor.").addToggle((toggle) => {
+      toggle.setValue(this.plugin.settings.lineWrap);
+      toggle.onChange((val) => {
+        this.plugin.settings.lineWrap = val;
+        this.plugin.saveSettings();
+        updateCSSEditorView(this.app, {
+          effects: lineWrap.reconfigure(
+            val ? import_view8.EditorView.lineWrapping : []
+          )
+        });
+      });
+    });
+    new import_obsidian10.Setting(this.containerEl).setName("Indent size").setDesc("Adjust the amount of spaces used for indentation.").addText((field) => {
+      field.setPlaceholder("2");
+      field.setValue(this.plugin.settings.indentSize.toString());
+      field.onChange((val) => {
+        val = val.replace(/\D/g, "");
+        field.setValue(val);
+        const size = parseInt(val);
+        this.plugin.settings.indentSize = size;
+        this.plugin.saveSettings();
+        updateCSSEditorView(this.app, {
+          effects: indentSize.reconfigure(
+            import_language9.indentUnit.of("".padEnd(size))
+          )
+        });
+      });
+    });
+  }
+};
+
 // src/main.ts
-var DEFAULT_SETTINGS = {};
-var CssEditorPlugin = class extends import_obsidian5.Plugin {
+var DEFAULT_SETTINGS = {
+  promptDelete: true,
+  lineWrap: true,
+  indentSize: 2
+};
+var CssEditorPlugin = class extends import_obsidian11.Plugin {
   async onload() {
     await this.loadSettings();
     this.addCommand({
       id: "create-css-snippet",
-      name: "Create CSS Snippet",
+      name: "Create CSS snippet",
       callback: async () => {
         new CssSnippetCreateModal(this.app, this).open();
       }
@@ -10366,38 +12954,58 @@ var CssEditorPlugin = class extends import_obsidian5.Plugin {
     });
     this.addCommand({
       id: "delete-css-snippet",
-      name: "Delete current CSS Snippet",
+      name: "Delete CSS snippet",
       checkCallback: (checking) => {
         const activeCssEditorView = this.app.workspace.getActiveViewOfType(CssEditorView);
-        if (!activeCssEditorView)
-          return false;
-        if (checking)
-          return true;
-        const { filename } = activeCssEditorView.getState();
-        deleteSnippetFile(this.app, filename).then(() => {
-          detachLeavesOfTypeAndDisplay(
-            this.app.workspace,
-            VIEW_TYPE_CSS,
-            filename
-          );
-          new InfoNotice(`"${filename}" was deleted.`);
-        });
+        if (!activeCssEditorView) return false;
+        const { file } = activeCssEditorView.getState();
+        if (!file) return false;
+        if (checking) return true;
+        const cssFile = new CssFile(file);
+        if (this.settings.promptDelete) {
+          new CssSnippetDeleteConfirmModal(
+            this.app,
+            this,
+            cssFile
+          ).open();
+        } else {
+          try {
+            detachCssFileLeaves(this.app.workspace, cssFile).then(
+              async () => {
+                await deleteSnippetFile(this.app, cssFile);
+                new InfoNotice(
+                  `"${cssFile.name}" was deleted.`
+                );
+              }
+            );
+          } catch (err) {
+            if (err instanceof Error) {
+              new ErrorNotice(err.message);
+            } else {
+              new ErrorNotice(
+                "Failed to delete file. Reason unknown."
+              );
+            }
+          }
+        }
+        return true;
       }
     });
     this.addCommand({
       id: "toggle-css-snippet-enabled-status",
-      name: "Toggle the enabled/disabled state of current CSS snippet",
+      name: "Toggle the enabled/disabled state of CSS snippet",
       checkCallback: (checking) => {
         const activeCssEditorView = this.app.workspace.getActiveViewOfType(CssEditorView);
-        if (!activeCssEditorView)
-          return false;
-        if (checking)
-          return true;
-        const { filename } = activeCssEditorView.getState();
-        const isEnabled = toggleSnippetFileState(this.app, filename);
+        if (!activeCssEditorView) return false;
+        const { file } = activeCssEditorView.getState();
+        if (!file) return false;
+        if (checking) return true;
+        const cssFile = new CssFile(file);
+        const isEnabled = toggleSnippetFileState(this.app, cssFile);
         new InfoNotice(
-          `"${filename}" is now ${isEnabled ? "enabled" : "disabled"}.`
+          `"${cssFile.name}" is now ${isEnabled ? "enabled" : "disabled"}.`
         );
+        return true;
       }
     });
     this.register(
@@ -10406,7 +13014,12 @@ var CssEditorPlugin = class extends import_obsidian5.Plugin {
         () => !!this.app.workspace.getActiveViewOfType(CssEditorView)
       )
     );
-    this.registerView(VIEW_TYPE_CSS, (leaf) => new CssEditorView(leaf));
+    this.registerView(
+      VIEW_TYPE_CSS,
+      (leaf) => new CssEditorView(leaf, this)
+    );
+    this.settingTab = new CSSEditorSettingTab(this.app, this);
+    this.addSettingTab(this.settingTab);
   }
   onunload() {
   }
@@ -10422,15 +13035,13 @@ var CssEditorPlugin = class extends import_obsidian5.Plugin {
   }
   async createAndOpenSnippet(filename, openInNewTab) {
     var _a, _b;
-    await createSnippetFile(this.app, filename, "");
-    (_b = (_a = this.app.customCss) == null ? void 0 : _a.setCssEnabledStatus) == null ? void 0 : _b.call(
-      _a,
-      filename.replace(".css", ""),
-      true
-    );
-    new InfoNotice(`${filename} was created.`);
+    const file = await createSnippetFile(this.app, filename, "");
+    (_b = (_a = this.app.customCss) == null ? void 0 : _a.setCssEnabledStatus) == null ? void 0 : _b.call(_a, file.basename, true);
+    new InfoNotice(`${file.name} was created.`);
     openView(this.app.workspace, VIEW_TYPE_CSS, openInNewTab, {
-      filename
+      file
     });
   }
 };
+
+/* nosourcemap */

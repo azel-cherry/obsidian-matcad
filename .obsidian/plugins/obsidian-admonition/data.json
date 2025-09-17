@@ -47,12 +47,36 @@
       "title": "Nota",
       "injectColor": true,
       "noTitle": false
+    },
+    "prop": {
+      "type": "prop",
+      "color": "99, 176, 136",
+      "icon": {
+        "name": "angle-double-right",
+        "type": "font-awesome"
+      },
+      "command": false,
+      "title": "Proposició",
+      "injectColor": true,
+      "noTitle": false
+    },
+    "ex": {
+      "type": "ex",
+      "color": "202, 160, 160",
+      "icon": {
+        "name": "border-all",
+        "type": "font-awesome"
+      },
+      "command": false,
+      "title": "Exemple",
+      "injectColor": true,
+      "noTitle": false
     }
   },
-  "syntaxHighlight": false,
+  "syntaxHighlight": true,
   "copyButton": false,
   "version": "10.3.2",
-  "autoCollapse": false,
+  "autoCollapse": true,
   "defaultCollapseType": "open",
   "injectColor": true,
   "parseTitles": true,
@@ -62,12 +86,15 @@
     "admonitions": true,
     "icons": true,
     "other": true,
-    "advanced": false
+    "advanced": true
   },
-  "icons": [],
+  "icons": [
+    "octicons",
+    "rpg"
+  ],
   "useFontAwesome": true,
   "rpgDownloadedOnce": false,
   "msDocConverted": false,
-  "useSnippet": false,
+  "useSnippet": true,
   "snippetPath": "custom-admonitions.2ddd9f"
 }

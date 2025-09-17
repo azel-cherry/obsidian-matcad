@@ -1,15 +1,15 @@
 
-## Recordatori
+## Preliminars
 
 ```ad-def
 title: *Camps*
 
-+ Camp **escalar**: $\quad f:\mathbb{R}^{n}\to \mathbb{R}$
-+ Camp **vectorial**: $\quad F:\mathbb{R}^{n}\to \mathbb{R}^{n}$
-	+ **$\boldsymbol i$-èssima component** d'F: $\quad F_{i}:\mathbb{R}^{n}\to \mathbb{R}$
++ Camp ==escalar==: $\quad f:\mathbb{R}^{n}\to \mathbb{R}$
++ Camp ==vectorial==: $\quad F:\mathbb{R}^{n}\to \mathbb{R}^{n}$
+	**$\boldsymbol i$-èssima component** d'$F$: $\quad F_{i}:\mathbb{R}^{n}\to \mathbb{R}$
 ```
 
-+ Equacions de **Cauchy-Riemann**: $\quad u_{x}=v_{y}\,, \quad u_{y}=-v_{x}$
+[[Anàlisi Complexa#^eqcrm | Equacions de Cauchy-Riemann]]: $\quad u_{x}=v_{y}\,, \quad u_{y}=-v_{x}$
 
 
 ````ad-def
@@ -17,7 +17,7 @@ title: Integral de *línia*
 
 > Sigui $\Gamma$ una corba en $\mathbb{R}^{n}$ i $f$ un camp escalar.
 
-Una integral de línia és
+Una ==integral de línia== és
 	$$ \int_{\Gamma} f(S)\,dS $$
 	i representa l'àrea sota la gràfica de d'$f$ dins la corba $T'$.
 
@@ -36,7 +36,7 @@ title: Integrals de *superfície*
 
 > Sigui $\Gamma$ una superfície d'$\mathbb{R}^{n}$.
 
-La integral de superfície
+La ==integral de superfície==
 $$ \int_{\Gamma} f(S)\,dS $$
 representa el volum sota la gràfica d'$f$ restringida a $\Gamma$.
 
@@ -55,8 +55,8 @@ title: *Divergència*
 
 > Sigui F un camp vectorial.
 
-La divergència d'F és
-$$ \text{div }F = \nabla \cdot F = \partial_{1}F_{1} + \dots + \partial_{n}F_{n} \,.$$
+La ==divergència== d'F és
+$$ \text{div }F = \boxed{\,\nabla \cdot F = \partial_{1}F_{1} + \dots + \partial_{n}F_{n}\,} \,.$$
 
 Si interpretem $F$ com a flux de partícules, la seva divergència $\text{div }F(x,y)$ indica com varia la densitat de les partícules al punt $(x,y)$ per unitat de temps.
 ````
@@ -73,16 +73,47 @@ amb $\vec{n}(S)$ el vector normal exterior de $\partial\Omega$ en $S$.
 
 
 ---
-## Preliminars: **Classificació**
+## EDPs de **primer ordre quasilineals**
 
-Denotarem una EDP genèrica com a $F(\vec{x},u,\nabla u)=0$.
+Denotarem una **EDP genèrica** com a $\boxed{\,F(\vec{x},u,\nabla u)=0\,}$.
+
+````ad-def
+title: *Linealitat*
+
++ Una EDP es diu ==lineal== si és una expressió lineal en $u$ i les seves derivades:
+$$ \boxed{\,a(x,y)\,u_x + b(x,y)\,u_{y} = c(x,y)\,u\,} $$
+
++ Una EDP es diu ==semilineal== si és de la forma:
+  $$ \boxed{\,a(x,y)\,u_{x} + b(x,y)\,u_{y} = c(x,y,u)\,} $$
+  
++ Una EDP es diu ==quasilineal== si és de la forma:
+  $$ \boxed{\,a(x,y,u)\,u_{x} + b(x,y,u)\,u_{y} = c(x,y,u)\,} $$
+
+Si una EDP no és quasilineal, aleshores és ==no lineal==.
+````
+  
+```ad-def
+title: *Camp vectorial característic*
+
+Expressant una EDP quasilineal **vectorialment**,
+$$ (a(x,y,u),b(x,y,u),c(x,y,u)) = \begin{pmatrix}u_{x} \\ u_{y} \\ -1 \end{pmatrix} ,$$
+podem associar a la EDP un camp vectorial d'eixos $(x,y,u)$ en què cada punt és tangent a la gràfica d'una solució.
+```
 
 ```ad-def
-title: EDP *lineal*
+title: *Sistema característic*
 
-Una EDP es diu **lineal** si és una expressió lineal en $u$ i les seves derivades:
-$$ a(x,y)u_x +  $$
+El ==sistema característic== d'una EDP quasilineal és:
+$$\begin{cases}
+x' = a(x,y,u) \\
+y' = b(x,y,u) \\
+u' = c(x,y,u)
+\end{cases}$$
+
+Les solucions del sistema característic es diuen ==línies/corbes característiques== o simplement característiques.
+
 ```
+
 
 
 ---
