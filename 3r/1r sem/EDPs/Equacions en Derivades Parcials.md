@@ -97,7 +97,7 @@ title: *Camp vectorial característic*
 
 Expressant una EDP quasilineal **vectorialment**,
 $$ (a(x,y,u),b(x,y,u),c(x,y,u)) = \begin{pmatrix}u_{x} \\ u_{y} \\ -1 \end{pmatrix} ,$$
-podem associar a la EDP un camp vectorial d'eixos $(x,y,u)$ en què cada punt és tangent a la gràfica d'una solució.
+podem associar a la EDP un camp vectorial d'eixos $(x,y,u)$ en què cada punt és tangent a la gràfica d'una solució, anomenat ==camp vectorial característic==.
 ```
 
 ```ad-def
@@ -111,9 +111,36 @@ u' = c(x,y,u)
 \end{cases}$$
 
 Les solucions del sistema característic es diuen ==línies/corbes característiques== o simplement característiques.
-
 ```
 
+```ad-teor
+title: Teorema (**unicitat**)
+
+> Considerem un PVI d'una EDP quasilineal
+> $$ \begin{cases}
+a(x,y,u) + b(x,y,u) = c(x,y,u) \\
+u(x_{0},y_{0}) = u_{0}
+\end{cases} $$
+> amb $a,b,c,x_{0},y_{0},u_{0}\in C^{1}$, $(x_{0},y_{0})$ és una corba simple, i que és no característic per $t=t_{0}$ (compleix la [[#^0aa46a | condició de transversalitat]]).
+
+Aleshores existeix una **única solució** entorn del punt $(x_{0},y_{0})$:
+$$ U(x,y) = u(\tau(x,y),t(x,y)) \,,$$
+amb $(\tau(x,y),t(x,y))$ [[#^7c31fc | transformació inversa]] de $T:=(\tau,t)\to(x(\tau,t),y(\tau,t))$, i $(x(\tau,t),y(\tau,t),u(\tau,t))$ solució de la família de PVIs del sistema característic:
+$$ \begin{cases}
+x'(\tau) = a(x(\tau),y(\tau),u(\tau)) \\
+y'(\tau) = b(x(\tau),y(\tau),u(\tau)) \\
+u'(\tau) = c(x(\tau),y(\tau),u(\tau)) \\
+(x(0),y(0),u(0)) = (x_{0}(t),y_{0}(t),u_{0}(t))
+\end{cases} $$
+```
+
+
+---
+## Lleis de **conservació**
+
+Considerem un cos o sistema que depèn de l'espai i del temps, amb **densitat** $\rho(x,t)$ i **flux** $Q(x,t)$.
++ $\int_{a}^{b}\rho(x,t)\,dx\,$ indica la **massa** a l'interval $[a,b]$ en el temps $t$.
++ $\int_{t_{1}}^{t_{2}}Q(x,t)\,dt\,$ indica la **massa que travessa el punt** $x$ entre $t_{1}$ i $t_{2}$.
 
 
 ---
@@ -126,3 +153,27 @@ title: Notació
 + $\boldsymbol{\Delta u} := u_{xx} + u_{yy} + \dots$
 + $\boldsymbol{\nabla f} := \begin{pmatrix}\partial_{1}f\\ \vdots \\ \partial_{n}f \end{pmatrix}$
 ```
+
+```ad-def
+title: *Condició de transversalitat*
+
+$$ \begin{vmatrix}
+a(x_{0},y_{0},u_{0}) & x_{0}' \\
+b(x_{0},y_{0},u_{0}) & y_{0}'
+\end{vmatrix} \neq 0 $$
+```
+^0aa46a
+
+```ad-teor
+title: Teorema de la **funció inversa**
+
+$S$ té inversa en un entorn de $(\tau,t)=(0,t_{0})$ si és no singular:
+$$ DS(0,t_{0}) = \begin{pmatrix}
+x_{\tau} & x_{t} \\
+y_{\tau} & y_{t}
+\end{pmatrix} = \begin{pmatrix}
+a & x_{0}'(t_{0}) \\
+b & y_{0}'(t_{0})
+\end{pmatrix} $$
+```
+^7c31fc
