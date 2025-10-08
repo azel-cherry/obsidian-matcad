@@ -87,3 +87,46 @@ Sigui $X$ una v.a. discreta amb probabilitats $\{p_{1},\dots,p_{n}\}$, aleshores
 ---
 ## Informació **mútua**
 
+#### **Canal** discret sense memòria
+
+```mehrmaid
+graph LR;
+A("Font")
+B("Emissor")
+C("Canal")
+D("Receptor")
+E("Destí")
+
+A --> B --> C --> D --> E
+```
+
+Degut al possible **soroll** del canal, el missatge de sortida no sempre coincidirà amb el missatge d'entrada.
+
+Siguin $X,Y$ dues v.a.s discretes que representen l'entrada i la sortida d'un canal, que poden prendre valors $S=\{x_{1},\dots,x_{n}\}$ i $R=\{y_{1},\dots,y_{m}\}$ respectivament, $(X,Y)$ és una v.a. bidimensional que pot prendre valors a
+$$ S\times R = \{ (x_{i},y_{i}) \mid i=1,\dots,n\,;\, j=1,\dots,m \} \,,$$
+amb distribució de probabilitats
+$$ p(x_{i},y_{i}) = p((X=x_{i})\cap(Y=y_{j})) \,.$$
+
+```ad-ex
+title: Exemple: *Canal binari simètric*
+
+Un canal binari simètric (BSC) té:
++ **Origen:** $X = \{x_{0}=0,\,x_{1}=1\}$
++ **Destí:** $Y = \{y_{0}=0,\,y_{1}=1\}$
++ **Probabilitat d'error al bit:** $0\leq p\leq \frac{1}{2}$
+
+A partir d'aquesta informació, específicament les probabilitats condicionades, podem construir la matriu del canal:
+
+| $\boldsymbol{p(y_{j}\mid x_i)}$ | $\boldsymbol{y_{0}}$ | $\boldsymbol{y_{1}}$ |
+| ------------------:|:-------:|:-------:|
+|               $\boldsymbol{x_{0}}$ |  $1-p$  |   $p$   |
+|            $\boldsymbol{x_{1}}$ |   $p$   |  $1-p$  | 
+```
+
+```ad-def
+title: *Entropia conjunta*
+
+L'entropia d'una v.a. bidimensional és:
+
+$$ H(X,Y) = \boxed{\,-\sum_{i=1}^{n} \sum_{j=1}^{m} p(x_{i},y_{j})\log(p(x_{i},y_{i}))\,} $$
+```
