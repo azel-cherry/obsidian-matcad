@@ -29,20 +29,20 @@ title: *Informació d'una font*
 
 Si una font d'informació produeix els resultats $a_{1},\dots,a_{n}$ amb probabilitats $p(a_{1}),\dots,p(a_{n})$, definirem la ==informació de la font== com la mitjana ponderada de la informació de tots els resultats:
 
-$$ \sum_{i=1}^{n} p(a_{i})\,I(a_{i}) $$
+$$ \boxed{\,\sum_{i=1}^{n} p(a_{i})\,I(a_{i})\,} $$
 ```
 
 ````ad-def
 title: Unitats de mesura
 
-+ La unitat d'informació més petita és un ==bit==, associat a la informació d'una font amb dos esdeveniments equiprobables. Es fa servir $\log_{2}()$.
++ ~={green}Bit:=~ Unitat d'informació més petita, associada a la informació d'una font amb dos esdeveniments equiprobables. Es fa servir $\log_{2}()$.
 
-+ Amb 10 esdeveniments equiprobables, la unitat d'informació es diu ==dit== o ==Hartley== i es fa servir $\log_{10}()$.
++ ~={green}Dit (o Hartley):=~ Unitat de mesura equivalent a 10 esdeveniments equiprobables. Es fa servir $\log_{10}()$.
   
-+ Amb base $e$, la unitat de mesura es diu ==nat==.
++ ~={green}Nat:=~ Unitat en base $e$. Es fa servir $\ln()$.
   
 ```ad-not
-Farem servir **bits** i assumirem que $\log(a):=\log_{2}(a)$.
+Farem servir **bits** i assumirem $\log(a):=\log_{2}(a)$.
 ```
 ````
 
@@ -50,9 +50,40 @@ Farem servir **bits** i assumirem que $\log(a):=\log_{2}(a)$.
 ---
 ## Model de **Shannon**
 
-Podem pensar en una font discreta sense memòria com un **espai mostral** i una **variable aleatòria discreta** que assigna a cada missatge la seva informació:
+Podem pensar en una ~={green}font discreta sense memòria=~ com un **espai mostral** i una **variable aleatòria discreta** que assigna a cada missatge la seva informació:
 
 $$ \begin{align}
 X:\, & S \to R \\
 & a_{i} \mapsto I(a_{i})
 \end{align}$$
+
+````ad-def
+title: *Entropia*
+
+Sigui $X$ una v.a. discreta amb distribució de probabilitats $\{p_{1},\dots p_{n}\}$, aleshores l'==entropia== de $X$ és:
+$$ H(X) = \boxed{\, -\sum_{i=1}^{n} p_{i}\log(p_{i}) \,} $$
+
+```ad-prop
+Una v.a. discreta $X$ amb probabilitats $\{p_{1},\dots,p_{n}\}$ compleix:
++ $H(X)\geq0$
++ $H(X)=0 \iff$ existeix $i$ tal que $p_{i}=1$ 
+```
+
+```ad-teor
+title: Teorema fonamental de l'entropia
+
+Sigui $X$ una v.a. discreta amb probabilitats $\{p_{1},\dots,p_{n}\}$, aleshores:
+1. $H(X) \leq \log(n)$
+2. $H(X)=\log(n) \iff p_{i}=\frac{1}{n}\,\forall i\,$ (equiprobabilitat) 
+```
+````
+
+```ad-not
++ Considerem la indeterminació $0\cdot \log(0) = 0$.
++ Notació: $H(X)=H(p_{1},\dots,p_{n})$
+```
+
+
+---
+## Informació **mútua**
+
