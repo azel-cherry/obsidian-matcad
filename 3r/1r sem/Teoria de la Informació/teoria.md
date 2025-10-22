@@ -1,6 +1,7 @@
 # Teoria de la Informació
 
-## **Mesura** de la informació
+## Conceptes fonamentals
+#### **Mesura** de la informació
 
 Al fer un experiment, obtindrem més informació al haver-hi més **incertesa**, més **opcions** o quan el resultat és més **improbable**.
 
@@ -47,8 +48,7 @@ Farem servir **bits** i assumirem $\log(a):=\log_{2}(a)$.
 ````
 
 
----
-## Model de **Shannon**
+#### **Entropia**
 
 Podem pensar en una ~={green}font discreta sense memòria=~ com un **espai mostral** i una **variable aleatòria discreta** que assigna a cada missatge la seva informació:
 
@@ -83,9 +83,6 @@ Sigui $X$ una v.a. discreta amb probabilitats $\{p_{1},\dots,p_{n}\}$, aleshores
 + Notació: $H(X)=H(p_{1},\dots,p_{n})$
 ```
 
-
----
-## Informació **mútua**
 
 #### **Canal** discret sense memòria
 
@@ -129,4 +126,53 @@ title: *Entropia conjunta*
 L'entropia d'una v.a. bidimensional és:
 
 $$ H(X,Y) = \boxed{\,-\sum_{i=1}^{n} \sum_{j=1}^{m} p(x_{i},y_{j})\log(p(x_{i},y_{i}))\,} $$
+```
+
+`````ad-def
+title: *Entropia condicionada*
+
++ Fixant un valor $y$ de la v.a. $Y$, aleshores la seva entropia és:
+$$ H(X\mid Y=y) = \boxed{\,-\sum _{i=1}^{n} p(x_{i}| y) \log(p(x_{i}|y))\,} $$
+Això es pot interpretar com l'entropia de l'element enviat a través del canal si l'element rebut ha estat $y$.
+
++ L'entropia condicionada d'$X$ donat $Y$ és:
+$$ H(X|Y) = \boxed{\,\sum_{j=1}^{m} p(y_{j})\,H(X\,|\,Y=y_{j})\,} = -\sum_{i=1}^{n}\sum_{j=1}^{n}p(x_{i},y_{i})\log(p(x_{i}|y_{j})) $$
+Que es pot interpretar com la incertesa respecte l'entrada sabent la sortida.
+
+```ad-prop
+title: Propietats
+
+1. $H(X,Y) = H(X) + H(Y|X) = H(Y) + H(X|Y)$
+2. $H(X|Y)\leq H(X)\,,\quad H(Y|X)\leq H(Y)$
+	+ igualtat $\iff X$ i $Y$ son independents 
+3. $H(X,Y) \leq H(X) + H(Y)$
+	+ igualtat $\iff X$ i $Y$ son independents 
+4. $H(X) - H(X|Y) = H(Y) - H(Y|X)$
+```
+`````
+
+`````ad-def
+title: *Informació mútua*
+
+La informació mútua entre dues v.a.s discretes és
+$$ I(X,Y) = H(X) - H(X|Y) = H(Y) - H(Y|X) $$
+
+```ad-prop
++ $I(X,Y)\geq0$
++ $I(X,Y)=0 \iff X$ i $Y$ independents
+```
+
+```ad-not
+title: Notació
+
+Diem $I(p_{1},\dots,p_{n})=I(X,Y)$ amb $p_{i}=p(x_{i})$.
+```
+`````
+
+```ad-def
+title: *Capacitat*
+
+La capacitat del canal és $\,C = \max_{p_{i}}I(p_{1},\dots,p_{n})$.
+
+Es pot interpretar com la quantitat màxima d'informació que pot passar per símbol d'entrada. Les unitats seran bits/símbol.
 ```
