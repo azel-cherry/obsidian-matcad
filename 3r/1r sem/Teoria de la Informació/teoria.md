@@ -104,6 +104,17 @@ $$ S\times R = \{ (x_{i},y_{i}) \mid i=1,\dots,n\,;\, j=1,\dots,m \} \,,$$
 amb distribució de probabilitats
 $$ p(x_{i},y_{i}) = p((X=x_{i})\cap(Y=y_{j})) \,.$$
 
+```ad-def
+title: *Matriu del canal*
+
+La matriu d'un canal és:
+$$ \Pi = \begin{pmatrix}
+p(Y_{1}|X_{1}) & \dots & p(Y_{m}|X_{1}) \\
+\vdots & \ddots & \vdots \\
+p(Y_{1}|X_{n}) & \dots & p(Y_{m}|X_{n})
+\end{pmatrix} $$
+```
+
 ```ad-ex
 title: Exemple: *Canal binari simètric*
 
@@ -113,11 +124,10 @@ Un canal binari simètric (BSC) té:
 + **Probabilitat d'error al bit:** $0\leq p\leq \frac{1}{2}$
 
 A partir d'aquesta informació, específicament les probabilitats condicionades, podem construir la matriu del canal:
-
-| $\boldsymbol{p(y_{j}\mid x_i)}$ | $\boldsymbol{y_{0}}$ | $\boldsymbol{y_{1}}$ |
-| ------------------:|:-------:|:-------:|
-|               $\boldsymbol{x_{0}}$ |  $1-p$  |   $p$   |
-|            $\boldsymbol{x_{1}}$ |   $p$   |  $1-p$  | 
+$$ \Pi = \begin{pmatrix}
+1-p & p \\
+p & 1-p
+\end{pmatrix} $$
 ```
 
 ```ad-def
@@ -176,3 +186,137 @@ La capacitat del canal és $\,C = \max_{p_{i}}I(p_{1},\dots,p_{n})$.
 
 Es pot interpretar com la quantitat màxima d'informació que pot passar per símbol d'entrada. Les unitats seran bits/símbol.
 ```
+
+
+---
+## **Codificació** d'un canal
+
+#### **Models** de canals discrets sense memòria
+
+````ad-def
+title: Canal *sense pèrdua*
+
+Un canal és sense pèrdua si $\boxed{H(X|Y)=0}$ , és a dir, $I(X,Y)=H(X)$.
+
+```ad-prop
+title: Propietats
+
++ La sortida determina l'entrada de manera única.
++ A cada columna de $\Pi$ hi ha un únic element no nul.
++ $n\leq m$
++ $C = \max_{p_{i}}H(X)=\log(n)$
+  + S'assoleix quan la distribució inicial és equiprobable.
+```
+````
+
+````ad-def
+title: Canal *determinista*
+
+Un canal és determinista si $\boxed{H(Y|X)=0}$ , és a dir, $I(X,Y)=H(Y)$.
+
+```ad-prop
+title: Propietats
+
++ L'entrada determina la sortida de manera única.
++ A cada fila de $\Pi$ hi ha un únic element no nul.
++ $m\leq n$
++ $C = \max_{p_{i}}H(Y)=\log(m)$
+```
+````
+
+````ad-def
+title: Canal *sense soroll*
+
+Un canal és sense soroll si és sense pèrdua i determinista. És a dir, $I(X,Y)=H(X)=H(Y)$.
+
+```ad-prop
+title: Propietats
+
++ Relació biunívoca entre l'entrada i la sortida.
++ A cada columna de $\Pi$ hi ha un únic $1$ i la resta $0$.
++ $n=m$
++ $C=\log(n)=\log(m)$
+```
+````
+
+````ad-def
+title: Canal *amb entrada i sortida independents*
+
+Un canal és amb entrada i sortida independents si $\boxed{H(X|Y)=H(X)}$ i $\boxed{H(Y|X)=H(Y)}$. És a dir, $I(X,Y)=0$.
+
+```ad-prop
+title: Propietats
+
++ L'entrada i la sortida no tenen res a veure.
++ Les files de $\Pi$ son idèntiques.
++ $C=0$
+```
+````
+
+````ad-def
+title: Canal *totalment simètric*
+
+Un canal és totalment simètric si ??????
+
+```ad-prop
+title: Propietats
+
++ Les files i columnes de $\Pi$ son iguals excepte l'ordre.
++ $H(Y|X=x_{i})=H(Y|X=x_{j})=H(Y|X)=:H$
++ $I(X,Y)=H(Y)-H$
++ $C \leq \log(m) - H$
+  + Igualtat quan $y_{j}$ son equiprobables (equivalentment, quan $x_{i}$ son equiprobables).
++ $H(Y)=\log(m)\,$ quan $y_{j}$ son equiprobables.
+```
+````
+
+
+#### Regles de **descodificació**
+
+Anomenem funció o ==regla de descodificació== a una aplicació
+$$ f: Y \to X \,.$$
+
+```ad-prop
+title: Error
+
+Si $x_{i}$ a l'entrada produeix $y_{j}$ a la sortida i $f(y_{j})\neq x_{i}$, direm que s'ha produït un ==error== en la descodificació. La **probabilitat d'error** en la descodificació és:
+$$ p_{e}(y_{j}) = \sum_{i|x_{i}\neq f(y_{j})} p(x_{i}|y_{j}) = \boxed{\,1-p(f(y_{j})|y_{j})\,} $$
+
+La **probabilitat mitjana d'error** en la descodificació és:
+$$ \overline{p}_{e} = \sum_{j=1}^{m} p(y_{j})\,p_{e}(y_{j}) = 1- \sum_{j=1}^{m} p(f(y_{j}),y_{j}) $$
+```
+
+````ad-def
+title: *MPE*
+
+Una regla $f$ és a ==mínima probabilitat d'error (MPE)== si per cada $y_{j}$ assignem $f(y_{j})=x_{i}$ tal que $P(x_{i}|y_{j})$ sigui màxima.
+
+```ad-prop
+La regla MPE minimitza la probabilitat mitjana d'error.
+```
+````
+
+````ad-def
+title: *MV*
+
+Una relga $f$ és a ==màxima versemblança (MV)== si per a cada $y_{j}$ assignem $f(y_{j})=x_{i}$ tal que $p(y_{j}|x_{i})$ sigui màxima.
+````
+
+```ad-prop
+En un canal amb distribució inicial equiprobable, regles MPE i MV coincideixen.
+```
+
+````ad-teor
+title: Segon teorema de Shannon
+
+> Considerem un BSC$(p)$ amb igual probabilitat per a les dues entrades, i de capacitat $C$. Denotem per $C_{n}$ el conjunt de tots els codis amb $M_{n}$ paraules-codi de longitud $n$ i taxa de transmissió de la informació fixada $R_{T}$. Sigui $p^*(M_{n},n,p)$ el valor minimal de la probabilitat mitjana d'error per a tots els codis de $C_{n}$.
+
+Si $0<R_{T}<C$, aleshores $\displaystyle\lim_{n\to\infty}p^*(M_{n},n,p)=0$.
+
+```ad-not
+
+Generalitzt a altres canals, aquest teorema ens diu que podem trobar un sisdema de codificació per a un canal tal que la probabilitat mitjana d'error sigui tan petita com vulguem.
+
+Aquest sistema s'aconsegueix incrementant la longitud de les paraules-codi (augmentant per tant el temps necessari per processar i transmetre la informació).
+```
+````
