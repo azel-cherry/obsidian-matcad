@@ -189,7 +189,7 @@ Es pot interpretar com la quantitat màxima d'informació que pot passar per sí
 
 
 ---
-## **Codificació** d'un canal
+## Codificació del **canal**
 
 #### **Models** de canals discrets sense memòria
 
@@ -318,5 +318,135 @@ Si $0<R_{T}<C$, aleshores $\displaystyle\lim_{n\to\infty}p^*(M_{n},n,p)=0$.
 Generalitzt a altres canals, aquest teorema ens diu que podem trobar un sisdema de codificació per a un canal tal que la probabilitat mitjana d'error sigui tan petita com vulguem.
 
 Aquest sistema s'aconsegueix incrementant la longitud de les paraules-codi (augmentant per tant el temps necessari per processar i transmetre la informació).
+```
+````
+
+
+---
+## Codificació de la **font**
+
+Considerem la font $S=\{a_{1},\dots,a_{n}\}$ amb probabilitats $\{p_{1},\dots,p_{n}\}$.
+
+```ad-def
+title: Definicions
+
++ Un element o seqüencia d'elements d'$S$ s'anomena ==missatge==.
++ Un conjunt de símbols $\mathfrak{A}=\{\sigma_{1},\dots,\sigma_{D}\}$ és l'==alfabet $D$-ari== del codi.
++ La codificació assigna a cada element $a_{i}$ un $c_{i}$, anomenat ==paraula-codi==, que consisteix en una seqüència de símbols de $\mathfrak{A}$. El nombre de símbols de $c_i$ és la seva ==longitud==.
++ El ==codi== és $C=\{c_{1},\dots,c_{n}\}$.
+```
+
+L'objectiu és que la **longitud total** de la seqüència de símbols a transmetre sigui la **menor possible**, per tant:
++ Assignem paraules-codi més curtes als missatges més probables.
++ Si les probabilitats son desconegudes o iguals, poden ser útils codis de longitud constant.
+
+
+#### **Tipus** de codis
+
+````ad-def
+title: Codi *de descodificació única*
+
+Un codi és de ==descodificació única== si no existeix cap seqüència de paraules-codi ambigua.
+````
+
+Només treballarem amb codis de descodificació única.
+
+````ad-def
+title: Codi *instantani*
+
+Un codi és ==instantani== si cap paraula-codi és prefix d'una altra.
+
+```ad-prop
+Tot codi instantani és de descodificació única.
+```
+
+```ad-teor
+title: Desigualtat de **Kraft**
+
+Existeix un codi instantani $D$-ari en què les paraules-codi tenen longituds $L_{1},\dots,L_{n}$ si i només si
+$$ \boxed{\,\sum_{i=1}^{n} D^{-L_{i}} \leq 1\,} \,.$$
+```
+````
+
+```ad-prop
+title: Codi de longitud **fixa**
+
+> Tenim una font amb $n$ missatges equiprobables, i volem codificar-ne $m$-tuples amb paraules-codi de longitud $L$ formades per $D$ símbols.
+
+Aleshores $\,\boxed{\,D^{L}\geq n^{m} \iff L \geq \displaystyle\frac{m\log(n)}{\log(D)}\,}$ .
+```
+
+```ad-prop
+title: Codi de longitud **variable**
+
+> Tenim $S=\{a_{1},\dots,a_{n}\}$ amb probabilitats $\{p_{1},\dots,p_{n}\}$. Sigui $L_i$ la longitud de la paraula-codi $c_i$.
+
+Aleshores la longitudi del codi és:
+$$ \boxed{\,\overline{L} = \sum_{i=1}^{n} p_{i}L_{i}\,} $$
+```
+
+
+#### **Existència** de codis **òptims**
+
+```ad-teor
+title: Primer teorema de **Shannon**
+
+Tot codi $D$-ari de desocdificació única per a un conjunt de missatges $S=\{a_{1},\dots,a_{n}\}$ amb longitud mitjana $\overline{L}$ verifica
+$$ \boxed{\,\overline{L} \geq \frac{H(S)}{\log(D)}\,} \,,$$
+amb igualtat si i només si $p_{i}=D^{-L_{i}}$ per tot $i$.
+```
+
+```ad-prop
+Sempre podem construir un codi instantani tal que:
+$$\overline{L}\leq \frac{H(S)}{\log(D)}+1$$
+```
+
+```ad-def
+title: Definicions
+
++ L'==eficiència== d'un codi $D$-ari de longitud mitjana $\overline{L}$ per a un conjunt de missatges $S$ és
+$$ \eta = \boxed{\,\frac{H(S)}{\overline{L}\log(D)}\,} \,.$$
+
++ La ==redundància== d'un codi és el valor complementari de l'eficiència $\boxed{1-\eta\,}$ .
+
++ Un codi $D$-ari per a un conjunt de missatges $S$ és ==òptim== si tot altre codi $D$-ari per a $S$ té igual o superior longitud mitjana.
+	+ Si $\eta=1$, aleshores el codi és òptim. La inversa no és certa generalment.
+```
+
+
+#### **Construcció** de codis **òptims**
+
+```ad-prop
+> Sigui $C=\{c_{1},\dots,c_{n}\}$ un codi òptim per a $S=\{a_{1},\dots,a_{n}\}$ amb probabilitats $\{p_{1},\dots,p_{n}\}$.
+
+Aleshores es compleix:
+
+1. $p_{i}>p_{j}\implies L_{i}\leq L_{j}$
+2. Si $C$ és instantani, aleshores per a cada paraula-codi de longitud màxima n'hi ha una altra que concideix en tots els símbols excepte en l'últim.
+```
+
+```ad-teor
+> Sigui $S=\{a_{1},\dots,a_{n}\}$ amb probabilitats $\{p_{1},\dots,p_{n}\}$ en ordre decreixent. Considerem $S'=\{a_{1},\dots,a_{n-1}\cup a_{n}\}$ amb probabilitats $\{p_{1},\dots,p_{n-1}+p_{n}\}$.
+
+Si $C'=\{c_{1},\dots,c_{n-1}\}$ és un codi binari instantani per a $S'$, aleshores el codi
+$$ C = \{c_{1},\dots,c_{n-1}1,c_{n-1}0\} $$
+és un codi instantani per a $S$.
+
+A més, si $C'$ és òptim, $C$ també és òptim.
+```
+
+````ad-met
+
+1. Ordenar els missatges d'$S$ per ordre decreixent de probabilitats.
+2. Assignar 1 i 0 com a últims símbols de les paraules-codi dels dos missatges menys probables $a_{n-1}$ i $a_{n}$. 
+3. Reagrupar els dos últims missatges com a un sol missatge amb probabilitat $p_{n-1}p_{n}$.
+4. Repetir fins tenir tot en codi binari.
+
+```ad-ex
+> $S=\{a_{1},\dots,a_{6}\}$ amb probabilitats $\{0.3,0.25,0.2,0.1,0.1,0.05\}$.
+
+![[Pasted image 20251103200029.png | 400]]
+
+~={pink}Resultat:=~ $C=\{11,10,00,010,0111,0110\}$.
 ```
 ````
