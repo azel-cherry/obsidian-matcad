@@ -156,8 +156,7 @@ title: Propietats
 2. $H(X|Y)\leq H(X)\,,\quad H(Y|X)\leq H(Y)$
 	+ igualtat $\iff X$ i $Y$ son independents 
 3. $H(X,Y) \leq H(X) + H(Y)$
-	+ igualtat $\iff X$ i $Y$ son independents 
-4. $H(X) - H(X|Y) = H(Y) - H(Y|X)$
+	+ igualtat $\iff X$ i $Y$ son independents
 ```
 `````
 
@@ -204,8 +203,8 @@ title: Propietats
 + La sortida determina l'entrada de manera única.
 + A cada columna de $\Pi$ hi ha un únic element no nul.
 + $n\leq m$
-+ $C = \max_{p_{i}}H(X)=\log(n)$
-  + S'assoleix quan la distribució inicial és equiprobable.
++ $C\leq\log(n)$
+  + Igualtat quan la distribució inicial és equiprobable.
 ```
 ````
 
@@ -220,7 +219,8 @@ title: Propietats
 + L'entrada determina la sortida de manera única.
 + A cada fila de $\Pi$ hi ha un únic element no nul.
 + $m\leq n$
-+ $C = \max_{p_{i}}H(Y)=\log(m)$
++ $C\leq\log(m)$
+  + Igualtat quan la distribució final és equiprobable, i sempre existeix una distribució inicial que fa que això passi.
 ```
 ````
 
@@ -262,9 +262,8 @@ Un canal és totalment simètric si ??????
 title: Propietats
 
 + Les files i columnes de $\Pi$ son iguals excepte l'ordre.
-+ $H(Y|X=x_{i})=H(Y|X=x_{j})=H(Y|X)=:H$
-+ $I(X,Y)=H(Y)-H$
-+ $C \leq \log(m) - H$
++ $H(Y|X=x_{i})=H(Y|X=x_{j})=H(Y|X)$
++ $C \leq \log(m) - H(Y|X)$
   + Igualtat quan $y_{j}$ son equiprobables (equivalentment, quan $x_{i}$ son equiprobables).
 + $H(Y)=\log(m)\,$ quan $y_{j}$ son equiprobables.
 ```
@@ -289,7 +288,7 @@ $$ \overline{p}_{e} = \sum_{j=1}^{m} p(y_{j})\,p_{e}(y_{j}) = 1- \sum_{j=1}^{m} 
 ````ad-def
 title: *MPE*
 
-Una regla $f$ és a ==mínima probabilitat d'error (MPE)== si per cada $y_{j}$ assignem $f(y_{j})=x_{i}$ tal que $P(x_{i}|y_{j})$ sigui màxima.
+Una regla $f$ és a ==mínima probabilitat d'error (MPE)== si per cada $y_{j}$ assignem $f(y_{j})=x_{i}$ tal que $p(x_{i}|y_{j})$ sigui màxima.
 
 ```ad-prop
 La regla MPE minimitza la probabilitat mitjana d'error.
