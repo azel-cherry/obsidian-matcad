@@ -449,3 +449,57 @@ A més, si $C'$ és òptim, $C$ també és òptim.
 ~={pink}Resultat:=~ $C=\{11,10,00,010,0111,0110\}$.
 ```
 ````
+
+
+---
+## **Compressió** de dades
+
+```mehrmaid
+graph LR;
+I("Input $I$")
+M("Model $M$")
+C("Compressor $C$")
+O("Output<br>$O = C(I)$")
+D("Decompressor $D$")
+I2("Missatge descomprimit<br>$\widehat{I}=D(O)$")
+
+
+I --> M --> C
+I --> C --> O --> D --> I2
+```
+
+| Objectiu                                                                    | Mitjà                            | Límit |
+| --------------------------------------------------------------------------- | -------------------------------- | ----- |
+| <ul><li>Estalviar espai d'emmagatzematge<li>Estailviar temps de transmissió | Reduir la redundància de la font | $\overline{L}\geq \displaystyle\frac{H(S)}{\log(D)}$      |
+
+```ad-def
+title: Mesures de compressió
+
+> Tenim un fitxer $M$ comprimit a un fitxer $C$.
+
++ ==Taxa de compressió:== $R=\frac{|C|}{|M|}$ bits per bit (bpb).
++ ==Percentatge de compressió:== $(1-R)\cdot 100\%$.
++ ==*Bitrate*:== $BR=\frac{|C|}{|M|}$ bits per símbol.
+	+ En imatges, bits per píxel (bpp).
+	+ En text, bits per caràcter (bpc).
+```
+
+```ad-prop
+title: **Tipus** de mètodes de compressió
+
+Depenent de la **taxa de compressió**:
++ ~={green}Sense pèrdua (lossless).=~ Totalment reversible: $I=\widehat{I}$. Limitada per l'entropia de la font. ~={faded}(Huffman, RLE, aritmètic,...)=~
++ ~={green}Amb pèrdua (lossy).=~ No reversible: $I\neq \widehat{I}$. Millors taxes de compressió. ~={faded}(JPEG, MP3, MPEG,...)=~
+
+---
+Depenent del **model d'estimació**:
++ ~={green}Estàtic (no adaptiu).=~ El model és fix durant el procés de compressió.
++ ~={green}Dinàmic (adaptiu).=~ El model canvia durant el procés.
+  
+  ---
+Depenent de les **tècniques**:
++ ~={green}Basats en repeticions.=~ Elimina redundància quan hi ha moltes repeticions a la font.
++ ~={green}Basats en mètodes estadístics.=~ Estima probabilitats dels missatges.
++ ~={green}Basats en diccionari.=~ Crea un diccionari de missatges més freqüents.
++ ~={green}Basats en transformades.=~ 
+```
