@@ -435,6 +435,7 @@ A més, si $C'$ és òptim, $C$ també és òptim.
 ```
 
 ````ad-met
+title: Mètode de **Huffman**
 
 1. Ordenar els missatges d'$S$ per ordre decreixent de probabilitats.
 2. Assignar 1 i 0 com a últims símbols de les paraules-codi dels dos missatges menys probables $a_{n-1}$ i $a_{n}$. 
@@ -449,6 +450,7 @@ A més, si $C'$ és òptim, $C$ també és òptim.
 ~={pink}Resultat:=~ $C=\{11,10,00,010,0111,0110\}$.
 ```
 ````
+^b1608e
 
 
 ---
@@ -462,7 +464,6 @@ C("Compressor $C$")
 O("Output<br>$O = C(I)$")
 D("Decompressor $D$")
 I2("Missatge descomprimit<br>$\widehat{I}=D(O)$")
-
 
 I --> M --> C
 I --> C --> O --> D --> I2
@@ -496,10 +497,53 @@ Depenent del **model d'estimació**:
 + ~={green}Estàtic (no adaptiu).=~ El model és fix durant el procés de compressió.
 + ~={green}Dinàmic (adaptiu).=~ El model canvia durant el procés.
   
-  ---
+---
 Depenent de les **tècniques**:
 + ~={green}Basats en repeticions.=~ Elimina redundància quan hi ha moltes repeticions a la font.
 + ~={green}Basats en mètodes estadístics.=~ Estima probabilitats dels missatges.
 + ~={green}Basats en diccionari.=~ Crea un diccionari de missatges més freqüents.
-+ ~={green}Basats en transformades.=~ 
++ ~={green}Basats en transformades.=~ Transforma els missatges per descorrelacionar dependències estadístiques.
 ```
+
+
+#### **Mètodes** de compressió
+
+```ad-prop
+title: *Run Lengths Encode (RLE)*
+
+Es codifiquen les seqüències de símbols repetits.
+
+![[Pasted image 20251120101439.png]]
+```
+
+```ad-prop
+title: Huffman
+
++ [[#^b1608e | Algorisme de Huffman:]]
+	+ Sempre és òptim però només assoleix la mínima entropia possible quan $p_{i}=2^{-L_{i}}$.
+	+ A la pràctica no es coneix la distribució de probabilitats, per tant s'ha de fer una passada inicial per calcular les freqüencies.
+	+ L'arbre construit s'ha d'emmagatzemar amb el fitxer comprimit.
+
++ ~={green}Algorisme de Huffman adaptiu:=~
+  + Construeix l'arbre i codifica alhora.
+  + Menys òptim que Huffman bàsic.
+```
+
+````ad-prop
+title: Codificació aritmètica
+
+Tenim $S=\{a_{1},\dots,a_{n}\}$ amb probabilitats $\{p_{1},\dots,p_{n}\}$, i volem comprimir un missatge $m$.
+
++ Sigui $I=[0,1)$, per cada $s \in m$:
+   1. Dividim $I$ en $n$ subintervals de mida proporcional a $\{p_{1},\dots,p_{n}\}$.
+    2. Seleccionem el subinterval $I_{s}$ corresponent a $s$ i assignem $I=I_{s}$.
++ Qualsevol nombre del nostre interval final $I=[x,y)$ representa el missatge $m$.
+  
+```ad-ex
+> $S=\{a,b,c\}$ amb $\{0.2,0.5,0.3\}$ i $m=babc$.
+
+![[wtf.png]]
+
+~={pink}Resultat:=~ $I(m) = [0.255,0.27) \implies C(m)=0.26$
+```
+````
