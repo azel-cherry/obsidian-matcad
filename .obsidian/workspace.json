@@ -1,134 +1,76 @@
 {
   "main": {
-    "id": "95b63318c651125d",
+    "id": "4ae1ffd988f82739",
     "type": "split",
     "children": [
       {
-        "id": "0be7434c869404ee",
+        "id": "d24602f39257138a",
         "type": "tabs",
         "children": [
           {
-            "id": "d7a3f801f0c5ce9b",
+            "id": "00ce3c9cc25b0cd3",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Modelització i Inferència.md",
+                "file": "3r/1r sem/Teoria de la Informació/teoria.md",
                 "mode": "source",
                 "source": true
               },
               "icon": "lucide-file",
-              "title": "Modelització i Inferència"
+              "title": "teoria"
             },
-            "group": "248bbb2b407fd74e"
-          },
-          {
-            "id": "006b8e0a6112c62e",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Equacions Diferencials Ordinàries.md",
-                "mode": "source",
-                "source": true
-              },
-              "icon": "lucide-file",
-              "title": "Equacions Diferencials Ordinàries"
-            },
-            "group": "1fff2f9ebd4a94d4"
+            "group": "e7104dd144d29207"
           }
-        ],
-        "currentTab": 1
+        ]
       },
       {
-        "id": "9b80bb20343af049",
+        "id": "5fde8bd59bee80c3",
         "type": "tabs",
         "children": [
           {
-            "id": "eee2d2b2cc2d25e7",
+            "id": "febf54040d774048",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Modelització i Inferència.md",
+                "file": "3r/1r sem/Teoria de la Informació/teoria.md",
                 "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Modelització i Inferència"
+              "title": "teoria"
             },
-            "group": "248bbb2b407fd74e"
-          },
-          {
-            "id": "a86e58bb2c34479d",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Equacions Diferencials Ordinàries.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Equacions Diferencials Ordinàries"
-            },
-            "group": "1fff2f9ebd4a94d4"
-          },
-          {
-            "id": "4fbf07c48622ee20",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Tècniques de Disseny d'Algorismes.md",
-                "mode": "preview",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Tècniques de Disseny d'Algorismes"
-            }
-          },
-          {
-            "id": "f4805dfae18c3932",
-            "type": "leaf",
-            "state": {
-              "type": "diff-view",
-              "state": {
-                "file": "Equacions Diferencials Ordinàries.md",
-                "staged": true
-              },
-              "icon": "git-pull-request",
-              "title": "Diff View (Equacions Diferencials Ordinàries)"
-            }
+            "group": "e7104dd144d29207"
           }
-        ],
-        "currentTab": 3
+        ]
       }
     ],
     "direction": "vertical"
   },
   "left": {
-    "id": "a36510bcbec0540b",
+    "id": "a648793045ef5108",
     "type": "split",
     "children": [
       {
-        "id": "3aedd0194f02cff8",
+        "id": "17bf3b7c67410766",
         "type": "tabs",
         "children": [
           {
-            "id": "e4a4fe6b287ad477",
+            "id": "6c7dd38fbac18324",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
               "state": {
-                "sortOrder": "alphabetical"
+                "sortOrder": "alphabetical",
+                "autoReveal": false
               },
               "icon": "lucide-folder-closed",
               "title": "Files"
             }
           },
           {
-            "id": "91023601751f6c18",
+            "id": "7e442c72dd3cdb71",
             "type": "leaf",
             "state": {
               "type": "search",
@@ -145,7 +87,7 @@
             }
           },
           {
-            "id": "932a9f0eef7ec2ae",
+            "id": "cdd7efa1ca1821b2",
             "type": "leaf",
             "state": {
               "type": "bookmarks",
@@ -158,26 +100,24 @@
       }
     ],
     "direction": "horizontal",
-    "width": 210,
+    "width": 200,
     "collapsed": true
-    "width": 200
-    "width": 210
   },
   "right": {
-    "id": "455ff89e6c635379",
+    "id": "2cd6a84ba91ff72c",
     "type": "split",
     "children": [
       {
-        "id": "deb8c19d483a6723",
+        "id": "d6ad92938beb8687",
         "type": "tabs",
         "children": [
           {
-            "id": "bc8b5833c507fbdd",
+            "id": "87f8f9af72cc7394",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Modelització i Inferència.md",
+                "file": "2n/2n sem/IA/Intel·ligència Artificial.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -187,50 +127,54 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for Modelització i Inferència"
+              "title": "Backlinks for Intel·ligència Artificial"
             }
           },
           {
-            "id": "7adf4f8aaad18f58",
+            "id": "c4f59223808a19a1",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Modelització i Inferència.md",
+                "file": "2n sem/ADC/Anàlisi de Dades Complexes.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from Modelització i Inferència"
+              "title": "Outgoing links from Anàlisi de Dades Complexes"
             }
           },
           {
-            "id": "fa432f6458373203",
+            "id": "850e10115e25832c",
             "type": "leaf",
             "state": {
               "type": "tag",
               "state": {
                 "sortOrder": "frequency",
-                "useHierarchy": true
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
               },
               "icon": "lucide-tags",
               "title": "Tags"
             }
           },
           {
-            "id": "d46363634846959d",
+            "id": "adf9145b6f195570",
             "type": "leaf",
             "state": {
               "type": "outline",
               "state": {
-                "file": "Modelització i Inferència.md"
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Modelització i Inferència"
+              "title": "Outline"
             }
           },
           {
-            "id": "6decfb820efe0cf2",
+            "id": "a1819f6fe4aa821a",
             "type": "leaf",
             "state": {
               "type": "git-view",
@@ -238,16 +182,27 @@
               "icon": "git-pull-request",
               "title": "Source Control"
             }
+          },
+          {
+            "id": "a23815d696d0a353",
+            "type": "leaf",
+            "state": {
+              "type": "advanced-tables-toolbar",
+              "state": {},
+              "icon": "spreadsheet",
+              "title": "Advanced Tables"
+            }
           }
         ],
         "currentTab": 4
       }
     ],
     "direction": "horizontal",
-    "width": 339.5
+    "width": 295.5
   },
   "left-ribbon": {
     "hiddenItems": {
+      "bases:Create new base": false,
       "switcher:Open quick switcher": false,
       "graph:Open graph view": false,
       "canvas:Create new canvas": false,
@@ -255,20 +210,57 @@
       "templates:Insert template": false,
       "command-palette:Open command palette": false,
       "obsidian42-brat:BRAT": false,
-      "obsidian-excalidraw-plugin:Create new drawing": false,
-      "obsidian-git:Open Git source control": false
+      "obsidian-git:Open Git source control": false,
+      "table-editor-obsidian:Advanced Tables Toolbar": false,
+      "obsidian-excalidraw-plugin:New drawing": false
     }
   },
-  "active": "006b8e0a6112c62e",
+  "active": "febf54040d774048",
   "lastOpenFiles": [
-    "Tècniques de Disseny d'Algorismes.md",
-    "Equacions Diferencials Ordinàries.md",
-    "conflict-files-obsidian-git.md",
-    "Modelització i Inferència.md",
-    "^lqbl5.md",
-    "gcm-diagnose.log",
-    "IMG_0349.jpeg",
-    "Shit.md",
-    "IMG_0352.jpeg"
+    "3r/1r sem/Teoria de la Informació/resum.md",
+    "3r/1r sem/Teoria de la Informació/teoria.md",
+    "3r/1r sem/Equacions en Derivades Parcials/teoria.md",
+    "2n/1r sem/ModIn/Modelització i Inferència.md",
+    "3r/1r sem/Equacions en Derivades Parcials/pràctica 1.md",
+    "3r/1r sem/Computació d'Altes Prestacions/resum.md",
+    "Pasted image 20251120104637.png",
+    "Pasted image 20251120101439.png",
+    "wtf.png",
+    "Pasted image 20251120104712.png",
+    "Pasted image 20251120101333.png",
+    "3r/1r sem/Computació d'Altes Prestacions/pràctica 3.md",
+    "imatges/Pasted image 20251103200029.png",
+    "2n/1r sem/ModIn/Resums/2n parcial (resum).md",
+    "3r/1r sem/Untitled",
+    "3r/Untitled",
+    "2n/1r sem/ModIn/Resums/1r parcial (resum).md",
+    "2n/1r sem/EDOs/Resum.md",
+    "lliur3.pdf",
+    "lliurament3.pdf",
+    "pràctica 3.pdf",
+    "3r/1r sem/Computació d'Altes Prestacions",
+    "3r/1r sem/Teoria de la Informació",
+    "2n/2n sem/Opti/Programació no Lineal.md",
+    "2n/2n sem/ACF/Anàlisi Complexa.md",
+    "2n/2n sem/IA/Intel·ligència Artificial.md",
+    "3r/1r sem",
+    "2n/2n sem/ACF/Resums/1r parcial (resum).md",
+    "3r/1r sem/Equacions en Derivades Parcials",
+    "3r",
+    "misc.md",
+    "2n/2n sem/ADC/Entregues/Lliurament 2.md",
+    "2n/2n sem/ADC/Anàlisi de Dades Complexes.md",
+    "2n/2n sem/ACF/Resums/2n parcial (resum).md",
+    "2n/2n sem/ACF/Anàlisi de Fourier.md",
+    "2n/2n sem/ADC/Resums/Regressió Lineal (resum).md",
+    "2n/2n sem/Opti/Programació Lineal.md",
+    "2n/2n sem/MNP/Resums/MNP (resum).md",
+    "2n/2n sem/MNP/Mètodes Numèrics i Probabilístics.md",
+    "2n/1r sem/TDA/Primer semestre.md",
+    "2n/1r sem/ModIn/Taula de V.A.s contínues.md",
+    "imatges/Pasted image 20250425180254.png",
+    "imatges/Pasted image 20250426113126.png",
+    "imatges/Pasted image 20250426113045.png",
+    "imatges/Pasted image 20250425180403.png"
   ]
 }
