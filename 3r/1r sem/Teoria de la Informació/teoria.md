@@ -521,6 +521,7 @@ title: Huffman
 
 + [[#^b1608e | Algorisme de Huffman:]]
 	+ Sempre és òptim però només assoleix la mínima entropia possible quan $p_{i}=2^{-L_{i}}$.
+	+ En el millor dels casos codifica a $1$ bit/simbol.
 	+ A la pràctica no es coneix la distribució de probabilitats, per tant s'ha de fer una passada inicial per calcular les freqüencies.
 	+ L'arbre construit s'ha d'emmagatzemar amb el fitxer comprimit.
 
@@ -544,6 +545,29 @@ Tenim $S=\{a_{1},\dots,a_{n}\}$ amb probabilitats $\{p_{1},\dots,p_{n}\}$, i vol
 
 ![[wtf.png]]
 
-~={pink}Resultat:=~ $I(m) = [0.255,0.27) \implies C(m)=0.26$
+~={pink}Resultat:=~ $I(m) = [0.255,0.27) \implies C(m)=0.26$ ~={faded}(més curt possible)=~
 ```
 ````
+
+```ad-prop
+title: Codificació *Move to Front*
+
+Basada en descorrelacionar les dependències estadístiques.
+```
+
+I -> decorrelació -> quantització -> codificació -> C(I)
+
+- codificacio shannon-fano
+
+prediccio
+- DPCM/west
+- north
+- north & west
+- diagonal
+
+transformada
+- wavelet
+	- haar
+		- real
+		- entera
+
