@@ -555,6 +555,40 @@ title: Codificació *Move to Front*
 Basada en descorrelacionar les dependències estadístiques.
 ```
 
+````ad-prop
+title: Codificació *Lempel-Ziv*
+
+Codificació de diccionari
+
+```ad-prop
+title: LZ77
+$D$ desplaçament màxim, $B$ llargada màxima a copiar
+
+(desplaçament cap a l'esquerra, símbols que es copien, nova lletra)
+
+(0,0,E) (0,0,N) (0,0,C) (0,0,A) (0,0,P)
+(3,3,H) (0,0,I) (5,3,U) (13,1,A) (6,3,A)
+
+ff
+EN CAP CAP CAP EL QUE CAP EN AQUEST CAP
+
+(0,0,E) (0,0,N) (0,0,C) (0,0,A) (0,0,P) (3,6,E)
+(0,0,L) (0,0,Q) (0,0,U) (4,1,C) (0,0,A) (0,0,P)
+(4,1,N) (4,1,Q) (0,0,U) (5,1,S) (0,0,T) (0,0,C)
+(0,0,A) (0,0,P)
+```
+
+```ad-prop
+title: LZ78
+
+Diccionari | Codi
+num caràcter | (referència, nou símbol)
+```
+````
+
+
+
+
 I -> decorrelació -> quantització -> codificació -> C(I)
 
 - codificacio shannon-fano
