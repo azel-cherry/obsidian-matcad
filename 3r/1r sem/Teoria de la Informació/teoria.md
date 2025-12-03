@@ -569,7 +569,6 @@ $D$ desplaçament màxim, $B$ llargada màxima a copiar
 (0,0,E) (0,0,N) (0,0,C) (0,0,A) (0,0,P)
 (3,3,H) (0,0,I) (5,3,U) (13,1,A) (6,3,A)
 
-ff
 EN CAP CAP CAP EL QUE CAP EN AQUEST CAP
 
 (0,0,E) (0,0,N) (0,0,C) (0,0,A) (0,0,P) (3,6,E)
