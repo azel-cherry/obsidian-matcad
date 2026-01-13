@@ -32,6 +32,8 @@ $f\equiv$ fracció no paral·lelitzable
 
 #### OpenACC
 
+inicialització: `#include<openacc.h>`
+
 ````ad-prop
 title: Directives
 
@@ -76,10 +78,76 @@ title: Transferències de **dades**
 
 #### CUDA
 
-nah i give up
+nah
 
 
 ---
 
 ## Memòria distribuïda: MPI
 
+```c title:"Inicialització i finalització"
+#include<mpi.h>
+
+int err;
+err = MPI_Init(&argc, &argv);
+...
+err = MPI_Finalize();
+```
+
+Les funcions `MPI_...` retornen la variable `MPI_SUCCESS` de tipus *int* que indica si s'ha executat amb èxit.
+
+```ad-prop
+title: **Comunicadors**
+
+Defineixen quins processos poden comunicar-se entre ells. El per defecte, que inclou tots els processos, és `MPI_COMM_WORLD`.
+
++ `MPI_Comm_size(COMM, &size)`: comunica el total `size` de processos que conté el comunicador `COMM`
++ `MPI_Comm_rank(COMM, &rank)`: comunica el rang `rank` de cada procés dins del comunicador `COMM`
+```
+
+````ad-met
+title: Comunicació ***point-to-point***
+
+Comunicació entre dos processos.
+
+```ad-prop
+title: *Blocking*
+
++ `MPI_Send(&data, data-size, MPI_TYPE, dest-rank, tag, COMM)`
++ `MPI_Recv(&data, data-size, MPI_TYPE, org-rank, tag, COMM, &status)`
+  
+| Funció            | Crida       | Condició de finalització                                   |
+| ----------------- | ----------- | ---------------------------------------------------------- |
+| ***Standard***    | `MPI_Send`  | Desconegut                                                 |
+| ***Synchronous*** | `MPI_Ssend` | Missatge rebut                                             |
+| ***Buffered***    | `MPI_Bsend` | Missatge copiat a memòria intermèdia                       |
+| ***Ready***       | `MPI_Rsend` | Missatge rebut (només si el receptor ja s'estava esperant) |
+| ***Receive***     | `MPI_Recv`  | Missatge rebut                                             |
+```
+
+```ad-prop
+title: *Non-blocking*: Immediate
+
++ `MPI_Isend(&data, data-size, MPI_TYPE, dest-rank, tag, COMM, &request)`
++ `MPI_Irecv(&data, data-size, MPI_TYPE, org-rank, tag, COMM, &request)`
+  
+`request` identifica la operació i es fa servir per gestionar el seu estat, pot ser de tipus *MPI_Request* o *int*
+```
+
++ `MPI_Get_count(&status, MPI_TYPE, &count)`: nombre d'elements realment rebuts
++ `MPI_Wait(&request, &status)`
++ `MPI_Test(&request, &flag, &status)`: retorna l'estat de l'operació `request` a la variable `flag` (*True* o *False*)
+````
+
+```ad-met
+title: Comunicació **col·lectiva**
+
+Comunicació entre un conjunt de processos.
+
++ `MPI_Barrier(COMM)`: espera que tots els processos arribin i es sincronitzin
++ `MPI_Bcast(&data, data-size, MPI_TYPE, root, COMM)`: *broadcast* de `data` des del procés `root` a tots els altres processos
++ `MPI_Scatter(&send-data, send-size, MPI_sendTYPE, &recv-data, recv-size, MPI_recvTYPE, root, COMM)`: procés `root` envia un tros de `send-data` de mida `send-size` a cada procés, que el guarda a `recv-data` i aquest pot tenir una mida màxima de `recv-size`
+  + `MPI_Alltoall`: crida igual que *Gather* però sense `root`
++ `MPI_Gather(&send-data, send-size, MPI_sendTYPE, &recv-data, recv-size, MPI-recvTYPE, root, COMM)`: les dades de `send-data` de diversos processos s'envien a `recv-data` del procés `root` 
+  + `MPI_Allgather`: crida igual que *Gather* però sense `root`; el resultat es distribueix a tots els processos
+```
