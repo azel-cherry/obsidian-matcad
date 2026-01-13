@@ -147,7 +147,7 @@ Comunicació entre un conjunt de processos.
 + `MPI_Barrier(COMM)`: espera que tots els processos arribin i es sincronitzin
 + `MPI_Bcast(&data, data-size, MPI_TYPE, root, COMM)`: *broadcast* de `data` des del procés `root` a tots els altres processos
 + `MPI_Scatter(&send-data, send-size, MPI_sendTYPE, &recv-data, recv-size, MPI_recvTYPE, root, COMM)`: procés `root` envia un tros de `send-data` de mida `send-size` a cada procés, que el guarda a `recv-data` i aquest pot tenir una mida màxima de `recv-size`
-  + `MPI_Alltoall`: crida igual que *Gather* però sense `root`
+  + `MPI_Alltoall`: crida igual que *Scatter* però sense `root`; tots els processos fan un *Scatter* de `send-data` incloent a ells mateixos
 + `MPI_Gather(&send-data, send-size, MPI_sendTYPE, &recv-data, recv-size, MPI-recvTYPE, root, COMM)`: les dades de `send-data` de diversos processos s'envien a `recv-data` del procés `root` 
   + `MPI_Allgather`: crida igual que *Gather* però sense `root`; el resultat es distribueix a tots els processos
 ```
