@@ -32,7 +32,7 @@ $f\equiv$ fracció no paral·lelitzable
 
 #### OpenACC
 
-inicialització: `#include<openacc.h>`
+Don't forget! `#include<openacc.h>`
 
 ````ad-prop
 title: Directives
@@ -74,11 +74,6 @@ title: Transferències de **dades**
 + `create(<var-list>)`: assigna memòria a la GPU
 +  `delete(<var-list>)`
 ````
-
-
-#### CUDA
-
-nah
 
 
 ---
@@ -135,7 +130,7 @@ title: *Non-blocking*: Immediate
 ```
 
 + `MPI_Get_count(&status, MPI_TYPE, &count)`: nombre d'elements realment rebuts
-+ `MPI_Wait(&request, &status)`
++ `MPI_Wait(&request, &status)`: retorna quan la operació identificada per `request` és completada
 + `MPI_Test(&request, &flag, &status)`: retorna l'estat de l'operació `request` a la variable `flag` (*True* o *False*)
 ````
 
@@ -148,6 +143,12 @@ Comunicació entre un conjunt de processos.
 + `MPI_Bcast(&data, data-size, MPI_TYPE, root, COMM)`: *broadcast* de `data` des del procés `root` a tots els altres processos
 + `MPI_Scatter(&send-data, send-size, MPI_sendTYPE, &recv-data, recv-size, MPI_recvTYPE, root, COMM)`: procés `root` envia un tros de `send-data` de mida `send-size` a cada procés, que el guarda a `recv-data` i aquest pot tenir una mida màxima de `recv-size`
   + `MPI_Alltoall`: crida igual que *Scatter* però sense `root`; tots els processos fan un *Scatter* de `send-data` incloent a ells mateixos
-+ `MPI_Gather(&send-data, send-size, MPI_sendTYPE, &recv-data, recv-size, MPI-recvTYPE, root, COMM)`: les dades de `send-data` de diversos processos s'envien a `recv-data` del procés `root` 
++ `MPI_Gather(&send-data, send-size, MPI_sendTYPE, &recv-data, recv-size, MPI-recvTYPE, root, COMM)`: les dades de `send-data` de diversos processos s'envien a `recv-data` del procés `root`
   + `MPI_Allgather`: crida igual que *Gather* però sense `root`; el resultat es distribueix a tots els processos
++ `MPI_Reduce(&send-data, &recv-data, size, MPI_TYPE, MPI_OP, root, COMM)`: procés `root` rep `send-data` dels altres processos i els redueix mitjançant la operació `MPI_OP`, guardant el resultat a `recv-data`
+	+ `MPI_Allreduce`: crida igual que *Reduce* però sense `root`; el resultat `recv-data` es distribueix a tots els processos
+	  
+Totes les operacions tenen una versió *Immediate* que afegeix un atribut `&request` al final.
 ```
+
++ **Timer:** `MPI_Wtime(void)`: retorna un *double* corresponent al temps d'execució actual en segons
