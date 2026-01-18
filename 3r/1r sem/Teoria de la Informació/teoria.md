@@ -459,7 +459,7 @@ title: Mètode de **Huffman**
 ```mehrmaid
 graph LR;
 I("Input $I$")
-M("Model $M$")
+M("Model $M$<br>(probabilitats)$\,$")
 C("Compressor $C$")
 O("Output<br>$O = C(I)$")
 D("Decompressor $D$")
@@ -506,10 +506,10 @@ Depenent de les **tècniques**:
 ```
 
 
-#### **Mètodes** de compressió
+#### **Algorismes** de compressió
 
 ```ad-prop
-title: *Run Lengths Encode (RLE)*
+title: ***Run Lengths Encode** (RLE)*
 
 Es codifiquen les seqüències de símbols repetits.
 
@@ -517,9 +517,9 @@ Es codifiquen les seqüències de símbols repetits.
 ```
 
 ```ad-prop
-title: Huffman
+title: Codificació de **Huffman**
 
-+ [[#^b1608e | Algorisme de Huffman:]]
++ [[#^b1608e | Algorisme de Huffman (no adaptiu):]]
 	+ Sempre és òptim però només assoleix la mínima entropia possible quan $p_{i}=2^{-L_{i}}$.
 	+ En el millor dels casos codifica a $1$ bit/simbol.
 	+ A la pràctica no es coneix la distribució de probabilitats, per tant s'ha de fer una passada inicial per calcular les freqüencies.
@@ -531,7 +531,7 @@ title: Huffman
 ```
 
 ````ad-prop
-title: Codificació aritmètica
+title: Codificació **aritmètica**
 
 Tenim $S=\{a_{1},\dots,a_{n}\}$ amb probabilitats $\{p_{1},\dots,p_{n}\}$, i volem comprimir un missatge $m$.
 
@@ -549,58 +549,150 @@ Tenim $S=\{a_{1},\dots,a_{n}\}$ amb probabilitats $\{p_{1},\dots,p_{n}\}$, i vol
 ```
 ````
 
-```ad-prop
-title: Codificació *Move to Front*
+````ad-prop
+title: Codificació ***Move to Front***
 
 Basada en descorrelacionar les dependències estadístiques.
-```
 
-````ad-prop
-title: Codificació *Lempel-Ziv*
+Codifiquem cada símbol amb l'índex en el que apareix a la llista de símbols, i posteriorment el símbol corresponent es mou a l'índex 0.
 
-Codificació de diccionari
+```ad-ex
+> $S=\{A,B,C,D\}$ i $m=BABBCAD$.
 
-```ad-prop
-title: LZ77
-$D$ desplaçament màxim, $B$ llargada màxima a copiar
+| Input       | Output        | Símbols       |
+| ----------- | ------------- | ------------- |
+| **B**ABBCAD | 1             | [A,**B**,C,D] |
+| B**A**BBCAD | 1,1           | [B,**A**,C,D] |
+| BA**B**BCAD | 1,1,1         | [A,**B**,C,D] |
+| BAB**B**CAD | 1,1,1,0       | [**B**,A,C,D] |
+| BABB**C**AD | 1,1,1,0,2     | [B,A,**C**,D] |
+| BABBC**A**D | 1,1,1,0,2,2   | [C,B,**A**,D] |
+| BABBCA**D** | 1,1,1,0,2,2,3 | [A,C,B,**D**] | 
 
-(desplaçament cap a l'esquerra, símbols que es copien, nova lletra)
-
-(0,0,E) (0,0,N) (0,0,C) (0,0,A) (0,0,P)
-(3,3,H) (0,0,I) (5,3,U) (13,1,A) (6,3,A)
-
-EN CAP CAP CAP EL QUE CAP EN AQUEST CAP
-
-(0,0,E) (0,0,N) (0,0,C) (0,0,A) (0,0,P) (3,6,E)
-(0,0,L) (0,0,Q) (0,0,U) (4,1,C) (0,0,A) (0,0,P)
-(4,1,N) (4,1,Q) (0,0,U) (5,1,S) (0,0,T) (0,0,C)
-(0,0,A) (0,0,P)
-```
-
-```ad-prop
-title: LZ78
-
-Diccionari | Codi
-num caràcter | (referència, nou símbol)
+~={pink}Resultat:=~ $C(m)=(1,1,1,0,2,2,3)$
 ```
 ````
 
+`````ad-prop
+title: Codificació ***Lempel-Ziv***
 
+Codificació de diccionari.
 
+````ad-prop
+title: LZ77
 
-I -> decorrelació -> quantització -> codificació -> C(I)
++ *Search Buffer* ($D$): Desplaçament màxim cap a l'esquerra des de la posició actual.
++ *Look Ahead Buffer* ($B$): Llargada màxima de la cadena a copiar.
 
-- codificacio shannon-fano
+$$(p,n,c)\begin{cases}
+p \equiv \text{posició relativa al símbol actual} \\
+n \equiv \text{nombre de símbols a copiar} \\
+c \equiv \text{nou símbol que inserim}
+\end{cases}$$
 
-prediccio
-- DPCM/west
-- north
-- north & west
-- diagonal
+```ad-ex
+> $m=aacaacabcabaaac$, $D=6$ i $B=4$.
 
-transformada
-- wavelet
-	- haar
-		- real
-		- entera
+![[Pasted image 20260118180527.png]]
+
+~={pink}Resultat:=~ $C(m)=((0,0,a),(1,1,c),(3,4,b),(3,3,a),(1,2,c))$
+```
+````
+
+````ad-prop
+title: LZ78
+
+Construeix un diccionari a mesura que es codifica la cadena.
+
+$$(p,c)\begin{cases}
+p \equiv \text{referència} \\
+c \equiv \text{nou símbol que inserim}
+\end{cases}$$
+
+```ad-ex
+> $m=aacaacabcabaaac$.
+
+| Diccionari      | Output             |
+| --------------- | ------------------ |
+| 0 $\text{null}$ |                    |
+| 1 $a$           | $(0,a)$            |
+| 2 $ac$          | $(1,c)$            |
+| 3 $aa$          | $(1,a)$            |
+| 4 $c$           | $(0,c)$            |
+| 5 $ab$          | $(1,b)$            |
+| 6 $ca$          | $(4,a)$            |
+| 7 $b$           | $(0,b)$            |
+| 8 $aaa$         | $(3,a)$            |
+| 9 $c$           | $(4, \text{null})$ |
+
+~={pink}Resultat:=~ $C(m)=((0,a),(1,c),(1,a),(0,c),(1,b),(4,a),(0,b),(3,a),(4,\text{null}))$
+```
+````
+`````
+
+````ad-prop
+title: Codificació **DPCM**
+
+Escriu cada terme com la diferència d'ell mateix per l'anterior.
+
+```ad-ex
+| Input      | $102$ | $100$ | $104$ | $103$ | $99$ | $100$ |
+|:---------- |:-----:|:-----:|:-----:|:-----:|:----:|:-----:|
+| **Output** | $102$ | $-2$  |  $4$  | $-1$  | $-4$ |  $1$  |
+```
+````
+
+````ad-prop
+title: Codificació **Elias**
+
+Passa el missatge a binari i elimina el primer 1.
+
+```ad-ex
+| Input      |   $8$   |  $-7$  |  $2$  | $-2$  |  $7$   |  $-6$  |
+|:---------- |:-------:|:------:|:-----:|:-----:|:------:|:------:|
+| **Binari** | $1000+$ | $111-$ | $10+$ | $10-$ | $111+$ | $110-$ |
+| **Output** | $000+$  | $11-$  | $0+$  | $0-$  | $11+$  | $10-$  |
+```
+````
+
+`````ad-prop
+title: **Wavelet de Haar**
+
+Es poden aplicar tants nivells com $\log(L)$, amb $L$ la longitud de la font.
+
+Per cada parella consecutiva de números, la seva mitjana es posa a l'esquerra, i el seu detall a la dreta. 
+
+````ad-prop
+title: Wavelet **real**
+
++ ~={green}Mitjana=~ ($L$): $\,\mu=\displaystyle\frac{a+b}{2}$
++ ~={pink}Detall=~ ($H$): $\,\delta=\displaystyle\frac{a-b}{2}$
+
+```ad-ex
+| Input         |        $12$        |        $6$        |       $6$       |        $2$        |      $5$      |      $3$      |      $2$      |       $7$        |
+| ------------- |:------------------:|:-----------------:|:---------------:|:-----------------:|:-------------:|:-------------:|:-------------:|:----------------:|
+| **1r nivell** |   ~={green}$9$=~   |  ~={green}$4$=~   | ~={green}$4$=~  | ~={green}$4.5$=~  | ~={pink}$3$=~ | ~={pink}$2$=~ | ~={pink}$1$=~ | ~={pink}$-2.5$=~ |
+| **2n nivell** |  ~={green}$6.5$=~  | ~={green}$4.25$=~ | ~={pink}$2.5$=~ | ~={pink}$-0.25$=~ |      $3$      |      $2$      |      $1$      |      $-2.5$      |
+| **3r nivell** | ~={green}$5.375$=~ | ~={pink}$1.125$=~ |      $2.5$      |      $-0.25$      |      $3$      |      $2$      |      $1$      | $-2.5$                 |
+```
+````
+
+````ad-prop
+title: Wavelet **entera**
+
++ ~={green}Mitjana=~ ($L$): $\,\mu=a+\displaystyle\left\lfloor\frac{\delta}{2}\right\rfloor$
++ ~={pink}Detall=~ ($H$): $\,\delta=b-a$
+
+```ad-ex
+| Input         |      $12$      |        $6$        |      $6$       |      $2$       |      $5$       |      $3$       |      $2$       |      $7$      |
+| ------------- |:--------------:|:-----------------:|:--------------:|:--------------:|:--------------:|:--------------:|:--------------:|:-------------:|
+| **1r nivell** | ~={green}$9$=~ |  ~={green}$4$=~   | ~={green}$4$=~ | ~={green}$4$=~ | ~={pink}$-6$=~ | ~={pink}$-4$=~ | ~={pink}$-2$=~ | ~={pink}$5$=~ |
+| **2n nivell** | ~={green}$6$=~ |  ~={green}$4$=~   | ~={pink}$-5$=~ | ~={pink}$0$=~  |      $-6$      |      $-4$      |      $-2$      |      $5$      |
+| **3r nivell** | ~={green}$5$=~ | ~={pink}$-2$=~ |     $-5$      |    $0$     |      $-6$       |      $-4$       |      $-2$       |    $5$     |
+```
+````
+`````
+
+- codificació shannon-fano?
+
 
