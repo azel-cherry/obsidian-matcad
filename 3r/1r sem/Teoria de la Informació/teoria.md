@@ -508,24 +508,26 @@ Depenent de les **tècniques**:
 
 #### **Algorismes** de compressió
 
-```ad-prop
-title: ***Run Lengths Encode** (RLE)*
+````ad-prop
+title: ***Run Lengths Encode*** (RLE)
 
 Es codifiquen les seqüències de símbols repetits.
 
+```ad-ex
 ![[Pasted image 20251120101439.png]]
 ```
+````
 
 ```ad-prop
 title: Codificació de **Huffman**
 
-+ [[#^b1608e | Algorisme de Huffman (no adaptiu):]]
++ [[#^b1608e | Algorisme de Huffman]] ~={green}no adaptiu:=~
 	+ Sempre és òptim però només assoleix la mínima entropia possible quan $p_{i}=2^{-L_{i}}$.
 	+ En el millor dels casos codifica a $1$ bit/simbol.
 	+ A la pràctica no es coneix la distribució de probabilitats, per tant s'ha de fer una passada inicial per calcular les freqüencies.
 	+ L'arbre construit s'ha d'emmagatzemar amb el fitxer comprimit.
 
-+ ~={green}Algorisme de Huffman adaptiu:=~
++ **Algorisme de Huffman** ~={green}adaptiu:=~
   + Construeix l'arbre i codifica alhora.
   + Menys òptim que Huffman bàsic.
 ```
@@ -656,14 +658,14 @@ Passa el missatge a binari i elimina el primer 1.
 ````
 
 `````ad-prop
-title: **Wavelet de Haar**
+title: ***Wavelet* de Haar**
 
 Es poden aplicar tants nivells com $\log(L)$, amb $L$ la longitud de la font.
 
 Per cada parella consecutiva de números, la seva mitjana es posa a l'esquerra, i el seu detall a la dreta. 
 
 ````ad-prop
-title: Wavelet **real**
+title: *Wavelet* **real**
 
 + ~={green}Mitjana=~ ($L$): $\,\mu=\displaystyle\frac{a+b}{2}$
 + ~={pink}Detall=~ ($H$): $\,\delta=\displaystyle\frac{a-b}{2}$
@@ -678,7 +680,7 @@ title: Wavelet **real**
 ````
 
 ````ad-prop
-title: Wavelet **entera**
+title: *Wavelet* **entera**
 
 + ~={green}Mitjana=~ ($L$): $\,\mu=a+\displaystyle\left\lfloor\frac{\delta}{2}\right\rfloor$
 + ~={pink}Detall=~ ($H$): $\,\delta=b-a$
