@@ -52,4 +52,4 @@ Cal dir que no segueixo cap d'aquestes guies religiosament. Poden haver-hi *outl
 
 #### PDFs
 
-Els fitxers que acaben amb "~={green-low}(pdf)=~" **no son PDFs**. Son fitxers d'Obsidian formatejats perquè quedin millor quan exportats com a PDF. 
+Els fitxers que acaben amb "(pdf)" **no son PDFs**. Son fitxers d'Obsidian formatejats perquè quedin millor quan exportats com a PDF. 

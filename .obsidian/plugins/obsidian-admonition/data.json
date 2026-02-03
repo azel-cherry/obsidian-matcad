@@ -71,6 +71,19 @@
       "title": "Exemple",
       "injectColor": true,
       "noTitle": false
+    },
+    "graph": {
+      "type": "graph",
+      "color": "164, 173, 164",
+      "icon": {
+        "name": "project-diagram",
+        "type": "font-awesome"
+      },
+      "command": false,
+      "title": "Gràfica",
+      "injectColor": true,
+      "noTitle": false,
+      "copy": false
     }
   },
   "syntaxHighlight": true,
