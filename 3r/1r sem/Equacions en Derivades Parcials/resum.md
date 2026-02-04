@@ -13,7 +13,7 @@ q'(\rho)\,\rho_{x} + \rho_{t} = 0 \\[0.3em]
 \end{cases}$$
 
 + $q(\rho) = \rho\cdot v(\rho)$
-+ $v(0)=v_{\text{max}}$
++ $v(0)=v_{\text{max}}$ ,  $v(\rho_{\text{max}})=0$ 
 
 1. Dibuixar corbes base característiques.
 
@@ -30,16 +30,16 @@ title: Solució dèbil: **ventall**
 
 Les corbes es tallen i s'obren: $q'(\rho⁻) < q'(\rho⁺)$.
 
-2. Afegir zona de ventall on les corbes s'obren, amb $\rho(x,t) = (q')^{-1}\left( \frac{x}{t} \right)$.
+2. Afegir zona de ventall on les corbes s'obren, amb $\rho(x,t)$ tal que $q'(\rho)=\frac{x}{t}$.
 ```
 
 ```ad-prop
 title: Solució dèbil: **xoc**
 
-Les corbes es tallen i es tanquen.
+Les corbes es tallen i es tanquen: $q'(\rho⁻) > q'(\rho⁺)$.
 
-2. Tenim un xoc amb velocitat $\sigma' =\displaystyle \frac{q(\rho⁺)-q(\rho⁻)}{\rho⁻-\rho⁺}$.
-   + Es compleix la condició d'entropia: $q'(\rho⁻) > \sigma' > q'(\rho⁺)$.
+2. Tenim un xoc amb velocitat $\sigma' =\displaystyle \frac{q(\rho⁻)-q(\rho⁺)}{\rho⁻-\rho⁺}$.
+   + Condició d'entropia: $q'(\rho⁻) > \sigma' > q'(\rho⁺)$.
 2. Separem les dues regions de corbes per una recta de pendent $\sigma'$.
 
 ```
@@ -96,16 +96,16 @@ title: Mètode de **separació de variables**
 
 1. $u(x,t) = X(x)\cdot T(t)$
 2. Aplicar la EDP a $u(x,t)$, separar $X$ i $T$ a cada banda i igualar a $\lambda$.
-3. Solucionar EDOs de $X(x)$ i $T(t)$.
+3. Solucionar EDOs de $X(x)$ i $T(t)$. Per segon grau:
 	+ $\lambda>0 \implies X(x) = Ae^{\lambda x}+Be^{-\lambda x}$ 
 	+ $\lambda=0 \implies X(x) = A + Bx$ 
 	+ $\lambda<0 \implies X(x) = A\cos(\sqrt{|\lambda|}x)+B\sin(\sqrt{|\lambda|}x)$
-4. Per cada cas imposar les condicions de frontera a $u(x,t)$. Si $u(x,t)=0$, descartem.
-5. $u(x,t) = \displaystyle\sum_{k\geq0}  A_{k}\,u_{1}(x,t) + B_{k}\,u_{2}(x,t)$. Apliquem les condicions inicials.
-	+ Equació de les ones: dos coeficients i dos condicions inicials.
-	+ Equació de la calor: un coeficient i una condició incial.
-6. Multipliquem per $\sin(mx)$ o $\cos(mx)$ i integrem les dues bandes entre $0$ i $\pi$.
-   + $\int_{0}^\pi \sin(kx)\sin(mx) = \int_{0}^\pi \cos(kx)\cos(mx)= \begin{cases} \frac{\pi}{2} &\text{si }k=m\\ 0 &\text{si }k\neq m\end{cases}$
+4. Per cada cas imposar les condicions de frontera a $u(x,t)=X(x)\cdot T(t)$. Si $u(x,t)=0$, descartem.
+5. $u(x,t) = \displaystyle\sum_{k} C_{k}\,X(x)\,T(t) = \sum_{k\geq0}  A_{k}\,u_{1}(x,t) + B_{k}\,u_{2}(x,t)$. Apliquem les condicions inicials.
+	+ **Ones:** dos coeficients i dos condicions inicials.
+	+ **Calor:** un coeficient i una condició incial.
+6. Multipliquem per $\sin\left( \frac{m\pi}{L}x \right)$ o $\cos\left( \frac{m\pi}{L}x \right)$ i integrem les dues bandes entre $0$ i $L$.
+   + $\int_{0}^L \sin\left( \frac{k\pi}{L}x \right)\sin\left( \frac{m\pi}{L}x \right) = \int_{0}^L \cos\left( \frac{k\pi}{L}x \right)\cos\left( \frac{m\pi}{L}x \right)= \begin{cases} \frac{L}{2} &\text{si }k=m\neq0\\ 0 &\text{si }k\neq m\end{cases}$
 1. Aïllem $A_{k},B_{k}$ i substituim a $u(x,t)$.
 ```
 ^sepvar
