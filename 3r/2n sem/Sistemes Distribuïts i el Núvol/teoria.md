@@ -7,14 +7,10 @@ title: Computing **infrastructure**
 
 > Equipment for data storage, processing and connectivity.
 
-
+| On-Premise                                                                                                                                                                      | Data Center                                                                                                                                                                                  | Cloud Computing                                                                                                                                                              |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Located within an organization's facility.<ul><li>High customization<li>Requires space, staff, capital, planning and maintenance<li>Low flexibility (theoretical maximum peaks) | Centralized facility with dedicated infrastructure.<ul><li>High customization and security<li>Predictable performance (no sharing with 3rd parties)<li>Low flexibility<li>Complex management | Virtualized data centers with scalable infrasturcture.<ul><li>Scalable; pay-as-you-go<li>The provider is responsible for maintaining the resources<li>"Thinking in software" |
 ```
-
-
-| On-Premise | Data Center | Cloud Computing | 
-| ---------- | ------------ | --------------- |
-|            |              |                 |
-
 
 ```ad-prop
 title: Cloud **models**
