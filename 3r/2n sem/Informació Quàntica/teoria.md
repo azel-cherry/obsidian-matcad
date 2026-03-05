@@ -2,20 +2,20 @@
 
 ## Notació i Introducció
 
-Prenem un vector $\ket{\psi} = \begin{pmatrix}z_{1}\\ z_{2}\end{pmatrix}$ de $\mathcal{H}=\mathbb{C}^{2}$ (~={green}espai de Hilbert=~).
+Prenem un vector $\ket{\psi} \in \mathcal{H}$ (vector columna) amb $\mathcal{H}=\mathbb{C}^{2}$ (==espai de Hilbert==).
 
 ```ad-def
 title: *Conjunt hermitià (adjunt)*
 
 $$\boxed{\boldsymbol{\ket{\psi}^{\dagger}} = \ket{\psi}^{\star T} = \bra{\psi}}$$
 
-+ $\ket{\psi}^\star$ és el conjugat
++ $\ket{\psi}^\star$ és el conjugat de $\ket{\psi}$
 ```
 
 ```ad-def
-title: Producte escalar
+title: Producte escalar (interior)
 
-$$\boxed{\boldsymbol{\braket{ \psi_{1} | \psi_{2} }} = \bra{\psi_{1}}\cdot \ket{\psi_{2}}}$$
+$$\boxed{\boldsymbol{\braket{ \psi_{1} | \psi_{2} }} = \bra{\psi_{1}}\cdot \ket{\psi_{2}}} \in \mathbb{C}$$
 
 Propietats:
 + $\braket{ \psi |\psi  }\geq0$ ~={faded}($=0 \iff \ket{\psi}=0$)=~
@@ -35,7 +35,7 @@ $$\boxed{\boldsymbol{||\psi||} = \sqrt{\braket{ \psi | \psi }}}$$
 ```ad-def
 title: Operadors lineals
 
-$$\boxed{A:\mathcal{H}\to\mathcal{H}}$$
+$$\boxed{A:\mathcal{H}\to\mathcal{H}} \in M_{n\times n}(\mathcal{\mathbb{C}})$$
 
 + Propietats:
 	+ Associativa: $A(\ket{\psi_{1}}+\ket{\psi_{2}})=A\ket{\psi_{1}}+A\ket{\psi_{2}}$
@@ -50,6 +50,14 @@ $$\boxed{A:\mathcal{H}\to\mathcal{H}}$$
 ```
 
 ```ad-def
+title: Producte exterior
+
+$$ \boxed{\boldsymbol{\ket{\psi_{1}}\bra{\psi_{2}}}} \in M_{n\times n}(\mathbb{C})$$
+
++ $P=\ket{\psi}\bra{\psi}$ és la projecció a la recta definida per $\ket{\psi}$, que resulta en una matriu simètrica de rang 1. Si $\ket{\psi}$ està normalitzat, $P$ és un operador projector.
+```
+
+```ad-def
 title: Bases
 
 $$\boxed{\boldsymbol{\{\ket{\phi_{i}}\}_{i}} \text{ ortogonals}}$$
@@ -57,8 +65,32 @@ $$\boxed{\boldsymbol{\{\ket{\phi_{i}}\}_{i}} \text{ ortogonals}}$$
 + Qualsevol vector $\ket{\psi}=\sum_{i}\alpha_{i}\ket{\phi_{i}}$
 + Si la base és ortonormal: 
 	+ $\alpha_{i}=\braket{ \psi |\phi _{i} }$
-	+ $\sum_{i}\ket{\phi_{i}}\bra{\phi_{i}}=\mathbb{1}$
+	+ Tot operador $A:\ket{\phi_{i}}\mapsto \ket{\psi_{i}}$ es pot expressar com una suma de productes exteriors
+	$$ A = \sum_{i} \ket{\psi_{i}}\bra{\phi_{i}} \,.$$
+	En particular, $\sum_{i}\ket{\phi_{i}}\bra{\phi_{i}}=I$.
 + Per operadors: $\alpha_{ij} = \bra{\phi_{i}} A \ket{\phi_{j}}$
+```
+
+```ad-def
+title: Producte tensorial (Kronecker)
+
+Siguin
+$$ \ket{a}=\begin{pmatrix}a_{1}\\a_{2}\end{pmatrix} \in \mathcal{H}_{A}\,, \quad \ket{b}=\begin{pmatrix}b_{1}\\ b_{2}\\ b_{3}\end{pmatrix} \in \mathcal{H}_{B}\,, $$
+el seu producte tensorial és
+$$ \ket{a}\otimes \ket{b} = \begin{pmatrix}
+a_{1}b_{1}\\a_{1}b_{2}\\a_{1}b_{3}\\a_{2}b_{1}\\a_{2}b_{2}\\a_{2}b_{3}
+\end{pmatrix} \in \mathcal{H}_{A}\otimes \mathcal{H}_{B} \,.$$
+
++ **Base:** Si $\{\ket{\alpha_{i}}\}_{i}$ és base de $\mathcal{H}_{A}$ i $\{\ket{\beta_{i}}\}_{i}$ és base de $\mathcal{H}_{B}$, la base de $\mathcal{H}_{A}\otimes \mathcal{H}_{B}$ és $\{\ket{\alpha_{i}}\otimes \ket{\beta_{j}}\}_{ij}$.
++ **Operadors:**
+  $$ A\otimes B = \begin{pmatrix}
+a_{11}\,B & a_{12}\,B \\
+a_{21}\,B & a_{22}\,B
+\end{pmatrix} = \begin{pmatrix}
+a_{11}\,b_{11} & a_{11}\,b_{12} & \dots \\
+a_{11}\,b_{21} & a_{11}\,b_{22} & \dots \\
+\vdots & \vdots & \ddots
+\end{pmatrix} $$
 ```
 
 ````ad-teor
