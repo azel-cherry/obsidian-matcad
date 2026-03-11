@@ -43,9 +43,9 @@ $$\boxed{A:\mathcal{H}\to\mathcal{H}} \in M_{n\times n}(\mathcal{\mathbb{C}})$$
 + Tipus:
 	+ ~={green}Autoadjunt (observable):=~ $A=A^{\dagger}$
 	  + ~={green}Projector:=~ $P=P^{2}$
-	+ ~={green}Unitari:=~ $UU^{\dagger}=U^{\dagger}U=\mathbb{1}$
+	+ ~={green}Unitari:=~ $UU^{\dagger}=U^{\dagger}U=I$
 	+ ~={green}Diagonal:=~ $A_{ij}=0$ si $i\neq j$
-+ **Valor d'expectació** donat un estat inicial $\ket{\psi}$: $\braket{A}=\bra{\psi}A\ket{\psi}=\sum_{i}\lambda_{i}\,p_{i}$
++ **Valor d'expectació (mitjà)** donat un estat inicial $\ket{\psi}$: $\braket{A}=\bra{\psi}A\ket{\psi}=\sum_{i}\lambda_{i}\,p_{i}$
 	+ $\phi_{i}$ vep d'$A$ amb vap $\lambda_{i}$
 ```
 
@@ -74,9 +74,9 @@ $$\boxed{\boldsymbol{\{\ket{\phi_{i}}\}_{i}} \text{ ortogonals}}$$
 ```ad-def
 title: Producte tensorial (Kronecker)
 
-Siguin
+Siguin $A$ i $B$ dos sistemes, amb
 $$ \ket{a}=\begin{pmatrix}a_{1}\\a_{2}\end{pmatrix} \in \mathcal{H}_{A}\,, \quad \ket{b}=\begin{pmatrix}b_{1}\\ b_{2}\\ b_{3}\end{pmatrix} \in \mathcal{H}_{B}\,, $$
-el seu producte tensorial és
+el seu producte tensorial representa el seu ==estat compost== i és
 $$ \ket{a}\otimes \ket{b} = \begin{pmatrix}
 a_{1}b_{1}\\a_{1}b_{2}\\a_{1}b_{3}\\a_{2}b_{1}\\a_{2}b_{2}\\a_{2}b_{3}
 \end{pmatrix} \in \mathcal{H}_{A}\otimes \mathcal{H}_{B} \,.$$
@@ -113,14 +113,14 @@ En particular, si $A$ és un projector, els seus vaps $\lambda_{i}\in \{0,1\}$ i
 
 ---
 
-## Fonaments de la Mecànica Quàntica
+## **Fonaments** de la Mecànica Quàntica
 
-#### Postulats
+#### **Postulats**
 
 ```ad-prop
 title: Postulat I: **Estat**
 
-L'estat d'un sistema quàntic és descrit per un vector normalitzat $\ket{\psi}$. $e^{i\phi}\ket{\psi}$ i $\ket{\psi}$ descriuen el mateix estat físic.
+L'estat d'un sistema quàntic és descrit per un vector normalitzat $\ket{\psi}$ ~={faded}($e^{i\phi}\ket{\psi}$ i $\ket{\psi}$ descriuen el mateix estat físic)=~.
 ```
 
 ```ad-prop
@@ -129,15 +129,17 @@ title: Postula II: **Observables**
 Les magnituds físiques mesurables d'un sistema son descrites per operadors observables $A$.
 ```
 
+^d3d20b
+
 `````ad-prop
 title: Postulat III: **Mesures**
 
 ````ad-prop
 title: Mesura **projeciva** (PVM)
 
-En mesurar un observable $A$:
-1. Els resultats possibles son els seus vaps $\lambda_{i}$.
-2. Sigui $A\ket{\phi_{i}}=\lambda_{i}\ket{\phi_{i}}$, la probabilitat d'obtenir la mesura $\lambda_{i}$ quan el sistema és a l'estat $\ket{\psi}$ és $\boxed{\,p_{i}=|\braket{ \phi_{i} | \psi }|^{2}}$.
+En mesurar un observable $A$ amb vaps $\lambda_{i}$ i veps $\ket{\phi_{i}}$:
+1. Els resultats possibles son $\lambda_{i}$.
+2. La probabilitat d'obtenir la mesura $\lambda_{i}$ quan el sistema és a l'estat $\ket{\psi}$ és $\boxed{\,p_{i}=|\braket{ \phi_{i} | \psi }|^{2}}$.
 3. Després de mesurar $A$ i obtenir $\lambda_{i}$, l'estat del sistema esdevé $\ket{\psi}\to \ket{\phi_{i}}$ ~={faded}(al interactuar amb els instruments de mesura, el sistema ja no és tancat)=~.
    
 ```ad-not
@@ -157,7 +159,7 @@ Mesures descrites per un conjunt d'operadors $\{M_{i}\}_{i}$, amb $E_{i} = M_{i}
   $$ \,\boxed{\ket{\psi'} = \frac{M_{i}\ket{\psi}}{\sqrt{p_{i}}}} \,.$$
   
 ```ad-not
-Es pot passar d'un POVM a un PVM, agafant $M_{i}=P_{i}$ .
+Es pot passar d'un PVM a un POVM, agafant $P_{i}=M_{i}$ .
 ```
 ````
 `````
@@ -165,13 +167,13 @@ Es pot passar d'un POVM a un PVM, agafant $M_{i}=P_{i}$ .
 ```ad-prop
 title: Postulat IV: **Evolució**
 
-L'evolució temporal d'un sistema quàntic tancat $\ket{\psi}$ és unitari i preserva la normalització de $\ket{\psi}$.
-
-Aquesta evolució és $\ket{\psi_{t}}=e^{-iHt}\,\ket{\psi_{0}}$, amb $H$ l'operador autoadjunt ==Hamiltonià==, que depèn de la natura del sistema.
+L'evolució temporal d'un sistema quàntic tancat $\ket{\psi}$ és unitaria i preserva la normalització de $\ket{\psi}$. Aquesta evolució és
+$$\boxed{\ket{\psi_{t}}=U\,\ket{\psi_{0}}},$$
+amb $U=e^{-iHt}$ operador unitari i $H$ l'operador autoadjunt ==Hamiltonià==, que depèn de la natura del sistema.
 ```
 
 
-#### Qubits
+#### **Qubits**
 
 Un sistema quàntic de dos nivells és un ==qubit== (*quantum bit*).
 
@@ -194,11 +196,11 @@ title: Operadors de **Pauli**
 ```ad-prop
 title: Propietats
 
-Siguin $i,j,k\in \{x,y,z\}$, els operadors de Pauli compleixen:
+Siguin $m,n,p\in \{x,y,z\}$, els operadors de Pauli compleixen:
 + Auto-adjunts i unitaris
-+ Permutació cíclica: $\sigma_{i}\,\sigma_{j}=i\,\sigma_{k}$
-+ Anticommutació: $\sigma_{i}\,\sigma_{j}=-\sigma_{j}\,\sigma_{i}$
-+ $\sigma_{i}^{2}=I$
++ Permutació cíclica: $\sigma_{m}\,\sigma_{n}=i\,\sigma_{p}$
++ Anticommutació: $\sigma_{m}\,\sigma_{n}=-\sigma_{n}\,\sigma_{m}$
++ $\sigma_{m}^{2}=I$
 ```
 ````
 
@@ -217,7 +219,7 @@ que podem expressar en coordenades esfèriques polars amb $\theta \in[0,\pi]$ la
 title: *Vector de Bloch*
 
 El ==vector de Bloch== associat a $\ket{\psi}$ és el vector normalitzat
-$$ \vec{s} = (\braket{\sigma_{x}},\braket{\sigma_{y}},\braket{\sigma_{z}}) .$$
+$$ \vec{s} = (s_{x},s_{y},s_{z}) =(\braket{\sigma_{x}},\braket{\sigma_{y}},\braket{\sigma_{z}}) .$$
 ```
 
 ```ad-graph
@@ -235,9 +237,115 @@ Representació geomètrica d'un qubit.
 
 ---
 
+## Estats  **mixtes**
+
++ ~={green}Estat pur:=~ És descrit per un sol vector $\ket{\psi}$ que determina completament el comportament estadístic del sistema.
++ ~={green}Estat mixt:=~ Descrit per un conjunt de vectors $\ket{\psi_{i}}$ amb probabilitats $p_{i}$. Coneixement limitat sobre el comportament del sistema.
+
+````ad-def
+title: *Densitat*
+
+Siguin $\ket{\psi_{i}}$ estats purs amb probabilitat $p_{i}$ i complint $\sum p_{i}=1$. Aquest estat mixt és descrit per la seva  ==densitat==:
+
+$$ \boxed{\rho = \sum_{i}p_{i}\,\ket{\psi_{i}}\bra{\psi_{i}}} \,,$$
+
+que en forma matricial s'anomena ==matriu densitat==.
+
++ Els estats $\ket{\psi_{i}}$ son normalitzats (no cal que siguin ortogonals).
++ El conjunt $\{p_{i},\ket{\psi_{i}}\}$ és una descomposició (no única) de l'estat mixt $\rho$.
+  
+```ad-prop
+title: Propietats
+
++ $\rho=\rho ^{\dagger}$
++ $\rho\geq0 \iff$ vaps $\lambda_{i}\geq0$
++ $\mathrm{Tr}(\rho)=1$
+```
+````
+
+El ~={green}valor mitjà=~ d'un estat mixt és $\boxed{\braket{A}=\mathrm{Tr}(\rho A)}$.
+
+
+#### **Postulats** per estats mixtes
+
+```ad-prop
+title: Postulat I: **Estat**
+
+L'estat d'un sistema quàntic és descrit per un operador de densitat $\rho$.
+```
+
+[[#^d3d20b | Postulat II]] (igual)
+
+```ad-prop
+title: Postulat III: **Mesures**
+
+En mesurar un observable $A$ amb vaps $\lambda_{i}$ i veps $\ket{\phi_{i}}$:
+1. Els resultats possibles son $\lambda_{i}$.
+2. La probabilitat d'obtenir la mesura $\lambda_{i}$ quan el sistema és a l'estat $\rho$ és $\boxed{\,p_{i}=\mathrm{Tr}(\rho\,\ket{\phi_{i}}\bra{\phi_{i}})=\bra{\phi_{i}}\,\rho\, \ket{\phi_{i}}}$.
+3. Després de mesurar $A$ i obtenir $\lambda_{i}$, l'estat del sistema esdevé
+$$\rho \to \rho_{i}=\frac{\ket{\phi_{i}}\bra{\phi_{i}}\,\rho\,\ket{\phi_{i}}\bra{\phi_{i}} }{p_{i}}.$$
+```
+
+```ad-prop
+title: Postulat IV: **Evolució**
+
+L'evolució (unitària) d'un sistema mixt aïllat és
+$$ \boxed{\rho'=U\rho\,U^{\dagger}} ,$$
+amb $U$ operador unitari.
+
+```
+
+
+#### **Puresa** d'un estat mixt
+
+````ad-def
+title: *Puresa*
+
+La puresa mesura com de mixt és un estat:
+
+$$ \boxed{\mathcal{P}=\mathrm{Tr}(\rho^{2})}. $$
+
++ $\frac{1}{d}\leq \mathcal{P}\leq1$ amb $d=\text{dim}(\mathcal{H})$
+	+ $\mathcal{P}=1 \iff$ $\rho$ és pur
+	+ $\mathcal{P}=\frac{1}{d} \iff \rho=\frac{1}{d}I$
+````
+
+
+#### Estats mixtes d'un **qubit**
+
+Agafant la base $\{I,\sigma_{x},\sigma_{y},\sigma_{z}\}$, qualsevol matriu densitat d'un qubit es pot expressar com
+$$ \boxed{\,\rho = \frac{1}{2}(I+\vec{P}\cdot \vec{\sigma}) = \frac{1}{2} \begin{pmatrix}
+1+P_{z} & P_{x}-iP_{y} \\
+P_{x}+iP_{y} & 1-P_{z}
+\end{pmatrix}} $$
+amb $\vec{P}$ el vector de Bloch.
+
+```ad-graph
+title: Representació a l'**esfera de Bloch**
+
++ Estats purs: $\vec{P}=1$ ~={faded}(superfície de l'esfera)=~
++ Estat mixtes: $0\leq \lvert \vec{P} \rvert<1$ ~={faded}(interior de l'esfera)=~
+	+ Màximament mixt ($\rho=\frac{1}{2}I$): $\vec{P}=0$ ~={faded}(centre de l'esfera)=~
+```
+
+```ad-def
+title: Estat *reduït*
+
+Sigui $\rho_{AB}=\ket{\psi}\bra{\psi}_{AB}$ un estat compost mixt, el seu estat reduït al sistema $A$ és
+$$ \rho_{A} = \mathrm{Tr}_{B}(\ket{\psi}\bra{\psi}_{AB}) \equiv \sum_{i\in \{0,1\}} \prescript{}{B}{\bra{i}}\,\rho_{AB}\,\ket{\psi}_{B} \,.$$
+```
+
+
+---
+
+## **Entrellaçament** quàntic
+
+
+---
+
 ## Apèndix
 
-+ ~={green}Traça=~ **de l'operador $A$ ($\text{tr}(A)$):** suma dels elements de la diagonal
++ ~={green}Traça=~ **de l'operador $A$ ($\mathrm{Tr}(A)$):** suma dels elements de la diagonal.
 
 ```ad-def
 title: Condició de **completitud**
