@@ -2,7 +2,7 @@
 
 ## Notació i Introducció
 
-Prenem un vector $\ket{\psi} \in \mathcal{H}$ (vector columna) amb $\mathcal{H}=\mathbb{C}^{2}$ (==espai de Hilbert==).
+Prenem un vector $\ket{\psi} \in \mathcal{H}$ (vector columna) amb $\mathcal{H}=\mathbb{C}^{n}$ (==espai de Hilbert==).
 
 ```ad-def
 title: *Conjunt hermitià (adjunt)*
@@ -240,7 +240,7 @@ Representació geomètrica d'un qubit.
 ## Estats  **mixtes**
 
 + ~={green}Estat pur:=~ És descrit per un sol vector $\ket{\psi}$ que determina completament el comportament estadístic del sistema.
-+ ~={green}Estat mixt:=~ Descrit per un conjunt de vectors $\ket{\psi_{i}}$ amb probabilitats $p_{i}$. Coneixement limitat sobre el comportament del sistema.
++ ~={green}Estat mixt:=~ Descrit per un conjunt de vectors $\ket{\psi_{i}}$ amb probabilitats $p_{i}$. Coneixement limitat sobre el comportament estadístic del sistema.
 
 ````ad-def
 title: *Densitat*
@@ -264,6 +264,18 @@ title: Propietats
 ````
 
 El ~={green}valor mitjà=~ d'un estat mixt és $\boxed{\braket{A}=\mathrm{Tr}(\rho A)}$.
+
+````ad-def
+title: *Puresa*
+
+La puresa mesura com de mixt és un estat:
+
+$$ \boxed{\mathcal{P}=\mathrm{Tr}(\rho^{2})}. $$
+
++ $\frac{1}{d}\leq \mathcal{P}\leq1$ amb $d=\text{dim}(\mathcal{H})$
+	+ $\mathcal{P}=1 \iff$ $\rho$ és pur
+	+ $\mathcal{P}=\frac{1}{d} \iff \rho=\frac{1}{d}I$
+````
 
 
 #### **Postulats** per estats mixtes
@@ -296,21 +308,6 @@ amb $U$ operador unitari.
 ```
 
 
-#### **Puresa** d'un estat mixt
-
-````ad-def
-title: *Puresa*
-
-La puresa mesura com de mixt és un estat:
-
-$$ \boxed{\mathcal{P}=\mathrm{Tr}(\rho^{2})}. $$
-
-+ $\frac{1}{d}\leq \mathcal{P}\leq1$ amb $d=\text{dim}(\mathcal{H})$
-	+ $\mathcal{P}=1 \iff$ $\rho$ és pur
-	+ $\mathcal{P}=\frac{1}{d} \iff \rho=\frac{1}{d}I$
-````
-
-
 #### Estats mixtes d'un **qubit**
 
 Agafant la base $\{I,\sigma_{x},\sigma_{y},\sigma_{z}\}$, qualsevol matriu densitat d'un qubit es pot expressar com
@@ -339,6 +336,47 @@ $$ \rho_{A} = \mathrm{Tr}_{B}(\ket{\psi}\bra{\psi}_{AB}) \equiv \sum_{i\in \{0,1
 ---
 
 ## **Entrellaçament** quàntic
+
+#### Entrellaçament d'estats **purs**
+
+Siguin $\{\ket{i}_{A}\}$ i $\{\ket{j}_{B}\}$ bases dels espais $\mathcal{H}_{A}$ i $\mathcal{H}_{B}$ tal que $\mathcal{H}=\mathcal{H}_{A}\otimes \mathcal{H}_{B}$.
+
+```ad-def
+title: Estat **producte** (separable)
+
+Estat de $\mathcal{H}$ que es pot escriure com el producte tensorial  d'un estat d'$A$ i un de $B$:
+
+$$\ket{\psi}_{AB}=\ket{p}_{A}\,\ket{q}_{B}$$
+```
+
+```ad-def
+title: Estat **entrellaçat**
+
+Estat de $\mathcal{H}$ que no es pot escriure com el producte tensiorial de dos estats d'$A$ i $B$.
+```
+
+Un estat entrellaçat representa interacció quàntica entre les partícules de cada subespai. No es pot mesurar una sola sense l'altra.
+
+````ad-prop
+title: Descomposició de Schmidt
+
+Qualsevol estat de $\mathcal{H}=\mathcal{H}_{A}\otimes \mathcal{H}_{B}$ es pot escriure com
+$$ \ket{\psi}_{AB} = \sum_{i=1}^{\min(d_{A},d_{B})} \sqrt{\lambda_{i}}\,\ket{p_{i}}_{A}\,\ket{q_{i}}_{B} $$
+
+amb $\sum\lambda_{i}=1$.
+
++ Els coeficients $0\leq\lambda_{i}\in \mathbb{R}$ s'anomenen ==coeficients de Schmidt==
++ El nombre de coeficients de Schmidt no nuls es diu ==rang de Schmidt==
++ Els conjunts $\{\ket{p_{i}}_{A}\}$ i $\{\ket{q_{i}}_{B}\}$ son ortonormals
+  
+```ad-not
+A partir de la descomposició de Schmidt és molt fàcil saber si un estat està entrellaçat o no: 
++ rang de Schmidt $=1 \implies$ estat separable
++ rang de Schmidt $\geq1 \implies$ estat entrellaçat
+```
+````
+
+matrius de densitat?????
 
 
 ---
