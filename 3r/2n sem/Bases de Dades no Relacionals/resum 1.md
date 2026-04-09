@@ -1,9 +1,16 @@
 + `{js}"<array>.<num>"`: element en posició `num` de la llista
 + Dates: `{js}new Date("<yyyy-mm-dd>T<hh:mm:ss.sss>")`
 + Field exists: `{js}<field>: {$exists: <true/false>}`
+	+ not a logic operator; only to filter documents **>:/**
+```js title:"cond"
+{$cond: {
+	if: {}
+	then: 
+}}
+```
 
 ```ad-prop
-title: Arrays
+title: **Arrays**
 
 + Contains element: `{js}<array: <val>`
 + Exact match: `{js}<array>: [...]`
@@ -15,28 +22,31 @@ During update, if array has been queried:
 `{js}"<array>.$": <val>`: update first array match
 ```
 
-delete etc
-
 ````ad-prop
-title: Update
-
+title: **Update** / **Delete**
 
 ```js
-db.<coll>.update?(
+db.<coll>.update(
 	{<query>},
+	<new-doc>,
 	{$set: {<field>: <val>}},
 	{$inc: {<field>: <val>}},
 	{$push: {<array>: <val>}},
 	{$unset: {<field>: ""}}
 )
 ```
-
 + `{js}updateOne()`
 + `{js}updateMany()`
+  
+---
+
+`{js}db.<coll>.delete(<query>)`
++ `{js}deleteOne()`
++ `{js}deleteMany()`
 ````
 
 ````ad-prop
-title: Indices
+title: **Indices**
 
 `{js}db.<coll>.createIndex({<field>: <type>, ...})`
 + `<1/-1>`: ascending/descending numerically or alphabetically
@@ -65,17 +75,17 @@ title: Indices
 + `{js}"text"`: supports `$text` queries:
 
 	```js title:"textual query"
-	<field>: $text: {
+	<field>: {$text: {
 		$search: <str>,
 		$caseSensitive: <bool>
-	}
+	}}
 	```
 
 + `{js}"hashed"`: assigns specific number to each entry for very efficient match searches
 ````
 
 ```ad-prop
-title: Execution Plans
+title: **Execution Plans**
 
 `{js}db.<coll>.[...].explain(<mode>)`
 + `{js}"queryPlanner"`: returns best plan
@@ -84,22 +94,23 @@ title: Execution Plans
 ```
 
 `````ad-prop
-title: Aggregation
+title: **Aggregation**
 
 `{js}db.<coll>.aggregate([...])`
 
 + `{js}{$match: {<field>: <val>, ...}}`: like find
 + `{js}{$addFields: {<new-field>: <val>}}`
-+ `{js}{$count: "<name>"}`: returns single attribute with number of outputs of pipeline
-+ `{js}{$out: "<coll>"}`: adds aggregate result to specificed collection (last in pipeline)
++ `{js}{$count: "<name>"}`: return single attribute with number of outputs of pipeline
 
+Last in pipeline:
++ `{js}{$out: "<coll>"}`: create collection with pipeline result (replace if it exists)
++ `{js}{$merge: {into: "<coll>", on: "<field>"}}`: merge pipeline result into existing collection with `field` as unique identifier
 
 ```js title:"lookup"
 {$lookup: {
 	from: "<coll>",
 	localField: "<field>",
 	foreignField: "<field>",
-	let: {<name>: "$<field>", ...}  // 
 	pipeline: ...,
 	as: "<field-name>"
 }}
@@ -117,7 +128,7 @@ title: Aggregation
 ```
 
 ````ad-prop
-title: Grouping
+title: **Grouping**
 
 **Accumulators:** Operations on a set of input documents:
 + `{js}<array>: {$push: {<field>: <val>, ...}}`: Push document(s) into array
@@ -139,11 +150,10 @@ title: Grouping
 }}
 ```
 ````
-
 `````
 
 ````ad-prop
-title: Views
+title: **Views**
 
 Sub-collection created from existing collection that updates alongside it.
 
@@ -154,6 +164,4 @@ db.createView(
 	[<pipeline>]
 )
 ```
-
-
 ````
