@@ -346,7 +346,7 @@ title: Estat **producte** (separable)
 
 Estat de $\mathcal{H}$ que es pot escriure com el producte tensorial  d'un estat d'$A$ i un de $B$:
 
-$$\ket{\psi}_{AB}=\ket{p}_{A}\,\ket{q}_{B}$$
+$$\ket{\psi}_{AB}=\ket{p}_{A}\otimes \ket{q}_{B}$$
 ```
 
 ```ad-def
