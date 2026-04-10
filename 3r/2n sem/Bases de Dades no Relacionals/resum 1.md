@@ -1,17 +1,22 @@
-+ `{js}"<array>.<num>"`: element en posició `num` de la llista
 + Dates: `{js}new Date("<yyyy-mm-dd>T<hh:mm:ss.sss>")`
 + Field exists: `{js}<field>: {$exists: <true/false>}`
 	+ not a logic operator; only to filter documents **>:/**
++ Inside `$match` or `find()`:
+	+ `{js}{$and: [{<query1>}, {<query2>}, ...]}`: apply more than one condition to a single field
+	+ `{js}{$or: [{<query1>}, {<query2>}, ...]}`
+	
 ```js title:"cond"
 {$cond: {
-	if: {}
-	then: 
+	if: {},
+	then: {},
+	else: {}
 }}
 ```
 
 ```ad-prop
 title: **Arrays**
 
++ `{js}"<array>.<num>"`: element en posició `num` de la llista
 + Contains element: `{js}<array: <val>`
 + Exact match: `{js}<array>: [...]`
 + Contains all elements: `{js}<array>: {$all: [...]}`
