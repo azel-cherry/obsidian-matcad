@@ -330,6 +330,7 @@ title: Estat *reduït*
 
 Sigui $\rho_{AB}=\ket{\psi}\bra{\psi}_{AB}$ un estat compost mixt, el seu estat reduït al sistema $A$ és
 $$ \rho_{A} = \mathrm{Tr}_{B}(\ket{\psi}\bra{\psi}_{AB}) \equiv \sum_{i\in \{0,1\}} \prescript{}{B}{\bra{i}}\,\rho_{AB}\,\ket{\psi}_{B} \,.$$
+Amb $Tr_{B}$ la [[#^trpar | traça parcial]] en $B$.
 ```
 
 
@@ -337,25 +338,30 @@ $$ \rho_{A} = \mathrm{Tr}_{B}(\ket{\psi}\bra{\psi}_{AB}) \equiv \sum_{i\in \{0,1
 
 ## **Entrellaçament** quàntic
 
+Un estat entrellaçat representa interacció quàntica entre les partícules de cada subespai. No es pot descriure una sola independentment; mesurar-la determina instantàniament l'estat de la seva parella.
+
+
 #### Entrellaçament d'estats **purs**
 
-Siguin $\{\ket{i}_{A}\}$ i $\{\ket{j}_{B}\}$ bases dels espais $\mathcal{H}_{A}$ i $\mathcal{H}_{B}$ tal que $\mathcal{H}=\mathcal{H}_{A}\otimes \mathcal{H}_{B}$.
+Siguin $\{\ket{i}_{A}\}$ i $\{\ket{j}_{B}\}$ bases dels espais $\mathcal{H}_{A}$ de dimensió $d_{A}$ i $\mathcal{H}_{B}$ de dimensió $d_{B}$ tal que $\mathcal{H}=\mathcal{H}_{A}\otimes \mathcal{H}_{B}$, i sigui $d=\min(d_{A},d_{B})$.
 
 ```ad-def
-title: Estat **producte** (separable)
+title: Estat *producte*
 
 Estat de $\mathcal{H}$ que es pot escriure com el producte tensorial  d'un estat d'$A$ i un de $B$:
 
 $$\ket{\psi}_{AB}=\ket{p}_{A}\otimes \ket{q}_{B}$$
+
+Correspon a la puresa de qualsevol de les matrius de densitat reduïdes $\rho_{A}$, $\rho_{B}$ sent $1$.
 ```
 
 ```ad-def
-title: Estat **entrellaçat**
+title: Estat *entrellaçat*
 
 Estat de $\mathcal{H}$ que no es pot escriure com el producte tensiorial de dos estats d'$A$ i $B$.
-```
 
-Un estat entrellaçat representa interacció quàntica entre les partícules de cada subespai. No es pot mesurar una sola sense l'altra.
+Correspon a la puresa de qualsevol de les matrius de densitat reduïdes $\rho_{A}$, $\rho_{B}$ sent menor que $1$. El valor mínim d'aquesta puresa és $\frac{1}{d}$.
+```
 
 ````ad-prop
 title: Descomposició de Schmidt
@@ -376,7 +382,51 @@ A partir de la descomposició de Schmidt és molt fàcil saber si un estat està
 ```
 ````
 
-matrius de densitat?????
+```ad-def
+title: Estats de *Bell*
+
+Els estats de bell
+$$ \ket{\psi^{\pm}} = \frac{1}{\sqrt{2}} (\ket{01}\pm \ket{10})\,,\quad \ket{\phi^{\pm}}=\frac{1}{\sqrt{2}} (\ket{00})\pm \ket{11} $$
+son els estats màximament entrellaçats de dos qubits.
+```
+
+```ad-def
+title: Entropia de *von Neumann*
+
+L'entropia de von Neumann quantifica l'entrellaçament de dos estats purs:
+
+$$ S(\rho_{A}) = -\mathrm{Tr}_{A}(\rho_{A})\log_{2}(\rho_{A}) = -\sum_{i} \lambda_{i}\log_{2}(\lambda_{i}) $$
+amb $\lambda_{i}$ els coeficients de Schmidt.
+
++ Aquesta entropia va des de $0$ per a un estat producte fins a $\log_{2}(d)$ per a un estat màximament entrellaçat
+```
+
+No es pot crear un estat entrellaçat mitjançant transformacions locals que actuen separadament sobre els sistemes $A$ i $B$. Necessitem una transformació global que actuï sobre els dos sistemes.
+
+
+#### Entrellaçament d'estats **mixtes**
+
+Quan els estats locals d'un sistema entrellaçat son mixtes, és més difícil distingir si les partícules estan entrellaçades o simplement correlacionades (mixtes); per tant la definició d'estat entrellaçat ha de ser més estricta.
+
+```ad-def
+title: Estats *separables* i *entrellaçats*
+
+Un ==estat separable== és de la forma
+$$ \rho_{AB} = \sum_{i} p_{i}\,\rho_{A}\,\rho_{B}\,, $$
+amb $p_{i}$ probabilitats que sumen $1$. És a dir, un estat separable és una combinació lineal d'estats producte (no necessàriament purs), i per tant un estat producte és separable.
+
+Contrariament, un ==estat entrellaçat== és aquell que no es pot escriure d'aquesta forma.
+```
+
+|                        | Locals purs                           | Locals mixtes     |
+| ---------------------- | ------------------------------------- | ----------------- |
+| **Global separable**   | Estat producte; l'estat global és pur | Estat global mixt |
+| **Global entrellaçat** | Contradicció                          | Estat global mixt |
+
+
+#### **Mesures** d'entrellaçament
+
+
 
 
 ---
@@ -407,3 +457,14 @@ c & d-\lambda_{i}
 0
 \end{pmatrix}. $$
 ```
+
+```ad-def
+title: Traça parcial
+
+Les traçes parcials d'una matriu de densitat d'un estat mixte $\rho_{AB}\in M_{4\times 4}$ son:
+
+![[partial-trace.png | $\mathrm{Tr}_{A}(\rho_{AB}) \hspace{3em} \mathrm{Tr}_{B}(\rho_{AB})$]]
+
+resultant en una matriu $\in M_{2\times 2}$ amb cada parella d'elements sumada.
+```
+^trpar
