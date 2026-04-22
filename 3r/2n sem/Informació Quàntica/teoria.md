@@ -418,15 +418,57 @@ amb $p_{i}$ probabilitats que sumen $1$. És a dir, un estat separable és una c
 Contrariament, un ==estat entrellaçat== és aquell que no es pot escriure d'aquesta forma.
 ```
 
-|                        | Locals purs                           | Locals mixtes     |
-| ---------------------- | ------------------------------------- | ----------------- |
-| **Global separable**   | Estat producte; l'estat global és pur | Estat global mixt |
-| **Global entrellaçat** | Contradicció                          | Estat global mixt |
+| Estat global    | Pur                                                                                             | Mixt                                                                                                          |
+| --------------- | ----------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
+| **Separable**   | Estat producte; informació completa i separable sobre el sistema global.<br>Estats locals purs. | Correlació clàssica; no es coneix el sistema a causa de soroll o falta d'informació.<br>Estats locals mixtes. |
+| **Entrellaçat** | Informació completa del sistema global però cap sobre els locals.<br>Estats locals mixtes.      | Interacció quàntica i correlació clàssica alhora.<br>Estats locals mixtes.                                                                                                              | 
+
+
+#### **Detecció** d'entrellaçament
+
+Físicament, el conjugat de l'estat d'una partícula representa un canvi en el seu [[#^mom | moment]] de $p$ a $-p$. Això és equivalent a canviar la direcció del temps.
+
+```ad-prop
+title: Criteri de **transposició parcial positiva** (Peres-Horodecki)
+
+L'[[#^etrpar | estat parcialment transposat]] d'un estat separable és no negatiu. Per a sistemes de dimensions $2\times2$ o $2\times 3$, és una doble implicació.
+```
 
 
 #### **Mesures** d'entrellaçament
 
+Una mesura d'entrellaçament $\mathcal{E}(\rho_{AB})$ ha de complir els següents requeriments:
 
+1. $\mathcal{E}(\rho_{AB})=0 \iff \rho_{AB}$ separable.
+2. **Normalització.** Si $\ket{\psi}_{AB}$ és un estat màximament entrellaçat, $\mathcal{E}(\ket{\psi}_{AB}) = \log_{2}(d)$ .
+3. **Invariant sota canvi local.**
+	$$\mathcal{E}(U_{A}\,U_{B}\,\rho_{AB}\,U_{A}^{^{\dagger}}\,U_{B}^{^{\dagger}}) = \mathcal{E}(\rho_{AB})$$
+4. **Monotonia.** No augment sota [[#^locc | LOCC]]; $\mathcal{E}(\Lambda_{\text{LOCC}}[\rho_{AB}])$.
+5. **Convexitat.** La mescla no augmenta l'entrellaçament.
+	$$ \mathcal{E}(p\,\rho_{AB}+(1-p)\,\sigma_{AB}) \leq p\,\mathcal{E}(\rho_{AB}) + (1-p)\,\mathcal{E}(\sigma_{AB}) $$
+
+```ad-met
+title: **Negativitat**
+
+$$ N(\rho) = \frac{\mathrm{Tr}|\rho^{T_{B}}|-1}{2} = \frac{1}{2} \sum_{i} |\lambda_{i}|-1 = -\sum_{i}\lambda_{i} \,,$$
+on l'últim sumatori es restringeix als vaps negatius.
+
++ ==Negativitat logarítmica==: $E_{N}(\rho) = \log_{2}(\mathrm{Tr}|\rho^{T_{B}}|)$
+```
+
+```ad-met
+title: **Concurrència**
+
++ Per estats purs:
+	$$C(\ket{\psi})=\sqrt{2(1-\mathrm{Tr}(\rho_{A}^{2}))}$$
++ Per estats mixtes:
+	  $$C(\rho) = \max\{0,\lambda_{1}-\lambda_{2}-\lambda_{3}-\lambda_{4}\}\,,$$
+	  amb $\lambda_{i}$ l'arrel quadrada dels vaps de $R=\rho \tilde{\rho}$, on
+	  $$\tilde{\rho}=\sigma^{y}\otimes \sigma^{y}\rho^{*}\sigma^{y}\otimes \sigma^{y}\,.$$
+```
+
+
+#### **Teleportació** quàntica
 
 
 ---
@@ -459,6 +501,17 @@ c & d-\lambda_{i}
 ```
 
 ```ad-def
+title: Matriu definida positiva/negativa
+
+|                  | ~={green-low}Positiva=~ | ~={pink-low}Negativa=~ | 
+| ---------------- | ----------------------- | ---------------------- |
+| **Definida**     | $\lambda_{i}>0$         | $\lambda_{i}<0$        |
+| **Semidefinida** | $\lambda_{i}\geq0$      | $\lambda_{i}\leq0$     |
+
+amb $\lambda_{i}$ els vaps de la matriu.
+```
+
+```ad-def
 title: Traça parcial
 
 Les traçes parcials d'una matriu de densitat d'un estat mixte $\rho_{AB}\in M_{4\times 4}$ son:
@@ -468,3 +521,27 @@ Les traçes parcials d'una matriu de densitat d'un estat mixte $\rho_{AB}\in M_{
 resultant en una matriu $\in M_{2\times 2}$ amb cada parella d'elements sumada.
 ```
 ^trpar
+
+```ad-def
+title: Moment
+
+El moment d'un cos és
+$$ p = v \cdot m \,,$$
+amb $v$ la seva velocitat i $m$ la seva massa.
+```
+^mom
+
+```ad-def
+title: Transposició parcial
+
+Un estat $\rho_{AB}$ transposat parcialment respecte $A$ és
+$$ \rho_{AB}^{T_{A}} = \rho_{A}^{T} \otimes \rho_{B} \,.$$
+```
+^etrpar
+
+```ad-def
+title: LOCC
+
+Operacions locals (unitàries, aplicacions o mesures) i comunicacions clàssiques.
+```
+^locc
