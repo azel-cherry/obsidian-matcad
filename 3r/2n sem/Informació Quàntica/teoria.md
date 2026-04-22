@@ -382,13 +382,25 @@ A partir de la descomposició de Schmidt és molt fàcil saber si un estat està
 ```
 ````
 
-```ad-def
+````ad-def
 title: Estats de *Bell*
 
 Els estats de bell
 $$ \ket{\psi^{\pm}} = \frac{1}{\sqrt{2}} (\ket{01}\pm \ket{10})\,,\quad \ket{\phi^{\pm}}=\frac{1}{\sqrt{2}} (\ket{00})\pm \ket{11} $$
 son els estats màximament entrellaçats de dos qubits.
+
+```ad-prop
+title: Base de Bell
+
+La base de Bell és:
+$$ \begin{align}
+\ket{00} &= \frac{1}{\sqrt{2}}(\ket{\phi^{+}}+\ket{\phi^{-}}) \\
+\ket{01} &= \frac{1}{\sqrt{2}}(\ket{\psi^{+}}+\ket{\psi^{-}}) \\
+\ket{10} &= \frac{1}{\sqrt{2}}(\ket{\psi^{+}}-\ket{\psi^{-}}) \\
+\ket{11} &= \frac{1}{\sqrt{2}}(\ket{\phi^{+}}-\ket{\phi^{-}})
+\end{align} $$
 ```
+````
 
 ```ad-def
 title: Entropia de *von Neumann*
@@ -469,6 +481,16 @@ title: **Concurrència**
 
 
 #### **Teleportació** quàntica
+
+Consisteix en transferir l'estat complet d'una partícula a una altra.
+
+1. Tenim un sistema amb dues parts; una amb $A$ i $C$ i l'altra amb $B$, i partim de l'estat entrellaçat $AB$ conegut i $\ket{\psi}_{C}=\alpha \ket{0}+\beta \ket{1}$ desconegut.
+	+ Expressem l'estat inicial de tot el sistema $CAB$.
+	+ Expressem els estats de $CA$ del resultat en termes de la base de Bell.
+2. Realitzem una mesura projectiva en la base de Bell sobre $C$ i $A$:
+	+ Mesurem un observable els vaps del qual son els estats de Bell de $CA$.
+	+ Això fa que les partícules $A$ i $B$ perdin el seu entrellaçament mentre que $A$ s'entrellaça amb $C$, l'estat del qual és un estat de Bell. La partícula $B$ col·lapsarà a un estat que es pot derivar a partir del nou estat d'$AC$.
+3. Enviem la mesura d'$AC$ (en forma de dos bits clàssics) per saber quina transformació s'ha d'aplicar a $\ket{\psi}$ per obtenir l'estat original de $C$.
 
 
 ---
