@@ -329,7 +329,7 @@ title: Representació a l'**esfera de Bloch**
 title: Estat *reduït*
 
 Sigui $\rho_{AB}=\ket{\psi}\bra{\psi}_{AB}$ un estat compost mixt, el seu estat reduït al sistema $A$ és
-$$ \rho_{A} = \mathrm{Tr}_{B}(\ket{\psi}\bra{\psi}_{AB}) \equiv \sum_{i\in \{0,1\}} \prescript{}{B}{\bra{i}}\,\rho_{AB}\,\ket{\psi}_{B} \,.$$
+$$ \rho_{A} = \mathrm{Tr}_{B}(\rho_{AB}) \equiv \sum_{i\in \{0,1\}} \prescript{}{B}{\bra{i}}\,\rho_{AB}\,\ket{\psi}_{B} \,.$$
 Amb $Tr_{B}$ la [[#^trpar | traça parcial]] en $B$.
 ```
 

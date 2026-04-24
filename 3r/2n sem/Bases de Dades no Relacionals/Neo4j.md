@@ -54,6 +54,7 @@ Returns only paths that strictly follow the specified pattern.
 
 ```cypher
 match <path>
+with ...
 where ...
 optional match ...
 return ...
@@ -63,6 +64,8 @@ return ...
 + ``{cypher}return x.attr as `col-name` ``: return as table
 + `{cypher}return x {.attr1, attr2}`: return as map (JSON)
 + `{cypher}match paths = (<path>) return paths`
++ `{cypher}with x as <name>, func(x) as ...`: save previous or new variables for the rest of the query (when using `with`, only these variables will be saved)
+
 
 ---
 `{cypher}where ...`
@@ -76,6 +79,7 @@ title: Attributes
 `n.attr`
 
 + `{cypher}<attr> = <val>`, `{cypher}<attr> <> <val>`
++ `{cypher} n1 <= <attr> <= n2`
 + `{cypher}<attr> <is | is not> null`
 + `{cypher}toLower(<attr>)`, `{cypher}toUpper(<attr>)`
 + `{cypher}toString(<attr>)`, `{cypher}toInteger(<attr>)`
@@ -110,4 +114,12 @@ title: Date and time
 + `{cypher}datetime().<minute|hour|...>`
   
 Return integers.
+```
+
+```ad-prop
+title: Maps
+
+`{cypher}return x{.attr, name:var}`
+
+Returns output in .json format.
 ```
