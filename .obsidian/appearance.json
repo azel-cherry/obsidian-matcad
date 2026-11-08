@@ -3,9 +3,9 @@
   "accentColor": "#87c494",
   "enabledCssSnippets": [
     "cell_center",
-    "img_center",
     "pet",
     "custom-admonitions.2ddd9f",
-    "admonition-fix"
+    "admonition-fix",
+    "img_center"
   ]
 }
