@@ -50,7 +50,7 @@
     },
     "prop": {
       "type": "prop",
-      "color": "99, 176, 136",
+      "color": "106, 185, 144",
       "icon": {
         "name": "angle-double-right",
         "type": "font-awesome"
@@ -58,7 +58,8 @@
       "command": false,
       "title": "Proposició",
       "injectColor": true,
-      "noTitle": false
+      "noTitle": false,
+      "copy": false
     },
     "ex": {
       "type": "ex",

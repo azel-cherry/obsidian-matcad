@@ -1,10 +1,11 @@
 {
   "theme": "moonstone",
-  "accentColor": "#97cea2",
+  "accentColor": "#87c494",
   "enabledCssSnippets": [
-    "custom-admonitions.2ddd9f",
-    "pet",
+    "cell_center",
     "img_center",
-    "cell_center"
+    "pet",
+    "custom-admonitions.2ddd9f",
+    "admonition-fix"
   ]
 }

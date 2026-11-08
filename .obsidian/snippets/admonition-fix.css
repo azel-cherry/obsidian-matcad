@@ -1,0 +1,31 @@
+/* Direct mapping for your custom Admonitions to fix the modern Obsidian layout */
+
+.callout[data-callout="def"]   { --callout-color-final: rgb(126, 160, 127); }
+.callout[data-callout="met"]   { --callout-color-final: rgb(143, 183, 158); }
+.callout[data-callout="teor"]  { --callout-color-final: rgb(145, 209, 122); }
+.callout[data-callout="not"]   { --callout-color-final: rgb(180, 222, 171); }
+.callout[data-callout="ex"]    { --callout-color-final: rgb(202, 160, 160); }
+.callout[data-callout="graph"] { --callout-color-final: rgb(164, 173, 164); }
+.callout[data-callout="prop"]  { --callout-color-final: rgb(106, 185, 144); }
+
+/* Apply the fixed colors safely to the structural layout */
+.callout[data-callout="def"],
+.callout[data-callout="met"],
+.callout[data-callout="teor"],
+.callout[data-callout="not"],
+.callout[data-callout="ex"],
+.callout[data-callout="graph"],
+.callout[data-callout="prop"] {
+    border-left: 4px solid var(--callout-color-final) !important;
+    background-color: rgba(var(--callout-color), 0.1) !important;
+    
+    /* Fallback if background opacity fails */
+    --callout-bg: rgba(var(--callout-color), 0.08) !important; 
+}
+
+/* Force the header texts and icons to pull the fixed color formatting */
+.callout[data-callout] .callout-title,
+.callout[data-callout] .callout-title-inner,
+.callout[data-callout] .callout-icon {
+    color: var(--callout-color-final) !important;
+}
