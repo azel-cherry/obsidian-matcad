@@ -9,7 +9,6 @@ Stellar activity:
 
 Possible changes to a star's spectrum:
 - ~={green}Line shift.=~ Spectral profile moving left or right.
-	- **~={green}Pure=~ line shift.** Line shift caused explicitly due to Doppler shift.
 - ~={green}Line-shape distortion.=~ Change in spectrum shape due to stellar activity.
 
 Some stellar activity that affects its apparent RV:
@@ -55,7 +54,7 @@ A Gaussian fit is typically applied to the CCF, where its centroid represents th
 After obtaining the RV time series $RV(t)$, typically a Gaussian Process (GP) regression is used to model the quasi-periodic distortions induced by stellar activity. It can also become multidimensional incorporating additional time-dependent measurements like photometry and CCF diagnostics.
 
 
-### CANSTAR'S approach
+### CANSTAR's approach
 
 A Gaussian fit is applied to $O(v)$ as a **weight function**, thus giving more weight to the center of the CCF and less weight to the noise-dominated wings.
 
@@ -78,9 +77,10 @@ where the coefficient $l(t)$ quantifies apparent line shifts.
 In practice, the first element computed in the Gram-Schmidt process will be $T'(v)$ to ensure orthogonality with respect to all other elements of the basis.
 ```
 
-~={pink}**The problem:**=~ A line shift can also be caused by stellar activity.
+- ~={pink}**The problem:**=~ $l(t) = \epsilon(t) + \kappa(t)$.
+	A line shift $l(t)$ can also be caused by stellar activity $\kappa(t)$, not purely Doppler shift $\epsilon(t)$.
 
-~={green}**The approach:**=~ To learn stellar activity features from the distortion coefficients and their evolution over time in order to separate stellar activity-induced changes to the line shift.
+- ~={green}**The approach:**=~ To learn features from the distortion coefficient time series $g_{i}(t)$ in order to predict $\kappa(t)$.
 
 
 # Synthetic data: StarSim
@@ -90,6 +90,30 @@ Simulates stellar surface (quiet photosphere, cool spots and faculae) to produce
 Active regions are modelled as circular starspots with 7 parameters ~={faded}(appearance time, lifetime, colatitude, longitude, spot radius, linear growth rate, linear decay rate)=~, surrounded by a facular region with a global facula-to-spot ratio parameter $Q$, fixed for each simulation.
 
 Lastly, photon noise is simulated on the CCF. The ratio of mean observational error to $RV(t)$ RMS is computed in order to quantify the amount of noise to inject.
+
+For each star, 500 000 time series simulations were generated.
+
+
+# The model
+
+The network is trained for each star.
+
+```ad-prop
+title: Specifications
+
+- ~={green}Input.=~ Amplitude coefficient $c_{1}(t)$ and distortion coefficient $g_{i}(t)$ time series.
+- ~={green}Training.=~ 80% train, 10% val, 10% test.
+	- **Loss:** MSE between $\widehat{\kappa}(t)$ and $\kappa(t)$.
+	- Several models is trained using a different number of coefficients.
+- **Evaluation:** Residual relative error (RRE), defined as the ratio of RMS after correction to the original RMS.
+  
+![[archi.png | 500]]
+```
+
+- **Prediction uncertainties.** A model trained on the same data can generate different predictions when predicting on the real observational data. Thus the best performing architecture is trained 5 different times to stabilize this uncertainty.
+- **Observational uncertainties.** Real observational input data has a degree of uncertainty that has to be accounted for. Thus 1000 Monte Carlo realisations of the input distortion coefficients are generated and each model predicts on all 1000 realisations.
+
+In the end, 5000 different predictions are generated for each observation. The median is adopted as the final prediction, and the standard deviation as total uncertainty.
 
 
 # Appendix
