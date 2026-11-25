@@ -156,11 +156,15 @@ title: Costraints
 
 ```cypher
 create constraint <name> for <(x:L) | ()-[x:L]-()>
-require (x.attr1, x.attr2) ...
+require x.attr ...
 ```
 + **Uniqueness.** `{cypher}is unique`
 + **Existance.** `{cypher}is not null`
++ **Node Key.** `{cypher}is node key`
+  + can use multiple properties as key `{cypher}(x.attr1, x.attr2)`
   
+`{cypher}show constraints`
+
 `{cypher}drop constraint <name>`
 ````
 

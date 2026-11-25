@@ -38,9 +38,9 @@ title: Solució dèbil: **xoc**
 
 Les corbes es tallen i es tanquen: $q'(\rho⁻) > q'(\rho⁺)$.
 
-2. Tenim un xoc amb velocitat $\sigma' =\displaystyle \frac{q(\rho⁻)-q(\rho⁺)}{\rho⁻-\rho⁺}$.
-   + Condició d'entropia: $q'(\rho⁻) > \sigma' > q'(\rho⁺)$.
-2. Separem les dues regions de corbes per una recta de pendent $\sigma'$.
+2. Tenim un xoc amb velocitat $x'_{xoc}(t) =\displaystyle \frac{q(\rho⁻)-q(\rho⁺)}{\rho⁻-\rho⁺}$.
+   + Condició d'entropia: $q'(\rho⁻) > x'_{xoc} > q'(\rho⁺)$.
+2. Separem les dues regions per una corba $x_{xoc}(t)$.
 
 ```
 
